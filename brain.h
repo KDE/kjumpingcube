@@ -54,8 +54,6 @@ struct coordinate
 class Brain
 {
 public:
-   enum Skill{Beginner,Average,Expert};
-
    /** 
    * @param initValue value to initialize the random number generator with
    *        if no value is given a truly random value is used
@@ -76,9 +74,9 @@ public:
    /** @return true if the Brain is thinking at the moment */
    bool isActive() const;
 
-   /** @return old skill */
-   Skill setSkill(Skill);
-   Skill skill() const;
+   /** skill according to Prefs::EnumSkill **/
+   void setSkill(int);
+   int skill() const;
    
 private:
    /**
@@ -127,8 +125,8 @@ private:
    bool stopped;
    /** flag, if the engine is active */
    bool active;
-   /** skill of the Brain */
-   Skill _skill;
+   /** skill of the Brain, see Prefs::EnumSkill */
+   int _skill;
 
    /** Sequence generator */
    KRandomSequence random;    

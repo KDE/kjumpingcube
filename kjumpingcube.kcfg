@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="kjumpingcuberc"/>
+  <group name="Game">
+    <entry name="Color1" type="QColor">
+      <desc>Color of player 1.</desc>
+      <default>darkred</default>
+    </entry>
+    <entry name="Color2" type="QColor">
+      <desc>Color of player 2.</desc>
+      <default>darkblue</default>
+    </entry>
+    <entry name="CubeDim" type="int" min="5" max="10">
+      <desc>Size of the playing field.</desc>
+      <default>6</default>
+    </entry>
+    <entry name="Skill" type="Enum">
+      <values>
+        <value>Beginner</value>
+        <value>Average</value>
+        <value>Expert</value>
+      </values>
+      <desc>Skill of the computer player.</desc>
+      <default>Average</default>
+    </entry>
+    <entry name="ComputerPlayer1" type="bool" key="Computer_Pl_1">
+      <desc>Whether player 1 is a played by the computer.</desc>
+      <default>false</default>
+    </entry>
+    <entry name="ComputerPlayer2" type="bool" key="Computer_Pl_2">
+      <desc>Whether player 2 is a played by the computer.</desc>
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>

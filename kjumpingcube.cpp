@@ -25,7 +25,9 @@
 
 // Settings
 #include "settings.h"
-#include <kautoconfigdialog.h>
+#include <kconfigdialog.h>
+
+#include "prefs.h"
 
 #include <qregexp.h>
 
@@ -278,11 +280,11 @@ void KJumpingCube::configureKeyBindings(){
  * Show Configure dialog.
  */
 void KJumpingCube::showOptions(){
-  if(KAutoConfigDialog::showDialog("settings"))
+  if(KConfigDialog::showDialog("settings"))
     return;
 
-  KAutoConfigDialog *dialog = new KAutoConfigDialog(this, "settings", KDialogBase::Swallow);
-  dialog->addPage(new Settings(0, "General"), i18n("General"), "Game", "package_settings");
+  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
+  dialog->addPage(new Settings(0, "General"), i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged()), view, SLOT(loadSettings()));
   dialog->show();
 }

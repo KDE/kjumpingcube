@@ -34,9 +34,11 @@
 #include <iostream.h>
 #endif
 
+#include "prefs.h"
+
 Brain::Brain(int initValue)
 {
-   setSkill(Beginner);
+   setSkill(Prefs::EnumSkill::Beginner);
    stopped=false;
    active=false;
    currentLevel=0;
@@ -45,30 +47,27 @@ Brain::Brain(int initValue)
    random.setSeed(initValue);
 }
 
-Brain::Skill Brain::setSkill(Skill newSkill)
+void Brain::setSkill(int newSkill)
 {
-   Skill oldSkill=_skill;
    _skill=newSkill;
 
    switch(_skill)
    {
-      case Beginner:
+      case Prefs::EnumSkill::Beginner:
          maxLevel=1;
 	 break;
-      case Average:
+      case Prefs::EnumSkill::Average:
          maxLevel=3;
          break;
-      case Expert:
+      case Prefs::EnumSkill::Expert:
          maxLevel=5;
          break;
       default:
          break;
    }
-
-   return oldSkill;
 }
 
-Brain::Skill Brain::skill() const
+int Brain::skill() const
 {
    return _skill;
 }
@@ -321,7 +320,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
    int moves=0;
    int min=9999;
 
-   if(_skill==Beginner)
+   if(_skill==Prefs::EnumSkill::Beginner)
    {
       int max=0;
       for(i=0;i<box.dim();i++)
@@ -430,7 +429,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 
               counter++;
            }
-	   else if(_skill == Average)
+	   else if(_skill == Prefs::EnumSkill::Average)
 	   {
 	      if(c2m[i].val == secondMin)
 	      {

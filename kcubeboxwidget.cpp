@@ -28,6 +28,8 @@
 #include <assert.h>
 #include <kcursor.h>
 
+#include "prefs.h"
+
 KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent,const char *name)
         : QWidget(parent,name),
           CubeBoxBase<KCubeWidget>(d)
@@ -85,22 +87,14 @@ KCubeBoxWidget::~KCubeBoxWidget()
 }
 
 void KCubeBoxWidget::loadSettings(){
-  KConfig *config=kapp->config();
-  config->setGroup("Game");
-  QColor c1=QColor("darkred");
-  QColor c2=QColor("darkblue");
-  QPalette color1(config->readColorEntry("Color1",&c1));
-  QPalette color2(config->readColorEntry("Color2",&c2));
-  setColor(KCubeBoxWidget::One,color1);
-  setColor(KCubeBoxWidget::Two,color2);
+  setColor(KCubeBoxWidget::One, Prefs::color1());
+  setColor(KCubeBoxWidget::Two, Prefs::color2());
 
-  setDim(config->readNumEntry("CubeDim",6));
-  brain.setSkill((Brain::Skill)config->readNumEntry("Skill",(int)Brain::Average));
+  setDim(Prefs::cubeDim());
+  brain.setSkill( Prefs::skill() );
 
-  bool flag=config->readBoolEntry("Computer_Pl_1",false);
-  setComputerplayer(KCubeBoxWidget::One,flag);
-  flag=config->readBoolEntry("Computer_Pl_2",true);
-  setComputerplayer(KCubeBoxWidget::Two,flag);
+  setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
+  setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
 }
 
 KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
@@ -409,10 +403,9 @@ bool KCubeBoxWidget::isComputer(Player player) const
 }
   
 
-Brain::Skill KCubeBoxWidget::skill() const
+int KCubeBoxWidget::skill() const
 {
-   Brain::Skill skill=brain.skill();
-   return skill;
+   return brain.skill();
 }
    
 QPalette KCubeBoxWidget::color(Player forWhom)
