@@ -75,13 +75,10 @@ protected:
 private:
    KCubeBoxWidget *view;
    KAccel *kaccel;
-   QPopupMenu *skillMenu;
-   QPopupMenu *playfieldMenu;
-   QPopupMenu *game;
-   QPopupMenu *options;
 
    KURL gameURL;
 
+   void initKAction();
    void updatePlayfieldMenu(int dim);
    void updateSkillMenu(int id);
    void changeColor(int player);
@@ -97,13 +94,21 @@ private slots:
    void getHint();
    void stop();
    void undo();
-   void menuCallback(int);
    void changePlayer(int newPlayer);
    void showWinner(int);
    void barPositionChanged();
    void disableStop();
    void enableStop_Moving();
    void enableStop_Thinking();
+   void toggleToolbar();
+   void toggleStatusbar();
+   void configureKeyBindings();
+   void fieldChange();
+   void skillChange();
+   void changeComputerPlayer1();
+   void changeComputerPlayer2();
+   void changeColor1();
+   void changeColor2();
 
 };
 #endif // KJUMPINGCUBE_H

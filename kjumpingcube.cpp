@@ -23,6 +23,9 @@
 #include "brain.h"
 #include "version.h"
 
+#include <qfileinfo.h>
+#include <qregexp.h>
+
 #include <kapp.h>
 #include <kglobal.h>
 #include <klocale.h>
@@ -32,34 +35,17 @@
 #include <kcolordlg.h>
 #include <kfiledialog.h>
 #include <ksimpleconfig.h>
-#include <qfileinfo.h>
-#include <qregexp.h>
 #include <kmenubar.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
+#include <kstdaction.h>
+#include <kaction.h>
 #include <kio/netaccess.h>
 
-#define ID_GAME_QUIT 1
-#define ID_GAME_NEW 2
-#define ID_GAME_OPEN 3
-#define ID_GAME_SAVE 4
-#define ID_GAME_SAVEAS 5
-#define ID_GAME_HINT 6
-#define ID_GAME_STOP_HINT 7
-#define ID_GAME_UNDO 8
-#define ID_HELP_ABOUT 101
-#define ID_HELP_CONTENTS 102
-#define ID_VIEW_TOOLBAR 201
-#define ID_VIEW_STATUSBAR 202
-#define ID_OPT_KEYS 302
-#define ID_COLOR_BASE 400
-#define ID_FIELD 500
-#define ID_SKILL_BASE 600
-#define ID_COMPUTER_BASE 700
 #define ID_STATUS_TURN 1000
 
-
 #define MESSAGE_TIME 2000
+
 
 KJumpingCube::KJumpingCube()
 	: KMainWindow(0), view(new KCubeBoxWidget(5,this))
@@ -74,160 +60,20 @@ KJumpingCube::KJumpingCube()
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
 
-   // init keys
-   kaccel = new KAccel(this);
+   initKAction();
 
-   kaccel->insertStdItem(KStdAccel::New,i18n("New Game"));
-   kaccel->connectItem(KStdAccel::New,this,SLOT(newGame()));
-   kaccel->connectItem(KStdAccel::Open,this,SLOT(openGame()));
-   kaccel->connectItem(KStdAccel::Save,this,SLOT(save()));
-   kaccel->connectItem(KStdAccel::Quit,this,SLOT(quit()));
+   connect(toolBar(),SIGNAL(moved(BarPosition)),SLOT(barPositionChanged()));//FIXME: crashing :-(
 
-   kaccel->insertItem(i18n("Get Hint"),"Get Hint","CTRL+H");
-   kaccel->connectItem("Get Hint",this,SLOT(getHint()));
-   kaccel->insertItem(i18n("Stop Thinking"),"Stop Thinking","Escape");
-   kaccel->connectItem("Stop Thinking",this,SLOT(stop()));
-   kaccel->insertStdItem(KStdAccel::Undo,i18n("Undo Move"));
-   kaccel->connectItem(KStdAccel::Undo,this,SLOT(undo()));
-
-   KConfig *config=kapp->config();
-   kaccel->readSettings();
-
-   // init menubar
-   KPopupMenu *p = new KPopupMenu(this);
-   int id;
-   id=p->insertItem(SmallIcon("filenew"),i18n("&New Game"),this,SLOT(newGame()));
-   kaccel->changeMenuAccel(p,id,KStdAccel::New);
-   id=p->insertItem(SmallIcon("fileopen"),i18n("&Open..."),this,SLOT(openGame()));
-   kaccel->changeMenuAccel(p,id,KStdAccel::Open);
-   p->insertSeparator();
-   id=p->insertItem(SmallIcon("filesave"),i18n("&Save"),this,SLOT(save()));
-   kaccel->changeMenuAccel(p,id,KStdAccel::Save);
-   p->insertItem(i18n("Save &As..."),this,SLOT(saveAs()));
-   p->insertSeparator();
-   id=p->insertItem(SmallIcon("exit"),i18n("&Quit"),this,SLOT(quit()));
-   kaccel->changeMenuAccel(p,id,KStdAccel::Quit);
-
-   connect(p,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-
-   // put our newly created menu into the main menu bar
-   menuBar()->insertItem(i18n("&File"), p);
-
-
-   game=new KPopupMenu(this);
-   game->setCheckable(TRUE);
-   game->insertItem(i18n("Get &Hint"),ID_GAME_HINT);
-   kaccel->changeMenuAccel(game,ID_GAME_HINT,"Get Hint");
-   game->insertItem(i18n("&Stop Thinking"),ID_GAME_STOP_HINT);
-   kaccel->changeMenuAccel(game,ID_GAME_STOP_HINT,"Stop Thinking");
-   game->setItemEnabled(ID_GAME_STOP_HINT,FALSE);
-   game->insertSeparator();
-   game->insertItem(SmallIcon("undo"),i18n("&Undo Move"),ID_GAME_UNDO);
-   kaccel->changeMenuAccel(game,ID_GAME_UNDO,"Undo");
-
-   game->setItemEnabled(ID_GAME_UNDO,FALSE);
-
-   connect(game,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-   menuBar()->insertItem( i18n("&Game"),game );
-
-
-   playfieldMenu=new KPopupMenu(this);
-   playfieldMenu->setCheckable(TRUE);
-   playfieldMenu->insertItem("&5x5",ID_FIELD +5);
-   playfieldMenu->insertItem("&6x6",ID_FIELD +6);
-   playfieldMenu->insertItem("&7x7",ID_FIELD +7);
-   playfieldMenu->insertItem("&8x8",ID_FIELD +8);
-   playfieldMenu->insertItem("&9x9",ID_FIELD +9);
-   playfieldMenu->insertItem("&10x10",ID_FIELD +10);
-
-   connect(playfieldMenu,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-
-
-   skillMenu=new KPopupMenu(this);
-   skillMenu->setCheckable(TRUE);
-   skillMenu->insertItem(i18n("&Beginner"),ID_SKILL_BASE+0);
-   skillMenu->insertItem(i18n("&Average"),ID_SKILL_BASE+1);
-   skillMenu->insertItem(i18n("&Expert"),ID_SKILL_BASE+2);
-
-   connect(skillMenu,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-
-   options = new KPopupMenu(this);
-   options->setCheckable(TRUE);
-
-   options->insertItem(i18n("Show &Toolbar"),ID_VIEW_TOOLBAR);
-   options->insertItem(i18n("Show St&atusbar"),ID_VIEW_STATUSBAR);
-   options->insertSeparator();
-   options->insertItem(i18n("&Configure Key Bindings..."),ID_OPT_KEYS);
-   options->insertItem(i18n("&Playfield"),playfieldMenu);
-   options->insertItem(i18n("S&kill"),skillMenu);
-   options->insertItem(i18n("Computer plays Player &1"),ID_COMPUTER_BASE+1);
-   options->insertItem(i18n("Computer plays Player &2"),ID_COMPUTER_BASE+2);
-   options->insertItem(i18n("Color Player 1..."),ID_COLOR_BASE+1);
-   options->insertItem(i18n("Color Player 2..."),ID_COLOR_BASE+2);
-
-
-   connect(options,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-   menuBar()->insertItem(i18n("&Settings"), options);
 
    QString s;
-   s =i18n("KJumpingCube Version %1 \n\n (C) 1998-2000 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
-   s+=i18n(
-     "This program is free software; you can redistribute it\n"
-     "and/or modify it under the terms of the GNU General\n"
-     "Public License as published by the Free Software\n"
-     "Foundation; either version 2 of the License, or\n"
-     "(at your option) any later version.");
-   QPopupMenu *help = helpMenu(s);
-
-   menuBar()->insertSeparator();
-   menuBar()->insertItem( i18n("&Help"), help );
-
-   // init toolbar
-   KIconLoader *loader = KGlobal::iconLoader();
-
-   // newGamebutton
-   toolBar()->insertButton(loader->loadIcon("filenew", KIcon::Toolbar),ID_GAME_NEW,
-			true,i18n("New Game"));
-   toolBar()->insertButton(loader->loadIcon("fileopen", KIcon::Toolbar),ID_GAME_OPEN,
-                        true,i18n("Open Game"));
-   toolBar()->insertButton(loader->loadIcon("filesave", KIcon::Toolbar),ID_GAME_SAVE,
-                        true,i18n("Save Game"));
-
-   toolBar()->insertSeparator();
-
-   toolBar()->insertButton(loader->loadIcon("stop", KIcon::Toolbar),ID_GAME_STOP_HINT,
-		  true,i18n("Stop Thinking"));
-   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,false);
-
-   toolBar()->insertButton(loader->loadIcon("idea", KIcon::Toolbar),ID_GAME_HINT,
-		  true,i18n("Get Hint"));
-
-   // undo-button
-   toolBar()->insertButton(loader->loadIcon("undo", KIcon::Toolbar),ID_GAME_UNDO,true,
-		         i18n("Undo Move"));
-   toolBar()->setItemEnabled(ID_GAME_UNDO,false);
-   toolBar()->insertSeparator();
-
-   //helpbutton
-   toolBar()->insertButton(loader->loadIcon("help", KIcon::Toolbar),ID_HELP_CONTENTS,true,
-			i18n("Help"));
-
-
-   connect(toolBar(), SIGNAL(clicked(int)), this, SLOT(menuCallback(int)));
-   connect(toolBar(),SIGNAL(moved(BarPosition)),SLOT(barPositionChanged()));
-
-
-
-
-
    // init statusbar
    s = i18n("on turn: Player %1").arg(1);
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
-
   
 
+   KConfig *config=kapp->config();
    // read config
    {
       KConfigGroupSaver cgs(config,"Window");
@@ -236,18 +82,14 @@ KJumpingCube::KJumpingCube()
       toolBar()->setBarPos((KToolBar::BarPosition)barPos);
 	
       bool visible=config->readBoolEntry("Toolbar",true);
-      options->setItemChecked(ID_VIEW_TOOLBAR,visible);
-      if(visible)
-	 toolBar()->show();
-      else
-         toolBar()->hide();
-	
+      if (toolBar()->isHidden() == visible) {
+         ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->activate();
+      }
+
       visible=config->readNumEntry("Statusbar",true);
-      options->setItemChecked(ID_VIEW_STATUSBAR,visible);
-      if(visible)
-         statusBar()->show();
-      else
-         statusBar()->hide();
+      if (statusBar()->isHidden() == visible) {
+         ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->activate();
+      }
 
       QSize defSize(400,400);
       QSize winSize=config->readSizeEntry("Size",&defSize);
@@ -270,15 +112,61 @@ KJumpingCube::KJumpingCube()
 
       bool flag=config->readBoolEntry("Computer Pl.1",false);
       view->setComputerplayer(KCubeBoxWidget::One,flag);
-      options->setItemChecked(ID_COMPUTER_BASE+1,flag);
+      ((KToggleAction*)actionCollection()->action("options_change_computer1"))->setChecked(flag);
       flag=config->readBoolEntry("Computer Pl.2",false);
       view->setComputerplayer(KCubeBoxWidget::Two,flag);
-      options->setItemChecked(ID_COMPUTER_BASE+2,flag);
+      ((KToggleAction*)actionCollection()->action("options_change_computer2"))->setChecked(flag);
    }
+}
 
-   // disable undo-function
-   game->setItemEnabled(ID_GAME_UNDO,false);
-   toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+
+void KJumpingCube::initKAction()
+{
+   KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
+   KStdAction::open(this, SLOT(openGame()), actionCollection(), "game_open");
+   KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
+   KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
+   KStdAction::quit(this, SLOT(quit()), actionCollection(), "game_quit");
+
+   KAction* action;
+   (void)new KAction(i18n("Get &Hint"), "idea", KAccel::stringToKey("CTRL+H"), this, SLOT(getHint()), actionCollection(), "game_hint");
+   action = new KAction(i18n("&Stop Thinking"), "stop", KAccel::stringToKey("Escape"), this, SLOT(stop()), actionCollection(), "game_stop");
+   action->setEnabled(FALSE);
+   //FIXME: undo belongs to edit (ie edit_undo) not in file. Shall we create an edit
+   //entry in the menubar or leave it in "game"?
+   action = new KAction(i18n("Und&o Move"), "undo", KStdAccel::key(KStdAccel::Undo), this, SLOT(undo()), actionCollection(), "game_undo_move");
+   action->setEnabled(FALSE);
+
+
+   KStdAction::showToolbar(this, SLOT(toggleToolbar()), actionCollection());
+   KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
+   KStdAction::keyBindings(this, SLOT(configureKeyBindings()), actionCollection());
+
+   QStringList plist;
+   plist.append(i18n("&5x5"));
+   plist.append(i18n("&6x6"));
+   plist.append(i18n("&7x7"));
+   plist.append(i18n("&8x8"));
+   plist.append(i18n("&9x9"));
+   plist.append(i18n("&10x10"));
+   KSelectAction* playfieldMenu = new KSelectAction(i18n("&Playfield"), 0, this, SLOT(fieldChange()), actionCollection(), "options_field");
+   playfieldMenu->setItems(plist);
+   
+   QStringList slist;
+   slist.append(i18n("&Beginner"));
+   slist.append(i18n("&Average"));
+   slist.append(i18n("&Expert"));
+   KSelectAction* skillMenu = new KSelectAction(i18n("S&kill"), 0, this, SLOT(skillChange()), actionCollection(), "options_skill");
+   skillMenu->setItems(slist);
+
+   new KToggleAction(i18n("Computer plays Player &1"), 0, this, SLOT(changeComputerPlayer1()), actionCollection(), "options_change_computer1");
+   new KToggleAction(i18n("Computer plays Player &1"), 0, this, SLOT(changeComputerPlayer2()), actionCollection(), "options_change_computer2");
+
+   (void)new KAction(i18n("Color Player &1"), 0, this, SLOT(changeColor1()), actionCollection(), "options_change_color1");
+   (void)new KAction(i18n("Color Player &2"), 0, this, SLOT(changeColor2()), actionCollection(), "options_change_color2");
+
+   // finally create toolbar and menubar
+   createGUI("kjumpingcubeui.rc");
 }
 
 KJumpingCube::~KJumpingCube()
@@ -293,32 +181,51 @@ KJumpingCube::~KJumpingCube()
    }
 }
 
-
-
-
 void KJumpingCube::saveProperties(KConfig *config)
 {
-     bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
+     bool status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->isChecked();
      config->writeEntry("Toolbar",status);
-     status=options->isItemChecked(ID_VIEW_STATUSBAR);
+     status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->isChecked();
      config->writeEntry("Statusbar",status);
 	
      config->writeEntry("CubeDim",view->dim());
      config->writeEntry("Color1",view->color(KCubeBoxWidget::One).normal().background());
      config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).normal().background());
      config->writeEntry("Skill",(int)view->skill());
-     config->writeEntry("Computer Pl.1",options->isItemChecked(ID_COMPUTER_BASE+1));
-     config->writeEntry("Computer Pl.2",options->isItemChecked(ID_COMPUTER_BASE+2));
+     config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
+     config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
 
      view->saveGame(config);
+}
+
+void KJumpingCube::toggleToolbar()
+{
+ if (!toolBar()->isHidden()) {
+	toolBar()->hide();
+ } else {
+	toolBar()->show();
+ }
+}
+
+void KJumpingCube::toggleStatusbar()
+{
+ if (!statusBar()->isHidden()) {
+	statusBar()->hide();
+ } else {
+	statusBar()->show();
+ }
 }
 
 void KJumpingCube::readProperties(KConfig *config)
 {
    bool visible=config->readBoolEntry("Toolbar",true);
-   options->setItemChecked(ID_VIEW_TOOLBAR,visible);
+   if (toolBar()->isHidden() == visible) {
+      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->activate();
+   }
    visible=config->readNumEntry("Statusbar",true);
-   options->setItemChecked(ID_VIEW_STATUSBAR,visible);
+   if (statusBar()->isHidden() == visible) {
+      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->activate();
+   }
 
    QColor c1=view->color(KCubeBoxWidget::One).normal().background();
    QColor c2=view->color(KCubeBoxWidget::Two).normal().background();
@@ -334,14 +241,13 @@ void KJumpingCube::readProperties(KConfig *config)
 
    bool flag=config->readBoolEntry("Computer Pl.1",false);
    view->setComputerplayer(KCubeBoxWidget::One,flag);
-   options->setItemChecked(ID_COMPUTER_BASE+1,flag);
+   ((KToggleAction*)actionCollection()->action("options_change_computer1"))->setChecked(flag);
    flag=config->readBoolEntry("Computer Pl.2",false);
    view->setComputerplayer(KCubeBoxWidget::Two,flag);
-   options->setItemChecked(ID_COMPUTER_BASE+2,flag);
+   ((KToggleAction*)actionCollection()->action("options_change_computer2"))->setChecked(flag);
 
 
    view->restoreGame(config);
-
 }
 
 void KJumpingCube::quit()
@@ -355,9 +261,9 @@ void KJumpingCube::saveSettings()
   KConfig *config=kapp->config();
   {
      KConfigGroupSaver cfs(config,"Window");
-     bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
+     bool status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->isChecked();
      config->writeEntry("Toolbar",status);
-     status=options->isItemChecked(ID_VIEW_STATUSBAR);
+     status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->isChecked();
      config->writeEntry("Statusbar",status);
      config->writeEntry("Size",size());
   }
@@ -367,8 +273,8 @@ void KJumpingCube::saveSettings()
      config->writeEntry("Color1",view->color(KCubeBoxWidget::One).normal().background());
      config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).normal().background());
      config->writeEntry("Skill",(int)view->skill());
-     config->writeEntry("Computer Pl.1",options->isItemChecked(ID_COMPUTER_BASE+1));     
-     config->writeEntry("Computer Pl.2",options->isItemChecked(ID_COMPUTER_BASE+2));
+     config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
+     config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
    }
    config->sync();
 
@@ -377,10 +283,8 @@ void KJumpingCube::saveSettings()
 
 void KJumpingCube::newGame()
 {
-   game->setItemEnabled(ID_GAME_UNDO,false);
-   toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
    view->reset();
-
    statusBar()->message(i18n("New Game"),MESSAGE_TIME);
 }
 
@@ -494,8 +398,7 @@ void KJumpingCube::openGame()
       config.setGroup("Game");
       view->restoreGame(&config);
 
-      game->setItemEnabled(ID_GAME_UNDO,false);
-      toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+      ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
 
       KIO::NetAccess::removeTempFile( tempFile );
    }
@@ -503,7 +406,6 @@ void KJumpingCube::openGame()
    {
       KMessageBox::sorry(this,i18n("There was an error loading file\n%1").arg( url.url() ));
    }
-
 }
 
 void KJumpingCube::getHint()
@@ -513,10 +415,10 @@ void KJumpingCube::getHint()
 
 void KJumpingCube::stop()
 {
+
    if(view->isMoving())
    {
-      game->setItemEnabled(ID_GAME_UNDO,true);
-      toolBar()->setItemEnabled(ID_GAME_UNDO,true);
+      ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(true);
    }
 
    view->stopActivities();
@@ -529,8 +431,7 @@ void KJumpingCube::undo()
    if(view->isActive())
       return;
    view->undo();
-   game->setItemEnabled(ID_GAME_UNDO,false);
-   toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
 }
 
 void KJumpingCube::changeColor(int player)
@@ -558,9 +459,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 
    statusBar()->changeItem(s,ID_STATUS_TURN);
 
-   game->setItemEnabled(ID_GAME_UNDO,true);
-   toolBar()->setItemEnabled(ID_GAME_UNDO,true);
-
+   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(true);
 }
 
 void KJumpingCube::showWinner(int player)
@@ -582,10 +481,12 @@ void KJumpingCube::barPositionChanged()
 
 void KJumpingCube::disableStop()
 {
-   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,false);
-   game->setItemEnabled(ID_GAME_STOP_HINT,false);
-   toolBar()->setItemEnabled(ID_GAME_HINT,true);
-   game->setItemEnabled(ID_GAME_HINT,true);
+//   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,false);
+//   game->setItemEnabled(ID_GAME_STOP_HINT,false);
+//   toolBar()->setItemEnabled(ID_GAME_HINT,true);
+//   game->setItemEnabled(ID_GAME_HINT,true);
+   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(false);
+   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(true);
 
    statusBar()->clear();
 }
@@ -593,180 +494,119 @@ void KJumpingCube::disableStop()
 
 void KJumpingCube::enableStop_Moving()
 {
-   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,true);
-   game->setItemEnabled(ID_GAME_STOP_HINT,true);
-   toolBar()->setItemEnabled(ID_GAME_HINT,false);
-   game->setItemEnabled(ID_GAME_HINT,false);
+//   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,true);
+//   game->setItemEnabled(ID_GAME_STOP_HINT,true);
+//   toolBar()->setItemEnabled(ID_GAME_HINT,false);
+//   game->setItemEnabled(ID_GAME_HINT,false);
+   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(true);
+   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(false);
 
    statusBar()->message(i18n("doing move"));
-
 }
 
 void KJumpingCube::enableStop_Thinking()
 {
-   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,true);
-   game->setItemEnabled(ID_GAME_STOP_HINT,true);
-   toolBar()->setItemEnabled(ID_GAME_HINT,false);
-   game->setItemEnabled(ID_GAME_HINT,false);
+   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(true);
+   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(false);
 
    statusBar()->message(i18n("computing move"));
-
 }
 
 
-
-void KJumpingCube::menuCallback(int item)
+void KJumpingCube::skillChange()
 {
-   switch(item)
-   {
-      case ID_GAME_NEW:
-         newGame();
-         break;
-      case ID_GAME_OPEN:
-         openGame();
-         break;
-      case ID_GAME_SAVE:
-         saveGame();
-         break;
-      case ID_GAME_HINT:
-         getHint();
-         break;
-      case ID_GAME_STOP_HINT:
-         stop();
-         break;
-      case ID_GAME_UNDO:
-        undo();
-        break;
-      case ID_COMPUTER_BASE+1:
-      case ID_COMPUTER_BASE+2:
-      {
-	 bool flag=options->isItemChecked(item);
-	 flag= flag ? false : true;
-	 options->setItemChecked(item,flag);
-	 KCubeBoxWidget::Player player;
-	 player=(KCubeBoxWidget::Player)(item-ID_COMPUTER_BASE);
-	
-	 QString s;
-	 if(!flag)
-	 {
-	    s=i18n("Player %1 is now played by you.").arg(item-ID_COMPUTER_BASE);
-	 }
-	 else
-	 {
-	    s=i18n("Player %1 is now played by the computer.").arg(item-ID_COMPUTER_BASE);
-	 }
-         statusBar()->message(s,MESSAGE_TIME);
-	
-	 view->setComputerplayer(player,flag);
-	
-	 break;
-      }
-      case ID_SKILL_BASE+0:
-      case ID_SKILL_BASE+1:
-      case ID_SKILL_BASE+2:
-      {
-         int newSkill=item-ID_SKILL_BASE;
-         view->setSkill((Brain::Skill)(newSkill));
+ int index = ((KSelectAction*)actionCollection()->action("options_skill"))->currentItem();
 
-         updateSkillMenu(item-ID_SKILL_BASE);
-         QString skillStr;
-         switch(newSkill)
-         {
-            case 0:
-               skillStr=i18n("Beginner");
-               break;
-            case 1:
-               skillStr=i18n("Average");
-               break;
-            case 2:
-               skillStr=i18n("Expert");
-               break;
-         }
-         QString s=i18n("Skill of computerplayer is now: %1").arg(skillStr);
-	 statusBar()->message(s,MESSAGE_TIME);
+ int newSkill=index;
+ view->setSkill((Brain::Skill)(newSkill));
 
-         break;
-      }          	
-      case ID_VIEW_TOOLBAR:
-      {
-	bool newStatus=!options->isItemChecked(ID_VIEW_TOOLBAR);
-	options->setItemChecked(ID_VIEW_TOOLBAR, newStatus);
-        if (newStatus)
-           toolBar()->show();
-        else
-           toolBar()->hide();
-	break;
-      }
-      case ID_VIEW_STATUSBAR:
-      {
-	 bool newStatus=!options->isItemChecked(ID_VIEW_STATUSBAR);
-	 options->setItemChecked(ID_VIEW_STATUSBAR, newStatus);
-         if (newStatus)
-            statusBar()->show();
-         else
-            statusBar()->hide();
-	 break;
-      }
+ updateSkillMenu(index);
+ QString skillStr;
+ switch(newSkill)
+ {
+   case 0:
+      skillStr=i18n("Beginner");
+      break;
+   case 1:
+      skillStr=i18n("Average");
+      break;
+   case 2:
+      skillStr=i18n("Expert");
+      break;
+ }
+ QString s=i18n("Skill of computerplayer is now: %1").arg(skillStr);
+ statusBar()->message(s,MESSAGE_TIME);
+}
 
-      case ID_COLOR_BASE+1:
-      case ID_COLOR_BASE+2:
-         changeColor(item-ID_COLOR_BASE);
-         break;
+void KJumpingCube::fieldChange()
+{
+ int index = ((KSelectAction*)actionCollection()->action("options_field"))->currentItem();
+   // set new cubedim
+ if(view->isActive())
+	 return;
 
-       // set new cubedim
-       case (ID_FIELD+5):
-       case (ID_FIELD+6):
-       case (ID_FIELD+7):
-       case (ID_FIELD+8):
-       case (ID_FIELD+9):
-       case (ID_FIELD+10):
-       {
-	 if(view->isActive())
-		 break;
+ if(view->dim() != 5+index)
+ {
+     view->setDim(5+index);
+     updatePlayfieldMenu(5+index);
+     ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
 	
-	 if(view->dim() != item-ID_FIELD)
-	 {
-	     view->setDim(item-ID_FIELD);
-	     updatePlayfieldMenu(item-ID_FIELD);
-	     game->setItemEnabled(ID_GAME_UNDO,false);
-	     toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+     QString s=i18n("playfield changed to %1x%2");
+            s=s.arg(5+index).arg(5+index);
+     statusBar()->message(s,MESSAGE_TIME);
+  }
+}
+
+void KJumpingCube::changeComputerPlayer1()
+{
+ bool flag = ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked();
+ KCubeBoxWidget::Player player = (KCubeBoxWidget::Player)(1);
+
+ QString s;
+ if (flag) {
+    s=i18n("Player %1 is now played by the computer.").arg(1);
+ } else {
+    s=i18n("Player %1 is now played by you.").arg(1);
+ }
+ statusBar()->message(s,MESSAGE_TIME);
+
+ view->setComputerplayer(player, flag);
+
+}
+void KJumpingCube::changeComputerPlayer2()
+{
+ bool flag = ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked();
+ KCubeBoxWidget::Player player = (KCubeBoxWidget::Player)(2);
 	
-	     QString s=i18n("playfield changed to %1x%2");
-             s=s.arg(item-ID_FIELD).arg(item-ID_FIELD);
-	     statusBar()->message(s,MESSAGE_TIME);
-	  }
-	 break;
-      }
-    case ID_OPT_KEYS:
-    {
-       if(KKeyDialog::configureKeys(kaccel,true,this))
-       {
-	  kaccel->changeMenuAccel(game,ID_GAME_HINT,"Get Hint");
-   	  kaccel->changeMenuAccel(game,ID_GAME_STOP_HINT,"Stop Thinking");
-   	  kaccel->changeMenuAccel(game,ID_GAME_UNDO,"Undo");
-       }
-       break;
-    }
-    case ID_HELP_CONTENTS:
-       kapp->invokeHelp();
-    } // end switch
+ QString s;
+ if (flag) {
+    s=i18n("Player %1 is now played by the computer.").arg(1);
+ } else {
+    s=i18n("Player %1 is now played by you.").arg(1);
+ }
+ statusBar()->message(s,MESSAGE_TIME);
+
+ view->setComputerplayer(player, flag);
+}
+
+void KJumpingCube::changeColor1()
+{ changeColor(1); }
+void KJumpingCube::changeColor2()
+{ changeColor(2); }
+
+void KJumpingCube::configureKeyBindings()
+{
+  KKeyDialog::configureKeys(actionCollection(), xmlFile(), true, this);
 }
 
 void KJumpingCube::updatePlayfieldMenu(int dim)
 {
-  for(int i=5;i<=10;i++)
-    playfieldMenu->setItemChecked(ID_FIELD +i ,false);
-
-  playfieldMenu->setItemChecked(ID_FIELD +dim,true);
+  ((KSelectAction*)actionCollection()->action("options_field"))->setCurrentItem(dim-5);
 }
 
 void KJumpingCube::updateSkillMenu(int id)
 {
-  for(int i=0;i<=3;i++)
-    skillMenu->setItemChecked(ID_SKILL_BASE+i ,false);
-
-  skillMenu->setItemChecked(ID_SKILL_BASE+id,true);
-
+  ((KSelectAction*)actionCollection()->action("options_skill"))->setCurrentItem(id);
 }
 
 bool KJumpingCube::queryClose()

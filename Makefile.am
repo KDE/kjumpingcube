@@ -18,8 +18,10 @@ apps_DATA = kjumpingcube.desktop
 
 METASOURCES = AUTO
 
+rcdir = $(kde_datadir)/kjumpingcube
+rc_DATA = kjumpingcubeui.rc
 
 messages:
-	$(XGETTEXT) *.cpp -o $(podir)/kjumpingcube.pot
+	$(XGETTEXT) rc.cpp $(kjumpingcube_SOURCES) -o $(podir)/kjumpingcube.pot
 
 

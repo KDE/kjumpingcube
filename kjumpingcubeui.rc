@@ -1,0 +1,30 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="kjumpingcube" version="1">
+<MenuBar>
+  <Menu name="game" noMerge="0"><text>&amp;Game</text>
+    <Action name="game_hint"/>
+    <Action name="game_stop"/>
+    <Action name="game_undo_move"/>
+  </Menu>
+  <Menu name="settings" noMerge="0"><text>&amp;Settings</text>
+    <Action name="options_field"/>
+    <Action name="options_skill"/>
+    <Action name="options_change_computer1"/>
+    <Action name="options_change_computer2"/>
+    <Action name="options_change_color1"/>
+    <Action name="options_change_color2"/>
+  </Menu>
+</MenuBar>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+    <Action name="game_new"/>
+    <Action name="game_open"/>
+    <Action name="game_save"/>
+    <Separator/>
+    <Action name="game_stop"/>
+    <Action name="game_hint"/>
+    <Action name="game_undo_move"/>
+    <Separator/>
+    <Action name="help_contents"/>
+</ToolBar>
+<StatusBar/>
+</kpartgui>
