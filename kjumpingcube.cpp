@@ -39,6 +39,7 @@
 #include <kmessagebox.h>
 #include <ktempfile.h>
 #include <kstdaction.h>
+#include <kstdgameaction.h>
 #include <kaction.h>
 #include <kio/netaccess.h>
 
@@ -122,19 +123,17 @@ KJumpingCube::KJumpingCube()
 
 void KJumpingCube::initKAction()
 {
-   KStdAction::openNew(this, SLOT(newGame()), actionCollection(), "game_new");
-   KStdAction::open(this, SLOT(openGame()), actionCollection(), "game_open");
-   KStdAction::save(this, SLOT(save()), actionCollection(), "game_save");
-   KStdAction::saveAs(this, SLOT(saveAs()), actionCollection(), "game_save_as");
-   KStdAction::quit(this, SLOT(quit()), actionCollection(), "game_quit");
+   KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+   KStdGameAction::load(this, SLOT(openGame()), actionCollection());
+   KStdGameAction::save(this, SLOT(save()), actionCollection());
+   KStdGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
+   KStdGameAction::quit(this, SLOT(quit()), actionCollection());
 
    KAction* action;
    (void)new KAction(i18n("Get &Hint"), "idea", KAccel::stringToKey("CTRL+H"), this, SLOT(getHint()), actionCollection(), "game_hint");
    action = new KAction(i18n("&Stop Thinking"), "stop", KAccel::stringToKey("Escape"), this, SLOT(stop()), actionCollection(), "game_stop");
    action->setEnabled(FALSE);
-   //FIXME: undo belongs to edit (ie edit_undo) not in file. Shall we create an edit
-   //entry in the menubar or leave it in "game"?
-   action = new KAction(i18n("Und&o Move"), "undo", KStdAccel::key(KStdAccel::Undo), this, SLOT(undo()), actionCollection(), "game_undo_move");
+   action = KStdAction::undo(this, SLOT(undo()), actionCollection());
    action->setEnabled(FALSE);
 
 
@@ -283,7 +282,7 @@ void KJumpingCube::saveSettings()
 
 void KJumpingCube::newGame()
 {
-   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
+   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
    view->reset();
    statusBar()->message(i18n("New Game"),MESSAGE_TIME);
 }
@@ -398,7 +397,7 @@ void KJumpingCube::openGame()
       config.setGroup("Game");
       view->restoreGame(&config);
 
-      ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
+      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
 
       KIO::NetAccess::removeTempFile( tempFile );
    }
@@ -418,7 +417,7 @@ void KJumpingCube::stop()
 
    if(view->isMoving())
    {
-      ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(true);
+      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(true);
    }
 
    view->stopActivities();
@@ -431,7 +430,7 @@ void KJumpingCube::undo()
    if(view->isActive())
       return;
    view->undo();
-   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
+   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
 }
 
 void KJumpingCube::changeColor(int player)
@@ -459,7 +458,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 
    statusBar()->changeItem(s,ID_STATUS_TURN);
 
-   ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(true);
+   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(true);
 }
 
 void KJumpingCube::showWinner(int player)
@@ -549,7 +548,7 @@ void KJumpingCube::fieldChange()
  {
      view->setDim(5+index);
      updatePlayfieldMenu(5+index);
-     ((KAction*)actionCollection()->action("game_undo_move"))->setEnabled(false);
+     ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
 	
      QString s=i18n("playfield changed to %1x%2");
             s=s.arg(5+index).arg(5+index);
