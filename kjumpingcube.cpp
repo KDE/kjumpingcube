@@ -37,7 +37,7 @@
 #include <qregexp.h>
 #include <qmessagebox.h>
 #include <kmenubar.h>
-
+#include <kmessagebox.h>
 
 #define ID_GAME_QUIT 1
 #define ID_GAME_NEW 2
@@ -414,12 +414,19 @@ void KJumpingCube::saveGame(bool saveAs)
       QString temp;
       do
       {
-         url=KFileDialog::getSaveURL(gameDir,"*.kjc",this,0);
+         url = KFileDialog::getSaveURL(gameDir,"*.kjc",this,0);
+
          if(url.isEmpty())
             return;
 
+         if( !url.isLocalFile() )
+	 {
+	   KMessageBox( 0L, "Only local file saving supported yet" );
+	   return;
+	 }
+
          // check filename
-	 temp = url.url();
+	 temp = url.path();
          QRegExp pattern("*.kjc",true,true);
          if(pattern.match(temp)==-1)
          {
@@ -463,11 +470,18 @@ void KJumpingCube::openGame()
    QString temp;
    do
    {
-      url=KFileDialog::getOpenURL(gameDir,"*.kjc",this,0);
-      if(url.isEmpty() )
+      url = KFileDialog::getOpenURL( gameDir, "*.kjc", this, 0 );
+
+      if( url.isEmpty() )
          return;
 
-      temp=url.url();
+      if( !url.isLocalFile() )
+      {
+        KMessageBox::sorry( 0L, "Only local files are supported yet." );
+	return;
+      }
+
+      temp=url.path();
       QFileInfo file(temp);
       gameDir=file.filePath();
       if(!file.isReadable())
