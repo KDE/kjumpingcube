@@ -42,7 +42,7 @@ public:
    /**
    * constructs a CubeBox with 'dim' x 'dim' Cubes
    */
-   CubeBox(int dim=1);
+   CubeBox(const int dim=1);
    CubeBox(const CubeBox&);
    CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();

@@ -42,7 +42,7 @@ Cube::Owner Cube::setOwner(Owner owner)
    return old;
 }
 
-inline void Cube::setValue(int value)
+void Cube::setValue(int value)
 {
 #ifdef DEBUG
    assert(value>0);
@@ -52,7 +52,7 @@ inline void Cube::setValue(int value)
 }
 
 
-inline void Cube::setMax(int max)
+void Cube::setMax(int max)
 {
 #ifdef DEBUG
    assert(max>1);
@@ -62,18 +62,18 @@ inline void Cube::setMax(int max)
 }
 
 
-inline void Cube::decrease()
+void Cube::decrease()
 {
    setValue(_value-_max);
 }
 
-inline Cube::Owner Cube::owner() const
+Cube::Owner Cube::owner() const
 {
    return _owner;
 }
 
 
-inline int Cube::value() const
+int Cube::value() const
 {
    return _value;
 }
@@ -86,13 +86,13 @@ bool Cube::increase(Owner newOwner)
    return (_value > _max);
 }
 
-inline int Cube::max() const
+int Cube::max() const
 {
    return _max;
 }
 
 
-inline bool Cube::overMax() const
+bool Cube::overMax() const
 {
    return (_value > _max);   
 }

@@ -52,7 +52,7 @@ class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
 {
    Q_OBJECT
 public:
-   KCubeBoxWidget(int dim=1,QWidget *parent=0,const char *name=0);
+   KCubeBoxWidget(const int dim=1,QWidget *parent=0,const char *name=0);
       
    KCubeBoxWidget(CubeBox& box, QWidget *parent=0,const char *name=0);
    KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0,const char *name=0);
