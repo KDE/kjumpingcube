@@ -71,9 +71,9 @@ KJumpingCube::KJumpingCube()
    statusBar()->addWidget(currentPlayer, ID_STATUS_TURN, false);
    statusBar()->setItemAlignment(ID_STATUS_TURN, AlignLeft | AlignVCenter);
 
-   initKAction();
-   changePlayer(1);
    resize(400,400);
+	 initKAction();
+   changePlayer(1);
 }
 
 void KJumpingCube::initKAction() {
