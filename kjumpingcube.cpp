@@ -410,15 +410,16 @@ void KJumpingCube::saveGame(bool saveAs)
    if(saveAs || filename.isEmpty())
    {
       int result=0;
+      KURL url;
       QString temp;
       do
       {
-         temp=KFileDialog::getSaveFileName(gameDir,"*.kjc",this,0);
-         if(temp.isEmpty())
+         url=KFileDialog::getSaveURL(gameDir,"*.kjc",this,0);
+         if(url.isEmpty())
             return;
 
-
          // check filename
+	 temp = url.url();
          QRegExp pattern("*.kjc",true,true);
          if(pattern.match(temp)==-1)
          {
@@ -458,13 +459,15 @@ void KJumpingCube::saveGame(bool saveAs)
 void KJumpingCube::openGame()
 {
    bool fileOk=true;
+   KURL url;
    QString temp;
    do
    {
-      temp=KFileDialog::getOpenFileName(gameDir,"*.kjc",this,0);
-      if(temp.isEmpty() )
+      url=KFileDialog::getOpenURL(gameDir,"*.kjc",this,0);
+      if(url.isEmpty() )
          return;
 
+      temp=url.url();
       QFileInfo file(temp);
       gameDir=file.filePath();
       if(!file.isReadable())
