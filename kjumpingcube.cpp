@@ -323,7 +323,7 @@ void KJumpingCube::saveGame(bool saveAs)
          if(KIO::NetAccess::exists(url))
          {
             QString mes=i18n("The file %1 exists.\n"
-			     "Do you want to override it?").arg(url.url());
+			     "Do you want to overwrite it?").arg(url.url());
 	    result = KMessageBox::warningYesNoCancel(this, mes);
             if(result==KMessageBox::Cancel)
                return;
@@ -372,7 +372,7 @@ void KJumpingCube::openGame()
 
       if(!KIO::NetAccess::exists(url.url()))
       {
-         QString mes=i18n("The file %1 doesn't exists!").arg(url.url());
+         QString mes=i18n("The file %1 does not exist!").arg(url.url());
          KMessageBox::sorry(this,mes);
 
          fileOk=false;
@@ -534,7 +534,7 @@ void KJumpingCube::skillChange()
       skillStr=i18n("Expert");
       break;
  }
- QString s=i18n("Skill of computerplayer is now: %1").arg(skillStr);
+ QString s=i18n("The computer player's skill level is now: %1").arg(skillStr);
  statusBar()->message(s,MESSAGE_TIME);
 }
 
