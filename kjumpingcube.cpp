@@ -182,7 +182,7 @@ KJumpingCube::KJumpingCube()
    s+=i18n("Public License as published by the Free Software\n");
    s+=i18n("Foundation; either version 2 of the License, or\n");
    s+=i18n("(at your option) any later version.");
-   QPopupMenu *help = kapp->helpMenu(false,s);
+   QPopupMenu *help = helpMenu(s);
 
    menuBar()->insertSeparator();
    menuBar()->insertItem( i18n("&Help"), help );
