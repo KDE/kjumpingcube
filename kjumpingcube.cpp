@@ -72,6 +72,7 @@ KJumpingCube::KJumpingCube()
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
+   statusBar()->setFixedHeight( statusBar()->sizeHint().height());
 
 
    KConfig *config=kapp->config();
