@@ -28,9 +28,11 @@
 
 #include <kapp.h>
 
-#include <iostream.h>
-
 #undef DEBUG // uncomment this to get useful messages
+
+#ifdef DEBUG
+#include <iostream.h>
+#endif
 
 Brain::Brain(int initValue)
 {
@@ -38,16 +40,16 @@ Brain::Brain(int initValue)
    stopped=false;
    active=false;
    currentLevel=0;
-	
+
    // initialize the random number generator
    random.setSeed(initValue);
 }
 
 Brain::Skill Brain::setSkill(Skill newSkill)
-{  
+{
    Skill oldSkill=_skill;
    _skill=newSkill;
-	
+
    switch(_skill)
    {
       case Beginner:
@@ -62,8 +64,8 @@ Brain::Skill Brain::setSkill(Skill newSkill)
       default:
          break;
    }
-   
-   return oldSkill; 
+
+   return oldSkill;
 }
 
 Brain::Skill Brain::skill() const
@@ -100,7 +102,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    // if more than one cube has the same rating this array is used to select
    // one
    coordinate* c2m=new coordinate[box.dim()*box.dim()];
-   	
+
    // Array, which holds the assessment of the separate moves
    double **worth=new double*[box.dim()];
    for(i=0;i<box.dim();i++)
@@ -119,7 +121,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    // find the favourable cubes to increase
    moves=findCubes2Move(c2m,player,box);
 
-	
+
    // if only one cube is found, then don't check recursively the move
    if(moves==1)
    {
@@ -145,7 +147,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 	     active=false;
 	     return false;
 	 }
-	
+
 #ifdef DEBUG
 	 cerr << "checking cube " << c2m[i].row << "," << c2m[i].column << endl;
 #endif
@@ -179,7 +181,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 #ifdef DEBUG
       cerr << "found Maximum : " << max << endl;
 #endif
-	
+
       // found maximum more than one time ?
       int counter=0;
       for(i=0;i<moves;i++)
@@ -224,7 +226,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    delete [] c2m;
 
    active=false;
-   
+
    return true;
 }
 
@@ -235,10 +237,10 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
    double worth=0;
    currentLevel++; // increase the current depth of recurse calls
 
-	
+
    // if the maximum depth isn't reached
    if(currentLevel < maxLevel)
-   { 
+   {
        // test, if possible to increase this cube
       if(!box.simulateMove(player,row,column))
       {
@@ -250,47 +252,47 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       if(box.playerWon(player))
       {
          currentLevel--;
-	
-	 return (long int)pow(box.dim()*box.dim(),(maxLevel-currentLevel))*box.assessField(currentPlayer);	
+
+	 return (long int)pow(box.dim()*box.dim(),(maxLevel-currentLevel))*box.assessField(currentPlayer);
       }
 
-		
+
       int i;
       int moves=0;
       // if more than one cube has the same rating this array is used to select
       // one
       coordinate* c2m=new coordinate[box.dim()*box.dim()];
-	
+
       // the next move has does the other player
       player=(player==CubeBox::One)? CubeBox::Two : CubeBox::One;
-		
+
       // find the favourable cubes to increase
       moves=findCubes2Move(c2m,player,box);
-		
+
       // if only one cube is found, then don't check recursively the move
       if(moves==1)
       {
          box.simulateMove(player,c2m[0].row,c2m[0].column);
          worth=(long int)pow(box.dim()*box.dim(),(maxLevel-currentLevel-1))*box.assessField(currentPlayer);
-      }	
+      }
       else
       {
          for(i=0;i<moves;i++)
          {
             kapp->processEvents();
-			
+
 	    // if thinking process stopped
 	    if(stopped)
 	    {
 	       currentLevel--;
 	       return 0;
 	    }
-	
+
 	    // simulate every possible move
 	    worth+=doMove(c2m[i].row,c2m[i].column,player,box);
          }
       }
-		
+
       currentLevel--;
       return worth;
 
@@ -300,10 +302,10 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       // if maximum depth of recursive calls are reached, return the assessment
       currentLevel--;
       box.simulateMove(player,row,column);
-      
+
       return box.assessField(currentPlayer);
    }
-   
+
 }
 
 int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
@@ -312,7 +314,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
    int opponent=(player==CubeBox::One)? CubeBox::Two : CubeBox::One;
    int moves=0;
    int min=9999;
-	
+
    if(_skill==Beginner)
    {
       int max=0;
@@ -327,12 +329,12 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 
               if(c2m[moves].val>max)
                  max=c2m[moves].val;
-				
+
               moves++;
-				
+
 	   }
         }
-		
+
     // find all moves with maximum value
     int counter=0;
     for(i=0;i<moves;i++)
@@ -342,7 +344,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	  c2m[counter].row=c2m[i].row;
 	  c2m[counter].column=c2m[i].column;
 	  c2m[counter].val=c2m[i].val;
-				
+
           counter++;
         }
      }
@@ -354,7 +356,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
    }
    else // if skill is not Beginner
    {
-      int secondMin=min;			
+      int secondMin=min;
       // put values on the cubes
       for(i=0;i<box.dim();i++)
         for(j=0;j<box.dim();j++)
@@ -363,14 +365,14 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	   if(box[i][j]->owner() != opponent)
 	   {
 	      int val;
-				
+
 	      // check neighbours of every cube
 	      val=assessCube(i,j,player,box);
-		
-	
-#ifdef DEBUG	
+
+
+#ifdef DEBUG
 	      if(currentLevel==0)
-	         cerr << i << "," << j << " : " << val << endl;		
+	         cerr << i << "," << j << " : " << val << endl;
 #endif
 	      // only if val >= 0 its a favourable move
               if( val > 0 )
@@ -380,7 +382,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	            secondMin=min;
 		    min=val;
 	         }
-					
+
 	         // store coordinates
 	         c2m[moves].row=i;
 	         c2m[moves].column=j;
@@ -389,8 +391,8 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	      }
 	   }
         }
-		
-		
+
+
 	// If all cubes are bad, check all cubes for the next move
 	if(moves==0)
 	{
@@ -409,7 +411,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 		 }
 	      }
         }
-		
+
 	int counter=0;
 	// find all moves with minimum assessment
 	for(i=0;i<moves;i++)
@@ -419,7 +421,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
               c2m[counter].row=c2m[i].row;
               c2m[counter].column=c2m[i].column;
               c2m[counter].val=c2m[i].val;
-				
+
               counter++;
            }
 	   else if(_skill == Average)
@@ -429,18 +431,18 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
                  c2m[counter].row=c2m[i].row;
                  c2m[counter].column=c2m[i].column;
                  c2m[counter].val=c2m[i].val;
-				
+
 		 counter++;
 	      }
 	   }
 	}
-	
+
 	if(counter!=0)
 	{
 	   moves=counter;
 	}
    }
-	
+
    int maxMoves=10;
 	// if more than maxMoves moves are favourable, take maxMoves random moves
 	// because it will take to much time if you check all
@@ -452,13 +454,13 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	   coordinate tmp={-1,-1,0};
 	   for(i=0;i<maxMoves;i++)
               tempC2M[i]=tmp;
-		
+
 	   // this array takes the random chosen numbers, so that no
 	   // number will be taken two times
 	   int *results=new int[moves];
 	   for(i=0;i<moves;i++)
 	      results[i]=0;
-		
+
 	   for(i=0;i<maxMoves;i++)
 	   {
 	      int temp;
@@ -467,36 +469,36 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	         temp=random.getLong(moves);
 	      }
 	      while(results[temp]!=0);
-					
+
 	      results[temp]=1;
-			
+
 	      tempC2M[i].row=c2m[temp].row;
 	      tempC2M[i].column=c2m[temp].column;
 	      tempC2M[i].val=c2m[temp].val;
 	   }
 	   delete [] results;
-		
+
 	   for(i=0;i<maxMoves;i++)
 	   {
 	      c2m[i].row=tempC2M[i].row;
 	      c2m[i].column=tempC2M[i].column;
 	      c2m[i].val=tempC2M[i].val;
 	   }
-	   delete [] tempC2M;	
-	
+	   delete [] tempC2M;
+
 	   moves=maxMoves;
 	}
-		
-		
+
+
    return moves;
-		
+
 }
 
-   
+
 int Brain::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) const
 {
    int diff;
-   
+
    if(row==0)  // first row
    {
       if(column == 0)  // upper left corner
@@ -599,7 +601,7 @@ int Brain::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) co
 int Brain::getDiff(int row,int column, CubeBox::Player player, CubeBox& box) const
 {
 	int diff;
-	
+
 	if(box[row][column]->owner() != (Cube::Owner)player)
 	{
            diff=( box[row][column]->max() - box[row][column]->value() );
@@ -608,7 +610,7 @@ int Brain::getDiff(int row,int column, CubeBox::Player player, CubeBox& box) con
 	{
            diff=( box[row][column]->max() - box[row][column]->value()+1 );
 	}
-	
+
 	return diff;
 }
 

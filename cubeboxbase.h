@@ -23,7 +23,6 @@
 #define CUBEBOXBASE_H
 
 #include <assert.h>
-#include <iostream.h>
 
 template<class T> 
 class CubeBoxBase
