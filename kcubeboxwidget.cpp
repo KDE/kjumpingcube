@@ -191,7 +191,7 @@ void KCubeBoxWidget::getHint()
    if(canceled)
    {
       return;  // return if thinking was stopped
-    }
+   }
    cubes[row][column]->showHint();
 }
 
@@ -375,7 +375,8 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       {
          cubes[row][column]->showHint(500,2);
 
-         assert(checkClick(row,column));
+         bool result=checkClick(row,column);
+		 assert(result);
       }
    }
       
