@@ -42,6 +42,7 @@
 #include <kstdgameaction.h>
 #include <kaction.h>
 #include <kio/netaccess.h>
+#include <kstatusbar.h>
 
 #define ID_STATUS_TURN 1000
 
