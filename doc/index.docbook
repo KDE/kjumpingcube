@@ -1,7 +1,7 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN">
-<book lang="EN" id="KJumpingCube"
 
-<Bookinfo>
+<book lang="en">
+<bookinfo>
 <title>The KJumpingCube Handbook</title>
 <authorgroup>
 <author>
@@ -22,15 +22,14 @@
 </keywordset>
 
 <date>10/20/1999</date>
-<releaseinfo>1.0</releaseinfo>
+<releaseinfo>1.00.00</releaseinfo>
 
 <revhistory>
 <revision>
 <revnumber>1.0</revnumber>
-<date>20. October 1999</date>
+<date>20th October 1999</date>
 <authorinitials>M.K.</authorinitials>
-<revremark>cleaned up the doc from conversion to docbook
-</revremark>
+<revremark>cleaned up the doc from conversion to docbook</revremark>
 </revision>
 </revhistory>
 
@@ -41,7 +40,6 @@ This Handbook describes <application>KJumpingCube</application> Version 1.0
 </abstract>
 
 </bookinfo>
-
 
 
 <chapter id="Introduction">
