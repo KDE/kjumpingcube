@@ -27,32 +27,27 @@
 #include <kaboutdata.h>
 
 
-static const char *description = 
+static const char *description =
 	I18N_NOOP("Tactical one- or two-player game");
 
 
 int main(int argc, char *argv[])
 {
-        KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"),
-                KJC_VERSION, description, KAboutData::License_GPL,
-                "(c) 1998-2000, Matthias Kiefer");
-        aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
-        KCmdLineArgs::init( argc, argv, &aboutData );
+    KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"),
+                          KJC_VERSION, description, KAboutData::License_GPL,
+                          "(c) 1998-2000, Matthias Kiefer");
+    aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
+    KCmdLineArgs::init( argc, argv, &aboutData );
 
-        KApplication app;
+    KApplication app;
+    KGlobal::locale()->insertCatalogue("libkdegames");
 
-        KGlobal::locale()->insertCatalogue("libkdegames");
-
-        // All session management is handled in the RESTORE macro
+    // All session management is handled in the RESTORE macro
 	if (app.isRestored())
-	{
-           RESTORE(KJumpingCube)
-	}
-	else
-	{
+        RESTORE(KJumpingCube)
+    else {
 		KJumpingCube *widget = new KJumpingCube;
 		widget->show();
 	}
-
 	return app.exec();
 }

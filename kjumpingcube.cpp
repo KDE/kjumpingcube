@@ -49,7 +49,7 @@
 
 
 KJumpingCube::KJumpingCube()
-	: KMainWindow(0), view(new KCubeBoxWidget(5,this))
+	: view(new KCubeBoxWidget(5,this))
 {
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
@@ -84,14 +84,12 @@ KJumpingCube::KJumpingCube()
       toolBar()->setBarPos((KToolBar::BarPosition)barPos);
 
       bool visible=config->readBoolEntry("Toolbar",true);
-      if (toolBar()->isHidden() == visible) {
-         ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->activate();
-      }
+      if (toolBar()->isHidden() == visible)
+         showToolbar->activate();
 
       visible=config->readNumEntry("Statusbar",true);
-      if (statusBar()->isHidden() == visible) {
-         ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->activate();
-      }
+      if (statusBar()->isHidden() == visible)
+         showStatusbar->activate();
 
       QSize defSize(400,400);
       QSize winSize=config->readSizeEntry("Size",&defSize);
@@ -114,10 +112,10 @@ KJumpingCube::KJumpingCube()
 
       bool flag=config->readBoolEntry("Computer Pl.1",false);
       view->setComputerplayer(KCubeBoxWidget::One,flag);
-      ((KToggleAction*)actionCollection()->action("options_change_computer1"))->setChecked(flag);
+      changeComputer1->setChecked(flag);
       flag=config->readBoolEntry("Computer Pl.2",false);
       view->setComputerplayer(KCubeBoxWidget::Two,flag);
-      ((KToggleAction*)actionCollection()->action("options_change_computer2"))->setChecked(flag);
+      changeComputer2->setChecked(flag);
    }
 }
 
@@ -128,18 +126,17 @@ void KJumpingCube::initKAction()
    KStdGameAction::load(this, SLOT(openGame()), actionCollection());
    KStdGameAction::save(this, SLOT(save()), actionCollection());
    KStdGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
-   KStdGameAction::quit(this, SLOT(quit()), actionCollection());
+   KStdGameAction::quit(kapp, SLOT(quit()), actionCollection());
 
-   KAction* action;
-   (void)new KAction(i18n("Get &Hint"), "idea", Key_H, this, SLOT(getHint()), actionCollection(), "game_hint");
-   action = new KAction(i18n("Stop &Thinking"), "stop", Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
-   action->setEnabled(FALSE);
-   action = KStdAction::undo(this, SLOT(undo()), actionCollection());
-   action->setEnabled(FALSE);
+   hintAction = KStdGameAction::hint(this, SLOT(getHint()), actionCollection());
+   stopAction = new KAction(i18n("Stop &Thinking"), "stop", Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
+   stopAction->setEnabled(FALSE);
+   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
+   undoAction->setEnabled(FALSE);
 
 
-   KStdAction::showToolbar(this, SLOT(toggleToolbar()), actionCollection());
-   KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
+   showToolbar = KStdAction::showToolbar(this, SLOT(toggleToolbar()), actionCollection());
+   showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
    KStdAction::keyBindings(this, SLOT(configureKeyBindings()), actionCollection());
 
    QStringList plist;
@@ -149,24 +146,24 @@ void KJumpingCube::initKAction()
    plist.append(i18n("&8x8"));
    plist.append(i18n("&9x9"));
    plist.append(i18n("&10x10"));
-   KSelectAction* playfieldMenu = new KSelectAction(i18n("&Playfield"), 0, this, SLOT(fieldChange()), actionCollection(), "options_field");
-   playfieldMenu->setItems(plist);
+   optionField = new KSelectAction(i18n("&Playfield"), 0, this, SLOT(fieldChange()), actionCollection(), "options_field");
+   optionField->setItems(plist);
 
    QStringList slist;
    slist.append(i18n("&Beginner"));
    slist.append(i18n("&Average"));
    slist.append(i18n("&Expert"));
-   KSelectAction* skillMenu = new KSelectAction(i18n("S&kill"), 0, this, SLOT(skillChange()), actionCollection(), "options_skill");
-   skillMenu->setItems(slist);
+   optionSkill = KStdGameAction::chooseGameType(this, SLOT(skillChange()), actionCollection());
+   optionSkill->setItems(slist);
 
-   new KToggleAction(i18n("Computer Plays Player &1"), 0, this, SLOT(changeComputerPlayer1()), actionCollection(), "options_change_computer1");
-   new KToggleAction(i18n("Computer Plays Player &2"), 0, this, SLOT(changeComputerPlayer2()), actionCollection(), "options_change_computer2");
+   changeComputer1 = new KToggleAction(i18n("Computer Plays Player &1"), 0, this, SLOT(changeComputerPlayer1()), actionCollection(), "options_change_computer1");
+   changeComputer2 = new KToggleAction(i18n("Computer Plays Player &2"), 0, this, SLOT(changeComputerPlayer2()), actionCollection(), "options_change_computer2");
 
    (void)new KAction(i18n("Color Player &1"), 0, this, SLOT(changeColor1()), actionCollection(), "options_change_color1");
    (void)new KAction(i18n("Color Player &2"), 0, this, SLOT(changeColor2()), actionCollection(), "options_change_color2");
 
    // finally create toolbar and menubar
-   createGUI("kjumpingcubeui.rc");
+   createGUI();
 }
 
 KJumpingCube::~KJumpingCube()
@@ -183,17 +180,15 @@ KJumpingCube::~KJumpingCube()
 
 void KJumpingCube::saveProperties(KConfig *config)
 {
-     bool status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->isChecked();
-     config->writeEntry("Toolbar",status);
-     status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->isChecked();
-     config->writeEntry("Statusbar",status);
+     config->writeEntry("Toolbar", showToolbar->isChecked());
+     config->writeEntry("Statusbar", showStatusbar->isChecked());
 
      config->writeEntry("CubeDim",view->dim());
      config->writeEntry("Color1",view->color(KCubeBoxWidget::One).active().background());
      config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).active().background());
      config->writeEntry("Skill",(int)view->skill());
-     config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
-     config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
+     config->writeEntry("Computer Pl.1", changeComputer1->isChecked());
+     config->writeEntry("Computer Pl.2", changeComputer2->isChecked());
 
      view->saveGame(config);
 }
@@ -219,13 +214,12 @@ void KJumpingCube::toggleStatusbar()
 void KJumpingCube::readProperties(KConfig *config)
 {
    bool visible=config->readBoolEntry("Toolbar",true);
-   if (toolBar()->isHidden() == visible) {
-      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->activate();
-   }
+   if (toolBar()->isHidden() == visible)
+      showToolbar->activate();
+
    visible=config->readNumEntry("Statusbar",true);
-   if (statusBar()->isHidden() == visible) {
-      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->activate();
-   }
+   if (statusBar()->isHidden() == visible)
+      showStatusbar->activate();
 
    QColor c1=view->color(KCubeBoxWidget::One).active().background();
    QColor c2=view->color(KCubeBoxWidget::Two).active().background();
@@ -241,20 +235,13 @@ void KJumpingCube::readProperties(KConfig *config)
 
    bool flag=config->readBoolEntry("Computer Pl.1",false);
    view->setComputerplayer(KCubeBoxWidget::One,flag);
-   ((KToggleAction*)actionCollection()->action("options_change_computer1"))->setChecked(flag);
+   changeComputer1->setChecked(flag);
    flag=config->readBoolEntry("Computer Pl.2",false);
    view->setComputerplayer(KCubeBoxWidget::Two,flag);
-   ((KToggleAction*)actionCollection()->action("options_change_computer2"))->setChecked(flag);
+   changeComputer2->setChecked(flag);
 
 
    view->restoreGame(config);
-}
-
-void KJumpingCube::quit()
-{
-   view->stopActivities();
-   kapp->quit();
-   delete this;
 }
 
 void KJumpingCube::saveSettings()
@@ -262,10 +249,8 @@ void KJumpingCube::saveSettings()
   KConfig *config=kapp->config();
   {
      KConfigGroupSaver cfs(config,"Window");
-     bool status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->isChecked();
-     config->writeEntry("Toolbar",status);
-     status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->isChecked();
-     config->writeEntry("Statusbar",status);
+     config->writeEntry("Toolbar", showToolbar->isChecked());
+     config->writeEntry("Statusbar", showStatusbar->isChecked());
      config->writeEntry("Size",size());
   }
   {
@@ -274,8 +259,8 @@ void KJumpingCube::saveSettings()
      config->writeEntry("Color1",view->color(KCubeBoxWidget::One).active().background());
      config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).active().background());
      config->writeEntry("Skill",(int)view->skill());
-     config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
-     config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
+     config->writeEntry("Computer Pl.1", changeComputer1->isChecked());
+     config->writeEntry("Computer Pl.2", changeComputer2->isChecked());
    }
    config->sync();
 
@@ -284,7 +269,7 @@ void KJumpingCube::saveSettings()
 
 void KJumpingCube::newGame()
 {
-   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
+   undoAction->setEnabled(false);
    view->reset();
    statusBar()->message(i18n("New Game"),MESSAGE_TIME);
 }
@@ -399,7 +384,7 @@ void KJumpingCube::openGame()
       config.setGroup("Game");
       view->restoreGame(&config);
 
-      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
+      undoAction->setEnabled(false);
 
       KIO::NetAccess::removeTempFile( tempFile );
    }
@@ -418,9 +403,7 @@ void KJumpingCube::stop()
 {
 
    if(view->isMoving())
-   {
-      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(true);
-   }
+       undoAction->setEnabled(true);
 
    view->stopActivities();
 
@@ -432,7 +415,7 @@ void KJumpingCube::undo()
    if(view->isActive())
       return;
    view->undo();
-   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
+   undoAction->setEnabled(false);
 }
 
 void KJumpingCube::changeColor(int player)
@@ -460,7 +443,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 
    statusBar()->changeItem(s,ID_STATUS_TURN);
 
-   ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(true);
+   undoAction->setEnabled(true);
 }
 
 void KJumpingCube::showWinner(int player)
@@ -486,8 +469,8 @@ void KJumpingCube::disableStop()
 //   game->setItemEnabled(ID_GAME_STOP_HINT,false);
 //   toolBar()->setItemEnabled(ID_GAME_HINT,true);
 //   game->setItemEnabled(ID_GAME_HINT,true);
-   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(false);
-   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(true);
+   stopAction->setEnabled(false);
+   hintAction->setEnabled(true);
 
    statusBar()->clear();
 }
@@ -499,16 +482,16 @@ void KJumpingCube::enableStop_Moving()
 //   game->setItemEnabled(ID_GAME_STOP_HINT,true);
 //   toolBar()->setItemEnabled(ID_GAME_HINT,false);
 //   game->setItemEnabled(ID_GAME_HINT,false);
-   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(true);
-   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(false);
+   stopAction->setEnabled(true);
+   hintAction->setEnabled(false);
 
    statusBar()->message(i18n("doing move"));
 }
 
 void KJumpingCube::enableStop_Thinking()
 {
-   ((KAction*)actionCollection()->action("game_stop"))->setEnabled(true);
-   ((KAction*)actionCollection()->action("game_hint"))->setEnabled(false);
+   stopAction->setEnabled(true);
+   hintAction->setEnabled(false);
 
    statusBar()->message(i18n("computing move"));
 }
@@ -516,7 +499,7 @@ void KJumpingCube::enableStop_Thinking()
 
 void KJumpingCube::skillChange()
 {
- int index = ((KSelectAction*)actionCollection()->action("options_skill"))->currentItem();
+ int index = optionSkill->currentItem();
 
  int newSkill=index;
  view->setSkill((Brain::Skill)(newSkill));
@@ -541,7 +524,7 @@ void KJumpingCube::skillChange()
 
 void KJumpingCube::fieldChange()
 {
- int index = ((KSelectAction*)actionCollection()->action("options_field"))->currentItem();
+ int index = optionField->currentItem();
    // set new cubedim
  if(view->isActive())
 	 return;
@@ -550,7 +533,7 @@ void KJumpingCube::fieldChange()
  {
      view->setDim(5+index);
      updatePlayfieldMenu(5+index);
-     ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
+     undoAction->setEnabled(false);
 
      QString s=i18n("playfield changed to %1x%2");
             s=s.arg(5+index).arg(5+index);
@@ -560,7 +543,7 @@ void KJumpingCube::fieldChange()
 
 void KJumpingCube::changeComputerPlayer1()
 {
- bool flag = ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked();
+ bool flag = changeComputer1->isChecked();
  KCubeBoxWidget::Player player = (KCubeBoxWidget::Player)(1);
 
  QString s;
@@ -576,7 +559,7 @@ void KJumpingCube::changeComputerPlayer1()
 }
 void KJumpingCube::changeComputerPlayer2()
 {
- bool flag = ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked();
+ bool flag = changeComputer2->isChecked();
  KCubeBoxWidget::Player player = (KCubeBoxWidget::Player)(2);
 
  QString s;
@@ -597,17 +580,17 @@ void KJumpingCube::changeColor2()
 
 void KJumpingCube::configureKeyBindings()
 {
-  KKeyDialog::configureKeys(actionCollection(), xmlFile(), true, this);
+  KKeyDialog::configure(actionCollection(), this);
 }
 
 void KJumpingCube::updatePlayfieldMenu(int dim)
 {
-  ((KSelectAction*)actionCollection()->action("options_field"))->setCurrentItem(dim-5);
+  optionField->setCurrentItem(dim-5);
 }
 
 void KJumpingCube::updateSkillMenu(int id)
 {
-  ((KSelectAction*)actionCollection()->action("options_skill"))->setCurrentItem(id);
+  optionSkill->setCurrentItem(id);
 }
 
 bool KJumpingCube::queryClose()

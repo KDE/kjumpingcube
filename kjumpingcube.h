@@ -20,11 +20,11 @@
 
 **************************************************************************** */
 #ifndef KJUMPINGCUBE_H
-#define KJUMPINGCUBE_H 
+#define KJUMPINGCUBE_H
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif 
+#endif
 
 #include <kapplication.h>
 #include <kmainwindow.h>
@@ -34,6 +34,9 @@
 
 class QPopupMenu;
 class QString;
+class KAction;
+class KToggleAction;
+class KSelectAction;
 
 /**
  * This class serves as the main window for KJumpingCube.  It handles the
@@ -53,7 +56,7 @@ public:
    /** Default Destructor */
    virtual ~KJumpingCube();
 
- 
+
 protected:
    /**
    * This function is called when it is time for the app to save its
@@ -67,12 +70,16 @@ protected:
    * with @ref saveProperties
    */
    void readProperties(KConfig *);
-	
+
    /** Just to check if the brain is still working*/
    virtual bool queryClose();
 
 private:
    KCubeBoxWidget *view;
+   KAction *undoAction, *stopAction, *hintAction;
+   KToggleAction *showToolbar, *showStatusbar;
+   KToggleAction *changeComputer1, *changeComputer2;
+   KSelectAction *optionSkill, *optionField;
 
    KURL gameURL;
 
@@ -82,7 +89,6 @@ private:
    void changeColor(int player);
 
 private slots:
-   void quit();
    void saveSettings();
    void newGame();
    void saveGame(bool saveAs=false);
