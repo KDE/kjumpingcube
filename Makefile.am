@@ -12,7 +12,7 @@
 # kde_wallpaperdir  Where general wallpapers should go to.
 
 appsdir = $(kde_appsdir)/Games
-apps_DATA = kjumpingbox.desktop
+apps_DATA = kjumpingcube.desktop
 
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
