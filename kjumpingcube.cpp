@@ -1,4 +1,4 @@
-/* ****************************************************************************
+/*****************************************************************************
   This file is part of the game 'KJumpingCube'
 
   Copyright (C) 1998-2000 by Matthias Kiefer
@@ -187,30 +187,30 @@ KJumpingCube::KJumpingCube()
    KIconLoader *loader = KGlobal::iconLoader();
 
    // newGamebutton
-   toolBar()->insertButton(loader->loadIcon("filenew.xpm"),ID_GAME_NEW,
+   toolBar()->insertButton(loader->loadIcon("filenew", KIcon::Toolbar),ID_GAME_NEW,
 			true,i18n("New Game"));
-   toolBar()->insertButton(loader->loadIcon("fileopen.xpm"),ID_GAME_OPEN,
+   toolBar()->insertButton(loader->loadIcon("fileopen", KIcon::Toolbar),ID_GAME_OPEN,
                         true,i18n("Open Game"));
-   toolBar()->insertButton(loader->loadIcon("filefloppy.xpm"),ID_GAME_SAVE,
+   toolBar()->insertButton(loader->loadIcon("filefloppy", KIcon::Toolbar),ID_GAME_SAVE,
                         true,i18n("Save Game"));
 
    toolBar()->insertSeparator();
 
-   toolBar()->insertButton(loader->loadIcon("stop.xpm"),ID_GAME_STOP_HINT,
+   toolBar()->insertButton(loader->loadIcon("stop", KIcon::Toolbar),ID_GAME_STOP_HINT,
 		  true,i18n("Stop Thinking"));
    toolBar()->setItemEnabled(ID_GAME_STOP_HINT,false);
 
-   toolBar()->insertButton(loader->loadIcon("idea.xpm"),ID_GAME_HINT,
+   toolBar()->insertButton(loader->loadIcon("idea", KIcon::Toolbar),ID_GAME_HINT,
 		  true,i18n("Get Hint"));
 
    // undo-button
-   toolBar()->insertButton(loader->loadIcon("back.xpm"),ID_GAME_UNDO,true,
+   toolBar()->insertButton(loader->loadIcon("back", KIcon::Toolbar),ID_GAME_UNDO,true,
 		         i18n("Undo Move"));
    toolBar()->setItemEnabled(ID_GAME_UNDO,false);
    toolBar()->insertSeparator();
 
    //helpbutton
-   toolBar()->insertButton(loader->loadIcon("help.xpm"),ID_HELP_CONTENTS,true,
+   toolBar()->insertButton(loader->loadIcon("help", KIcon::Toolbar),ID_HELP_CONTENTS,true,
 			i18n("Help"));
 
 
