@@ -292,7 +292,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
 	    worth+=doMove(c2m[i].row,c2m[i].column,player,box);
          }
       }
-
+      delete c2m;
       currentLevel--;
       return worth;
 
