@@ -26,6 +26,8 @@
 <holder>Matthias Keifer</holder>
 </copyright>
 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
 <legalnotice>&FDLNotice;</legalnotice>
 
 <date>15/12/2000</date>
@@ -385,6 +387,8 @@ name.</para>
 
 <para>Documentation updated for KDE 2 by Lauri Watts
 <email>vampyr@atconnex.net</email></para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
 &underGPL;
