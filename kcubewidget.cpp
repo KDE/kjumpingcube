@@ -237,7 +237,7 @@ void KCubeWidget::hint()
 void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 {
   // only accept click if it was inside this cube
-  if(e->x()< 0 || e->x() > this->width() || e->y() < 0 || e->y() > this->height())
+  if(e->x()< 0 || e->x() > width() || e->y() < 0 || e->y() > height())
     return;
 
   if(e->button() == LeftButton && _clicksAllowed)
