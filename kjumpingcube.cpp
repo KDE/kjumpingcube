@@ -92,7 +92,7 @@ void KJumpingCube::initKAction() {
 	actionCollection());
 
   KStdAction::preferences(this, SLOT(showOptions()), actionCollection());
-  
+
   // finally create toolbar and menubar
   createGUI();
 }
@@ -117,15 +117,14 @@ void KJumpingCube::saveGame(bool saveAs)
          if(url.isEmpty())
             return;
 
-
          // check filename
          QRegExp pattern("*.kjc",true,true);
-         if(pattern.exactMatch(url.filename()))
+         if(!pattern.exactMatch(url.filename()))
          {
             url.setFileName( url.filename()+".kjc" );
          }
 
-         if(KIO::NetAccess::exists(url))
+         if(KIO::NetAccess::exists(url,false,this))
          {
             QString mes=i18n("The file %1 exists.\n"
 			     "Do you want to overwrite it?").arg(url.url());
@@ -149,7 +148,7 @@ void KJumpingCube::saveGame(bool saveAs)
    view->saveGame(&config);
    config.sync();
 
-   if(KIO::NetAccess::upload( tempFile.name(),gameURL ))
+   if(KIO::NetAccess::upload( tempFile.name(),gameURL,this ))
    {
       QString s=i18n("game saved as %1");
       s=s.arg(gameURL.url());
@@ -171,7 +170,7 @@ void KJumpingCube::openGame()
       url = KFileDialog::getOpenURL( gameURL.url(), "*.kjc", this, 0 );
       if( url.isEmpty() )
          return;
-      if(!KIO::NetAccess::exists(url.url()))
+      if(!KIO::NetAccess::exists(url.url(),true,this))
       {
          QString mes=i18n("The file %1 does not exist!").arg(url.url());
          KMessageBox::sorry(this,mes);
@@ -181,7 +180,7 @@ void KJumpingCube::openGame()
    while(!fileOk);
 
    QString tempFile;
-   if( KIO::NetAccess::download( url, tempFile ) )
+   if( KIO::NetAccess::download( url, tempFile, this ) )
    {
       KSimpleConfig config(tempFile,true);
       config.setGroup("KJumpingCube");
@@ -281,7 +280,7 @@ void KJumpingCube::configureKeyBindings(){
 void KJumpingCube::showOptions(){
   if(KAutoConfigDialog::showDialog("settings"))
     return;
-  
+
   KAutoConfigDialog *dialog = new KAutoConfigDialog(this, "settings", KDialogBase::Swallow);
   dialog->addPage(new Settings(0, "General"), i18n("General"), "Game", "package_settings");
   connect(dialog, SIGNAL(settingsChanged()), view, SLOT(loadSettings()));
