@@ -11,18 +11,13 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-appdir = $(kde_appsdir)/Games
-app_DATA = kjumpingbox.desktop
+appsdir = $(kde_appsdir)/Games
+apps_DATA = kjumpingbox.desktop
 
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
 
-# this has all of the subdirectories that make will recurse into.  if
-# there are none, comment this out
-SUBDIRS = doc
-
-# this is where the source documentation will be installed
-SRCDOC_DEST=$(kde_htmldir)/en/kjumpingcube
+SUBDIRS =
 
 ####### This part is very kjumpingcube specific
 # this is the program that gets installed
