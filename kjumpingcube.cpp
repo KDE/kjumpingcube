@@ -32,9 +32,9 @@
 #include <kcolordlg.h>
 #include <kfiledialog.h>
 #include <ksimpleconfig.h>
-#include <kmsgbox.h>
 #include <qfileinfo.h>
 #include <qregexp.h>
+#include <qmessagebox.h>
 
 
 #define ID_GAME_QUIT 1
@@ -429,15 +429,15 @@ void KJumpingCube::saveGame(bool saveAs)
          gameDir=file.filePath();
          if(file.exists() && file.isWritable())
          {
-            QString mes=i18n("The file %1 exists.\nDo you want to override it?");
-            mes=mes.arg(temp);
-            KMsgBox::IconStyle type=KMsgBox::QUESTION;
-            result=KMsgBox::yesNoCancel(this,0,mes,type);
-            if(result==3)
+            QString mes=i18n("The file %1 exists.\n"
+			     "Do you want to override it?").arg(temp);
+	    result = QMessageBox::information(this, kapp->getCaption(), 
+					     mes, i18n("Yes"), i18n("No"));
+            if(result==2)
                return;
          }
       }
-      while(result==2);
+      while(result==1);
 
       filename=temp;
    }
@@ -470,9 +470,8 @@ void KJumpingCube::openGame()
       gameDir=file.filePath();
       if(!file.isReadable())
       {
-         QString mes=i18n("The file %1 doesn´t exists or isn´t readable!");
-         mes=mes.arg(temp);
-         KMsgBox::message(this,0,mes,KMsgBox::STOP);
+         QString mes=i18n("The file %1 doesn´t exists or isn´t readable!").arg(temp);
+         QMessageBox::information(this,kapp->getCaption(), mes, i18n("OK"));
          return;
       }
    }
@@ -484,7 +483,7 @@ void KJumpingCube::openGame()
    {
       QString mes=i18n("The file %1 isn´t a KJumpingCube gamefile!");
       mes=mes.arg(temp);
-      KMsgBox::message(this,0,mes,KMsgBox::STOP);
+      QMessageBox::information(this,kapp->getCaption(),mes,i18n("OK"));
       return;
    }
 
@@ -557,7 +556,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 void KJumpingCube::showWinner(int player)
 {
    QString s=i18n("Winner is Player %1 !").arg(player);
-   KMsgBox::message(this,i18n("Winner"),s);
+   QMessageBox::information(this,i18n("Winner"),s);
    view->reset();
 }
 
