@@ -67,7 +67,6 @@ private slots:
   void disableStop();
   void enableStop_Moving();
   void enableStop_Thinking();
-  void configureKeyBindings();
 
   void showOptions();
 };

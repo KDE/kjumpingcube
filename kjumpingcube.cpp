@@ -32,7 +32,6 @@
 #include <qregexp.h>
 
 #include <klocale.h>
-#include <kkeydialog.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
@@ -90,9 +89,9 @@ void KJumpingCube::initKAction() {
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
 
-  KStdAction::keyBindings(this, SLOT(configureKeyBindings()),
-	actionCollection());
-
+  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
+actionCollection());
+   
   KStdAction::preferences(this, SLOT(showOptions()), actionCollection());
 
   // finally create toolbar and menubar
@@ -270,10 +269,6 @@ void KJumpingCube::enableStop_Thinking(){
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
   statusBar()->message(i18n("Computing next move."));
-}
-
-void KJumpingCube::configureKeyBindings(){
-  KKeyDialog::configure(actionCollection(), this);
 }
 
 /**
