@@ -54,7 +54,7 @@ or the computer.</para>
 <para>&kjumpingcube; is a simple tactical game.  You can play it against the computer
 or against a friend.  The playing field consists of squares that contains
 points. By clicking on the squares you can increase the points, and if the
-points reach a maximum the points will jump to the squares neighbours and take
+points reach a maximum the points will jump to the squares neighbors and take
 them over. The winner is the one who owns all squares.</para>
 
 </chapter>
@@ -70,10 +70,10 @@ them over. The winner is the one who owns all squares.</para>
 <listitem><para>A move consists of increasing the points of a square by clicking
 on it. You can only increase a square that doesn't belong to your opponent. By
 clicking a square that has no owner, you become the owner. </para></listitem>
-<listitem><para>If a square has more points than it has neighbours, the points
-jump to its neighbours and take them over. </para></listitem>
-<listitem><para>Neighbour-Fields are only direct neighbours, not the diagonal
-neighbours.</para></listitem>
+<listitem><para>If a square has more points than it has neighbors, the points
+jump to its neighbors and take them over. </para></listitem>
+<listitem><para>Neighbor-Fields are only direct neighbors, not the diagonal
+neighbors.</para></listitem>
 <listitem><para>The winner is the one who owns all squares.</para></listitem>
 </orderedlist>
 
@@ -326,7 +326,7 @@ document)</para></listitem>
 
 <itemizedlist>
 <listitem><para>Try to avoid increasing a square when your opponent owns a
-neighbour square, that reaches it maximum earlier than your
+neighbor square, that reaches it maximum earlier than your
 square.</para></listitem>
 </itemizedlist>
 
