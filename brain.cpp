@@ -25,8 +25,6 @@
 #include "cube.h"
 
 #include <math.h>
-#include <time.h>
-#include <stdlib.h>
 
 #include <kapp.h>
 
@@ -41,14 +39,8 @@ Brain::Brain(int initValue)
    active=false;
    currentLevel=0;
 	
-   if(!initValue)
-   {
-      initValue=time(0);
-   }
-   
    // initialize the random number generator
-   srand48(initValue);
-   
+   random.setSeed(initValue);
 }
 
 Brain::Skill Brain::setSkill(Skill newSkill)
@@ -214,7 +206,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 #ifdef DEBUG
          cerr << "choosing a random cube: " << endl ;
 #endif
-         counter=int(drand48()*counter);
+         counter=random.getLong(counter);
       }
 
       row=c2m[counter].row;
@@ -472,7 +464,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	      int temp;
 	      do
 	      {
-	         temp=int(drand48()*moves);
+	         temp=random.getLong(moves);
 	      }
 	      while(results[temp]!=0);
 					

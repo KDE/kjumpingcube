@@ -26,6 +26,8 @@
 #include <config.h>
 #endif
 
+#include <krandomsequence.h>
+
 #include "cubebox.h"
 
 /** @internal */
@@ -56,7 +58,7 @@ public:
 
    /** 
    * @param initValue value to initialize the random number generator with
-   *        if no value is given time(0) is used
+   *        if no value is given a truly random value is used
    */
    Brain(int initValue=0);
 
@@ -127,7 +129,9 @@ private:
    bool active;
    /** skill of the Brain */
    Skill _skill;
-   
+
+   /** Sequence generator */
+   KRandomSequence random;    
 };
 
 #endif //BRAIN_H
