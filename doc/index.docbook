@@ -88,8 +88,8 @@ neighbours.</para></listitem>
 <sect1 id="menus">
 <title>The menu bar</title>
 
-<sect2 id="file-menu">
-<title>The <guimenu>File</guimenu> menu</title>
+<sect2 id="game-menu">
+<title>The <guimenu>Game</guimenu> menu</title>
 
 <variablelist>
 <varlistentry>
@@ -97,7 +97,7 @@ neighbours.</para></listitem>
 <menuchoice>
 <shortcut><keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
-<guimenu><accel>F</accel>ile</guimenu><guimenuitem><accel>N</accel>ew</guimenuitem></menuchoice>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>N</accel>ew</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Start a new game.</action></para></listitem>
 </varlistentry>
@@ -106,7 +106,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
 <term><menuchoice>
 <shortcut><keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
-<guimenu><accel>F</accel>ile</guimenu><guimenuitem><accel>O</accel>pen...</guimenuitem></menuchoice>
+<guimenu><accel>G</accel>amee</guimenu><guimenuitem><accel>O</accel>pen...</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Open a previously saved game.</action></para></listitem>
 </varlistentry>
@@ -115,14 +115,14 @@ action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
 <term><menuchoice>
 <shortcut><keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></shortcut>
-<guimenu><accel>F</accel>ile</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Save the current game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>F</accel>ile</guimenu><guimenuitem>Save <accel>A</accel>s...</guimenuitem>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Save <accel>A</accel>s...</guimenuitem>
 </menuchoice>
 </term>
 <listitem><para><action>Save the current game with a different
@@ -133,17 +133,10 @@ name.</action></para></listitem>
 <term><menuchoice>
 <shortcut><keycombo action="simul">
 <keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></shortcut>
-<guimenu><accel>F</accel>ile</guimenu><guimenuitem><accel>Q</accel>uit</guimenuitem></menuchoice></term>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>Q</accel>uit</guimenuitem></menuchoice></term>
 <listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
 </varlistentry>
-</variablelist>
 
-</sect2>
-
-<sect2 id="game-menu">
-<title>The <guimenu>Game</guimenu> menu</title>
-
-<variablelist>
 <varlistentry>
 <term><menuchoice><shortcut><keycombo action="simul"> 
 <keycap>Ctrl</keycap><keycap>H</keycap></keycombo></shortcut>
