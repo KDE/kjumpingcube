@@ -25,4 +25,4 @@ messages: rc.cpp
 	$(XGETTEXT) rc.cpp $(kjumpingcube_SOURCES) -o $(podir)/kjumpingcube.pot
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/kjumpingcube.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kjumpingcube.desktop
