@@ -17,9 +17,9 @@
     </entry>
     <entry name="Skill" type="Enum">
       <choices>
-        <choice>Beginner</choice>
-        <choice>Average</choice>
-        <choice>Expert</choice>
+        <choice name="Beginner"/>
+        <choice name="Average"/>
+        <choice name="Expert"/>
       </choices>
       <label>Skill of the computer player.</label>
       <default>Average</default>
