@@ -23,7 +23,9 @@
 
 #include <qpainter.h>
 #include <qtimer.h>
+
 #include <kapp.h>
+#include <kdebug.h>
 
 /* ****************************************************** **
 **                 static elements                        **
@@ -330,7 +332,7 @@ void KCubeWidget::drawContents(QPainter *painter)
       break; 
 
     default:
-      debug("cube had value %d",points);
+      kdDebug() << "cube had value " << points << endl;
       QString s;
       s.sprintf("%d",points);
       p->drawText(w/2,h/2,s);
