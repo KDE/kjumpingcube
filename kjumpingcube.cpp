@@ -159,7 +159,7 @@ void KJumpingCube::initKAction()
    skillMenu->setItems(slist);
 
    new KToggleAction(i18n("Computer plays Player &1"), 0, this, SLOT(changeComputerPlayer1()), actionCollection(), "options_change_computer1");
-   new KToggleAction(i18n("Computer plays Player &1"), 0, this, SLOT(changeComputerPlayer2()), actionCollection(), "options_change_computer2");
+   new KToggleAction(i18n("Computer plays Player &2"), 0, this, SLOT(changeComputerPlayer2()), actionCollection(), "options_change_computer2");
 
    (void)new KAction(i18n("Color Player &1"), 0, this, SLOT(changeColor1()), actionCollection(), "options_change_color1");
    (void)new KAction(i18n("Color Player &2"), 0, this, SLOT(changeColor2()), actionCollection(), "options_change_color2");
