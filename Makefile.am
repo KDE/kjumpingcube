@@ -21,7 +21,7 @@ METASOURCES = AUTO
 rcdir = $(kde_datadir)/kjumpingcube
 rc_DATA = kjumpingcubeui.rc
 
-messages:
+messages: rc.cpp
 	$(XGETTEXT) rc.cpp $(kjumpingcube_SOURCES) -o $(podir)/kjumpingcube.pot
 
 
