@@ -499,7 +499,7 @@ void KCubeBoxWidget::initCubes()
       
 }
 
-QSize  KCubeBoxWidget::minimumSizeHint() const
+QSize  KCubeBoxWidget::sizeHint() const
 {
    return QSize(400,400);
 }
