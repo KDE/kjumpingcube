@@ -94,7 +94,7 @@ KJumpingCube::KJumpingCube()
    kaccel->insertStdItem(KAccel::Undo,i18n("Undo Move"));
    kaccel->connectItem(KAccel::Undo,this,SLOT(undo()));
 
-   KConfig *config=kapp->getConfig();
+   KConfig *config=kapp->config();
    kaccel->readSettings();
 
    // init menubar
@@ -182,7 +182,7 @@ KJumpingCube::KJumpingCube()
    s+=i18n("Public License as published by the Free Software\n");
    s+=i18n("Foundation; either version 2 of the License, or\n");
    s+=i18n("(at your option) any later version.");
-   QPopupMenu *help = kapp->getHelpMenu(false,s);
+   QPopupMenu *help = kapp->helpMenu(false,s);
 
    menuBar()->insertSeparator();
    menuBar()->insertItem( i18n("&Help"), help );
@@ -364,7 +364,7 @@ void KJumpingCube::quit()
 
 void KJumpingCube::saveSettings()
 {
-  KConfig *config=kapp->getConfig();
+  KConfig *config=kapp->config();
   {
      KConfigGroupSaver cfs(config,"Window");
      bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
@@ -432,7 +432,7 @@ void KJumpingCube::saveGame(bool saveAs)
          {
             QString mes=i18n("The file %1 exists.\n"
 			     "Do you want to override it?").arg(temp);
-	    result = QMessageBox::information(this, kapp->getCaption(), 
+	    result = QMessageBox::information(this, kapp->caption(), 
 					     mes, i18n("Yes"), i18n("No"));
             if(result==2)
                return;
@@ -472,7 +472,7 @@ void KJumpingCube::openGame()
       if(!file.isReadable())
       {
          QString mes=i18n("The file %1 doesn´t exists or isn´t readable!").arg(temp);
-         QMessageBox::information(this,kapp->getCaption(), mes, i18n("OK"));
+         QMessageBox::information(this,kapp->caption(), mes, i18n("OK"));
          return;
       }
    }
@@ -484,7 +484,7 @@ void KJumpingCube::openGame()
    {
       QString mes=i18n("The file %1 isn´t a KJumpingCube gamefile!");
       mes=mes.arg(temp);
-      QMessageBox::information(this,kapp->getCaption(),mes,i18n("OK"));
+      QMessageBox::information(this,kapp->caption(),mes,i18n("OK"));
       return;
    }
 
@@ -565,7 +565,7 @@ void KJumpingCube::showWinner(int player)
 
 void KJumpingCube::barPositionChanged()
 {
-  KConfig *config= kapp->getConfig();
+  KConfig *config= kapp->config();
   KConfigGroupSaver cfs(config,"Window");
   config->writeEntry("MenubarPos",(int)(menuBar()->menuBarPos()));
   config->writeEntry("ToolbarPos",(int)(toolBar()->barPos()));
