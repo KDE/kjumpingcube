@@ -20,17 +20,12 @@
 
 **************************************************************************** */
 #include "kcubeboxwidget.h"
-#include "kcubewidget.h"
-#include "cubebox.h"
 
 #include <kapplication.h>
 #include <kconfig.h>
-#include <qpalette.h>
 #include <qlayout.h>
 #include <qtimer.h>
-#include <qstrlist.h>
 #include <assert.h>
-#include <kconfigbase.h>
 #include <kcursor.h>
 
 KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent,const char *name)

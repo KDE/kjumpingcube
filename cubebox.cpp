@@ -22,9 +22,7 @@
 #include <assert.h>
 #include <math.h>
 #include "cubebox.h"
-#include "cube.h"
 #include "kcubeboxwidget.h"
-#include "kcubewidget.h"
 
 
 CubeBox::CubeBox(const int d)

@@ -26,20 +26,14 @@
 // Settings
 #include "settings.h"
 #include "kautoconfig.h"
-#include <kdialogbase.h>
-#include <kiconloader.h>
 
-#include <qfileinfo.h>
 #include <qregexp.h>
 
-#include <kapplication.h>
-#include <kglobal.h>
 #include <klocale.h>
 #include <kkeydialog.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
-#include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <kaction.h>
 #include <kio/netaccess.h>

@@ -21,7 +21,6 @@
 **************************************************************************** */
 
 #include "brain.h"
-#include "cubebox.h"
 #include "cube.h"
 
 #include <math.h>
