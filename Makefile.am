@@ -20,6 +20,6 @@ METASOURCES = AUTO
 
 
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po ../po/kjumpingcube.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po $(podir)/kjumpingcube.pot
 
 
