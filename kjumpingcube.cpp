@@ -307,7 +307,7 @@ void KJumpingCube::configureKeyBindings(){
  * Show Configure dialog.
  */
 void KJumpingCube::showOptions(){
-  options = new KDialogBase (this, "Configure", false, i18n("Settings"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel);
+  options = new KDialogBase (this, "Configure", false, i18n("Configure"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel);
   KAutoConfig *kautoconfig = new KAutoConfig(options, "KAutoConfig");
   
   connect(options, SIGNAL(okClicked()), kautoconfig, SLOT(saveSettings()));
