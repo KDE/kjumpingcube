@@ -58,18 +58,15 @@ KJumpingCube::KJumpingCube()
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
 
-   initKAction();
-
-   QString s;
    // init statusbar
-   s = i18n("Current player: Player %1").arg(1);
+   QString s = i18n("Current player: Player %1").arg(1);
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
    statusBar()->setFixedHeight( statusBar()->sizeHint().height());
 
-  resize(400,400);
-  setAutoSaveSettings();
+   initKAction();
+   resize(400,400);
 }
 
 void KJumpingCube::initKAction() {
@@ -85,17 +82,9 @@ void KJumpingCube::initKAction() {
   stopAction->setEnabled(FALSE);
   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(FALSE);
-
-  createStandardStatusBarAction();
-  setStandardToolBarMenuEnabled(true);
-
-  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
-actionCollection());
-   
   KStdAction::preferences(this, SLOT(showOptions()), actionCollection());
 
-  // finally create toolbar and menubar
-  createGUI();
+  setupGUI();
 }
 
 void KJumpingCube::newGame(){
