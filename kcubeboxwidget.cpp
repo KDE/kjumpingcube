@@ -23,6 +23,8 @@
 #include "kcubewidget.h"
 #include "cubebox.h"
 
+#include <kapplication.h>
+#include <kconfig.h>
 #include <qpalette.h>
 #include <qlayout.h>
 #include <qtimer.h>
@@ -79,14 +81,32 @@ KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent,const c
 
 KCubeBoxWidget::~KCubeBoxWidget()
 {
+   if(isActive())
+    stopActivities();
    if(cubes)
       deleteCubes();
    if(undoBox)
       delete undoBox;
 }
 
+void KCubeBoxWidget::readSettings(){
+  KConfig *config=kapp->config();
+  config->setGroup("Game");
+  QColor c1=QColor("darkred");
+  QColor c2=QColor("darkblue");
+  QPalette color1(config->readColorEntry("Color1",&c1));
+  QPalette color2(config->readColorEntry("Color2",&c2));
+  setColor(KCubeBoxWidget::One,color1);
+  setColor(KCubeBoxWidget::Two,color2);
 
+  setDim(config->readNumEntry("CubeDim",6));
+  brain.setSkill((Brain::Skill)config->readNumEntry("Skill",(int)Brain::Average));
 
+  bool flag=config->readBoolEntry("Computer_Pl_1",false);
+  setComputerplayer(KCubeBoxWidget::One,flag);
+  flag=config->readBoolEntry("Computer_Pl_2",true);
+  setComputerplayer(KCubeBoxWidget::Two,flag);
+}
 
 KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
 {
@@ -106,11 +126,8 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
          
       currentPlayer=box.currentPlayer;
    }
-   
-   
    return *this;
 }
-
 
 KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
 {
@@ -129,9 +146,6 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
       
    return *this;
 }
- 
-
-
 
 void KCubeBoxWidget::reset()
 {
@@ -151,7 +165,6 @@ void KCubeBoxWidget::reset()
    emit playerChanged(One);
    checkComputerplayer(One);
 }
-
 
 void KCubeBoxWidget::undo()
 {
@@ -215,12 +228,6 @@ void KCubeBoxWidget::setDim(int d)
    }
 }
 
-void KCubeBoxWidget::setSkill(Brain::Skill skill)
-{
-   brain.setSkill(skill);
-}
-  
-
 void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
 {
    if(player==One)
@@ -247,8 +254,7 @@ void KCubeBoxWidget::stopActivities()
 
 }
 
-
-void KCubeBoxWidget::saveGame(KConfigBase* config)
+void KCubeBoxWidget::saveProperties(KConfigBase* config)
 {
    if(isMoving())
    {
@@ -278,13 +284,15 @@ void KCubeBoxWidget::saveGame(KConfigBase* config)
 
 	list.clear();
       }
-
+  config->writeEntry("CubeDim",dim());
 }
-void KCubeBoxWidget::restoreGame(KConfigBase* config)
+
+void KCubeBoxWidget::readProperties(KConfigBase* config)
 {
   QStrList list;
   list.setAutoDelete(true);
   QString owner, value, key;
+  setDim(config->readNumEntry("CubeDim",5));
   int cubeDim=dim();
 
   for(int row=0; row < cubeDim ; row++)
@@ -308,7 +316,6 @@ void KCubeBoxWidget::restoreGame(KConfigBase* config)
    checkComputerplayer((Player)onTurn);
 }
 
-
 /* ***************************************************************** **
 **                               slots                               **
 ** ***************************************************************** */ 
@@ -323,7 +330,6 @@ void KCubeBoxWidget::setNormalCursor()
 {
    setCursor(KCursor::handCursor());
 }
-  
 
 void KCubeBoxWidget::stopHint()
 {
@@ -336,7 +342,6 @@ void KCubeBoxWidget::stopHint()
       }
 
 }
-
 
 bool KCubeBoxWidget::checkClick(int row,int column)
 {
@@ -352,8 +357,6 @@ bool KCubeBoxWidget::checkClick(int row,int column)
    else
       return false;
 }
-
-
 
 void KCubeBoxWidget::checkComputerplayer(Player player)
 {
@@ -437,7 +440,7 @@ void KCubeBoxWidget::init()
    computerPlOne=false;
    computerPlTwo=false;
    KCubeWidget::enableClicks(true);
-   
+   readSettings();
    
    connect(moveTimer,SIGNAL(timeout()),SLOT(nextLoopStep()));
    connect(this,SIGNAL(startedThinking()),SLOT(setWaitCursor()));
@@ -554,14 +557,12 @@ void KCubeBoxWidget::startLoop()
    moveTimer->start(moveDelay);
 }
 
-
 void KCubeBoxWidget::stopLoop()
 {
    moveTimer->stop();
    emit stoppedMoving();
    KCubeWidget::enableClicks(true);
 }
-
 
 void KCubeBoxWidget::nextLoopStep()
 {
@@ -608,7 +609,6 @@ void KCubeBoxWidget::nextLoopStep()
       return;
    }
 }
-
 
 bool KCubeBoxWidget::hasPlayerWon(Player player)
 {
@@ -710,3 +710,4 @@ void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,i
 }
 
 #include "kcubeboxwidget.moc"
+

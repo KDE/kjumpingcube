@@ -26,17 +26,13 @@
 #include <config.h>
 #endif
 
-#include <kapplication.h>
 #include <kmainwindow.h>
 #include <kurl.h>
 
-#include "kcubeboxwidget.h"
-
-class QPopupMenu;
-class QString;
 class KAction;
 class KToggleAction;
-class KSelectAction;
+class KDialogBase;
+class KCubeBoxWidget;
 
 /**
  * This class serves as the main window for KJumpingCube.  It handles the
@@ -46,70 +42,46 @@ class KSelectAction;
  * @author Matthias Kiefer <matthias.kiefer@gmx.de>
  * @version 0.7.2
  */
-class KJumpingCube : public KMainWindow
-{
-   Q_OBJECT
+class KJumpingCube : public KMainWindow {
+  Q_OBJECT
+
 public:
-   /** Default Constructor */
-   KJumpingCube();
+  /** Default Constructor */
+  KJumpingCube();
 
-   /** Default Destructor */
-   virtual ~KJumpingCube();
-
-
-protected:
-   /**
-   * This function is called when it is time for the app to save its
-   * properties for session management purposes.
-   */
-   void saveProperties(KConfig *);
-
-   /**
-   * This function is called when this app is restored.  The KConfig
-   * object points to the session management config file that was saved
-   * with @ref saveProperties
-   */
-   void readProperties(KConfig *);
+  /** Default Destructor */
+  ~KJumpingCube();
 
 private:
-   KCubeBoxWidget *view;
-   KAction *undoAction, *stopAction, *hintAction;
-   KToggleAction *showToolbar, *showStatusbar;
-   KToggleAction *changeComputer1, *changeComputer2;
-   KSelectAction *optionSkill, *optionField;
+  KCubeBoxWidget *view;
+  KAction *undoAction, *stopAction, *hintAction;
+  KToggleAction *showToolbar, *showStatusbar;
 
-   KURL gameURL;
+  KURL gameURL;
+  KDialogBase *options;
 
-   void initKAction();
-   void updatePlayfieldMenu(int dim);
-   void updateSkillMenu(int id);
-   void changeColor(int player);
+  void initKAction();
 
 private slots:
-   void saveSettings();
-   void newGame();
-   void saveGame(bool saveAs=false);
-   void saveAs();
-   void save();
-   void openGame();
-   void getHint();
-   void stop();
-   void undo();
-   void changePlayer(int newPlayer);
-   void showWinner(int);
-   void barPositionChanged();
-   void disableStop();
-   void enableStop_Moving();
-   void enableStop_Thinking();
-   void toggleToolbar();
-   void toggleStatusbar();
-   void configureKeyBindings();
-   void fieldChange();
-   void skillChange();
-   void changeComputerPlayer1();
-   void changeComputerPlayer2();
-   void changeColor1();
-   void changeColor2();
+  void newGame();
+  void saveGame(bool saveAs=false);
+  inline void saveAs() { saveGame(true); };
+  inline void save() { saveGame(false); };
+  void openGame();
+  void stop();
+  void undo();
+  void changePlayer(int newPlayer);
+  void showWinner(int);
+  void disableStop();
+  void enableStop_Moving();
+  void enableStop_Thinking();
+  void toggleToolbar();
+  void toggleStatusbar();
+  void configureKeyBindings();
 
+  void showOptions();
+  void closeOptions();
 };
+
 #endif // KJUMPINGCUBE_H
+

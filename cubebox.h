@@ -27,7 +27,6 @@
 class Cube;
 class KCubeBoxWidget;
 
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -46,11 +45,9 @@ public:
    CubeBox(const CubeBox&);
    CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();
-
    
    CubeBox& operator= (const CubeBox& box);
    CubeBox& operator= (KCubeBoxWidget& box);
-   
    
    bool simulateMove(Player fromWhom,int row, int column);
    double assessField(Player forWhom) const;
@@ -62,3 +59,4 @@ private:
 };
 
 #endif // CUBEBOX_H
+

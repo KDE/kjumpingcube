@@ -1,3 +1,8 @@
+chagnes 1.1:
+- Added Settings dialog
+- finetuned the code
+- removed a lot of unessessary code with newer qt3 code.
+
 changes 0.7.3:
 - finetuning and some bugfixes
 

@@ -22,7 +22,9 @@
 #ifndef CUBEBOXBASE_H
 #define CUBEBOXBASE_H
 
+#ifdef DEBUG
 #include <assert.h>
+#endif
 
 template<class T> 
 class CubeBoxBase
@@ -241,3 +243,4 @@ void CubeBoxBase<T>::increaseNeighbours(int forWhom,int row,int column)
 */
 
 #endif // CUBEBOXBASE_H
+

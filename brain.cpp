@@ -29,6 +29,7 @@
 #include <kapplication.h>
 
 #undef DEBUG // uncomment this to get useful messages
+#include <assert.h>
 
 #ifdef DEBUG
 #include <iostream.h>

@@ -8,7 +8,7 @@ KDE_ICON = kjumpingcube
 bin_PROGRAMS = kjumpingcube
 kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp \
 					   kcubewidget.cpp cube.cpp \
-                       brain.cpp cubebox.cpp
+                       brain.cpp cubebox.cpp settings.ui
 
 xdg_apps_DATA = kjumpingcube.desktop
 

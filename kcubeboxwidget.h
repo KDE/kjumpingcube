@@ -70,12 +70,6 @@ public:
    void undo();
    
    /**
-   * computes a possibility to move and shows it by highlightning
-   * this cube
-   */
-   void getHint();
-   
-   /**
    * set colors that are used to show owners of the cubes
    *
    * @param forWhom for which player the color should be set
@@ -86,12 +80,6 @@ public:
    * sets number of Cubes in a row/column to 'size'.
    */
    virtual void setDim(int dim);
-   /**
-   * sets skill of computerplayer and 'getHint()'
-   * 
-   * @return previous level
-   */
-   void setSkill(Brain::Skill skill);
   
    /**
    * sets player 'player' as computer or human
@@ -118,14 +106,21 @@ public:
    * checks if 'player' is a computerplayer an computes next move if TRUE
    */
    void checkComputerplayer(Player player);
-
-   void saveGame(KConfigBase *);
-   void restoreGame(KConfigBase *);
-
+ 
+   inline void saveGame(KConfigBase *c) { saveProperties(c); };
+   inline void restoreGame(KConfigBase *c) { readProperties(c); }; 
+  
 public slots:
    /** stops all activities like getting a hint or doing a move */
    void stopActivities();
-
+   /**
+    * computes a possibility to move and shows it by highlightning
+    * this cube
+    */
+   void getHint();
+  
+  void readSettings();
+  
 signals:
    void playerChanged(int newPlayer);
    void playerWon(int player);
@@ -133,23 +128,22 @@ signals:
    void startedThinking();
    void stoppedMoving();
    void stoppedThinking();
-    
+
 protected:
    virtual void deleteCubes();
    virtual void initCubes(); 
+
+   void saveProperties(KConfigBase *);
+   void readProperties(KConfigBase *);
 
 protected slots:
    /** sets the cursor to an waitcursor */
    void setWaitCursor();
    /** restores the original cursor */
    void setNormalCursor();
-   
-   
-   
   
 private:
    void init();
-   
  
    QGridLayout *layout;
    CubeBox *undoBox;
@@ -168,7 +162,6 @@ private:
    bool computerPlOne;
    bool computerPlTwo;
   
-
    /**
    * increases the cube at row 'row' and column 'column' ,
    * and starts the Loop for checking the playingfield 
@@ -176,6 +169,7 @@ private:
    void doMove(int row,int column);
 
    void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
+
 private slots:   
    void nextLoopStep();
    /**
@@ -190,3 +184,4 @@ private slots:
 };
 
 #endif // KCUBEBOXWIDGET_H
+
