@@ -75,8 +75,6 @@ KJumpingCube::KJumpingCube()
 
   resize(400,400);
   setAutoSaveSettings();
-  showStatusbar->setChecked(!statusBar()->isHidden());
-  showToolbar->setChecked(!toolBar()->isHidden());
 }
 
 void KJumpingCube::initKAction() {
@@ -93,15 +91,13 @@ void KJumpingCube::initKAction() {
   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(FALSE);
 
-  showToolbar = KStdAction::showToolbar(this, SLOT(toggleToolbar()),
-	actionCollection());
-  showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()),
-	actionCollection());
+  createStandardStatusBarAction();
+  setStandardToolBarMenuEnabled(true);
+
   KStdAction::keyBindings(this, SLOT(configureKeyBindings()),
 	actionCollection());
 
-  (void)new KAction(i18n("&Configure KJumpingCube..."), 0, this,
-	SLOT(showOptions()), actionCollection(), "configure_kjumpingcube" );
+  KStdAction::preferences(this, SLOT(showOptions()), actionCollection());
   
   // finally create toolbar and menubar
   createGUI();
@@ -109,20 +105,6 @@ void KJumpingCube::initKAction() {
 
 KJumpingCube::~KJumpingCube(){
   delete view;
-}
-
-void KJumpingCube::toggleToolbar(){
- if (toolBar()->isHidden())
-   toolBar()->show();
- else
-   toolBar()->hide();
-}
-
-void KJumpingCube::toggleStatusbar(){
- if (statusBar()->isHidden())
-   statusBar()->show();
- else 
-   statusBar()->hide();
 }
 
 void KJumpingCube::newGame(){

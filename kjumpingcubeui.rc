@@ -1,16 +1,9 @@
 <!DOCTYPE kpartgui>
 <kpartgui name="kjumpingcube" version="4">
 
-<ActionProperties>
-  <Action name="configure_kjumpingcube" icon="configure"/>
-</ActionProperties>
-
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
     <Action name="game_stop"/>
-  </Menu>
-  <Menu name="settings"><text>&amp;Settings</text>
-    <Action name="configure_kjumpingcube"/>
   </Menu>
 </MenuBar>
 

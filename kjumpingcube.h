@@ -30,7 +30,6 @@
 #include <kurl.h>
 
 class KAction;
-class KToggleAction;
 class KDialogBase;
 class KCubeBoxWidget;
 
@@ -55,7 +54,6 @@ public:
 private:
   KCubeBoxWidget *view;
   KAction *undoAction, *stopAction, *hintAction;
-  KToggleAction *showToolbar, *showStatusbar;
 
   KURL gameURL;
   KDialogBase *options;
@@ -75,8 +73,6 @@ private slots:
   void disableStop();
   void enableStop_Moving();
   void enableStop_Thinking();
-  void toggleToolbar();
-  void toggleStatusbar();
   void configureKeyBindings();
 
   void showOptions();
