@@ -68,7 +68,7 @@ KJumpingCube::KJumpingCube()
 
    QString s;
    // init statusbar
-   s = i18n("on turn: Player %1").arg(1);
+   s = i18n("On turn: Player %1").arg(1);
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
@@ -452,7 +452,7 @@ void KJumpingCube::changeColor(int player)
 
 void KJumpingCube::changePlayer(int newPlayer)
 {
-   QString s=i18n("on turn: Player %1");
+   QString s=i18n("On turn: Player %1");
    s=s.arg(newPlayer);
    if(view->isComputer((KCubeBoxWidget::Player)newPlayer))
       s+=i18n("(Computer)");
