@@ -188,8 +188,8 @@ void KJumpingCube::saveProperties(KConfig *config)
      config->writeEntry("Statusbar",status);
 	
      config->writeEntry("CubeDim",view->dim());
-     config->writeEntry("Color1",view->color(KCubeBoxWidget::One).normal().background());
-     config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).normal().background());
+     config->writeEntry("Color1",view->color(KCubeBoxWidget::One).active().background());
+     config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).active().background());
      config->writeEntry("Skill",(int)view->skill());
      config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
      config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
@@ -226,8 +226,8 @@ void KJumpingCube::readProperties(KConfig *config)
       ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->activate();
    }
 
-   QColor c1=view->color(KCubeBoxWidget::One).normal().background();
-   QColor c2=view->color(KCubeBoxWidget::Two).normal().background();
+   QColor c1=view->color(KCubeBoxWidget::One).active().background();
+   QColor c2=view->color(KCubeBoxWidget::Two).active().background();
    QPalette color1(config->readColorEntry("Color1",&c1));
    QPalette color2(config->readColorEntry("Color2",&c2));
    view->setColor(KCubeBoxWidget::One,color1);
@@ -269,8 +269,8 @@ void KJumpingCube::saveSettings()
   {
      KConfigGroupSaver cfs2(config,"Game");
      config->writeEntry("CubeDim",view->dim());
-     config->writeEntry("Color1",view->color(KCubeBoxWidget::One).normal().background());
-     config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).normal().background());
+     config->writeEntry("Color1",view->color(KCubeBoxWidget::One).active().background());
+     config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).active().background());
      config->writeEntry("Skill",(int)view->skill());
      config->writeEntry("Computer Pl.1", ((KToggleAction*)actionCollection()->action("options_change_computer1"))->isChecked());
      config->writeEntry("Computer Pl.2", ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked());
@@ -314,7 +314,7 @@ void KJumpingCube::saveGame(bool saveAs)
 
          // check filename
          QRegExp pattern("*.kjc",true,true);
-         if(pattern.match(url.filename())==-1)
+         if(pattern.exactMatch(url.filename()))
          {
             url.setFileName( url.filename()+".kjc" );
          }
