@@ -12,8 +12,6 @@ kjumpingcube_LDADD = $(LIB_KDEGAMES) $(LIB_KFILE)
 
 xdg_apps_DATA = kjumpingcube.desktop
 
-EXTRA_DIST = $(xdg_apps_DATA)
-
 rcdir = $(kde_datadir)/kjumpingcube
 rc_DATA = kjumpingcubeui.rc
 
