@@ -254,6 +254,7 @@ void KJumpingCube::quit()
 {
    view->stopActivities();
    kapp->quit();
+   delete this;
 }
 
 void KJumpingCube::saveSettings()
