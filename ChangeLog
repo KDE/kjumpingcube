@@ -1,0 +1,22 @@
+changes 0.7.3:
+- finetuning and some bugfixes
+
+changes 0.7.2:
+- rewritten everything (just to learn better c++ ;-)
+- implemented better and faster algorithm for the computerplayer
+- added possibility to save/load games in/from any file.
+- KJumpingCube is now fully KDE-compliant 
+
+changes 0.7.0.1:
+- rewrote parts of CubeBox and Cube, move is now managed from CubeBox
+- added computerplayer
+- added undo-function
+
+changes 0.6.1:
+- after reseting cubes are drawn in the global configured backgroundcolor
+
+changes 0.6:
+- added sessionmanagment
+- added standardaccelerators
+- added possibility to save and restore a game
+

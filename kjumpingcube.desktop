@@ -1,0 +1,25 @@
+# KDE Config File 
+[KDE Desktop Entry]
+Name=KJumpingCube
+Name[de]=KJumpingCube
+Name[nl]=Springende Kubus
+Name[pl]=JumpingCube
+Name[pt]=Cubo Saltitão
+Name[hr]=SkakajuæaKocka
+Name[sk]=Skákajúca Kocka
+Name[fr]=Le cube qui saute
+Exec=kjumpingcube -caption "%c" %i %m
+Icon=kjumpingcube.xpm
+Type=Application
+BinaryPattern=kjumpingcube;
+DocPath=kjumpingcube/index.html
+Comment=Tactical Game
+Comment[de]=Taktikspiel
+Comment[pt]=Um jogo de táctica
+Comment[pl]=Gra taktyczna
+Comment[hr]=Taktièna igra
+Comment[nl]=Logisch spelletje
+Comment[sk]=Taktická hra
+Comment[fr]=Un jeu de tactique
+Terminal=0
+MiniIcon=kjumpingcube.xpm

@@ -1,0 +1,40 @@
+KJumpingCube
+Matthias Kiefer <matthias.kiefer@gmx.de>
+----------------------------------------------------------------------
+
+KJumpingCube is a tactical one- or two-player game. 
+For further information read the online help-documentation
+./doc/${LANG}/index.html . 
+
+For installing instructions read INSTALL.
+
+I hope you will enjoy it. Have a lot of fun :-)
+
+
+Don't hesitate to contact me if you find bugs or if you have 
+questions/suggestions on the implementation.
+
+
+Thanks to Krzysztof P. Jasiutowicz for suggestions and moral support.
+
+
+
+  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+
+  KJumpingCube is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+--
+Matthias Kiefer <matthias.kiefer@gmx.de>
+5.Apr 1999
