@@ -421,7 +421,7 @@ void KJumpingCube::saveGame(bool saveAs)
 
          if( !url.isLocalFile() )
 	 {
-	   KMessageBox( 0L, "Only local file saving supported yet" );
+	   KMessageBox( 0L, i18n( "Only local file saving supported yet" ) );
 	   return;
 	 }
 
@@ -477,7 +477,7 @@ void KJumpingCube::openGame()
 
       if( !url.isLocalFile() )
       {
-        KMessageBox::sorry( 0L, "Only local files are supported yet." );
+        KMessageBox::sorry( 0L, i18n( "Only local files are supported yet." ) );
 	return;
       }
 
