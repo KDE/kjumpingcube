@@ -106,7 +106,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
 <term><menuchoice>
 <shortcut><keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>amee</guimenu><guimenuitem><accel>O</accel>pen...</guimenuitem></menuchoice>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>L</accel>oad...</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Open a previously saved game.</action></para></listitem>
 </varlistentry>
@@ -115,7 +115,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
 <term><menuchoice>
 <shortcut><keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>S</accel>ave</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Save the current game.</action></para></listitem>
 </varlistentry>
@@ -130,16 +130,8 @@ name.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul">
-<keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>Q</accel>uit</guimenuitem></menuchoice></term>
-<listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><menuchoice><shortcut><keycombo action="simul"> 
-<keycap>Ctrl</keycap><keycap>H</keycap></keycombo></shortcut>
+<keycap>H</keycap></keycombo></shortcut>
 <guimenu><accel>G</accel>ame</guimenu><guimenuitem>Get <accel>H</accel>int</guimenuitem></menuchoice></term>
 <listitem><para><action>Get a hint as to the best next
 move.</action></para></listitem>
@@ -148,8 +140,7 @@ move.</action></para></listitem>
 <varlistentry>
 <term><menuchoice>
 <shortcut><keycap>Esc</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>S</accel>top
-thinking</guimenuitem></menuchoice></term>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Stop <accel>t</accel>hinking</guimenuitem></menuchoice></term>
 <listitem><para><action>Stop the computer opponent thinking about its next
 move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
@@ -157,9 +148,23 @@ up to the moment you told it to stop.</para></listitem>
 
 <varlistentry>
 <term><menuchoice>
+<shortcut><keycombo action="simul">
+<keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></shortcut>
+<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>Q</accel>uit</guimenuitem></menuchoice></term>
+<listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="edit-menu">
+<title>The <guimenu>Edit</guimenu> menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
 <shortcut><keycombo action="simul"><keycap>Ctrl</keycap><keycap>Z</keycap>
 </keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>U</accel>ndo
+<guimenu><accel>E</accel>dit</guimenu><guimenuitem>Und<accel>o</accel>
 Move</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last move you made.</action></para></listitem>
 </varlistentry>
@@ -186,7 +191,7 @@ bar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu><guimenuitem><accel>C</accel>onfigure Key Bindings...</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu><guimenuitem>Configure <accel>K</accel>ey Bindings...</guimenuitem></menuchoice></term>
 <listitem><para><action>Open a dialog where you can change the
 keybindings</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
