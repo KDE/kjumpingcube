@@ -1,13 +1,13 @@
 
 bin_PROGRAMS = kjumpingcube
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
-LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KDEGAMES) $(LIB_KDEUI) $(LIB_KFILE)
 
 SUBDIRS = .
 
 kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp kcubewidget.cpp cube.cpp\
                        brain.cpp cubebox.cpp
+kjumpingcube_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+kjumpingcube_LDADD =  $(LIB_KDEGAMES) $(LIB_KDEUI) $(LIB_KFILE)
 
 EXTRA_DIST = kjumpingcube.desktop
 
