@@ -468,7 +468,7 @@ void KJumpingCube::openGame()
       gameDir=file.filePath();
       if(!file.isReadable())
       {
-         QString mes=i18n("The file %1 doesn´t exists or isn´t readable!").arg(temp);
+         QString mes=i18n("The file %1 doesn't exists or isn't readable!").arg(temp);
          QMessageBox::information(this,kapp->caption(), mes, i18n("OK"));
          return;
       }
@@ -479,7 +479,7 @@ void KJumpingCube::openGame()
    config.setGroup("KJumpingCube");
    if(!config.hasKey("Version"))
    {
-      QString mes=i18n("The file %1 isn´t a KJumpingCube gamefile!");
+      QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!");
       mes=mes.arg(temp);
       QMessageBox::information(this,kapp->caption(),mes,i18n("OK"));
       return;
