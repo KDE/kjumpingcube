@@ -3,8 +3,7 @@ Matthias Kiefer <matthias.kiefer@gmx.de>
 ----------------------------------------------------------------------
 
 KJumpingCube is a tactical one- or two-player game. 
-For further information read the online help-documentation
-./doc/${LANG}/index.html . 
+For further information read the online help-documentation.
 
 For installing instructions read INSTALL.
 
