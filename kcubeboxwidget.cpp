@@ -499,6 +499,11 @@ void KCubeBoxWidget::initCubes()
       
 }
 
+QSize  KCubeBoxWidget::minimumSizeHint() const
+{
+   return QSize(400,400);
+}
+
 void  KCubeBoxWidget::deleteCubes()
 {
    if(layout)

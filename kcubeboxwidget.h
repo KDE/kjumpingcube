@@ -130,6 +130,7 @@ signals:
    void stoppedThinking();
 
 protected:
+   virtual QSize minimumSizeHint() const;
    virtual void deleteCubes();
    virtual void initCubes(); 
 
