@@ -40,13 +40,14 @@
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
 
-#define ID_STATUS_TURN 1000
+#define ID_STATUS_TURN_TEXT 1000
+#define ID_STATUS_TURN      2000
 
 #define MESSAGE_TIME 2000
 
 
 KJumpingCube::KJumpingCube()
-	: view(new KCubeBoxWidget(5, this, "KCubeBoxWidget"))
+  : view(new KCubeBoxWidget(5, this, "KCubeBoxWidget"))
 {
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
@@ -59,13 +60,19 @@ KJumpingCube::KJumpingCube()
    setCentralWidget(view);
 
    // init statusbar
-   QString s = i18n("Current player: Player %1").arg(1);
-   statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
-   statusBar()->changeItem(s,ID_STATUS_TURN);
-   statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
-   statusBar()->setFixedHeight( statusBar()->sizeHint().height());
+   QString s = i18n("Current player:");
+   statusBar()->insertItem(s,ID_STATUS_TURN_TEXT, false);
+   statusBar()->changeItem(s,ID_STATUS_TURN_TEXT);
+   statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, AlignLeft | AlignVCenter);
+   statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
+ 
+   currentPlayer = new QWidget(this, "currentPlayer");
+   currentPlayer->setFixedWidth(40);
+   statusBar()->addWidget(currentPlayer, ID_STATUS_TURN, false);
+   statusBar()->setItemAlignment(ID_STATUS_TURN, AlignLeft | AlignVCenter);
 
    initKAction();
+   changePlayer(1);
    resize(400,400);
 }
 
@@ -78,7 +85,7 @@ void KJumpingCube::initKAction() {
 
   hintAction = KStdGameAction::hint(view, SLOT(getHint()), actionCollection());
   stopAction = new KAction(i18n("Stop &Thinking"), "stop",
-	Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
+  Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
   stopAction->setEnabled(FALSE);
   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(FALSE);
@@ -117,8 +124,8 @@ void KJumpingCube::saveGame(bool saveAs)
          if(KIO::NetAccess::exists(url,false,this))
          {
             QString mes=i18n("The file %1 exists.\n"
-			     "Do you want to overwrite it?").arg(url.url());
-	    result = KMessageBox::warningYesNoCancel(this, mes);
+               "Do you want to overwrite it?").arg(url.url());
+            result = KMessageBox::warningYesNoCancel(this, mes);
             if(result==KMessageBox::Cancel)
                return;
          }
@@ -177,7 +184,7 @@ void KJumpingCube::openGame()
       if(!config.hasKey("Version"))
       {
          QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!")
-		 .arg(url.url());
+           .arg(url.url());
          KMessageBox::sorry(this,mes);
          return;
       }
@@ -215,14 +222,9 @@ void KJumpingCube::undo()
 
 void KJumpingCube::changePlayer(int newPlayer)
 {
-   QString s=i18n("Current player: Player %1");
-   s=s.arg(newPlayer);
-   if(view->isComputer((KCubeBoxWidget::Player)newPlayer))
-      s+=i18n("(Computer)");
-
-   statusBar()->changeItem(s,ID_STATUS_TURN);
-
    undoAction->setEnabled(true);
+   currentPlayer->setBackgroundColor(newPlayer == 1 ? Prefs::color1() : Prefs::color2());
+   currentPlayer->repaint();
 }
 
 void KJumpingCube::showWinner(int player) {

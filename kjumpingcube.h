@@ -49,7 +49,8 @@ public:
 
 private:
   KCubeBoxWidget *view;
-  KAction *undoAction, *stopAction, *hintAction;
+	QWidget *currentPlayer;
+	KAction *undoAction, *stopAction, *hintAction;
 
   KURL gameURL;
   void initKAction();
