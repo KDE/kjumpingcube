@@ -1,81 +1,129 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN">
-<book lang="en">
-<bookinfo>
+<book lang="EN" id="KJumpingCube"
+
+<Bookinfo>
 <title>The KJumpingCube Handbook</title>
 <authorgroup>
 <author>
-<surname>Matthias Kiefer
-</surname><affiliation>
-<address><email><ulink url="mailto:matthias.kiefer@gmx.de">&lt;matthias.kiefer@gmx.de&gt;</ulink></email></address>
-</affiliation>
-
+   <firstname>Matthias</firstname>
+   <surname>Kiefer</surname>
+   <affiliation>
+   <address><Email>matthias.kiefer@gmx.de</Email></address>
+   </affiliation>
 </author>
 </authorgroup>
-<date>Version 0.7.3 04/05/1999</date>
-<releaseinfo><!-- information about this particular version --></releaseinfo>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>KJumpingCube</keyword>
+<keyword>kdegames</keyword>
+<keyword>game</keyword>
+<keyword>strategy</keyword>
+</keywordset>
+
+<date>10/20/1999</date>
+<releaseinfo>1.0</releaseinfo>
+
 <revhistory>
 <revision>
-<revnumber></revnumber>
-<date></date>
+<revnumber>1.0</revnumber>
+<date>20. October 1999</date>
+<authorinitials>M.K.</authorinitials>
+<revremark>cleaned up the doc from conversion to docbook
+</revremark>
 </revision>
 </revhistory>
+
 <abstract>
-<para>This Handbook describes KJumpingCube Version 0.7.3</para>
-<para>KJumpingCube</para><!-- Merge this with the previous paragraph; it comes from <META NAME="description" CONTENT="..."> --></abstract>
+<para id="Abstract">
+This Handbook describes <application>KJumpingCube</application> Version 0.7.3
+</para>
+</abstract>
+
 </bookinfo>
+
+
+
 <chapter id="Introduction">
 <title>Introduction</title>
-<para>KJumpingCube is a simple tactical game. You can play it against the computer 
-or against a friend. 
+<para>
+<application>KJumpingCube</application> is a simple tactical game. 
+You can play it against the computer or against a friend. 
 The playingfield consists of squares that contains points. By clicking on
 the squares you can increase the points and if the points reach a maximum
-the points will jump to the squares neighbours and take them over.</para>
-<para>Winner is the one, who owns all squares.</para>
+the points will jump to the squares neighbours and take them over.
+Winner is the one, who owns all squares.</para>
 </chapter>
+
+
 <chapter id="Installation">
 <title>Installation</title>
-<sect1>
+
+<sect1 id="Getting-KJumpingCube">
 <title>How to obtain KJumpingCube</title>
-<para>KJumpingCube is written for the KDE project <ulink url="http://www.kde.org">http://www.kde.org</ulink>.
-KJumpingCube can be found on <ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main ftp
+<para>
+<application>KJumpingCube</application> is written for the KDE project 
+<ulink url="http://www.kde.org">http://www.kde.org</ulink>.
+<application>KJumpingCube</application> can be found in the kdegames package on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main ftp
 site of the KDE project.</para>
 </sect1>
-<sect1>
+
+<sect1 id="Requirements">
 <title>Requirements</title>
-<para>In order to successfully compile KJumpingCube, you need the latest versions 
-of the <literal remap="tt">KDE libraries</literal>.
-All required libraries as well as KJumpingCube itself can be found on 
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
-</sect1>
-<sect1>
-<title>Compilation and Installation</title>
-<para>In order to compile and install KJumpingCube on your system, type the following in the
-base directory of the KJumpingCube distribution:</para>
-<para><programlisting>&percnt; ./configure
-&percnt; make
-&percnt; make install</programlisting>
+<para>
+In order to successfully compile <application>KJumpingCube</application>, 
+you need KDE 2.0.
+All required libraries as well as <application>KJumpingCube</application> 
+itself can be found on 
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.
 </para>
+</sect1>
+
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+<para>In order to compile and install <application>KJumpingCube</application>
+on your system, type the following in the
+base directory of the <application>KJumpingCube</application> distribution:
+</para>
+
+<para>
+<Screen Width="40">
+<Prompt>%</Prompt> <Userinput>./configure</Userinput>
+<Prompt>%</Prompt> <Userinput>make</Userinput>
+<Prompt>%</Prompt> <Userinput>make install</Userinput>
+</Screen>
+</para>
+
 <para>That should do it! Should you run into any problems, please report them
 to the <ulink url="mailto:matthias.kiefer@gmx.de">author</ulink></para>
 </sect1>
 </chapter>
+
+
 <chapter id="PlayingKJumpingCube">
 <title>Playing KJumpingCube</title>
-<sect1>
+
+<sect1 id="Rules">
 <title>Rules</title>
-<para><orderedlist><listitem>
-<para>A move consists of increasing the points of a square by clicking on it.
+<para>
+<orderedlist>
+<listitem>
+<para>
+A move consists of increasing the points of a square by clicking on it.
 You can only increase a square that doesn't belong to your opponent. By
 clicking a square that has no owner, you become the owner.
 </para>
 </listitem>
 <listitem>
-<para>If a square has more points than it has neighbours, the points jump to its
+<para>
+If a square has more points than it has neighbours, the points jump to its
 neighbours and take them over. 
 </para>
 </listitem>
 <listitem>
-<para>Neighbour-Fields are only direct neighbours, not the diagonal neighbours.
+<para>
+Neighbour-Fields are only direct neighbours, not the diagonal neighbours.
 </para>
 </listitem>
 <listitem>
@@ -85,44 +133,45 @@ neighbours and take them over.
 </para>
 </sect1>
 </chapter>
+
+
 <chapter id="QuestionsAnswersandTips">
 <title>Questions, Answers, and Tips</title>
-<sect1>
+<sect1 id="Strategytips">
 <title>Strategy tips</title>
-<para><itemizedlist>
+<para>
+<itemizedlist>
 <listitem>
-<para>Try to avoid increasing a square when your opponent owns a neighbour square,
-that reaches it maximum earlier than your square.</para>
+<para>
+Try to avoid increasing a square when your opponent owns a neighbour 
+square, that reaches it maximum earlier than your square.
+</para>
 </listitem>
 </itemizedlist>
 </para>
 </sect1>
 </chapter>
-<chapter id="Copyright">
-<title>Copyright</title>
-<para><screen>
-KJumpingCube Copyright 1998,1999 Matthias Kiefer
-                                 matthias.kiefer@gmx.de
 
-KJumpingCube was inspired by a game that came out for the Commodore64
-and for other homecomputers,too.
+<chapter id="Credits">
+<title>Credits and License</title>
+<para>
+<application>KJumpingCube</application> is Copyright 1998,1999 Matthias Kiefer 
+<email>matthias.kiefer@gmx.de</email>
+</para>
+
+<para>
+<application>KJumpingCube</application> was inspired by a game that came out for 
+the Commodore64 and for other homecomputers,too.
 Sorry, that I don´t know the original author´s name.
+</para>
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+<para>
+Documentation Copyright 1999 Matthias Kiefer <email>matthias.kiefer@gmx.de</email>
+</para>
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-</screen>
+<para>
+This program is licensed under the terms of the
+<ulink URL="common/gpl-license.html">GNU GPL</ulink>.
 </para>
 </chapter>
 </book>
