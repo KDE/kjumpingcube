@@ -16,11 +16,11 @@
       <default>6</default>
     </entry>
     <entry name="Skill" type="Enum">
-      <values>
-        <value>Beginner</value>
-        <value>Average</value>
-        <value>Expert</value>
-      </values>
+      <choices>
+        <choice>Beginner</choice>
+        <choice>Average</choice>
+        <choice>Expert</choice>
+      </choices>
       <label>Skill of the computer player.</label>
       <default>Average</default>
     </entry>
