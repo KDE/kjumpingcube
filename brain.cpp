@@ -109,7 +109,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       worth[i]=new double[box.dim()];
 
    // alle Werte auf kleinstmöglichen Wert setzen
-   double min=-pow(2,sizeof(long int)*8-1);  // Maximum auf kleinst möglichen Wert setzen
+   double min=-pow(2.0,sizeof(long int)*8-1);  // Maximum auf kleinst möglichen Wert setzen
 
    for(i=0;i<box.dim();i++)
      for(j=0;j<box.dim();j++)
@@ -253,7 +253,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       {
          currentLevel--;
 
-	 return (long int)pow(box.dim()*box.dim(),(maxLevel-currentLevel))*box.assessField(currentPlayer);
+	 return (long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel))*box.assessField(currentPlayer);
       }
 
 
@@ -273,7 +273,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       if(moves==1)
       {
          box.simulateMove(player,c2m[0].row,c2m[0].column);
-         worth=(long int)pow(box.dim()*box.dim(),(maxLevel-currentLevel-1))*box.assessField(currentPlayer);
+         worth=(long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel-1))*box.assessField(currentPlayer);
       }
       else
       {

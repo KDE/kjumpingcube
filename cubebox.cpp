@@ -35,33 +35,33 @@ CubeBox::CubeBox(const int d)
 
 CubeBox::CubeBox(const CubeBox& box)
       :CubeBoxBase<Cube>(box.dim())
-{  
+{
    initCubes();
-   
+
    int i,j;
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
          *cubes[i][j]=*box.cubes[i][j];
       }
-      
+
    currentPlayer=box.currentPlayer;
 }
 
 CubeBox::CubeBox(KCubeBoxWidget& box)
       :CubeBoxBase<Cube>(box.dim())
-{   
+{
    initCubes();
-   
+
    int i,j;
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
         *cubes[i][j]=*box[i][j];
       }
-      
+
    currentPlayer=(CubeBox::Player)box.player();
-   
+
 }
 
 
@@ -78,17 +78,17 @@ CubeBox& CubeBox::operator=(const CubeBox& box)
       {
          setDim(box.dim());
       }
-      
-      
+
+
       for(int i=0;i<dim();i++)
          for(int j=0;j<dim();j++)
          {
             *cubes[i][j]=*box.cubes[i][j];
          }
    }
-   
-   currentPlayer=box.currentPlayer;   
-   
+
+   currentPlayer=box.currentPlayer;
+
    return *this;
 }
 
@@ -99,37 +99,37 @@ CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
    {
       setDim(box.dim());
    }
-   
+
    for(int i=0;i<dim();i++)
       for(int j=0;j<dim();j++)
       {
          *cubes[i][j]=*box[i][j];
       }
-      
+
    currentPlayer=(CubeBox::Player)box.player();
-      
+
    return *this;
 }
 
 
- 
+
 
 bool CubeBox::simulateMove(Player fromWhom,int row, int column)
 {
    bool finished;
    bool playerWon=false;
-   
+
    if(cubes[row][column]->owner()!=(Cube::Owner)fromWhom && cubes[row][column]->owner()!=Cube::Nobody)
       return false;
-   
+
    cubes[row][column]->increase((Cube::Owner)fromWhom);
-   
+
    do
    {
       int i,j;
       finished=true;
       playerWon=true;
-      
+
       // check all Cubes
       for(i=0;i<dim();i++)
       {
@@ -141,21 +141,21 @@ bool CubeBox::simulateMove(Player fromWhom,int row, int column)
 	            cubes[i][j]->decrease();
 	            finished=FALSE;
 	         }
-	    
+
 	         if(cubes[i][j]->owner()!=(Cube::Owner)fromWhom)
 	         playerWon=FALSE;
-         }  
-      }  
-      
+         }
+      }
+
       if(playerWon)
-	      return true;	     
+	      return true;
    }
    while(!finished);
-   
-   
+
+
    return true;
 }
-   
+
 double CubeBox::assessField(Player player) const
 {
    int cubesOne=0;
@@ -163,11 +163,11 @@ double CubeBox::assessField(Player player) const
    int pointsOne=0;
    int pointsTwo=0;
    Player otherPlayer = ((player==One)? Two : One);
-   bool playerWon=true; 
+   bool playerWon=true;
    bool otherPlayerWon=true;
-   
+
    int i,j;
-   
+
    for(i=0;i<dim();i++)
    {
       for(j=0;j<dim();j++)
@@ -175,48 +175,48 @@ double CubeBox::assessField(Player player) const
 	      if(cubes[i][j]->owner()==(Cube::Owner)One)
 	      {
 	         cubesOne++;
-	         pointsOne+=(int)pow(cubes[i][j]->value(),2);
+	         pointsOne+=(int)pow((float)cubes[i][j]->value(),2);
 	      }
 	      else if(cubes[i][j]->owner()==(Cube::Owner)Two)
 	      {
 	         cubesTwo++;
-	         pointsTwo+=(int)pow(cubes[i][j]->value(),2);
+	         pointsTwo+=(int)pow((float)cubes[i][j]->value(),2);
 	      }
-	 
+
 	      if(cubes[i][j]->owner()!=(Cube::Owner)player)
 	         playerWon=false;
-	 
+
 	      if(cubes[i][j]->owner()!=(Cube::Owner)otherPlayer)
 	         otherPlayerWon=false;
-      }  
-     
+      }
+
    }
-    
-   
-    
+
+
+
    if(player==One)
    {
-      return (int)pow(cubesOne,2)+pointsOne-(int)pow(cubesTwo,2)-pointsTwo;
+      return (int)pow((float)cubesOne,2)+pointsOne-(int)pow(cubesTwo,2)-pointsTwo;
    }
    else
-      return (int)pow(cubesTwo,2)+pointsTwo-(int)pow(cubesOne,2)-pointsOne;
-   
+      return (int)pow((float)cubesTwo,2)+pointsTwo-(int)pow(cubesOne,2)-pointsOne;
+
 }
-   
+
 bool CubeBox::playerWon(Player who) const
 {
    int i,j;
-   
+
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
          if(cubes[i][j]->owner()!=(Cube::Owner)who)
 	         return false;
       }
-      
+
    return true;
-}  
- 
+}
+
 
 void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column)
 {
