@@ -10,6 +10,7 @@ kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp \
 
 kjumpingcube_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kjumpingcube_LDADD = $(LIB_KDEGAMES) $(LIB_KFILE)
+kjumpingcube_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
 xdg_apps_DATA = kjumpingcube.desktop
 kde_kcfg_DATA = kjumpingcube.kcfg
