@@ -32,7 +32,6 @@
 
 #include "kcubeboxwidget.h"
 
-class KAccel;
 class QPopupMenu;
 class QString;
 
@@ -74,7 +73,6 @@ protected:
 
 private:
    KCubeBoxWidget *view;
-   KAccel *kaccel;
 
    KURL gameURL;
 

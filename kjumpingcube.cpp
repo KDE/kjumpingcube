@@ -29,7 +29,6 @@
 #include <kapplication.h>
 #include <kglobal.h>
 #include <klocale.h>
-#include <kaccel.h>
 #include <kkeydialog.h>
 #include <kiconloader.h>
 #include <kcolordialog.h>
