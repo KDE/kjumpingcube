@@ -67,7 +67,7 @@ KJumpingCube::KJumpingCube()
 
    QString s;
    // init statusbar
-   s = i18n("On turn: Player %1").arg(1);
+   s = i18n("Current Player: Player %1").arg(1);
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
@@ -254,7 +254,7 @@ void KJumpingCube::undo()
 
 void KJumpingCube::changePlayer(int newPlayer)
 {
-   QString s=i18n("On turn: Player %1");
+   QString s=i18n("Current Player: Player %1");
    s=s.arg(newPlayer);
    if(view->isComputer((KCubeBoxWidget::Player)newPlayer))
       s+=i18n("(Computer)");
@@ -290,13 +290,13 @@ void KJumpingCube::enableStop_Moving()
 //   game->setItemEnabled(ID_GAME_HINT,false);
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->message(i18n("doing move"));
+  statusBar()->message(i18n("Performing move."));
 }
 
 void KJumpingCube::enableStop_Thinking(){
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->message(i18n("computing move"));
+  statusBar()->message(i18n("Computing next move."));
 }
 
 void KJumpingCube::configureKeyBindings(){
