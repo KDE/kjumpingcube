@@ -177,11 +177,12 @@ KJumpingCube::KJumpingCube()
 
    QString s;
    s =i18n("KJumpingCube Version %1 \n\n (C) 1998,1999 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
-   s+=i18n("This program is free software; you can redistribute it\n");
-   s+=i18n("and/or modify it under the terms of the GNU General\n");
-   s+=i18n("Public License as published by the Free Software\n");
-   s+=i18n("Foundation; either version 2 of the License, or\n");
-   s+=i18n("(at your option) any later version.");
+   s+=i18n(
+     "This program is free software; you can redistribute it\n"
+     "and/or modify it under the terms of the GNU General\n"
+     "Public License as published by the Free Software\n"
+     "Foundation; either version 2 of the License, or\n"
+     "(at your option) any later version.");
    QPopupMenu *help = helpMenu(s);
 
    menuBar()->insertSeparator();
