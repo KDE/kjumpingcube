@@ -32,7 +32,7 @@
 #include <kaccel.h>
 #include <kkeydialog.h>
 #include <kiconloader.h>
-#include <kcolordlg.h>
+#include <kcolordialog.h>
 #include <kfiledialog.h>
 #include <ksimpleconfig.h>
 #include <kmenubar.h>
@@ -53,10 +53,10 @@ KJumpingCube::KJumpingCube()
 	: KMainWindow(0), view(new KCubeBoxWidget(5,this))
 {
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
-   connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));	
-   connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));	
-   connect(view,SIGNAL(startedMoving()),SLOT(enableStop_Moving()));		
-   connect(view,SIGNAL(startedThinking()),SLOT(enableStop_Thinking()));	
+   connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
+   connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));
+   connect(view,SIGNAL(startedMoving()),SLOT(enableStop_Moving()));
+   connect(view,SIGNAL(startedThinking()),SLOT(enableStop_Thinking()));
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
 
    // tell the KMainWindow that this is indeed the main widget
@@ -73,7 +73,7 @@ KJumpingCube::KJumpingCube()
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
    statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
-  
+
 
    KConfig *config=kapp->config();
    // read config
@@ -82,7 +82,7 @@ KJumpingCube::KJumpingCube()
 
       int barPos = config->readNumEntry("ToolbarPos",(int)(KToolBar::Top));
       toolBar()->setBarPos((KToolBar::BarPosition)barPos);
-	
+
       bool visible=config->readBoolEntry("Toolbar",true);
       if (toolBar()->isHidden() == visible) {
          ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowToolbar)))->activate();
@@ -151,7 +151,7 @@ void KJumpingCube::initKAction()
    plist.append(i18n("&10x10"));
    KSelectAction* playfieldMenu = new KSelectAction(i18n("&Playfield"), 0, this, SLOT(fieldChange()), actionCollection(), "options_field");
    playfieldMenu->setItems(plist);
-   
+
    QStringList slist;
    slist.append(i18n("&Beginner"));
    slist.append(i18n("&Average"));
@@ -187,7 +187,7 @@ void KJumpingCube::saveProperties(KConfig *config)
      config->writeEntry("Toolbar",status);
      status=((KToggleAction*)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar)))->isChecked();
      config->writeEntry("Statusbar",status);
-	
+
      config->writeEntry("CubeDim",view->dim());
      config->writeEntry("Color1",view->color(KCubeBoxWidget::One).active().background());
      config->writeEntry("Color2",view->color(KCubeBoxWidget::Two).active().background());
@@ -550,7 +550,7 @@ void KJumpingCube::fieldChange()
      view->setDim(5+index);
      updatePlayfieldMenu(5+index);
      ((KAction*)actionCollection()->action(KStdAction::stdName(KStdAction::Undo)))->setEnabled(false);
-	
+
      QString s=i18n("playfield changed to %1x%2");
             s=s.arg(5+index).arg(5+index);
      statusBar()->message(s,MESSAGE_TIME);
@@ -577,7 +577,7 @@ void KJumpingCube::changeComputerPlayer2()
 {
  bool flag = ((KToggleAction*)actionCollection()->action("options_change_computer2"))->isChecked();
  KCubeBoxWidget::Player player = (KCubeBoxWidget::Player)(2);
-	
+
  QString s;
  if (flag) {
     s=i18n("Player %1 is now played by the computer.").arg(1);
