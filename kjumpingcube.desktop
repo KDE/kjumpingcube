@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KJumpingCube
-Name[af]=kjumpingcube
+Name[af]=Kjumpingcube
 Name[az]=K Hoppanan Kub
 Name[bg]=Подскачащ куб
 Name[br]=KDiÃ±sALamm
@@ -30,7 +30,7 @@ Type=Application
 BinaryPattern=kjumpingcube;
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
-GenericName[af]=taktiese speletjie
+GenericName[af]=Taktiese Speletjie
 GenericName[ar]=لعبة تكتيكية
 GenericName[az]=Taktik oyunu
 GenericName[be]=Тактычная гульня
