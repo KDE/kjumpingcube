@@ -1,7 +1,5 @@
 
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
-LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KDEGAMES) $(LIB_KFILE)
 METASOURCES = AUTO
 KDE_ICON = kjumpingcube
 
@@ -9,6 +7,8 @@ bin_PROGRAMS = kjumpingcube
 kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp \
 					   kcubewidget.cpp cube.cpp \
                        brain.cpp cubebox.cpp settings.ui
+kjumpingcube_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+kjumpingcube_LDADD = $(LIB_KDEGAMES) $(LIB_KFILE)
 
 xdg_apps_DATA = kjumpingcube.desktop
 
