@@ -51,7 +51,7 @@ or the computer.</para>
 or against a friend.  The playing field consists of squares that contains
 points. By clicking on the squares you can increase the points, and if the
 points reach a maximum the points will jump to the squares neighbours and take
-them over.  Winner is the one, who owns all squares.</para>
+them over. The winner is the one who owns all squares.</para>
 
 </chapter>
 
@@ -70,7 +70,7 @@ clicking a square that has no owner, you become the owner. </para></listitem>
 jump to its neighbours and take them over. </para></listitem>
 <listitem><para>Neighbour-Fields are only direct neighbours, not the diagonal
 neighbours.</para></listitem>
-<listitem><para>Winner is the one, who owns all squares.</para></listitem>
+<listitem><para>The winner is the one who owns all squares.</para></listitem>
 </orderedlist>
 
 </sect1>
@@ -152,7 +152,7 @@ move.</action></para></listitem>
 <shortcut><keycap>Esc</keycap></shortcut>
 <guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>S</accel>top
 thinking</guimenuitem></menuchoice></term>
-<listitem><para><action>Stop the computer opponent thinking about it's next
+<listitem><para><action>Stop the computer opponent thinking about its next
 move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
@@ -226,20 +226,22 @@ playing against the computer.</para>
 
 <varlistentry>
 <term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Computer Plays Player <accel>1</accel></guimenuitem></menuchoice>
+<guimenuitem>Computer plays Player <accel>1</accel></guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Sets the computer opponent to be Player
-1</action></para><para>The computer can play itself if you select both this and
-<guimenuitem>Computer Plays Player 2</guimenuitem></para></listitem>
+1</action></para>
+<para>The computer can play against itself if you select both this and
+<guimenuitem>Computer plays Player 2</guimenuitem></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Computer Plays Player <accel>2</accel></guimenuitem></menuchoice>
+<guimenuitem>Computer plays Player <accel>2</accel></guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Sets the computer opponent to be Player
-2</action></para><para>The computer can play itself if you select both this and
-<guimenuitem>Computer Plays Player 1</guimenuitem></para></listitem>
+2</action></para>
+<para>The computer can play against itself if you select both this and
+<guimenuitem>Computer plays Player 1</guimenuitem></para></listitem>
 </varlistentry>
 
 <varlistentry>
