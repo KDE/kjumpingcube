@@ -2,7 +2,7 @@
 bin_PROGRAMS = kjumpingcube
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(top_builddir)/libkdegames/libkdegames.la $(LIB_KDEUI) $(LIB_KFILE)
+LDADD = $(LIB_KDEGAMES) $(LIB_KDEUI) $(LIB_KFILE)
 
 SUBDIRS = .
 
