@@ -191,7 +191,7 @@ KJumpingCube::KJumpingCube()
 			true,i18n("New Game"));
    toolBar()->insertButton(loader->loadIcon("fileopen", KIcon::Toolbar),ID_GAME_OPEN,
                         true,i18n("Open Game"));
-   toolBar()->insertButton(loader->loadIcon("filefloppy", KIcon::Toolbar),ID_GAME_SAVE,
+   toolBar()->insertButton(loader->loadIcon("filesave", KIcon::Toolbar),ID_GAME_SAVE,
                         true,i18n("Save Game"));
 
    toolBar()->insertSeparator();
