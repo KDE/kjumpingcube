@@ -1,20 +1,22 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
-  <!ENTITY kappname "&kjumpingcube;" -- this only *seems* redundant -->
+  <!ENTITY kappname "&kjumpingcube;">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" -- change language only here -->
   <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
   %ents;
 ]>
 <book lang="&language;">
+
 <bookinfo>
 <title>The &kjumpingcube; Handbook</title>
+
 <authorgroup>
 <author>
-   <firstname>Matthias</firstname>
-   <surname>Kiefer</surname>
-   <affiliation>
-   <address><Email>matthias.kiefer@gmx.de</Email></address>
-   </affiliation>
+<firstname>Matthias</firstname>
+<surname>Kiefer</surname>
+<affiliation>
+<address><email>matthias.kiefer@gmx.de</email></address>
+</affiliation>
 </author>
 </authorgroup>
 
