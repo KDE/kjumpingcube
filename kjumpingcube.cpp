@@ -63,7 +63,7 @@
 #define MESSAGE_TIME 2000
 
 KJumpingCube::KJumpingCube()
-	: view(new KCubeBoxWidget(5,this))
+	: KMainWindow(0), view(new KCubeBoxWidget(5,this))
 {
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));	
@@ -72,8 +72,8 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(startedThinking()),SLOT(enableStop_Thinking()));	
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
 
-   // tell the KTMainWindow that this is indeed the main widget
-   setView(view);
+   // tell the KMainWindow that this is indeed the main widget
+   setCentralWidget(view);
 
    // init keys
    kaccel = new KAccel(this);
@@ -238,16 +238,16 @@ KJumpingCube::KJumpingCube()
       bool visible=config->readBoolEntry("Toolbar",true);
       options->setItemChecked(ID_VIEW_TOOLBAR,visible);
       if(visible)
-	 enableToolBar(KToolBar::Show);
+	 toolBar()->show();
       else
-	 enableToolBar(KToolBar::Hide);
+         toolBar()->hide();
 	
       visible=config->readNumEntry("Statusbar",true);
       options->setItemChecked(ID_VIEW_STATUSBAR,visible);
       if(visible)
-         enableStatusBar(KStatusBar::Show);
+         statusBar()->show();
       else
-         enableStatusBar(KStatusBar::Hide);
+         statusBar()->hide();
 
       QSize defSize(400,400);
       QSize winSize=config->readSizeEntry("Size",&defSize);
@@ -690,16 +690,22 @@ void KJumpingCube::menuCallback(int item)
       }          	
       case ID_VIEW_TOOLBAR:
       {
-	enableToolBar(); // toggles toolbar
-	bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
-	options->setItemChecked(ID_VIEW_TOOLBAR, status?false:true);
+	bool newStatus=!options->isItemChecked(ID_VIEW_TOOLBAR);
+	options->setItemChecked(ID_VIEW_TOOLBAR, newStatus);
+        if (newStatus)
+           toolBar()->show();
+        else
+           toolBar()->hide();
 	break;
       }
       case ID_VIEW_STATUSBAR:
       {
-	 enableStatusBar(); // toggles statusbar
-	 bool status=options->isItemChecked(ID_VIEW_STATUSBAR);
-	 options->setItemChecked(ID_VIEW_STATUSBAR, status?false:true);
+	 bool newStatus=!options->isItemChecked(ID_VIEW_STATUSBAR);
+	 options->setItemChecked(ID_VIEW_STATUSBAR, newStatus);
+         if (newStatus)
+            statusBar()->show();
+         else
+            statusBar()->hide();
 	 break;
       }
 
@@ -771,3 +777,5 @@ bool KJumpingCube::queryClose()
 
    return true;
 }
+
+#include "kjumpingcube.moc"

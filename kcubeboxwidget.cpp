@@ -707,3 +707,5 @@ void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,i
 
 
 }
+
+#include "kcubeboxwidget.moc"

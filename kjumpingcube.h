@@ -27,7 +27,7 @@
 #endif 
 
 #include <kapp.h>
-#include <ktmainwindow.h>
+#include <kmainwindow.h>
 #include <kurl.h>
 
 #include "kcubeboxwidget.h"
@@ -44,7 +44,7 @@ class QString;
  * @author Matthias Kiefer <matthias.kiefer@gmx.de>
  * @version 0.7.2
  */
-class KJumpingCube : public KTMainWindow
+class KJumpingCube : public KMainWindow
 {
    Q_OBJECT
 public:

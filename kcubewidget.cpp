@@ -344,3 +344,5 @@ void KCubeWidget::drawContents(QPainter *painter)
    painter->drawPixmap(contents.topLeft(),buffer);
 
 }
+
+#include "kcubewidget.moc"
