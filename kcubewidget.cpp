@@ -243,7 +243,7 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
   if(e->button() == LeftButton && _clicksAllowed)
   {
     stopHint();
-    emit clicked(row(),column());
+    emit clicked(row(),column(),true);
   }
 }
 

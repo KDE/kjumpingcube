@@ -177,7 +177,7 @@ private slots:
    * checks if cube at ['row','column'] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield  
    */
-   bool checkClick(int row,int column);
+   bool checkClick(int row,int column,bool isClick);
 
    /** turns off blinking, if an other cube is clicked */
    void stopHint();

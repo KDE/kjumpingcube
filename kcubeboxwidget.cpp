@@ -95,6 +95,7 @@ void KCubeBoxWidget::loadSettings(){
 
   setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
   setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
+  checkComputerplayer(currentPlayer);
 }
 
 KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
@@ -223,8 +224,6 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
       computerPlOne=flag;
    else if(player==Two)
       computerPlTwo=flag;
-   
-   checkComputerplayer(player);
 }
 
   
@@ -332,12 +331,18 @@ void KCubeBoxWidget::stopHint()
 
 }
 
-bool KCubeBoxWidget::checkClick(int row,int column)
+bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
 {
    if(isActive())
       return false;
 
-   if((Cube::Owner)currentPlayer==cubes[row][column]->owner() ||
+   // make the game start when computer player is player one and user clicks
+   if(isClick && currentPlayer == One && computerPlOne)
+   {
+      checkComputerplayer(currentPlayer);
+      return false;
+   }
+   else if((Cube::Owner)currentPlayer==cubes[row][column]->owner() ||
 		   cubes[row][column]->owner()==Cube::Nobody)
    {
       doMove(row,column);
@@ -367,7 +372,7 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       {
          cubes[row][column]->showHint(500,2);
 
-         bool result=checkClick(row,column);
+         bool result=checkClick(row,column,false);
 		 assert(result);
       }
    }
@@ -471,8 +476,8 @@ void KCubeBoxWidget::initCubes()
          cubes[i][j]->setCoordinates(i,j);
          layout->addWidget(cubes[i][j],i,j);
          cubes[i][j]->show();
-         connect(cubes[i][j],SIGNAL(clicked(int,int)),SLOT(stopHint()));
-         connect(cubes[i][j],SIGNAL(clicked(int,int)),SLOT(checkClick(int,int)));
+         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
+         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(checkClick(int,int,bool)));
       }
    
    // initialize cubes  
