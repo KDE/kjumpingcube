@@ -26,7 +26,7 @@
 #include <kaboutdata.h>
 
 
-static const char *description =
+static const char description[] =
 	I18N_NOOP("Tactical one- or two-player game");
 
 
