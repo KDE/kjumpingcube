@@ -172,7 +172,7 @@ void KJumpingCube::openGame()
       url = KFileDialog::getOpenURL( gameURL.url(), "*.kjc", this, 0 );
       if( url.isEmpty() )
          return;
-      if(!KIO::NetAccess::exists(url.url(),true,this))
+      if(!KIO::NetAccess::exists(url,true,this))
       {
          QString mes=i18n("The file %1 does not exist!").arg(url.url());
          KMessageBox::sorry(this,mes);
