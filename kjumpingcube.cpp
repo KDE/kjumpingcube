@@ -35,6 +35,7 @@
 #include <qfileinfo.h>
 #include <qregexp.h>
 #include <qmessagebox.h>
+#include <kmenubar.h>
 
 
 #define ID_GAME_QUIT 1
