@@ -57,7 +57,7 @@ public:
    bool playerWon(Player who) const;
 
 private:
-   void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column);
+   void increaseNeighbours(CubeBox::Player forWhom,int row,int column);
 
 };
 

@@ -159,12 +159,12 @@ void KCubeWidget::setCoordinates(int row,int column)
    _column=column;
 }
 
-inline int KCubeWidget::row() const
+int KCubeWidget::row() const
 {
    return _row;
 }
 
-inline int KCubeWidget::column() const
+int KCubeWidget::column() const
 {
    return _column;
 }

@@ -31,7 +31,7 @@
 #include <kconfigbase.h>
 #include <kcursor.h>
 
-KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent=0,const char *name=0)
+KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent,const char *name)
         : QWidget(parent,name),
           CubeBoxBase<KCubeWidget>(d)
 {
@@ -40,7 +40,7 @@ KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent=0,const char *name=0)
 
 
 
-KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent=0,const char *name=0)
+KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent,const char *name)
       :QWidget(parent,name),
        CubeBoxBase<KCubeWidget>(box.dim())
 {  
@@ -58,7 +58,7 @@ KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent=0,const char *name=0
 
 
 
-KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0,const char *name=0)
+KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent,const char *name)
       :QWidget(parent,name),
        CubeBoxBase<KCubeWidget>(box.dim())
 {  
