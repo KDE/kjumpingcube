@@ -131,7 +131,7 @@ void KJumpingCube::initKAction()
 
    KAction* action;
    (void)new KAction(i18n("Get &Hint"), "idea", Key_H, this, SLOT(getHint()), actionCollection(), "game_hint");
-   action = new KAction(i18n("&Stop Thinking"), "stop", KAccel::stringToKey("Escape"), this, SLOT(stop()), actionCollection(), "game_stop");
+   action = new KAction(i18n("Stop &Thinking"), "stop", KAccel::stringToKey("Escape"), this, SLOT(stop()), actionCollection(), "game_stop");
    action->setEnabled(FALSE);
    action = KStdAction::undo(this, SLOT(undo()), actionCollection());
    action->setEnabled(FALSE);
