@@ -71,9 +71,6 @@ protected:
    */
    void readProperties(KConfig *);
 
-   /** Just to check if the brain is still working*/
-   virtual bool queryClose();
-
 private:
    KCubeBoxWidget *view;
    KAction *undoAction, *stopAction, *hintAction;

@@ -42,6 +42,7 @@
 #include <kaction.h>
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
+#include <kdebug.h>
 
 #define ID_STATUS_TURN 1000
 
@@ -126,7 +127,7 @@ void KJumpingCube::initKAction()
    KStdGameAction::load(this, SLOT(openGame()), actionCollection());
    KStdGameAction::save(this, SLOT(save()), actionCollection());
    KStdGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
-   KStdGameAction::quit(kapp, SLOT(quit()), actionCollection());
+   KStdGameAction::quit(this, SLOT(close()), actionCollection());
 
    hintAction = KStdGameAction::hint(this, SLOT(getHint()), actionCollection());
    stopAction = new KAction(i18n("Stop &Thinking"), "stop", Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
@@ -591,14 +592,6 @@ void KJumpingCube::updatePlayfieldMenu(int dim)
 void KJumpingCube::updateSkillMenu(int id)
 {
   optionSkill->setCurrentItem(id);
-}
-
-bool KJumpingCube::queryClose()
-{
-   if(view->isActive())
-      view->stopActivities();
-
-   return true;
 }
 
 #include "kjumpingcube.moc"
