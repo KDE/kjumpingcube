@@ -25,11 +25,11 @@
       <default>Average</default>
     </entry>
     <entry name="ComputerPlayer1" type="Bool" key="Computer_Pl_1">
-      <label>Whether player 1 is a played by the computer.</label>
+      <label>Whether player 1 is played by the computer.</label>
       <default>false</default>
     </entry>
     <entry name="ComputerPlayer2" type="Bool" key="Computer_Pl_2">
-      <label>Whether player 2 is a played by the computer.</label>
+      <label>Whether player 2 is played by the computer.</label>
       <default>true</default>
     </entry>
   </group>
