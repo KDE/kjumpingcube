@@ -24,7 +24,7 @@
 #include <qpainter.h>
 #include <qtimer.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kdebug.h>
 
 /* ****************************************************** **

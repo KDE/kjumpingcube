@@ -26,7 +26,7 @@
 
 #include <math.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 
 #undef DEBUG // uncomment this to get useful messages
 

@@ -21,7 +21,7 @@
 **************************************************************************** */
 #include "version.h"
 #include "kjumpingcube.h"
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>

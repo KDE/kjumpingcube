@@ -26,7 +26,7 @@
 #include <qfileinfo.h>
 #include <qregexp.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <kaccel.h>
