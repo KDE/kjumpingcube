@@ -73,4 +73,4 @@ Comment[vi]=Trò chơi chiến thuật
 Comment[xh]=Umdlalo wenkqubo wokufumana injongo
 Comment[zh_CN.GB2312]=策略游戏
 Terminal=0
-KDE-X-StartupNotify=true
+X-KDE-StartupNotify=true
