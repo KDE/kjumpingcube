@@ -30,8 +30,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2000-12-15</date>
-<releaseinfo>1.00.00</releaseinfo>
+<date>2003-11-06</date>
+<releaseinfo>1.1</releaseinfo>
 
 <abstract><para>&kjumpingcube; is a simple tactical game you can play against a friend
 or the computer.</para>
@@ -129,14 +129,6 @@ name.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul"> 
-<keycap>H</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Get Hint</guimenuitem></menuchoice></term>
-<listitem><para><action>Get a hint as to the best next
-move.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><menuchoice>
 <shortcut>&Esc;</shortcut>
 <guimenu>Game</guimenu><guimenuitem>Stop thinking</guimenuitem></menuchoice></term>
@@ -156,17 +148,25 @@ up to the moment you told it to stop.</para></listitem>
 
 </sect2>
 
-<sect2 id="edit-menu">
-<title>The <guimenu>Edit</guimenu> menu</title>
+<sect2 id="move-menu">
+<title>The <guimenu>Move</guimenu> menu</title>
 <variablelist>
 <varlistentry>
 <term><menuchoice>
 <shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap>
 </keycombo></shortcut>
-<guimenu>Edit</guimenu><guimenuitem>Undo
-Move</guimenuitem></menuchoice></term>
+<guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last move you made.</action></para></listitem>
 </varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo action="simul"> 
+<keycap>H</keycap></keycombo></shortcut>
+<guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
+<listitem><para><action>Get a hint as to the best next
+move.</action></para></listitem>
+</varlistentry>
+
 </variablelist>
 
 </sect2>
@@ -190,31 +190,22 @@ bar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Key Bindings...</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
 <listitem><para><action>Open a dialog where you can change the
-keybindings</action> for &kjumpingcube;</para></listitem>
+shortcuts</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu>
-<guisubmenu>Playfield</guisubmenu></menuchoice></term>
-<listitem><para><action>Lets you choose from a list of playfield
-sizes.</action></para>
-<para>The sizes available in the submenu are:</para>
-<simplelist>
-<member><guimenuitem>5x5</guimenuitem></member>
-<member><guimenuitem>6x6</guimenuitem></member>
-<member><guimenuitem>7x7</guimenuitem></member>
-<member><guimenuitem>8x8</guimenuitem></member>
-<member><guimenuitem>9x9</guimenuitem></member>
-<member><guimenuitem>10x10</guimenuitem></member>
-</simplelist>
-</listitem>
-</varlistentry>
+<guimenuitem>Configure KJumpingCube</guimenuitem></menuchoice>
+</term>
+<listitem>
+<para>Open a configuration dialog, where you may configure the
+following items:</para>
 
+<variablelist>
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guisubmenu>Skill</guisubmenu></menuchoice></term>
+<term><guilabel>Computer Skill</guilabel></term>
 <listitem><para><action>Lets you choose your playing skill from a
 submenu.</action> This decides how clever your computer opponent is, if you are
 playing against the computer.</para>
@@ -227,38 +218,31 @@ playing against the computer.</para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Computer plays Player 1</guimenuitem></menuchoice>
-</term>
-<listitem><para><action>Sets the computer opponent to be Player
-1</action></para>
-<para>The computer can play against itself if you select both this and
-<guimenuitem>Computer plays Player 2</guimenuitem></para></listitem>
+<term><guilabel>Board Size</guilabel></term>
+<listitem><para><action>Lets you choose from a list of playfield
+sizes.</action></para>
+<para>Use the slider to select a value between
+<guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel>
+squares in size.</para>
+</listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Computer plays Player 2</guimenuitem></menuchoice>
-</term>
-<listitem><para><action>Sets the computer opponent to be Player
-2</action></para>
-<para>The computer can play against itself if you select both this and
-<guimenuitem>Computer plays Player 1</guimenuitem></para></listitem>
+<term><guilabel>Computer Plays</guilabel></term>
+<listitem><para>Sets the computer opponent to be <guilabel>Player
+1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you
+would set the computer to play one player, and you would play the
+other.  Player 1 always starts first.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Color Player 1...</guimenuitem></menuchoice></term>
-<listitem><para><action>Opens a dialog box where you can choose the color for
-Player 1's pieces.</action></para></listitem>
+<term><guilabel>Board Color</guilabel></term>
+<listitem><para>Choose a color for each player</para></listitem>
+</varlistentry>
+</variablelist>
+</listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Color Player 2...</guimenuitem></menuchoice></term>
-<listitem><para><action>Opens a dialog box where you can choose the color for
-Player 2's pieces.</action></para></listitem>
-</varlistentry>
 </variablelist>
 </sect2>
 
@@ -296,11 +280,6 @@ move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
 
-<varlistentry>
-<term><guiicon>Get a Hint</guiicon></term>
-<listitem><para><action>Get a hint as to the best next
-move.</action></para></listitem>
-</varlistentry>
 
 <varlistentry>
 <term><guiicon>Undo</guiicon></term>
@@ -326,7 +305,7 @@ document)</para></listitem>
 
 <itemizedlist>
 <listitem><para>Try to avoid increasing a square when your opponent owns a
-neighbor square, that reaches it maximum earlier than your
+neighbor square, that reaches its maximum earlier than your
 square.</para></listitem>
 </itemizedlist>
 
@@ -347,7 +326,7 @@ name.</para>
 <para>Documentation Copyright 1999 Matthias Kiefer
 <email>matthias.kiefer@gmx.de</email></para>
 
-<para>Documentation updated for &kde; 2 by Lauri Watts
+<para>Documentation updated for &kde; 2 and 3 by Lauri Watts
 <email>lauri@kde.org</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
