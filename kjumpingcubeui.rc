@@ -15,8 +15,6 @@
     <Action name="game_stop"/>
     <Action name="game_hint"/>
     <Action name="move_undo"/>
-    <Separator/>
-    <Action name="help_contents"/>
 </ToolBar>
 
 </kpartgui>
