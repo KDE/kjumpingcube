@@ -34,7 +34,7 @@ static const char *description =
 int main(int argc, char *argv[])
 {
 	KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"), 
-		KJC_VERSION, description, KAboutData::GPL, 
+		KJC_VERSION, description, KAboutData::License_GPL, 
 		"(c) 1999-2000, DEVELOPERS");
 	aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
 	KCmdLineArgs::init( argc, argv, &aboutData );
