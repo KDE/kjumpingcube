@@ -743,7 +743,7 @@ void KJumpingCube::menuCallback(int item)
        break;
     }
     case ID_HELP_CONTENTS:
-       kapp->invokeHTMLHelp("","");
+       kapp->invokeHelp();
     } // end switch
 }
 
