@@ -556,7 +556,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 
 void KJumpingCube::showWinner(int player)
 {
-   QString s=i18n("Winner is Player %1 !").arg(player);
+   QString s=i18n("Winner is Player %1!").arg(player);
    QMessageBox::information(this,i18n("Winner"), s, i18n("OK"));
    view->reset();
 }
