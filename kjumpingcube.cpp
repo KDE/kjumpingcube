@@ -45,7 +45,7 @@
 
 
 KJumpingCube::KJumpingCube()
-	: view(new KCubeBoxWidget(5,this))
+	: view(new KCubeBoxWidget(5, this, "KCubeBoxWidget"))
 {
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
@@ -95,10 +95,6 @@ void KJumpingCube::initKAction() {
   
   // finally create toolbar and menubar
   createGUI();
-}
-
-KJumpingCube::~KJumpingCube(){
-  delete view;
 }
 
 void KJumpingCube::newGame(){

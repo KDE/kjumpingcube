@@ -48,9 +48,6 @@ public:
   /** Default Constructor */
   KJumpingCube();
 
-  /** Default Destructor */
-  ~KJumpingCube();
-
 private:
   KCubeBoxWidget *view;
   KAction *undoAction, *stopAction, *hintAction;
