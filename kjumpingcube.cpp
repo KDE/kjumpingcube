@@ -21,6 +21,7 @@
 **************************************************************************** */
 #include "kjumpingcube.h"
 #include "brain.h"
+#include "version.h"
 
 #include <kapp.h>
 #include <kglobal.h>
@@ -60,7 +61,6 @@
 
 
 #define MESSAGE_TIME 2000
-#define KJC_VERSION 1.0
 
 KJumpingCube::KJumpingCube()
 	: view(new KCubeBoxWidget(5,this))

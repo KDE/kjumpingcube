@@ -19,12 +19,22 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 **************************************************************************** */
+#include "version.h"
 #include "kjumpingcube.h"
 #include <kapp.h>
+#include <klocale.h>
+#include <kcmdlineargs.h>
+
+
+static const char *description = 
+	I18N_NOOP("KDE Game");
+
 
 int main(int argc, char *argv[])
 {
-	KApplication app(argc, argv, "kjumpingcube");
+	KCmdLineArgs::init(argc, argv, "kjumpingcube", description, KJC_VERSION);
+
+	KApplication app;
 
 	// All session management is handled in the RESTORE macro
 	if (app.isRestored())
