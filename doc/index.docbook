@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kjumpingcube;">
+  <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
-  
-  
 ]>
 <book lang="&language;">
 
@@ -96,8 +95,8 @@ neighbours.</para></listitem>
 <term>
 <menuchoice>
 <shortcut><keycombo
-action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>N</accel>ew</guimenuitem></menuchoice>
+action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Start a new game.</action></para></listitem>
 </varlistentry>
@@ -105,8 +104,8 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo></shortcut>
 <varlistentry>
 <term><menuchoice>
 <shortcut><keycombo
-action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>L</accel>oad...</guimenuitem></menuchoice>
+action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Open a previously saved game.</action></para></listitem>
 </varlistentry>
@@ -114,15 +113,15 @@ action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo></shortcut>
 <varlistentry>
 <term><menuchoice>
 <shortcut><keycombo
-action="simul"><keycap>Ctrl</keycap><keycap>S</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>S</accel>ave</guimenuitem></menuchoice>
+action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Save the current game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Save <accel>A</accel>s...</guimenuitem>
+<guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem>
 </menuchoice>
 </term>
 <listitem><para><action>Save the current game with a different
@@ -132,15 +131,15 @@ name.</action></para></listitem>
 <varlistentry>
 <term><menuchoice><shortcut><keycombo action="simul"> 
 <keycap>H</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Get <accel>H</accel>int</guimenuitem></menuchoice></term>
+<guimenu>Game</guimenu><guimenuitem>Get Hint</guimenuitem></menuchoice></term>
 <listitem><para><action>Get a hint as to the best next
 move.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycap>Esc</keycap></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem>Stop <accel>t</accel>hinking</guimenuitem></menuchoice></term>
+<shortcut>&Esc;</shortcut>
+<guimenu>Game</guimenu><guimenuitem>Stop thinking</guimenuitem></menuchoice></term>
 <listitem><para><action>Stop the computer opponent thinking about its next
 move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
@@ -149,8 +148,8 @@ up to the moment you told it to stop.</para></listitem>
 <varlistentry>
 <term><menuchoice>
 <shortcut><keycombo action="simul">
-<keycap>Ctrl</keycap><keycap>Q</keycap></keycombo></shortcut>
-<guimenu><accel>G</accel>ame</guimenu><guimenuitem><accel>Q</accel>uit</guimenuitem></menuchoice></term>
+&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
 <listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
 </varlistentry>
 </variablelist>
@@ -162,9 +161,9 @@ up to the moment you told it to stop.</para></listitem>
 <variablelist>
 <varlistentry>
 <term><menuchoice>
-<shortcut><keycombo action="simul"><keycap>Ctrl</keycap><keycap>Z</keycap>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap>
 </keycombo></shortcut>
-<guimenu><accel>E</accel>dit</guimenu><guimenuitem>Und<accel>o</accel>
+<guimenu>Edit</guimenu><guimenuitem>Undo
 Move</guimenuitem></menuchoice></term>
 <listitem><para><action>Undo the last move you made.</action></para></listitem>
 </varlistentry>
@@ -177,59 +176,59 @@ Move</guimenuitem></menuchoice></term>
 
 <variablelist>
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu><guimenuitem>Show
-<accel>T</accel>oolbar</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
+Toolbar</guimenuitem></menuchoice></term>
 <listitem><para><action>Toggle on and off the view of the tool
 bar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu><guimenuitem>Show
- St<accel>a</accel>tusbar</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
+ Statusbar</guimenuitem></menuchoice></term>
 <listitem><para><action>Toggle on and off the view of the status
  bar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu><guimenuitem>Configure <accel>K</accel>ey Bindings...</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Key Bindings...</guimenuitem></menuchoice></term>
 <listitem><para><action>Open a dialog where you can change the
 keybindings</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guisubmenu><accel>P</accel>layfield</guisubmenu></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guisubmenu>Playfield</guisubmenu></menuchoice></term>
 <listitem><para><action>Lets you choose from a list of playfield
 sizes.</action></para>
 <para>The sizes available in the submenu are:</para>
 <simplelist>
-<member><guimenuitem><accel>5</accel>x5</guimenuitem></member>
-<member><guimenuitem><accel>6</accel>x6</guimenuitem></member>
-<member><guimenuitem><accel>7</accel>x7</guimenuitem></member>
-<member><guimenuitem><accel>8</accel>x8</guimenuitem></member>
-<member><guimenuitem><accel>9</accel>x9</guimenuitem></member>
-<member><guimenuitem><accel>1</accel>0x10</guimenuitem></member>
+<member><guimenuitem>5x5</guimenuitem></member>
+<member><guimenuitem>6x6</guimenuitem></member>
+<member><guimenuitem>7x7</guimenuitem></member>
+<member><guimenuitem>8x8</guimenuitem></member>
+<member><guimenuitem>9x9</guimenuitem></member>
+<member><guimenuitem>10x10</guimenuitem></member>
 </simplelist>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guisubmenu>S<accel>k</accel>ill</guisubmenu></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guisubmenu>Skill</guisubmenu></menuchoice></term>
 <listitem><para><action>Lets you choose your playing skill from a
 submenu.</action> This decides how clever your computer opponent is, if you are
 playing against the computer.</para>
 <para>You can choose from:</para>
 <simplelist>
-<member><guimenuitem><accel>B</accel>eginner</guimenuitem></member>
-<member><guimenuitem><accel>A</accel>verage</guimenuitem></member>
-<member><guimenuitem><accel>E</accel>xpert</guimenuitem></member>
+<member><guimenuitem>Beginner</guimenuitem></member>
+<member><guimenuitem>Average</guimenuitem></member>
+<member><guimenuitem>Expert</guimenuitem></member>
 </simplelist></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Computer plays Player <accel>1</accel></guimenuitem></menuchoice>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Computer plays Player 1</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Sets the computer opponent to be Player
 1</action></para>
@@ -238,8 +237,8 @@ playing against the computer.</para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Computer plays Player <accel>2</accel></guimenuitem></menuchoice>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Computer plays Player 2</guimenuitem></menuchoice>
 </term>
 <listitem><para><action>Sets the computer opponent to be Player
 2</action></para>
@@ -248,14 +247,14 @@ playing against the computer.</para>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
+<term><menuchoice><guimenu>Settings</guimenu>
 <guimenuitem>Color Player 1...</guimenuitem></menuchoice></term>
 <listitem><para><action>Opens a dialog box where you can choose the color for
 Player 1's pieces.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu><accel>S</accel>ettings</guimenu>
+<term><menuchoice><guimenu>Settings</guimenu>
 <guimenuitem>Color Player 2...</guimenuitem></menuchoice></term>
 <listitem><para><action>Opens a dialog box where you can choose the color for
 Player 2's pieces.</action></para></listitem>
@@ -266,44 +265,8 @@ Player 2's pieces.</action></para></listitem>
 <sect2 id="help-menu">
 <title>The <guimenu>Help</guimenu> menu</title>
 
-<variablelist>
-<varlistentry>
-<term><menuchoice><shortcut><keycap>F1</keycap></shortcut>
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>C</accel>ontents</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Open the help</action> for &kjumpingcube; (this
-document)</para></listitem>
-</varlistentry>
+&help.menu.documentation;
 
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul"><keycap>Shift</keycap>
-<keycap>F1</keycap></keycombo></shortcut><guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem>What's <accel>T</accel>his?</guimenuitem></menuchoice></term>
-<listitem><para><action>Change to What's This? mode</action>, where the cursor
-turns into a question mark, and clicking on interface items will give you a
-short popup help item, if one exists.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem><accel>R</accel>eport Bug...</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a dialog box, where you can report a bug, or
-request a wishlist feature.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout
-KJumpingCube...</guimenuitem></menuchoice></term>
-<listitem><para><action>Shows information about the developers and other
-contributors</action> to &kjumpingcube;</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu><accel>H</accel>elp</guimenu><guimenuitem>About
-<accel>K</accel>DE...</guimenuitem></menuchoice></term>
-<listitem><para><action>Shows information about KDE</action></para></listitem>
-</varlistentry>
-</variablelist>
 </sect2>
 </sect1>
 
@@ -358,7 +321,7 @@ document)</para></listitem>
 <chapter id="questions-answers-tips">
 <title>Questions, Answers, and Tips</title>
 
-<sect1 id="Strategytips">
+<sect1 id="strategy-tips">
 <title>Strategy tips</title>
 
 <itemizedlist>
@@ -400,11 +363,7 @@ name.</para>
 <sect1 id="getting-kjumpingcube">
 <title>How to obtain &kjumpingcube;</title>
 
-<para>&kjumpingcube; is written for the KDE project <ulink
-url="http://www.kde.org">http://www.kde.org</ulink>.  &kjumpingcube; can be found in
-the kdegames package on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
-ftp site of the KDE project.</para>
+&install.intro.documentation;
 
 </sect1>
 
@@ -421,14 +380,7 @@ All required libraries as well as &kjumpingcube; itself can be found on
 <sect1 id="compilation">
 <title>Compilation and Installation</title>
 
-<para>In order to compile and install &kjumpingcube; on your system, type the following
-in the base directory of the &kjumpingcube; distribution:</para>
-
-<screen width="40">
-<prompt>%</prompt> <userinput><command>./configure</command></userinput>
-<prompt>%</prompt> <userinput><command>make</command></userinput>
-<prompt>%</prompt> <userinput><command>make</command> <parameter>install</parameter></userinput>
-</screen>
+&install.compile.documentation;
 
 <para>That should do it! Should you run into any problems, please report them
 to the author, at <email>matthias.kiefer@gmx.de</email></para>
