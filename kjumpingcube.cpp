@@ -29,7 +29,6 @@
 #include <kaccel.h>
 #include <kkeydialog.h>
 #include <kiconloader.h>
-#include <qpopupmenu.h>
 #include <kcolordlg.h>
 #include <kfiledialog.h>
 #include <ksimpleconfig.h>
@@ -95,18 +94,18 @@ KJumpingCube::KJumpingCube()
    kaccel->readSettings();
 
    // init menubar
-   QPopupMenu *p = new QPopupMenu(this);
+   KPopupMenu *p = new KPopupMenu(this);
    int id;
-   id=p->insertItem(i18n("&New Game"),this,SLOT(newGame()));
+   id=p->insertItem(SmallIcon("filenew"),i18n("&New Game"),this,SLOT(newGame()));
    kaccel->changeMenuAccel(p,id,KStdAccel::New);
-   id=p->insertItem(i18n("&Open..."),this,SLOT(openGame()));
+   id=p->insertItem(SmallIcon("fileopen"),i18n("&Open..."),this,SLOT(openGame()));
    kaccel->changeMenuAccel(p,id,KStdAccel::Open);
    p->insertSeparator();
-   id=p->insertItem(i18n("&Save"),this,SLOT(save()));
+   id=p->insertItem(SmallIcon("filesave"),i18n("&Save"),this,SLOT(save()));
    kaccel->changeMenuAccel(p,id,KStdAccel::Save);
    p->insertItem(i18n("Save &As..."),this,SLOT(saveAs()));
    p->insertSeparator();
-   id=p->insertItem(i18n("&Quit"),this,SLOT(quit()));
+   id=p->insertItem(SmallIcon("exit"),i18n("&Quit"),this,SLOT(quit()));
    kaccel->changeMenuAccel(p,id,KStdAccel::Quit);
 
    connect(p,SIGNAL(activated(int)),SLOT(menuCallback(int)));
@@ -115,7 +114,7 @@ KJumpingCube::KJumpingCube()
    menuBar()->insertItem(i18n("&File"), p);
 
 
-   game=new QPopupMenu(this);
+   game=new KPopupMenu(this);
    game->setCheckable(TRUE);
    game->insertItem(i18n("Get &Hint"),ID_GAME_HINT);
    kaccel->changeMenuAccel(game,ID_GAME_HINT,"Get Hint");
@@ -123,7 +122,7 @@ KJumpingCube::KJumpingCube()
    kaccel->changeMenuAccel(game,ID_GAME_STOP_HINT,"Stop Thinking");
    game->setItemEnabled(ID_GAME_STOP_HINT,FALSE);
    game->insertSeparator();
-   game->insertItem(i18n("&Undo Move"),ID_GAME_UNDO);
+   game->insertItem(SmallIcon("undo"),i18n("&Undo Move"),ID_GAME_UNDO);
    kaccel->changeMenuAccel(game,ID_GAME_UNDO,"Undo");
 
    game->setItemEnabled(ID_GAME_UNDO,FALSE);
@@ -132,7 +131,7 @@ KJumpingCube::KJumpingCube()
    menuBar()->insertItem( i18n("&Game"),game );
 
 
-   playfieldMenu=new QPopupMenu(this);
+   playfieldMenu=new KPopupMenu(this);
    playfieldMenu->setCheckable(TRUE);
    playfieldMenu->insertItem("&5x5",ID_FIELD +5);
    playfieldMenu->insertItem("&6x6",ID_FIELD +6);
@@ -144,7 +143,7 @@ KJumpingCube::KJumpingCube()
    connect(playfieldMenu,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
 
-   skillMenu=new QPopupMenu(this);
+   skillMenu=new KPopupMenu(this);
    skillMenu->setCheckable(TRUE);
    skillMenu->insertItem(i18n("&Beginner"),ID_SKILL_BASE+0);
    skillMenu->insertItem(i18n("&Average"),ID_SKILL_BASE+1);
@@ -152,7 +151,7 @@ KJumpingCube::KJumpingCube()
 
    connect(skillMenu,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
-   options = new QPopupMenu(this);
+   options = new KPopupMenu(this);
    options->setCheckable(TRUE);
 
    options->insertItem(i18n("Show &Toolbar"),ID_VIEW_TOOLBAR);
@@ -168,7 +167,7 @@ KJumpingCube::KJumpingCube()
 
 
    connect(options,SIGNAL(activated(int)),SLOT(menuCallback(int)));
-   menuBar()->insertItem(i18n("&Options"), options);
+   menuBar()->insertItem(i18n("&Settings"), options);
 
    QString s;
    s =i18n("KJumpingCube Version %1 \n\n (C) 1998-2000 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
@@ -204,7 +203,7 @@ KJumpingCube::KJumpingCube()
 		  true,i18n("Get Hint"));
 
    // undo-button
-   toolBar()->insertButton(loader->loadIcon("back", KIcon::Toolbar),ID_GAME_UNDO,true,
+   toolBar()->insertButton(loader->loadIcon("undo", KIcon::Toolbar),ID_GAME_UNDO,true,
 		         i18n("Undo Move"));
    toolBar()->setItemEnabled(ID_GAME_UNDO,false);
    toolBar()->insertSeparator();
@@ -223,8 +222,9 @@ KJumpingCube::KJumpingCube()
 
    // init statusbar
    s = i18n("on turn: Player %1").arg(1);
-   statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN);
+   statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN,2);
    statusBar()->changeItem(s,ID_STATUS_TURN);
+   statusBar()->setItemAlignment (ID_STATUS_TURN,AlignLeft | AlignVCenter);
 
   
 
@@ -374,7 +374,6 @@ void KJumpingCube::saveSettings()
 
    statusBar()->message(i18n("settings saved"),MESSAGE_TIME);
 }
-
 
 void KJumpingCube::newGame()
 {
@@ -740,7 +739,7 @@ void KJumpingCube::menuCallback(int item)
       }
     case ID_OPT_KEYS:
     {
-       if(KKeyDialog::configureKeys(kaccel))
+       if(KKeyDialog::configureKeys(kaccel,true,this))
        {
 	  kaccel->changeMenuAccel(game,ID_GAME_HINT,"Get Hint");
    	  kaccel->changeMenuAccel(game,ID_GAME_STOP_HINT,"Stop Thinking");
