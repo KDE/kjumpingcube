@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
 
         KApplication app;
 
+        KGlobal::locale()->insertCatalogue("libkdegames");
+
         // All session management is handled in the RESTORE macro
 	if (app.isRestored())
 	{
