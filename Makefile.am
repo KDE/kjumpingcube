@@ -13,7 +13,7 @@ EXTRA_DIST = kjumpingcube.desktop
 
 KDE_ICON = kjumpingcube
 
-appsdir = $(kde_appsdir)/Programs/Games
+appsdir = $(kde_appsdir)/Games
 apps_DATA = kjumpingcube.desktop
 
 METASOURCES = AUTO
