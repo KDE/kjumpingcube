@@ -75,6 +75,8 @@ KJumpingCube::KJumpingCube()
 
   resize(400,400);
   setAutoSaveSettings();
+  showStatusbar->setChecked(!statusBar()->isHidden());
+  showToolbar->setChecked(!toolBar()->isHidden());
 }
 
 void KJumpingCube::initKAction() {
