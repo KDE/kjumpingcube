@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
                           KJC_VERSION, description, KAboutData::License_GPL,
                           "(c) 1998-2000, Matthias Kiefer");
     aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
-    aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben@meyerhome.net");
+    aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication app;
