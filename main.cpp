@@ -24,6 +24,7 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
+#include <kaboutdata.h>
 
 
 static const char *description = 
@@ -32,7 +33,11 @@ static const char *description =
 
 int main(int argc, char *argv[])
 {
-	KCmdLineArgs::init(argc, argv, "kjumpingcube", description, KJC_VERSION);
+	KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"), 
+		KJC_VERSION, description, KAboutData::GPL, 
+		"(c) 1999-2000, DEVELOPERS");
+	aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
+	KCmdLineArgs::init( argc, argv, &aboutData );
 
 	KApplication app;
 
