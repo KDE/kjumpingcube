@@ -30,6 +30,7 @@ Type=Application
 BinaryPattern=kjumpingcube;
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
+GenericName[af]=taktiese speletjie
 GenericName[ar]=لعبة تكتيكية
 GenericName[az]=Taktik oyunu
 GenericName[be]=Тактычная гульня
