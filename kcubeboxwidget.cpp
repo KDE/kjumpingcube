@@ -272,9 +272,9 @@ void KCubeBoxWidget::saveGame(KConfigBase* config)
 	key.sprintf("%u,%u",row,column);
 	owner.sprintf("%u",cubes[row][column]->owner());
 	value.sprintf("%u",cubes[row][column]->value());
-	list.append((const char *) owner);
-	list.append((const char *) value);
-	config->writeEntry((const char *)key , list);
+	list.append(owner.ascii());
+	list.append(value.ascii());
+	config->writeEntry(key , list);
 
 	list.clear();
       }
@@ -291,7 +291,7 @@ void KCubeBoxWidget::restoreGame(KConfigBase* config)
     for(int column=0; column < cubeDim ; column++)
       {
 	key.sprintf("%u,%u",row,column);
-	config->readListEntry((const char *) key, list);
+	config->readListEntry(key, list);
 	owner=list.first();
 	value=list.next();
 	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());

@@ -175,7 +175,7 @@ KJumpingCube::KJumpingCube()
    menuBar()->insertItem(i18n("&Options"), options);
 
    QString s;
-   s.sprintf(i18n("KJumpingCube Version %s \n\n (C) 1998,1999 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n"),KJC_VERSION);
+   s =i18n("KJumpingCube Version %1 \n\n (C) 1998,1999 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
    s+=i18n("This program is free software; you can redistribute it\n");
    s+=i18n("and/or modify it under the terms of the GNU General\n");
    s+=i18n("Public License as published by the Free Software\n");
@@ -228,7 +228,7 @@ KJumpingCube::KJumpingCube()
 
 
    // init statusbar
-   s.sprintf(i18n("on turn: Player %d"),1);
+   s = i18n("on turn: Player %1").arg(1);
    statusBar()->insertItem(s+i18n("(Computer)"),ID_STATUS_TURN);
    statusBar()->changeItem(s,ID_STATUS_TURN);
 
@@ -442,7 +442,7 @@ void KJumpingCube::saveGame(bool saveAs)
       filename=temp;
    }
 
-   KSimpleConfig config((const char*)filename);
+   KSimpleConfig config(filename);
 
    config.setGroup("KJumpingCube");
    config.writeEntry("Version",KJC_VERSION);
@@ -466,7 +466,7 @@ void KJumpingCube::openGame()
       if(temp.isEmpty() )
          return;
 
-      QFileInfo file((const char*)temp);
+      QFileInfo file(temp);
       gameDir=file.filePath();
       if(!file.isReadable())
       {
@@ -478,7 +478,7 @@ void KJumpingCube::openGame()
    }
    while(!fileOk);
 
-   KSimpleConfig config((const char *)temp,true);
+   KSimpleConfig config(temp,true);
    config.setGroup("KJumpingCube");
    if(!config.hasKey("Version"))
    {
