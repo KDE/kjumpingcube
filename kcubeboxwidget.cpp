@@ -431,7 +431,7 @@ void KCubeBoxWidget::init()
    undoBox=new CubeBox(dim());
    
    currentPlayer=One;
-   moveDelay=500;
+   moveDelay=100;
    moveTimer=new QTimer(this);
    computerPlOne=false;
    computerPlTwo=false;
