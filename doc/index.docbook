@@ -8,10 +8,13 @@
    <firstname>Matthias</firstname>
    <surname>Kiefer</surname>
    <affiliation>
-   <address><Email>matthias.kiefer@gmx.de</Email></address>
+   <address><email>matthias.kiefer@gmx.de</email></address>
    </affiliation>
 </author>
 </authorgroup>
+
+<date>20/10/1999</date>
+<releaseinfo>1.00.00</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -20,18 +23,6 @@
 <keyword>game</keyword>
 <keyword>strategy</keyword>
 </keywordset>
-
-<date>20/10/1999</date>
-<releaseinfo>1.00.00</releaseinfo>
-
-<revhistory>
-<revision>
-<revnumber>1.0</revnumber>
-<date>20th October 1999</date>
-<authorinitials>M.K.</authorinitials>
-<revremark>cleaned up the doc from conversion to docbook</revremark>
-</revision>
-</revhistory>
 
 <abstract>
 <para id="Abstract">
