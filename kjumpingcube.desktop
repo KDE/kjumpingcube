@@ -84,4 +84,4 @@ GenericName[zu]=Umdlalo wamasu
 Terminal=0
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
-Categories=QT;KDE;Game;StrategyGame
+Categories=Qt;KDE;Game;StrategyGame
