@@ -1,5 +1,4 @@
-# KDE Config File 
-[KDE Desktop Entry]
+[Desktop Entry]
 Name=KJumpingCube
 Name[eo]=Saltanta kubo
 Name[fi]=Hyppivä kuutio
@@ -13,6 +12,7 @@ BinaryPattern=kjumpingcube;
 DocPath=kjumpingcube/index.html
 Comment=Tactical Game
 Comment[ca]=Joc de tàctica
+Comment[de]=Taktikspiel
 Comment[eo]=Taktika ludo
 Comment[fi]=Taktinen peli
 Comment[hu]=Taktikai játék
