@@ -145,6 +145,12 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 	     cerr << "brain stopped" << endl;
 #endif
 	     active=false;
+             for(i=0;i<box.dim();i++)
+                delete[] worth[i];
+             delete [] worth;
+
+             delete [] c2m;
+
 	     return false;
 	 }
 
