@@ -28,7 +28,7 @@
 
 
 static const char *description = 
-	I18N_NOOP("KDE Game");
+	I18N_NOOP("Tactical one- or two-player game");
 
 
 int main(int argc, char *argv[])
