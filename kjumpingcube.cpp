@@ -25,7 +25,7 @@
 
 // Settings
 #include "settings.h"
-#include "kautoconfig.h"
+#include <kautoconfigdialog.h>
 
 #include <qregexp.h>
 
@@ -279,26 +279,13 @@ void KJumpingCube::configureKeyBindings(){
  * Show Configure dialog.
  */
 void KJumpingCube::showOptions(){
-  options = new KDialogBase (this, "Configure", false, i18n("Configure"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel);
-  KAutoConfig *kautoconfig = new KAutoConfig(options, "KAutoConfig");
+  if(KAutoConfigDialog::showDialog("settings"))
+    return;
   
-  connect(options, SIGNAL(okClicked()), kautoconfig, SLOT(saveSettings()));
-  connect(options, SIGNAL(okClicked()), this, SLOT(closeOptions()));
-  connect(options, SIGNAL(applyClicked()), kautoconfig, SLOT(saveSettings()));
-  connect(options, SIGNAL(defaultClicked()), kautoconfig, SLOT(resetSettings()));
-
-  Settings *settings = new Settings(options, "General");
-  options->setMainWidget(settings);
-  kautoconfig->addWidget(settings, "Game");
-
-  kautoconfig->retrieveSettings();
-  options->show();
-	
-  connect(kautoconfig, SIGNAL(settingsChanged()), view, SLOT(readSettings()));
-}
-
-void KJumpingCube::closeOptions(){
-  options->close(true);
+  KAutoConfigDialog *dialog = new KAutoConfigDialog(this, "settings", KDialogBase::Swallow);
+  dialog->addPage(new Settings(0, "General"), i18n("General"), "Game", "package_settings");
+  connect(dialog, SIGNAL(settingsChanged()), view, SLOT(loadSettings()));
+  dialog->show();
 }
 
 #include "kjumpingcube.moc"

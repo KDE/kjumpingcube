@@ -119,7 +119,7 @@ public slots:
     */
    void getHint();
   
-  void readSettings();
+  void loadSettings();
   
 signals:
    void playerChanged(int newPlayer);

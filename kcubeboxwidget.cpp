@@ -84,7 +84,7 @@ KCubeBoxWidget::~KCubeBoxWidget()
       delete undoBox;
 }
 
-void KCubeBoxWidget::readSettings(){
+void KCubeBoxWidget::loadSettings(){
   KConfig *config=kapp->config();
   config->setGroup("Game");
   QColor c1=QColor("darkred");
@@ -435,7 +435,7 @@ void KCubeBoxWidget::init()
    computerPlOne=false;
    computerPlTwo=false;
    KCubeWidget::enableClicks(true);
-   readSettings();
+   loadSettings();
    
    connect(moveTimer,SIGNAL(timeout()),SLOT(nextLoopStep()));
    connect(this,SIGNAL(startedThinking()),SLOT(setWaitCursor()));

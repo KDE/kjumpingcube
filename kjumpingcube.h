@@ -30,7 +30,6 @@
 #include <kurl.h>
 
 class KAction;
-class KDialogBase;
 class KCubeBoxWidget;
 
 /**
@@ -53,8 +52,6 @@ private:
   KAction *undoAction, *stopAction, *hintAction;
 
   KURL gameURL;
-  KDialogBase *options;
-
   void initKAction();
 
 private slots:
@@ -73,7 +70,6 @@ private slots:
   void configureKeyBindings();
 
   void showOptions();
-  void closeOptions();
 };
 
 #endif // KJUMPINGCUBE_H
