@@ -239,9 +239,6 @@ KJumpingCube::KJumpingCube()
    {
       KConfigGroupSaver cgs(config,"Window");
 
-      int menuPos = config->readNumEntry("MenubarPos",(int)(KMenuBar::Top));
-      menuBar()->setMenuBarPos((KMenuBar::menuPosition)menuPos);
-	
       int barPos = config->readNumEntry("ToolbarPos",(int)(KToolBar::Top));
       toolBar()->setBarPos((KToolBar::BarPosition)barPos);
 	
@@ -567,7 +564,6 @@ void KJumpingCube::barPositionChanged()
 {
   KConfig *config= kapp->config();
   KConfigGroupSaver cfs(config,"Window");
-  config->writeEntry("MenubarPos",(int)(menuBar()->menuBarPos()));
   config->writeEntry("ToolbarPos",(int)(toolBar()->barPos()));
 }
 
