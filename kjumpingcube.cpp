@@ -81,18 +81,18 @@ KJumpingCube::KJumpingCube()
    // init keys
    kaccel = new KAccel(this);
 
-   kaccel->insertStdItem(KAccel::New,i18n("New Game"));
-   kaccel->connectItem(KAccel::New,this,SLOT(newGame()));
-   kaccel->connectItem(KAccel::Open,this,SLOT(openGame()));
-   kaccel->connectItem(KAccel::Save,this,SLOT(save()));
-   kaccel->connectItem(KAccel::Quit,this,SLOT(quit()));
+   kaccel->insertStdItem(KStdAccel::New,i18n("New Game"));
+   kaccel->connectItem(KStdAccel::New,this,SLOT(newGame()));
+   kaccel->connectItem(KStdAccel::Open,this,SLOT(openGame()));
+   kaccel->connectItem(KStdAccel::Save,this,SLOT(save()));
+   kaccel->connectItem(KStdAccel::Quit,this,SLOT(quit()));
 
    kaccel->insertItem(i18n("Get Hint"),"Get Hint","CTRL+H");
    kaccel->connectItem("Get Hint",this,SLOT(getHint()));
    kaccel->insertItem(i18n("Stop Thinking"),"Stop Thinking","Escape");
    kaccel->connectItem("Stop Thinking",this,SLOT(stop()));
-   kaccel->insertStdItem(KAccel::Undo,i18n("Undo Move"));
-   kaccel->connectItem(KAccel::Undo,this,SLOT(undo()));
+   kaccel->insertStdItem(KStdAccel::Undo,i18n("Undo Move"));
+   kaccel->connectItem(KStdAccel::Undo,this,SLOT(undo()));
 
    KConfig *config=kapp->config();
    kaccel->readSettings();
@@ -101,16 +101,16 @@ KJumpingCube::KJumpingCube()
    QPopupMenu *p = new QPopupMenu(this);
    int id;
    id=p->insertItem(i18n("&New Game"),this,SLOT(newGame()));
-   kaccel->changeMenuAccel(p,id,KAccel::New);
+   kaccel->changeMenuAccel(p,id,KStdAccel::New);
    id=p->insertItem(i18n("&Open..."),this,SLOT(openGame()));
-   kaccel->changeMenuAccel(p,id,KAccel::Open);
+   kaccel->changeMenuAccel(p,id,KStdAccel::Open);
    p->insertSeparator();
    id=p->insertItem(i18n("&Save"),this,SLOT(save()));
-   kaccel->changeMenuAccel(p,id,KAccel::Save);
+   kaccel->changeMenuAccel(p,id,KStdAccel::Save);
    p->insertItem(i18n("Save &As..."),this,SLOT(saveAs()));
    p->insertSeparator();
    id=p->insertItem(i18n("&Quit"),this,SLOT(quit()));
-   kaccel->changeMenuAccel(p,id,KAccel::Quit);
+   kaccel->changeMenuAccel(p,id,KStdAccel::Quit);
 
    connect(p,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
