@@ -10,10 +10,9 @@ kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp \
 					   kcubewidget.cpp cube.cpp \
                        brain.cpp cubebox.cpp
 
-appsdir = $(kde_appsdir)/Games/TacticStrategy
-apps_DATA = kjumpingcube.desktop
+xdg_apps_DATA = kjumpingcube.desktop
 
-EXTRA_DIST = $(apps_DATA)
+EXTRA_DIST = $(xdg_apps_DATA)
 
 rcdir = $(kde_datadir)/kjumpingcube
 rc_DATA = kjumpingcubeui.rc
@@ -21,5 +20,3 @@ rc_DATA = kjumpingcubeui.rc
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kjumpingcube.pot
 
-install-data-local:
-	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kjumpingcube.desktop
