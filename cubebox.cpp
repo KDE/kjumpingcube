@@ -1,7 +1,7 @@
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer
+  Copyright (C) 1998-2000 by Matthias Kiefer
                             <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
@@ -130,7 +130,7 @@ bool CubeBox::simulateMove(Player fromWhom,int row, int column)
       finished=true;
       playerWon=true;
       
-      // alle Cubes überprüfen
+      // check all Cubes
       for(i=0;i<dim();i++)
       {
 	      for(j=0;j<dim();j++)
@@ -224,19 +224,19 @@ void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column)
 
    if(row==0)
    {
-    	if(column==0)  // linke obere Ecke
+    	if(column==0)  // top left corner
 	{
 	   cubes[0][1]->increase(_player);
 	   cubes[1][0]->increase(_player);
 	   return;
 	}
-	else if(column==dim()-1)  // rechte obere Ecke
+	else if(column==dim()-1)  // top right corner
 	{
 	   cubes[0][dim()-2]->increase(_player);
 	   cubes[1][dim()-1]->increase(_player);
 	   return;
 	}
-	else  // oberer Rand
+	else  // top edge
 	{
 	   cubes[0][column-1]->increase(_player);
 	   cubes[0][column+1]->increase(_player);
@@ -246,20 +246,20 @@ void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column)
    }
    else if(row==dim()-1)
    {
-      if(column==0)  // linke untere Ecke
+      if(column==0)  // left bottom corner
       {
          cubes[dim()-2][0]->increase(_player);
          cubes[dim()-1][1]->increase(_player);
          return;
       }
 
-      else if(column==dim()-1) // rechte untere Ecke
+      else if(column==dim()-1) // right bottom corner
       {
          cubes[dim()-2][dim()-1]->increase(_player);
          cubes[dim()-1][dim()-2]->increase(_player);
 	      return;
       }
-      else  // unterer Rand
+      else  // bottom edge
       {
  	      cubes[dim()-1][column-1]->increase(_player);
 	      cubes[dim()-1][column+1]->increase(_player);
@@ -267,14 +267,14 @@ void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column)
 	      return;
       }
    }
-   else if(column==0) // linker Rand
+   else if(column==0) // left edge
    {
       cubes[row-1][0]->increase(_player);
       cubes[row+1][0]->increase(_player);
       cubes[row][1]->increase(_player);
       return;
    }
-   else if(column==dim()-1)  // rechter Rand
+   else if(column==dim()-1)  // right edge
    {
       cubes[row-1][dim()-1]->increase(_player);
       cubes[row+1][dim()-1]->increase(_player);

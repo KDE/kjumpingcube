@@ -1,7 +1,7 @@
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer
+  Copyright (C) 1998-2000 by Matthias Kiefer
                             <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
@@ -28,12 +28,14 @@
 
 #include <kapp.h>
 #include <ktmainwindow.h>
+#include <kurl.h>
 
 #include "kcubeboxwidget.h"
 
 class KAccel;
 class QPopupMenu;
 class QString;
+
 /**
  * This class serves as the main window for KJumpingCube.  It handles the
  * menus, toolbars, and status bars.
@@ -44,31 +46,32 @@ class QString;
  */
 class KJumpingCube : public KTMainWindow
 {
-	Q_OBJECT
+   Q_OBJECT
 public:
-         /** Default Constructor */
-	KJumpingCube();
+   /** Default Constructor */
+   KJumpingCube();
 
-	/** Default Destructor */
-	virtual ~KJumpingCube();
+   /** Default Destructor */
+   virtual ~KJumpingCube();
 
  
 protected:
-	/**
-	 * This function is called when it is time for the app to save its
-	 * properties for session management purposes.
-	 */
-	void saveProperties(KConfig *);
+   /**
+   * This function is called when it is time for the app to save its
+   * properties for session management purposes.
+   */
+   void saveProperties(KConfig *);
 
-	/**
-	 * This function is called when this app is restored.  The KConfig
-	 * object points to the session management config file that was saved
-	 * with @ref saveProperties
-	 */
-	void readProperties(KConfig *);
+   /**
+   * This function is called when this app is restored.  The KConfig
+   * object points to the session management config file that was saved
+   * with @ref saveProperties
+   */
+   void readProperties(KConfig *);
 	
-	/** Just to check if the brain is still working*/
-        virtual bool queryClose();
+   /** Just to check if the brain is still working*/
+   virtual bool queryClose();
+
 private:
    KCubeBoxWidget *view;
    KAccel *kaccel;
@@ -77,9 +80,7 @@ private:
    QPopupMenu *game;
    QPopupMenu *options;
 
-   QString filename;
-   QString gameDir;
-   bool saveSettingsOnExit;
+   KURL gameURL;
 
    void updatePlayfieldMenu(int dim);
    void updateSkillMenu(int id);

@@ -4,7 +4,7 @@ INCLUDES = $(all_includes)
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
 LDADD = $(LIB_KDEUI) $(LIB_KFILE)
 
-SUBDIRS =
+SUBDIRS = .
 
 kjumpingcube_SOURCES = kjumpingcube.cpp kcubeboxwidget.cpp main.cpp kcubewidget.cpp cube.cpp\
                        brain.cpp cubebox.cpp

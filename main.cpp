@@ -1,7 +1,7 @@
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer
+  Copyright (C) 1998-2000 by Matthias Kiefer
                             <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
@@ -33,18 +33,18 @@ static const char *description =
 
 int main(int argc, char *argv[])
 {
-	KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"), 
-		KJC_VERSION, description, KAboutData::License_GPL, 
-		"(c) 1999-2000, DEVELOPERS");
-	aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
-	KCmdLineArgs::init( argc, argv, &aboutData );
+        KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"),
+                KJC_VERSION, description, KAboutData::License_GPL,
+                "(c) 1998-2000, Matthias Kiefer");
+        aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
+        KCmdLineArgs::init( argc, argv, &aboutData );
 
-	KApplication app;
+        KApplication app;
 
-	// All session management is handled in the RESTORE macro
+        // All session management is handled in the RESTORE macro
 	if (app.isRestored())
 	{
-		RESTORE(KJumpingCube)
+           RESTORE(KJumpingCube)
 	}
 	else
 	{

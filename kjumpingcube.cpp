@@ -1,7 +1,7 @@
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer
+  Copyright (C) 1998-2000 by Matthias Kiefer
                             <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
@@ -35,9 +35,10 @@
 #include <ksimpleconfig.h>
 #include <qfileinfo.h>
 #include <qregexp.h>
-#include <qmessagebox.h>
 #include <kmenubar.h>
 #include <kmessagebox.h>
+#include <ktempfile.h>
+#include <kio/netaccess.h>
 
 #define ID_GAME_QUIT 1
 #define ID_GAME_NEW 2
@@ -51,7 +52,6 @@
 #define ID_HELP_CONTENTS 102
 #define ID_VIEW_TOOLBAR 201
 #define ID_VIEW_STATUSBAR 202
-#define ID_OPT_SAVE 301
 #define ID_OPT_KEYS 302
 #define ID_COLOR_BASE 400
 #define ID_FIELD 500
@@ -65,9 +65,6 @@
 KJumpingCube::KJumpingCube()
 	: view(new KCubeBoxWidget(5,this))
 {
-   saveSettingsOnExit=false;
-
-
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));	
    connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));	
@@ -168,15 +165,13 @@ KJumpingCube::KJumpingCube()
    options->insertItem(i18n("Computer plays Player &2"),ID_COMPUTER_BASE+2);
    options->insertItem(i18n("Color Player 1..."),ID_COLOR_BASE+1);
    options->insertItem(i18n("Color Player 2..."),ID_COLOR_BASE+2);
-   options->insertSeparator();
-   options->insertItem(i18n("&Save Settings"),ID_OPT_SAVE);
 
 
    connect(options,SIGNAL(activated(int)),SLOT(menuCallback(int)));
    menuBar()->insertItem(i18n("&Options"), options);
 
    QString s;
-   s =i18n("KJumpingCube Version %1 \n\n (C) 1998,1999 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
+   s =i18n("KJumpingCube Version %1 \n\n (C) 1998-2000 by Matthias Kiefer \nmatthias.kiefer@gmx.de\n\n").arg(KJC_VERSION);
    s+=i18n(
      "This program is free software; you can redistribute it\n"
      "and/or modify it under the terms of the GNU General\n"
@@ -187,9 +182,6 @@ KJumpingCube::KJumpingCube()
 
    menuBar()->insertSeparator();
    menuBar()->insertItem( i18n("&Help"), help );
-
-   connect(menuBar(),SIGNAL(moved(menuPosition)),SLOT(barPositionChanged()));
-
 
    // init toolbar
    KIconLoader *loader = KGlobal::iconLoader();
@@ -291,6 +283,8 @@ KJumpingCube::KJumpingCube()
 
 KJumpingCube::~KJumpingCube()
 {
+   saveSettings();
+
    if(view)
    {
       if(view->isActive())
@@ -352,10 +346,6 @@ void KJumpingCube::readProperties(KConfig *config)
 
 void KJumpingCube::quit()
 {
-   if(saveSettingsOnExit)
-   {
-      saveSettings();
-   }
    view->stopActivities();
    kapp->quit();
 }
@@ -407,49 +397,43 @@ void KJumpingCube::save()
 
 void KJumpingCube::saveGame(bool saveAs)
 {
-   if(saveAs || filename.isEmpty())
+   if(saveAs || gameURL.isEmpty())
    {
       int result=0;
       KURL url;
-      QString temp;
+
       do
       {
-         url = KFileDialog::getSaveURL(gameDir,"*.kjc",this,0);
+         url = KFileDialog::getSaveURL(gameURL.url(),"*.kjc",this,0);
 
          if(url.isEmpty())
             return;
 
-         if( !url.isLocalFile() )
-	 {
-	   KMessageBox::sorry( 0L, i18n( "Only local file saving supported yet" ) );
-	   return;
-	 }
 
          // check filename
-	 temp = url.path();
          QRegExp pattern("*.kjc",true,true);
-         if(pattern.match(temp)==-1)
+         if(pattern.match(url.filename())==-1)
          {
-            temp+=".kjc";
+            url.setFileName( url.filename()+".kjc" );
          }
-         QFileInfo file(temp);
-         gameDir=file.filePath();
-         if(file.exists() && file.isWritable())
+
+         if(KIO::NetAccess::exists(url))
          {
             QString mes=i18n("The file %1 exists.\n"
-			     "Do you want to override it?").arg(temp);
-	    result = QMessageBox::information(this, kapp->caption(), 
-					     mes, i18n("Yes"), i18n("No"));
-            if(result==2)
+			     "Do you want to override it?").arg(url.url());
+	    result = KMessageBox::warningYesNoCancel(this, mes);
+            if(result==KMessageBox::Cancel)
                return;
          }
       }
-      while(result==1);
+      while(result==KMessageBox::No);
 
-      filename=temp;
+      gameURL=url;
    }
 
-   KSimpleConfig config(filename);
+   KTempFile tempFile;
+   tempFile.setAutoDelete(true);
+   KSimpleConfig config(tempFile.name());
 
    config.setGroup("KJumpingCube");
    config.writeEntry("Version",KJC_VERSION);
@@ -458,58 +442,69 @@ void KJumpingCube::saveGame(bool saveAs)
    view->saveGame(&config);
    config.sync();
 
-   QString s=i18n("game saved as %1");
-   s=s.arg(filename);
-   statusBar()->message(s,MESSAGE_TIME);
+   if(KIO::NetAccess::upload( tempFile.name(),gameURL ))
+   {
+      QString s=i18n("game saved as %1");
+      s=s.arg(gameURL.url());
+      statusBar()->message(s,MESSAGE_TIME);
+   }
+   else
+   {
+      KMessageBox::sorry(this,i18n("There was an error in saving file\n%1").arg(gameURL.url()));
+   }
 }
 
 void KJumpingCube::openGame()
 {
    bool fileOk=true;
    KURL url;
-   QString temp;
+
    do
    {
-      url = KFileDialog::getOpenURL( gameDir, "*.kjc", this, 0 );
+      url = KFileDialog::getOpenURL( gameURL.url(), "*.kjc", this, 0 );
 
       if( url.isEmpty() )
          return;
 
-      if( !url.isLocalFile() )
-      {
-        KMessageBox::sorry( 0L, i18n( "Only local files are supported yet." ) );
-	return;
-      }
 
-      temp=url.path();
-      QFileInfo file(temp);
-      gameDir=file.filePath();
-      if(!file.isReadable())
+      if(!KIO::NetAccess::exists(url.url()))
       {
-         QString mes=i18n("The file %1 doesn't exists or isn't readable!").arg(temp);
-         QMessageBox::information(this,kapp->caption(), mes, i18n("OK"));
-         return;
+         QString mes=i18n("The file %1 doesn't exists!").arg(url.url());
+         KMessageBox::sorry(this,mes);
+
+         fileOk=false;
       }
    }
    while(!fileOk);
 
-   KSimpleConfig config(temp,true);
-   config.setGroup("KJumpingCube");
-   if(!config.hasKey("Version"))
+   QString tempFile;
+   if( KIO::NetAccess::download( url, tempFile ) )
    {
-      QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!");
-      mes=mes.arg(temp);
-      QMessageBox::information(this,kapp->caption(),mes,i18n("OK"));
-      return;
+      KSimpleConfig config(tempFile,true);
+      config.setGroup("KJumpingCube");
+      if(!config.hasKey("Version"))
+      {
+         QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!");
+         mes=mes.arg(url.url());
+         KMessageBox::sorry(this,mes);
+         return;
+      }
+
+      gameURL=url;
+      view->setDim(config.readNumEntry("CubeDim",5));
+      config.setGroup("Game");
+      view->restoreGame(&config);
+
+      game->setItemEnabled(ID_GAME_UNDO,false);
+      toolBar()->setItemEnabled(ID_GAME_UNDO,false);
+
+      KIO::NetAccess::removeTempFile( tempFile );
+   }
+   else
+   {
+      KMessageBox::sorry(this,i18n("There was an error loading file\n%1").arg( url.url() ));
    }
 
-   filename=temp;
-   view->setDim(config.readNumEntry("CubeDim",5));
-   config.setGroup("Game");
-   view->restoreGame(&config);
-
-   game->setItemEnabled(ID_GAME_UNDO,false);
-   toolBar()->setItemEnabled(ID_GAME_UNDO,false);
 }
 
 void KJumpingCube::getHint()
@@ -572,7 +567,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 void KJumpingCube::showWinner(int player)
 {
    QString s=i18n("Winner is Player %1!").arg(player);
-   QMessageBox::information(this,i18n("Winner"), s, i18n("OK"));
+   KMessageBox::information(this,s,i18n("Winner"));
    view->reset();
 }
 
@@ -707,9 +702,6 @@ void KJumpingCube::menuCallback(int item)
 	 options->setItemChecked(ID_VIEW_STATUSBAR, status?false:true);
 	 break;
       }
-      case ID_OPT_SAVE:
-         saveSettings();
-         break;
 
       case ID_COLOR_BASE+1:
       case ID_COLOR_BASE+2:
