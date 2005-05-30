@@ -25,6 +25,9 @@
 #include <kconfig.h>
 #include <qlayout.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <Q3StrList>
+#include <QGridLayout>
 #include <assert.h>
 #include <kcursor.h>
 
@@ -255,7 +258,7 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
    // save current player
    config->writeEntry("onTurn",(int)currentPlayer);
 
-   QStrList list;
+   Q3StrList list;
    list.setAutoDelete(true);
    QString owner, value, key;
    int cubeDim=dim();
@@ -277,7 +280,7 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
 
 void KCubeBoxWidget::readProperties(KConfigBase* config)
 {
-  QStrList list;
+  Q3StrList list;
   list.setAutoDelete(true);
   QString owner, value, key;
   setDim(config->readNumEntry("CubeDim",5));

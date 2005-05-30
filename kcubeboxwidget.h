@@ -26,6 +26,8 @@
 #include "kcubewidget.h"
 #include "brain.h"
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QGridLayout>
 
 class QGridLayout;
 class CubeBox;
