@@ -137,11 +137,11 @@ bool CubeBox::simulateMove(Player fromWhom,int row, int column)
 	         {
 	            increaseNeighbours(fromWhom,i,j);
 	            cubes[i][j]->decrease();
-	            finished=FALSE;
+	            finished=false;
 	         }
 
 	         if(cubes[i][j]->owner()!=(Cube::Owner)fromWhom)
-	         playerWon=FALSE;
+	         playerWon=false;
          }
       }
 
