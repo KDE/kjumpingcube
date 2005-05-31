@@ -43,9 +43,6 @@
                     <property name="name">
                         <cstring>groupBox3</cstring>
                     </property>
-                    <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
-                    </property>
                     <property name="frameShadow">
                         <enum>Sunken</enum>
                     </property>
