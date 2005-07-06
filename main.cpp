@@ -16,7 +16,7 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  Foundation, Inc., 51 Franklin Steet, Fifth Floor, Boston, MA  02110-1301, USA.
 
 **************************************************************************** */
 #include "version.h"
@@ -29,6 +29,10 @@
 static const char description[] =
 	I18N_NOOP("Tactical one or two player game");
 
+// A hack to circumvent tricky i18n issue, not used later on in the code.
+// Both context and contents must be exactly the same as for the entry in
+// kdelibs/kdeui/ui_standards.rc
+static const char dummy[] = I18N_NOOP2("Menu title", "&Move");
 
 int main(int argc, char *argv[])
 {
