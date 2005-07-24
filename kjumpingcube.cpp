@@ -124,7 +124,7 @@ void KJumpingCube::saveGame(bool saveAs)
          {
             QString mes=i18n("The file %1 exists.\n"
                "Do you want to overwrite it?").arg(url.url());
-            result = KMessageBox::warningYesNoCancel(this, mes);
+            result = KMessageBox::warningContinueCancel(this, mes, QString::null, i18n("Overwrite"));
             if(result==KMessageBox::Cancel)
                return;
          }
