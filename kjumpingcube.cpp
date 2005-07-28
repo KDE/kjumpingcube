@@ -63,13 +63,13 @@ KJumpingCube::KJumpingCube()
    QString s = i18n("Current player:");
    statusBar()->insertItem(s,ID_STATUS_TURN_TEXT, false);
    statusBar()->changeItem(s,ID_STATUS_TURN_TEXT);
-   statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, AlignLeft | AlignVCenter);
+   statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, Qt::AlignLeft | Qt::AlignVCenter);
    statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
  
    currentPlayer = new QWidget(this, "currentPlayer");
    currentPlayer->setFixedWidth(40);
    statusBar()->addWidget(currentPlayer, ID_STATUS_TURN, false);
-   statusBar()->setItemAlignment(ID_STATUS_TURN, AlignLeft | AlignVCenter);
+   statusBar()->setItemAlignment(ID_STATUS_TURN, Qt::AlignLeft | Qt::AlignVCenter);
 
    initKAction();
    changePlayer(1);

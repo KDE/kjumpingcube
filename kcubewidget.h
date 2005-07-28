@@ -22,7 +22,9 @@
 #ifndef KCUBEWIDGET_H
 #define KCUBEWIDGET_H
 
-#include <qframe.h>
+#include <q3frame.h>
+//Added by qt3to4:
+#include <QMouseEvent>
 #include "cube.h"
 
 class QPalette;
@@ -32,7 +34,7 @@ class QTimer;
 /**
 * 
 */
-class KCubeWidget : public QFrame , public Cube 
+class KCubeWidget : public Q3Frame , public Cube 
 {
    Q_OBJECT
          

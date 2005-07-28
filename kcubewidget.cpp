@@ -23,6 +23,10 @@
 
 #include <qpainter.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QPixmap>
+#include <Q3Frame>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -75,7 +79,7 @@ QPalette KCubeWidget::color(Owner forWhom)
 
 KCubeWidget::KCubeWidget(QWidget* parent,const char* name
                   ,Owner owner,int value,int max)
-              : QFrame(parent,name),
+              : Q3Frame(parent,name),
                 Cube(owner,value,max)
 {
   setFrameStyle(Panel|Raised);
@@ -200,7 +204,7 @@ void KCubeWidget::stopHint()
    if(hintTimer->isActive())
    {
       hintTimer->stop();
-      setBackgroundMode(PaletteBackground);
+      setBackgroundMode(Qt::PaletteBackground);
    }
 
 }
@@ -216,11 +220,11 @@ void KCubeWidget::hint()
    hintCounter--;
    if(hintCounter%2==1)
    {
-      setBackgroundMode(PaletteLight);
+      setBackgroundMode(Qt::PaletteLight);
    }
    else
    {
-      setBackgroundMode(PaletteBackground);
+      setBackgroundMode(Qt::PaletteBackground);
    }
    if(hintCounter==0)
    {
@@ -240,7 +244,7 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
   if(e->x()< 0 || e->x() > width() || e->y() < 0 || e->y() > height())
     return;
 
-  if(e->button() == LeftButton && _clicksAllowed)
+  if(e->button() == Qt::LeftButton && _clicksAllowed)
   {
     stopHint();
     emit clicked(row(),column(),true);
