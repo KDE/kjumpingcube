@@ -230,7 +230,7 @@
                         <cstring>groupBox1</cstring>
                     </property>
                     <property name="title">
-                        <string>Computer Plays</string>
+                        <string>Computer Plays As</string>
                     </property>
                     <vbox>
                         <property name="name">
