@@ -39,7 +39,8 @@ public:
    * constructs a Cube
    */
    Cube(Owner owner=Nobody,int value=1,int max=4);   
-   
+  	
+   virtual ~Cube(){}
    
    /**
    * changes owner of the Cube
