@@ -115,9 +115,9 @@ void KJumpingCube::saveGame(bool saveAs)
 
          // check filename
          QRegExp pattern("*.kjc",true,true);
-         if(!pattern.exactMatch(url.filename()))
+         if(!pattern.exactMatch(url.fileName()))
          {
-            url.setFileName( url.filename()+".kjc" );
+            url.setFileName( url.fileName()+".kjc" );
          }
 
          if(KIO::NetAccess::exists(url,false,this))
