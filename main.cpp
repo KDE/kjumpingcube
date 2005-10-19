@@ -45,16 +45,15 @@ int main(int argc, char *argv[])
     aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     KCmdLineArgs::init( argc, argv, &aboutData );
 
-    KApplication app;
+    KApplication application;
     KGlobal::locale()->insertCatalog("libkdegames");
 
     // All session management is handled in the RESTORE macro
-	if (app.isRestored())
+	if (application.isSessionRestored())
         RESTORE(KJumpingCube)
     else {
-		KJumpingCube *kjumpingcube = new KJumpingCube;
-		app.setMainWidget(kjumpingcube);
-		kjumpingcube->show();
+		KJumpingCube kjumpingcube;
+		kjumpingcube.show();
 	}
-   return app.exec();
+   return application.exec();
 }
