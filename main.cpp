@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
 	if (application.isSessionRestored())
         RESTORE(KJumpingCube)
     else {
-		KJumpingCube kjumpingcube;
-		kjumpingcube.show();
+		KJumpingCube *kjumpingcube = new KJumpingCube;
+		kjumpingcube->show();
 	}
    return application.exec();
 }
