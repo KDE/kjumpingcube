@@ -258,8 +258,8 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
    // save current player
    config->writeEntry("onTurn",(int)currentPlayer);
 
-   Q3StrList list;
-   list.setAutoDelete(true);
+   QStringList list;
+   //list.setAutoDelete(true);
    QString owner, value, key;
    int cubeDim=dim();
 
@@ -271,7 +271,7 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
 	value.sprintf("%u",cubes[row][column]->value());
 	list.append(owner.ascii());
 	list.append(value.ascii());
-	config->writeEntry(key , list);
+	config->writeEntry(key,list);
 
 	list.clear();
       }
@@ -280,8 +280,8 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
 
 void KCubeBoxWidget::readProperties(KConfigBase* config)
 {
-  Q3StrList list;
-  list.setAutoDelete(true);
+  QStringList list;
+  //list.setAutoDelete(true);
   QString owner, value, key;
   setDim(config->readNumEntry("CubeDim",5));
   int cubeDim=dim();
@@ -290,9 +290,9 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
     for(int column=0; column < cubeDim ; column++)
       {
 	key.sprintf("%u,%u",row,column);
-	config->readListEntry(key, list);
-	owner=list.first();
-	value=list.next();
+	list = config->readListEntry(key);
+	owner=list.at(0);
+	value=list.at(1);
 	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());
 	cubes[row][column]->setValue(value.toInt());
 	
