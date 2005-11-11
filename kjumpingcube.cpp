@@ -270,7 +270,7 @@ void KJumpingCube::showOptions(){
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
   dialog->addPage(new Settings(0, "General"), i18n("General"), "package_settings");
-  connect(dialog, SIGNAL(settingsChanged()), view, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged(const QString&)), view, SLOT(loadSettings()));
   dialog->show();
 }
 
