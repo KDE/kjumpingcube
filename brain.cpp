@@ -107,8 +107,8 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    for(i=0;i<box.dim();i++)
       worth[i]=new double[box.dim()];
 
-   // alle Werte auf kleinstmöglichen Wert setzen
-   double min=-pow(2.0,sizeof(long int)*8-1);  // Maximum auf kleinst möglichen Wert setzen
+   // alle Werte auf kleinstmÃ¶glichen Wert setzen
+   double min=-pow(2.0,sizeof(long int)*8-1);  // Maximum auf kleinst mÃ¶glichen Wert setzen
 
    for(i=0;i<box.dim();i++)
      for(j=0;j<box.dim();j++)

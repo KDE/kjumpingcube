@@ -101,7 +101,7 @@ public:
    bool isActive() const;
    bool isMoving() const;
 
-   /** returns current Color for Player ´forWhom´ */
+   /** returns current Color for Player Â´forWhomÂ´ */
    QPalette color(Player forWhom);
 
    /**
