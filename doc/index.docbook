@@ -15,22 +15,22 @@
 <firstname>Matthias</firstname>
 <surname>Kiefer</surname>
 <affiliation>
-<address><email>matthias.kiefer@gmx.de</email></address>
+<address>&Matthias.Kiefer.mail;</address>
 </affiliation>
 </author>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
 <year>1999</year>
 <year>2000</year>
-<holder>Matthias Kiefer</holder>
+<holder>&Matthias.Kiefer;</holder>
 </copyright>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2003-11-06</date>
+<date>2005-12-10</date>
 <releaseinfo>1.1</releaseinfo>
 
 <abstract><para>&kjumpingcube; is a simple tactical game you can play against a friend
@@ -85,10 +85,10 @@ neighbors.</para></listitem>
 <title>Command Reference</title>
 
 <sect1 id="menus">
-<title>The menu bar</title>
+<title>The Menu Bar</title>
 
 <sect2 id="game-menu">
-<title>The <guimenu>Game</guimenu> menu</title>
+<title>The <guimenu>Game</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -130,8 +130,8 @@ name.</action></para></listitem>
 
 <varlistentry>
 <term><menuchoice>
-<shortcut>&Esc;</shortcut>
-<guimenu>Game</guimenu><guimenuitem>Stop thinking</guimenuitem></menuchoice></term>
+<shortcut><keycap>Escape</keycap></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Stop Thinking</guimenuitem></menuchoice></term>
 <listitem><para><action>Stop the computer opponent thinking about its next
 move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
@@ -149,7 +149,7 @@ up to the moment you told it to stop.</para></listitem>
 </sect2>
 
 <sect2 id="move-menu">
-<title>The <guimenu>Move</guimenu> menu</title>
+<title>The <guimenu>Move</guimenu> Menu</title>
 <variablelist>
 <varlistentry>
 <term><menuchoice>
@@ -172,42 +172,44 @@ move.</action></para></listitem>
 </sect2>
 
 <sect2 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> menu</title>
+<title>The <guimenu>Settings</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
 Toolbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle on and off the view of the tool
-bar.</action></para></listitem>
+<listitem><para><action>Toggle the display of the toolbar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
  Statusbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle on and off the view of the status
- bar.</action></para></listitem>
+<listitem><para><action>Toggle the display of the statusbar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a dialog where you can change the
+<listitem><para><action>Open a dialog where you can configure the
 shortcuts</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
 
 <varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
+<listitem><para><action>Open a dialog where you can configure the toolbars</action> for &kjumpingcube;</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure KJumpingCube</guimenuitem></menuchoice>
+<guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice>
 </term>
 <listitem>
-<para>Open a configuration dialog, where you may configure the
-following items:</para>
+<para>Open a dialog where you can configure the following items:</para>
 
 <variablelist>
 <varlistentry>
 <term><guilabel>Computer Skill</guilabel></term>
 <listitem><para><action>Lets you choose your playing skill from a
-submenu.</action> This decides how clever your computer opponent is, if you are
+slider.</action> This decides how clever your computer opponent is, if you are
 playing against the computer.</para>
 <para>You can choose from:</para>
 <simplelist>
@@ -219,7 +221,7 @@ playing against the computer.</para>
 
 <varlistentry>
 <term><guilabel>Board Size</guilabel></term>
-<listitem><para><action>Lets you choose from a list of playfield
+<listitem><para><action>Lets you choose the playfield
 sizes.</action></para>
 <para>Use the slider to select a value between
 <guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel>
@@ -228,7 +230,7 @@ squares in size.</para>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Computer Plays</guilabel></term>
+<term><guilabel>Computer Plays As</guilabel></term>
 <listitem><para>Sets the computer opponent to be <guilabel>Player
 1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you
 would set the computer to play one player, and you would play the
@@ -247,7 +249,7 @@ other.  Player 1 always starts first.</para></listitem>
 </sect2>
 
 <sect2 id="help-menu">
-<title>The <guimenu>Help</guimenu> menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 
 &help.menu.documentation;
 
@@ -255,17 +257,12 @@ other.  Player 1 always starts first.</para></listitem>
 </sect1>
 
 <sect1 id="toolbars">
-<title>The &kjumpingcube; tool bar</title>
+<title>The &kjumpingcube; Toolbar</title>
 
 <variablelist>
 <varlistentry>
 <term><guiicon>New</guiicon></term>
 <listitem><para><action>Starts a new game</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guiicon>Open</guiicon></term>
-<listitem><para><action>Open a previously saved game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -280,16 +277,9 @@ move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
 
-
 <varlistentry>
 <term><guiicon>Undo</guiicon></term>
 <listitem><para><action>Undo the last move you made.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guiicon>Help</guiicon></term>
-<listitem><para><action>Open the help</action> for &kjumpingcube; (this
-document)</para></listitem>
 </varlistentry>
 </variablelist>
 
@@ -316,18 +306,18 @@ square.</para></listitem>
 <chapter id="credits">
 <title>Credits and License</title>
 
-<para>&kjumpingcube; is Copyright 1998,1999 Matthias Kiefer 
-<email>matthias.kiefer@gmx.de</email></para>
+<para>&kjumpingcube; is Copyright 1998,1999 &Matthias.Kiefer; 
+&Matthias.Kiefer.mail;</para>
 
 <para>&kjumpingcube; was inspired by a game that came out for the Commodore64 and for
 other home computers, too. Sorry, that I don't know the original author's
 name.</para>
 
-<para>Documentation Copyright 1999 Matthias Kiefer
-<email>matthias.kiefer@gmx.de</email></para>
+<para>Documentation Copyright 1999 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;</para>
 
-<para>Documentation updated for &kde; 2 and 3 by Lauri Watts
-<email>lauri@kde.org</email></para>
+<para>Documentation updated for &kde; 2 and 3 by &Lauri.Watts;
+&Lauri.Watts.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
@@ -349,9 +339,9 @@ name.</para>
 <sect1 id="requirements">
 <title>Requirements</title>
 
-<para>In order to successfully compile &kjumpingcube;, you need KDE 2.0.
+<para>In order to successfully compile &kjumpingcube;, you need &kde; 2.0.
 All required libraries as well as &kjumpingcube; itself can be found on 
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.
+&kde-ftp;.
 </para>
 
 </sect1>
@@ -362,7 +352,7 @@ All required libraries as well as &kjumpingcube; itself can be found on
 &install.compile.documentation;
 
 <para>That should do it! Should you run into any problems, please report them
-to the author, at <email>matthias.kiefer@gmx.de</email></para>
+to the author, at &Matthias.Kiefer.mail;</para>
 
 </sect1>
 </appendix>
