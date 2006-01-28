@@ -52,7 +52,7 @@ private:
 	QWidget *currentPlayer;
 	KAction *undoAction, *stopAction, *hintAction;
 
-  KURL gameURL;
+  KUrl gameURL;
   void initKAction();
 
 private slots:

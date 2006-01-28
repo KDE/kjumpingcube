@@ -104,7 +104,7 @@ void KJumpingCube::saveGame(bool saveAs)
    if(saveAs || gameURL.isEmpty())
    {
       int result=0;
-      KURL url;
+      KUrl url;
 
       do
       {
@@ -159,7 +159,7 @@ void KJumpingCube::saveGame(bool saveAs)
 void KJumpingCube::openGame()
 {
    bool fileOk=true;
-   KURL url;
+   KUrl url;
 
    do
    {
