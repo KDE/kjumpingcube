@@ -283,7 +283,7 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
   QStringList list;
   //list.setAutoDelete(true);
   QString owner, value, key;
-  setDim(config->readNumEntry("CubeDim",5));
+  setDim(config->readEntry("CubeDim",5));
   int cubeDim=dim();
 
   for(int row=0; row < cubeDim ; row++)
@@ -301,7 +301,7 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
 
 
    // set current player
-   int onTurn=config->readNumEntry("onTurn",1);
+   int onTurn=config->readEntry("onTurn",1);
    currentPlayer=(Player)onTurn;
    emit playerChanged(onTurn);
    checkComputerplayer((Player)onTurn);
