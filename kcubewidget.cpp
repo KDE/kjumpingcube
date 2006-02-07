@@ -336,7 +336,7 @@ void KCubeWidget::drawContents(QPainter *painter)
       break; 
 
     default:
-      kdDebug() << "cube had value " << points << endl;
+      kDebug() << "cube had value " << points << endl;
       QString s;
       s.sprintf("%d",points);
       p->drawText(w/2,h/2,s);
