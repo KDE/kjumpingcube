@@ -57,10 +57,10 @@
                             <property name="name">
                                 <cstring>kcfg_CubeDim</cstring>
                             </property>
-                            <property name="minValue">
+                            <property name="minimum">
                                 <number>5</number>
                             </property>
-                            <property name="maxValue">
+                            <property name="maximum">
                                 <number>10</number>
                             </property>
                             <property name="pageStep">
@@ -204,10 +204,10 @@
                             <property name="name">
                                 <cstring>kcfg_Skill</cstring>
                             </property>
-                            <property name="minValue">
+                            <property name="minimum">
                                 <number>0</number>
                             </property>
-                            <property name="maxValue">
+                            <property name="maximum">
                                 <number>2</number>
                             </property>
                             <property name="pageStep">
