@@ -16,7 +16,7 @@ set(kjumpingcube_SRCS
 
 kde4_automoc(${kjumpingcube_SRCS})
 
-kde4_add_ui_files(kjumpingcube_SRCS settings.ui )
+kde4_add_ui3_files(kjumpingcube_SRCS settings.ui )
 
 kde4_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
