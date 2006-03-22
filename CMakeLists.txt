@@ -22,7 +22,7 @@ kde4_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
 kde4_add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
-target_link_libraries(kjumpingcube  ${KDE4_KIO_LIBRARIES} kdegames )
+target_link_libraries(kjumpingcube  ${KDE4_KIO_LIBS} kdegames )
 
 install_targets(/bin kjumpingcube )
 
