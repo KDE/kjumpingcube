@@ -123,7 +123,7 @@ void KJumpingCube::saveGame(bool saveAs)
          if(KIO::NetAccess::exists(url,false,this))
          {
             QString mes=i18n("The file %1 exists.\n"
-               "Do you want to overwrite it?").arg(url.url());
+               "Do you want to overwrite it?", url.url());
             result = KMessageBox::warningContinueCancel(this, mes, QString::null, i18n("Overwrite"));
             if(result==KMessageBox::Cancel)
                return;
@@ -146,13 +146,12 @@ void KJumpingCube::saveGame(bool saveAs)
 
    if(KIO::NetAccess::upload( tempFile.name(),gameURL,this ))
    {
-      QString s=i18n("game saved as %1");
-      s=s.arg(gameURL.url());
+      QString s=i18n("game saved as %1", gameURL.url());
       statusBar()->message(s,MESSAGE_TIME);
    }
    else
    {
-      KMessageBox::sorry(this,i18n("There was an error in saving file\n%1").arg(gameURL.url()));
+      KMessageBox::sorry(this,i18n("There was an error in saving file\n%1", gameURL.url()));
    }
 }
 
@@ -168,7 +167,7 @@ void KJumpingCube::openGame()
          return;
       if(!KIO::NetAccess::exists(url,true,this))
       {
-         QString mes=i18n("The file %1 does not exist!").arg(url.url());
+         QString mes=i18n("The file %1 does not exist!", url.url());
          KMessageBox::sorry(this,mes);
          fileOk=false;
       }
@@ -182,8 +181,8 @@ void KJumpingCube::openGame()
       config.setGroup("KJumpingCube");
       if(!config.hasKey("Version"))
       {
-         QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!")
-           .arg(url.url());
+         QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!",
+            url.url());
          KMessageBox::sorry(this,mes);
          return;
       }
@@ -197,7 +196,7 @@ void KJumpingCube::openGame()
       KIO::NetAccess::removeTempFile( tempFile );
    }
    else
-      KMessageBox::sorry(this,i18n("There was an error loading file\n%1").arg( url.url() ));
+      KMessageBox::sorry(this,i18n("There was an error loading file\n%1", url.url() ));
 }
 
 void KJumpingCube::stop()
@@ -227,7 +226,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 }
 
 void KJumpingCube::showWinner(int player) {
-  QString s=i18n("Winner is Player %1!").arg(player);
+  QString s=i18n("Winner is Player %1!", player);
   KMessageBox::information(this,s,i18n("Winner"));
   view->reset();
 }
