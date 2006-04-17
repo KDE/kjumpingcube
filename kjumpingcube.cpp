@@ -47,8 +47,9 @@
 
 
 KJumpingCube::KJumpingCube()
-  : view(new KCubeBoxWidget(5, this, "KCubeBoxWidget"))
+  : view(new KCubeBoxWidget(5, this))
 {
+   view->setObjectName("KCubeBoxWidget");
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
    connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));
@@ -66,9 +67,10 @@ KJumpingCube::KJumpingCube()
    statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, Qt::AlignLeft | Qt::AlignVCenter);
    statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
  
-   currentPlayer = new QWidget(this, "currentPlayer");
+   currentPlayer = new QWidget(this);
+   currentPlayer->setObjectName("currentPlayer");
    currentPlayer->setFixedWidth(40);
-   statusBar()->addWidget(currentPlayer, ID_STATUS_TURN, false);
+   statusBar()->addWidget(currentPlayer, ID_STATUS_TURN);
    statusBar()->setItemAlignment(ID_STATUS_TURN, Qt::AlignLeft | Qt::AlignVCenter);
 
    initKAction();
@@ -96,7 +98,7 @@ void KJumpingCube::initKAction() {
 void KJumpingCube::newGame(){
    undoAction->setEnabled(false);
    view->reset();
-   statusBar()->message(i18n("New Game"),MESSAGE_TIME);
+   statusBar()->showMessage(i18n("New Game"),MESSAGE_TIME);
 }
 
 void KJumpingCube::saveGame(bool saveAs)
@@ -114,7 +116,7 @@ void KJumpingCube::saveGame(bool saveAs)
             return;
 
          // check filename
-         QRegExp pattern("*.kjc",true,true);
+         QRegExp pattern("*.kjc",Qt::CaseSensitive,QRegExp::Wildcard);
          if(!pattern.exactMatch(url.fileName()))
          {
             url.setFileName( url.fileName()+".kjc" );
@@ -147,7 +149,7 @@ void KJumpingCube::saveGame(bool saveAs)
    if(KIO::NetAccess::upload( tempFile.name(),gameURL,this ))
    {
       QString s=i18n("game saved as %1", gameURL.url());
-      statusBar()->message(s,MESSAGE_TIME);
+      statusBar()->showMessage(s,MESSAGE_TIME);
    }
    else
    {
@@ -207,7 +209,7 @@ void KJumpingCube::stop()
 
    view->stopActivities();
 
-   statusBar()->message(i18n("stopped activity"),MESSAGE_TIME);
+   statusBar()->showMessage(i18n("stopped activity"),MESSAGE_TIME);
 }
 
 void KJumpingCube::undo()
@@ -239,7 +241,7 @@ void KJumpingCube::disableStop()
 //   game->setItemEnabled(ID_GAME_HINT,true);
   stopAction->setEnabled(false);
   hintAction->setEnabled(true);
-  statusBar()->clear();
+  statusBar()->clearMessage();
 }
 
 
@@ -251,13 +253,13 @@ void KJumpingCube::enableStop_Moving()
 //   game->setItemEnabled(ID_GAME_HINT,false);
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->message(i18n("Performing move."));
+  statusBar()->showMessage(i18n("Performing move."));
 }
 
 void KJumpingCube::enableStop_Thinking(){
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->message(i18n("Computing next move."));
+  statusBar()->showMessage(i18n("Computing next move."));
 }
 
 /**

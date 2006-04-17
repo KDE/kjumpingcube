@@ -97,7 +97,7 @@ KCubeWidget::KCubeWidget(QWidget* parent,const char* name
   setPalette(kapp->palette());
 
   // show values
-  repaint(false);
+  repaint();
 }
 
 KCubeWidget::~KCubeWidget()

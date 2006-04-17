@@ -33,8 +33,8 @@
 
 #include "prefs.h"
 
-KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent,const char *name)
-        : QWidget(parent,name),
+KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent)
+        : QWidget(parent),
           CubeBoxBase<KCubeWidget>(d)
 {
    init();
@@ -42,8 +42,8 @@ KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent,const char *name)
 
 
 
-KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent,const char *name)
-      :QWidget(parent,name),
+KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent)
+      :QWidget(parent),
        CubeBoxBase<KCubeWidget>(box.dim())
 {  
    init();
@@ -60,8 +60,8 @@ KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent,const char *name)
 
 
 
-KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent,const char *name)
-      :QWidget(parent,name),
+KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent)
+      :QWidget(parent),
        CubeBoxBase<KCubeWidget>(box.dim())
 {  
    init();
@@ -269,8 +269,8 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
 	key.sprintf("%u,%u",row,column);
 	owner.sprintf("%u",cubes[row][column]->owner());
 	value.sprintf("%u",cubes[row][column]->value());
-	list.append(owner.ascii());
-	list.append(value.ascii());
+	list.append(owner.toAscii());
+	list.append(value.toAscii());
 	config->writeEntry(key,list);
 
 	list.clear();
@@ -358,7 +358,7 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
 void KCubeBoxWidget::checkComputerplayer(Player player)
 {
    // checking if a process is running or the Widget isn't shown yet
-   if(isActive() || !isVisibleToTLW())  
+   if(isActive() || !isVisible())  
       return;
    if((player==One && computerPlOne && currentPlayer==One)
          || (player==Two && computerPlTwo && currentPlayer==Two))
