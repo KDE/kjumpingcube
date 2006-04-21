@@ -223,7 +223,10 @@ void KJumpingCube::undo()
 void KJumpingCube::changePlayer(int newPlayer)
 {
    undoAction->setEnabled(true);
-   currentPlayer->setBackgroundColor(newPlayer == 1 ? Prefs::color1() : Prefs::color2());
+   QPalette palette;
+   palette.setColor(backgroundRole(), 
+		   newPlayer == 1 ? Prefs::color1() : Prefs::color2());
+   currentPlayer->setPalette(palette);
    currentPlayer->repaint();
 }
 
