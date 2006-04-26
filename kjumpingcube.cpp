@@ -66,7 +66,7 @@ KJumpingCube::KJumpingCube()
    statusBar()->changeItem(s,ID_STATUS_TURN_TEXT);
    statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, Qt::AlignLeft | Qt::AlignVCenter);
    statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
- 
+
    currentPlayer = new QWidget(this);
    currentPlayer->setObjectName("currentPlayer");
    currentPlayer->setFixedWidth(40);
@@ -224,7 +224,7 @@ void KJumpingCube::changePlayer(int newPlayer)
 {
    undoAction->setEnabled(true);
    QPalette palette;
-   palette.setColor(backgroundRole(), 
+   palette.setColor(backgroundRole(),
 		   newPlayer == 1 ? Prefs::color1() : Prefs::color2());
    currentPlayer->setPalette(palette);
    currentPlayer->repaint();
@@ -273,7 +273,7 @@ void KJumpingCube::showOptions(){
     return;
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
-  dialog->addPage(new Settings(0, "General"), i18n("General"), "package_settings");
+  dialog->addPage(new Settings(this), i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged(const QString&)), view, SLOT(loadSettings()));
   dialog->show();
 }
