@@ -38,7 +38,7 @@ bool KCubeWidget::_clicksAllowed=true;
 QPalette KCubeWidget::color1;
 QPalette KCubeWidget::color2;
 
- 
+
 void KCubeWidget::enableClicks(bool flag)
 {
    _clicksAllowed=flag;
@@ -48,14 +48,14 @@ void KCubeWidget::enableClicks(bool flag)
 void KCubeWidget::setColor(Owner forWhom, QPalette newPalette)
 {
    if(forWhom==One)
-   {   
+   {
       color1=newPalette;
    }
    else if(forWhom==Two)
    {
       color2=newPalette;
    }
-} 
+}
 
 QPalette KCubeWidget::color(Owner forWhom)
 {
@@ -68,7 +68,7 @@ QPalette KCubeWidget::color(Owner forWhom)
    {
       color=color2;
    }
-   
+
    return color;
 }
 
@@ -84,16 +84,16 @@ KCubeWidget::KCubeWidget(QWidget* parent,const char* name
 {
   setFrameStyle(Panel|Raised);
   //setLineWidth(2);
-  setMinimumSize(20,20); 
+  setMinimumSize(20,20);
 
   setCoordinates(0,0);
-  
+
   //initialize hintTimer
   // will be automatically destroyed by the parent
   hintTimer = new QTimer(this);
   hintCounter=0;
   connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
-  
+
   setPalette(kapp->palette());
 
   // show values
@@ -113,7 +113,7 @@ KCubeWidget& KCubeWidget::operator=(const Cube& cube)
       setValue(cube.value());
       setMax(cube.max());
    }
-   
+
    return *this;
 }
 
@@ -131,7 +131,7 @@ KCubeWidget& KCubeWidget::operator=(const KCubeWidget& cube)
 KCubeWidget::Owner KCubeWidget::setOwner(Owner newOwner)
 {
    Owner old=Cube::setOwner(newOwner);
-   
+
    updateColors();
 
    return old;
@@ -148,7 +148,7 @@ void KCubeWidget::showHint(int interval,int number)
 {
    if(hintTimer->isActive())
       return;
-   
+
    hintCounter=2*number;
    hintTimer->start(interval);
 }
@@ -204,7 +204,7 @@ void KCubeWidget::stopHint()
    if(hintTimer->isActive())
    {
       hintTimer->stop();
-      setBackgroundMode(Qt::PaletteBackground);
+      setBackgroundRole(QPalette::Background);
    }
 
 }
@@ -216,15 +216,15 @@ void KCubeWidget::stopHint()
 ** ****************************************************** */
 
 void KCubeWidget::hint()
-{   
+{
    hintCounter--;
    if(hintCounter%2==1)
    {
-      setBackgroundMode(Qt::PaletteLight);
+       setBackgroundRole(QPalette::Light);
    }
    else
    {
-      setBackgroundMode(Qt::PaletteBackground);
+       setBackgroundRole(QPalette::Background);
    }
    if(hintCounter==0)
    {
@@ -281,7 +281,7 @@ void KCubeWidget::drawContents(QPainter *painter)
       p->drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
 		     circleSize,circleSize);
       break;
-      
+
     case 5:
       p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
     case 4:
@@ -313,8 +313,8 @@ void KCubeWidget::drawContents(QPainter *painter)
       p->drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
 		     circleSize,circleSize);
       break;
-     
-   
+
+
     case 9:
       p->drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
       p->drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
@@ -333,7 +333,7 @@ void KCubeWidget::drawContents(QPainter *painter)
 		     circleSize,circleSize);
       p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,
 		     circleSize,circleSize);
-      break; 
+      break;
 
     default:
       kDebug() << "cube had value " << points << endl;
@@ -343,8 +343,8 @@ void KCubeWidget::drawContents(QPainter *painter)
       break;
     }
    p->end();
-   delete p;	
-   
+   delete p;
+
    painter->drawPixmap(contents.topLeft(),buffer);
 
 }
