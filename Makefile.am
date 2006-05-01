@@ -18,6 +18,4 @@ kde_kcfg_DATA = kjumpingcube.kcfg
 rcdir = $(kde_datadir)/kjumpingcube
 rc_DATA = kjumpingcubeui.rc
 
-messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/kjumpingcube.pot
 
