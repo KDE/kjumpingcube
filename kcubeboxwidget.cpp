@@ -45,16 +45,16 @@ KCubeBoxWidget::KCubeBoxWidget(const int d,QWidget *parent)
 KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent)
       :QWidget(parent),
        CubeBoxBase<KCubeWidget>(box.dim())
-{  
+{
    init();
-   
+
    int i,j;
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
          *cubes[i][j]=*box[i][j];
       }
-      
+
    currentPlayer=(KCubeBoxWidget::Player)box.player();
 }
 
@@ -63,17 +63,17 @@ KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent)
 KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent)
       :QWidget(parent),
        CubeBoxBase<KCubeWidget>(box.dim())
-{  
+{
    init();
-   
+
    int i,j;
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
          *cubes[i][j]=*box.cubes[i][j];
       }
-   
-      
+
+
    currentPlayer=box.currentPlayer;
 }
 
@@ -109,14 +109,14 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
       {
          setDim(box.dim());
       }
-      
-      
+
+
       for(int i=0;i<dim();i++)
          for(int j=0;j<dim();j++)
          {
             *cubes[i][j]=*box.cubes[i][j];
          }
-         
+
       currentPlayer=box.currentPlayer;
    }
    return *this;
@@ -128,33 +128,33 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
    {
       setDim(box.dim());
    }
-   
+
    for(int i=0;i<dim();i++)
       for(int j=0;j<dim();j++)
       {
          *cubes[i][j]=*box[i][j];
       }
-      
+
    currentPlayer=(KCubeBoxWidget::Player)box.player();
-      
+
    return *this;
 }
 
 void KCubeBoxWidget::reset()
 {
    stopActivities();
-   
+
    int i,j;
    for(i=0;i<dim();i++)
       for(j=0;j<dim();j++)
       {
          cubes[i][j]->reset();
       }
-      
+
    KCubeWidget::enableClicks(true);
 
    currentPlayer=One;
-   
+
    emit playerChanged(One);
    checkComputerplayer(One);
 }
@@ -163,18 +163,18 @@ void KCubeBoxWidget::undo()
 {
    if(isActive())
       return;
-   
+
    Player oldPlayer=currentPlayer;
-   
+
    *this=*undoBox;
-   
+
    if(oldPlayer!=currentPlayer)
       emit playerChanged(currentPlayer);
 
    checkComputerplayer(currentPlayer);
-  
+
 }
-      
+
 void KCubeBoxWidget::getHint()
 {
    if(isActive())
@@ -229,7 +229,7 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
       computerPlTwo=flag;
 }
 
-  
+
 void KCubeBoxWidget::stopActivities()
 {
    if(moveTimer->isActive())
@@ -295,7 +295,7 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
 	value=list.at(1);
 	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());
 	cubes[row][column]->setValue(value.toInt());
-	
+
 	list.clear();
       }
 
@@ -309,14 +309,14 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
 
 /* ***************************************************************** **
 **                               slots                               **
-** ***************************************************************** */ 
+** ***************************************************************** */
 void KCubeBoxWidget::setWaitCursor()
 {
    setCursor(KCursor::waitCursor());
 }
 
 
-  
+
 void KCubeBoxWidget::setNormalCursor()
 {
    setCursor(KCursor::handCursor());
@@ -358,7 +358,7 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
 void KCubeBoxWidget::checkComputerplayer(Player player)
 {
    // checking if a process is running or the Widget isn't shown yet
-   if(isActive() || !isVisible())  
+   if(isActive() || !isVisible())
       return;
    if((player==One && computerPlOne && currentPlayer==One)
          || (player==Two && computerPlTwo && currentPlayer==Two))
@@ -379,13 +379,13 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
 		 assert(result);
       }
    }
-      
+
 }
 
 /* ***************************************************************** **
 **                         status functions                          **
 ** ***************************************************************** */
- 
+
 bool KCubeBoxWidget::isActive() const
 {
    bool flag=false;
@@ -393,9 +393,9 @@ bool KCubeBoxWidget::isActive() const
       flag=true;
    else if(brain.isActive())
       flag=true;
-   
+
    return flag;
-}  
+}
 
 bool KCubeBoxWidget::isMoving() const
 {
@@ -406,19 +406,19 @@ bool KCubeBoxWidget::isComputer(Player player) const
 {
    if(player==One)
       return computerPlOne;
-   else 
+   else
       return computerPlTwo;
 }
-  
+
 
 int KCubeBoxWidget::skill() const
 {
    return brain.skill();
 }
-   
+
 QPalette KCubeBoxWidget::color(Player forWhom)
 {
-   return KCubeWidget::color((KCubeWidget::Owner)forWhom); 
+   return KCubeWidget::color((KCubeWidget::Owner)forWhom);
 }
 
 /* ***************************************************************** **
@@ -429,7 +429,7 @@ void KCubeBoxWidget::init()
    initCubes();
 
    undoBox=new CubeBox(dim());
-   
+
    currentPlayer=One;
    moveDelay=100;
    moveTimer=new QTimer(this);
@@ -437,7 +437,7 @@ void KCubeBoxWidget::init()
    computerPlTwo=false;
    KCubeWidget::enableClicks(true);
    loadSettings();
-   
+
    connect(moveTimer,SIGNAL(timeout()),SLOT(nextLoopStep()));
    connect(this,SIGNAL(startedThinking()),SLOT(setWaitCursor()));
    connect(this,SIGNAL(stoppedThinking()),SLOT(setNormalCursor()));
@@ -449,23 +449,23 @@ void KCubeBoxWidget::init()
 
    emit playerChanged(One);
 }
-   
+
 void KCubeBoxWidget::initCubes()
 {
    const int s=dim();
    int i,j;
-   
+
    // create Layout
-   layout=new QGridLayout(this,s,s);
-   
+   layout=new QGridLayout(this);
+
 
    for(i=0;i<s;i++)
    {
       layout->setRowStretch(i,1);
       layout->setColStretch(i,1);
-   }         
-   
-   
+   }
+
+
    // create new cubes
    cubes = new KCubeWidget**[s];
    for(i=0;i<s;i++)
@@ -482,15 +482,15 @@ void KCubeBoxWidget::initCubes()
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(checkClick(int,int,bool)));
       }
-   
-   // initialize cubes  
+
+   // initialize cubes
    int max=dim()-1;
-      
+
    cubes[0][0]->setMax(2);
    cubes[0][max]->setMax(2);
    cubes[max][0]->setMax(2);
    cubes[max][max]->setMax(2);
-   
+
    for(i=1;i<max;i++)
    {
       cubes[i][0]->setMax(3);
@@ -498,13 +498,13 @@ void KCubeBoxWidget::initCubes()
       cubes[0][i]->setMax(3);
       cubes[max][i]->setMax(3);
    }
-   
+
    for(i=1;i<max;i++)
      for(j=1;j<max;j++)
       {
          cubes[i][j]->setMax(4);
       }
-      
+
 }
 
 QSize  KCubeBoxWidget::sizeHint() const
@@ -516,10 +516,10 @@ void  KCubeBoxWidget::deleteCubes()
 {
    if(layout)
       delete layout;
-     
+
    CubeBoxBase<KCubeWidget>::deleteCubes();
 }
- 
+
 
 /* ***************************************************************** **
 **                   other private functions                         **
@@ -542,19 +542,19 @@ void KCubeBoxWidget::doMove(int row,int column)
       startLoop();
    }
    else
-      changePlayer();      
+      changePlayer();
 }
 
 void KCubeBoxWidget::startLoop()
 {
    emit startedMoving();
-   
+
    KCubeWidget::enableClicks(false);
-   
+
    loop.row=0;
    loop.column=0;
    loop.finished=true;
-   
+
    moveTimer->start(moveDelay);
 }
 
@@ -586,7 +586,7 @@ void KCubeBoxWidget::nextLoopStep()
 	    {
 	       stopLoop();
 	       changePlayer();
-		         
+
 	       return;
             }
          }
@@ -597,12 +597,12 @@ void KCubeBoxWidget::nextLoopStep()
          }
       }
    }
-    
- 
+
+
    increaseNeighbours(currentPlayer,loop.row,loop.column);
    cubes[loop.row][loop.column]->decrease();
    loop.finished=false;
-    
+
    if(hasPlayerWon(currentPlayer))
    {
       emit playerWon((int)currentPlayer);
