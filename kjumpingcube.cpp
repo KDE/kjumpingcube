@@ -85,8 +85,9 @@ void KJumpingCube::initKAction() {
   KStdGameAction::quit(this, SLOT(close()), actionCollection());
 
   hintAction = KStdGameAction::hint(view, SLOT(getHint()), actionCollection());
-  stopAction = new KAction(i18n("Stop &Thinking"), "stop",
-  Qt::Key_Escape, this, SLOT(stop()), actionCollection(), "game_stop");
+  stopAction = new KAction(KIcon("stop"), i18n("Stop &Thinking"), actionCollection(), "game_stop");
+  connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
+  stopAction->setShortcut(Qt::Key_Escape);
   stopAction->setEnabled(false);
   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(false);
