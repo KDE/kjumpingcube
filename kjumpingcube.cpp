@@ -29,7 +29,7 @@
 
 #include "prefs.h"
 
-#include <qregexp.h>
+#include <QRegExp>
 
 #include <klocale.h>
 #include <kfiledialog.h>

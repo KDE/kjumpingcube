@@ -23,7 +23,7 @@
 
 #include <kapplication.h>
 #include <kconfig.h>
-#include <qlayout.h>
+#include <QLayout>
 #include <qtimer.h>
 //Added by qt3to4:
 #include <Q3StrList>
