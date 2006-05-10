@@ -24,7 +24,7 @@
 #include <kapplication.h>
 #include <kconfig.h>
 #include <QLayout>
-#include <qtimer.h>
+#include <QTimer>
 //Added by qt3to4:
 #include <Q3StrList>
 #include <QGridLayout>
