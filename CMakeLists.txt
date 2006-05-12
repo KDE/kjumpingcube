@@ -1,4 +1,3 @@
-kde4_header()
 project(kjumpingcube)
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames  )
 
@@ -35,7 +34,6 @@ install_files( ${DATA_INSTALL_DIR}/kjumpingcube FILES kjumpingcubeui.rc )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_footer()
 
 
 
