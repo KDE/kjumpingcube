@@ -1,265 +1,247 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
-<class>Settings</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>Settings</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>422</width>
-            <height>214</height>
-        </rect>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>Settings</class>
+ <widget class="QWidget" name="Settings" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>213</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="1" >
+       <widget class="QGroupBox" name="groupBox_4" >
+        <property name="title" >
+         <string>Board Color</string>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="1" column="1" >
+          <widget class="KColorButton" name="kcfg_Color2" >
+           <property name="text" >
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="KColorButton" name="kcfg_Color1" >
+           <property name="text" >
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="label_7" >
+           <property name="text" >
+            <string>Player 2:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="label_6" >
+           <property name="text" >
+            <string>Player 1:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QGroupBox" name="groupBox" >
+        <property name="title" >
+         <string>Computer Skill</string>
         </property>
-        <property name="spacing">
-            <number>0</number>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="1" column="1" >
+          <widget class="QLabel" name="label_2" >
+           <property name="text" >
+            <string>Average</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignHCenter|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" >
+          <widget class="QLabel" name="label_3" >
+           <property name="text" >
+            <string>Expert</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="label" >
+           <property name="text" >
+            <string>Beginner</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="3" >
+          <widget class="QSlider" name="kcfg_Skill" >
+           <property name="maximum" >
+            <number>2</number>
+           </property>
+           <property name="pageStep" >
+            <number>1</number>
+           </property>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="tickPosition" >
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QGroupBox" name="groupBox_2" >
+        <property name="title" >
+         <string>Board Size</string>
         </property>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>frame3</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Plain</enum>
-            </property>
-            <property name="lineWidth">
-                <number>0</number>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QGroupBox" row="0" column="1">
-                    <property name="name">
-                        <cstring>groupBox3</cstring>
-                    </property>
-                    <property name="frameShadow">
-                        <enum>Sunken</enum>
-                    </property>
-                    <property name="title">
-                        <string>Board Size</string>
-                    </property>
-                    <grid>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
-                            <property name="name">
-                                <cstring>kcfg_CubeDim</cstring>
-                            </property>
-                            <property name="minimum">
-                                <number>5</number>
-                            </property>
-                            <property name="maximum">
-                                <number>10</number>
-                            </property>
-                            <property name="pageStep">
-                                <number>1</number>
-                            </property>
-                            <property name="value">
-                                <number>6</number>
-                            </property>
-                            <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="tickPosition">
-                                <enum>TicksRight</enum>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="0">
-                            <property name="name">
-                                <cstring>textLabel6</cstring>
-                            </property>
-                            <property name="text">
-                                <string>5x5</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="2">
-                            <property name="name">
-                                <cstring>textLabel8</cstring>
-                            </property>
-                            <property name="text">
-                                <string>10x10</string>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignVCenter|Qt::AlignRight</set>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <spacer row="2" column="0">
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>16</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QGroupBox" row="1" column="1">
-                    <property name="name">
-                        <cstring>groupBox7</cstring>
-                    </property>
-                    <property name="title">
-                        <string>Board Color</string>
-                    </property>
-                    <grid>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="KColorButton" row="1" column="1">
-                            <property name="name">
-                                <cstring>kcfg_Color2</cstring>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="0" column="0">
-                            <property name="name">
-                                <cstring>textLabel1</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player 1:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="0">
-                            <property name="name">
-                                <cstring>textLabel2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player 2:</string>
-                            </property>
-                        </widget>
-                        <widget class="KColorButton" row="0" column="1">
-                            <property name="name">
-                                <cstring>kcfg_Color1</cstring>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <widget class="QGroupBox" row="0" column="0">
-                    <property name="name">
-                        <cstring>groupBox2</cstring>
-                    </property>
-                    <property name="title">
-                        <string>Computer Skill</string>
-                    </property>
-                    <grid>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel" row="1" column="1">
-                            <property name="name">
-                                <cstring>textLabel4</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Average</string>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="0">
-                            <property name="name">
-                                <cstring>textLabel3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Beginner</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="2">
-                            <property name="name">
-                                <cstring>textLabel5</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Expert</string>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignVCenter|Qt::AlignRight</set>
-                            </property>
-                        </widget>
-                        <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
-                            <property name="name">
-                                <cstring>kcfg_Skill</cstring>
-                            </property>
-                            <property name="minimum">
-                                <number>0</number>
-                            </property>
-                            <property name="maximum">
-                                <number>2</number>
-                            </property>
-                            <property name="pageStep">
-                                <number>1</number>
-                            </property>
-                            <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="tickPosition">
-                                <enum>TicksRight</enum>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <widget class="QGroupBox" row="1" column="0">
-                    <property name="name">
-                        <cstring>groupBox1</cstring>
-                    </property>
-                    <property name="title">
-                        <string>Computer Plays</string>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>kcfg_ComputerPlayer1</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player 1</string>
-                            </property>
-                        </widget>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>kcfg_ComputerPlayer2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player 2</string>
-                            </property>
-                            <property name="checked">
-                                <bool>true</bool>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-            </grid>
-        </widget>
-    </vbox>
-</widget>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>kcolorbutton.h</includehint>
-</includehints>
-</UI>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item row="1" column="1" >
+          <widget class="QLabel" name="label_5" >
+           <property name="text" >
+            <string>10x10</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="label_4" >
+           <property name="text" >
+            <string>5x5</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2" >
+          <widget class="QSlider" name="kcfg_CubeDim" >
+           <property name="minimum" >
+            <number>5</number>
+           </property>
+           <property name="maximum" >
+            <number>10</number>
+           </property>
+           <property name="pageStep" >
+            <number>1</number>
+           </property>
+           <property name="value" >
+            <number>6</number>
+           </property>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="tickPosition" >
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QGroupBox" name="groupBox_3" >
+        <property name="title" >
+         <string>Computer Plays</string>
+        </property>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="kcfg_ComputerPlayer1" >
+           <property name="text" >
+            <string>Player 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="kcfg_ComputerPlayer2" >
+           <property name="text" >
+            <string>Player 2</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>kcolorbutton.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

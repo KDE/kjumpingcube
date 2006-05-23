@@ -24,7 +24,7 @@
 #include "version.h"
 
 // Settings
-#include "settings.h"
+#include "ui_settings.h"
 #include <kconfigdialog.h>
 
 #include "prefs.h"
@@ -46,6 +46,15 @@
 
 #define MESSAGE_TIME 2000
 
+class SettingsWidget : public QWidget, public Ui::Settings
+{
+public:
+    SettingsWidget(QWidget *parent)
+        : QWidget(parent)
+        {
+            setupUi(this);
+        }
+};
 
 KJumpingCube::KJumpingCube()
   : view(new KCubeBoxWidget(5, this))
@@ -275,7 +284,7 @@ void KJumpingCube::showOptions(){
     return;
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
-  dialog->addPage(new Settings(this), i18n("General"), "package_settings");
+  dialog->addPage(new SettingsWidget(this), i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged(const QString&)), view, SLOT(loadSettings()));
   dialog->show();
 }
