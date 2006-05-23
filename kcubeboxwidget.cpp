@@ -462,7 +462,7 @@ void KCubeBoxWidget::initCubes()
    for(i=0;i<s;i++)
    {
       layout->setRowStretch(i,1);
-      layout->setColStretch(i,1);
+      layout->setColumnStretch(i,1);
    }
 
 
