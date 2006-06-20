@@ -97,7 +97,7 @@ private:
    */
     double doMove(int row,int column,CubeBox::Player player, CubeBox box);
    /**
-   * Checks the given playingfield, which cubes are favourable to do a move
+   * Checks the given playingfield, which cubes are favorable to do a move
    * by checking every cubes neighbours. And looking for the difference to overflow.
    *
    * @param c2m Array in which the coordinates of the best cubes to move will be stored

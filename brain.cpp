@@ -95,7 +95,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    currentPlayer=player;
 
    int i=0,j=0;
-   int moves=0; // how many moves are the favourable ones
+   int moves=0; // how many moves are the favorable ones
    CubeBox::Player opponent=(player==CubeBox::One)?CubeBox::Two : CubeBox::One;
 
    // if more than one cube has the same rating this array is used to select
@@ -117,7 +117,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
      }
 
 
-   // find the favourable cubes to increase
+   // find the favorable cubes to increase
    moves=findCubes2Move(c2m,player,box);
 
 
@@ -125,7 +125,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    if(moves==1)
    {
 #ifdef DEBUG
-      cerr << "found only one favourable cube" << endl;
+      cerr << "found only one favorable cube" << endl;
 #endif
       row=c2m[0].row;
       column=c2m[0].column;
@@ -133,7 +133,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    else
    {
 #ifdef DEBUG
-      cerr << "found more than one favourable cube: " << moves << endl;
+      cerr << "found more than one favorable cube: " << moves << endl;
 #endif
       for(i=0;i<moves;i++)
       {
@@ -271,7 +271,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       // the next move has does the other player
       player=(player==CubeBox::One)? CubeBox::Two : CubeBox::One;
 
-      // find the favourable cubes to increase
+      // find the favorable cubes to increase
       moves=findCubes2Move(c2m,player,box);
 
       // if only one cube is found, then don't check recursively the move
@@ -379,7 +379,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	      if(currentLevel==0)
 	         cerr << i << "," << j << " : " << val << endl;
 #endif
-	      // only if val >= 0 its a favourable move
+	      // only if val >= 0 its a favorable move
               if( val > 0 )
               {
 	         if(val<min)
@@ -449,7 +449,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
    }
 
    int maxMoves=10;
-	// if more than maxMoves moves are favourable, take maxMoves random moves
+	// if more than maxMoves moves are favorable, take maxMoves random moves
 	// because it will take to much time if you check all
 	if(moves > maxMoves)
 	{

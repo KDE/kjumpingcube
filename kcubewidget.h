@@ -92,7 +92,7 @@ protected:
    /** checks, if mouseclick was inside this cube*/
    virtual void mouseReleaseEvent(QMouseEvent*);
    
-   /** refreshs the contents of the Cube */
+   /** refreshes the contents of the Cube */
    virtual void drawContents(QPainter*);
  
    
