@@ -28,9 +28,9 @@ install_targets(/bin kjumpingcube )
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES kjumpingcube.desktop )
-install_files( ${KCFG_INSTALL_DIR} FILES kjumpingcube.kcfg )
-install_files( ${DATA_INSTALL_DIR}/kjumpingcube FILES kjumpingcubeui.rc )
+install( FILES kjumpingcube.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kjumpingcube.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
+install( FILES kjumpingcubeui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kjumpingcube )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
