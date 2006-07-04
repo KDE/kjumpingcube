@@ -121,7 +121,7 @@ void KJumpingCube::saveGame(bool saveAs)
 
       do
       {
-         url = KFileDialog::getSaveURL(gameURL.url(),"*.kjc",this,0);
+         url = KFileDialog::getSaveUrl(gameURL.url(),"*.kjc",this,0);
 
          if(url.isEmpty())
             return;
@@ -175,7 +175,7 @@ void KJumpingCube::openGame()
 
    do
    {
-      url = KFileDialog::getOpenURL( gameURL.url(), "*.kjc", this, 0 );
+      url = KFileDialog::getOpenUrl( gameURL.url(), "*.kjc", this, 0 );
       if( url.isEmpty() )
          return;
       if(!KIO::NetAccess::exists(url,true,this))
