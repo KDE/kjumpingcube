@@ -23,7 +23,7 @@ kde4_add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
 target_link_libraries(kjumpingcube  ${KDE4_KIO_LIBS} kdegames )
 
-install_targets(/bin kjumpingcube )
+install(TARGETS kjumpingcube  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
