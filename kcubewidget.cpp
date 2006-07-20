@@ -21,12 +21,11 @@
 **************************************************************************** */
 #include "kcubewidget.h"
 
-#include <qpainter.h>
+#include <QPainter>
 #include <QTimer>
-//Added by qt3to4:
 #include <QMouseEvent>
+#include <QPaintEvent>
 #include <QPixmap>
-#include <Q3Frame>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -77,9 +76,8 @@ QPalette KCubeWidget::color(Owner forWhom)
 **                 public functions                       **
 ** ****************************************************** */
 
-KCubeWidget::KCubeWidget(QWidget* parent,const char* name
-                  ,Owner owner,int value,int max)
-              : Q3Frame(parent,name),
+KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
+              : QFrame(parent),
                 Cube(owner,value,max)
 {
   setFrameStyle(Panel|Raised);
@@ -97,7 +95,7 @@ KCubeWidget::KCubeWidget(QWidget* parent,const char* name
   setPalette(kapp->palette());
 
   // show values
-  repaint();
+  update();
 }
 
 KCubeWidget::~KCubeWidget()
@@ -253,85 +251,83 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 
 
 
-void KCubeWidget::drawContents(QPainter *painter)
+void KCubeWidget::paintEvent(QPaintEvent *ev)
 {
-  QRect contents=contentsRect();
-  QPixmap buffer(contents.size());
-  buffer.fill(this,contents.topLeft());
-  QPainter *p=new QPainter;
-  p->begin(&buffer);
-  int  h=contents.height();
-  int  w=contents.width();
+  QFrame::paintEvent(ev);
+  QPainter p(this);
+  p.fillRect(contentsRect(), palette().color( QPalette::Window ) );
+
+  int  h=contentsRect().height();
+  int  w=contentsRect().width();
   int circleSize=(h<w?h:w)/7;
   int points=value();
-  QBrush brush("black");
-  QPen pen("black");
-  p->setBrush(brush);
-  p->setPen(pen);
+
+  p.setBrush(Qt::black);
+  p.setPen(Qt::black);
   switch(points)
     {
     case 1:
-      p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
       break;
 
     case 3:
-      p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
     case 2:
-      p->drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
 		     circleSize,circleSize);
       break;
 
     case 5:
-      p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
     case 4:
-      p->drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,h/4-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(3*w/4-circleSize/2,h/4-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/4-circleSize/2,3*h/4-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,3*h/4-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
+      p.drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
 		     circleSize,circleSize);
       break;
 
     case 8:
-      p->drawEllipse(w/2-circleSize/2,2*h/3-circleSize/2,
+      p.drawEllipse(w/2-circleSize/2,2*h/3-circleSize/2,
 		     circleSize,circleSize);
     case 7:
-      p->drawEllipse(w/2-circleSize/2,h/3-circleSize/2,
+      p.drawEllipse(w/2-circleSize/2,h/3-circleSize/2,
 		     circleSize,circleSize);
     case 6:
-      p->drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
+      p.drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
+      p.drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
 		     circleSize,circleSize);
       break;
 
 
     case 9:
-      p->drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
+      p.drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
+      p.drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
+      p.drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
+      p.drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/2-circleSize/2,2*h/7-circleSize/2,
+      p.drawEllipse(w/2-circleSize/2,2*h/7-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/2-circleSize/2,5*h/7-circleSize/2,
+      p.drawEllipse(w/2-circleSize/2,5*h/7-circleSize/2,
 		     circleSize,circleSize);
-      p->drawEllipse(w/2-circleSize/2,h/2-circleSize/2,
+      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,
 		     circleSize,circleSize);
       break;
 
@@ -339,14 +335,10 @@ void KCubeWidget::drawContents(QPainter *painter)
       kDebug() << "cube had value " << points << endl;
       QString s;
       s.sprintf("%d",points);
-      p->drawText(w/2,h/2,s);
+      p.drawText(w/2,h/2,s);
       break;
     }
-   p->end();
-   delete p;
-
-   painter->drawPixmap(contents.topLeft(),buffer);
-
+   p.end();
 }
 
 #include "kcubewidget.moc"

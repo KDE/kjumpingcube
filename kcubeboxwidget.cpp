@@ -25,8 +25,6 @@
 #include <kconfig.h>
 #include <QLayout>
 #include <QTimer>
-//Added by qt3to4:
-#include <Q3StrList>
 #include <QGridLayout>
 #include <assert.h>
 #include <kcursor.h>

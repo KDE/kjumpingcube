@@ -22,26 +22,24 @@
 #ifndef KCUBEWIDGET_H
 #define KCUBEWIDGET_H
 
-#include <q3frame.h>
-//Added by qt3to4:
-#include <QMouseEvent>
+#include <QFrame>
 #include "cube.h"
 
 class QPalette;
 class QTimer;
-
+class QMouseEvent;
+class QPaintEvent;
 
 /**
 * 
 */
-class KCubeWidget : public Q3Frame , public Cube 
+class KCubeWidget : public QFrame , public Cube 
 {
    Q_OBJECT
          
 public:
    /** constructs a new KCubeWidget*/
-   KCubeWidget(QWidget* parent=0,const char* name=0
-                    ,Owner owner=Cube::Nobody,int value=1,int max=0);  
+   KCubeWidget(QWidget* parent=0,Owner owner=Cube::Nobody,int value=1,int max=0);  
    virtual ~KCubeWidget();   
    
    virtual Owner setOwner(Owner newOwner); 
@@ -93,7 +91,7 @@ protected:
    virtual void mouseReleaseEvent(QMouseEvent*);
    
    /** refreshes the contents of the Cube */
-   virtual void drawContents(QPainter*);
+   virtual void paintEvent(QPaintEvent*);
  
    
   
