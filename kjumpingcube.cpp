@@ -194,7 +194,7 @@ void KJumpingCube::openGame()
       config.setGroup("KJumpingCube");
       if(!config.hasKey("Version"))
       {
-         QString mes=i18n("The file %1 isn't a KJumpingCube gamefile!",
+         QString mes=i18n("The file %1 is not a KJumpingCube gamefile!",
             url.url());
          KMessageBox::sorry(this,mes);
          return;
