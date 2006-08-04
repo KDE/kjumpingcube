@@ -25,7 +25,6 @@
 
 // Settings
 #include "ui_settings.h"
-#include <kconfigdialog.h>
 
 #include "prefs.h"
 
@@ -40,6 +39,8 @@
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
 #include <kstdaction.h>
+#include <kconfigdialog.h>
+#include <kicon.h>
 
 #define ID_STATUS_TURN_TEXT 1000
 #define ID_STATUS_TURN      2000
