@@ -78,7 +78,7 @@ KJumpingCube::KJumpingCube()
    statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, Qt::AlignLeft | Qt::AlignVCenter);
    statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
 
-   currentPlayer = new QWidget(this);
+   currentPlayer = new QWidget;
    currentPlayer->setObjectName("currentPlayer");
    currentPlayer->setFixedWidth(40);
    statusBar()->addWidget(currentPlayer, ID_STATUS_TURN);
