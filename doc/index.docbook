@@ -272,7 +272,7 @@ other.  Player 1 always starts first.</para></listitem>
 
 <varlistentry>
 <term><guiicon>Stop Thinking</guiicon></term>
-<listitem><para><action>Stop the computer opponent thinking about it's next
+<listitem><para><action>Stop the computer opponent thinking about its next
 move.</action>  The computer opponent will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
