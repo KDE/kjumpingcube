@@ -35,9 +35,7 @@ class QPalette;
 class QTimer;
 class KConfigBase;
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 /**
 *@internal

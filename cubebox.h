@@ -27,9 +27,7 @@
 class Cube;
 class KCubeBoxWidget;
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 /**
 * Class for storing information about the playingfield, e.g.

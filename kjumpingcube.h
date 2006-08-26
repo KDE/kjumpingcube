@@ -22,9 +22,7 @@
 #ifndef KJUMPINGCUBE_H
 #define KJUMPINGCUBE_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <kmainwindow.h>
 #include <kurl.h>
