@@ -33,7 +33,7 @@
 #include <klocale.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 #include <kstdgameaction.h>
 #include <kaction.h>
 #include <kio/netaccess.h>
@@ -148,9 +148,9 @@ void KJumpingCube::saveGame(bool saveAs)
       gameURL=url;
    }
 
-   KTempFile tempFile;
-   tempFile.setAutoDelete(true);
-   KSimpleConfig config(tempFile.name());
+   KTemporaryFile tempFile;
+   tempFile.open();
+   KSimpleConfig config(tempFile.fileName());
 
    config.setGroup("KJumpingCube");
    config.writeEntry("Version",KJC_VERSION);
@@ -158,7 +158,7 @@ void KJumpingCube::saveGame(bool saveAs)
    view->saveGame(&config);
    config.sync();
 
-   if(KIO::NetAccess::upload( tempFile.name(),gameURL,this ))
+   if(KIO::NetAccess::upload( tempFile.fileName(),gameURL,this ))
    {
       QString s=i18n("game saved as %1", gameURL.url());
       statusBar()->showMessage(s,MESSAGE_TIME);
