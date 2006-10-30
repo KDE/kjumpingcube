@@ -54,7 +54,7 @@ class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
 public:
    KCubeBoxWidget(const int dim=1,QWidget *parent=0);
       
-   KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
+   explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
    KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
    virtual ~KCubeBoxWidget();
    

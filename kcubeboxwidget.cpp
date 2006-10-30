@@ -186,7 +186,7 @@ void KCubeBoxWidget::getHint()
       }
 
    int row=0,column=0;
-   CubeBox field=*this;
+   CubeBox field=CubeBox(*this);
 
    emit startedThinking();
    bool canceled=!brain.getHint(row,column,(CubeBox::Player)currentPlayer,field);

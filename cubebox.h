@@ -41,7 +41,7 @@ public:
    */
    CubeBox(const int dim=1);
    CubeBox(const CubeBox&);
-   CubeBox(KCubeBoxWidget&);
+   explicit CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();
    
    CubeBox& operator= (const CubeBox& box);
