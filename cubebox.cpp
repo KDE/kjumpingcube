@@ -194,10 +194,10 @@ double CubeBox::assessField(Player player) const
 
    if(player==One)
    {
-      return (int)pow((float)cubesOne,2)+pointsOne-(int)pow(cubesTwo,2)-pointsTwo;
+      return (int)pow((float)cubesOne,2)+pointsOne-(int)pow(cubesTwo,2.)-pointsTwo;
    }
    else
-      return (int)pow((float)cubesTwo,2)+pointsTwo-(int)pow(cubesOne,2)-pointsOne;
+      return (int)pow((float)cubesTwo,2)+pointsTwo-(int)pow(cubesOne,2.)-pointsOne;
 
 }
 
