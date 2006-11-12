@@ -11,5 +11,5 @@ GenericName[fr]=Jeu de tactique
 GenericName[x-test]=xxTactical Gamexx
 Terminal=false
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;StrategyGame;
