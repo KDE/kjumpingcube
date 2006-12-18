@@ -38,7 +38,7 @@
 #include <kaction.h>
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kconfigdialog.h>
 #include <kicon.h>
 
@@ -102,7 +102,7 @@ void KJumpingCube::initKAction() {
   stopAction->setEnabled(false);
   undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(false);
-  KStdAction::preferences(this, SLOT(showOptions()), actionCollection());
+  KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
 
   setupGUI();
 }
