@@ -34,7 +34,7 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <ktemporaryfile.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <kaction.h>
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
@@ -89,18 +89,18 @@ KJumpingCube::KJumpingCube()
 }
 
 void KJumpingCube::initKAction() {
-  KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-  KStdGameAction::load(this, SLOT(openGame()), actionCollection());
-  KStdGameAction::save(this, SLOT(save()), actionCollection());
-  KStdGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
-  KStdGameAction::quit(this, SLOT(close()), actionCollection());
+  KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
+  KStandardGameAction::load(this, SLOT(openGame()), actionCollection());
+  KStandardGameAction::save(this, SLOT(save()), actionCollection());
+  KStandardGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
+  KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-  hintAction = KStdGameAction::hint(view, SLOT(getHint()), actionCollection());
+  hintAction = KStandardGameAction::hint(view, SLOT(getHint()), actionCollection());
   stopAction = new KAction(KIcon("stop"), i18n("Stop &Thinking"), actionCollection(), "game_stop");
   connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
   stopAction->setShortcut(Qt::Key_Escape);
   stopAction->setEnabled(false);
-  undoAction = KStdGameAction::undo(this, SLOT(undo()), actionCollection());
+  undoAction = KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
   undoAction->setEnabled(false);
   KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
 
