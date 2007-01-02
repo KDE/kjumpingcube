@@ -27,7 +27,7 @@
 #include <kmainwindow.h>
 #include <kurl.h>
 
-class KAction;
+class QAction;
 class KCubeBoxWidget;
 
 /**
@@ -48,7 +48,7 @@ public:
 private:
   KCubeBoxWidget *view;
 	QWidget *currentPlayer;
-	KAction *undoAction, *stopAction, *hintAction;
+	QAction *undoAction, *stopAction, *hintAction;
 
   KUrl gameURL;
   void initKAction();
