@@ -36,6 +36,7 @@
 #include <ktemporaryfile.h>
 #include <kstandardgameaction.h>
 #include <kaction.h>
+#include <kactioncollection.h>
 #include <kio/netaccess.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
@@ -89,18 +90,29 @@ KJumpingCube::KJumpingCube()
 }
 
 void KJumpingCube::initKAction() {
-  KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection());
-  KStandardGameAction::load(this, SLOT(openGame()), actionCollection());
-  KStandardGameAction::save(this, SLOT(save()), actionCollection());
-  KStandardGameAction::saveAs(this, SLOT(saveAs()), actionCollection());
-  KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+  QAction *action;
 
-  hintAction = KStandardGameAction::hint(view, SLOT(getHint()), actionCollection());
-  stopAction = new KAction(KIcon("stop"), i18n("Stop &Thinking"), actionCollection(), "game_stop");
+  action = KStandardGameAction::gameNew(this, SLOT(newGame()), this);
+  actionCollection()->addAction(action->objectName(), action);
+  action = KStandardGameAction::load(this, SLOT(openGame()), this);
+  actionCollection()->addAction(action->objectName(), action);
+  action = KStandardGameAction::save(this, SLOT(save()), this);
+  actionCollection()->addAction(action->objectName(), action);
+  action = KStandardGameAction::saveAs(this, SLOT(saveAs()), this);
+  actionCollection()->addAction(action->objectName(), action);
+  action = KStandardGameAction::quit(this, SLOT(close()), this);
+  actionCollection()->addAction(action->objectName(), action);
+
+  hintAction = KStandardGameAction::hint(view, SLOT(getHint()), this);
+  actionCollection()->addAction(hintAction->objectName(), hintAction);
+  stopAction = actionCollection()->addAction("game_stop");
+  stopAction->setIcon(KIcon("stop"));
+  stopAction->setText(i18n("Stop &Thinking"));
   connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
   stopAction->setShortcut(Qt::Key_Escape);
   stopAction->setEnabled(false);
-  undoAction = KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
+  undoAction = KStandardGameAction::undo(this, SLOT(undo()), this);
+  actionCollection()->addAction(undoAction->objectName(), undoAction);
   undoAction->setEnabled(false);
   KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
 
