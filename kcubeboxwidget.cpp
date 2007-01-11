@@ -21,7 +21,6 @@
 **************************************************************************** */
 #include "kcubeboxwidget.h"
 
-#include <kapplication.h>
 #include <kconfig.h>
 #include <QLayout>
 #include <QTimer>

@@ -26,8 +26,8 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPixmap>
+#include <QApplication>
 
-#include <kapplication.h>
 #include <kdebug.h>
 
 /* ****************************************************** **
@@ -92,7 +92,7 @@ KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
   hintCounter=0;
   connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
 
-  setPalette(kapp->palette());
+  setPalette(qApp->palette());
 
   // show values
   update();
@@ -194,7 +194,7 @@ void KCubeWidget::updateColors()
   else if(owner()==Two)
     setPalette(color2);
   else if(owner()==Nobody)
-     setPalette(kapp->palette());
+     setPalette(qApp->palette());
 }
 
 void KCubeWidget::stopHint()

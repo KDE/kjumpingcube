@@ -22,10 +22,9 @@
 
 #include "brain.h"
 #include "cube.h"
-
+#include <QApplication>
 #include <math.h>
 
-#include <kapplication.h>
 
 #undef DEBUG // uncomment this to get useful messages
 #include <assert.h>
@@ -284,7 +283,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       {
          for(i=0;i<moves;i++)
          {
-            kapp->processEvents();
+            qApp->processEvents();
 
 	    // if thinking process stopped
 	    if(stopped)
