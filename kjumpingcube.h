@@ -22,8 +22,6 @@
 #ifndef KJUMPINGCUBE_H
 #define KJUMPINGCUBE_H
 
-#include <config.h>
-
 #include <kmainwindow.h>
 #include <kurl.h>
 

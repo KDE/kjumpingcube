@@ -27,8 +27,6 @@
 class Cube;
 class KCubeBoxWidget;
 
-#include <config.h>
-
 /**
 * Class for storing information about the playingfield, e.g.
 * to undo a move or computing the next move
@@ -43,10 +41,10 @@ public:
    CubeBox(const CubeBox&);
    explicit CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();
-   
+
    CubeBox& operator= (const CubeBox& box);
    CubeBox& operator= (KCubeBoxWidget& box);
-   
+
    bool simulateMove(Player fromWhom,int row, int column);
    double assessField(Player forWhom) const;
    bool playerWon(Player who) const;

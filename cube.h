@@ -22,51 +22,49 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-#include <config.h>
-
 /**
 * This Class is the internal representation of a cube.
 */
 class Cube
 {
-public:   
+public:
    enum Owner{Nobody=0,One=1,Two=2};
 
    /**
    * constructs a Cube
    */
-   Cube(Owner owner=Nobody,int value=1,int max=4);   
-  	
+   Cube(Owner owner=Nobody,int value=1,int max=4);
+
    virtual ~Cube(){}
-   
+
    /**
    * changes owner of the Cube
    * @return old Owner
    */
    virtual Owner setOwner(Owner owner);
-   
+
    /**
-   * changes value of the Cube 
+   * changes value of the Cube
    */
    virtual void setValue(int value);
-   
+
    /**
    * sets maximum value of the Cube
    */
    virtual void setMax(int max);
-   
+
    /**
    * increase the value of the Cube and set the owner of the Cube
    * to 'newOwner'.
    * @return true if the Cube's new value is over maximum
    */
    virtual bool increase(Owner newOwner);
-   
+
    /**
-   * substracts the maximum from the Cube's value  
+   * substracts the maximum from the Cube's value
    */
    virtual void decrease();
-   
+
    /**
    * returns current owner
    */
@@ -78,19 +76,19 @@ public:
    /**
    * returns the maximum value of the cube
    */
-   int max() const;   
-   
+   int max() const;
+
    /**
    * checks if the Cube's value is over maximum
    */
    bool overMax() const;
-   
+
 private:
 
    Owner _owner;
    int _value;
    int _max;
-   
+
 };
 
 

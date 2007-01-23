@@ -22,8 +22,6 @@
 #ifndef BRAIN_H
 #define BRAIN_H
 
-#include <config.h>
-
 #include <krandomsequence.h>
 
 #include "cubebox.h"
@@ -33,7 +31,7 @@ struct coordinate
 {
    int row;
    int column;
-   
+
    int val;
 };
 
@@ -41,18 +39,18 @@ struct coordinate
 /**
 * Class Brain computes a (good) possibility to move
 * for a given playingfield.
-* 
+*
 * It puts a value on every cube by looking at its neighbours
-* and searches the best cubes to move. It then simulates what would 
-* happen, if you would click on these cubes. This is done recursively 
-* to a certain depth and the playingfield will be valued. 
-* 
+* and searches the best cubes to move. It then simulates what would
+* happen, if you would click on these cubes. This is done recursively
+* to a certain depth and the playingfield will be valued.
+*
 * @short The games brain
 */
 class Brain
 {
 public:
-   /** 
+   /**
    * @param initValue value to initialize the random number generator with
    *        if no value is given a truly random value is used
    */
@@ -60,13 +58,13 @@ public:
 
    /**
    * Computes a good possible move at the given field.
-   * The index of this Cube is stored in given 'row' and 'column' 
-   * 
+   * The index of this Cube is stored in given 'row' and 'column'
+   *
    * @return false if computing was stopped
-   * @see Brain#stop;  
+   * @see Brain#stop;
    */
    bool getHint(int& row, int& column, CubeBox::Player player, CubeBox field);
-   
+
    /** stops thinking */
    void stop();
    /** @return true if the Brain is thinking at the moment */
@@ -75,7 +73,7 @@ public:
    /** skill according to Prefs::EnumSkill **/
    void setSkill(int);
    int skill() const;
-   
+
 private:
    /**
    * checks if a move is possible at cube row,column from player 'player' and
@@ -117,8 +115,8 @@ private:
    int maxLevel;
    /** the player for which to check the moves */
    CubeBox::Player currentPlayer;
-	
-	
+
+
    /** flag, if the engine has to be stopped */
    bool stopped;
    /** flag, if the engine is active */
@@ -127,7 +125,7 @@ private:
    int _skill;
 
    /** Sequence generator */
-   KRandomSequence random;    
+   KRandomSequence random;
 };
 
 #endif //BRAIN_H

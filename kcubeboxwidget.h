@@ -35,8 +35,6 @@ class QPalette;
 class QTimer;
 class KConfigBase;
 
-#include <config.h>
-
 /**
 *@internal
 */
@@ -53,22 +51,22 @@ class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
    Q_OBJECT
 public:
    KCubeBoxWidget(const int dim=1,QWidget *parent=0);
-      
+
    explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
    KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
    virtual ~KCubeBoxWidget();
-   
+
    KCubeBoxWidget& operator= (CubeBox& box);
    KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
-   
+
    /**
    * reset cubebox for a new game
    */
    void reset();
-  
+
    /** undo last move */
    void undo();
-   
+
    /**
    * set colors that are used to show owners of the cubes
    *
@@ -80,21 +78,21 @@ public:
    * sets number of Cubes in a row/column to 'size'.
    */
    virtual void setDim(int dim);
-  
+
    /**
    * sets player 'player' as computer or human
    *
-   * @param player 
+   * @param player
    * @param flag: true for computer, false for human
    */
    void setComputerplayer(Player player,bool flag);
-    
+
    /** returns current skill, according to Prefs::EnumSkill */
    int skill() const;
 
    /** returns true if player 'player' is a computerPlayer */
    bool isComputer(Player player) const;
-  
+
    /** returns true if CubeBox is doing a move or getting a hint */
    bool isActive() const;
    bool isMoving() const;
@@ -106,10 +104,10 @@ public:
    * checks if 'player' is a computerplayer an computes next move if TRUE
    */
    void checkComputerplayer(Player player);
- 
+
    inline void saveGame(KConfigBase *c) { saveProperties(c); };
-   inline void restoreGame(KConfigBase *c) { readProperties(c); }; 
-  
+   inline void restoreGame(KConfigBase *c) { readProperties(c); };
+
 public slots:
    /** stops all activities like getting a hint or doing a move */
    void stopActivities();
@@ -118,9 +116,9 @@ public slots:
     * this cube
     */
    void getHint();
-  
+
   void loadSettings();
-  
+
 signals:
    void playerChanged(int newPlayer);
    void playerWon(int player);
@@ -132,7 +130,7 @@ signals:
 protected:
    virtual QSize sizeHint() const;
    virtual void deleteCubes();
-   virtual void initCubes(); 
+   virtual void initCubes();
 
    void saveProperties(KConfigBase *);
    void readProperties(KConfigBase *);
@@ -142,14 +140,14 @@ protected slots:
    void setWaitCursor();
    /** restores the original cursor */
    void setNormalCursor();
-  
+
 private:
    void init();
- 
+
    QGridLayout *layout;
    CubeBox *undoBox;
    Brain brain;
-   
+
    QTimer *moveTimer;
    int moveDelay;
    Loop loop;
@@ -157,25 +155,25 @@ private:
    void startLoop();
    /** */
    void stopLoop();
-  
+
    Player changePlayer();
-   bool hasPlayerWon(Player player); 
+   bool hasPlayerWon(Player player);
    bool computerPlOne;
    bool computerPlTwo;
-  
+
    /**
    * increases the cube at row 'row' and column 'column' ,
-   * and starts the Loop for checking the playingfield 
+   * and starts the Loop for checking the playingfield
    */
    void doMove(int row,int column);
 
    void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
 
-private slots:   
+private slots:
    void nextLoopStep();
    /**
    * checks if cube at ['row','column'] is clickable by the current player.
-   * if true, it increases this cube and checks the playingfield  
+   * if true, it increases this cube and checks the playingfield
    */
    bool checkClick(int row,int column,bool isClick);
 
