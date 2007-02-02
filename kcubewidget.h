@@ -39,7 +39,7 @@ class KCubeWidget : public QFrame , public Cube
          
 public:
    /** constructs a new KCubeWidget*/
-   KCubeWidget(QWidget* parent=0,Owner owner=Cube::Nobody,int value=1,int max=0);  
+   explicit KCubeWidget(QWidget* parent=0,Owner owner=Cube::Nobody,int value=1,int max=0);  
    virtual ~KCubeWidget();   
    
    virtual Owner setOwner(Owner newOwner); 

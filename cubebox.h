@@ -37,7 +37,7 @@ public:
    /**
    * constructs a CubeBox with 'dim' x 'dim' Cubes
    */
-   CubeBox(const int dim=1);
+   explicit CubeBox(const int dim=1);
    CubeBox(const CubeBox&);
    explicit CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();

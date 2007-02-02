@@ -33,7 +33,7 @@ public:
    /**
    * constructs a Cube
    */
-   Cube(Owner owner=Nobody,int value=1,int max=4);
+   explicit Cube(Owner owner=Nobody,int value=1,int max=4);
 
    virtual ~Cube(){}
 

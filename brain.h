@@ -54,7 +54,7 @@ public:
    * @param initValue value to initialize the random number generator with
    *        if no value is given a truly random value is used
    */
-   Brain(int initValue=0);
+   explicit Brain(int initValue=0);
 
    /**
    * Computes a good possible move at the given field.
