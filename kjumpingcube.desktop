@@ -9,7 +9,6 @@ DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
 GenericName[el]=Παιχνίδι τακτικής
 GenericName[fr]=Jeu de tactique
-GenericName[ja]=戦略的ゲーム
 GenericName[x-test]=xxTactical Gamexx
 Terminal=false
 X-KDE-StartupNotify=true
