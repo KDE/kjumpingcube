@@ -203,7 +203,7 @@ void KJumpingCube::openGame()
    QString tempFile;
    if( KIO::NetAccess::download( url, tempFile, this ) )
    {
-      KSimpleConfig config(tempFile,true);
+      KSimpleConfig config( tempFile );
       config.setGroup("KJumpingCube");
       if(!config.hasKey("Version"))
       {
