@@ -106,7 +106,7 @@ void KJumpingCube::initKAction() {
   hintAction = KStandardGameAction::hint(view, SLOT(getHint()), this);
   actionCollection()->addAction(hintAction->objectName(), hintAction);
   stopAction = actionCollection()->addAction("game_stop");
-  stopAction->setIcon(KIcon("stop"));
+  stopAction->setIcon(KIcon("process-stop"));
   stopAction->setText(i18n("Stop &Thinking"));
   connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
   stopAction->setShortcut(Qt::Key_Escape);
