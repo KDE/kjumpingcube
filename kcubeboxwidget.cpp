@@ -287,7 +287,7 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
     for(int column=0; column < cubeDim ; column++)
       {
 	key.sprintf("%u,%u",row,column);
-	list = config->readEntry(key,QStringList());
+	list = config->readEntry(key.toUtf8(),QStringList());
 	owner=list.at(0);
 	value=list.at(1);
 	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());
