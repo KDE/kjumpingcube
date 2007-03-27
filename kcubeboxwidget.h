@@ -29,11 +29,11 @@
 //Added by qt3to4:
 #include <QGridLayout>
 
+class KConfigGroup;
 class QGridLayout;
 class CubeBox;
 class QPalette;
 class QTimer;
-class KConfigBase;
 
 /**
 *@internal
@@ -105,8 +105,8 @@ public:
    */
    void checkComputerplayer(Player player);
 
-   inline void saveGame(KConfigBase *c) { saveProperties(c); }
-   inline void restoreGame(KConfigBase *c) { readProperties(c); }
+   inline void saveGame(KConfigGroup&c) { saveProperties(c); }
+   inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
 
 public slots:
    /** stops all activities like getting a hint or doing a move */
@@ -132,8 +132,8 @@ protected:
    virtual void deleteCubes();
    virtual void initCubes();
 
-   void saveProperties(KConfigBase *);
-   void readProperties(KConfigBase *);
+   void saveProperties(KConfigGroup&);
+   void readProperties(const KConfigGroup&);
 
 protected slots:
    /** sets the cursor to an waitcursor */

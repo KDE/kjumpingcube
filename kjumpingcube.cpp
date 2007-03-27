@@ -163,11 +163,10 @@ void KJumpingCube::saveGame(bool saveAs)
    KTemporaryFile tempFile;
    tempFile.open();
    KConfig config(tempFile.fileName(), KConfig::OnlyLocal);
-
-   config.setGroup("KJumpingCube");
-   config.writeEntry("Version",KJC_VERSION);
-   config.setGroup("Game");
-   view->saveGame(&config);
+   KConfigGroup main(&config, "KJumpingCube");
+   main.writeEntry("Version",KJC_VERSION);
+   KConfigGroup game(&config, "Game");
+   view->saveGame(game);
    config.sync();
 
    if(KIO::NetAccess::upload( tempFile.fileName(),gameURL,this ))
@@ -204,8 +203,8 @@ void KJumpingCube::openGame()
    if( KIO::NetAccess::download( url, tempFile, this ) )
    {
       KConfig config( tempFile, KConfig::OnlyLocal);
-      config.setGroup("KJumpingCube");
-      if(!config.hasKey("Version"))
+      KConfigGroup main(&config, "KJumpingCube");
+      if(!main.hasKey("Version"))
       {
          QString mes=i18n("The file %1 is not a KJumpingCube gamefile!",
             url.url());
@@ -214,8 +213,8 @@ void KJumpingCube::openGame()
       }
 
       gameURL=url;
-      config.setGroup("Game");
-      view->restoreGame(&config);
+      KConfigGroup game(&config, "Game");
+      view->restoreGame(game);
 
       undoAction->setEnabled(false);
 

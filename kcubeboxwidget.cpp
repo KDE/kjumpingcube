@@ -242,7 +242,7 @@ void KCubeBoxWidget::stopActivities()
 
 }
 
-void KCubeBoxWidget::saveProperties(KConfigBase* config)
+void KCubeBoxWidget::saveProperties(KConfigGroup& config)
 {
    if(isMoving())
    {
@@ -253,7 +253,7 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
       stopActivities();
 
    // save current player
-   config->writeEntry("onTurn",(int)currentPlayer);
+   config.writeEntry("onTurn",(int)currentPlayer);
 
    QStringList list;
    //list.setAutoDelete(true);
@@ -268,26 +268,26 @@ void KCubeBoxWidget::saveProperties(KConfigBase* config)
 	value.sprintf("%u",cubes[row][column]->value());
 	list.append(owner.toAscii());
 	list.append(value.toAscii());
-	config->writeEntry(key,list);
+	config.writeEntry(key,list);
 
 	list.clear();
       }
-  config->writeEntry("CubeDim",dim());
+  config.writeEntry("CubeDim",dim());
 }
 
-void KCubeBoxWidget::readProperties(KConfigBase* config)
+void KCubeBoxWidget::readProperties(const KConfigGroup& config)
 {
   QStringList list;
   //list.setAutoDelete(true);
   QString owner, value, key;
-  setDim(config->readEntry("CubeDim",5));
+  setDim(config.readEntry("CubeDim",5));
   int cubeDim=dim();
 
   for(int row=0; row < cubeDim ; row++)
     for(int column=0; column < cubeDim ; column++)
       {
 	key.sprintf("%u,%u",row,column);
-	list = config->readEntry(key.toUtf8(),QStringList());
+	list = config.readEntry(key,QStringList());
 	owner=list.at(0);
 	value=list.at(1);
 	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());
@@ -298,7 +298,7 @@ void KCubeBoxWidget::readProperties(KConfigBase* config)
 
 
    // set current player
-   int onTurn=config->readEntry("onTurn",1);
+   int onTurn=config.readEntry("onTurn",1);
    currentPlayer=(Player)onTurn;
    emit playerChanged(onTurn);
    checkComputerplayer((Player)onTurn);
