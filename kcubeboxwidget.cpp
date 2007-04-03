@@ -309,14 +309,14 @@ void KCubeBoxWidget::readProperties(const KConfigGroup& config)
 ** ***************************************************************** */
 void KCubeBoxWidget::setWaitCursor()
 {
-   setCursor(KCursor::waitCursor());
+   setCursor(Qt::BusyCursor);
 }
 
 
 
 void KCubeBoxWidget::setNormalCursor()
 {
-   setCursor(KCursor::handCursor());
+   setCursor(Qt::PointingHandCursor);
 }
 
 void KCubeBoxWidget::stopHint()
