@@ -58,8 +58,8 @@ private:
 private slots:
   void newGame();
   void saveGame(bool saveAs=false);
-  inline void saveAs() { saveGame(true); };
-  inline void save() { saveGame(false); };
+  inline void saveAs() { saveGame(true); }
+  inline void save() { saveGame(false); }
   void openGame();
   void stop();
   void undo();

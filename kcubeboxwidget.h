@@ -107,8 +107,8 @@ public:
    */
    void checkComputerplayer(Player player);
  
-   inline void saveGame(KConfigBase *c) { saveProperties(c); };
-   inline void restoreGame(KConfigBase *c) { readProperties(c); }; 
+   inline void saveGame(KConfigBase *c) { saveProperties(c); }
+   inline void restoreGame(KConfigBase *c) { readProperties(c); } 
   
 public slots:
    /** stops all activities like getting a hint or doing a move */
