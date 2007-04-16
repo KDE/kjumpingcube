@@ -22,7 +22,7 @@
 #ifndef KJUMPINGCUBE_H
 #define KJUMPINGCUBE_H
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <kurl.h>
 
 class QAction;
@@ -36,7 +36,7 @@ class KCubeBoxWidget;
  * @author Matthias Kiefer <matthias.kiefer@gmx.de>
  * @version 0.7.2
  */
-class KJumpingCube : public KMainWindow {
+class KJumpingCube : public KXmlGuiWindow {
   Q_OBJECT
 
 public:
