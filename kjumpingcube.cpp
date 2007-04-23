@@ -295,7 +295,8 @@ void KJumpingCube::showOptions(){
   if(KConfigDialog::showDialog("settings"))
     return;
 
-  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
+  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self());
+  dialog->setFaceType(KPageDialog::Plain);
   dialog->addPage(new SettingsWidget(this), i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged(const QString&)), view, SLOT(loadSettings()));
   dialog->show();
