@@ -1,11 +1,15 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KJumpingCube
+Name[pt]=Cubo Saltitão
+Name[pt_BR]=Cubo Saltitão
 Exec=kjumpingcube -caption "%c"
 Icon=kjumpingcube
 Type=Application
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
+GenericName[pt]=Jogo de Estratégia
+GenericName[pt_BR]=Jogo de Estratégia
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
