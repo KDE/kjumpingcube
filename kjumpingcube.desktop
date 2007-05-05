@@ -8,6 +8,7 @@ Icon=kjumpingcube
 Type=Application
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
+GenericName[de]=Taktisches Spiel
 GenericName[pt]=Jogo de Estratégia
 GenericName[pt_BR]=Jogo de Estratégia
 Terminal=false
