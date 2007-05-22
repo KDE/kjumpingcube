@@ -10,6 +10,7 @@ Icon=kjumpingcube
 Type=Application
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
+GenericName[bg]=Тактическа игра
 GenericName[br]=C'hoari a vrezelekaouriezh
 GenericName[de]=Taktisches Spiel
 GenericName[el]=Παιχνίδι τακτικής
