@@ -73,17 +73,16 @@ KJumpingCube::KJumpingCube()
    setCentralWidget(view);
 
    // init statusbar
+   statusBar()->setSizeGripEnabled (true);
    QString s = i18n("Current player:");
-   statusBar()->insertItem(s,ID_STATUS_TURN_TEXT, false);
-   statusBar()->changeItem(s,ID_STATUS_TURN_TEXT);
-   statusBar()->setItemAlignment (ID_STATUS_TURN_TEXT, Qt::AlignLeft | Qt::AlignVCenter);
-   statusBar()->setFixedHeight( statusBar()->sizeHint().height() );
+   statusBar()->addPermanentWidget (new QLabel (s));
 
-   currentPlayer = new QWidget;
-   currentPlayer->setObjectName("currentPlayer");
-   currentPlayer->setFixedWidth(40);
-   statusBar()->addWidget(currentPlayer, ID_STATUS_TURN);
-   statusBar()->setItemAlignment(ID_STATUS_TURN, Qt::AlignLeft | Qt::AlignVCenter);
+   // This widget should just be a colored patch, but setting the background
+   // to a color in KJumpingCube::changePlayer did not work ... 25/5/07.
+   currentPlayer = new QLabel ("2");
+   currentPlayer->setFrameStyle(QFrame::Box | QFrame::Plain);
+   currentPlayer->setLineWidth (4);
+   statusBar()->addPermanentWidget (currentPlayer);
 
    initKAction();
    changePlayer(1);
@@ -247,10 +246,12 @@ void KJumpingCube::changePlayer(int newPlayer)
 {
    undoAction->setEnabled(true);
    QPalette palette;
-   palette.setColor(backgroundRole(),
+   // palette.setColor(backgroundRole(), // This did not work ... 25/5/07.
+   // The color patch appeared briefly in the status bar, then disappeared.
+   palette.setColor(foregroundRole(),
 		   newPlayer == 1 ? Prefs::color1() : Prefs::color2());
    currentPlayer->setPalette(palette);
-   currentPlayer->repaint();
+   currentPlayer->setText (newPlayer == 1 ? "1" : "2");
 }
 
 void KJumpingCube::showWinner(int player) {

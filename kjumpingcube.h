@@ -22,6 +22,8 @@
 #ifndef KJUMPINGCUBE_H
 #define KJUMPINGCUBE_H
 
+#include <QLabel>
+
 #include <kxmlguiwindow.h>
 #include <kurl.h>
 
@@ -45,7 +47,7 @@ public:
 
 private:
   KCubeBoxWidget *view;
-	QWidget *currentPlayer;
+	QLabel *currentPlayer;
 	QAction *undoAction, *stopAction, *hintAction;
 
   KUrl gameURL;

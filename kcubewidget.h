@@ -50,8 +50,8 @@ public:
    KCubeWidget& operator=(const Cube&);
    KCubeWidget& operator=(const KCubeWidget&);
    
-   /** shows a tip e.g. blinks with the interval 500 and number times */
-   void showHint(int interval=500,int number=5);
+   /** shows a hint e.g. blinks with the interval 400 and number times */
+   void showHint (int interval = 400, int number = 5, bool realMove = false);
    /** stops showing a hint */
    void stopHint();
    
@@ -107,6 +107,8 @@ protected slots:
 private:
    int _row;
    int _column;
+
+   bool mRealMove;
    
    QTimer *hintTimer;
    

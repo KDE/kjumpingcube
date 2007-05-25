@@ -80,9 +80,11 @@ KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
               : QFrame(parent),
                 Cube(owner,value,max)
 {
-  setFrameStyle(Panel|Raised);
-  //setLineWidth(2);
-  setMinimumSize(20,20);
+  setMinimumSize (20,20);
+  setFrameStyle(QFrame::Panel | QFrame::Raised);
+  int h = height();
+  int w = width();
+  setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
 
   setCoordinates(0,0);
 
@@ -90,9 +92,12 @@ KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
   // will be automatically destroyed by the parent
   hintTimer = new QTimer(this);
   hintCounter=0;
+  mRealMove = false;
   connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
 
-  setPalette(qApp->palette());
+  setPalette(QColor ("#b3925d")); // IDW Oxygen woodbrown2
+  // setPalette(QColor ("#babdb6")); // IDW Oxygen aluminum gray3
+  setAutoFillBackground (true);		// Allow ::hint() to work (Qt 4.1).
 
   // show values
   update();
@@ -142,13 +147,15 @@ void KCubeWidget::setValue(int newValue)
 }
 
 
-void KCubeWidget::showHint(int interval,int number)
+void KCubeWidget::showHint (int interval, int number, bool realMove)
 {
    if(hintTimer->isActive())
       return;
 
+   mRealMove = realMove;	// If not just a hint, must finish with a move.
    hintCounter=2*number;
-   hintTimer->start(interval);
+   hint();			// Start the first blink.
+   hintTimer->start(interval);	// Start the repeating timer.
 }
 
 
@@ -194,17 +201,24 @@ void KCubeWidget::updateColors()
   else if(owner()==Two)
     setPalette(color2);
   else if(owner()==Nobody)
-     setPalette(qApp->palette());
+     setPalette(QColor ("#b3925d")); // IDW Oxygen woodbrown2
+     // setPalette(QColor ("#babdb6")); // IDW Oxygen aluminum gray3
 }
 
 void KCubeWidget::stopHint()
 {
    if(hintTimer->isActive())
    {
+      setBackgroundRole(QPalette::Window);
       hintTimer->stop();
-      setBackgroundRole(QPalette::Background);
+      if (mRealMove) {
+        // If it is a real move, not a hint, start animating the move for this
+        // cube and updating the cube(s), using a simulated mouse click to
+        // connect to KCubeBoxWidget::checkClicked (row(), column(), false).
+        emit clicked (row(), column(), false);	// False --> not a mouse click.
+        mRealMove = false;
+      }
    }
-
 }
 
 
@@ -215,19 +229,16 @@ void KCubeWidget::stopHint()
 
 void KCubeWidget::hint()
 {
+   if (hintCounter <= 0) {
+       stopHint();
+   }
+   if (hintCounter%2 == 1) {
+       setBackgroundRole (QPalette::Light);	// Blink light color.
+   }
+   else {
+       setBackgroundRole (QPalette::Window);	// Blink normal color.
+   }
    hintCounter--;
-   if(hintCounter%2==1)
-   {
-       setBackgroundRole(QPalette::Light);
-   }
-   else
-   {
-       setBackgroundRole(QPalette::Background);
-   }
-   if(hintCounter==0)
-   {
-      stopHint();
-   }
 }
 
 
@@ -253,12 +264,16 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 
 void KCubeWidget::paintEvent(QPaintEvent *ev)
 {
-  QFrame::paintEvent(ev);
-  QPainter p(this);
-  p.fillRect(contentsRect(), palette().color( QPalette::Window ) );
+  // Background is already painted (see "setAutoFillBackground (true)").
+  // Resizing has been done by stretch options in KCubeBoxWidget.
 
-  int  h=contentsRect().height();
-  int  w=contentsRect().width();
+  int h = height();
+  int w = width();
+  setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
+  QFrame::paintEvent(ev);
+
+  QPainter p(this);
+
   int circleSize=(h<w?h:w)/7;
   int points=value();
 

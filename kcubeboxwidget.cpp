@@ -370,13 +370,13 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
 
       if(!canceled)
       {
-         cubes[row][column]->showHint(500,2);
-
-         bool result=checkClick(row,column,false);
-		 assert(result);
+         // Blink the cube to be moved (twice).  The realMove = true flag tells
+         // the cube to simulate a mouse click and trigger the move animation,
+         // but not until after the blinking is finished.  The cube's "clicked"
+         // signal is connected to "checkClick (row, column, false)".`
+         cubes[row][column]->showHint (400, 2, true);
       }
    }
-
 }
 
 /* ***************************************************************** **
@@ -454,6 +454,8 @@ void KCubeBoxWidget::initCubes()
 
    // create Layout
    layout=new QGridLayout(this);
+   layout->setSpacing (0);
+   layout->setMargin (0);
 
 
    for(i=0;i<s;i++)
