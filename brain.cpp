@@ -137,19 +137,11 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       for(i=0;i<moves;i++)
       {
 	 // if Thinking process stopped
-	 if(stopped)
-	 {
+	 if (stopped) {
 #ifdef DEBUG
 	     cerr << "brain stopped" << endl;
 #endif
-	     active=false;
-             for(i=0;i<box.dim();i++)
-                delete[] worth[i];
-             delete [] worth;
-
-             delete [] c2m;
-
-	     return false;
+             break;	// Go evaluate the best move calculated so far.
 	 }
 
 #ifdef DEBUG
@@ -231,7 +223,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 
    active=false;
 
-   return true;
+   return (! stopped);
 }
 
 

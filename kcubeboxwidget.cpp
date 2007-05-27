@@ -21,10 +21,12 @@
 **************************************************************************** */
 #include "kcubeboxwidget.h"
 
-#include <kconfig.h>
+#include <KConfig>
 #include <QLayout>
 #include <QTimer>
 #include <QGridLayout>
+#include <QPainter>
+
 #include <assert.h>
 #include <kcursor.h>
 
@@ -188,14 +190,13 @@ void KCubeBoxWidget::getHint()
    CubeBox field=CubeBox(*this);
 
    emit startedThinking();
-   bool canceled=!brain.getHint(row,column,(CubeBox::Player)currentPlayer,field);
+   bool done = brain.getHint(row,column,(CubeBox::Player)currentPlayer,field);
    emit stoppedThinking();
 
-   if(canceled)
-   {
-      return;  // return if thinking was stopped
+   if (done) {
+      cubes[row][column]->showHint();
    }
-   cubes[row][column]->showHint();
+   // If (! done), we interrupted the brain, so we do not want the hint.
 }
 
 void KCubeBoxWidget::setColor(Player player,QPalette color)
@@ -365,17 +366,17 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
-      bool canceled=!brain.getHint(row,column,(CubeBoxBase<Cube>::Player)player,field);
+      brain.getHint (row, column, (CubeBoxBase<Cube>::Player) player, field);
       emit stoppedThinking();
 
-      if(!canceled)
-      {
-         // Blink the cube to be moved (twice).  The realMove = true flag tells
-         // the cube to simulate a mouse click and trigger the move animation,
-         // but not until after the blinking is finished.  The cube's "clicked"
-         // signal is connected to "checkClick (row, column, false)".`
-         cubes[row][column]->showHint (400, 2, true);
-      }
+      // We do not care if we interrupted the computer.  It was probably taking
+      // too long, so we will just take the best move it had so far.
+
+      // Blink the cube to be moved (twice).  The realMove = true flag tells
+      // the cube to simulate a mouse click and trigger the move animation,
+      // but not until after the blinking is finished.  The cube's "clicked"
+      // signal is connected to "checkClick (row, column, false)".`
+      cubes[row][column]->showHint (400, 2, true);
    }
 }
 
@@ -423,12 +424,26 @@ QPalette KCubeBoxWidget::color(Player forWhom)
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
+   theme.load ("pics/default.desktop");
+   qDebug() << "Graphics file:" << theme.graphics();
+   t.start();
+   qDebug() << t.restart() << "msec";
+   svg.load (theme.graphics());
+   qDebug() << t.restart() << "msec" << "SVG loaded ...";
+   if (svg.isValid())
+	qDebug() << "SVG is valid ...";
+   else
+	qDebug() << "SVG is NOT valid ...";
+
+   // 60 width makeSVGCubes (this->width()/dim());
+   makeSVGCubes (70);
+
    initCubes();
 
    undoBox=new CubeBox(dim());
 
    currentPlayer=One;
-   moveDelay=100;
+   moveDelay=150;
    moveTimer=new QTimer(this);
    computerPlOne=false;
    computerPlTwo=false;
@@ -477,9 +492,10 @@ void KCubeBoxWidget::initCubes()
          cubes[i][j]=new KCubeWidget(this);
          cubes[i][j]->setCoordinates(i,j);
          layout->addWidget(cubes[i][j],i,j);
-         cubes[i][j]->show();
+         cubes[i][j]->setPixmaps (&elements);
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(checkClick(int,int,bool)));
+         cubes[i][j]->show();
       }
 
    // initialize cubes
@@ -504,6 +520,54 @@ void KCubeBoxWidget::initCubes()
          cubes[i][j]->setMax(4);
       }
 
+}
+
+void KCubeBoxWidget::makeSVGCubes (const int width)
+{
+   qDebug() << "Cube width:" << width;
+   QImage lighting (width, width, QImage::Format_ARGB32_Premultiplied);
+   QPainter p (&lighting);
+   lighting.fill (0);
+   svg.render (&p, "lighting");
+
+   QImage img (width, width, QImage::Format_ARGB32_Premultiplied);
+   QPainter q (&img);		// Paints whole faces of the dice.
+
+   QImage pip (width/7, width/7, QImage::Format_ARGB32_Premultiplied);
+   QPainter r (&pip);		// Paints the pips on the faces of the dice.
+
+   elements.clear();
+   for (int i = FirstElement; i <= LastElement; i++) {
+     img.fill (0);
+     switch (i) {
+     case Neutral:
+       svg.render (&q, "neutral");
+       q.drawImage (QPoint (0, 0), lighting);
+       break;
+     case Player1:
+       svg.render (&q, "player_1");
+       q.drawImage (QPoint (0, 0), lighting);
+       break;
+     case Player2:
+       svg.render (&q, "player_2");
+       q.drawImage (QPoint (0, 0), lighting);
+       break;
+     case Pip:
+       svg.render (&r, "pip");
+       break;
+     case BlinkLight:
+       svg.render (&q, "blink_light");
+       break;
+     case BlinkDark:
+       svg.render (&q, "blink_dark");
+       break;
+     default:
+       break;
+     }
+
+     elements.append
+       ((i == Pip) ? QPixmap::fromImage (pip) : QPixmap::fromImage (img));
+   }
 }
 
 QSize  KCubeBoxWidget::sizeHint() const

@@ -1,6 +1,8 @@
 project(kjumpingcube)
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames  )
 
+project(kjumpingcube)
+add_subdirectory( pics )
 
 ########### next target ###############
 

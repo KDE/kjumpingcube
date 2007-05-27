@@ -76,7 +76,7 @@ QPalette KCubeWidget::color(Owner forWhom)
 **                 public functions                       **
 ** ****************************************************** */
 
-KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
+KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
               : QFrame(parent),
                 Cube(owner,value,max)
 {
@@ -95,9 +95,11 @@ KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
   mRealMove = false;
   connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
 
-  setPalette(QColor ("#b3925d")); // IDW Oxygen woodbrown2
-  // setPalette(QColor ("#babdb6")); // IDW Oxygen aluminum gray3
+  // IDW setPalette(QColor ("#b3925d"));	// Oxygen woodbrown2
+  setPalette(QColor ("#000000"));	// Black.
   setAutoFillBackground (true);		// Allow ::hint() to work (Qt 4.1).
+  pixmaps = 0;
+  blinking = None;
 
   // show values
   update();
@@ -106,7 +108,6 @@ KCubeWidget::KCubeWidget(QWidget* parent,Owner owner,int value,int max)
 KCubeWidget::~KCubeWidget()
 {
 }
-
 
 KCubeWidget& KCubeWidget::operator=(const Cube& cube)
 {
@@ -131,6 +132,12 @@ KCubeWidget& KCubeWidget::operator=(const KCubeWidget& cube)
 
    return *this;
 }
+
+void KCubeWidget::setPixmaps (QList<QPixmap> * ptr)
+{
+   pixmaps = ptr;
+}
+
 KCubeWidget::Owner KCubeWidget::setOwner(Owner newOwner)
 {
    Owner old=Cube::setOwner(newOwner);
@@ -196,21 +203,25 @@ void KCubeWidget::reset()
 
 void KCubeWidget::updateColors()
 {
+  update();
+  return;
+
   if(owner()==One)
     setPalette(color1);
   else if(owner()==Two)
     setPalette(color2);
   else if(owner()==Nobody)
-     setPalette(QColor ("#b3925d")); // IDW Oxygen woodbrown2
-     // setPalette(QColor ("#babdb6")); // IDW Oxygen aluminum gray3
+    setPalette(QColor ("#b3925d"));	// Oxygen woodbrown2
 }
 
 void KCubeWidget::stopHint()
 {
    if(hintTimer->isActive())
    {
-      setBackgroundRole(QPalette::Window);
       hintTimer->stop();
+      blinking = None;		// Turn off blinking.
+      update();
+
       if (mRealMove) {
         // If it is a real move, not a hint, start animating the move for this
         // cube and updating the cube(s), using a simulated mouse click to
@@ -231,14 +242,16 @@ void KCubeWidget::hint()
 {
    if (hintCounter <= 0) {
        stopHint();
+       return;
    }
-   if (hintCounter%2 == 1) {
-       setBackgroundRole (QPalette::Light);	// Blink light color.
+   if (hintCounter%2 == 0) {
+       blinking = Light;	// Blink light color.
    }
    else {
-       setBackgroundRole (QPalette::Window);	// Blink normal color.
+       blinking = Dark;		// Blink dark color.
    }
    hintCounter--;
+   update();
 }
 
 
@@ -262,98 +275,89 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 
 
 
-void KCubeWidget::paintEvent(QPaintEvent *ev)
+void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 {
   // Background is already painted (see "setAutoFillBackground (true)").
   // Resizing has been done by stretch options in KCubeBoxWidget.
 
+  if ((pixmaps == 0) || (pixmaps->isEmpty()))
+      return;
+
   int h = height();
   int w = width();
-  setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
-  QFrame::paintEvent(ev);
+  // setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
+  // IDW QFrame::paintEvent(ev);
 
   QPainter p(this);
+  QPixmap pip = pixmaps->at(Pip);
 
-  int circleSize=(h<w?h:w)/7;
-  int points=value();
+  SVGElement el = Neutral;
+  if (owner() == One)
+    el = Player1;
+  else if (owner() == Two)
+    el = Player2;
 
-  p.setBrush(Qt::black);
-  p.setPen(Qt::black);
-  switch(points)
-    {
-    case 1:
-      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
+  int dia = pip.width();
+  int pmw = pixmaps->at(el).width();
+  int pmh = pixmaps->at(el).height();
+  p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(el));
+
+  int points = value();
+
+  switch (points) {
+  case 1:
+      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
       break;
 
-    case 3:
-      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
-    case 2:
-      p.drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
-		     circleSize,circleSize);
+  case 3:
+      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
+  case 2:
+      p.drawPixmap ((w/2 - dia)/2, (h/2 - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
       break;
 
-    case 5:
-      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,circleSize,circleSize);
-    case 4:
-      p.drawEllipse(w/4-circleSize/2,h/4-circleSize/2,circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,h/4-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/4-circleSize/2,3*h/4-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,3*h/4-circleSize/2,
-		     circleSize,circleSize);
+  case 5:
+      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
+  case 4:
+      p.drawPixmap ((w/2 - dia)/2,   (h/2 - dia)/2, pip);
+      p.drawPixmap ((w/2 - dia)/2,   (3*h/2 - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (h/2 - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
       break;
 
-    case 8:
-      p.drawEllipse(w/2-circleSize/2,2*h/3-circleSize/2,
-		     circleSize,circleSize);
-    case 7:
-      p.drawEllipse(w/2-circleSize/2,h/3-circleSize/2,
-		     circleSize,circleSize);
-    case 6:
-      p.drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
-		     circleSize,circleSize);
+  case 8:
+      p.drawPixmap ((w - dia)/2,     2*h/3 - dia/2, pip);
+  case 7:
+      p.drawPixmap ((w - dia)/2,     h/3 - dia/2, pip);
+  case 6:
+      p.drawPixmap ((w/2 - dia)/2,   (h/2 - dia)/2, pip);
+      p.drawPixmap ((w/2 - dia)/2,   (h - dia)/2, pip);
+      p.drawPixmap ((w/2 - dia)/2,   (3*h/2 - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (h/2 - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (h - dia)/2, pip);
+      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
       break;
 
-
-    case 9:
-      p.drawEllipse(w/4-circleSize/2,h/6-circleSize/2,circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/4-circleSize/2,3*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,3*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/4-circleSize/2,5*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(3*w/4-circleSize/2,5*h/6-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/2-circleSize/2,2*h/7-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/2-circleSize/2,5*h/7-circleSize/2,
-		     circleSize,circleSize);
-      p.drawEllipse(w/2-circleSize/2,h/2-circleSize/2,
-		     circleSize,circleSize);
-      break;
-
-    default:
-      kDebug() << "cube had value " << points << endl;
+  default:
       QString s;
       s.sprintf("%d",points);
+      p.setPen(Qt::black);
       p.drawText(w/2,h/2,s);
       break;
-    }
-   p.end();
+  }
+
+  switch (blinking) {
+  case Light:
+      p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(BlinkLight));
+      break;
+  case Dark:
+      p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(BlinkDark));
+      break;
+  default:
+      break;
+  }
+
+  p.end();
 }
 
 #include "kcubewidget.moc"

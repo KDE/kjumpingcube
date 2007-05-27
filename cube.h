@@ -22,6 +22,9 @@
 #ifndef CUBE_H
 #define CUBE_H
 
+   enum SVGElement {Neutral, Player1, Player2, Pip, BlinkLight, BlinkDark,
+                    FirstElement = Neutral, LastElement = BlinkDark};
+
 /**
 * This Class is the internal representation of a cube.
 */

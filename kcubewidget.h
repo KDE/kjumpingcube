@@ -39,9 +39,11 @@ class KCubeWidget : public QFrame , public Cube
          
 public:
    /** constructs a new KCubeWidget*/
-   explicit KCubeWidget(QWidget* parent=0,Owner owner=Cube::Nobody,int value=1,int max=0);  
+   explicit KCubeWidget(QWidget* parent=0,
+                           Owner owner=Cube::Nobody, int value=1, int max=0);  
    virtual ~KCubeWidget();   
    
+   void setPixmaps (QList<QPixmap> * ptr);
    virtual Owner setOwner(Owner newOwner); 
    virtual void setValue(int newValue);
    
@@ -107,6 +109,9 @@ protected slots:
 private:
    int _row;
    int _column;
+   QList<QPixmap> * pixmaps;
+   enum Blink {None, Light, Dark};
+   Blink blinking;
 
    bool mRealMove;
    

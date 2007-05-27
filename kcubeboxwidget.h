@@ -22,6 +22,10 @@
 #ifndef KCUBEBOXWIDGET_H
 #define KCUBEBOXWIDGET_H
 
+#include <KSvgRenderer>
+#include <kgametheme.h>
+#include <QTime> // IDW
+
 #include "cubeboxbase.h"
 #include "kcubewidget.h"
 #include "brain.h"
@@ -143,6 +147,12 @@ protected slots:
 
 private:
    void init();
+
+   KSvgRenderer svg;
+   KGameTheme theme;		// A graphics theme for KJumpingCube.
+   QTime t; // IDW
+   void makeSVGCubes (const int width);
+   QList<QPixmap> elements;
 
    QGridLayout *layout;
    CubeBox *undoBox;
