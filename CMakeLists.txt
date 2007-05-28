@@ -1,6 +1,5 @@
 project(kjumpingcube)
 
-project(kjumpingcube)
 add_subdirectory( pics )
 
 ########### next target ###############

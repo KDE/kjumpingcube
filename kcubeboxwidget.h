@@ -32,6 +32,7 @@
 #include <QWidget>
 //Added by qt3to4:
 #include <QGridLayout>
+#include <QResizeEvent>
 
 class KConfigGroup;
 class QGridLayout;
@@ -135,6 +136,7 @@ protected:
    virtual QSize sizeHint() const;
    virtual void deleteCubes();
    virtual void initCubes();
+   virtual void resizeEvent (QResizeEvent * event);
 
    void saveProperties(KConfigGroup&);
    void readProperties(const KConfigGroup&);
@@ -153,8 +155,10 @@ private:
    QTime t; // IDW
    void makeSVGCubes (const int width);
    QList<QPixmap> elements;
+   void reCalculateGraphics (const int w, const int h);
 
-   QGridLayout *layout;
+   QPoint topLeft;
+   int cubeSize;
    CubeBox *undoBox;
    Brain brain;
 

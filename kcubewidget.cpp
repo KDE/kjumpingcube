@@ -95,9 +95,6 @@ KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
   mRealMove = false;
   connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
 
-  // IDW setPalette(QColor ("#b3925d"));	// Oxygen woodbrown2
-  setPalette(QColor ("#000000"));	// Black.
-  setAutoFillBackground (true);		// Allow ::hint() to work (Qt 4.1).
   pixmaps = 0;
   blinking = None;
 
@@ -277,16 +274,11 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 
 void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 {
-  // Background is already painted (see "setAutoFillBackground (true)").
-  // Resizing has been done by stretch options in KCubeBoxWidget.
-
   if ((pixmaps == 0) || (pixmaps->isEmpty()))
       return;
 
   int h = height();
   int w = width();
-  // setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
-  // IDW QFrame::paintEvent(ev);
 
   QPainter p(this);
   QPixmap pip = pixmaps->at(Pip);

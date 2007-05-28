@@ -22,9 +22,7 @@
 #include "kcubeboxwidget.h"
 
 #include <KConfig>
-#include <QLayout>
 #include <QTimer>
-#include <QGridLayout>
 #include <QPainter>
 
 #include <assert.h>
@@ -216,6 +214,7 @@ void KCubeBoxWidget::setDim(int d)
    {
       undoBox->setDim(d);
       CubeBoxBase<KCubeWidget>::setDim(d);
+      reCalculateGraphics (width(), height());
    }
 }
 
@@ -424,6 +423,9 @@ QPalette KCubeBoxWidget::color(Player forWhom)
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
+   setPalette (QColor ("#141414"));		// Very dark gray.
+   setAutoFillBackground (true);
+
    theme.load ("pics/default.desktop");
    qDebug() << "Graphics file:" << theme.graphics();
    t.start();
@@ -434,9 +436,6 @@ void KCubeBoxWidget::init()
 	qDebug() << "SVG is valid ...";
    else
 	qDebug() << "SVG is NOT valid ...";
-
-   // 60 width makeSVGCubes (this->width()/dim());
-   makeSVGCubes (70);
 
    initCubes();
 
@@ -467,19 +466,6 @@ void KCubeBoxWidget::initCubes()
    const int s=dim();
    int i,j;
 
-   // create Layout
-   layout=new QGridLayout(this);
-   layout->setSpacing (0);
-   layout->setMargin (0);
-
-
-   for(i=0;i<s;i++)
-   {
-      layout->setRowStretch(i,1);
-      layout->setColumnStretch(i,1);
-   }
-
-
    // create new cubes
    cubes = new KCubeWidget**[s];
    for(i=0;i<s;i++)
@@ -491,10 +477,10 @@ void KCubeBoxWidget::initCubes()
       {
          cubes[i][j]=new KCubeWidget(this);
          cubes[i][j]->setCoordinates(i,j);
-         layout->addWidget(cubes[i][j],i,j);
          cubes[i][j]->setPixmaps (&elements);
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
-         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(checkClick(int,int,bool)));
+         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),
+                             SLOT(checkClick(int,int,bool)));
          cubes[i][j]->show();
       }
 
@@ -524,7 +510,8 @@ void KCubeBoxWidget::initCubes()
 
 void KCubeBoxWidget::makeSVGCubes (const int width)
 {
-   qDebug() << "Cube width:" << width;
+   qDebug() << "makeSVGCubes(), Cube width:" << width;
+   qDebug() << t.restart() << "msec";
    QImage lighting (width, width, QImage::Format_ARGB32_Premultiplied);
    QPainter p (&lighting);
    lighting.fill (0);
@@ -568,6 +555,37 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
      elements.append
        ((i == Pip) ? QPixmap::fromImage (pip) : QPixmap::fromImage (img));
    }
+   qDebug() << t.restart() << "msec" << "SVG rendered";
+}
+
+void KCubeBoxWidget::resizeEvent (QResizeEvent * event)
+{
+   qDebug() << endl << "KGrCanvas::resizeEvent:" << event->size() << this->size();
+   reCalculateGraphics (event->size().width(), event->size().height());
+}
+
+void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
+{
+   int boxSize = (h < w) ? h : w;
+   int frameWidth = boxSize / 30;
+   int hairline = frameWidth / 10;
+   qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth << "hairline" << hairline;
+   boxSize = boxSize - (2 * frameWidth);
+   cubeSize = ((boxSize - hairline) / dim()) - hairline;
+   boxSize = ((cubeSize + hairline) * dim()) + hairline;
+   topLeft.setX ((w - boxSize)/2);
+   topLeft.setY ((h - boxSize)/2);
+
+   qDebug() << "Dimension:" << dim() << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
+   makeSVGCubes (cubeSize);
+   qDebug() << "Back from makeSVGCubes";
+   for (int i = 0; i < dim(); i++) {
+      for (int j = 0; j < dim(); j++) {
+         cubes[i][j]->move (topLeft.x() + hairline + i * (cubeSize + hairline),
+                            topLeft.y() + hairline + j * (cubeSize + hairline));
+         cubes[i][j]->resize (cubeSize, cubeSize);
+      }
+   }
 }
 
 QSize  KCubeBoxWidget::sizeHint() const
@@ -577,9 +595,6 @@ QSize  KCubeBoxWidget::sizeHint() const
 
 void  KCubeBoxWidget::deleteCubes()
 {
-   if(layout)
-      delete layout;
-
    CubeBoxBase<KCubeWidget>::deleteCubes();
 }
 
