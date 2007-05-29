@@ -425,6 +425,7 @@ void KCubeBoxWidget::init()
 {
    setPalette (QColor ("#141414"));		// Very dark gray.
    setAutoFillBackground (true);
+   setMinimumSize (200, 200);
 
    theme.load ("pics/default.desktop");
    qDebug() << "Graphics file:" << theme.graphics();
