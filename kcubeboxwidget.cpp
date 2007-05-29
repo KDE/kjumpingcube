@@ -525,7 +525,12 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
 
    elements.clear();
    for (int i = FirstElement; i <= LastElement; i++) {
-     img.fill (0);
+     if (i == Pip) {
+       pip.fill (0);
+     }
+     else {
+       img.fill (0);
+     }
      switch (i) {
      case Neutral:
        svg.render (&q, "neutral");
