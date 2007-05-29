@@ -1,5 +1,11 @@
 [KGameTheme]
 Name=KJumpingCube Default
+Name[pt]=Predefinição do Cubo Saltitão
+Name[pt_BR]=Predefinição do Cubo Saltitão
+Name[sv]=Kjumpingcube standard
 Description=A simple set of cubes for KDE4
+Description[pt]=Um conjunto simples de cubos para o KDE4
+Description[pt_BR]=Um conjunto simples de cubos para o KDE4
+Description[sv]=En enkel uppsättning kuber för KDE4
 Author=Ian Wadham
 FileName=default.svg
