@@ -1,5 +1,7 @@
 [KGameTheme]
 Name=KJumpingCube Default
+Name[ja]=KJumpingCube デフォルト
 Description=A simple set of cubes for KDE4
+Description[ja]=KDE4 用のシンプルなキューブセット
 Author=Ian Wadham
 FileName=default.svg
