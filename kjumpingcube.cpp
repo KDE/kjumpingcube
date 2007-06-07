@@ -59,7 +59,8 @@ public:
 };
 
 KJumpingCube::KJumpingCube()
-  : view(new KCubeBoxWidget(5, this))
+  : view(new KCubeBoxWidget(Prefs::cubeDim(), this))
+  // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
 {
    view->setObjectName("KCubeBoxWidget");
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));

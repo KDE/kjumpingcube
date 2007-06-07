@@ -5,6 +5,10 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kjumpingcuberc"/>
   <group name="Game">
+    <entry name="Color0" type="Color">
+      <label>Color of neutral cubes.</label>
+      <default>#b3925d</default>
+    </entry>
     <entry name="Color1" type="Color">
       <label>Color of player 1.</label>
       <default>#e20800</default>

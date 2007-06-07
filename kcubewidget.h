@@ -76,9 +76,7 @@ public:
    
    /** enables or disables possibility to click a cube*/
    static void enableClicks(bool flag);
-   static void setColor(Owner forWhom, QPalette newPalette); 
-   static QPalette color(Owner forWhom);
-   
+
 public slots:
    /** resets the Cube to default values */
    virtual void reset();
@@ -118,8 +116,6 @@ private:
    QTimer *hintTimer;
    
    static bool _clicksAllowed;
-   static QPalette color1;
-   static QPalette color2;
 };
 
 

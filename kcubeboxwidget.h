@@ -73,12 +73,10 @@ public:
    void undo();
 
    /**
-   * set colors that are used to show owners of the cubes
-   *
-   * @param forWhom for which player the color should be set
-   * @param color  color for player one
+   * Set colors that are used to show owners of the cubes.
    */
-   void setColor(Player forWhom,QPalette color);
+   void setColors ();
+
    /**
    * sets number of Cubes in a row/column to 'size'.
    */
@@ -101,9 +99,6 @@ public:
    /** returns true if CubeBox is doing a move or getting a hint */
    bool isActive() const;
    bool isMoving() const;
-
-   /** returns current Color for Player ´forWhom´ */
-   QPalette color(Player forWhom);
 
    /**
    * checks if 'player' is a computerplayer an computes next move if TRUE
@@ -154,8 +149,12 @@ private:
    KGameTheme theme;		// A graphics theme for KJumpingCube.
    QTime t; // IDW
    void makeSVGCubes (const int width);
-   QList<QPixmap> elements;
+   void colorImage (QImage & img, const QColor & c, const int w);
    void reCalculateGraphics (const int w, const int h);
+   QList<QPixmap> elements;
+   QColor color1;		// Player 1's color.
+   QColor color2;		// Player 2's color.
+   QColor color0;		// Color for neutral cubes.
 
    QPoint topLeft;
    int cubeSize;

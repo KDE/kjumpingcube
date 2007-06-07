@@ -87,10 +87,26 @@ KCubeBoxWidget::~KCubeBoxWidget()
 }
 
 void KCubeBoxWidget::loadSettings(){
-  setColor(KCubeBoxWidget::One, Prefs::color1());
-  setColor(KCubeBoxWidget::Two, Prefs::color2());
+  bool reColorCubes = ((color1 != Prefs::color1()) ||
+                       (color2 != Prefs::color2()) ||
+                       (color0 != Prefs::color0()));
+  bool reSizeCubes  = (dim() != Prefs::cubeDim());
+  qDebug() << "KCubeBoxWidget::loadSettings reColorCubes:" << reColorCubes
+           << "reSizeCubes:" << reSizeCubes; // IDW
 
-  setDim(Prefs::cubeDim());
+  color1 = Prefs::color1();
+  color2 = Prefs::color2();
+  color0 = Prefs::color0();
+  setDim (Prefs::cubeDim());
+
+  if (reSizeCubes) {
+     reCalculateGraphics (width(), height());
+  }
+  else if (reColorCubes) {
+     makeSVGCubes (cubeSize);
+     setColors ();
+  }
+
   brain.setSkill( Prefs::skill() );
 
   setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
@@ -197,15 +213,13 @@ void KCubeBoxWidget::getHint()
    // If (! done), we interrupted the brain, so we do not want the hint.
 }
 
-void KCubeBoxWidget::setColor(Player player,QPalette color)
+void KCubeBoxWidget::setColors ()
 {
-   KCubeWidget::setColor((Cube::Owner)player,color);
-
-   for(int row=0;row<dim();row++)
-      for(int col=0;col<dim();col++)
-      {
+   for (int row=0; row<dim(); row++) {
+      for (int col=0; col<dim(); col++) {
          cubes[row][col]->updateColors();
       }
+   }
 }
 
 void KCubeBoxWidget::setDim(int d)
@@ -214,7 +228,6 @@ void KCubeBoxWidget::setDim(int d)
    {
       undoBox->setDim(d);
       CubeBoxBase<KCubeWidget>::setDim(d);
-      reCalculateGraphics (width(), height());
    }
 }
 
@@ -407,15 +420,9 @@ bool KCubeBoxWidget::isComputer(Player player) const
       return computerPlTwo;
 }
 
-
 int KCubeBoxWidget::skill() const
 {
    return brain.skill();
-}
-
-QPalette KCubeBoxWidget::color(Player forWhom)
-{
-   return KCubeWidget::color((KCubeWidget::Owner)forWhom);
 }
 
 /* ***************************************************************** **
@@ -423,12 +430,14 @@ QPalette KCubeBoxWidget::color(Player forWhom)
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
-   setPalette (QColor ("#141414"));		// Very dark gray.
+   setPalette (QColor ("#141414"));		// Background is very dark gray.
    setAutoFillBackground (true);
    setMinimumSize (200, 200);
+   color1 = Prefs::color1();			// Set preferred colors.
+   color2 = Prefs::color2();
+   color0 = Prefs::color0();
 
    theme.load ("pics/default.desktop");
-   qDebug() << "Graphics file:" << theme.graphics();
    t.start();
    qDebug() << t.restart() << "msec";
    svg.load (theme.graphics());
@@ -448,6 +457,9 @@ void KCubeBoxWidget::init()
    computerPlOne=false;
    computerPlTwo=false;
    KCubeWidget::enableClicks(true);
+
+   // At this point the user's currently preferred number of cubes and colors
+   // are already loaded, so there should be no change and no SVG rendering yet.
    loadSettings();
 
    connect(moveTimer,SIGNAL(timeout()),SLOT(nextLoopStep()));
@@ -511,7 +523,6 @@ void KCubeBoxWidget::initCubes()
 
 void KCubeBoxWidget::makeSVGCubes (const int width)
 {
-   qDebug() << "makeSVGCubes(), Cube width:" << width;
    qDebug() << t.restart() << "msec";
    QImage lighting (width, width, QImage::Format_ARGB32_Premultiplied);
    QPainter p (&lighting);
@@ -535,14 +546,17 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
      switch (i) {
      case Neutral:
        svg.render (&q, "neutral");
+       colorImage (img, color0, width);
        q.drawImage (QPoint (0, 0), lighting);
        break;
      case Player1:
        svg.render (&q, "player_1");
+       colorImage (img, color1, width);
        q.drawImage (QPoint (0, 0), lighting);
        break;
      case Player2:
        svg.render (&q, "player_2");
+       colorImage (img, color2, width);
        q.drawImage (QPoint (0, 0), lighting);
        break;
      case Pip:
@@ -564,9 +578,21 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
    qDebug() << t.restart() << "msec" << "SVG rendered";
 }
 
+void KCubeBoxWidget::colorImage (QImage & img, const QColor & c, const int w)
+{
+   QRgb rgba = c.rgba();
+   for (int i = 0; i < w; i++) {
+      for (int j = 0; j < w; j++) {
+         if (img.pixel (i, j) != 0) {
+	    img.setPixel (i, j, rgba);
+         }
+      }
+   }
+}
+
 void KCubeBoxWidget::resizeEvent (QResizeEvent * event)
 {
-   qDebug() << endl << "KGrCanvas::resizeEvent:" << event->size() << this->size();
+   qDebug() << endl << "KCubeBoxWidget::resizeEvent:" << event->size() << this->size();
    reCalculateGraphics (event->size().width(), event->size().height());
 }
 
@@ -584,7 +610,6 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 
    qDebug() << "Dimension:" << dim() << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    makeSVGCubes (cubeSize);
-   qDebug() << "Back from makeSVGCubes";
    for (int i = 0; i < dim(); i++) {
       for (int j = 0; j < dim(); j++) {
          cubes[i][j]->move (topLeft.x() + hairline + i * (cubeSize + hairline),

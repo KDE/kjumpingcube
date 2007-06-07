@@ -34,43 +34,11 @@
 **                 static elements                        **
 ** ****************************************************** */
 bool KCubeWidget::_clicksAllowed=true;
-QPalette KCubeWidget::color1;
-QPalette KCubeWidget::color2;
-
 
 void KCubeWidget::enableClicks(bool flag)
 {
    _clicksAllowed=flag;
 }
-
-
-void KCubeWidget::setColor(Owner forWhom, QPalette newPalette)
-{
-   if(forWhom==One)
-   {
-      color1=newPalette;
-   }
-   else if(forWhom==Two)
-   {
-      color2=newPalette;
-   }
-}
-
-QPalette KCubeWidget::color(Owner forWhom)
-{
-   QPalette color;
-   if(forWhom==One)
-   {
-      color=color1;
-   }
-   else if(forWhom==Two)
-   {
-      color=color2;
-   }
-
-   return color;
-}
-
 
 /* ****************************************************** **
 **                 public functions                       **
@@ -201,14 +169,6 @@ void KCubeWidget::reset()
 void KCubeWidget::updateColors()
 {
   update();
-  return;
-
-  if(owner()==One)
-    setPalette(color1);
-  else if(owner()==Two)
-    setPalette(color2);
-  else if(owner()==Nobody)
-    setPalette(QColor ("#b3925d"));	// Oxygen woodbrown2
 }
 
 void KCubeWidget::stopHint()
