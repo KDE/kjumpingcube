@@ -62,6 +62,7 @@ private slots:
   void stop();
   void undo();
   void changePlayer(int newPlayer);
+  void changePlayerPixmap(int player);
   void showWinner(int);
   void disableStop();
   void enableStop_Moving();

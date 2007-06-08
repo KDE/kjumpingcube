@@ -108,6 +108,9 @@ public:
    inline void saveGame(KConfigGroup&c) { saveProperties(c); }
    inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
 
+   void makeStatusPixmaps (const int width);
+   const QPixmap & playerPixmap (const int p);
+
 public slots:
    /** stops all activities like getting a hint or doing a move */
    void stopActivities();
@@ -117,10 +120,11 @@ public slots:
     */
    void getHint();
 
-  void loadSettings();
+   void loadSettings();
 
 signals:
    void playerChanged(int newPlayer);
+   void colorChanged(int player);
    void playerWon(int player);
    void startedMoving();
    void startedThinking();
@@ -151,7 +155,11 @@ private:
    void makeSVGCubes (const int width);
    void colorImage (QImage & img, const QColor & c, const int w);
    void reCalculateGraphics (const int w, const int h);
-   QList<QPixmap> elements;
+
+   int sWidth;			// Width of status pixmaps (used if recoloring).
+   QPixmap status1;		// Status-bar pixmaps for players 1 and 2.
+   QPixmap status2;
+   QList<QPixmap> elements;	// Pixmaps for cubes, pips and blinking.
    QColor color1;		// Player 1's color.
    QColor color2;		// Player 2's color.
    QColor color0;		// Color for neutral cubes.

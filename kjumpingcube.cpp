@@ -43,9 +43,6 @@
 #include <kconfigdialog.h>
 #include <kicon.h>
 
-#define ID_STATUS_TURN_TEXT 1000
-#define ID_STATUS_TURN      2000
-
 #define MESSAGE_TIME 2000
 
 class SettingsWidget : public QWidget, public Ui::Settings
@@ -63,7 +60,10 @@ KJumpingCube::KJumpingCube()
   // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
 {
    view->setObjectName("KCubeBoxWidget");
+   view->makeStatusPixmaps (30);
+
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
+   connect(view,SIGNAL(colorChanged(int)),SLOT(changePlayerPixmap(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
    connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));
    connect(view,SIGNAL(startedMoving()),SLOT(enableStop_Moving()));
@@ -78,11 +78,9 @@ KJumpingCube::KJumpingCube()
    QString s = i18n("Current player:");
    statusBar()->addPermanentWidget (new QLabel (s));
 
-   // This widget should just be a colored patch, but setting the background
-   // to a color in KJumpingCube::changePlayer did not work ... 25/5/07.
-   currentPlayer = new QLabel ("2");
-   currentPlayer->setFrameStyle(QFrame::Box | QFrame::Plain);
-   currentPlayer->setLineWidth (4);
+   currentPlayer = new QLabel ();
+   currentPlayer->setFrameStyle (QFrame::NoFrame);
+   changePlayerPixmap(1);
    statusBar()->addPermanentWidget (currentPlayer);
 
    initKAction();
@@ -246,13 +244,12 @@ void KJumpingCube::undo()
 void KJumpingCube::changePlayer(int newPlayer)
 {
    undoAction->setEnabled(true);
-   QPalette palette;
-   // palette.setColor(backgroundRole(), // This did not work ... 25/5/07.
-   // The color patch appeared briefly in the status bar, then disappeared.
-   palette.setColor(foregroundRole(),
-		   newPlayer == 1 ? Prefs::color1() : Prefs::color2());
-   currentPlayer->setPalette(palette);
-   currentPlayer->setText (newPlayer == 1 ? "1" : "2");
+   changePlayerPixmap(newPlayer);
+}
+
+void KJumpingCube::changePlayerPixmap(int player)
+{
+   currentPlayer->setPixmap (view->playerPixmap (player));
 }
 
 void KJumpingCube::showWinner(int player) {
@@ -263,10 +260,6 @@ void KJumpingCube::showWinner(int player) {
 
 void KJumpingCube::disableStop()
 {
-//   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,false);
-//   game->setItemEnabled(ID_GAME_STOP_HINT,false);
-//   toolBar()->setItemEnabled(ID_GAME_HINT,true);
-//   game->setItemEnabled(ID_GAME_HINT,true);
   stopAction->setEnabled(false);
   hintAction->setEnabled(true);
   statusBar()->clearMessage();
@@ -275,10 +268,6 @@ void KJumpingCube::disableStop()
 
 void KJumpingCube::enableStop_Moving()
 {
-//   toolBar()->setItemEnabled(ID_GAME_STOP_HINT,true);
-//   game->setItemEnabled(ID_GAME_STOP_HINT,true);
-//   toolBar()->setItemEnabled(ID_GAME_HINT,false);
-//   game->setItemEnabled(ID_GAME_HINT,false);
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
   statusBar()->showMessage(i18n("Performing move."));

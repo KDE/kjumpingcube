@@ -99,6 +99,10 @@ void KCubeBoxWidget::loadSettings(){
   color0 = Prefs::color0();
   setDim (Prefs::cubeDim());
 
+  if (reColorCubes) {
+     makeStatusPixmaps (sWidth);		// Make new status pixmaps.
+     emit colorChanged(currentPlayer);		// Change color in status bar.
+  }
   if (reSizeCubes) {
      reCalculateGraphics (width(), height());
   }
@@ -518,17 +522,38 @@ void KCubeBoxWidget::initCubes()
       {
          cubes[i][j]->setMax(4);
       }
+}
 
+void KCubeBoxWidget::makeStatusPixmaps (const int width)
+{
+   qreal d, p;
+   QImage status (width, width, QImage::Format_ARGB32_Premultiplied);
+   QPainter s (&status);
+   sWidth = width;
+
+   d = width/4.0;
+   p = width/2.0;
+   status.fill (0);
+   svg.render (&s, "player_1");
+   colorImage (status, color1, width);
+   svg.render (&s, "lighting");
+   svg.render (&s, "pip", QRectF (p - d/2.0, p - d/2.0, d, d));
+   status1 = QPixmap::fromImage (status);
+
+   d = width/5.0;
+   p = width/3.0;
+   status.fill (0);
+   svg.render (&s, "player_2");
+   colorImage (status, color2, width);
+   svg.render (&s, "lighting");
+   svg.render (&s, "pip", QRectF (p - d/2.0, p - d/2.0, d, d));
+   svg.render (&s, "pip", QRectF (p + p - d/2.0, p + p - d/2.0, d, d));
+   status2 = QPixmap::fromImage (status);
 }
 
 void KCubeBoxWidget::makeSVGCubes (const int width)
 {
    qDebug() << t.restart() << "msec";
-   QImage lighting (width, width, QImage::Format_ARGB32_Premultiplied);
-   QPainter p (&lighting);
-   lighting.fill (0);
-   svg.render (&p, "lighting");
-
    QImage img (width, width, QImage::Format_ARGB32_Premultiplied);
    QPainter q (&img);		// Paints whole faces of the dice.
 
@@ -547,17 +572,17 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
      case Neutral:
        svg.render (&q, "neutral");
        colorImage (img, color0, width);
-       q.drawImage (QPoint (0, 0), lighting);
+       svg.render (&q, "lighting");
        break;
      case Player1:
        svg.render (&q, "player_1");
        colorImage (img, color1, width);
-       q.drawImage (QPoint (0, 0), lighting);
+       svg.render (&q, "lighting");
        break;
      case Player2:
        svg.render (&q, "player_2");
        colorImage (img, color2, width);
-       q.drawImage (QPoint (0, 0), lighting);
+       svg.render (&q, "lighting");
        break;
      case Pip:
        svg.render (&r, "pip");
@@ -743,6 +768,10 @@ KCubeBoxWidget::Player KCubeBoxWidget::changePlayer()
    return currentPlayer;
 }
 
+const QPixmap & KCubeBoxWidget::playerPixmap (const int p)
+{
+   return ((p == 1) ? status1 : status2);
+}
 
 void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column)
 {
