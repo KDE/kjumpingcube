@@ -2,7 +2,6 @@
 Encoding=UTF-8
 Name=KJumpingCube
 Name[af]=Kjumpingcube
-Name[ar]=لعبة المكعب القافز (KJumpingCube)
 Name[be]=Скокаючы кубік
 Name[br]=KDiñsALamm
 Name[eo]=Saltanta kubo
@@ -28,7 +27,6 @@ Type=Application
 DocPath=kjumpingcube/index.html
 GenericName=Tactical Game
 GenericName[af]=Taktiese Speletjie
-GenericName[ar]=لعبة تكتيكية
 GenericName[be]=Тактычная гульня
 GenericName[br]=C'hoari a vrezelekaouriezh
 GenericName[ca]=Joc de tàctica
