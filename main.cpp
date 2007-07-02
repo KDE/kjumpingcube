@@ -38,11 +38,11 @@ static const char dummy[] = I18N_NOOP2("Menu title", "&Move");
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData( "kjumpingcube", I18N_NOOP("KJumpingCube"),
-                          KJC_VERSION, description, KAboutData::License_GPL,
-                          "(c) 1998-2000, Matthias Kiefer");
-    aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
-    aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben+kjumpingcube@meyerhome.net");
+    KAboutData aboutData( "kjumpingcube", 0, ki18n("KJumpingCube"),
+                          KJC_VERSION, ki18n(description), KAboutData::License_GPL,
+                          ki18n("(c) 1998-2000, Matthias Kiefer"));
+    aboutData.addAuthor(ki18n("Matthias Kiefer"),KLocalizedString(), "matthias.kiefer@gmx.de");
+    aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication application;
