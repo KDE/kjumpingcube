@@ -2,6 +2,8 @@
 Name=KJumpingCube Default
 Name[el]=Προκαθορισμένο KJumpingCube
 Name[es]=KJumpingCube predeterminado
+Name[fa]=پیش‌فرض KJumpingCube
+Name[ga]=Réamhshocrú KJumpingCube
 Name[ja]=KJumpingCube デフォルト
 Name[pt]=Predefinição do KJumpingCube
 Name[pt_BR]=Predefinição do KJumpingCube
@@ -10,6 +12,7 @@ Name[zh_TW]=KJumpingCube 預設
 Description=A simple set of cubes for KDE4
 Description[el]=Ένα απλό σύνολο κύβων για το KDE4
 Description[es]=Un conjunto sencillo de cubos para KDE4
+Description[fa]=تنظیم ساده مکعبها برای KDE4
 Description[ja]=KDE4 用のシンプルなキューブセット
 Description[pt]=Um conjunto simples de cubos para o KDE4
 Description[pt_BR]=Um conjunto simples de cubos para o KDE4
