@@ -14,8 +14,6 @@ set(kjumpingcube_SRCS
    brain.cpp 
    cubebox.cpp )
 
-kde4_automoc(${kjumpingcube_SRCS})
-
 kde4_add_ui_files(kjumpingcube_SRCS settings.ui )
 
 kde4_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
