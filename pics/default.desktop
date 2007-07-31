@@ -20,3 +20,4 @@ Description[sv]=En enkel uppsättning kuber för KDE4
 Description[zh_TW]=KDE 4 簡單的立方體集合
 Author=Ian Wadham
 FileName=default.svg
+DrawHairlines=1

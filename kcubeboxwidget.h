@@ -32,6 +32,7 @@
 #include <QWidget>
 //Added by qt3to4:
 #include <QGridLayout>
+#include <QPaintEvent>
 #include <QResizeEvent>
 
 class KConfigGroup;
@@ -135,6 +136,7 @@ protected:
    virtual QSize sizeHint() const;
    virtual void deleteCubes();
    virtual void initCubes();
+   virtual void paintEvent (QPaintEvent * event);
    virtual void resizeEvent (QResizeEvent * event);
 
    void saveProperties(KConfigGroup&);
@@ -152,6 +154,7 @@ private:
    KSvgRenderer svg;
    KGameTheme theme;		// A graphics theme for KJumpingCube.
    QTime t; // IDW
+   void makeSVGBackground (const int w, const int h);
    void makeSVGCubes (const int width);
    void colorImage (QImage & img, const QColor & c, const int w);
    void reCalculateGraphics (const int w, const int h);
@@ -159,10 +162,12 @@ private:
    int sWidth;			// Width of status pixmaps (used if recoloring).
    QPixmap status1;		// Status-bar pixmaps for players 1 and 2.
    QPixmap status2;
+   QPixmap background;		// Pixmap for background.
    QList<QPixmap> elements;	// Pixmaps for cubes, pips and blinking.
    QColor color1;		// Player 1's color.
    QColor color2;		// Player 2's color.
    QColor color0;		// Color for neutral cubes.
+   bool drawHairlines;		// T = draw hairlines between cubes, F = do not.
 
    QPoint topLeft;
    int cubeSize;

@@ -7,18 +7,28 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="744.09448819"
    height="1052.3622047"
    id="svg1887"
    sodipodi:version="0.32"
-   inkscape:version="0.45.1"
-   sodipodi:docbase="/home/it-s"
-   sodipodi:docname="default_kjc.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:version="0.42.2"
+   sodipodi:docbase="/extra/kde4/kdegames/kjumpingcube/pics"
+   sodipodi:docname="default.svg">
   <defs
      id="defs1889">
+    <linearGradient
+       id="linearGradient2122">
+      <stop
+         style="stop-color:#00316e;stop-opacity:1;"
+         offset="0"
+         id="stop2124" />
+      <stop
+         style="stop-color:#141414;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop2126" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3484">
       <stop
@@ -324,6 +334,15 @@
        r="4.9244938"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.6981695,-0.6485543,0.4443821,0.4723454,-162.53995,532.41647)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2122"
+       id="linearGradient2128"
+       x1="307.72815"
+       y1="698.70142"
+       x2="305.91373"
+       y2="480.98041"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -332,9 +351,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.41335579"
-     inkscape:cx="372.04724"
-     inkscape:cy="585.73174"
+     inkscape:zoom="1.6534232"
+     inkscape:cx="318.75263"
+     inkscape:cy="483.73968"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      inkscape:window-width="921"
@@ -361,12 +380,13 @@
      inkscape:label="Back"
      style="display:inline">
     <rect
-       style="fill:#00316e;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2378"
+       style="fill:url(#linearGradient2128);fill-opacity:1.0;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="background"
        width="310.48608"
        height="217.72101"
        x="144.01782"
-       y="480.98041" />
+       y="480.98041"
+       inkscape:label="#rect2378" />
   </g>
   <g
      inkscape:label="Main"

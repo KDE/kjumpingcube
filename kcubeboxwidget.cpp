@@ -434,8 +434,6 @@ int KCubeBoxWidget::skill() const
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
-   setPalette (QColor ("#141414"));		// Background is very dark gray.
-   setAutoFillBackground (true);
    setMinimumSize (200, 200);
    color1 = Prefs::color1();			// Set preferred colors.
    color2 = Prefs::color2();
@@ -450,6 +448,7 @@ void KCubeBoxWidget::init()
 	qDebug() << "SVG is valid ...";
    else
 	qDebug() << "SVG is NOT valid ...";
+   drawHairlines = (theme.property("DrawHairlines") == "0") ? false : true;
 
    initCubes();
 
@@ -551,6 +550,17 @@ void KCubeBoxWidget::makeStatusPixmaps (const int width)
    status2 = QPixmap::fromImage (status);
 }
 
+void KCubeBoxWidget::makeSVGBackground (const int w, const int h)
+{
+   qDebug() << t.restart() << "msec";
+   QImage img (w, h, QImage::Format_ARGB32_Premultiplied);
+   QPainter p (&img);
+   img.fill (0);
+   svg.render (&p, "background");
+   background = QPixmap::fromImage (img);
+   qDebug() << t.restart() << "msec" << "SVG background rendered";
+}
+
 void KCubeBoxWidget::makeSVGCubes (const int width)
 {
    qDebug() << t.restart() << "msec";
@@ -615,6 +625,12 @@ void KCubeBoxWidget::colorImage (QImage & img, const QColor & c, const int w)
    }
 }
 
+void KCubeBoxWidget::paintEvent (QPaintEvent * /* event unused */)
+{
+   QPainter p (this);
+   p.drawPixmap (0, 0, background);
+}
+
 void KCubeBoxWidget::resizeEvent (QResizeEvent * event)
 {
    qDebug() << endl << "KCubeBoxWidget::resizeEvent:" << event->size() << this->size();
@@ -625,7 +641,7 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 {
    int boxSize = (h < w) ? h : w;
    int frameWidth = boxSize / 30;
-   int hairline = frameWidth / 10;
+   int hairline = drawHairlines ? frameWidth / 10 : 0;
    qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth << "hairline" << hairline;
    boxSize = boxSize - (2 * frameWidth);
    cubeSize = ((boxSize - hairline) / dim()) - hairline;
@@ -634,6 +650,7 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
    topLeft.setY ((h - boxSize)/2);
 
    qDebug() << "Dimension:" << dim() << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
+   makeSVGBackground (w, h);
    makeSVGCubes (cubeSize);
    for (int i = 0; i < dim(); i++) {
       for (int j = 0; j < dim(); j++) {

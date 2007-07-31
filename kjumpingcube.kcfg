@@ -7,15 +7,15 @@
   <group name="Game">
     <entry name="Color0" type="Color">
       <label>Color of neutral cubes.</label>
-      <default>#b3925d</default>
+      <default>#f29b68</default>
     </entry>
     <entry name="Color1" type="Color">
       <label>Color of player 1.</label>
-      <default>#e20800</default>
+      <default>#77b753</default>
     </entry>
     <entry name="Color2" type="Color">
       <label>Color of player 2.</label>
-      <default>#0066ff</default>
+      <default>#6193cf</default>
     </entry>
     <entry name="CubeDim" type="Int" min="5" max="10">
       <label>Size of the playing field.</label>
