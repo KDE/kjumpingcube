@@ -18,6 +18,6 @@ Description[pt]=Um conjunto simples de cubos para o KDE4
 Description[pt_BR]=Um conjunto simples de cubos para o KDE4
 Description[sv]=En enkel uppsättning kuber för KDE4
 Description[zh_TW]=KDE 4 簡單的立方體集合
-Author=Ian Wadham
+Author=Ian Wadham, Eugene Trounev
 FileName=default.svg
 DrawHairlines=1
