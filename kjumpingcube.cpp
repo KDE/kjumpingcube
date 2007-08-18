@@ -144,7 +144,7 @@ void KJumpingCube::saveGame(bool saveAs)
             url.setFileName( url.fileName()+".kjc" );
          }
 
-         if(KIO::NetAccess::exists(url,false,this))
+         if(KIO::NetAccess::exists(url, KIO::NetAccess::DestinationSide, this))
          {
             QString mes=i18n("The file %1 exists.\n"
                "Do you want to overwrite it?", url.url());
@@ -188,7 +188,7 @@ void KJumpingCube::openGame()
       url = KFileDialog::getOpenUrl( gameURL.url(), "*.kjc", this, 0 );
       if( url.isEmpty() )
          return;
-      if(!KIO::NetAccess::exists(url,true,this))
+      if(!KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, this))
       {
          QString mes=i18n("The file %1 does not exist!", url.url());
          KMessageBox::sorry(this,mes);
