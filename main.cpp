@@ -43,6 +43,12 @@ int main(int argc, char *argv[])
                           ki18n("(c) 1998-2000, Matthias Kiefer"));
     aboutData.addAuthor(ki18n("Matthias Kiefer"),KLocalizedString(), "matthias.kiefer@gmx.de");
     aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
+    aboutData.addCredit(ki18n("Ian Wadham"),
+                      ki18n("Upgrade to KDE4 and SVG artwork support."),
+                      "ianw2@optusnet.com.au");
+    aboutData.addCredit(ki18n("Eugene Trounev"),
+                      ki18n("Graphics for KDE4.0 version."),
+                      "irs_me@hotmail.com");
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication application;

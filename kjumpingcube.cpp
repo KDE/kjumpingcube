@@ -74,7 +74,6 @@ KJumpingCube::KJumpingCube()
    setCentralWidget(view);
 
    // init statusbar
-   statusBar()->setSizeGripEnabled (true);
    QString s = i18n("Current player:");
    statusBar()->addPermanentWidget (new QLabel (s));
 
