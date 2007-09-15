@@ -7,7 +7,7 @@
   <group name="Game">
     <entry name="Color0" type="Color">
       <label>Color of neutral cubes.</label>
-      <default>#f29b68</default>
+      <default>#debc85</default>
     </entry>
     <entry name="Color1" type="Color">
       <label>Color of player 1.</label>
