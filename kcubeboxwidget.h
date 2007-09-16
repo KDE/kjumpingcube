@@ -38,7 +38,6 @@
 class KConfigGroup;
 class QGridLayout;
 class CubeBox;
-class QPalette;
 class QTimer;
 
 /**

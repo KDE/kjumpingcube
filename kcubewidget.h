@@ -25,7 +25,6 @@
 #include <QFrame>
 #include "cube.h"
 
-class QPalette;
 class QTimer;
 class QMouseEvent;
 class QPaintEvent;
