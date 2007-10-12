@@ -55,7 +55,7 @@
       <item row="1" column="1" >
        <widget class="QGroupBox" name="groupBox_4" >
         <property name="title" >
-         <string>Board Color</string>
+         <string>Players' Colors</string>
         </property>
         <layout class="QGridLayout" >
          <property name="leftMargin" >
