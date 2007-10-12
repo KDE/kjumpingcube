@@ -102,12 +102,18 @@ void KJumpingCube::initKAction() {
 
   hintAction = KStandardGameAction::hint(view, SLOT(getHint()), this);
   actionCollection()->addAction(hintAction->objectName(), hintAction);
+
   stopAction = actionCollection()->addAction("game_stop");
   stopAction->setIcon(KIcon("process-stop"));
-  stopAction->setText(i18n("Stop &Thinking"));
-  connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
+  stopAction->setText(i18n("Stop"));
+  stopAction->setToolTip(i18n("Force the computer to move immediately"));
+  stopAction->setWhatsThis
+		(i18n("Stop the computer's calculation of its current move "
+			"and force it to move immediately"));
   stopAction->setShortcut(Qt::Key_Escape);
   stopAction->setEnabled(false);
+  connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
+
   undoAction = KStandardGameAction::undo(this, SLOT(undo()), this);
   actionCollection()->addAction(undoAction->objectName(), undoAction);
   undoAction->setEnabled(false);
