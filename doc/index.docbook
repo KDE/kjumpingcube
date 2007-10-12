@@ -30,11 +30,11 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-12-10</date>
-<releaseinfo>1.1</releaseinfo>
+<date>2007-10-10</date>
+<releaseinfo>1.2</releaseinfo>
 
-<abstract><para>&kjumpingcube; is a simple tactical game you can play against a friend
-or the computer.</para>
+<abstract><para>&kjumpingcube; is a simple tactical game you can play
+against a friend or the computer.</para>
 </abstract>
 
 <keywordset>
@@ -51,38 +51,77 @@ or the computer.</para>
 <chapter id="introduction">
 <title>Introduction</title>
 
-<para>&kjumpingcube; is a simple tactical game.  You can play it against the computer
-or against a friend.  The playing field consists of squares that contains
-points. By clicking on the squares you can increase the points, and if the
-points reach a maximum the points will jump to the squares neighbors and take
-them over. The winner is the one who owns all squares.</para>
+<para>&kjumpingcube; is a simple tactical game.  You can play it against
+the computer or against a friend.  The playing area consists of squares
+that contain points. Each square starts with just one point, no owner and
+a neutral color.</para>
+
+<para>You move by clicking on a neutral square or one you already own. If
+you click on a neutral square, you gain ownership and it changes to your
+playing color. Each time you click on a square, the points increase by one.
+If the square's points reach a maximum, one point will jump to each of the
+square's neighbors.</para>
+
+<para>If a neighboring square is owned by the other player, it gets taken
+over, together with all of its points, and changes color. For example, if
+a square in the centre reaches five points, four of its points go to its
+four neighbors, leaving it with one point. It is possible for a cascade
+of automatic moves to occur if the neighbors also reach a maximum. Large
+parts of the playing area can change hands very rapidly.</para>
+
+<para>The winner is the player who ends up owning all the squares.</para>
 
 </chapter>
 
 
 <chapter id="playing-kjumpingcube">
-<title>Playing &kjumpingcube;</title>
-
-<sect1 id="rules">
-<title>Rules</title>
+<title>How to Play &kjumpingcube;</title>
 
 <orderedlist>
-<listitem><para>A move consists of increasing the points of a square by clicking
-on it. You can only increase a square that doesn't belong to your opponent. By
-clicking a square that has no owner, you become the owner. </para></listitem>
-<listitem><para>If a square has more points than it has neighbors, the points
-jump to its neighbors and take them over. </para></listitem>
-<listitem><para>Neighbor-Fields are only direct neighbors, not the diagonal
-neighbors.</para></listitem>
-<listitem><para>The winner is the one who owns all squares.</para></listitem>
-</orderedlist>
+<listitem><para>A move consists of clicking on a square that does not
+belong to your opponent.</para></listitem>
 
-</sect1>
+<listitem><para>The move increases the points in the square by
+one.</para></listitem>
+
+<listitem><para>At the start of the game, each square has one point,
+is painted a neutral color and has no owner.</para></listitem>
+
+<listitem><para>Each player has a color to mark ownership of
+squares.</para></listitem>
+
+<listitem><para>By clicking a square that has no owner, you become the owner
+and it changes to your color, as well as adding one point.</para></listitem>
+
+<listitem><para>If a square has more points than it has neighbors, one
+point jumps to each of the neighbors, leaving one point in the original
+square.</para></listitem>
+
+<listitem><para>During such a move, all the neighboring squares become
+owned by the player who moved and so do all of their points, even if the
+neighbors were neutral or owned by the other player before.</para></listitem>
+
+<listitem><para>Neighbors are the squares above, below, left and right: not
+diagonally located squares. Corner squares have two neighbors, side squares
+have three and centre squares have four.</para></listitem>
+
+<listitem><para>If a move leaves a neighbor with a maximum number of points,
+the move continues automatically to the neighbor's neighbors and so on, in
+a cascade. A large number of squares can change ownership during such a
+move.</para></listitem>
+
+<listitem><para>The winner is the player who ends up owning all the
+squares.</para></listitem>
+
+<listitem><para>You can use <menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Configure &kjumpingcube;</guimenuitem></menuchoice> to
+select colors, computer player, skill level and board size.</para></listitem>
+</orderedlist>
 
 </chapter>
 
 <chapter id="menu-reference">
-<title>Command Reference</title>
+<title>The Menu and Toolbar Reference</title>
 
 <sect1 id="menus">
 <title>The Menu Bar</title>
@@ -92,55 +131,44 @@ neighbors.</para></listitem>
 
 <variablelist>
 <varlistentry>
-<term>
-<menuchoice>
-<shortcut><keycombo
-action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice>
-</term>
+<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap>
+</keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice></term>
 <listitem><para><action>Start a new game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycombo
-action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice>
-</term>
+<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap>
+</keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice></term>
 <listitem><para><action>Open a previously saved game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycombo
-action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice>
-</term>
+<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap>
+</keycombo></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice></term>
 <listitem><para><action>Save the current game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem>
-</menuchoice>
-</term>
+<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem>
+</menuchoice></term>
 <listitem><para><action>Save the current game with a different
 name.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycap>Escape</keycap></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Stop Thinking</guimenuitem></menuchoice></term>
-<listitem><para><action>Stop the computer opponent thinking about its next
-move.</action>  The computer opponent will then make the best move it has found
+<term><menuchoice><shortcut><keycap>Esc</keycap></shortcut>
+<guimenu>Game</guimenu><guimenuitem>Stop</guimenuitem></menuchoice></term>
+<listitem><para><action>Stop the computer opponent's calculation of its next
+move.</action>  The computer will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul">
-&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap>
+</keycombo></shortcut>
 <guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
 <listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
 </varlistentry>
@@ -150,21 +178,22 @@ up to the moment you told it to stop.</para></listitem>
 
 <sect2 id="move-menu">
 <title>The <guimenu>Move</guimenu> Menu</title>
+
 <variablelist>
 <varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap>
+<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap>
 </keycombo></shortcut>
 <guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice></term>
-<listitem><para><action>Undo the last move you made.</action></para></listitem>
+<listitem><para><action>Undo the last move you made.</action> Only one
+move, the very last one, can be undone in this game.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul"> 
-<keycap>H</keycap></keycombo></shortcut>
+<term><menuchoice><shortcut><keycombo action="simul"><keycap>H</keycap>
+</keycombo></shortcut>
 <guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
-<listitem><para><action>Get a hint as to the best next
-move.</action></para></listitem>
+<listitem><para><action>Get a hint as to the best move to make
+next.</action></para></listitem>
 </varlistentry>
 
 </variablelist>
@@ -178,54 +207,53 @@ move.</action></para></listitem>
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
 Toolbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle the display of the toolbar.</action></para></listitem>
+<listitem><para><action>Toggle the display of the toolbar.</action>
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
- Statusbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle the display of the statusbar.</action></para></listitem>
+Statusbar</guimenuitem></menuchoice></term>
+<listitem><para><action>Toggle the display of the status bar.</action>
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...
+</guimenuitem></menuchoice></term>
 <listitem><para><action>Open a dialog where you can configure the
-shortcuts</action> for &kjumpingcube;</para></listitem>
+shortcut keys</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a dialog where you can configure the toolbars</action> for &kjumpingcube;</para></listitem>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...
+</guimenuitem></menuchoice></term>
+<listitem><para><action>Open a dialog where you can configure the toolbar
+actions</action> for &kjumpingcube;</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice>
-</term>
-<listitem>
-<para>Open a dialog where you can configure the following items:</para>
+<guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice></term>
+<listitem><para>Open a dialog where you can configure the following items:
+</para>
 
 <variablelist>
 <varlistentry>
 <term><guilabel>Computer Skill</guilabel></term>
 <listitem><para><action>Lets you choose your playing skill from a
-slider.</action> This decides how clever your computer opponent is, if you are
-playing against the computer.</para>
-<para>You can choose from:</para>
-<simplelist>
-<member><guimenuitem>Beginner</guimenuitem></member>
-<member><guimenuitem>Average</guimenuitem></member>
-<member><guimenuitem>Expert</guimenuitem></member>
-</simplelist></listitem>
+slider.</action> This decides how clever the computer opponent will be.</para>
+
+<para>You can choose from Beginner, Average or Expert.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Board Size</guilabel></term>
-<listitem><para><action>Lets you choose the playfield
-sizes.</action></para>
+<listitem><para><action>Lets you choose the play area
+size.</action></para>
 <para>Use the slider to select a value between
 <guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel>
-squares in size.</para>
+squares.</para>
 </listitem>
 </varlistentry>
 
@@ -233,13 +261,14 @@ squares in size.</para>
 <term><guilabel>Computer Plays As</guilabel></term>
 <listitem><para>Sets the computer opponent to be <guilabel>Player
 1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you
-would set the computer to play one player, and you would play the
+would set the computer to play one player and you would play the
 other.  Player 1 always starts first.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Board Color</guilabel></term>
-<listitem><para>Choose a color for each player</para></listitem>
+<term><guilabel>Players' Colors</guilabel></term>
+<listitem><para>Choose a color for each player and for the neutral squares.
+</para></listitem>
 </varlistentry>
 </variablelist>
 </listitem>
@@ -271,9 +300,9 @@ other.  Player 1 always starts first.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guiicon>Stop Thinking</guiicon></term>
-<listitem><para><action>Stop the computer opponent thinking about its next
-move.</action>  The computer opponent will then make the best move it has found
+<term><guiicon>Stop</guiicon></term>
+<listitem><para><action>Stop the computer opponent's calculation of its next
+move.</action>  The computer will then make the best move it has found
 up to the moment you told it to stop.</para></listitem>
 </varlistentry>
 
@@ -288,30 +317,42 @@ up to the moment you told it to stop.</para></listitem>
 </chapter>
 
 <chapter id="questions-answers-tips">
-<title>Questions, Answers, and Tips</title>
-
-<sect1 id="strategy-tips">
-<title>Strategy tips</title>
+<title>Tips, Tricks and Hints</title>
 
 <itemizedlist>
 <listitem><para>Try to avoid increasing a square when your opponent owns a
-neighbor square, that reaches its maximum earlier than your
-square.</para></listitem>
-</itemizedlist>
+neighboring square that can reach its maximum before your square does.
+</para></listitem>
 
-</sect1>
+<listitem><para>Try to get control of the corner squares first, then the
+side squares. You need fewer moves to make them reach a maximum.
+</para></listitem>
+
+<listitem><para>Try not to play too close to your opponent, especially during
+the opening moves.  Drop back a square or two or pick a square on the diagonal
+from your opponent.</para></listitem>
+
+<listitem><para>Keep an eye out for long chains of squares that are almost
+at their maximum. If they are yours, you must guard them against cascading
+moves.  If they are your opponent's, they can become ripe for capture by
+a cascading move, just as soon as they extend close enough to your
+territory.</para></listitem>
+</itemizedlist>
 
 </chapter>
 
 <chapter id="credits">
-<title>Credits and License</title>
+<title>Credits and Licenses</title>
 
-<para>&kjumpingcube; is Copyright 1998,1999 &Matthias.Kiefer; 
+<para>&kjumpingcube; is Copyright 1998, 1999 &Matthias.Kiefer; 
 &Matthias.Kiefer.mail;</para>
 
-<para>&kjumpingcube; was inspired by a game that came out for the Commodore64 and for
-other home computers, too. Sorry, that I don't know the original author's
-name.</para>
+<para>&kjumpingcube; was inspired by a game that came out for the
+Commodore 64 and other early home computers. Unfortunately the original
+author's name is unknown.</para>
+
+<para>In 2007, Ian Wadham took over maintenance of &kjumpingcube; for KDE 4
+and Eugene Trounev painted the first SVG theme.</para>
 
 <para>Documentation Copyright 1999 &Matthias.Kiefer;
 &Matthias.Kiefer.mail;</para>
@@ -329,32 +370,16 @@ name.</para>
 <appendix id="installation">
 <title>Installation</title>
 
-<sect1 id="getting-kjumpingcube">
-<title>How to obtain &kjumpingcube;</title>
-
+<sect1 id="how-to-obtain-kjumpingcube">
+<title>How to Obtain &kjumpingcube;</title>
 &install.intro.documentation;
-
 </sect1>
 
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<para>In order to successfully compile &kjumpingcube;, you need &kde; 2.0.
-All required libraries as well as &kjumpingcube; itself can be found on 
-&kde-ftp;.
-</para>
-
-</sect1>
-
-<sect1 id="compilation">
+<sect1 id="compilation-and-installation">
 <title>Compilation and Installation</title>
-
 &install.compile.documentation;
-
-<para>That should do it! Should you run into any problems, please report them
-to the author, at &Matthias.Kiefer.mail;</para>
-
 </sect1>
+
 </appendix>
 
 </book>
