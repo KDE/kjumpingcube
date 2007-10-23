@@ -293,7 +293,7 @@ void KJumpingCube::showOptions(){
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self());
   dialog->setFaceType(KPageDialog::Plain);
-  dialog->addPage(new SettingsWidget(this), i18n("General"), "package_settings");
+  dialog->addPage(new SettingsWidget(this), i18n("General"), "games-config-options");
   connect(dialog, SIGNAL(settingsChanged(const QString&)), view, SLOT(loadSettings()));
   dialog->show();
 }
