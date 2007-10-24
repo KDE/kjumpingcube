@@ -165,7 +165,7 @@ void KJumpingCube::saveGame(bool saveAs)
 
    KTemporaryFile tempFile;
    tempFile.open();
-   KConfig config(tempFile.fileName(), KConfig::OnlyLocal);
+   KConfig config(tempFile.fileName(), KConfig::SimpleConfig);
    KConfigGroup main(&config, "KJumpingCube");
    main.writeEntry("Version",KJC_VERSION);
    KConfigGroup game(&config, "Game");
@@ -205,7 +205,7 @@ void KJumpingCube::openGame()
    QString tempFile;
    if( KIO::NetAccess::download( url, tempFile, this ) )
    {
-      KConfig config( tempFile, KConfig::OnlyLocal);
+      KConfig config( tempFile, KConfig::SimpleConfig);
       KConfigGroup main(&config, "KJumpingCube");
       if(!main.hasKey("Version"))
       {
