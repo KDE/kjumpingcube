@@ -1,22 +1,28 @@
 <?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kappname "&kjumpingcube;">
-  <!ENTITY package "kdegames">
-  <!ENTITY % addindex "IGNORE">
+  <!ENTITY kapp-name "&kjumpingcube;">
+  <!ENTITY kappversion "1.2"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-10-10"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
-<book lang="&language;">
-
+ 
+<book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-<title>The &kjumpingcube; Handbook</title>
-
+	<title>&kapp-name; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
 <author>
-<firstname>Matthias</firstname>
-<surname>Kiefer</surname>
-<affiliation>
-<address>&Matthias.Kiefer.mail;</address>
-</affiliation>
+<firstname>Matthias</firstname><surname>Kiefer</surname>
+<affiliation><address>&Matthias.Kiefer.mail;</address></affiliation>
+</author>
+<author>
+<firstname>Eugene</firstname><surname>Trounev</surname>
+<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
 </author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
@@ -27,331 +33,291 @@
 <holder>&Matthias.Kiefer;</holder>
 </copyright>
 
-
 <legalnotice>&FDLNotice;</legalnotice>
-
-<date>2007-10-10</date>
-<releaseinfo>1.2</releaseinfo>
-
-<abstract><para>&kjumpingcube; is a simple tactical game you can play
-against a friend or the computer.</para>
+ 
+<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para>This documentation describes the game of &kapp-name; version &kappversion;</para>
 </abstract>
-
+ 
+<!--List of relevan keywords-->
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>KJumpingCube</keyword>
-<keyword>kdegames</keyword>
-<keyword>game</keyword>
-<keyword>strategy</keyword>
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>Kjumpingcube</keyword><!--Application name goes here-->
+<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword>arcade</keyword>
+	<keyword>dice</keyword>
+	<keyword>dice game</keyword>
+	<keyword>playing dice</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword>two players</keyword>
+<!--All other relevant keywords-->
+	<keyword>cube</keyword>
+	<keyword>jump</keyword>
+	<keyword>jumping cube</keyword>
 </keywordset>
-
 </bookinfo>
-
-
-<chapter id="introduction">
-<title>Introduction</title>
-
-<para>&kjumpingcube; is a simple tactical game.  You can play it against
-the computer or against a friend.  The playing area consists of squares
-that contain points. Each square starts with just one point, no owner and
-a neutral color.</para>
-
-<para>You move by clicking on a neutral square or one you already own. If
-you click on a neutral square, you gain ownership and it changes to your
-playing color. Each time you click on a square, the points increase by one.
-If the square's points reach a maximum, one point will jump to each of the
-square's neighbors.</para>
-
-<para>If a neighboring square is owned by the other player, it gets taken
-over, together with all of its points, and changes color. For example, if
-a square in the centre reaches five points, four of its points go to its
-four neighbors, leaving it with one point. It is possible for a cascade
-of automatic moves to occur if the neighbors also reach a maximum. Large
-parts of the playing area can change hands very rapidly.</para>
-
-<para>The winner is the player who ends up owning all the squares.</para>
-
+<!--Content begins here: -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+	<note><title>Gametype:</title><para>Dice, Arcade</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para>&kapp-name; is a simple tactical game.  It can played it against the computer or a friend.  The playing area consists of squares containing points. When the game starts each square has only one point, and no owner. Players move by clicking on either a vacant square, or on own square, thus increasing the square’s point value. Once the square’s value reaches maximum the excessive points are distributed around the neighboring squares conquering them. The winner is the player who ends up owning all the squares.</para>
 </chapter>
-
-
-<chapter id="playing-kjumpingcube">
-<title>How to Play &kjumpingcube;</title>
-
-<orderedlist>
-<listitem><para>A move consists of clicking on a square that does not
-belong to your opponent.</para></listitem>
-
-<listitem><para>The move increases the points in the square by
-one.</para></listitem>
-
-<listitem><para>At the start of the game, each square has one point,
-is painted a neutral color and has no owner.</para></listitem>
-
-<listitem><para>Each player has a color to mark ownership of
-squares.</para></listitem>
-
-<listitem><para>By clicking a square that has no owner, you become the owner
-and it changes to your color, as well as adding one point.</para></listitem>
-
-<listitem><para>If a square has more points than it has neighbors, one
-point jumps to each of the neighbors, leaving one point in the original
-square.</para></listitem>
-
-<listitem><para>During such a move, all the neighboring squares become
-owned by the player who moved and so do all of their points, even if the
-neighbors were neutral or owned by the other player before.</para></listitem>
-
-<listitem><para>Neighbors are the squares above, below, left and right: not
-diagonally located squares. Corner squares have two neighbors, side squares
-have three and centre squares have four.</para></listitem>
-
-<listitem><para>If a move leaves a neighbor with a maximum number of points,
-the move continues automatically to the neighbor's neighbors and so on, in
-a cascade. A large number of squares can change ownership during such a
-move.</para></listitem>
-
-<listitem><para>The winner is the player who ends up owning all the
-squares.</para></listitem>
-
-<listitem><para>You can use <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kjumpingcube;</guimenuitem></menuchoice> to
+ 
+<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note><title>Objective:</title><para>Conquer all the squares on the game board to win the round.</para></note><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para>&kapp-name; loads directly into the game mode, so you can start playing right away.</para>
+	<para>You move by clicking on a vacant square or the one you already own. If you click on a vacant square, you gain an ownership over it and square’s color changes to your playing color. Each time you click on a square, the value of the square increases by one. If square's value reaches maximum, its points are distributed amongst the square’s immediate neighbors (the points ‘jump’ around). If a neighboring square happens to be owned by the other player, it gets taken over together with all of its points and changes color to your playing color.</para>
+<note><title>Example:</title><para>If a square in the centre reaches five points, four of its points go to its four neighbors leaving the source square with a single point. It is possible for a cascade of automatic moves to occur if the neighboring squares also reach a maximum due to the points’ distribution.</para></note>
+<note><title>Note:</title><para>Large parts of the playing area can change hands very rapidly.</para></note>
+<para>The winner is the player who ends up owning all the squares on the board.</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title>Rules</title>
+		<orderedlist>
+			<listitem><para>A move consists of clicking on a square that does not belong to your opponent.</para></listitem>
+			<listitem><para>The move increases the points in the square by one.</para></listitem>
+			<listitem><para>At the start of the game, each square has one point, is painted a neutral color and has no owner.</para></listitem>
+			<listitem><para>Each player has a color to mark ownership of squares.</para></listitem>
+			<listitem><para>By clicking a square that has no owner, player becomes the owner of that square and it changes its color to player's color. Simultaneously the square’s value is increased by one.</para></listitem>
+			<listitem><para>If a square has more points than it has neighbors, one point jumps to each of the neighbors, leaving only one point in the original square.</para></listitem>
+			<listitem><para>During such a move, all the neighboring squares become owned by the player who moved and so do all of their points, even if the neighbors were neutral or owned by the other player before.</para></listitem>
+			<listitem><para>Neighbors are the squares above, below, left and right, but not any diagonally located squares. Corner squares have only two neighbors, while side squares have three, and centre squares have four neighbors.</para></listitem>
+			<listitem><para>If a move leaves a neighbor with a maximum number of points, the move continues automatically to the neighbor's neighbors and so on, in a cascade. A large number of squares can change ownership during such a move.</para></listitem>
+			<listitem><para>The winner is the player who ends up owning all the squares.</para></listitem>
+			<listitem><para>You can use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;</guimenuitem></menuchoice> to
 select colors, computer player, skill level and board size.</para></listitem>
-</orderedlist>
-
+		</orderedlist>
+	</sect1>
+	<sect1 id="strattips">
+		<title>Strategies and Tips</title>
+		<itemizedlist>
+			<listitem><para>Try to avoid increasing a square when your opponent owns a neighboring square that can reach its maximum before your square does.</para></listitem>
+			<listitem><para>Try to get control of the corner squares first, then the side squares. You need fewer moves to make them reach a maximum.</para></listitem>
+			<listitem><para>Try not to play too close to your opponent, especially during the opening moves.  Drop back a square or two or pick a square on the diagonal from your opponent.</para></listitem>
+			<listitem><para>Keep an eye out for long chains of squares that are almost at their maximum. If they are yours, you must guard them against cascading moves.  If they are your opponent's, they can become ripe for capture by a cascading move, just as soon as they extend close enough to your territory.</para></listitem>
+		</itemizedlist>
+	</sect1>
 </chapter>
+ 
+ 
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+	<sect1 id="game-menu">
+		<title>The <guimenu>Game</guimenu> Menu</title>
+		<variablelist id="menu-game-new">
+			<varlistentry><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
+			<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice></term>
+			<listitem><para><action>Start a new game.</action></para></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-load">
+			<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
+			<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice></term>
+			<listitem><para><action>Open a previously saved game.</action></para></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-save">
+			<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+			<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice></term>
+			<listitem><para><action>Save the current game.</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem></menuchoice></term>
+			<listitem><para><action>Save the current game with a different name.</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><menuchoice><shortcut><keycap>Esc</keycap></shortcut>
+			<guimenu>Game</guimenu><guimenuitem>Stop</guimenuitem></menuchoice></term>
+			<listitem><para><action>Stop the computer opponent's calculation of its next move.</action>  The computer will then make the best move it has found up to the moment you told it to stop.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+			<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
+			<listitem><para><action>Quits</action> &kapp-name;.</para></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
 
-<chapter id="menu-reference">
-<title>The Menu and Toolbar Reference</title>
+<sect1 id="move-menu">
+	<title>The <guimenu>Move</guimenu> Menu</title>
+	<variablelist>
+		<varlistentry id="move-menu-undo">
+			<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+			<guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice></term>
+			<listitem><para><action>Undo the last move you made.</action> Only one move, the very last one, can be undone in this game.</para></listitem>
+		</varlistentry>
+		<varlistentry id="move-menu-hint">
+			<term><menuchoice><shortcut><keycombo action="simul"><keycap>H</keycap></keycombo></shortcut>
+			<guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
+			<listitem><para><action>Get a hint as to the best move to make next.</action></para></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
 
-<sect1 id="menus">
-<title>The Menu Bar</title>
+<sect1 id="settings-menu">
+	<title>The <guimenu>Settings</guimenu> Menu</title>
+	<variablelist>
+		<varlistentry>
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Toolbar</guimenuitem></menuchoice></term>
+			<listitem><para><action>Toggle the display of the toolbar.</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice></term>
+			<listitem><para><action>Toggle the display of the status bar.</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
+			<listitem><para><action>Open a dialog where you can configure the shortcut keys</action> for &kapp-name;</para></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-toolbar">
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
+			<listitem><para><action>Open a dialog where you can configure the toolbar actions</action> for &kapp-name;</para></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-configure">
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;...</guimenuitem></menuchoice></term>
+			<listitem><para>Open a game configuration dialog. See <link linkend="configuration">'Game Configuration'</link> section for more details.</para>
+			</listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
 
-<sect2 id="game-menu">
-<title>The <guimenu>Game</guimenu> Menu</title>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap>
-</keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice></term>
-<listitem><para><action>Start a new game.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap>
-</keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a previously saved game.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap>
-</keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice></term>
-<listitem><para><action>Save the current game.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Save the current game with a different
-name.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycap>Esc</keycap></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Stop</guimenuitem></menuchoice></term>
-<listitem><para><action>Stop the computer opponent's calculation of its next
-move.</action>  The computer will then make the best move it has found
-up to the moment you told it to stop.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap>
-</keycombo></shortcut>
-<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-<listitem><para><action>Quits</action> &kjumpingcube;.</para></listitem>
-</varlistentry>
-</variablelist>
-
-</sect2>
-
-<sect2 id="move-menu">
-<title>The <guimenu>Move</guimenu> Menu</title>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap>
-</keycombo></shortcut>
-<guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice></term>
-<listitem><para><action>Undo the last move you made.</action> Only one
-move, the very last one, can be undone in this game.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><shortcut><keycombo action="simul"><keycap>H</keycap>
-</keycombo></shortcut>
-<guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
-<listitem><para><action>Get a hint as to the best move to make
-next.</action></para></listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect2>
-
-<sect2 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
-Toolbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle the display of the toolbar.</action>
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
-Statusbar</guimenuitem></menuchoice></term>
-<listitem><para><action>Toggle the display of the status bar.</action>
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...
-</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a dialog where you can configure the
-shortcut keys</action> for &kjumpingcube;</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...
-</guimenuitem></menuchoice></term>
-<listitem><para><action>Open a dialog where you can configure the toolbar
-actions</action> for &kjumpingcube;</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice></term>
-<listitem><para>Open a dialog where you can configure the following items:
-</para>
-
-<variablelist>
-<varlistentry>
-<term><guilabel>Computer Skill</guilabel></term>
-<listitem><para><action>Lets you choose your playing skill from a
-slider.</action> This decides how clever the computer opponent will be.</para>
-
-<para>You can choose from Beginner, Average or Expert.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Board Size</guilabel></term>
-<listitem><para><action>Lets you choose the play area
-size.</action></para>
-<para>Use the slider to select a value between
-<guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel>
-squares.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Computer Plays As</guilabel></term>
-<listitem><para>Sets the computer opponent to be <guilabel>Player
-1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you
-would set the computer to play one player and you would play the
-other.  Player 1 always starts first.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Players' Colors</guilabel></term>
-<listitem><para>Choose a color for each player and for the neutral squares.
-</para></listitem>
-</varlistentry>
-</variablelist>
-</listitem>
-</varlistentry>
-
-</variablelist>
-</sect2>
-
-<sect2 id="help-menu">
-<title>The <guimenu>Help</guimenu> Menu</title>
-
+<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
 &help.menu.documentation;
-
-</sect2>
 </sect1>
 
 <sect1 id="toolbars">
-<title>The &kjumpingcube; Toolbar</title>
-
-<variablelist>
-<varlistentry>
-<term><guiicon>New</guiicon></term>
-<listitem><para><action>Starts a new game</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guiicon>Save</guiicon></term>
-<listitem><para><action>Save the current game.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guiicon>Stop</guiicon></term>
-<listitem><para><action>Stop the computer opponent's calculation of its next
-move.</action>  The computer will then make the best move it has found
-up to the moment you told it to stop.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guiicon>Undo</guiicon></term>
-<listitem><para><action>Undo the last move you made.</action></para></listitem>
-</varlistentry>
-</variablelist>
-
+	<title>The &kapp-name; Toolbar</title>
+	<variablelist>
+		<varlistentry>
+			<term><guiicon>New</guiicon></term><listitem><para><action>Starts a new game</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guiicon>Save</guiicon></term><listitem><para><action>Save the current game.</action></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guiicon>Stop</guiicon></term><listitem><para><action>Stop the computer opponent's calculation of its next move.</action>  The computer will then make the best move it has found up to the moment you told it to stop.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guiicon>Undo</guiicon></term>
+			<listitem><para><action>Undo the last move you made.</action></para></listitem>
+		</varlistentry>
+	</variablelist>
 </sect1>
-
 </chapter>
-
-<chapter id="questions-answers-tips">
-<title>Tips, Tricks and Hints</title>
-
-<itemizedlist>
-<listitem><para>Try to avoid increasing a square when your opponent owns a
-neighboring square that can reach its maximum before your square does.
-</para></listitem>
-
-<listitem><para>Try to get control of the corner squares first, then the
-side squares. You need fewer moves to make them reach a maximum.
-</para></listitem>
-
-<listitem><para>Try not to play too close to your opponent, especially during
-the opening moves.  Drop back a square or two or pick a square on the diagonal
-from your opponent.</para></listitem>
-
-<listitem><para>Keep an eye out for long chains of squares that are almost
-at their maximum. If they are yours, you must guard them against cascading
-moves.  If they are your opponent's, they can become ripe for capture by
-a cascading move, just as soon as they extend close enough to your
-territory.</para></listitem>
-</itemizedlist>
-
+ 
+ 
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+<question><para>Who made this game?</para></question>
+ <answer><para>The kdegames team. You can find their website here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where can I get cheatcodes? </para></question>
+ <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new game? </para></question>
+ <answer><para>&kapp-name; loads directly into the game mode. You can start playing right away.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new round? </para></question>
+ <answer><para>To start a new game round you can use a <link linkend="menu-game-new">menubar option</link>, or a <link linkend="menu-game-new">keyboard shortcut</link>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I pause the game?</para></question>
+ <answer><para>&kapp-name; does not have a 'Pause' feature, as none is required.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>Currently you can only change the player's colors, but not the game theme. To change the player's colors use the <link linkend="configuration">'Game Configuration'</link> dialog.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have made a mistake. Can I undo? </para></question>
+ <answer><para>Yes. To undo your last move you can use a <link linkend="move-menu-undo">menubar option</link>, or a <link linkend="move-menu-undo">keyboard shortcut</link>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I use keyboard? </para></question>
+ <answer><para>No. &kapp-name; can not be played using the keyboard.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <answer><para>Yes. To see a hint you can use a <link linkend="move-menu-hint">menubar option</link>, or a <link linkend="move-menu-hint">keyboard shortcut</link>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+  <answer><para>Yes. To save your progress use a <link linkend="menu-game-save">'Save' option</link> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I restore the game I saved?</para></question>
+  <answer><para>Yes. To load your progress from a saved game use a <link linkend="menu-game-load">'Load' option</link> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where are the highscores?</para></question>
+ <answer><para>&kapp-name; does not have such feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the game configuration. Where do I go? </para></question>
+ <answer><para>The game <link linkend="configuration">configuration dialog</link> can be invoked using <link linkend="settings-menu-configure">‘Configure &kapp-name;...‘ option</link> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the toolbar layout. What do I do?</para></question>
+ <answer><para>To change the toolbar layout use the <link linkend="settings-menu-toolbar">‘Configure Toolbars...‘ option</link> on the menubar.</para></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
 </chapter>
-
-<chapter id="credits">
-<title>Credits and Licenses</title>
-
-<para>&kjumpingcube; is Copyright 1998, 1999 &Matthias.Kiefer; 
+ 
+<chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para>Configuration dialog.</para>
+<para>To open the 'Configuration Dialog' use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;...</guimenuitem></menuchoice></para>
+	<variablelist>
+		<varlistentry>
+			<term><guilabel>Computer Skill</guilabel></term>
+			<listitem><para><action>Lets you choose your playing skill from a slider.</action> This decides how clever the computer opponent will be.</para>
+			<para>You can choose from Beginner, Average or Expert.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Board Size</guilabel></term><listitem><para><action>Lets you choose the play area size.</action></para>
+			<para>Use the slider to select a value between <guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel> squares.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Computer Plays As</guilabel></term><listitem><para>Sets the computer opponent to be <guilabel>Player 1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you would set the computer to play one player and you would play the
+other. Player 1 always starts first.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Players' Colors</guilabel></term><listitem><para>Choose a color for each player and for the neutral squares.</para></listitem>
+		</varlistentry>
+	</variablelist>
+</chapter>
+ 
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para>&kapp-name; is Copyright 1998, 1999 &Matthias.Kiefer; 
 &Matthias.Kiefer.mail;</para>
 
-<para>&kjumpingcube; was inspired by a game that came out for the
+<para>&kapp-name; was inspired by a game that came out for the
 Commodore 64 and other early home computers. Unfortunately the original
 author's name is unknown.</para>
 
-<para>In 2007, Ian Wadham took over maintenance of &kjumpingcube; for KDE 4
+<para>In 2007, Ian Wadham took over maintenance of &kapp-name; for KDE 4
 and Eugene Trounev painted the first SVG theme.</para>
 
 <para>Documentation Copyright 1999 &Matthias.Kiefer;
@@ -361,33 +327,45 @@ and Eugene Trounev painted the first SVG theme.</para>
 &Lauri.Watts.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
+ 
+ 
+<!-- !!!do not change ANYTHING after this line!!!! -->
 &underFDL;
 &underGPL;
-
+ 
 </chapter>
-
+ 
+ 
 <appendix id="installation">
 <title>Installation</title>
-
-<sect1 id="how-to-obtain-kjumpingcube">
-<title>How to Obtain &kjumpingcube;</title>
+ 
 &install.intro.documentation;
-</sect1>
-
-<sect1 id="compilation-and-installation">
+ 
+ 
+<sect1 id="Compilation">
 <title>Compilation and Installation</title>
+ 
 &install.compile.documentation;
+ 
 </sect1>
-
 </appendix>
-
+ 
+&documentation.index; 
 </book>
 <!--
 Local Variables:
 mode: sgml
-sgml-omittag: nil
-sgml-shorttag: t
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
 End:
 -->
-
