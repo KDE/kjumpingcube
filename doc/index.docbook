@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kapp-name "&kjumpingcube;">
+  <!ENTITY kappname "&kjumpingcube;">
   <!ENTITY kappversion "1.2"><!--Applicaion version. Use this variable everywhere it's needed.-->
   <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY docupdate "2007-10-10"><!--Document version. Use this variable everywhere it's needed.-->
@@ -12,7 +12,7 @@
  
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>&kapp-name; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
+	<title>The &kappname; Handbook</title> <!-- This is the title of the docbook. Live as is unless change is necessary.-->
 <!-- List of immidiate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
@@ -40,7 +40,7 @@
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kapp-name; version &kappversion;</para>
+	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
  
 <!--List of relevan keywords-->
@@ -68,14 +68,14 @@
 	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
  
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
-	<para>&kapp-name; is a simple tactical game.  It can played it against the computer or a friend.  The playing area consists of squares containing points. When the game starts each square has only one point, and no owner. Players move by clicking on either a vacant square, or on own square, thus increasing the square’s point value. Once the square’s value reaches maximum the excessive points are distributed around the neighboring squares conquering them. The winner is the player who ends up owning all the squares.</para>
+	<para>&kappname; is a simple tactical game.  It can played it against the computer or a friend.  The playing area consists of squares containing points. When the game starts each square has only one point, and no owner. Players move by clicking on either a vacant square, or on own square, thus increasing the square’s point value. Once the square’s value reaches maximum the excessive points are distributed around the neighboring squares conquering them. The winner is the player who ends up owning all the squares.</para>
 </chapter>
  
 <chapter id="howto"><title>How to play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Conquer all the squares on the game board to win the round.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
-	<para>&kapp-name; loads directly into the game mode, so you can start playing right away.</para>
+	<para>&kappname; loads directly into the game mode, so you can start playing right away.</para>
 	<para>You move by clicking on a vacant square or the one you already own. If you click on a vacant square, you gain an ownership over it and square’s color changes to your playing color. Each time you click on a square, the value of the square increases by one. If square's value reaches maximum, its points are distributed amongst the square’s immediate neighbors (the points ‘jump’ around). If a neighboring square happens to be owned by the other player, it gets taken over together with all of its points and changes color to your playing color.</para>
 <note><title>Example:</title><para>If a square in the centre reaches five points, four of its points go to its four neighbors leaving the source square with a single point. It is possible for a cascade of automatic moves to occur if the neighboring squares also reach a maximum due to the points’ distribution.</para></note>
 <note><title>Note:</title><para>Large parts of the playing area can change hands very rapidly.</para></note>
@@ -97,7 +97,7 @@
 			<listitem><para>Neighbors are the squares above, below, left and right, but not any diagonally located squares. Corner squares have only two neighbors, while side squares have three, and centre squares have four neighbors.</para></listitem>
 			<listitem><para>If a move leaves a neighbor with a maximum number of points, the move continues automatically to the neighbor's neighbors and so on, in a cascade. A large number of squares can change ownership during such a move.</para></listitem>
 			<listitem><para>The winner is the player who ends up owning all the squares.</para></listitem>
-			<listitem><para>You can use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;</guimenuitem></menuchoice> to
+			<listitem><para>You can use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;</guimenuitem></menuchoice> to
 select colors, computer player, skill level and board size.</para></listitem>
 		</orderedlist>
 	</sect1>
@@ -144,7 +144,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 		<varlistentry>
 			<term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
 			<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-			<listitem><para><action>Quits</action> &kapp-name;.</para></listitem>
+			<listitem><para><action>Quits</action> &kappname;.</para></listitem>
 		</varlistentry>
 	</variablelist>
 </sect1>
@@ -178,14 +178,14 @@ select colors, computer player, skill level and board size.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
-			<listitem><para><action>Open a dialog where you can configure the shortcut keys</action> for &kapp-name;</para></listitem>
+			<listitem><para><action>Open a dialog where you can configure the shortcut keys</action> for &kappname;</para></listitem>
 		</varlistentry>
 		<varlistentry id="settings-menu-toolbar">
 			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
-			<listitem><para><action>Open a dialog where you can configure the toolbar actions</action> for &kapp-name;</para></listitem>
+			<listitem><para><action>Open a dialog where you can configure the toolbar actions</action> for &kappname;</para></listitem>
 		</varlistentry>
 		<varlistentry id="settings-menu-configure">
-			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;...</guimenuitem></menuchoice></term>
+			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice></term>
 			<listitem><para>Open a game configuration dialog. See <link linkend="configuration">'Game Configuration'</link> section for more details.</para>
 			</listitem>
 		</varlistentry>
@@ -198,7 +198,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </sect1>
 
 <sect1 id="toolbars">
-	<title>The &kapp-name; Toolbar</title>
+	<title>The &kappname; Toolbar</title>
 	<variablelist>
 		<varlistentry>
 			<term><guiicon>New</guiicon></term><listitem><para><action>Starts a new game</action></para></listitem>
@@ -232,7 +232,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>&kapp-name; loads directly into the game mode. You can start playing right away.</para></answer>
+ <answer><para>&kappname; loads directly into the game mode. You can start playing right away.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new round? </para></question>
@@ -240,7 +240,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game?</para></question>
- <answer><para>&kapp-name; does not have a 'Pause' feature, as none is required.</para></answer>
+ <answer><para>&kappname; does not have a 'Pause' feature, as none is required.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
@@ -252,7 +252,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use keyboard? </para></question>
- <answer><para>No. &kapp-name; can not be played using the keyboard.</para></answer>
+ <answer><para>No. &kappname; can not be played using the keyboard.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I can't figure out what to do here! Are there hints? </para></question>
@@ -268,11 +268,11 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
- <answer><para>&kapp-name; does not have such feature.</para></answer>
+ <answer><para>&kappname; does not have such feature.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>The game <link linkend="configuration">configuration dialog</link> can be invoked using <link linkend="settings-menu-configure">‘Configure &kapp-name;...‘ option</link> on the menubar.</para></answer>
+ <answer><para>The game <link linkend="configuration">configuration dialog</link> can be invoked using <link linkend="settings-menu-configure">‘Configure &kappname;...‘ option</link> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the toolbar layout. What do I do?</para></question>
@@ -286,7 +286,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 <para>Configuration dialog.</para>
-<para>To open the 'Configuration Dialog' use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kapp-name;...</guimenuitem></menuchoice></para>
+<para>To open the 'Configuration Dialog' use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice></para>
 	<variablelist>
 		<varlistentry>
 			<term><guilabel>Computer Skill</guilabel></term>
@@ -310,14 +310,14 @@ other. Player 1 always starts first.</para></listitem>
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
  
-<para>&kapp-name; is Copyright 1998, 1999 &Matthias.Kiefer; 
+<para>&kappname; is Copyright 1998, 1999 &Matthias.Kiefer; 
 &Matthias.Kiefer.mail;</para>
 
-<para>&kapp-name; was inspired by a game that came out for the
+<para>&kappname; was inspired by a game that came out for the
 Commodore 64 and other early home computers. Unfortunately the original
 author's name is unknown.</para>
 
-<para>In 2007, Ian Wadham took over maintenance of &kapp-name; for KDE 4
+<para>In 2007, Ian Wadham took over maintenance of &kappname; for KDE 4
 and Eugene Trounev painted the first SVG theme.</para>
 
 <para>Documentation Copyright 1999 &Matthias.Kiefer;
