@@ -3,8 +3,8 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kjumpingcube;">
   <!ENTITY kappversion "1.2"><!--Applicaion version. Use this variable everywhere it's needed.-->
-  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
-  <!ENTITY docupdate "2007-10-10"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.2"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-11-16"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -50,7 +50,7 @@
 	<keyword>game</keyword> <!-- do not change this! -->
 	<keyword>Kjumpingcube</keyword><!--Application name goes here-->
 <!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
-	<keyword>arcade</keyword>
+	<keyword>strategy</keyword>
 	<keyword>dice</keyword>
 	<keyword>dice game</keyword>
 	<keyword>playing dice</keyword>
@@ -64,20 +64,20 @@
 </bookinfo>
 <!--Content begins here: -->
 <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-	<note><title>Gametype:</title><para>Dice, Arcade</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Gametype:</title><para>Strategy, Dice</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
  
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
-	<para>&kjumpingcube; is a simple tactical game.  You can played it against the computer or a friend.  The playing area consists of squares containing points. When the game starts each square has only one point, and no owner. Players move by clicking on either a vacant square, or on own square, thus increasing the square’s point value. Once the square’s value reaches maximum the excessive points are distributed around the neighboring squares conquering them. The winner is the player who ends up owning all the squares.</para>
+	<para>&kjumpingcube; is a simple tactical game.  You can play it against the computer or a friend.  The playing area consists of squares containing points. When the game starts each square has only one point, and no owner. Players move by clicking on either a vacant square or one of their own squares, thus increasing the square’s point value by one. When a square’s value reaches a maximum, the excess points are distributed around the neighboring squares, taking over ownership of them. The winner is the player who ends up owning all the squares.</para>
+
 </chapter>
- 
 <chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
-	<note><title>Objective:</title><para>Conquer all the squares on the game board to win the round.</para></note><!--Describe the objective of the game.-->
+	<note><title>Objective:</title><para>Take over all the squares on the game board.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
-	<para>&kjumpingcube; loads directly into the game mode, so you can start playing right away.</para>
-	<para>You move by clicking on a vacant square or the one you already own. If you click on a vacant square, you gain an ownership over it and the square’s color changes to your playing color. Each time you click on a square, the value of the square increases by one. If the square's value reaches maximum, its points are distributed amongst the square’s immediate neighbors (the points <quote>jump</quote> around). If a neighboring square happens to be owned by the other player, it gets taken over together with all of its points and changes the color to your playing color.</para>
-<note><title>Example:</title><para>If a square in the centre reaches five points, four of its points go to its four neighbors leaving the source square with a single point. It is possible for a cascade of automatic moves to occur if the neighboring squares also reach a maximum due to the points’ distribution.</para></note>
+	<para>&kjumpingcube; loads directly into game mode, so you can start playing right away.</para>
+	<para>You move by clicking on a vacant square or one you already own. If you click on a vacant square, you gain ownership over it and the square’s color changes to your playing color. Each time you click on a square, the value of the square increases by one. If the square's value reaches a maximum, its points are distributed among the square’s immediate neighbors (the points <quote>jump</quote> around). If a neighboring square happens to be owned by the other player, it gets taken over, together with all of its points, and changes to your playing color.</para>
+<note><title>Example:</title><para>If a square in the centre reaches five points, four of its points go to its four neighbors leaving the source square with one point. It is possible for a cascade of automatic moves to occur if the neighboring squares also reach a maximum due to the distribution of points.</para></note>
 <note><title>Note:</title><para>Large parts of the playing area can change hands very rapidly.</para></note>
 <para>The winner is the player who ends up owning all the squares on the board.</para>
 </chapter>
@@ -257,12 +257,12 @@ select colors, computer player, skill level and board size.</para></listitem>
  <answer><para>Yes. To see a hint you can use a <link linkend="move-menu-hint">menubar option</link>, or a <link linkend="move-menu-hint">keyboard shortcut</link>.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>Yes. To save your progress use a <link linkend="menu-game-save"><guimenuitem>Save</guimenuitem> option</link> on the menubar.</para></answer>
+ <question><para>I have to quit the game now, but I am not finished yet. Can I save my position?</para></question>
+  <answer><para>Yes. To save your position use a <link linkend="menu-game-save"><guimenuitem>Save</guimenuitem> option</link> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I restore the game I saved?</para></question>
-  <answer><para>Yes. To load your progress from a saved game use a <link linkend="menu-game-load"><guimenuitem>Load</guimenuitem> option</link> on the menubar.</para></answer>
+  <answer><para>Yes. To load your position in a saved game use a <link linkend="menu-game-load"><guimenuitem>Load</guimenuitem> option</link> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
