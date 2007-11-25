@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=KJumpingCube Default
+Name[ca]=Predeterminat de KJumpingCube
 Name[de]=KJumpingCube Standard
 Name[el]=Προκαθορισμένο KJumpingCube
 Name[es]=KJumpingCube predeterminado
@@ -18,6 +19,7 @@ Name[x-test]=xxKJumpingCube Defaultxx
 Name[zh_CN]=KJumpingCube 默认
 Name[zh_TW]=KJumpingCube 預設
 Description=A simple set of cubes for KDE4
+Description[ca]=Un conjunt simple de cubs per KDE4
 Description[de]=Ein einfacher Satz Würfel für KDE4
 Description[el]=Ένα απλό σύνολο κύβων για το KDE4
 Description[es]=Un conjunto sencillo de cubos para KDE4
