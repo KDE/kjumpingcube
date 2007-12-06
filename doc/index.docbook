@@ -192,7 +192,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </sect1>
 
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 &help.menu.documentation;
 </sect1>
 
@@ -207,6 +207,10 @@ select colors, computer player, skill level and board size.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guiicon>Stop</guiicon></term><listitem><para><action>Stop the computer opponent's calculation of its next move.</action>  The computer will then make the best move it has found up to the moment you told it to stop.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guiicon>Hint</guiicon></term>
+			<listitem><para><action>Get a hint as to the best move to make next.</action></para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guiicon>Undo</guiicon></term>
