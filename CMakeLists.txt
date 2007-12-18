@@ -18,11 +18,11 @@ kde4_add_ui_files(kjumpingcube_SRCS settings.ui )
 kde4_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
 set(kjumpingcube_icons
-	hi16-app-kjumpingcube.png
-	hi32-app-kjumpingcube.png
-	hi48-app-kjumpingcube.png
-	hi64-app-kjumpingcube.png
-	hi128-app-kjumpingcube.png
+	${CMAKE_CURRENT_SOURCE_DIR}/hi16-app-kjumpingcube.png
+	${CMAKE_CURRENT_SOURCE_DIR}/hi32-app-kjumpingcube.png
+	${CMAKE_CURRENT_SOURCE_DIR}/hi48-app-kjumpingcube.png
+	${CMAKE_CURRENT_SOURCE_DIR}/hi64-app-kjumpingcube.png
+	${CMAKE_CURRENT_SOURCE_DIR}/hi128-app-kjumpingcube.png
 )
 kde4_add_win32_app_icon(kjumpingcube_SRCS ${kjumpingcube_icons})
 kde4_add_executable(kjumpingcube ${kjumpingcube_SRCS})
