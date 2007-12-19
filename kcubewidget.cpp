@@ -26,7 +26,6 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPixmap>
-#include <QApplication>
 
 #include <kdebug.h>
 
