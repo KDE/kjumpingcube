@@ -547,6 +547,7 @@ void KCubeBoxWidget::makeStatusPixmaps (const int width)
    svg.render (&s, "lighting");
    svg.render (&s, "pip", QRectF (p - d/2.0, p - d/2.0, d, d));
    svg.render (&s, "pip", QRectF (p + p - d/2.0, p + p - d/2.0, d, d));
+   s.end();
    status2 = QPixmap::fromImage (status);
 }
 
@@ -557,6 +558,7 @@ void KCubeBoxWidget::makeSVGBackground (const int w, const int h)
    QPainter p (&img);
    img.fill (0);
    svg.render (&p, "background");
+   p.end();
    background = QPixmap::fromImage (img);
    qDebug() << t.restart() << "msec" << "SVG background rendered";
 }
@@ -565,13 +567,14 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
 {
    qDebug() << t.restart() << "msec";
    QImage img (width, width, QImage::Format_ARGB32_Premultiplied);
-   QPainter q (&img);		// Paints whole faces of the dice.
+   QPainter q;                 // Paints whole faces of the dice.
 
    QImage pip (width/7, width/7, QImage::Format_ARGB32_Premultiplied);
-   QPainter r (&pip);		// Paints the pips on the faces of the dice.
+   QPainter r;                 // Paints the pips on the faces of the dice.
 
    elements.clear();
    for (int i = FirstElement; i <= LastElement; i++) {
+     q.begin(&img);
      if (i == Pip) {
        pip.fill (0);
      }
@@ -595,7 +598,9 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
        svg.render (&q, "lighting");
        break;
      case Pip:
+       r.begin(&pip);
        svg.render (&r, "pip");
+       r.end();
        break;
      case BlinkLight:
        svg.render (&q, "blink_light");
@@ -606,7 +611,7 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
      default:
        break;
      }
-
+     q.end();
      elements.append
        ((i == Pip) ? QPixmap::fromImage (pip) : QPixmap::fromImage (img));
    }
