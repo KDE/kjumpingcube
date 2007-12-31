@@ -17,14 +17,7 @@ kde4_add_ui_files(kjumpingcube_SRCS settings.ui )
 
 kde4_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
-set(kjumpingcube_icons
-	${CMAKE_CURRENT_SOURCE_DIR}/hi16-app-kjumpingcube.png
-	${CMAKE_CURRENT_SOURCE_DIR}/hi32-app-kjumpingcube.png
-	${CMAKE_CURRENT_SOURCE_DIR}/hi48-app-kjumpingcube.png
-	${CMAKE_CURRENT_SOURCE_DIR}/hi64-app-kjumpingcube.png
-	${CMAKE_CURRENT_SOURCE_DIR}/hi128-app-kjumpingcube.png
-)
-kde4_add_win32_app_icon(kjumpingcube_SRCS ${kjumpingcube_icons})
+kde4_add_app_icon(kjumpingcube_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kjumpingcube.png")
 kde4_add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
 target_link_libraries(kjumpingcube  ${KDE4_KIO_LIBS} kdegames )
@@ -39,6 +32,7 @@ install( FILES kjumpingcube.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kjumpingcubeui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kjumpingcube )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )
+
 
 
 
