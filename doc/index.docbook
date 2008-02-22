@@ -234,11 +234,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>&kjumpingcube; loads directly into the game mode. You can start playing right away.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I start a new round? </para></question>
- <answer><para>To start a new game round you can use a <link linkend="menu-game-new">menubar option</link>, or a <link linkend="menu-game-new">keyboard shortcut</link>.</para></answer>
+  <answer><para>You can start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game?</para></question>
