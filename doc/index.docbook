@@ -262,7 +262,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 </qandaentry>
 <qandaentry>
  <question><para>How do I restore the game I saved?</para></question>
-  <answer><para>Yes. To load your position in a saved game use a <link linkend="menu-game-load"><guimenuitem>Load</guimenuitem> option</link> on the menubar.</para></answer>
+  <answer><para>To load your position in a saved game use the <link linkend="menu-game-load"><guimenuitem>Load...</guimenuitem> option</link> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
