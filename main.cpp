@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
 {
     KAboutData aboutData( "kjumpingcube", 0, ki18n("KJumpingCube"),
                           KJC_VERSION, ki18n(description), KAboutData::License_GPL,
-                          ki18n("(c) 1998-2000, Matthias Kiefer"));
+                          ki18n("(c) 1998-2000, Matthias Kiefer"), KLocalizedString(),
+                          "http://games.kde.org/kjumpingcube" );
     aboutData.addAuthor(ki18n("Matthias Kiefer"),KLocalizedString(), "matthias.kiefer@gmx.de");
     aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     aboutData.addCredit(ki18n("Ian Wadham"),
