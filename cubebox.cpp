@@ -19,11 +19,12 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 **************************************************************************** */
-#include <assert.h>
-#include <math.h>
+
 #include "cubebox.h"
 #include "kcubeboxwidget.h"
 
+#include <assert.h>
+#include <math.h>
 
 CubeBox::CubeBox(const int d)
     :CubeBoxBase<Cube>(d)
