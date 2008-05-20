@@ -29,6 +29,7 @@ GenericName[ga]=Cluiche Gabhála Talaimh
 GenericName[pt]=Jogo de Captura do Território
 GenericName[pt_BR]=Jogo de Captura do Território
 GenericName[uk]=Гра на захоплення територій
+GenericName[zh_TW]=領土爭奪戰
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
