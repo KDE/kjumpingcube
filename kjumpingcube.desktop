@@ -25,6 +25,7 @@ Icon=kjumpingcube
 Type=Application
 X-DocPath=kjumpingcube/index.html
 GenericName=Territory Capture Game
+GenericName[de]=Eroberungsspiel
 GenericName[el]=Παιχνίδι κατάληψης περιοχών
 GenericName[es]=Juego de conquista del territorio
 GenericName[et]=Mänguala vallutamise mäng
