@@ -33,6 +33,7 @@ Name[x-test]=xxKJumpingCube Defaultxx
 Name[zh_CN]=KJumpingCube 默认
 Name[zh_TW]=KJumpingCube 預設
 Description=A simple set of cubes for KDE4
+Description[ar]=مجموعة بسيطة من مكعبات لkde4
 Description[ca]=Un conjunt simple de cubs per KDE4
 Description[da]=Et simpelt sæt af terninger til KDE4
 Description[de]=Ein einfacher Satz Würfel für KDE4
