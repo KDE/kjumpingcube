@@ -82,8 +82,7 @@ KCubeBoxWidget::~KCubeBoxWidget()
     stopActivities();
    if(cubes)
       deleteCubes();
-   if(undoBox)
-      delete undoBox;
+   delete undoBox;
 }
 
 void KCubeBoxWidget::loadSettings(){
