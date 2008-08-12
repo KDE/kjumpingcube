@@ -686,8 +686,12 @@ void KCubeBoxWidget::doMove(int row,int column)
    if(isActive())
       return;
 
-   // for undo-function copy field
-   *undoBox=*this;
+   bool computerMove = ((computerPlOne && currentPlayer==One) ||
+                        (computerPlTwo && currentPlayer==Two));
+   if (! computerMove) { // Make only human-players' moves undoable.
+      // For the undo-function: make a copy of the playfield.
+      *undoBox = *this;
+   }
 
    cubes[row][column]->increase((Cube::Owner)currentPlayer);
 
