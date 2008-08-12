@@ -1,0 +1,15 @@
+TODO LIST - as at 12 August 2008
+--------------------------------
+
+- Bug 168632 (wishlist) - When playing with two computer players, make it
+  possible to use different strengths.
+- Bug 168641 (wishlist) - Button 'stop' is misleading. Rename it? Abolish it?
+  Implement a timeout?
+- Bug 168645 (wishlist) - Offer 'replay move slowly' option (to make cascades
+  easier to understand).
+- Multi-level undo/redo.
+- Themeing and hot new stuff.
+- Graphics and animations to make saturation and redistribution of a cube's
+  points a bit easier to understand, thus making the whole game easier to learn.
+- Better strategies in the AI - maybe an "Expert" level of skill.
+
