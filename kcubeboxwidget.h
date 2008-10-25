@@ -130,6 +130,7 @@ signals:
    void startedThinking();
    void stoppedMoving();
    void stoppedThinking();
+   void dimensionsChanged();
 
 protected:
    virtual QSize sizeHint() const;

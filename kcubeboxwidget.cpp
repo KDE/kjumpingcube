@@ -115,6 +115,11 @@ void KCubeBoxWidget::loadSettings(){
   setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
   setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
   checkComputerplayer(currentPlayer);
+
+  if (reSizeCubes) {
+     // Start a new game (in the KJumpingCube object).
+     emit dimensionsChanged();
+  }
 }
 
 KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)

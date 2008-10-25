@@ -69,6 +69,7 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(startedMoving()),SLOT(enableStop_Moving()));
    connect(view,SIGNAL(startedThinking()),SLOT(enableStop_Thinking()));
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
+   connect(view,SIGNAL(dimensionsChanged()),SLOT(newGame()));
 
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
