@@ -370,7 +370,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	      if(currentLevel==0)
 	         cerr << i << "," << j << " : " << val << endl;
 #endif
-	      // only if val >= 0 its a favorable move
+	      // only if val >= 0 it is a favorable move
               if( val > 0 )
               {
 	         if(val<min)
