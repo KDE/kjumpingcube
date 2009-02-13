@@ -225,56 +225,16 @@ select colors, computer player, skill level and board size.</para></listitem>
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
-<question><para>Who made this game?</para></question>
- <answer><para>The kdegames team. You can find their website <ulink url="http://games.kde.org">here</ulink>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>Where can I get cheatcodes? </para></question>
- <answer><para>You cannot get cheatcodes for &kde; games.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I start a new game? </para></question>
-  <answer><para>You can start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I pause the game?</para></question>
- <answer><para>&kjumpingcube; does not have a <quote>Pause</quote> feature, as none is required.</para></answer>
-</qandaentry>
-<qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
  <answer><para>Currently you can only change the player's colors, but not the game theme. To change the player's colors use the <link linkend="configuration">Game Configuration</link> dialog.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have made a mistake. Can I undo? </para></question>
- <answer><para>Yes. To undo your last move you can use a <link linkend="move-menu-undo">menubar option</link>, or a <link linkend="move-menu-undo">keyboard shortcut</link>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>Can I use keyboard? </para></question>
+ <question><para>Can I use the keyboard to play the game? </para></question>
  <answer><para>No. &kjumpingcube; cannot be played using the keyboard.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>Yes. To see a hint you can use a <link linkend="move-menu-hint">menubar option</link>, or a <link linkend="move-menu-hint">keyboard shortcut</link>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I have to quit the game now, but I am not finished yet. Can I save my position?</para></question>
-  <answer><para>Yes. To save your position use a <link linkend="menu-game-save"><guimenuitem>Save</guimenuitem> option</link> on the menubar.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I restore the game I saved?</para></question>
-  <answer><para>To load your position in a saved game use the <link linkend="menu-game-load"><guimenuitem>Load...</guimenuitem> option</link> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
  <answer><para>&kjumpingcube; does not have such a feature.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>The game <link linkend="configuration">configuration dialog</link> can be invoked using <link linkend="settings-menu-configure"><guimenuitem>Configure &kjumpingcube;...</guimenuitem> option</link> on the menubar.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I want to change the toolbar layout. What do I do?</para></question>
- <answer><para>To change the toolbar layout use the <link linkend="settings-menu-toolbar"><guimenuitem>Configure Toolbars...</guimenuitem> option</link> on the menubar.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
  
