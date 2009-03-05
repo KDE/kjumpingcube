@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
                       ki18n("Upgrade to KDE4 and SVG artwork support."),
                       "ianw2@optusnet.com.au");
     aboutData.addCredit(ki18n("Eugene Trounev"),
-                      ki18n("Graphics for KDE4.0 version."),
+                      ki18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
     KCmdLineArgs::init( argc, argv, &aboutData );
 
