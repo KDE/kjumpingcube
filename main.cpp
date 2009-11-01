@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     aboutData.addCredit(ki18n("Ian Wadham"),
                       ki18n("Upgrade to KDE4 and SVG artwork support."),
-                      "ianw2@optusnet.com.au");
+                      "iandw.au@gmail.com");
     aboutData.addCredit(ki18n("Eugene Trounev"),
                       ki18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
