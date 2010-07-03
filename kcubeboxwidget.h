@@ -22,7 +22,7 @@
 #ifndef KCUBEBOXWIDGET_H
 #define KCUBEBOXWIDGET_H
 
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <kgametheme.h>
 #include <QTime> // IDW
 
@@ -151,7 +151,7 @@ protected slots:
 private:
    void init();
 
-   KSvgRenderer svg;
+   QSvgRenderer svg;
    KGameTheme theme;		// A graphics theme for KJumpingCube.
    QTime t; // IDW
    void makeSVGBackground (const int w, const int h);
