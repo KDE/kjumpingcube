@@ -648,7 +648,7 @@ void KCubeBoxWidget::resizeEvent (QResizeEvent * event)
 
 void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 {
-   int boxSize = (h < w) ? h : w;
+   int boxSize = qMin(w, h);
    int frameWidth = boxSize / 30;
    int hairline = drawHairlines ? frameWidth / 10 : 0;
    qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth << "hairline" << hairline;
