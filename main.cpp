@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication application;
-    KGlobal::locale()->insertCatalog("libkdegames");
+    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
     // All session management is handled in the RESTORE macro
 	if (application.isSessionRestored())

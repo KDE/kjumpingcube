@@ -59,7 +59,7 @@ KJumpingCube::KJumpingCube()
   : view(new KCubeBoxWidget(Prefs::cubeDim(), this))
   // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
 {
-   view->setObjectName("KCubeBoxWidget");
+   view->setObjectName( QLatin1String("KCubeBoxWidget" ));
    view->makeStatusPixmaps (30);
 
    connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
@@ -104,8 +104,8 @@ void KJumpingCube::initKAction() {
   hintAction = KStandardGameAction::hint(view, SLOT(getHint()), this);
   actionCollection()->addAction(hintAction->objectName(), hintAction);
 
-  stopAction = actionCollection()->addAction("game_stop");
-  stopAction->setIcon(KIcon("process-stop"));
+  stopAction = actionCollection()->addAction( QLatin1String( "game_stop" ));
+  stopAction->setIcon(KIcon( QLatin1String( "process-stop" )));
   stopAction->setText(i18n("Stop"));
   stopAction->setToolTip(i18n("Force the computer to move immediately"));
   stopAction->setWhatsThis
