@@ -27,7 +27,7 @@ install(TARGETS kjumpingcube  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES kjumpingcube.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS kjumpingcube.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kjumpingcube.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kjumpingcubeui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kjumpingcube )
 
