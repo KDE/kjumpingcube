@@ -21,7 +21,8 @@
 **************************************************************************** */
 #include "kcubeboxwidget.h"
 
-#include <KConfig>
+#include <KgTheme>
+#include <KStandardDirs>
 #include <QTimer>
 #include <QPainter>
 
@@ -443,16 +444,18 @@ void KCubeBoxWidget::init()
    color2 = Prefs::color2();
    color0 = Prefs::color0();
 
-   theme.load ("pics/default.desktop");
+   KgTheme theme((QByteArray()));
+   theme.readFromDesktopFile(KStandardDirs::locate("appdata", "pics/default.desktop"));
+
    t.start();
    qDebug() << t.restart() << "msec";
-   svg.load (theme.graphics());
+   svg.load (theme.graphicsPath());
    qDebug() << t.restart() << "msec" << "SVG loaded ...";
    if (svg.isValid())
 	qDebug() << "SVG is valid ...";
    else
 	qDebug() << "SVG is NOT valid ...";
-   drawHairlines = (theme.property("DrawHairlines") == "0") ? false : true;
+   drawHairlines = (theme.customData("DrawHairlines") == "0") ? false : true;
 
    initCubes();
 

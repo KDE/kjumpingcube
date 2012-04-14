@@ -23,7 +23,6 @@
 #define KCUBEBOXWIDGET_H
 
 #include <QSvgRenderer>
-#include <kgametheme.h>
 #include <QTime> // IDW
 
 #include "cubeboxbase.h"
@@ -152,7 +151,6 @@ private:
    void init();
 
    QSvgRenderer svg;
-   KGameTheme theme;		// A graphics theme for KJumpingCube.
    QTime t; // IDW
    void makeSVGBackground (const int w, const int h);
    void makeSVGCubes (const int width);
