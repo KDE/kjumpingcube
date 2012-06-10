@@ -175,11 +175,11 @@ select colors, computer player, skill level and board size.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice></term>
-			<listitem><para><action>Open a dialog where you can configure the shortcut keys</action> for &kjumpingcube;</para></listitem>
+			<listitem><para><action>Open a dialog where you can configure the shortcut keys</action> for &kjumpingcube;.</para></listitem>
 		</varlistentry>
 		<varlistentry id="settings-menu-toolbar">
 			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
-			<listitem><para><action>Open a dialog where you can configure the toolbar actions</action> for &kjumpingcube;</para></listitem>
+			<listitem><para><action>Open a dialog where you can configure the toolbar actions</action> for &kjumpingcube;.</para></listitem>
 		</varlistentry>
 		<varlistentry id="settings-menu-configure">
 			<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice></term>
@@ -198,7 +198,7 @@ select colors, computer player, skill level and board size.</para></listitem>
 	<title>The &kjumpingcube; Toolbar</title>
 	<variablelist>
 		<varlistentry>
-			<term><guiicon>New</guiicon></term><listitem><para><action>Starts a new game</action></para></listitem>
+			<term><guiicon>New</guiicon></term><listitem><para><action>Starts a new game.</action></para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guiicon>Save</guiicon></term><listitem><para><action>Save the current game.</action></para></listitem>
