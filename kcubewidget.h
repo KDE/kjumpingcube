@@ -54,7 +54,7 @@ public:
    /** shows a hint e.g. blinks with the interval 400 and number times */
    void showHint (int interval = 400, int number = 5, bool realMove = false);
    /** stops showing a hint */
-   void stopHint();
+   void stopHint (bool shutdown = false);
    
    /** 
    * animates the cube if possible (if feature is enabled)

@@ -71,6 +71,9 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
    connect(view,SIGNAL(dimensionsChanged()),SLOT(newGame()));
 
+   // Used if Quit was delayed until Brain (AI) calculations finished cleanly.
+   connect(view,SIGNAL(shutdownNow()),SLOT(close()));
+
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
 
@@ -85,6 +88,13 @@ KJumpingCube::KJumpingCube()
 
    initKAction();
    changePlayer(1);
+}
+
+bool KJumpingCube::queryClose()
+{
+  // If false, the Brain (AI) is active: quitting now will cause a crash.  The
+  // view->shutdownNow() signal retries close() after Brain activity finishes.
+  return (view->shutdown());
 }
 
 void KJumpingCube::initKAction() {

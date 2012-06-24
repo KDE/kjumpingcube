@@ -45,6 +45,10 @@ public:
   /** Default Constructor */
   KJumpingCube();
 
+protected:
+  /// To make sure all activity ceases before closing.
+  bool queryClose();
+
 private:
   KCubeBoxWidget *view;
 	QLabel *currentPlayer;

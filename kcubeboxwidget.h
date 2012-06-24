@@ -64,6 +64,13 @@ public:
    KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
 
    /**
+    * Make sure all move and brain activity is over before destroying widget.
+    *
+    * @return True if we can shut down immediately, false if Brain is active.
+    * */
+   bool shutdown();
+
+   /**
    * reset cubebox for a new game
    */
    void reset();
@@ -130,6 +137,7 @@ signals:
    void stoppedMoving();
    void stoppedThinking();
    void dimensionsChanged();
+   void shutdownNow();
 
 protected:
    virtual QSize sizeHint() const;
@@ -173,6 +181,7 @@ private:
    Brain brain;
 
    QTimer *moveTimer;
+   bool delayedShutdown;	// True if the brain is active at Quit time.
    int moveDelay;
    Loop loop;
    /** */
@@ -202,7 +211,7 @@ private slots:
    bool checkClick(int row,int column,bool isClick);
 
    /** turns off blinking, if an other cube is clicked */
-   void stopHint();
+   void stopHint (bool shutdown = false);
 
 };
 

@@ -170,12 +170,15 @@ void KCubeWidget::updateColors()
   update();
 }
 
-void KCubeWidget::stopHint()
+void KCubeWidget::stopHint (bool shutdown)
 {
    if(hintTimer->isActive())
    {
       hintTimer->stop();
       blinking = None;		// Turn off blinking.
+      if (shutdown) {
+        return;			// Don't start another move.
+      }
       update();
 
       if (mRealMove) {

@@ -214,6 +214,11 @@ void KCubeBoxWidget::getHint()
 
    emit startedThinking();
    bool done = brain.getHint(row,column,(CubeBox::Player)currentPlayer,field);
+   if (delayedShutdown) {
+      delayedShutdown = false;
+      emit shutdownNow();
+      return;
+   }
    emit stoppedThinking();
 
    if (done) {
@@ -248,6 +253,18 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
       computerPlTwo=flag;
 }
 
+bool KCubeBoxWidget::shutdown()
+{
+   stopHint (true);		// Stop blinking.  Don't start another move.
+   if(moveTimer->isActive()) {
+      stopLoop();		// Stop animation of moves (e.g. cascades).
+   }
+   if(brain.isActive()) {
+      brain.stop();		// Brain stops only after next "thinking" cycle.
+      delayedShutdown = true;
+   }
+   return (! delayedShutdown);
+}
 
 void KCubeBoxWidget::stopActivities()
 {
@@ -341,14 +358,14 @@ void KCubeBoxWidget::setNormalCursor()
    setCursor(Qt::PointingHandCursor);
 }
 
-void KCubeBoxWidget::stopHint()
+void KCubeBoxWidget::stopHint (bool shutdown)
 {
 
    int d=dim();
    for(int i=0;i<d;i++)
       for(int j=0;j<d;j++)
       {
-         cubes[i][j]->stopHint();
+         cubes[i][j]->stopHint (shutdown);
       }
 
 }
@@ -388,6 +405,11 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       int row=0,column=0;
       emit startedThinking();
       brain.getHint (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      if (delayedShutdown) {
+         delayedShutdown = false;
+         emit shutdownNow();
+         return;
+      }
       emit stoppedThinking();
 
       // We do not care if we interrupted the computer.  It was probably taking
@@ -439,6 +461,8 @@ int KCubeBoxWidget::skill() const
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
+   delayedShutdown = false;	// True if we need to quit, but brain is active.
+
    setMinimumSize (200, 200);
    color1 = Prefs::color1();			// Set preferred colors.
    color2 = Prefs::color2();
