@@ -835,75 +835,14 @@ void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,i
 {
    KCubeWidget::Owner _player = (KCubeWidget::Owner)(forWhom);
 
-   if(row==0)
-   {
-    	if(column==0)  // top left corner
-	{
-	   cubes[0][1]->increase(_player);
-	   cubes[1][0]->increase(_player);
-	   return;
-	}
-	else if(column==dim()-1)  // top right corner
-	{
-	   cubes[0][dim()-2]->increase(_player);
-	   cubes[1][dim()-1]->increase(_player);
-	   return;
-	}
-	else  // top edge
-	{
-	   cubes[0][column-1]->increase(_player);
-	   cubes[0][column+1]->increase(_player);
-	   cubes[1][column]->increase(_player);
-	   return;
-	}
-   }
-   else if(row==dim()-1)
-   {
-      if(column==0)  // left bottom corner
-      {
-         cubes[dim()-2][0]->increase(_player);
-         cubes[dim()-1][1]->increase(_player);
-         return;
-      }
-
-      else if(column==dim()-1) // right bottom corner
-      {
-         cubes[dim()-2][dim()-1]->increase(_player);
-         cubes[dim()-1][dim()-2]->increase(_player);
-	      return;
-      }
-      else  // bottom edge
-      {
- 	      cubes[dim()-1][column-1]->increase(_player);
-	      cubes[dim()-1][column+1]->increase(_player);
-	      cubes[dim()-2][column]->increase(_player);
-	      return;
-      }
-   }
-   else if(column==0) // left edge
-   {
-      cubes[row-1][0]->increase(_player);
-      cubes[row+1][0]->increase(_player);
-      cubes[row][1]->increase(_player);
-      return;
-   }
-   else if(column==dim()-1)  // right edge
-   {
-      cubes[row-1][dim()-1]->increase(_player);
-      cubes[row+1][dim()-1]->increase(_player);
-      cubes[row][dim()-2]->increase(_player);
-      return;
-   }
-   else
-   {
-      cubes[row][column-1]->increase(_player);
-      cubes[row][column+1]->increase(_player);
-      cubes[row-1][column]->increase(_player);
-      cubes[row+1][column]->increase(_player);
-      return;
-   }
-
-
+   if(row!=0)
+     cubes[row-1][column]->increase(_player);
+   if(row!=dim()-1)
+     cubes[row+1][column]->increase(_player);
+   if(column!=0)
+     cubes[row][column-1]->increase(_player);
+   if(column!=dim()-1)
+     cubes[row][column+1]->increase(_player);
 }
 
 #include "kcubeboxwidget.moc"
