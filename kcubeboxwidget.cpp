@@ -97,7 +97,7 @@ void KCubeBoxWidget::loadSettings(){
   color1 = Prefs::color1();
   color2 = Prefs::color2();
   color0 = Prefs::color0();
-  moveDelay=Prefs::speed();
+  moveDelay=Prefs::speed() * 150;
   setDim (Prefs::cubeDim());
 
   if (reColorCubes) {
@@ -487,7 +487,7 @@ void KCubeBoxWidget::init()
    undoBox=new CubeBox(dim());
 
    currentPlayer=One;
-   moveDelay=Prefs::speed();
+   moveDelay=Prefs::speed() * 150;
    moveTimer=new QTimer(this);
    computerPlOne=false;
    computerPlTwo=false;

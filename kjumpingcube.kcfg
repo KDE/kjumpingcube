@@ -5,9 +5,9 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kjumpingcuberc"/>
   <group name="Game">
-    <entry name="Speed" type="Int" min="150" max="1500">
+    <entry name="Speed" type="Int" min="1" max="10">
       <label>Animation speed of overflowing dice</label>
-      <default>150</default>
+      <default>1</default>
     </entry>
     <entry name="Color0" type="Color">
       <label>Color of neutral cubes.</label>
