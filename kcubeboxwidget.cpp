@@ -1,3 +1,5 @@
+#include <stdio.h> // IDW test.
+
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
@@ -97,7 +99,7 @@ void KCubeBoxWidget::loadSettings(){
   color1 = Prefs::color1();
   color2 = Prefs::color2();
   color0 = Prefs::color0();
-  moveDelay=Prefs::speed() * 150;
+  animationTime = Prefs::animationSpeed() * 150;
   setDim (Prefs::cubeDim());
 
   if (reColorCubes) {
@@ -179,7 +181,8 @@ void KCubeBoxWidget::reset()
    currentPlayer=One;
 
    emit playerChanged(One);
-   checkComputerplayer(One);
+   // IDW test. When re-starting, WAIT FOR A CLICK. checkComputerplayer(One);
+   qDebug() << "KCubeBoxWidget::reset(): CUBE BOX HAS BEEN RESET.";
 }
 
 void KCubeBoxWidget::undo()
@@ -203,13 +206,6 @@ void KCubeBoxWidget::getHint()
    if(isActive())
       return;
 
-   int d=dim();
-   for(int i=0;i<d;i++)
-      for(int j=0;j<d;j++)
-      {
-         cubes[i][j]->stopHint();
-      }
-
    int row=0,column=0;
    CubeBox field=CubeBox(*this);
 
@@ -223,7 +219,7 @@ void KCubeBoxWidget::getHint()
    emit stoppedThinking();
 
    if (done) {
-      cubes[row][column]->showHint();
+      startAnimation (Hint, row, column);
    }
    // If (! done), we interrupted the brain, so we do not want the hint.
 }
@@ -257,8 +253,8 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
 bool KCubeBoxWidget::shutdown()
 {
    stopHint (true);		// Stop blinking.  Don't start another move.
-   if(moveTimer->isActive()) {
-      stopLoop();		// Stop animation of moves (e.g. cascades).
+   if(animationTimer->isActive()) {
+      stopAnimation();		// Stop animation of moves (e.g. cascades).
    }
    if(brain.isActive()) {
       brain.stop();		// Brain stops only after next "thinking" cycle.
@@ -269,9 +265,9 @@ bool KCubeBoxWidget::shutdown()
 
 void KCubeBoxWidget::stopActivities()
 {
-   if(moveTimer->isActive())
+   if(animationTimer->isActive())
    {
-      stopLoop();
+      stopAnimation();
       emit stoppedMoving();
    }
    if(brain.isActive())
@@ -361,14 +357,15 @@ void KCubeBoxWidget::setNormalCursor()
 
 void KCubeBoxWidget::stopHint (bool shutdown)
 {
-
+    // IDW TODO - Rewrite this?
+/*
    int d=dim();
    for(int i=0;i<d;i++)
       for(int j=0;j<d;j++)
       {
          cubes[i][j]->stopHint (shutdown);
       }
-
+*/
 }
 
 bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
@@ -379,6 +376,12 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
    // make the game start when computer player is player one and user clicks
    if(isClick && currentPlayer == One && computerPlOne)
    {
+      qDebug() << "FIRST CLICK";
+      // These are set by KCubeBoxWidget::initCubes() and are correct.
+      // for (int index = 0; index < dim() * dim(); index++) {
+	  // qDebug() << "MAX" << index/dim() << index%dim() << "="
+                   // << cubes[index/dim()][index%dim()]->max();
+      // }
       checkComputerplayer(currentPlayer);
       return false;
    }
@@ -394,6 +397,7 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
 
 void KCubeBoxWidget::checkComputerplayer(Player player)
 {
+   qDebug() << "checkComputerplayer()" << player;
    // checking if a process is running or the Widget isn't shown yet
    if(isActive() || !isVisible())
       return;
@@ -420,7 +424,9 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       // the cube to simulate a mouse click and trigger the move animation,
       // but not until after the blinking is finished.  The cube's "clicked"
       // signal is connected to "checkClick (row, column, false)".`
-      cubes[row][column]->showHint (400, 2, true);
+
+      qDebug() << "Call startAnimation (ComputerMove," << row << column;
+      startAnimation (ComputerMove, row, column);
    }
 }
 
@@ -431,7 +437,7 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
 bool KCubeBoxWidget::isActive() const
 {
    bool flag=false;
-   if(moveTimer->isActive())
+   if(animationTimer->isActive())
       flag=true;
    else if(brain.isActive())
       flag=true;
@@ -441,7 +447,12 @@ bool KCubeBoxWidget::isActive() const
 
 bool KCubeBoxWidget::isMoving() const
 {
-   return moveTimer->isActive();
+   if ((currentAnimation == Hint) || (currentAnimation == ComputerMove)) {
+      return false;
+   }
+   else {
+      return animationTimer->isActive();
+   }
 }
 
 bool KCubeBoxWidget::isComputer(Player player) const
@@ -464,6 +475,12 @@ void KCubeBoxWidget::init()
 {
    delayedShutdown = false;	// True if we need to quit, but brain is active.
 
+   fullSpeed      = false;
+   animating      = false;
+   animationSteps = 10;
+   animationCount = 0;
+   oldMoveMethod  = true;
+
    setMinimumSize (200, 200);
    color1 = Prefs::color1();			// Set preferred colors.
    color2 = Prefs::color2();
@@ -485,10 +502,14 @@ void KCubeBoxWidget::init()
    initCubes();
 
    undoBox=new CubeBox(dim());
+   IDW_Save=new CubeBox(dim());
+   IDW_Brain=new CubeBox(dim());
+   IDW_Box1=new CubeBox(dim());
+   IDW_Box2=new CubeBox(dim());
 
    currentPlayer=One;
-   moveDelay=Prefs::speed() * 150;
-   moveTimer=new QTimer(this);
+   animationTime=Prefs::animationSpeed() * 150;
+   animationTimer=new QTimer(this);
    computerPlOne=false;
    computerPlTwo=false;
    KCubeWidget::enableClicks(true);
@@ -497,7 +518,7 @@ void KCubeBoxWidget::init()
    // are already loaded, so there should be no change and no SVG rendering yet.
    loadSettings();
 
-   connect(moveTimer,SIGNAL(timeout()),SLOT(nextLoopStep()));
+   connect(animationTimer,SIGNAL(timeout()),SLOT(nextAnimationStep()));
    connect(this,SIGNAL(startedThinking()),SLOT(setWaitCursor()));
    connect(this,SIGNAL(stoppedThinking()),SLOT(setNormalCursor()));
    connect(this,SIGNAL(startedMoving()),SLOT(setWaitCursor()));
@@ -523,10 +544,10 @@ void KCubeBoxWidget::initCubes()
    for(i=0;i<s;i++)
       for(j=0;j<s;j++)
       {
-         cubes[i][j]=new KCubeWidget(this);
-         cubes[i][j]->setCoordinates(i,j);
+         cubes[i][j] = new KCubeWidget (this);
+         cubes[i][j]->setCoordinates (i, j, s - 1);
          cubes[i][j]->setPixmaps (&elements);
-         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
+         // connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
          connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),
                              SLOT(checkClick(int,int,bool)));
          cubes[i][j]->show();
@@ -725,82 +746,422 @@ void KCubeBoxWidget::doMove(int row,int column)
       // For the undo-function: make a copy of the playfield.
       *undoBox = *this;
    }
+   *IDW_Brain = *this;
+   IDW_Brain->simulateMove((CubeBoxBase<Cube>::Player)currentPlayer, row, column);
 
    cubes[row][column]->increase((Cube::Owner)currentPlayer);
 
-   if(cubes[row][column]->overMax())
-   {
-      KCubeWidget::enableClicks(false);
-      startLoop();
+   if(cubes[row][column]->overMax()) {
+      oldMoveMethod = false;	// IDW - Whether testing the old move method.
+      qDebug() << "KCubeBoxWidget::doMove(): currentPlayer" << currentPlayer;
+      m_playerStart = currentPlayer;
+      qDebug() << "KCubeBoxWidget::doMove(): m_playerStart" << m_playerStart;
+      *IDW_Save = *this;
+      m_rowStart = row;
+      m_colStart = column;
+      startCascade (row, column);
    }
-   else
+   else {
       changePlayer();
+      qDebug() << "Change player in KCubeBoxWidget::doMove() to" << currentPlayer;
+   }
 }
 
-void KCubeBoxWidget::startLoop()
+void KCubeBoxWidget::startCascade (int row, int col)
 {
-   emit startedMoving();
+   fullSpeed = false;
+   if (Prefs::animationNone()) {
+      fullSpeed = true;
+      animating = false;
+      currentAnimation = None;
+      stepTime = 0;
+   }
+   else if (Prefs::animationDelay() || (Prefs::animationSpeed() <= 1)) {
+      animating = true;
+      currentAnimation = Darken;
+      stepTime = animationTime;
+   }
+   else if (Prefs::animationBlink()) {
+      animating = true;
+      currentAnimation = RapidBlink;
+      stepTime = animationTime;
+   }
+   else if (Prefs::animationSpread()) {
+      animating = true;
+      currentAnimation = Scatter;
+      stepTime = animationTime;
+   }
 
+   fprintf (stderr, "\nStarting Position\n\n");
+   for (int j = 0; j < dim(); j++) {
+      for (int i = 0; i < dim(); i++) {
+        fprintf (stderr, "  %u-%u", cubes[i][j]->owner(), cubes[i][j]->value());
+      }
+      fprintf (stderr, "\n");
+   }
+
+   qDebug() << "\nSTART CASCADE AT" << col << row << "index"
+            << (row * dim() + col) << saturated << "stepTime" << stepTime
+	    << "PLAYER" << currentPlayer;
+
+   cubes[row][col]->setDark();
+   if (animating) {
+      startAnimation (row, col);
+   }
+
+   // IDW TODO - This turns on the busy cursor and the Stop button. If Stop is
+   // used, the cascade stops OK, but some cells are left in intermediate states
+   // and cells that are overMax() never get fired again, even if increased.
+   //
+   // Do something sensible about this, e.g. do NOT enable the Stop button.
+   emit startedMoving();
    KCubeWidget::enableClicks(false);
 
-   loop.row=0;
-   loop.column=0;
-   loop.finished=true;
+   if (! oldMoveMethod) {
+      saturated.clear(); // IDW test.
+      saturated.append (row * dim() + col); // IDW test.
+   }
 
-   moveTimer->start(moveDelay);
+   m_row = row;
+   m_col = col;
+   if (fullSpeed) {
+      continueCascade();
+   }
 }
 
-void KCubeBoxWidget::stopLoop()
+void KCubeBoxWidget::continueCascade()
 {
-   moveTimer->stop();
-   emit stoppedMoving();
-   KCubeWidget::enableClicks(true);
+   // TODO - 1. No delay between moves, 2. Delay between moves, 3. Animation.
+   // TODO - Old moves (animated or delayed), restore cube-box, new moves.
+   // TODO - Save resulting cube boxes and compare.
+
+   do {
+      if (oldMoveMethod) {
+         if (nextOldMoveStep()) {
+            continue;
+         }
+      }
+      else if (nextNewMoveStep()) {
+         continue;
+      }
+      if (oldMoveMethod) {
+         *IDW_Box1 = *this;
+         checkPosition (1);
+      }
+      else {
+         *IDW_Box2 = *this;
+         checkPosition (2);
+      }
+      if (hasPlayerWon(currentPlayer)) { // IDW TODO - Tested in nextOldMoveStep().
+         if (! oldMoveMethod) {
+            emit stoppedMoving();
+            reset();
+            return;
+         }
+      }
+      if (oldMoveMethod) {
+         oldMoveMethod = false;
+	 qDebug() << "RESTORING STARTING POSITION";
+         *this = *IDW_Save;
+	 for (int i = 0; i < dim(); i++) {
+	     for (int j = 0; j < dim(); j++) {
+		 cubes[i][j]->setNeutral(); // Needed by method 2.
+	     }
+	 }
+         currentPlayer = m_playerStart;
+         startCascade (m_rowStart, m_colStart);
+      }
+      else {
+         emit stoppedMoving();
+         KCubeWidget::enableClicks(true);
+	 qDebug() << "Change player in KCubeBoxWidget::continueCascade() from" << currentPlayer;
+         changePlayer();
+	 qDebug() << "Change player in KCubeBoxWidget::continueCascade() to" << currentPlayer;
+      }
+      return;
+   } while (fullSpeed);
 }
 
-void KCubeBoxWidget::nextLoopStep()
+void KCubeBoxWidget::checkPosition (int method)
 {
-   // search cube with to many points
-   while(!cubes[loop.row][loop.column]->overMax())
-   {
-      loop.column++;
-      if(loop.column==dim())
-      {
-         if(loop.row==dim()-1)
-	 {
-	    if(!loop.finished)
-	    {
-               loop.row=0;
-               loop.column=0;
-               loop.finished=true;
-               return;
+   qDebug() << "CHECKING RESULT OF METHOD" << method;
+   int n = 0;
+   for (int i = 0; i < dim(); i++) {
+       for (int j = 0; j < dim(); j++) {
+	   if (cubes[i][j]->owner() != IDW_Brain->cubes[i][j]->owner()) {
+	       n++;
+	       qDebug() << "DIFFERENT OWNER" << i << j << "new" << cubes[i][j]->owner() << "old" << IDW_Brain->cubes[i][j]->owner();
+	   }
+	   if (cubes[i][j]->value() != IDW_Brain->cubes[i][j]->value()) {
+	       n++;
+	       qDebug() << "DIFFERENT VALUE" << i << j << "new" << cubes[i][j]->value() << "old" << IDW_Brain->cubes[i][j]->value();
+	   }
+       }
+   }
+   if (n == 0) {
+      qDebug() << "Method" << method << "result same as Brain";
+   }
+   else {
+      qDebug() << "\nMethod" << method << "RESULT DIFFERS FROM Brain\n";
+   }
+}
+
+void KCubeBoxWidget::startAnimation (AnimationType type, int row, int col)
+{
+   currentAnimation = type;
+   startAnimation (row, col);
+}
+
+void KCubeBoxWidget::startAnimation (int row, int col)
+{
+   int interval = 0;
+   m_row = row;
+   m_col = col;
+   switch (currentAnimation) {
+   case None:
+      animationCount = 0;
+      return;
+      break;
+   case Hint:
+   case ComputerMove:
+      qDebug() << "Animate ComputerMove/Hint";
+      interval = 150 + (Prefs::animationSpeed() - 1) * 50;	// 150-600 msec.
+      animationCount = 4;
+      cubes[m_row][m_col]->setLight();
+      break;
+   case Darken:
+      interval = animationTime;
+      animationCount = 1;
+      cubes[m_row][m_col]->setDark();
+      qDebug() << "Darken: time" << animationTime << "steps" << animationCount << "interval" << interval;
+      break;
+   case RapidBlink:
+      interval = 150 / 2;
+      animationCount = 2 * Prefs::animationSpeed();
+      cubes[m_row][m_col]->setLight();
+      qDebug() << "RBlink: time" << animationTime << "steps" << animationCount << "interval" << interval;
+      break;
+   case Scatter:
+      interval = (animationTime + animationSteps/2) / animationSteps;
+      animationCount = animationSteps;
+      qDebug() << "Scatter: time" << animationTime << "steps" << animationCount << "interval" << interval;
+      break;
+   }
+   qDebug() << "animationTimer->start(interval);" << interval;
+   animationTimer->start(interval);
+}
+
+void KCubeBoxWidget::nextAnimationStep()
+{
+   animationCount--;
+   if (animationCount < 1) {
+      stopAnimation();
+      return;
+   }
+   // qDebug() << "KCubeBoxWidget::nextAnimationStep() - animationCount" << animationCount;
+   switch (currentAnimation) {
+   case None:
+      return;
+      break;
+   case Hint:
+   case ComputerMove:
+   case RapidBlink:
+      if (animationCount%2 == 1) {
+         cubes[m_row][m_col]->setDark();
+      }
+      else {
+         cubes[m_row][m_col]->setLight();
+      }
+      break;
+   case Darken:
+      break;
+   case Scatter:
+      int step = animationSteps - animationCount;
+      if (step <= 2) {
+         cubes[m_row][m_col]->shrink(1.0 - step * 0.3);
+      }
+      else if (step < 7) {
+         cubes[m_row][m_col]->expand((step - 2) * 0.2);
+      }
+      else if (step == 7) {
+         cubes[m_row][m_col]->expand(1.2); // IDW test. ((step - 2) * 0.2);
+	 scatterDots (step);
+      }
+      else {
+	 scatterDots (step);
+      }
+      break;
+   }
+}
+
+void KCubeBoxWidget::scatterDots (int step)
+{
+    qreal scale = 1.0 - (step - 7) * 0.3;
+    int d = dim() - 1;
+    if (m_row > 0) cubes[m_row-1][m_col]->migrateDot (+1, 0, scale);
+    if (m_row < d) cubes[m_row+1][m_col]->migrateDot (-1, 0, scale);
+    if (m_col > 0) cubes[m_row][m_col-1]->migrateDot (0, +1, scale);
+    if (m_col < d) cubes[m_row][m_col+1]->migrateDot (0, -1, scale);
+}
+
+void KCubeBoxWidget::stopAnimation()
+{
+   // IDW TODO - If user hits Stop button, switch to no delay and finish cascade
+   qDebug() << "KCubeBoxWidget::stopAnimation() - animationCount" << animationCount;
+   animationTimer->stop();
+   switch (currentAnimation) {
+   case None:
+      return;
+      break;
+   case Hint:
+   case ComputerMove:
+      cubes[m_row][m_col]->setNeutral();
+      if (currentAnimation == ComputerMove) { // IDW TODO - Check shutdown.
+         checkClick (m_row, m_col, false);
+      }
+      break;
+   case RapidBlink:
+   case Darken:
+   case Scatter:
+      continueCascade();
+      break;
+   }
+}
+
+bool KCubeBoxWidget::nextOldMoveStep()
+{
+   // IDW TODO - The Brain's method, in cubebox.cpp, always starts from (0, 0).
+   //            Could that get a different result from a cascade?
+   qDebug() << "KCubeBoxWidget::nextOldMoveStep()";
+   cubes[m_row][m_col]->setNeutral();
+   increaseNeighbours (currentPlayer, m_row, m_col);
+   cubes[m_row][m_col]->decrease();
+   m_finished = false;
+
+   int d = dim() - 1;
+   int limit = d - 1;
+   if ((m_row > 0) && (cubes[m_row-1][m_col]->overMax()) &&
+       (cubes[m_row-1][m_col]->isNeutral())) {
+      cubes[m_row-1][m_col]->setDark();
+   }
+   if ((m_col < limit) && (cubes[m_row][m_col+1]->overMax()) &&
+       (cubes[m_row][m_col+1]->isNeutral())) {
+      cubes[m_row][m_col+1]->setDark();
+   }
+   if ((m_row < limit) && (cubes[m_row+1][m_col]->overMax()) &&
+       (cubes[m_row+1][m_col]->isNeutral())) {
+      cubes[m_row+1][m_col]->setDark();
+   }
+   if ((m_col > 0) && (cubes[m_row][m_col-1]->overMax()) &&
+       (cubes[m_row][m_col-1]->isNeutral())) {
+      cubes[m_row][m_col-1]->setDark();
+   }
+
+   if (hasPlayerWon(currentPlayer)) {
+      qDebug() << "WINNER IS PLAYER" << currentPlayer << "METHOD 1";
+      emit playerWon ((int)currentPlayer);
+      return false;
+   }
+
+   // Search for a cube with more than its maximum number of points.
+   while (! cubes[m_row][m_col]->overMax()) {
+      if (m_col == d) {
+         if (m_row == d) {
+	    if (! m_finished) {
+               m_row = 0;
+               m_col = 0;
+               m_finished = true;
+               qDebug() << "START AGAIN AT TOP LEFT - m_finished =" << m_finished;
+               continue;
 	    }
-	    else   // loop finished
-	    {
-	       stopLoop();
-	       changePlayer();
-
-	       return;
+	    else {
+	       return false;
             }
          }
-         else
-         {
-            loop.row++;
-            loop.column=0;
-         }
+         m_row++;
+         m_col = 0;
+      }
+      else {
+         m_col++;
       }
    }
 
+   qDebug() << "FOUND CUBE AT" << m_col << m_row <<
+               "value" << cubes[m_row][m_col]->value();
+   startAnimation (m_row, m_col);
+   return true;
+}
 
-   increaseNeighbours(currentPlayer,loop.row,loop.column);
-   cubes[loop.row][loop.column]->decrease();
-   loop.finished=false;
+bool KCubeBoxWidget::nextNewMoveStep()
+{
+   /*
+    * Removed on 14/7/12.
+   if (saturated.count() < 1) {	// IDW TODO - Needed? Had a crash here after win
+      return false;
+   }
+   */
+
+   int d = dim();
+   int index = saturated.takeLast();
+   int row = index / d;
+   int col = index % d;
+   qDebug() << "TOOK LAST AT" << col << row << "PLAYER" << currentPlayer
+            << "value" << cubes[row][col]->value()
+            << "index" << index << saturated;
+
+   if (! cubes[row][col]->overMax()) {
+       qDebug() << "CUBE IS NOT overMax() !!!!!!!!!!!!!!!!!";
+   }
+   cubes[row][col]->setNeutral();
+   // IDW test. NOT needed? cubes[row][col]->stopHint();
+   increaseNeighbours(currentPlayer, row, col);
+   cubes[row][col]->decrease();
+
+   int limit = d - 1;
+   if ((row > 0) && (cubes[row-1][col]->overMax()) && (cubes[row-1][col]->isNeutral())) {
+       cubes[row-1][col]->setDark();
+       saturated.append (index - d);	// West.
+       qDebug() << "ADDED W" << col << row-1 << "index" << index-d << saturated;
+   }
+   if ((col < limit) && (cubes[row][col+1]->overMax()) && (cubes[row][col+1]->isNeutral())) {
+       cubes[row][col+1]->setDark();
+       saturated.append (index + 1);	// South.
+       qDebug() << "ADDED S" << col+1 << row << "index" << index+1 << saturated;
+   }
+   if ((row < limit) && (cubes[row+1][col]->overMax()) && (cubes[row+1][col]->isNeutral())) {
+       cubes[row+1][col]->setDark();
+       saturated.append (index + d);	// East.
+       qDebug() << "ADDED E" << col << row+1 << "index" << index+d << saturated;
+   }
+   if ((col > 0) && (cubes[row][col-1]->overMax()) && (cubes[row][col-1]->isNeutral())) {
+       cubes[row][col-1]->setDark();
+       saturated.append (index - 1);	// North.
+       qDebug() << "ADDED N" << col-1 << row << "index" << index-1 << saturated;
+   }
+   if (cubes[row][col]->overMax()) {
+       cubes[row][col]->setDark();
+       saturated.append (index);	// Cube is still saturated.
+       qDebug() << "ADDED x" << col << row << "index" << index << saturated;
+   }
 
    if(hasPlayerWon(currentPlayer))
    {
+      qDebug() << "WINNER IS PLAYER" << currentPlayer << "METHOD 2";
+      foreach (index, saturated) {
+	  cubes[index/d][index%d]->setNeutral();
+      }
+      saturated.clear();
       emit playerWon((int)currentPlayer);
-      stopLoop();
-      return;
+      return false;
    }
+
+   bool stillMoving = (saturated.count() > 0);
+
+   if (stillMoving && animating) {
+      index = saturated.last();	// Show next cube to fire.
+      startAnimation (index/d, index%d);
+   }
+   return stillMoving;
 }
 
 bool KCubeBoxWidget::hasPlayerWon(Player player)

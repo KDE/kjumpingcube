@@ -25,16 +25,19 @@
 
 #include <assert.h>
 #include <math.h>
+#include <QDebug> // IDW test.
 
 CubeBox::CubeBox(const int d)
     :CubeBoxBase<Cube>(d)
 {
+   qDebug() << "CONSTRUCT CubeBox, size" << d; // IDW test.
    initCubes();
 }
 
 CubeBox::CubeBox(const CubeBox& box)
       :CubeBoxBase<Cube>(box.dim())
 {
+   // qDebug() << "COPY CubeBox"; // IDW test.
    initCubes();
 
    int i,j;
@@ -50,6 +53,7 @@ CubeBox::CubeBox(const CubeBox& box)
 CubeBox::CubeBox(KCubeBoxWidget& box)
       :CubeBoxBase<Cube>(box.dim())
 {
+   qDebug() << "COPY KCubeBoxWidget"; // IDW test.
    initCubes();
 
    int i,j;
@@ -68,7 +72,7 @@ CubeBox::~CubeBox()
 {
 }
 
-
+/* IDW test.  Redundant?  YES!!
 CubeBox& CubeBox::operator=(const CubeBox& box)
 {
    if(this!=&box)
@@ -90,10 +94,12 @@ CubeBox& CubeBox::operator=(const CubeBox& box)
 
    return *this;
 }
+End IDW test. */
 
 
 CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 {
+   qDebug() << "OPERATOR= KCubeBoxWidget"; // IDW test.
    if(dim()!=box.dim())
    {
       setDim(box.dim());

@@ -27,7 +27,7 @@
 #include <QPaintEvent>
 #include <QPixmap>
 
-#include <kdebug.h>
+// #include <kdebug.h>
 
 /* ****************************************************** **
 **                 static elements                        **
@@ -53,14 +53,12 @@ KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
   int w = width();
   setLineWidth ((h<w?h:w) / 14); // Make QFrame::Raised width proportional.
 
-  setCoordinates(0,0);
+  setCoordinates (0, 0, 2);
 
-  //initialize hintTimer
-  // will be automatically destroyed by the parent
-  hintTimer = new QTimer(this);
-  hintCounter=0;
-  mRealMove = false;
-  connect(hintTimer,SIGNAL(timeout()),SLOT(hint()));
+  migrating = 0;
+  m_scale = 1.0;
+  m_row = 0;
+  m_col = 0;
 
   pixmaps = 0;
   blinking = None;
@@ -117,42 +115,47 @@ void KCubeWidget::setValue(int newValue)
    update();
 }
 
-
-void KCubeWidget::showHint (int interval, int number, bool realMove)
+void KCubeWidget::shrink (qreal scale)
 {
-   if(hintTimer->isActive())
-      return;
-
-   mRealMove = realMove;	// If not just a hint, must finish with a move.
-   hintCounter=2*number;
-   hint();			// Start the first blink.
-   hintTimer->start(interval);	// Start the repeating timer.
+   // qDebug() << "KCubeWidget::shrink (" << scale;
+   migrating = 0;
+   m_scale = scale;
+   update();
 }
 
-
-void KCubeWidget::animate(bool )
+void KCubeWidget::expand (qreal scale)
 {
+   // qDebug() << "KCubeWidget::expand (" << scale;
+   migrating = 1;
+   m_scale = scale;
+   update();
 }
 
-
-void KCubeWidget::setCoordinates(int row,int column)
+void KCubeWidget::migrateDot (int rowDiff, int colDiff, qreal scale)
 {
-   _row=row;
-   _column=column;
+   // qDebug() << "KCubeWidget::migrateDot (" << rowDiff << colDiff << scale;
+   migrating = 2;
+   m_rowDiff = rowDiff * scale;
+   m_colDiff = colDiff * scale;
+   update();
+}
+
+void KCubeWidget::setCoordinates (int row, int col, int limit)
+{
+   m_row = row;
+   m_col = col;
+   m_limit = limit;
 }
 
 int KCubeWidget::row() const
 {
-   return _row;
+   return m_row;
 }
 
 int KCubeWidget::column() const
 {
-   return _column;
+   return m_col;
 }
-
-
-
 
 /* ****************************************************** **
 **                   public slots                         **
@@ -160,6 +163,7 @@ int KCubeWidget::column() const
 
 void KCubeWidget::reset()
 {
+  blinking = None;
   setValue(1);
   setOwner(Nobody);
 }
@@ -169,51 +173,6 @@ void KCubeWidget::updateColors()
 {
   update();
 }
-
-void KCubeWidget::stopHint (bool shutdown)
-{
-   if(hintTimer->isActive())
-   {
-      hintTimer->stop();
-      blinking = None;		// Turn off blinking.
-      if (shutdown) {
-        return;			// Don't start another move.
-      }
-      update();
-
-      if (mRealMove) {
-        // If it is a real move, not a hint, start animating the move for this
-        // cube and updating the cube(s), using a simulated mouse click to
-        // connect to KCubeBoxWidget::checkClicked (row(), column(), false).
-        emit clicked (row(), column(), false);	// False --> not a mouse click.
-        mRealMove = false;
-      }
-   }
-}
-
-
-
-/* ****************************************************** **
-**                   protected slots                      **
-** ****************************************************** */
-
-void KCubeWidget::hint()
-{
-   if (hintCounter <= 0) {
-       stopHint();
-       return;
-   }
-   if (hintCounter%2 == 0) {
-       blinking = Light;	// Blink light color.
-   }
-   else {
-       blinking = Dark;		// Blink dark color.
-   }
-   hintCounter--;
-   update();
-}
-
-
 
 /* ****************************************************** **
 **                   Event handler                        **
@@ -228,23 +187,19 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
   if(e->button() == Qt::LeftButton && _clicksAllowed)
   {
     e->accept();
-    stopHint();
-    emit clicked(row(),column(),true);
+    emit clicked (row(),column(),true);
   }
 }
-
-
 
 void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 {
   if ((pixmaps == 0) || (pixmaps->isEmpty()))
       return;
 
-  int h = height();
-  int w = width();
+  int width  = this->width();
+  int height = this->height();
 
   QPainter p(this);
-  QPixmap pip = pixmaps->at(Pip);
 
   SVGElement el = Neutral;
   if (owner() == One)
@@ -252,65 +207,106 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
   else if (owner() == Two)
     el = Player2;
 
-  int dia = pip.width();
   int pmw = pixmaps->at(el).width();
   int pmh = pixmaps->at(el).height();
-  p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(el));
+  p.drawPixmap ((width - pmw)/2, (height - pmh)/2, pixmaps->at(el));
 
-  int points = value();
+  QPixmap pip = pixmaps->at(Pip);
+  int dia = pip.width();
+
+  // Normally scale = 1.0, but it will be less during the first part of an
+  // animation that shows a cube taking over its neighboring cubes.
+
+  int w   = m_scale * width;	// The size of the pattern of pips.
+  int h   = m_scale * height;
+  int cx  = width/2;		// The center point of the cube face.
+  int cy  = height/2;
+  int tlx = (width - w) / 2;	// The top left corner of the pattern of pips.
+  int tly = (height - h) / 2;
+
+  int points = (migrating == 1) ? 0 : value();
+  if (migrating == 2) {
+      int dRow = m_rowDiff * width / 2;
+      int dCol = m_colDiff * height / 2;
+      p.drawPixmap (cx + dRow - dia/2, cy + dCol - dia/2, pip);
+  }
+  // if (m_scale != 1.0) qDebug() << "DRAW" << points << "cube size" << width << height << "w,h" << w << h << "scale" << m_scale << "tlx, tly" << tlx << tly;
 
   switch (points) {
+  case 0:
+      // Show the pattern of pips migrating to neighboring cubes: 
+      // one pip in the center and one migrating to each neighbor.
+      p.drawPixmap    (cx - dia/2,          cy - dia/2,           pip);
+      if (m_scale > 1.0) {	// The migrating dots have all left this cube.
+         break;
+      }
+      if (m_row > 0)		// Neighbor above, if any.
+         p.drawPixmap (tlx - dia/2,         cy - dia/2,           pip);
+      if (m_row < m_limit)	// Neighbor below, if any.
+         p.drawPixmap (width - tlx - dia/2, cy - dia/2,           pip);
+      if (m_col > 0)		// Neighbor to left, if any.
+         p.drawPixmap (cx - dia/2,          tly - dia/2,          pip);
+      if (m_col < m_limit)	// Neighbor to right, if any.
+         p.drawPixmap (cx - dia/2,          height - tly - dia/2, pip);
+      break;
+
+      // Otherwise show a pattern for the current number of pips. It may be
+      // scaled down during the first part of an animation that shows a cube
+      // taking over its neighboring cubes.
   case 1:
-      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
+      p.drawPixmap (tlx + (w - dia)/2, tly + (h - dia)/2, pip);
       break;
 
   case 3:
-      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
+      p.drawPixmap (tlx + (w - dia)/2, tly + (h - dia)/2, pip);
   case 2:
-      p.drawPixmap ((w/2 - dia)/2, (h/2 - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2, tly + (h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (3*h/2 - dia)/2, pip);
       break;
 
   case 5:
-      p.drawPixmap ((w - dia)/2, (h - dia)/2, pip);
+      p.drawPixmap (tlx + (w - dia)/2, tly + (h - dia)/2, pip);
   case 4:
-      p.drawPixmap ((w/2 - dia)/2,   (h/2 - dia)/2, pip);
-      p.drawPixmap ((w/2 - dia)/2,   (3*h/2 - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (h/2 - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (3*h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (3*h/2 - dia)/2, pip);
       break;
 
   case 8:
-      p.drawPixmap ((w - dia)/2,     2*h/3 - dia/2, pip);
+      p.drawPixmap (tlx + (w - dia)/2,     tly + 2*h/3 - dia/2, pip);
   case 7:
-      p.drawPixmap ((w - dia)/2,     h/3 - dia/2, pip);
+      p.drawPixmap (tlx + (w - dia)/2,     tly + h/3 - dia/2, pip);
   case 6:
-      p.drawPixmap ((w/2 - dia)/2,   (h/2 - dia)/2, pip);
-      p.drawPixmap ((w/2 - dia)/2,   (h - dia)/2, pip);
-      p.drawPixmap ((w/2 - dia)/2,   (3*h/2 - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (h/2 - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (h - dia)/2, pip);
-      p.drawPixmap ((3*w/2 - dia)/2, (3*h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h - dia)/2, pip);
+      p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (3*h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (h/2 - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (h - dia)/2, pip);
+      p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (3*h/2 - dia)/2, pip);
       break;
 
   default:
       QString s;
       s.sprintf("%d",points);
       p.setPen(Qt::black);
-      p.drawText(w/2,h/2,s);
+      p.drawText(tlx + w/2,tly + h/2,s);
       break;
   }
 
+  // This is used to highlight a cube and also to perform the hint animation.
   switch (blinking) {
   case Light:
-      p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(BlinkLight));
+      p.drawPixmap ((width - pmw)/2, (height - pmh)/2, pixmaps->at(BlinkLight));
       break;
   case Dark:
-      p.drawPixmap ((w - pmw)/2, (h - pmh)/2, pixmaps->at(BlinkDark));
+      p.drawPixmap ((width - pmw)/2, (height - pmh)/2, pixmaps->at(BlinkDark));
       break;
   default:
       break;
   }
+  migrating = 0;
+  m_scale = 1.0;
 
   p.end();
 }

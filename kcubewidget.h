@@ -25,7 +25,6 @@
 #include <QFrame>
 #include "cube.h"
 
-class QTimer;
 class QMouseEvent;
 class QPaintEvent;
 
@@ -51,23 +50,13 @@ public:
    KCubeWidget& operator=(const Cube&);
    KCubeWidget& operator=(const KCubeWidget&);
    
-   /** shows a hint e.g. blinks with the interval 400 and number times */
-   void showHint (int interval = 400, int number = 5, bool realMove = false);
-   /** stops showing a hint */
-   void stopHint (bool shutdown = false);
-   
-   /** 
-   * animates the cube if possible (if feature is enabled)
-   * In KCubeWidget this function does nothing, it's just for having
-   * a public interface for all classes that inherits KCubeWidget 
-   */
-   virtual void animate(bool flag);
-   
+   void migrateDot  (int moveDelay, int fromRow, int fromCol);
+
    /** 
    * sets the coordinates of the Cube in a Cubebox;
    * needed for identification when clicked.
    */ 
-   void setCoordinates(int row,int column);
+   void setCoordinates (int row, int col, int limit);
    /** returns the row */
    int row() const;
    /** returns the column */
@@ -75,6 +64,15 @@ public:
    
    /** enables or disables possibility to click a cube*/
    static void enableClicks(bool flag);
+
+   void setLight()   { blinking = Light; update(); }
+   void setDark()    { blinking = Dark; update(); }
+   void setNeutral() { blinking = None; update(); }
+   bool isNeutral()  { return (blinking == None); }
+
+   void shrink (qreal scale);
+   void expand (qreal scale);
+   void migrateDot (int rowDiff, int colDiff, qreal scale);
 
 public slots:
    /** resets the Cube to default values */
@@ -91,31 +89,20 @@ protected:
    
    /** refreshes the contents of the Cube */
    virtual void paintEvent(QPaintEvent*);
- 
-   
-  
-   int hintCounter;
-   
-protected slots:
-   /** 
-   * To this function the hintTimer is connected. 
-   * It manage a periodical way of showing a hint.
-   */
-   virtual void hint(); 
 
 private:
-   int _row;
-   int _column;
+   int m_row;
+   int m_col;
+   int m_limit;
    QList<QPixmap> * pixmaps;
    enum Blink {None, Light, Dark};
    Blink blinking;
 
-   bool mRealMove;
-   
-   QTimer *hintTimer;
-   
    static bool _clicksAllowed;
+   int    migrating;
+   qreal  m_rowDiff;
+   qreal  m_colDiff;
+   double m_scale;
 };
-
 
 #endif // KCUBEWIDGET_H

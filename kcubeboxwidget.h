@@ -39,21 +39,12 @@ class QGridLayout;
 class CubeBox;
 class QTimer;
 
-/**
-*@internal
-*/
-struct Loop
-{
-   int row;
-   int column;
-   bool finished;
-};
-
-
 class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
 {
    Q_OBJECT
 public:
+   enum AnimationType {None, Hint, ComputerMove, Darken, RapidBlink, Scatter};
+
    explicit KCubeBoxWidget(const int dim=1,QWidget *parent=0);
 
    explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
@@ -177,17 +168,47 @@ private:
 
    QPoint topLeft;
    int cubeSize;
+
    CubeBox *undoBox;
+   // IDW test.
+   CubeBox *IDW_Save;
+   CubeBox *IDW_Brain;
+   CubeBox *IDW_Box1;
+   CubeBox *IDW_Box2;
+
    Brain brain;
 
-   QTimer *moveTimer;
+   QTimer *animationTimer;
    bool delayedShutdown;	// True if the brain is active at Quit time.
-   int moveDelay;
-   Loop loop;
-   /** */
-   void startLoop();
-   /** */
-   void stopLoop();
+
+   // IDW TODO - DELETE when testing of move methods is completed.
+   Player m_playerStart;
+   int  m_rowStart;
+   int  m_colStart;
+
+   // For old move method.
+   int  m_row;
+   int  m_col;
+   bool m_finished;
+   bool fullSpeed;
+   bool animating;
+   AnimationType currentAnimation;
+   int  animationCount;
+   int  animationSteps;
+   bool oldMoveMethod;
+   int  animationTime;
+   int  stepTime;
+
+   // For new move method.
+   QList<int> saturated;
+
+   void startCascade (int row, int col);
+   bool nextOldMoveStep();
+   bool nextNewMoveStep();
+   void checkPosition (int method);
+
+   // void stopLoop();
+   void stopAnimation();
 
    Player changePlayer();
    bool hasPlayerWon(Player player);
@@ -199,11 +220,15 @@ private:
    * and starts the Loop for checking the playingfield
    */
    void doMove(int row,int column);
+   void startAnimation (AnimationType type, int row, int col);
+   void startAnimation (int row, int col);
+   void scatterDots (int step);
 
    void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
 
 private slots:
-   void nextLoopStep();
+   void nextAnimationStep();
+   void continueCascade();
    /**
    * checks if cube at ['row','column'] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield

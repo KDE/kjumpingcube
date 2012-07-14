@@ -271,7 +271,7 @@ void KJumpingCube::changePlayerPixmap(int player)
 void KJumpingCube::showWinner(int player) {
   QString s=i18n("Winner is Player %1!", player);
   KMessageBox::information(this,s,i18n("Winner"));
-  view->reset();
+  // IDW test. TODO - Problem if showWinner occurs twice. view->reset();
 }
 
 void KJumpingCube::disableStop()

@@ -5,9 +5,35 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kjumpingcuberc"/>
   <group name="Game">
-    <entry name="Speed" type="Int" min="1" max="10">
+    <entry name="AnimationSpeed" type="Int" min="1" max="10">
       <label>Animation speed of overflowing dice</label>
-      <default>1</default>
+      <default>4</default>
+    </entry>
+    <entry name="AnimationNone" type="Bool">
+      <label>Animation type None (no pauses).</label>
+      <default>false</default>
+    </entry>
+    <entry name="AnimationDelay" type="Bool">
+      <label>Animation type Darken and pause.</label>
+      <default>false</default>
+    </entry>
+    <entry name="AnimationBlink" type="Bool">
+      <label>Animation type Blink rapidly.</label>
+      <default>false</default>
+    </entry>
+    <entry name="AnimationSpread" type="Bool">
+      <label>Animation type Scatter dots.</label>
+      <default>true</default>
+    </entry>
+    <entry name="AnimationType" type="Enum">
+      <choices>
+        <choice name="None"/>
+        <choice name="Delay"/>
+        <choice name="Blink"/>
+        <choice name="Spread"/>
+      </choices>
+      <label>Type of animation of overflowing dice</label>
+      <default>Spread</default>
     </entry>
     <entry name="Color0" type="Color">
       <label>Color of neutral cubes.</label>

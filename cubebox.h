@@ -42,7 +42,7 @@ public:
    explicit CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();
 
-   CubeBox& operator= (const CubeBox& box);
+   // CubeBox& operator= (const CubeBox& box); // IDW test.
    CubeBox& operator= (KCubeBoxWidget& box);
 
    bool simulateMove(Player fromWhom,int row, int column);

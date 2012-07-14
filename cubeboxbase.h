@@ -47,6 +47,7 @@ public:
    inline int dim() const { return _dim; }
    
    inline Player player() const { return currentPlayer; } 
+   T*** cubes; // IDW test.
    
 protected:
    virtual void deleteCubes();
@@ -55,7 +56,7 @@ protected:
    /** increases the neighbours of cube at ['row','column'] */
    //void increaseNeighbours(int forWhom,int row,int column);
   
-   T*** cubes;
+   // IDW test. T*** cubes;
    Player currentPlayer;
    
 private:
@@ -131,6 +132,9 @@ void CubeBoxBase<T>::initCubes()
    cubes[max][0]->setMax(2);
    cubes[max][max]->setMax(2);
    
+   // IDW TODO - This is WRONG: should be "i=1;". But this copy of initCubes()
+   // is probably not used: there is an initCubes() in KCubeBoxWidget, which
+   // DOES set the cubes' max values correctly.
    for(i=0;i<=max;i++)
    {
       cubes[i][0]->setMax(3);
@@ -164,83 +168,6 @@ void CubeBoxBase<T>::deleteCubes()
       
    cubes=0;
 }
-/*
-template<class T>
-void CubeBoxBase<T>::increaseNeighbours(int forWhom,int row,int column)
-{  
-   int _player = (T::Owner)(forWhom);
-   
-   if(row==0)
-   {
-    	if(column==0)  // linke obere Ecke
-	{
-	   cubes[0][1]->increase(_player);
-	   cubes[1][0]->increase(_player);
-	   return;
-	}  
-	else if(column==dim()-1)  // rechte obere Ecke
-	{
-	   cubes[0][dim()-2]->increase(_player);
-	   cubes[1][dim()-1]->increase(_player);
-	   return;
-	}
-	else  // oberer Rand
-	{
-	   cubes[0][column-1]->increase(_player);
-	   cubes[0][column+1]->increase(_player);
-	   cubes[1][column]->increase(_player);
-	   return;
-	}
-   }
-   else if(row==dim()-1) 
-   {  
-      if(column==0)  // linke untere Ecke
-      {
-         cubes[dim()-2][0]->increase(_player);
-         cubes[dim()-1][1]->increase(_player);
-         return;
-      }
-   
-      else if(column==dim()-1) // rechte untere Ecke
-      {
-         cubes[dim()-2][dim()-1]->increase(_player);
-         cubes[dim()-1][dim()-2]->increase(_player);
-	      return;
-      }
-      else  // unterer Rand
-      {
- 	      cubes[dim()-1][column-1]->increase(_player);
-	      cubes[dim()-1][column+1]->increase(_player);
-	      cubes[dim()-2][column]->increase(_player);
-	      return; 
-      }
-   }
-   else if(column==0) // linker Rand
-   {
-      cubes[row-1][0]->increase(_player);
-      cubes[row+1][0]->increase(_player);
-      cubes[row][1]->increase(_player);
-      return;
-   }
-   else if(column==dim()-1)  // rechter Rand
-   {
-      cubes[row-1][dim()-1]->increase(_player);
-      cubes[row+1][dim()-1]->increase(_player);
-      cubes[row][dim()-2]->increase(_player);
-      return;
-   }
-   else
-   {
-      cubes[row][column-1]->increase(_player);
-      cubes[row][column+1]->increase(_player);
-      cubes[row-1][column]->increase(_player);
-      cubes[row+1][column]->increase(_player);
-      return;
-   }
-   
-      
-}
-*/
 
 #endif // CUBEBOXBASE_H
 
