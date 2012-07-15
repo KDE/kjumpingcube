@@ -57,11 +57,11 @@ public:
    virtual void setMax(int max);
 
    /**
-   * increase the value of the Cube and set the owner of the Cube
+   * Increase the value of the Cube and set the owner of the Cube
    * to 'newOwner'.
-   * @return true if the Cube's new value is over maximum
+   * @return Previous owner
    */
-   virtual bool increase(Owner newOwner);
+   virtual Cube::Owner increase(Owner newOwner);
 
    /**
    * substracts the maximum from the Cube's value

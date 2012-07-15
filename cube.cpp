@@ -78,12 +78,10 @@ int Cube::value() const
    return _value;
 }
 
-bool Cube::increase(Owner newOwner)
+Cube::Owner Cube::increase(Owner newOwner)
 {
    setValue(value()+1);
-   setOwner(newOwner);
-   
-   return (_value > _max);
+   return (setOwner(newOwner));
 }
 
 int Cube::max() const

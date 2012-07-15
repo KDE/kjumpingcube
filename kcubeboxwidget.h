@@ -147,6 +147,10 @@ protected slots:
    void setNormalCursor();
 
 private:
+   // IDW high-speed test.
+   int m_positionChecks;
+   int m_positionChecksFailed;
+
    void init();
 
    QSvgRenderer svg;
@@ -176,22 +180,18 @@ private:
    CubeBox *IDW_Box1;
    CubeBox *IDW_Box2;
 
+   int m_cubesToWin[3];		// Number of cubes for each player to capture.
+
    Brain brain;
 
    QTimer *animationTimer;
    bool delayedShutdown;	// True if the brain is active at Quit time.
-
-   // IDW TODO - DELETE when testing of move methods is completed.
-   Player m_playerStart;
-   int  m_rowStart;
-   int  m_colStart;
 
    // For old move method.
    int  m_row;
    int  m_col;
    bool m_finished;
    bool fullSpeed;
-   bool animating;
    AnimationType currentAnimation;
    int  animationCount;
    int  animationSteps;
@@ -203,11 +203,8 @@ private:
    QList<int> saturated;
 
    void startCascade (int row, int col);
-   bool nextOldMoveStep();
-   bool nextNewMoveStep();
-   void checkPosition (int method);
+   bool nextMoveStep();
 
-   // void stopLoop();
    void stopAnimation();
 
    Player changePlayer();
