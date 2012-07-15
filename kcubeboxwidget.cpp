@@ -887,8 +887,8 @@ void KCubeBoxWidget::startAnimation (int row, int col)
       qDebug() << "Darken: time" << animationTime << "steps" << animationCount << "interval" << interval;
       break;
    case RapidBlink:
-      interval = 150 / 2;
-      animationCount = 2 * Prefs::animationSpeed();
+      interval = 60 + Prefs::animationSpeed() * 30;		// 120-360 msec.
+      animationCount = 4;
       cubes[m_row][m_col]->setLight();
       qDebug() << "RBlink: time" << animationTime << "steps" << animationCount << "interval" << interval;
       break;
