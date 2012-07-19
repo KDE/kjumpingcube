@@ -132,11 +132,7 @@ void CubeBoxBase<T>::initCubes()
    cubes[max][0]->setMax(2);
    cubes[max][max]->setMax(2);
    
-   // IDW TODO - This is WRONG: should be "i=1;". But this copy of initCubes()
-   // is probably not used: there is an initCubes() in KCubeBoxWidget, which
-   // DOES set the cubes' max values correctly.
-   for(i=0;i<=max;i++)
-   {
+   for (i=1; i < max; i++) {
       cubes[i][0]->setMax(3);
       cubes[i][max]->setMax(3);
       cubes[0][i]->setMax(3);
