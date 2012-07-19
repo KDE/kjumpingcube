@@ -26,11 +26,11 @@
 #include <math.h>
 
 
-#undef DEBUG // uncomment this to get useful messages
+// #define DEBUG // Uncomment this to get Brain's debug messages
 #include <assert.h>
 
 #ifdef DEBUG
-#include <iostream.h>
+#include <QDebug>
 #endif
 
 #include "prefs.h"
@@ -57,6 +57,7 @@ void Brain::setSkill(int newSkill)
 	 break;
       case Prefs::EnumSkill::Average:
          maxLevel=3;
+         // IDW test. maxLevel=1; // IDW test.
          break;
       case Prefs::EnumSkill::Expert:
          maxLevel=5;
@@ -124,7 +125,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    if(moves==1)
    {
 #ifdef DEBUG
-      cerr << "found only one favorable cube" << endl;
+      qDebug() << "found only one favorable cube";
 #endif
       row=c2m[0].row;
       column=c2m[0].column;
@@ -132,26 +133,26 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
    else
    {
 #ifdef DEBUG
-      cerr << "found more than one favorable cube: " << moves << endl;
+      qDebug() << "found more than one favorable cube: " << moves;
 #endif
       for(i=0;i<moves;i++)
       {
 	 // if Thinking process stopped
 	 if (stopped) {
 #ifdef DEBUG
-	     cerr << "brain stopped" << endl;
+	     qDebug() << "brain stopped";
 #endif
              break;	// Go evaluate the best move calculated so far.
 	 }
 
 #ifdef DEBUG
-	 cerr << "checking cube " << c2m[i].row << "," << c2m[i].column << endl;
+	 qDebug() << "checking cube " << c2m[i].row << "," << c2m[i].column;
 #endif
          // for every found possible move, simulate this move and store the assessment
 	 worth[c2m[i].row][c2m[i].column]=doMove(c2m[i].row,c2m[i].column,player,box);
 
 #ifdef DEBUG
-	 cerr << "cube "  << c2m[i].row << "," << c2m[i].column << " : " << worth[c2m[i].row][c2m[i].column] << endl;
+	 qDebug() << "cube "  << c2m[i].row << "," << c2m[i].column << " : " << worth[c2m[i].row][c2m[i].column];
 #endif
       }
 
@@ -160,7 +161,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       double max=-1E99;  // set max to minimum value
 
 #ifdef DEBUG
-      cerr << "searching for the maximum" << endl;
+      qDebug() << "searching for the maximum";
 #endif
 
       for(i=0;i<moves;i++)
@@ -175,7 +176,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       }
 
 #ifdef DEBUG
-      cerr << "found Maximum : " << max << endl;
+      qDebug() << "found Maximum : " << max;
 #endif
 
       // found maximum more than one time ?
@@ -183,7 +184,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       for(i=0;i<moves;i++)
       {
 #ifdef DEBUG
-         cerr << c2m[i].row << "," << c2m[i].column << " : " << worth[c2m[i].row][c2m[i].column] << endl;
+         qDebug() << c2m[i].row << "," << c2m[i].column << " : " << worth[c2m[i].row][c2m[i].column];
 #endif
          if(worth[c2m[i].row][c2m[i].column]==max)
             if(box[c2m[i].row][c2m[i].column]->owner() != (Cube::Owner)opponent)
@@ -202,15 +203,18 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
       {
 
 #ifdef DEBUG
-         cerr << "choosing a random cube: " << endl ;
+         qDebug() << "choosing a random cube: ";
 #endif
          counter=random.getLong(counter);
       }
+      // else { // IDW test. If there is a single maximum it should be chosen.
+	  // counter = 0; // IDW test.
+      // } // IDW test.
 
       row=c2m[counter].row;
       column=c2m[counter].column;
 #ifdef DEBUG
-      cerr << "cube: " << row << "," << column << endl;
+      qDebug() << "cube: " << row << "," << column;
 #endif
    }
 
@@ -230,6 +234,7 @@ bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
 
 double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
 {
+   // qDebug() << "doMove(" << row << column << player << "box" << &box;
    double worth=0;
    currentLevel++; // increase the current depth of recurse calls
 
@@ -281,6 +286,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
 	    if(stopped)
 	    {
 	       currentLevel--;
+               // IDW test. delete [] c2m;	// Fix to avoid a memory leak.
 	       return 0;
 	    }
 
@@ -313,6 +319,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 
    if(_skill==Prefs::EnumSkill::Beginner)
    {
+      // Select the cubes with the most number of pips on them.
       int max=0;
       for(i=0;i<box.dim();i++)
         for(j=0;j<box.dim();j++)
@@ -326,6 +333,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
               if(c2m[moves].val>max)
                  max=c2m[moves].val;
 
+	      // qDebug() << "cube" << i << j << "val" << c2m[moves].val << "max" << max;
               moves++;
 
 	   }
@@ -358,6 +366,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
         for(j=0;j<box.dim();j++)
         {
 	   // use only cubes, who don't belong to the opponent
+	   // qDebug() << "\nCUBE" << i << j << "OWNER" << box[i][j]->owner() << "OPPONENT" << opponent;
 	   if(box[i][j]->owner() != opponent)
 	   {
 	      int val;
@@ -368,7 +377,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 
 #ifdef DEBUG
 	      if(currentLevel==0)
-	         cerr << i << "," << j << " : " << val << endl;
+	         qDebug() << i << "," << j << " : " << val;
 #endif
 	      // only if val >= 0 it is a favorable move
               if( val > 0 )
@@ -495,6 +504,7 @@ int Brain::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) co
 {
    int diff;
 
+   // qDebug() << "assessCube(" << row << column << "player" << player;
    if(row==0)  // first row
    {
       if(column == 0)  // upper left corner
@@ -588,7 +598,10 @@ int Brain::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) co
 
    int val;
    val=diff-temp+1;
+   // IDW test. val=diff-temp;
    val=val*(temp+1);
+   // qDebug() << "my diff" << temp << "neighbor diff" << diff-temp/* IDW test. +1 */ << "score" << val;
+   // qDebug() << "my diff" << temp << "neighbor diff" << diff-temp+1 << "score" << val;
 
    return val;
 }
@@ -601,10 +614,12 @@ int Brain::getDiff(int row,int column, CubeBox::Player player, CubeBox& box) con
 	if(box[row][column]->owner() != (Cube::Owner)player)
 	{
            diff=( box[row][column]->max() - box[row][column]->value() );
+           // qDebug() << "OTHER getDiff(" << row << column << box[row][column]->owner() << "diff" << diff;
 	}
 	else
 	{
            diff=( box[row][column]->max() - box[row][column]->value()+1 );
+           // qDebug() << "MINE getDiff(" << row << column << box[row][column]->owner() << "diff" << diff;
 	}
 
 	return diff;
