@@ -170,11 +170,6 @@ private:
    int cubeSize;
 
    CubeBox *undoBox;
-   // IDW test.
-   CubeBox *IDW_Save;
-   CubeBox *IDW_Brain;
-   CubeBox *IDW_Box1;
-   CubeBox *IDW_Box2;
 
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
 
@@ -183,20 +178,16 @@ private:
    QTimer *animationTimer;
    bool delayedShutdown;	// True if the brain is active at Quit time.
 
-   // For old move method.
    int  m_row;
    int  m_col;
-   bool m_finished;
    bool fullSpeed;
    AnimationType currentAnimation;
    int  animationCount;
    int  animationSteps;
-   bool oldMoveMethod;
    int  animationTime;
    int  stepTime;
 
-   // For new move method.
-   QList<int> saturated;
+   QList<int> saturated;	// List of over-full cubes, as in cascade moves.
 
    void startCascade (int row, int col);
    bool nextMoveStep();

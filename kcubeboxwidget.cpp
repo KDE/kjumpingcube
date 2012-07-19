@@ -1,5 +1,3 @@
-#include <stdio.h> // IDW test.
-
 /* ****************************************************************************
   This file is part of the game 'KJumpingCube'
 
@@ -93,8 +91,6 @@ void KCubeBoxWidget::loadSettings(){
                        (color2 != Prefs::color2()) ||
                        (color0 != Prefs::color0()));
   bool reSizeCubes  = (dim() != Prefs::cubeDim());
-  qDebug() << "KCubeBoxWidget::loadSettings reColorCubes:" << reColorCubes
-           << "reSizeCubes:" << reSizeCubes; // IDW
 
   color1 = Prefs::color1();
   color2 = Prefs::color2();
@@ -173,7 +169,6 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
 
 void KCubeBoxWidget::reset()
 {
-   qDebug() << "KCubeBoxWidget::reset() entered.";
    stopActivities();
 
    int i,j;
@@ -183,7 +178,6 @@ void KCubeBoxWidget::reset()
          cubes[i][j]->reset();
       }
 
-   qDebug() << dim() * dim() << "cubes reset.";
    m_cubesToWin [Cube::Nobody] = 0;
    m_cubesToWin [Cube::One]    = dim() * dim();
    m_cubesToWin [Cube::Two]    = dim() * dim();
@@ -195,7 +189,6 @@ void KCubeBoxWidget::reset()
    emit playerChanged(One);
    // When re-starting, WAIT FOR A CLICK.
    // checkComputerplayer(One); // Enable this line for IDW high-speed test.
-   qDebug() << "KCubeBoxWidget::reset(): CUBE BOX HAS BEEN RESET.";
 }
 
 void KCubeBoxWidget::undo()
@@ -266,7 +259,7 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
 bool KCubeBoxWidget::shutdown()
 {
    if (animationTimer->isActive()) {
-      animationTimer->stop();	// Stop animation of moves and hints.
+      animationTimer->stop();	// Stop move or hint animation immediately.
    }
    if (brain.isActive()) {
       brain.stop();		// Brain stops only after next "thinking" cycle.
@@ -277,7 +270,6 @@ bool KCubeBoxWidget::shutdown()
 
 void KCubeBoxWidget::stopActivities()
 {
-   qDebug() << "Entered KCubeBoxWidget::stopActivities()";
    if (animationTimer->isActive()) {
       fullSpeed = true;		// If moving, complete the move immediately.
       stopAnimation();
@@ -386,12 +378,6 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
    // make the game start when computer player is player one and user clicks
    if(isClick && currentPlayer == One && computerPlOne)
    {
-      qDebug() << "FIRST CLICK";
-      // These are set by KCubeBoxWidget::initCubes() and are correct.
-      // for (int index = 0; index < dim() * dim(); index++) {
-	  // qDebug() << "MAX" << index/dim() << index%dim() << "="
-                   // << cubes[index/dim()][index%dim()]->max();
-      // }
       checkComputerplayer(currentPlayer);
       return false;
    }
@@ -407,7 +393,6 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
 
 void KCubeBoxWidget::checkComputerplayer(Player player)
 {
-   qDebug() << "checkComputerplayer()" << player;
    // checking if a process is running or the Widget isn't shown yet
    if(isActive() || !isVisible())
       return;
@@ -488,7 +473,6 @@ void KCubeBoxWidget::init()
    fullSpeed      = false;
    animationSteps = 12;
    animationCount = 0;
-   oldMoveMethod  = true;
 
    setMinimumSize (200, 200);
    color1 = Prefs::color1();			// Set preferred colors.
@@ -510,11 +494,7 @@ void KCubeBoxWidget::init()
 
    initCubes();
 
-   undoBox=new CubeBox(dim());
-   IDW_Save=new CubeBox(dim());
-   IDW_Brain=new CubeBox(dim());
-   IDW_Box1=new CubeBox(dim());
-   IDW_Box2=new CubeBox(dim());
+   undoBox = new CubeBox(dim());
 
    m_cubesToWin [Cube::Nobody] = 0;
    m_cubesToWin [Cube::One]    = dim() * dim();
@@ -769,23 +749,17 @@ void KCubeBoxWidget::doMove(int row,int column)
       // For the undo-function: make a copy of the playfield.
       *undoBox = *this;
    }
-   *IDW_Brain = *this;
-   IDW_Brain->simulateMove((CubeBoxBase<Cube>::Player)currentPlayer, row, column);
 
    // Increase this cube's count and previous owner's target: decrease current
    // player's target (the increase() method returns the previous owner).
    m_cubesToWin [cubes[row][column]->increase((Cube::Owner)currentPlayer)] ++;
    m_cubesToWin [currentPlayer] --;
-   // printf ("Cubes to win A: Nobody %3d One %3d Two %3d\n",
-	   // m_cubesToWin [0], m_cubesToWin [One], m_cubesToWin [Two]);
 
    if(cubes[row][column]->overMax()) {
-      oldMoveMethod = false;	// IDW - Whether testing the old move method.
       startCascade (row, column);
    }
    else {
       changePlayer();
-      qDebug() << "Change player in KCubeBoxWidget::doMove() to" << currentPlayer;
    }
 }
 
@@ -810,18 +784,6 @@ void KCubeBoxWidget::startCascade (int row, int col)
       stepTime = animationTime;
    }
 
-   fprintf (stderr, "\nStarting Position\n\n");
-   for (int j = 0; j < dim(); j++) {
-      for (int i = 0; i < dim(); i++) {
-        fprintf (stderr, "  %u-%u", cubes[i][j]->owner(), cubes[i][j]->value());
-      }
-      fprintf (stderr, "\n");
-   }
-
-   qDebug() << "\nSTART CASCADE AT" << col << row << "index"
-            << (row * dim() + col) << saturated << "stepTime" << stepTime
-	    << "PLAYER" << currentPlayer;
-
    cubes[row][col]->setDark();
    if (currentAnimation != None) {
       startAnimation (row, col);
@@ -830,10 +792,8 @@ void KCubeBoxWidget::startCascade (int row, int col)
    emit startedMoving();
    KCubeWidget::enableClicks(false);
 
-   if (! oldMoveMethod) {
-      saturated.clear(); // IDW test.
-      saturated.append (row * dim() + col); // IDW test.
-   }
+   saturated.clear();		// Start a list of cascaded moves.
+   saturated.append (row * dim() + col);
 
    m_row = row;
    m_col = col;
@@ -850,11 +810,9 @@ void KCubeBoxWidget::continueCascade()
       }
 
       if (m_cubesToWin [currentPlayer] <= 0) {
-         if (! oldMoveMethod) {
-            emit stoppedMoving();
-            reset();
-            return;
-         }
+         emit stoppedMoving();
+         reset();
+         return;
       }
 
       emit stoppedMoving();
@@ -890,24 +848,17 @@ void KCubeBoxWidget::startAnimation (int row, int col)
       interval = animationTime;
       animationCount = 1;
       cubes[m_row][m_col]->setDark();
-      qDebug() << "Darken: time" << animationTime << "steps" << animationCount
-               << "interval" << interval;
       break;
    case RapidBlink:
       interval = 60 + Prefs::animationSpeed() * 30;		// 120-360 msec.
       animationCount = 4;
       cubes[m_row][m_col]->setLight();
-      qDebug() << "RBlink: time" << animationTime << "steps" << animationCount
-               << "interval" << interval;
       break;
    case Scatter:
       interval = (animationTime + animationSteps/2) / animationSteps;
       animationCount = animationSteps;
-      qDebug() << "Scatter" << animationCount << "time" << animationTime
-               << "interval" << interval;
       break;
    }
-   qDebug() << "animationTimer->start(interval);" << interval;
    animationTimer->start(interval);
 }
 
@@ -918,7 +869,6 @@ void KCubeBoxWidget::nextAnimationStep()
       stopAnimation();
       return;
    }
-   // qDebug() << "KCubeBoxWidget::nextAnimationStep() - animationCount" << animationCount;
    switch (currentAnimation) {
    case None:
       return;
@@ -966,7 +916,6 @@ void KCubeBoxWidget::scatterDots (int step)
 
 void KCubeBoxWidget::stopAnimation()
 {
-   qDebug() << "KCubeBoxWidget::stopAnimation() - animationCount" << animationCount;
    animationTimer->stop();
    switch (currentAnimation) {
    case None:
@@ -997,9 +946,6 @@ bool KCubeBoxWidget::nextMoveStep()
    int index = saturated.takeLast();
    int row = index / d;
    int col = index % d;
-   qDebug() << "TOOK LAST AT" << col << row << "PLAYER" << currentPlayer
-            << "value" << cubes[row][col]->value()
-            << "index" << index << saturated;
 
    if (! cubes[row][col]->overMax()) {
        qDebug() << "CUBE IS NOT overMax() !!!!!!!!!!!!!!!!!";
@@ -1010,35 +956,32 @@ bool KCubeBoxWidget::nextMoveStep()
    cubes[row][col]->decrease();
 
    int limit = d - 1;
-   if ((row > 0) && (cubes[row-1][col]->overMax()) && (cubes[row-1][col]->isNeutral())) {
+   if ((row > 0) && (cubes[row-1][col]->overMax()) &&
+       (cubes[row-1][col]->isNeutral())) {
        cubes[row-1][col]->setDark();
        saturated.append (index - d);	// West.
-       qDebug() << "ADDED W" << col << row-1 << "index" << index-d << saturated;
    }
-   if ((col < limit) && (cubes[row][col+1]->overMax()) && (cubes[row][col+1]->isNeutral())) {
+   if ((col < limit) && (cubes[row][col+1]->overMax()) &&
+       (cubes[row][col+1]->isNeutral())) {
        cubes[row][col+1]->setDark();
        saturated.append (index + 1);	// South.
-       qDebug() << "ADDED S" << col+1 << row << "index" << index+1 << saturated;
    }
-   if ((row < limit) && (cubes[row+1][col]->overMax()) && (cubes[row+1][col]->isNeutral())) {
+   if ((row < limit) && (cubes[row+1][col]->overMax()) &&
+       (cubes[row+1][col]->isNeutral())) {
        cubes[row+1][col]->setDark();
        saturated.append (index + d);	// East.
-       qDebug() << "ADDED E" << col << row+1 << "index" << index+d << saturated;
    }
-   if ((col > 0) && (cubes[row][col-1]->overMax()) && (cubes[row][col-1]->isNeutral())) {
+   if ((col > 0) && (cubes[row][col-1]->overMax()) &&
+       (cubes[row][col-1]->isNeutral())) {
        cubes[row][col-1]->setDark();
        saturated.append (index - 1);	// North.
-       qDebug() << "ADDED N" << col-1 << row << "index" << index-1 << saturated;
    }
    if (cubes[row][col]->overMax()) {
        cubes[row][col]->setDark();
        saturated.append (index);	// Cube is still saturated.
-       qDebug() << "ADDED x" << col << row << "index" << index << saturated;
    }
 
    if (m_cubesToWin [currentPlayer] <= 0) {
-      qDebug() << "WINNER IS PLAYER" << currentPlayer << "METHOD 2";
-      printf ("WINNER IS PLAYER %d METHOD 2\n", currentPlayer);
       foreach (index, saturated) {
 	  cubes[index/d][index%d]->setNeutral();
       }
@@ -1093,8 +1036,6 @@ void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,i
       m_cubesToWin [cubes[row][column+1]->increase(player)] ++;
       m_cubesToWin [player] --;
    }
-   // printf ("Cubes to win B: Nobody %3d One %3d Two %3d\n",
-	   // m_cubesToWin [0], m_cubesToWin [One], m_cubesToWin [Two]);
 }
 
 #include "kcubeboxwidget.moc"

@@ -37,7 +37,6 @@ CubeBox::CubeBox(const int d)
 CubeBox::CubeBox(const CubeBox& box)
       :CubeBoxBase<Cube>(box.dim())
 {
-   // qDebug() << "COPY CubeBox"; // IDW test.
    initCubes();
 
    int i,j;
@@ -53,7 +52,6 @@ CubeBox::CubeBox(const CubeBox& box)
 CubeBox::CubeBox(KCubeBoxWidget& box)
       :CubeBoxBase<Cube>(box.dim())
 {
-   qDebug() << "COPY KCubeBoxWidget"; // IDW test.
    initCubes();
 
    int i,j;
@@ -99,7 +97,6 @@ End IDW test. */
 
 CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 {
-   qDebug() << "OPERATOR= KCubeBoxWidget"; // IDW test.
    if(dim()!=box.dim())
    {
       setDim(box.dim());
