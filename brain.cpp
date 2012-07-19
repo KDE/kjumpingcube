@@ -286,7 +286,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
 	    if(stopped)
 	    {
 	       currentLevel--;
-               // IDW test. delete [] c2m;	// Fix to avoid a memory leak.
+               delete [] c2m;	// Fix to avoid a memory leak.
 	       return 0;
 	    }
 
