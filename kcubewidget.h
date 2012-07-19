@@ -45,12 +45,9 @@ public:
    virtual Owner setOwner(Owner newOwner); 
    virtual void setValue(int newValue);
    
-   
    /** takes the information from a Cube */
    KCubeWidget& operator=(const Cube&);
    KCubeWidget& operator=(const KCubeWidget&);
-   
-   void migrateDot  (int moveDelay, int fromRow, int fromCol);
 
    /** 
    * sets the coordinates of the Cube in a Cubebox;
@@ -72,7 +69,7 @@ public:
 
    void shrink (qreal scale);
    void expand (qreal scale);
-   void migrateDot (int rowDiff, int colDiff, qreal scale);
+   void migrateDot (int rowDiff, int colDiff, int step, Cube::Owner player);
 
 public slots:
    /** resets the Cube to default values */
@@ -99,10 +96,12 @@ private:
    Blink blinking;
 
    static bool _clicksAllowed;
-   int    migrating;
-   qreal  m_rowDiff;
-   qreal  m_colDiff;
-   double m_scale;
+   int   migrating;
+   qreal m_rowDiff;
+   qreal m_colDiff;
+   Owner m_player;
+   qreal m_scale;
+   qreal m_opacity;
 };
 
 #endif // KCUBEWIDGET_H

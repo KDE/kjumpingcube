@@ -147,10 +147,6 @@ protected slots:
    void setNormalCursor();
 
 private:
-   // IDW high-speed test.
-   int m_positionChecks;
-   int m_positionChecksFailed;
-
    void init();
 
    QSvgRenderer svg;
@@ -208,7 +204,6 @@ private:
    void stopAnimation();
 
    Player changePlayer();
-   bool hasPlayerWon(Player player);
    bool computerPlOne;
    bool computerPlTwo;
 

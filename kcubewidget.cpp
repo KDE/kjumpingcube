@@ -27,8 +27,6 @@
 #include <QPaintEvent>
 #include <QPixmap>
 
-// #include <kdebug.h>
-
 /* ****************************************************** **
 **                 static elements                        **
 ** ****************************************************** */
@@ -117,7 +115,6 @@ void KCubeWidget::setValue(int newValue)
 
 void KCubeWidget::shrink (qreal scale)
 {
-   // qDebug() << "KCubeWidget::shrink (" << scale;
    migrating = 0;
    m_scale = scale;
    update();
@@ -125,18 +122,22 @@ void KCubeWidget::shrink (qreal scale)
 
 void KCubeWidget::expand (qreal scale)
 {
-   // qDebug() << "KCubeWidget::expand (" << scale;
    migrating = 1;
    m_scale = scale;
+   blinking = None;			// Remove overloaded cube's dark color.
    update();
 }
 
-void KCubeWidget::migrateDot (int rowDiff, int colDiff, qreal scale)
+void KCubeWidget::migrateDot (int rowDiff, int colDiff, int step,
+       	                      Cube::Owner player)
 {
-   // qDebug() << "KCubeWidget::migrateDot (" << rowDiff << colDiff << scale;
    migrating = 2;
-   m_rowDiff = rowDiff * scale;
+   qreal scale = (step < 4) ? 1.0 - 0.3 * step : 0.0;
+   m_rowDiff = rowDiff * scale;		// Calculate relative position of dot.
    m_colDiff = colDiff * scale;
+   // If owner changes, fade in new color as dot approaches centre of cube.
+   m_player  = player;
+   m_opacity = (step < 4) ? 0.2 * (step + 1) : 1.0;
    update();
 }
 
@@ -207,9 +208,18 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
   else if (owner() == Two)
     el = Player2;
 
+  // if ((migrating == 2) && (m_player != owner()))	// && (m_scale < 0.5))
+    // el = m_element;
+
   int pmw = pixmaps->at(el).width();
   int pmh = pixmaps->at(el).height();
   p.drawPixmap ((width - pmw)/2, (height - pmh)/2, pixmaps->at(el));
+  if ((migrating == 2) && (m_player != owner())) {
+      el = (m_player == One) ? Player1 : Player2;
+      p.setOpacity (m_opacity);	// Cube is being captured: fade in new color.
+      p.drawPixmap ((width - pmw)/2, (height - pmh)/2, pixmaps->at(el));
+      p.setOpacity (1.0);
+  }
 
   QPixmap pip = pixmaps->at(Pip);
   int dia = pip.width();
@@ -230,7 +240,6 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
       int dCol = m_colDiff * height / 2;
       p.drawPixmap (cx + dRow - dia/2, cy + dCol - dia/2, pip);
   }
-  // if (m_scale != 1.0) qDebug() << "DRAW" << points << "cube size" << width << height << "w,h" << w << h << "scale" << m_scale << "tlx, tly" << tlx << tly;
 
   switch (points) {
   case 0:
