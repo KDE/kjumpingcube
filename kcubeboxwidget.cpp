@@ -23,6 +23,8 @@
 
 #include <KgTheme>
 #include <KStandardDirs>
+#include <KLocalizedString>
+#include <KMessageBox>
 #include <QTimer>
 #include <QPainter>
 
@@ -316,27 +318,69 @@ void KCubeBoxWidget::saveProperties(KConfigGroup& config)
 void KCubeBoxWidget::readProperties(const KConfigGroup& config)
 {
   QStringList list;
-  //list.setAutoDelete(true);
-  QString owner, value, key;
-  setDim(config.readEntry("CubeDim",5));
-  int cubeDim=dim();
+  QString     key;
+  int         owner, value, maxValue;
+  int         minDim = 5, maxDim = 10;
+
+  // Dimension must be 5 to 10.
+  int cubeDim = config.readEntry ("CubeDim", minDim);
+  if ((cubeDim < minDim) || (cubeDim > maxDim)) {
+     KMessageBox::sorry (this, i18n("The file's cube box size is outside "
+                                    "the range %1 to %2. It will be set to %1.")
+                                    .arg(minDim).arg(maxDim));
+     cubeDim = 5;
+  }
+  setDim (cubeDim);
+
+  m_cubesToWin [0] = cubeDim * cubeDim;
+  m_cubesToWin [1] = cubeDim * cubeDim;
+  m_cubesToWin [2] = cubeDim * cubeDim;
 
   for(int row=0; row < cubeDim ; row++)
     for(int column=0; column < cubeDim ; column++)
       {
 	key.sprintf("%u,%u",row,column);
 	list = config.readEntry(key,QStringList());
-	owner=list.at(0);
-	value=list.at(1);
-	cubes[row][column]->setOwner((KCubeWidget::Owner)owner.toInt());
-	cubes[row][column]->setValue(value.toInt());
+	// List length must be 2, owner must be 0-2, value >= 1 and <= max().
+	if (list.count() < 2) {
+	    KMessageBox::sorry (this, i18n("Missing input line for cube %1.")
+		    .arg(key));
+	    owner = 0;
+	    value = 1;
+	}
+	else {
+	    owner = list.at(0).toInt();
+	    value = list.at(1).toInt();
+	}
+	if ((owner < 0) || (owner > 2)) {
+	    KMessageBox::sorry (this, i18n("Owner of cube %1 is outside the "
+                                           "range 0 to 2.").arg(key));
+	    owner = 0;
+	}
+	maxValue = (owner == 0) ? 1 : cubes[row][column]->max();
+	if ((value < 1) || (value > maxValue)) {
+	    KMessageBox::sorry (this, i18n("Value of cube %1 is outside the "
+                                           "range 1 to %2.")
+                                           .arg(key).arg(maxValue));
+	    value = maxValue;
+	}
+	cubes[row][column]->setOwner((KCubeWidget::Owner)owner);
+	cubes[row][column]->setValue(value);
+
+	// Calculate how many cubes each player must capture to win.
+	m_cubesToWin [cubes[row][column]->owner()] --;
 
 	list.clear();
       }
 
-
-   // set current player
-   int onTurn=config.readEntry("onTurn",1);
+   qDebug() << "cubesToWin" << m_cubesToWin[0] << m_cubesToWin[1]
+                            << m_cubesToWin[2];
+   // Set current player - must be 1 or 2.
+   int onTurn = config.readEntry("onTurn",1);
+   if ((onTurn < 1) || (onTurn > 2)) {
+       KMessageBox::sorry (this, i18n("Current player is neither 1 nor 2."));
+       onTurn = 1;
+   }
    currentPlayer=(Player)onTurn;
    emit playerChanged(onTurn);
    checkComputerplayer((Player)onTurn);
