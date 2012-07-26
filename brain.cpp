@@ -22,6 +22,9 @@
 
 #include "brain.h"
 #include "cube.h"
+#include "ai_kepler.h"
+#include "ai_newton.h"
+
 #include <QApplication>
 #include <math.h>
 
@@ -37,6 +40,10 @@
 
 Brain::Brain(int initValue)
 {
+   m_currentAI = new AI_Newton();
+   m_ai[0] = 0;
+   m_ai[1] = m_currentAI;
+   m_ai[2] = new AI_Kepler();
    setSkill(Prefs::EnumSkill::Beginner);
    stopped=false;
    active=false;
@@ -85,11 +92,12 @@ bool Brain::isActive()  const
 
 
 
-bool Brain::getHint(int& row, int& column,CubeBox::Player player ,CubeBox box)
+bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
 {
    if(isActive())
       return false;
 
+   m_currentAI = m_ai[player];
    active=true;
    stopped=false;
    currentPlayer=player;
@@ -254,7 +262,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       {
          currentLevel--;
 
-	 return (long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel))*box.assessField(currentPlayer);
+	 return (long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel)) * m_currentAI->assessField (currentPlayer, box);
       }
 
 
@@ -274,7 +282,7 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       if(moves==1)
       {
          box.simulateMove(player,c2m[0].row,c2m[0].column);
-         worth=(long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel-1))*box.assessField(currentPlayer);
+         worth=(long int)pow((float)box.dim()*box.dim(),(maxLevel-currentLevel-1)) * m_currentAI->assessField (currentPlayer, box);
       }
       else
       {
@@ -305,9 +313,8 @@ double Brain::doMove(int row, int column, CubeBox::Player player , CubeBox box)
       currentLevel--;
       box.simulateMove(player,row,column);
 
-      return box.assessField(currentPlayer);
+      return m_currentAI->assessField (currentPlayer, box);
    }
-
 }
 
 int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
@@ -372,8 +379,7 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	      int val;
 
 	      // check neighbours of every cube
-	      val=assessCube(i,j,player,box);
-
+              val = m_currentAI->assessCube (i, j, player, box);
 
 #ifdef DEBUG
 	      if(currentLevel==0)
@@ -494,134 +500,5 @@ int Brain::findCubes2Move(coordinate *c2m,CubeBox::Player player,CubeBox& box)
 	   moves=maxMoves;
 	}
 
-
    return moves;
-
 }
-
-
-int Brain::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) const
-{
-   int diff;
-
-   // qDebug() << "assessCube(" << row << column << "player" << player;
-   if(row==0)  // first row
-   {
-      if(column == 0)  // upper left corner
-      {
-         diff=getDiff(0,1,player,box) ;
-         int temp=getDiff(1,0,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else if(column == box.dim()-1) // upper right corner
-      {
-         diff=getDiff(0,column-1,player,box);
-         int temp=getDiff(1,column,player,box);
-         if(temp < diff)
-	    diff=temp;
-      }
-      else
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row,column+1,player,box);
-         if(temp < diff)
-            diff = temp;
-         temp=getDiff(row+1,column,player,box);
-         if(temp < diff)
-            diff = temp;
-      }
-   }
-   else if(row==box.dim()-1) // last row
-   {
-      if(column == 0) // lower left corner
-      {
-         diff=getDiff(row,1,player,box);
-         int temp=getDiff(row-1,0,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else if(column == box.dim()-1) // lower right corner
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row-1,column,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row,column+1,player,box);
-         if(temp < diff)
-            diff = temp;
-         temp=getDiff(row-1,column,player,box);
-         if(temp < diff)
-            diff = temp;
-      }
-   }
-   else if(column == 0) // first column
-   {
-       diff = getDiff(row,1,player,box);
-       int temp = getDiff(row-1,0,player,box);
-       if(temp < diff)
-          diff = temp;
-       temp = getDiff(row+1,0,player,box);
-       if(temp < diff)
-          diff = temp;
-   }
-   else if(column == box.dim()-1) // last column
-   {
-      diff = getDiff(row,column-1,player,box);
-      int temp = getDiff(row-1,column,player,box);
-      if(temp < diff)
-         diff = temp;
-      temp = getDiff(row+1,column,player,box);
-      if(temp < diff)
-         diff = temp;
-   }
-   else
-   {
-      diff=getDiff(row-1,column,player,box);
-      int temp=getDiff(row+1,column,player,box);
-      if(temp < diff)
-         diff = temp;
-      temp=getDiff(row,column-1,player,box);
-      if(temp < diff)
-         diff = temp;
-      temp=getDiff(row,column+1,player,box);
-      if(temp < diff)
-         diff = temp;
-   }
-
-   int temp;
-   temp=( box[row][column]->max()-box[row][column]->value() );
-
-   int val;
-   val=diff-temp+1;
-   // IDW test. val=diff-temp;
-   val=val*(temp+1);
-   // qDebug() << "my diff" << temp << "neighbor diff" << diff-temp/* IDW test. +1 */ << "score" << val;
-   // qDebug() << "my diff" << temp << "neighbor diff" << diff-temp+1 << "score" << val;
-
-   return val;
-}
-
-
-int Brain::getDiff(int row,int column, CubeBox::Player player, CubeBox& box) const
-{
-	int diff;
-
-	if(box[row][column]->owner() != (Cube::Owner)player)
-	{
-           diff=( box[row][column]->max() - box[row][column]->value() );
-           // qDebug() << "OTHER getDiff(" << row << column << box[row][column]->owner() << "diff" << diff;
-	}
-	else
-	{
-           diff=( box[row][column]->max() - box[row][column]->value()+1 );
-           // qDebug() << "MINE getDiff(" << row << column << box[row][column]->owner() << "diff" << diff;
-	}
-
-	return diff;
-}
-

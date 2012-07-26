@@ -24,6 +24,7 @@
 
 #include <krandomsequence.h>
 
+#include "ai_base.h"
 #include "cubebox.h"
 
 /** @internal */
@@ -63,25 +64,33 @@ public:
    * @return false if computing was stopped
    * @see Brain#stop;
    */
-   bool getHint(int& row, int& column, CubeBox::Player player, CubeBox field);
+   bool getMove (int& row, int& column, CubeBox::Player player, CubeBox field);
 
-   /** stops thinking */
+   /**
+    *  Stops thinking.
+    */
    void stop();
-   /** @return true if the Brain is thinking at the moment */
+
+   /**
+    * @return true if the Brain is thinking at the moments
+    */
    bool isActive() const;
 
-   /** skill according to Prefs::EnumSkill **/
+   /**
+    * Skill according to Prefs::EnumSkill
+    */
    void setSkill(int);
    int skill() const;
 
 private:
    /**
-   * checks if a move is possible at cube row,column from player 'player' and
+   * Checks if a move is possible at cube row,column from player 'player' and
    * simulates this move. Then it checks the new playingfield for possible moves
    * and calls itself for every possible move until the maximum depth 'maxLevel'
    * is reached.
    *
-   * If the maximum depth is reached, it puts a value on the playingfield and returns this.
+   * If the maximum depth is reached, it puts a value on the playingfield and
+   * returns this.
    * @see CubeBox#simulateMove
    * @see CubeBox#assessField
    * @see Brain#findCubes2Move
@@ -103,24 +112,25 @@ private:
    * @return number of found cubes to move
    */
    int findCubes2Move(coordinate* c2m,CubeBox::Player player,CubeBox& box);
-   /**
-   *
-   */
-   int assessCube(int row,int column,CubeBox::Player,CubeBox& box) const;
-   int getDiff(int row,int column, CubeBox::Player player, CubeBox& box) const;
+
+   AI_Base * m_ai [3];
+   AI_Base * m_currentAI;
 
    /** current depth of recursive simulating of the moves */
    int currentLevel;
+
    /** maximum depth of recursive thinking */
    int maxLevel;
+
    /** the player for which to check the moves */
    CubeBox::Player currentPlayer;
 
-
    /** flag, if the engine has to be stopped */
    bool stopped;
+
    /** flag, if the engine is active */
    bool active;
+
    /** skill of the Brain, see Prefs::EnumSkill */
    int _skill;
 

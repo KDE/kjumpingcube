@@ -218,7 +218,7 @@ void KCubeBoxWidget::getHint()
    CubeBox field=CubeBox(*this);
 
    emit startedThinking();
-   bool done = brain.getHint(row,column,(CubeBox::Player)currentPlayer,field);
+   bool done = brain.getMove (row,column,(CubeBox::Player)currentPlayer,field);
    if (delayedShutdown) {
       delayedShutdown = false;
       emit shutdownNow();
@@ -448,7 +448,7 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
-      brain.getHint (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
       if (delayedShutdown) {
          delayedShutdown = false;
          emit shutdownNow();

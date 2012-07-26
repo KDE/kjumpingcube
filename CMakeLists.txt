@@ -22,6 +22,8 @@ set(kjumpingcube_SRCS
    kcubewidget.cpp 
    cube.cpp 
    brain.cpp 
+   ai_kepler.cpp
+   ai_newton.cpp
    cubebox.cpp )
 
 kde4_add_ui_files(kjumpingcube_SRCS settings.ui )

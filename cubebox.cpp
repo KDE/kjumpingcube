@@ -158,53 +158,6 @@ bool CubeBox::simulateMove(Player fromWhom,int row, int column)
    return true;
 }
 
-double CubeBox::assessField(Player player) const
-{
-   int cubesOne=0;
-   int cubesTwo=0;
-   int pointsOne=0;
-   int pointsTwo=0;
-   Player otherPlayer = ((player==One)? Two : One);
-   bool playerWon=true;
-   bool otherPlayerWon=true;
-
-   int i,j;
-
-   for(i=0;i<dim();i++)
-   {
-      for(j=0;j<dim();j++)
-      {
-	      if(cubes[i][j]->owner()==(Cube::Owner)One)
-	      {
-	         cubesOne++;
-	         pointsOne+=(int)pow((float)cubes[i][j]->value(),2);
-	      }
-	      else if(cubes[i][j]->owner()==(Cube::Owner)Two)
-	      {
-	         cubesTwo++;
-	         pointsTwo+=(int)pow((float)cubes[i][j]->value(),2);
-	      }
-
-	      if(cubes[i][j]->owner()!=(Cube::Owner)player)
-	         playerWon=false;
-
-	      if(cubes[i][j]->owner()!=(Cube::Owner)otherPlayer)
-	         otherPlayerWon=false;
-      }
-
-   }
-
-
-
-   if(player==One)
-   {
-      return (int)pow((float)cubesOne,2)+pointsOne-(int)pow(cubesTwo,2.)-pointsTwo;
-   }
-   else
-      return (int)pow((float)cubesTwo,2)+pointsTwo-(int)pow(cubesOne,2.)-pointsOne;
-
-}
-
 bool CubeBox::playerWon(Player who) const
 {
    int i,j;

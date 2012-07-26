@@ -46,7 +46,6 @@ public:
    CubeBox& operator= (KCubeBoxWidget& box);
 
    bool simulateMove(Player fromWhom,int row, int column);
-   double assessField(Player forWhom) const;
    bool playerWon(Player who) const;
 
 private:
