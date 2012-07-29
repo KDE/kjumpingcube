@@ -28,30 +28,50 @@
 class CubeBox;
 
 /**
-* Class AI_Kepler computes a (good) possibility to move
-* for a given playingfield.
+* Class AI_Kepler computes the value of moving a cube and the value of the
+* resulting position.  It assists the Brain class and contains the original
+* algorithms from the Brain and CubeBox classes.
 *
-* It puts a value on every cube by looking at its neighbours
-* and searches the best cubes to move. It then simulates what would
-* happen, if you would click on these cubes. This is done recursively
-* to a certain depth and the playingfield will be valued.
-*
-* @short The games brain
+* @short The Kepler AI algorithms
 */
 class AI_Kepler : public AI_Base
 {
 public:
    /**
-   * @param initValue value to initialize the random number generator with
-   *        if no value is given a truly random value is used
+   * The Kepler AI constructor.
    */
    AI_Kepler();
 
+   /**
+   * Assess the value of playing a cube at a particular position.  The
+   * lowest-value cubes are used by the Brain class for look-ahead moves
+   * and calculating the values of the positions reached.
+   *
+   * @param row      The row-position of the cube
+   * @param col      The column-position of the cube
+   * @param player   The player who is to move
+   * @param box      The whole grid of cubes in the box
+   *
+   * @return         < 0 - The move is invalid or wasteful
+   *                 > 0 - The value of a useful move (1 is best)
+   */
    int    assessCube (int row,int column,CubeBox::Player,CubeBox& box) const;
+
+   /**
+    * Assess the value of a position reached after trying a move.  The move that
+    * leads to the highest value is chosen by the Brain class or a random choice
+    * is made among moves leading to positions of equal value.
+    *
+    * @param player  The player whose position is to be assessed
+    * @param box     The state of the whole grid of cubes in the box
+    *
+    * @return        The value of the position
+    */
    double assessField (CubeBox::Player forWhom, CubeBox& box) const;
 
 private:
-   int getDiff(int row,int column, CubeBox::Player player, CubeBox& box) const;
+   // A helper method for assessCube().
+   int getDiff (int row,int column, CubeBox::Player player, CubeBox& box) const;
 };
 
 #endif // AI_KEPLER_H

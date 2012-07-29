@@ -30,17 +30,13 @@
 class AI_Base
 {
 public:
-   /**
-   * @param initValue value to initialize the random number generator with
-   *        if no value is given a truly random value is used
-   */
    AI_Base()          {};
    virtual ~AI_Base() {};
 
    /**
    * Assess the priority of playing a cube at a particular position.  The
-   * highest priority cubes are used in look-ahead moves and calculating the
-   * values of the positions reached.
+   * highest priority cubes are used by the Brain class for look-ahead moves
+   * and calculating the values of the positions reached.
    *
    * @param row      The row-position of the cube
    * @param col      The column-position of the cube
@@ -55,8 +51,8 @@ public:
 
    /**
     * Assess the value of a position reached after trying a move.  The move that
-    * leads to the highest value is chosen by the caller or a random choice is
-    * made among moves leading to positions of equal value.
+    * leads to the highest value is chosen by the Brain class or a random choice
+    * is made among moves leading to positions of equal value.
     *
     * @param player  The player whose position is to be assessed
     * @param box     The state of the whole grid of cubes in the box
