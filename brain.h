@@ -55,7 +55,7 @@ public:
    * @param initValue value to initialize the random number generator with
    *        if no value is given a truly random value is used
    */
-   explicit Brain(int initValue=0);
+   explicit Brain (int initValue = 0);
 
    /**
    * Computes a good possible move at the given field.
@@ -79,7 +79,7 @@ public:
    /**
     * Skill according to Prefs::EnumSkill
     */
-   void setSkill(int);
+   void setSkill (int);
    int skill() const;
 
 private:
@@ -100,7 +100,8 @@ private:
    * @param box playingfield to do the moves on
    * @return the value put on the field
    */
-    double doMove(int row,int column,CubeBox::Player player, CubeBox box);
+   double doMove (int row, int column, CubeBox::Player player, CubeBox box);
+
    /**
    * Checks the given playingfield, which cubes are favorable to do a move
    * by checking every cubes neighbours. And looking for the difference to overflow.
@@ -111,7 +112,7 @@ private:
    * @param debug if debugmessages should be printed
    * @return number of found cubes to move
    */
-   int findCubes2Move(coordinate* c2m,CubeBox::Player player,CubeBox& box);
+   int findCubes2Move (coordinate * c2m, CubeBox::Player player, CubeBox& box);
 
    AI_Base * m_ai [3];
    AI_Base * m_currentAI;
