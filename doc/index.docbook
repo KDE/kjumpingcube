@@ -33,8 +33,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>2007-11-16</date><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
-<releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2012-08-06</date><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&kappversion; (&kde; 4.9)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
@@ -245,20 +245,19 @@ select colors, computer player, skill level and board size.</para></listitem>
 <para>To open the configuration dialog use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice></para>
 	<variablelist>
 		<varlistentry>
-			<term><guilabel>Computer Skill</guilabel></term>
-			<listitem><para><action>Lets you choose your playing skill from a slider.</action> This decides how clever the computer opponent will be.</para>
-			<para>You can choose from <guilabel>Beginner</guilabel>, <guilabel>Average</guilabel> or <guilabel>Expert</guilabel>.</para></listitem>
+			<term><guilabel>Computer Plays</guilabel></term><listitem><para>Sets the computer opponent to be <guilabel>Player 1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you would set the computer to play one player and you would play the other. Player 1 always starts first.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Players' Colors</guilabel></term><listitem><para>Choose a color for each player and for the neutral squares.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Board Size</guilabel></term><listitem><para><action>Lets you choose the play area size.</action></para>
 			<para>Use the slider to select a value between <guilabel>5x5</guilabel> squares and <guilabel>10x10</guilabel> squares.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term><guilabel>Computer Plays</guilabel></term><listitem><para>Sets the computer opponent to be <guilabel>Player 1</guilabel>, <guilabel>Player 2</guilabel> or both.  Normally you would set the computer to play one player and you would play the
-other. Player 1 always starts first.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><guilabel>Players' Colors</guilabel></term><listitem><para>Choose a color for each player and for the neutral squares.</para></listitem>
+			<term><guilabel>Computer Skill</guilabel></term>
+			<listitem><para><action>Lets you choose your playing skill from a slider.</action> This decides how clever the computer opponent will be.</para>
+			<para>You can choose from <guilabel>Beginner</guilabel>, <guilabel>Average</guilabel> or <guilabel>Expert</guilabel>.</para></listitem>
 		</varlistentry>
 	</variablelist>
 </chapter>
