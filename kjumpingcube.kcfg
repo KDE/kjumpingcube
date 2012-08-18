@@ -47,7 +47,7 @@
       <label>Color of player 2.</label>
       <default>#6193cf</default>
     </entry>
-    <entry name="CubeDim" type="Int" min="5" max="10">
+    <entry name="CubeDim" type="Int" min="3" max="10">
       <label>Size of the playing field.</label>
       <default>6</default>
     </entry>

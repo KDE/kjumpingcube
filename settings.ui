@@ -105,7 +105,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>5x5</string>
+            <string>3x3</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -115,7 +115,7 @@
          <item row="0" column="0" colspan="2">
           <widget class="QSlider" name="kcfg_CubeDim">
            <property name="minimum">
-            <number>5</number>
+            <number>3</number>
            </property>
            <property name="maximum">
             <number>10</number>
