@@ -29,7 +29,7 @@ class CubeBox;
 
 /**
 * Class AI_Newton computes the priority of moving a cube and the value of the
-* resulting position.  It assists the Brain class.
+* resulting position.  It assists the main AI class.
 *
 * @short The Newton AI algorithms
 */
@@ -54,7 +54,9 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The priority of a useful move (1 is highest)
    */
-   int    assessCube (int row,int column,CubeBox::Player,CubeBox& box) const;
+   int    assessCube (int row, int col, CubeBox::Player, CubeBox& box) const;
+   int    assessCube (int row, int col, CubeBox::Player player, int side,
+                      int * owners, int * values, int * maxValues) const;
 
    /**
     * Assess the value of a position reached after trying a move.  The move that
@@ -66,7 +68,9 @@ public:
     *
     * @return        The value of the position
     */
-   double assessField (CubeBox::Player forWhom, CubeBox& box) const;
+   double assessField (CubeBox::Player player, CubeBox& box) const;
+   double assessField (CubeBox::Player player,
+                       int side, int * owners, int * values) const;
 };
 
 #endif // AI_NEWTON_H

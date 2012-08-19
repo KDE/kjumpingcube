@@ -28,6 +28,7 @@
 #include "cubeboxbase.h"
 #include "kcubewidget.h"
 #include "brain.h"
+#include "ai_main.h"
 #include <QWidget>
 //Added by qt3to4:
 #include <QGridLayout>
@@ -147,6 +148,8 @@ protected slots:
    void setNormalCursor();
 
 private:
+   int m_step;	// IDW test: use a KMessageBox to pause between computer moves.
+
    void init();
 
    QSvgRenderer svg;
@@ -173,7 +176,8 @@ private:
 
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
 
-   Brain brain;
+   Brain brainPrev;
+   AI_Main brain;
 
    QTimer *animationTimer;
    bool delayedShutdown;	// True if the brain is active at Quit time.

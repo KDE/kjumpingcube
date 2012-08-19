@@ -46,20 +46,24 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The priority of a useful move (1 is highest)
    */
-   virtual int assessCube (int row, int column,
-                           CubeBox::Player player, CubeBox& box) const = 0;
+   virtual int assessCube (int row, int col, CubeBox::Player player,
+                           CubeBox& box) const = 0;
+   virtual int assessCube (int row, int col, CubeBox::Player player,
+                           int side, int * owners, int * values,
+                           int * maxValues) const = 0;
 
    /**
-    * Assess the value of a position reached after trying a move.  The move that
-    * leads to the highest value is chosen by the Brain class or a random choice
-    * is made among moves leading to positions of equal value.
+    * Assess the value of a position reached after trying a move.  Moves that
+    * lead to the highest values are chosen by the main AI class.
     *
     * @param player  The player whose position is to be assessed
     * @param box     The state of the whole grid of cubes in the box
     *
     * @return        The value of the position
     */
-   virtual double assessField (CubeBox::Player forWhom, CubeBox& box) const = 0;
+   virtual double assessField (CubeBox::Player player, CubeBox& box) const = 0;
+   virtual double assessField (CubeBox::Player player,
+                               int side, int * owners, int * values) const = 0;
 };
 
 #endif // AI_BASE_H

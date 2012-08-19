@@ -121,12 +121,15 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
 
    // find the favorable cubes to increase
    moves = findCubes2Move (c2m, player, box);
+   qDebug() << "Player" << player << "likely moves" << moves << ".";
 
    // if only one cube is found, then don't check recursively the move
    if (moves == 1) {
 #ifdef DEBUG
       qDebug() << "found only one favorable cube";
 #endif
+      qDebug() << "Move X" << c2m[0].row << "Y" << c2m[0].column
+               << "value" << c2m[0].val;
       row = c2m[0].row;
       column = c2m[0].column;
    }
@@ -169,6 +172,10 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
             if (worth[c2m[i].row][c2m[i].column] > max) {
                max = worth[c2m[i].row][c2m[i].column];
             }
+	    qDebug() << "Move X" << c2m[i].row << "Y" << c2m[i].column
+		     << "value" << c2m[i].val
+		     << "worth" << worth[c2m[i].row][c2m[i].column]
+		     << "max" << max;
          }
       }
 
@@ -197,6 +204,7 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
       // if some moves are equal, choose a random one
       if (counter > 1) {
 
+         qDebug() << "Choosing a random cube, from" << counter; // IDW test.
 #ifdef DEBUG
          qDebug() << "choosing a random cube: ";
 #endif
@@ -204,10 +212,12 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
       }
       // else { // IDW test. If there is a single maximum it should be chosen.
           // counter = 0; // IDW test.
+          // qDebug() << "Choosing a single maximum"; // IDW test.
       // } // IDW test.
 
       row = c2m[counter].row;
       column = c2m[counter].column;
+      qDebug() << "CHOSEN CUBE: X" << row << "Y" << column;
 #ifdef DEBUG
       qDebug() << "cube: " << row << "," << column;
 #endif
@@ -227,10 +237,14 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
 
 double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
 {
-   // qDebug() << "doMove(" << row << column << player << "box" << &box;
    double worth = 0;
    currentLevel++; // increase the current depth of recurse calls
 
+   QString tag = QString("").leftJustified (currentLevel * 2, '-');
+   tag = tag % " doMove(";
+   tag = tag.leftJustified (16, ' ');
+   // XXX qDebug() << tag << row << column << player
+            // XXX << "level" << currentLevel << "maxLevel" << maxLevel;
    // if the maximum depth isn't reached
    if (currentLevel < maxLevel) {
        // test, if possible to increase this cube
@@ -243,9 +257,12 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
       if (box.playerWon(player)) {
          currentLevel--;
 
-         return (long int) pow ((float)box.dim() * box.dim(),
+         // return (long int) pow ((float)box.dim() * box.dim(),
+         double result = pow ((float)box.dim() * box.dim(),
                                 (maxLevel - currentLevel)) *
 	                        m_currentAI->assessField (currentPlayer, box);
+	 // XXX qDebug() << "PLAYER WON" << player << "currentPlayer" << currentPlayer << "result" << result;
+	 return result;
       }
 
 
@@ -266,6 +283,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
          worth = (long int) pow ((float) box.dim() * box.dim(),
                                  (maxLevel - currentLevel - 1)) *
                                  m_currentAI->assessField (currentPlayer, box);
+	 // XXX qDebug() << "ONLY ONE MOVE at X" << c2m[0].column << "Y" << c2m[0].row << "result" << worth;
       }
       else {
          for (i = 0; i < moves; i++) {
@@ -279,6 +297,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
             }
 
             // simulate every possible move
+	    // XXX qDebug() << "RECURSION at X" << c2m[i].column << "Y" << c2m[i].row << "result so far" << worth;
             worth += doMove (c2m[i].row, c2m[i].column, player, box);
          }
       }
@@ -291,7 +310,10 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
       currentLevel--;
       box.simulateMove (player, row, column);
 
-      return m_currentAI->assessField (currentPlayer, box);
+      // return m_currentAI->assessField (currentPlayer, box);
+      double result = m_currentAI->assessField (currentPlayer, box);
+      // XXX qDebug() << "MAXIMUM LEVEL at X" << column << "Y" << row << "result" << result;
+      return result;
    }
 }
 
@@ -369,6 +391,8 @@ int Brain::findCubes2Move (coordinate * c2m,
               }
            }
         }
+        if (currentLevel == 0)
+        qDebug() << "\nMinimum is" << min << ", second minimum is" << secondMin;
 
         // If all cubes are bad, check all cubes for the next move.
         if (moves == 0) {

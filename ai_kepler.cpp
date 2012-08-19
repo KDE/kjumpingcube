@@ -27,105 +27,84 @@ AI_Kepler::AI_Kepler()
 {
 }
 
-int AI_Kepler::assessCube(int row,int column,CubeBox::Player player,CubeBox& box) const
+int AI_Kepler::assessCube (int row, int col, CubeBox::Player player,
+                           CubeBox & box) const
 {
-   int diff;
+   int diff = 10000, temp = 10000;
 
-   // qDebug() << "assessCube(" << row << column << "player" << player;
-   if(row==0)  // first row
-   {
-      if(column == 0)  // upper left corner
-      {
-         diff=getDiff(0,1,player,box) ;
-         int temp=getDiff(1,0,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else if(column == box.dim()-1) // upper right corner
-      {
-         diff=getDiff(0,column-1,player,box);
-         int temp=getDiff(1,column,player,box);
-         if(temp < diff)
-	    diff=temp;
-      }
-      else
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row,column+1,player,box);
-         if(temp < diff)
-            diff = temp;
-         temp=getDiff(row+1,column,player,box);
-         if(temp < diff)
-            diff = temp;
-      }
-   }
-   else if(row==box.dim()-1) // last row
-   {
-      if(column == 0) // lower left corner
-      {
-         diff=getDiff(row,1,player,box);
-         int temp=getDiff(row-1,0,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else if(column == box.dim()-1) // lower right corner
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row-1,column,player,box);
-         if(temp < diff)
-            diff=temp;
-      }
-      else
-      {
-         diff=getDiff(row,column-1,player,box);
-         int temp=getDiff(row,column+1,player,box);
-         if(temp < diff)
-            diff = temp;
-         temp=getDiff(row-1,column,player,box);
-         if(temp < diff)
-            diff = temp;
-      }
-   }
-   else if(column == 0) // first column
-   {
-       diff = getDiff(row,1,player,box);
-       int temp = getDiff(row-1,0,player,box);
-       if(temp < diff)
-          diff = temp;
-       temp = getDiff(row+1,0,player,box);
-       if(temp < diff)
-          diff = temp;
-   }
-   else if(column == box.dim()-1) // last column
-   {
-      diff = getDiff(row,column-1,player,box);
-      int temp = getDiff(row-1,column,player,box);
-      if(temp < diff)
-         diff = temp;
-      temp = getDiff(row+1,column,player,box);
-      if(temp < diff)
+   // qDebug() << "assessCube(" << row << col << "player" << player;
+
+   // Check the neighbors.
+   if (row > 0) {
+      temp = getDiff (row - 1, col, player, box);
+      if (temp < diff)
          diff = temp;
    }
-   else
-   {
-      diff=getDiff(row-1,column,player,box);
-      int temp=getDiff(row+1,column,player,box);
-      if(temp < diff)
+   if (row < box.dim()-1) {
+      temp = getDiff (row + 1, col, player, box);
+      if (temp < diff)
          diff = temp;
-      temp=getDiff(row,column-1,player,box);
-      if(temp < diff)
+   }
+   if (col > 0) {
+      temp = getDiff (row, col - 1, player, box);
+      if (temp < diff)
          diff = temp;
-      temp=getDiff(row,column+1,player,box);
-      if(temp < diff)
+   }
+   if (col < box.dim()-1) {
+      temp = getDiff (row, col + 1, player, box);
+      if (temp < diff)
          diff = temp;
    }
 
-   int temp;
-   temp=( box[row][column]->max()-box[row][column]->value() );
+   temp = box[row][col]->max() - box[row][col]->value();
 
    int val;
-   val=diff-temp+1;
-   val=val*(temp+1);
+   val = diff - temp + 1;
+   val = val * (temp + 1);
+   if (val <= 0) {
+      val = 999 - val;
+   }
+
+   return val;
+}
+
+int AI_Kepler::assessCube (int row, int col, CubeBox::Player player,
+                           int side, int * owners, int * values,
+                           int * maxValues) const
+{
+   int diff = 10000, temp = 10000;
+
+   // Check the neighbors.
+   if (row > 0) {
+      temp = getDiff (row - 1, col, player, side, owners, values, maxValues);
+      if (temp < diff)
+         diff = temp;
+   }
+   if (row < side-1) {
+      temp = getDiff (row + 1, col, player, side, owners, values, maxValues);
+      if (temp < diff)
+         diff = temp;
+   }
+   if (col > 0) {
+      temp = getDiff (row, col - 1, player, side, owners, values, maxValues);
+      if (temp < diff)
+         diff = temp;
+   }
+   if (col < side-1) {
+      temp = getDiff (row, col + 1, player, side, owners, values, maxValues);
+      if (temp < diff)
+         diff = temp;
+   }
+
+   int index = row * side + col;
+   temp = maxValues[index] - values[index];
+
+   int val;
+   val = diff - temp + 1;
+   val = val * (temp + 1);
+   if (val <= 0) {
+      val = 999 - val;
+   }
 
    return val;
 }
@@ -173,15 +152,65 @@ double AI_Kepler::assessField (CubeBox::Player player, CubeBox& box) const
    }
 }
 
-int AI_Kepler::getDiff(int row,int column, CubeBox::Player player, CubeBox& box) const
+double AI_Kepler::assessField (CubeBox::Player player,
+                               int side, int * owners, int * values) const
+{
+   int    cubesOne       = 0;
+   int    cubesTwo       = 0;
+   int    pointsOne      = 0;
+   int    pointsTwo      = 0;
+   CubeBox::Player otherPlayer    = (player == CubeBox::One) ?
+                                     CubeBox::Two : CubeBox::One;
+   int x, y, index, points;
+
+   for (x = 0; x < side; x++) {
+      for (y = 0; y < side; y++) {
+	 index = x * side + y;
+	 points  = values[index];
+         if (owners[index] == (Cube::Owner)CubeBox::One) {
+            cubesOne++;
+            pointsOne += points * points;
+         }
+         else if (owners[index] == (Cube::Owner)CubeBox::Two) {
+            cubesTwo++;
+	    pointsTwo += points * points;
+         }
+      }
+   }
+
+   if (player == CubeBox::One) {
+      return cubesOne * cubesOne + pointsOne - cubesTwo * cubesTwo - pointsTwo;
+   }
+   else {
+      return cubesTwo * cubesTwo + pointsTwo - cubesOne * cubesOne - pointsOne;
+   }
+}
+
+int AI_Kepler::getDiff (int row,int col, CubeBox::Player player, CubeBox& box) const
 {
    int diff;
 
-   if (box[row][column]->owner() != (Cube::Owner)player) {
-      diff = (box[row][column]->max() - box[row][column]->value());
+   if (box[row][col]->owner() != (Cube::Owner)player) {
+      diff = (box[row][col]->max() - box[row][col]->value());
    }
    else {
-      diff = (box[row][column]->max() - box[row][column]->value() + 1);
+      diff = (box[row][col]->max() - box[row][col]->value() + 1);
+   }
+
+   return diff;
+}
+
+int AI_Kepler::getDiff (int row, int col, CubeBox::Player player, int side,
+                        int * owners, int * values, int * maxValues) const
+{
+   int diff;
+   int index = row * side + col;
+
+   if (owners[index] != (Cube::Owner)player) {
+      diff = maxValues[index] - values[index];
+   }
+   else {
+      diff = maxValues[index] - values[index] + 1;
    }
 
    return diff;

@@ -23,6 +23,7 @@ set(kjumpingcube_SRCS
    kcubewidget.cpp 
    cube.cpp 
    brain.cpp 
+   ai_main.cpp
    ai_kepler.cpp
    ai_newton.cpp
    cubebox.cpp )

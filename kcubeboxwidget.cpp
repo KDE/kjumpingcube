@@ -99,6 +99,8 @@ void KCubeBoxWidget::loadSettings(){
   color0 = Prefs::color0();
   animationTime = Prefs::animationSpeed() * 150;
   setDim (Prefs::cubeDim());
+  // setDim (3); // IDW test.
+  // reSizeCubes = true; // IDW test.
 
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
@@ -106,6 +108,10 @@ void KCubeBoxWidget::loadSettings(){
   }
   if (reSizeCubes) {
      reCalculateGraphics (width(), height());
+
+     m_cubesToWin [Cube::Nobody] = 0;
+     m_cubesToWin [Cube::One]    = dim() * dim();
+     m_cubesToWin [Cube::Two]    = dim() * dim();
   }
   else if (reColorCubes) {
      makeSVGCubes (cubeSize);
@@ -186,11 +192,15 @@ void KCubeBoxWidget::reset()
 
    KCubeWidget::enableClicks(true);
 
+   m_step = KMessageBox::Yes;	// IDW test.
+
    currentPlayer=One;
 
    emit playerChanged(One);
    // When re-starting, WAIT FOR A CLICK.
    // checkComputerplayer(One); // Enable this line for IDW high-speed test.
+
+   brain.startStats();
 }
 
 void KCubeBoxWidget::undo()
@@ -226,6 +236,7 @@ void KCubeBoxWidget::getHint()
    }
    emit stoppedThinking();
 
+   qDebug() << "HINT FOR PLAYER" << currentPlayer << "X" << row << "Y" << column;
    if (done) {
       startAnimation (Hint, row, column);
    }
@@ -391,7 +402,8 @@ void KCubeBoxWidget::readProperties(const KConfigGroup& config)
 ** ***************************************************************** */
 void KCubeBoxWidget::setWaitCursor()
 {
-   setCursor(Qt::BusyCursor);
+   // IDW test. setCursor(Qt::BusyCursor); TODO - Decide on wristwatch v. disk.
+   setCursor(Qt::WaitCursor);
 }
 
 
@@ -448,13 +460,32 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
+      t.start();
+      qDebug() << "Calling brain.getMove() for player" << player;
+      // IDW TODO - This causes an unnecessary COPY KCubeBoxWidget operation, even
+      //            though the "field" parameter is CubeBox & type.
+      /* IDW failed test.
+      if (player == One)
+         brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      else
+         brainPrev.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      */
       brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      qDebug() << "TIME of MOVE" << t.elapsed();
+      qDebug() << "===============================================================";
       if (delayedShutdown) {
          delayedShutdown = false;
          emit shutdownNow();
          return;
       }
       emit stoppedThinking();
+
+      if (m_step == KMessageBox::Yes) {
+         m_step = KMessageBox::questionYesNo (this,
+                         QString("MOVE FOR PLAYER %1 is X %2 Y %3").
+                                arg(currentPlayer).arg(row).arg(column),
+                         QString("Continue stepping?"));
+      }
 
       // We do not care if we interrupted the computer.  It was probably taking
       // too long, so we will just take the best move it had so far.
@@ -512,6 +543,8 @@ int KCubeBoxWidget::skill() const
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
+   m_step = KMessageBox::Yes;	// IDW test.
+
    delayedShutdown = false;	// True if we need to quit, but brain is active.
 
    fullSpeed      = false;
@@ -565,6 +598,8 @@ void KCubeBoxWidget::init()
    setNormalCursor();
 
    emit playerChanged(One);
+
+   brain.startStats();
 }
 
 void KCubeBoxWidget::initCubes()
@@ -853,6 +888,7 @@ void KCubeBoxWidget::continueCascade()
          continue;
       }
 
+      qDebug() << m_cubesToWin [currentPlayer] << "cubes to win for player" << currentPlayer;
       if (m_cubesToWin [currentPlayer] <= 0) {
          emit stoppedMoving();
          reset();
@@ -1026,6 +1062,8 @@ bool KCubeBoxWidget::nextMoveStep()
    }
 
    if (m_cubesToWin [currentPlayer] <= 0) {
+      brain.dumpStats();
+
       foreach (index, saturated) {
 	  cubes[index/d][index%d]->setNeutral();
       }
