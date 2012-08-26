@@ -37,6 +37,8 @@ class CubeBox;
 class AI_Kepler : public AI_Base
 {
 public:
+   QString whoami() { return QString ("Kepler"); } // IDW test.
+
    /**
    * The Kepler AI constructor.
    */

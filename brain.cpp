@@ -40,11 +40,14 @@
 
 Brain::Brain(int initValue)
 {
-   m_currentAI = new AI_Newton();
+   // m_currentAI = new AI_Newton();
+   m_currentAI = new AI_Kepler();
    m_ai[0] = 0;
    m_ai[1] = m_currentAI;
-   m_ai[2] = new AI_Kepler();
-   setSkill (Prefs::EnumSkill::Beginner);
+   m_ai[2] = m_currentAI;
+   // m_ai[2] = new AI_Kepler();
+
+   setSkill (Prefs::EnumSkill1::Beginner);
    stopped =false;
    active = false;
    currentLevel = 0;
@@ -58,14 +61,14 @@ void Brain::setSkill (int newSkill)
    _skill = newSkill;
 
    switch (_skill) {
-   case Prefs::EnumSkill::Beginner:
+   case Prefs::EnumSkill1::Beginner:
       maxLevel = 1;
       break;
-   case Prefs::EnumSkill::Average:
+   case Prefs::EnumSkill1::Average:
       maxLevel = 3;
       // IDW test. maxLevel = 1; // IDW test.
       break;
-   case Prefs::EnumSkill::Expert:
+   case Prefs::EnumSkill1::Expert:
       maxLevel = 5;
       break;
    default:
@@ -93,6 +96,7 @@ bool Brain::getMove (int& row, int& column,CubeBox::Player player ,CubeBox box)
    if (isActive())
       return false;
 
+   qDebug() << "Entered bool Brain::getMove(): player" << player;
    m_currentAI = m_ai[player];
    active = true;
    stopped = false;
@@ -243,8 +247,8 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
    QString tag = QString("").leftJustified (currentLevel * 2, '-');
    tag = tag % " doMove(";
    tag = tag.leftJustified (16, ' ');
-   // XXX qDebug() << tag << row << column << player
-            // XXX << "level" << currentLevel << "maxLevel" << maxLevel;
+   qDebug() << tag << row << column << player
+            << "level" << currentLevel << "maxLevel" << maxLevel;
    // if the maximum depth isn't reached
    if (currentLevel < maxLevel) {
        // test, if possible to increase this cube
@@ -261,7 +265,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
          double result = pow ((float)box.dim() * box.dim(),
                                 (maxLevel - currentLevel)) *
 	                        m_currentAI->assessField (currentPlayer, box);
-	 // XXX qDebug() << "PLAYER WON" << player << "currentPlayer" << currentPlayer << "result" << result;
+	 qDebug() << "PLAYER WON" << player << "currentPlayer" << currentPlayer << "result" << result;
 	 return result;
       }
 
@@ -283,7 +287,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
          worth = (long int) pow ((float) box.dim() * box.dim(),
                                  (maxLevel - currentLevel - 1)) *
                                  m_currentAI->assessField (currentPlayer, box);
-	 // XXX qDebug() << "ONLY ONE MOVE at X" << c2m[0].column << "Y" << c2m[0].row << "result" << worth;
+	 qDebug() << "ONLY ONE MOVE at X" << c2m[0].column << "Y" << c2m[0].row << "result" << worth;
       }
       else {
          for (i = 0; i < moves; i++) {
@@ -297,7 +301,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
             }
 
             // simulate every possible move
-	    // XXX qDebug() << "RECURSION at X" << c2m[i].column << "Y" << c2m[i].row << "result so far" << worth;
+	    qDebug() << "RECURSION at X" << c2m[i].column << "Y" << c2m[i].row << "result so far" << worth;
             worth += doMove (c2m[i].row, c2m[i].column, player, box);
          }
       }
@@ -312,7 +316,7 @@ double Brain::doMove (int row, int column, CubeBox::Player player, CubeBox box)
 
       // return m_currentAI->assessField (currentPlayer, box);
       double result = m_currentAI->assessField (currentPlayer, box);
-      // XXX qDebug() << "MAXIMUM LEVEL at X" << column << "Y" << row << "result" << result;
+      qDebug() << "MAXIMUM LEVEL at X" << column << "Y" << row << "result" << result;
       return result;
    }
 }
@@ -325,7 +329,7 @@ int Brain::findCubes2Move (coordinate * c2m,
    int moves    = 0;
    int min      = 9999;
 
-   if (_skill == Prefs::EnumSkill::Beginner) {
+   if (_skill == Prefs::EnumSkill1::Beginner) {
       // Select the cubes with the most number of pips on them.
       int max = 0;
       for (i = 0; i < box.dim(); i++)
@@ -420,7 +424,7 @@ int Brain::findCubes2Move (coordinate * c2m,
 
               counter++;
            }
-           else if (_skill == Prefs::EnumSkill::Average) {
+           else if (_skill == Prefs::EnumSkill1::Average) {
               if (c2m[i].val == secondMin) {
                  c2m[counter].row = c2m[i].row;
                  c2m[counter].column = c2m[i].column;

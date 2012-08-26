@@ -51,22 +51,47 @@
       <label>Size of the playing field.</label>
       <default>6</default>
     </entry>
-    <entry name="Skill" type="Enum">
+    <entry name="ComputerPlayer1" type="Bool" key="Computer_Pl_1">
+      <label>Whether player 1 is played by the computer.</label>
+      <default>false</default>
+    </entry>
+    <entry name="Kepler1" type="Bool">
+      <label>Whether computer player 1 uses Kepler AI.</label>
+      <default>true</default>
+    </entry>
+    <entry name="Newton1" type="Bool">
+      <label>Whether computer player 1 uses Newton AI.</label>
+      <default>false</default>
+    </entry>
+    <entry name="Skill1" type="Enum">
       <choices>
         <choice name="Beginner"/>
         <choice name="Average"/>
         <choice name="Expert"/>
       </choices>
-      <label>Skill of the computer player.</label>
+      <label>Skill of computer player 1.</label>
       <default>Average</default>
-    </entry>
-    <entry name="ComputerPlayer1" type="Bool" key="Computer_Pl_1">
-      <label>Whether player 1 is played by the computer.</label>
-      <default>false</default>
     </entry>
     <entry name="ComputerPlayer2" type="Bool" key="Computer_Pl_2">
       <label>Whether player 2 is played by the computer.</label>
       <default>true</default>
+    </entry>
+    <entry name="Kepler2" type="Bool">
+      <label>Whether computer player 2 uses Kepler AI.</label>
+      <default>true</default>
+    </entry>
+    <entry name="Newton2" type="Bool">
+      <label>Whether computer player 2 uses Newton AI.</label>
+      <default>false</default>
+    </entry>
+    <entry name="Skill2" type="Enum">
+      <choices>
+        <choice name="Beginner"/>
+        <choice name="Average"/>
+        <choice name="Expert"/>
+      </choices>
+      <label>Skill of computer player 2.</label>
+      <default>Average</default>
     </entry>
   </group>
 </kcfg>

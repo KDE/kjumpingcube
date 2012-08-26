@@ -58,6 +58,7 @@ class AI_Main
 public:
 
    void startStats();
+   void postMove (CubeBox::Player player, int x, int y);
    void dumpStats();
 
    /* IDW TODO - Use a thread and return the move via a signal.
@@ -69,6 +70,7 @@ public:
    *        if no value is given a truly random value is used
    */
    explicit AI_Main();
+   virtual ~AI_Main();
 
    // IDW TODO - It would be good to use const for CubeBox parameters where possible,
    //            but something back in cubeboxbase.h prevents that.
@@ -96,8 +98,12 @@ public:
    /**
     * Skill according to Prefs::EnumSkill
     */
-   void setSkill (int);
-   int  skill() const;
+   void setSkill (int skill1, bool kepler1, bool newton1,
+                  int skill2, bool kepler2, bool newton2);
+
+   // void setSkill (int); // IDW delete.
+
+   // int  skill() const; // IDW delete.
 
 private:
    /* IDW TODO - Use a thread and return the move via a signal.
@@ -145,8 +151,13 @@ private:
 
    void boxPrint (int side, int * owners, int * values);
 
+   AI_Base * m_AI_Kepler;
+   AI_Base * m_AI_Newton;
+
    AI_Base * m_ai [3];
    AI_Base * m_currentAI;
+
+   int m_ai_skill [3];
 
    /** Current depth of recursive searching for moves. */
    int  m_currentLevel;

@@ -89,7 +89,7 @@ public:
    void setComputerplayer(Player player,bool flag);
 
    /** returns current skill, according to Prefs::EnumSkill */
-   int skill() const;
+   // IDW delete. int skill() const;
 
    /** returns true if player 'player' is a computerPlayer */
    bool isComputer(Player player) const;

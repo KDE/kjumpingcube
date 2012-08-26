@@ -38,7 +38,7 @@ CubeBox::CubeBox(const CubeBox& box)
       :CubeBoxBase<Cube>(box.dim())
 {
    initCubes();
-   qDebug() << "COPY CubeBox, size" << dim(); // IDW test.
+   // qDebug() << "COPY CubeBox, size" << dim(); // IDW test.
 
    int i,j;
    for(i=0;i<dim();i++)
@@ -70,7 +70,7 @@ CubeBox::CubeBox(KCubeBoxWidget& box)
 
 CubeBox::~CubeBox()
 {
-   qDebug() << "DESTROY CubeBox"; // IDW test.
+   // qDebug() << "DESTROY CubeBox"; // IDW test.
 }
 
 /* IDW test.  Redundant?  YES!!

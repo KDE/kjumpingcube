@@ -97,10 +97,9 @@ void KCubeBoxWidget::loadSettings(){
   color1 = Prefs::color1();
   color2 = Prefs::color2();
   color0 = Prefs::color0();
+
   animationTime = Prefs::animationSpeed() * 150;
   setDim (Prefs::cubeDim());
-  // setDim (3); // IDW test.
-  // reSizeCubes = true; // IDW test.
 
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
@@ -118,7 +117,12 @@ void KCubeBoxWidget::loadSettings(){
      setColors ();
   }
 
-  brain.setSkill( Prefs::skill() );
+  brain.setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
+                  Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
+  qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
+  qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
+
+  brainPrev.setSkill( Prefs::skill1() ); // IDW test. TODO - Delete this.
 
   setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
   setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
@@ -460,15 +464,18 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
-      t.start();
       qDebug() << "Calling brain.getMove() for player" << player;
-      // IDW TODO - This causes an unnecessary COPY KCubeBoxWidget operation, even
-      //            though the "field" parameter is CubeBox & type.
-      /* IDW failed test.
+      // IDW TODO - This causes an unnecessary COPY KCubeBoxWidget operation,
+      //            even if the "field" parameter is CubeBox & type.
+      t.start();
+      /* IDW test - Playing class Brain and class AI_Main against each other.
       if (player == One)
          brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
-      else
-         brainPrev.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
+      else {
+         brainPrev.getMove
+                       (row, column, (CubeBoxBase<Cube>::Player) player, field);
+         brain.postMove ((CubeBox::Player)player, row, column);
+      }
       */
       brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
       qDebug() << "TIME of MOVE" << t.elapsed();
@@ -532,11 +539,12 @@ bool KCubeBoxWidget::isComputer(Player player) const
    else
       return computerPlTwo;
 }
-
+/* IDW delete.
 int KCubeBoxWidget::skill() const
 {
    return brain.skill();
 }
+*/
 
 /* ***************************************************************** **
 **                   initializing functions                          **
@@ -827,6 +835,7 @@ void KCubeBoxWidget::doMove(int row,int column)
    if (! computerMove) { // Make only human-players' moves undoable.
       // For the undo-function: make a copy of the playfield.
       *undoBox = *this;
+      brain.postMove ((CubeBox::Player)currentPlayer, row, column); // IDW test.
    }
 
    // Increase this cube's count and previous owner's target: decrease current

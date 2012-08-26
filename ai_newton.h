@@ -36,6 +36,8 @@ class CubeBox;
 class AI_Newton : public AI_Base
 {
 public:
+   QString whoami() { return QString ("Newton"); } // IDW test.
+
    /**
    * The Newton AI constructor.
    */

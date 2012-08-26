@@ -50,16 +50,12 @@ AI_Main::AI_Main()
    m_moveStats.clear();
    m_currentMoveNo = 0;
 
-   // IDW TODO - Make the AI selectable for each player (settings.ui and .kcfg).
-   m_currentAI = new AI_Newton();
-   m_ai[0] = 0;
-   // m_ai[2] = m_currentAI; // IDW test, switch AIs.
-   // m_ai[1] = new AI_Kepler(); // IDW test, switch AIs.
-   m_ai[1] = m_currentAI;
-   // m_ai[2] = new AI_Kepler();
-   m_ai[2] = m_currentAI; // IDW test, Newton v. Newton.
+   m_AI_Kepler = new AI_Kepler();
+   m_AI_Newton = new AI_Newton();
 
-   setSkill (Prefs::EnumSkill::Beginner);
+   setSkill (Prefs::EnumSkill1::Beginner, true, false,
+             Prefs::EnumSkill2::Beginner, true, false);
+
    m_stopped = false;
    m_active = false;
    m_currentLevel = 0;
@@ -67,33 +63,30 @@ AI_Main::AI_Main()
    m_random.setSeed (0);
 }
 
-void AI_Main::setSkill (int newSkill)
+AI_Main::~AI_Main()
 {
-   m_skill = newSkill;
-
-   switch (m_skill) {
-   case Prefs::EnumSkill::Beginner:
-      m_maxLevel = 1;
-      break;
-   case Prefs::EnumSkill::Average:
-      // m_maxLevel = 2; // IDW test.
-      m_maxLevel = 3;
-      // IDW test. m_maxLevel = 1; // IDW test.
-      break;
-   case Prefs::EnumSkill::Expert:
-      m_maxLevel = 5;
-      // IDW test. m_maxLevel = 13;
-      // m_maxLevel = 13;
-      break;
-   default:
-      break;
-   }
+   delete m_AI_Kepler;
+   delete m_AI_Newton;
 }
 
+void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
+                        int skill2, bool kepler2, bool newton2)
+{
+   m_ai[0] = 0;
+   m_ai[1] = kepler1 ? m_AI_Kepler : m_AI_Newton;
+   m_ai[2] = kepler2 ? m_AI_Kepler : m_AI_Newton;
+
+   m_ai_skill[0] = 0;
+   m_ai_skill[1] = skill1;
+   m_ai_skill[2] = skill2;
+}
+
+/*
 int AI_Main::skill() const
 {
    return m_skill;
 }
+*/
 
 void AI_Main::stop()
 {
@@ -108,12 +101,28 @@ bool AI_Main::isActive() const
 bool AI_Main::getMove (int & row, int & column,
                        CubeBox::Player player, CubeBox & box)
 {
-   // qDebug() << "Entering AI_Main::getMove() for player" << player;
+   qDebug() << "Entering AI_Main::getMove() for player" << player;
    if (isActive())
       return false;
 
+   m_currentAI = m_ai[player];
+   m_skill     = m_ai_skill[player];
+   switch (m_skill) {
+   case Prefs::EnumSkill1::Beginner:
+      m_maxLevel = 1;
+      break;
+   case Prefs::EnumSkill1::Average:
+      m_maxLevel = 3;
+      break;
+   case Prefs::EnumSkill1::Expert:
+      m_maxLevel = 5;
+      break;
+   default:
+      break;
+   }
+   qDebug() << "PLAYER" << player << m_currentAI->whoami() << "skill" << m_skill << "max level" << m_maxLevel;
 
-   m_random.setSeed (20120813);
+   // m_random.setSeed (20120813); // IDW test.
 
    // IDW test. Statistics collection.
    m_currentMove = new MoveStats [1];
@@ -207,8 +216,6 @@ Move AI_Main::tryMoves (CubeBox::Player player, int side, int * owners,
    double maxValue = -BigValue;
 
    Move bestMove = {-1, -1, -BigValue};
-
-   m_currentAI = m_ai[player];
 
    // Find likely cubes to move.
    int nCubes = side * side;
@@ -355,7 +362,7 @@ int AI_Main::findCubesToMove (Move * c2m, CubeBox::Player player, int side,
       seq[last] = temp;
    }
 
-   if (m_skill == Prefs::EnumSkill::Beginner) {
+   if (m_skill == Prefs::EnumSkill1::Beginner) {
       // Select the cubes with the most pips on them.
       int max = 0;
         for (n = 0; n < nCubes; n++) {
@@ -470,11 +477,11 @@ int AI_Main::findCubesToMove (Move * c2m, CubeBox::Player player, int side,
         //            Should it all depend on how many moves are at "min"?
         //            Should AI_Newton have overlapping values of move types?
 
-        // if (true || m_skill == Prefs::EnumSkill::Average) // IDW test.
-        // if ((counter <= 2) || (m_skill == Prefs::EnumSkill::Average)) {
+        // if (true || m_skill == Prefs::EnumSkill1::Average) // IDW test.
+        // if ((counter <= 2) || (m_skill == Prefs::EnumSkill1::Average)) {
         // if (m_currentMoveNo > (nCubes / 3)) {
 
-        if ((m_skill == Prefs::EnumSkill::Average) &&
+        if (/* (m_skill == Prefs::EnumSkill1::Average) && */
             (m_currentMoveNo > (nCubes / 3))) { // IDW test. Board > 1/3 full
            for (n = 0; n < moves; n++) {
               if (c2m[n].val == secondMin) {
@@ -498,7 +505,8 @@ int AI_Main::findCubesToMove (Move * c2m, CubeBox::Player player, int side,
 
    // If more than maxMoves moves are favorable, take maxMoves random
    // moves because it will take too long to check more.
-   int maxMoves = 10;
+   // int maxMoves = (m_currentMoveNo > (nCubes / 3)) ? 10 : 4;
+   int maxMoves = 4;
    return qMin (moves, maxMoves);
 }
 
@@ -582,6 +590,25 @@ void AI_Main::startStats()
    m_moveStats.clear();
 }
 
+void AI_Main::postMove (CubeBox::Player player, int x, int y)
+{
+   // IDW test. Statistics collection.
+   // Used to record a move by a human player or other AI (e.g. Brain class).
+   m_currentMove = new MoveStats [1];
+
+   m_currentMoveNo++;
+   m_currentMove->player     = player;
+   m_currentMove->moveNo     = m_currentMoveNo;
+   m_currentMove->n_simulate = 0;
+   m_currentMove->n_assess   = 0;
+   m_currentMove->searchStats = new QList<SearchStats *>();
+
+   m_currentMove->x     = x;
+   m_currentMove->y     = y;
+   m_currentMove->value = 0;
+   m_moveStats.append (m_currentMove);
+}
+
 void AI_Main::dumpStats()
 {
    // IDW test. For debugging.
@@ -592,7 +619,8 @@ void AI_Main::dumpStats()
    boxPrint (m_side, m_owners, m_values);
    foreach (MoveStats * m, m_moveStats) {
       QList<int> l;
-      for (int n = 0; n <= m_maxLevel; n++) {
+      int nMax = m->searchStats->count();
+      for (int n = 0; n < nMax; n++) {
          l.append (m->searchStats->at(n)->n_moves);
       }
       qDebug() << m->player << m->moveNo << "X" << m->x << "Y" << m->y

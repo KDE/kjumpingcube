@@ -24,12 +24,16 @@
 #include "cubebox.h"
 #include "cube.h"
 
+#include <QString> // IDW test.
+
 /**
 * A pure-virtual class that is a base for alternative KJumpinCube AI algorithms.
 */
 class AI_Base
 {
 public:
+   virtual QString whoami() = 0; // IDW test.
+
    AI_Base()          {};
    virtual ~AI_Base() {};
 
