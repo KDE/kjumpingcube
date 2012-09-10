@@ -1,10 +1,14 @@
 [Desktop Entry]
 Name=KJumpingCube
+Name[uk]=KJumpingCube
+Name[x-test]=xxKJumpingCubexx
 Exec=kjumpingcube -caption "%c"
 Icon=kjumpingcube
 Type=Application
 X-DocPath=kjumpingcube/index.html
 GenericName=Territory Capture Game
+GenericName[uk]=Гра на захоплення територій
+GenericName[x-test]=xxTerritory Capture Gamexx
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi

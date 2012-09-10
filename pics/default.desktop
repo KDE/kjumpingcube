@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=KJumpingCube Default
+Name[uk]=Типова KJumpingCube
+Name[x-test]=xxKJumpingCube Defaultxx
 Description=A simple set of cubes for KDE4
+Description[uk]=Простий набір кубиків для KDE4
+Description[x-test]=xxA simple set of cubes for KDE4xx
 Author=Ian Wadham, Eugene Trounev
 FileName=default.svg
 DrawHairlines=0
