@@ -9,7 +9,7 @@
 ]>
  
 <book id="kjumpingcube" lang="&language;"> <!-- do not change this! -->
-<book id="kjumpingcube"info>
+<bookinfo>
 	<title>The &kjumpingcube; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
 <!-- List of immidiate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
