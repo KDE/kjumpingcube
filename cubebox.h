@@ -45,12 +45,13 @@ public:
    // CubeBox& operator= (const CubeBox& box); // IDW test.
    CubeBox& operator= (KCubeBoxWidget& box);
 
+/*
    bool simulateMove(Player fromWhom,int row, int column);
    bool playerWon(Player who) const;
 
 private:
    void increaseNeighbours(CubeBox::Player forWhom,int row,int column);
-
+*/
 };
 
 #endif // CUBEBOX_H

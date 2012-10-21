@@ -27,7 +27,7 @@
 
 #include "cubeboxbase.h"
 #include "kcubewidget.h"
-#include "brain.h"
+// #include "brain.h" // IDW DELETE this.
 #include "ai_main.h"
 #include <QWidget>
 //Added by qt3to4:
@@ -176,7 +176,7 @@ private:
 
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
 
-   Brain brainPrev;
+   // Brain brainPrev; // IDW DELETE this.
    AI_Main brain;
 
    QTimer *animationTimer;

@@ -122,7 +122,7 @@ void KCubeBoxWidget::loadSettings(){
   qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
   qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
 
-  brainPrev.setSkill( Prefs::skill1() ); // IDW test. TODO - Delete this.
+  // brainPrev.setSkill( Prefs::skill1() ); // IDW test. TODO - Delete this.
 
   setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
   setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
@@ -196,7 +196,8 @@ void KCubeBoxWidget::reset()
 
    KCubeWidget::enableClicks(true);
 
-   m_step = KMessageBox::Yes;	// IDW test.
+   // m_step = KMessageBox::Yes;	// IDW test.
+   m_step = KMessageBox::No;	// IDW test.
 
    currentPlayer=One;
 
@@ -299,6 +300,7 @@ void KCubeBoxWidget::stopActivities()
 
 void KCubeBoxWidget::saveProperties(KConfigGroup& config)
 {
+   // IDW TODO - Save settings for computer player(s), animation, etc.
    if(isMoving())
    {
       stopActivities();
@@ -332,6 +334,9 @@ void KCubeBoxWidget::saveProperties(KConfigGroup& config)
 
 void KCubeBoxWidget::readProperties(const KConfigGroup& config)
 {
+  // IDW TODO - Restore settings for computer player(s), animation, etc.
+  // IDW TODO - If a computer player is "on turn", wait for a click or use
+  //            a KMessageBox ...
   QStringList list;
   QString     key;
   int         owner, value, maxValue;
@@ -479,7 +484,7 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       */
       brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
       qDebug() << "TIME of MOVE" << t.elapsed();
-      qDebug() << "===============================================================";
+      qDebug() << "==============================================================";
       if (delayedShutdown) {
          delayedShutdown = false;
          emit shutdownNow();
@@ -487,12 +492,12 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       }
       emit stoppedThinking();
 
-      if (m_step == KMessageBox::Yes) {
-         m_step = KMessageBox::questionYesNo (this,
-                         QString("MOVE FOR PLAYER %1 is X %2 Y %3").
-                                arg(currentPlayer).arg(row).arg(column),
-                         QString("Continue stepping?"));
-      }
+      // if (m_step == KMessageBox::Yes) { // IDW test.
+         // m_step = KMessageBox::questionYesNo (this,
+                         // QString("MOVE FOR PLAYER %1 is X %2 Y %3").
+                                // arg(currentPlayer).arg(row).arg(column),
+                         // QString("Continue stepping?"));
+      // }
 
       // We do not care if we interrupted the computer.  It was probably taking
       // too long, so we will just take the best move it had so far.
@@ -551,7 +556,8 @@ int KCubeBoxWidget::skill() const
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
-   m_step = KMessageBox::Yes;	// IDW test.
+   // m_step = KMessageBox::Yes;	// IDW test.
+   m_step = KMessageBox::No;	// IDW test.
 
    delayedShutdown = false;	// True if we need to quit, but brain is active.
 

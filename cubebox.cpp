@@ -119,7 +119,7 @@ CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 
 
 
-
+/*
 bool CubeBox::simulateMove(Player fromWhom,int row, int column)
 {
    bool finished;
@@ -190,3 +190,4 @@ void CubeBox::increaseNeighbours(CubeBox::Player forWhom,int row,int column)
    if(column!=dim()-1)
      cubes[row][column+1]->increase(_player);
 }
+*/

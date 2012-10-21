@@ -158,6 +158,7 @@ private:
    AI_Base * m_currentAI;
 
    int m_ai_skill [3];
+   int m_ai_maxLevel [3];
 
    /** Current depth of recursive searching for moves. */
    int  m_currentLevel;
@@ -201,6 +202,11 @@ private:
    int m_currentMoveNo;
    MoveStats * m_currentMove;
    QList<MoveStats *> m_moveStats;
+
+   QString tag (int level);
+   void initStats (int player);
+   void saveStats (Move & move);
+   void copyCubeBox (CubeBox & box);
 };
 
 /* IDW TODO - Use a thread and return the move via a signal.
