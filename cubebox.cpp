@@ -54,7 +54,7 @@ CubeBox::CubeBox(KCubeBoxWidget& box)
       :CubeBoxBase<Cube>(box.dim())
 {
    initCubes();
-   qDebug() << "COPY KCubeBoxWidget, size" << dim(); // IDW test.
+   // qDebug() << "COPY KCubeBoxWidget, size" << dim(); // IDW test.
 
    int i,j;
    for(i=0;i<dim();i++)

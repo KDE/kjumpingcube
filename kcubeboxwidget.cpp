@@ -119,8 +119,8 @@ void KCubeBoxWidget::loadSettings(){
 
   brain.setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
                   Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
-  qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
-  qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
+  // qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
+  // qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
 
   // brainPrev.setSkill( Prefs::skill1() ); // IDW test. TODO - Delete this.
 
@@ -241,7 +241,7 @@ void KCubeBoxWidget::getHint()
    }
    emit stoppedThinking();
 
-   qDebug() << "HINT FOR PLAYER" << currentPlayer << "X" << row << "Y" << column;
+   // qDebug() << "HINT FOR PLAYER" << currentPlayer << "X" << row << "Y" << column;
    if (done) {
       startAnimation (Hint, row, column);
    }
@@ -469,10 +469,10 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
-      qDebug() << "Calling brain.getMove() for player" << player;
+      // qDebug() << "Calling brain.getMove() for player" << player;
       // IDW TODO - This causes an unnecessary COPY KCubeBoxWidget operation,
       //            even if the "field" parameter is CubeBox & type.
-      t.start();
+      // t.start();
       /* IDW test - Playing class Brain and class AI_Main against each other.
       if (player == One)
          brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
@@ -483,8 +483,8 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       }
       */
       brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
-      qDebug() << "TIME of MOVE" << t.elapsed();
-      qDebug() << "==============================================================";
+      // qDebug() << "TIME of MOVE" << t.elapsed();
+      // qDebug() << "==============================================================";
       if (delayedShutdown) {
          delayedShutdown = false;
          emit shutdownNow();
@@ -903,7 +903,7 @@ void KCubeBoxWidget::continueCascade()
          continue;
       }
 
-      qDebug() << m_cubesToWin [currentPlayer] << "cubes to win for player" << currentPlayer;
+      // qDebug() << m_cubesToWin [currentPlayer] << "cubes to win for player" << currentPlayer;
       if (m_cubesToWin [currentPlayer] <= 0) {
          emit stoppedMoving();
          reset();
