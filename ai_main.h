@@ -27,7 +27,6 @@
 #include <krandomsequence.h>
 
 #include "ai_base.h"
-// IDW test. #include "cubebox.h"
 
 /* IDW TODO - Use a thread and return the move via a signal.
 class ThreadedAI;
@@ -60,7 +59,6 @@ class AI_Main
 public:
 
    void startStats();
-   // IDW test. void postMove (CubeBox::Player player, int x, int y);
    void postMove (Player player, int x, int y);
    void dumpStats();
 
@@ -85,8 +83,6 @@ public:
    * @return false if computing was stopped
    * @see AI_Main#stop;
    */
-   // IDW test. bool getMove (int & row, int & column,
-                 // IDW test. CubeBox::Player player, CubeBox & field);
    bool getMove (int & row, int & column, Player player, AI_Box * box);
 
    /**
@@ -105,10 +101,6 @@ public:
    void setSkill (int skill1, bool kepler1, bool newton1,
                   int skill2, bool kepler2, bool newton2);
 
-   // void setSkill (int); // IDW delete.
-
-   // int  skill() const; // IDW delete.
-
 private:
    /* IDW TODO - Use a thread and return the move via a signal.
    ThreadedAI * m_thread;
@@ -116,10 +108,9 @@ private:
    Move       m_move;
    */
 
-   // IDW test. CubeBox::Player m_player;
    Player     m_player;
 
-   AI_Box *   m_box; // IDW test.
+   AI_Box *   m_box;
 
    int        m_side;
    int        m_nCubes;
@@ -213,7 +204,6 @@ private:
    QString tag (int level);
    void initStats (int player);
    void saveStats (Move & move);
-   // IDW test. void copyCubeBox (CubeBox & box);
 };
 
 /* IDW TODO - Use a thread and return the move via a signal.

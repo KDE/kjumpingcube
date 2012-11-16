@@ -35,7 +35,6 @@
 
 KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
         : QWidget(parent),
-          // IDW test. CubeBoxBase<KCubeWidget>(d)
 	  m_side (d),
 	  m_box (new AI_Box (m_side)),
 	  m_currentPlayer (One)
@@ -43,59 +42,19 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
    init();
 }
 
-
-/*
-KCubeBoxWidget::KCubeBoxWidget(CubeBox& box,QWidget *parent)
-      :QWidget(parent),
-       CubeBoxBase<KCubeWidget>(box.dim())
-{
-   init();
-
-   int i,j;
-   for(i=0;i<dim();i++)
-      for(j=0;j<dim();j++)
-      {
-         *cubes[i][j]=*box[i][j];
-      }
-
-   currentPlayer=(KCubeBoxWidget::Player)box.player();
-}
-
-
-KCubeBoxWidget::KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent)
-      :QWidget(parent),
-       CubeBoxBase<KCubeWidget>(box.dim())
-{
-   init();
-
-   int i,j;
-   for(i=0;i<dim();i++)
-      for(j=0;j<dim();j++)
-      {
-         *cubes[i][j]=*box.cubes[i][j];
-      }
-
-
-   currentPlayer=box.currentPlayer;
-}
-*/
-
-
 KCubeBoxWidget::~KCubeBoxWidget()
 {
    if(isActive())
     stopActivities();
    if(cubes)
-      deleteCubes();
+      deleteCubes(); // IDW TODO - Needed?
    delete m_box; // IDW test.
-   // IDW test. delete undoBox;
 }
 
 void KCubeBoxWidget::loadSettings(){
   bool reColorCubes = ((color1 != Prefs::color1()) ||
                        (color2 != Prefs::color2()) ||
                        (color0 != Prefs::color0()));
-  // IDW test. bool reSizeCubes  = (dim() != Prefs::cubeDim());
   bool reSizeCubes  = (m_side != Prefs::cubeDim());
 
   color1 = Prefs::color1();
@@ -107,7 +66,6 @@ void KCubeBoxWidget::loadSettings(){
 
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
-     // IDW test. emit colorChanged(currentPlayer);		// Change color in status bar.
      emit colorChanged (m_currentPlayer);	// Change color in status bar.
   }
   if (reSizeCubes) {
@@ -129,10 +87,6 @@ void KCubeBoxWidget::loadSettings(){
   qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
   qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
 
-  // brainPrev.setSkill( Prefs::skill1() ); // IDW test. TODO - Delete this.
-
-  // IDW test. setComputerplayer(KCubeBoxWidget::One, Prefs::computerPlayer1());
-  // IDW test. setComputerplayer(KCubeBoxWidget::Two, Prefs::computerPlayer2());
   setComputerplayer (One, Prefs::computerPlayer1());
   setComputerplayer (Two, Prefs::computerPlayer2());
 
@@ -143,61 +97,17 @@ void KCubeBoxWidget::loadSettings(){
   }
   else if (m_cubesToWin [Cube::Nobody] > 0) {
      // Continue current game, maybe with change of computer player settings.
-     // IDW test. checkComputerplayer(currentPlayer);
      checkComputerplayer (m_currentPlayer);
      return;
   }
   // There is no more to do: we are waiting for a click to start the game.
 }
 
-/* IDW test.
-KCubeBoxWidget& KCubeBoxWidget::operator=(const KCubeBoxWidget& box)
-{
-   if(this!=&box)
-   {
-      if(dim()!=box.dim())
-      {
-         setDim(box.dim());
-      }
-
-
-      for(int i=0;i<dim();i++)
-         for(int j=0;j<dim();j++)
-         {
-            *cubes[i][j]=*box.cubes[i][j];
-         }
-
-      currentPlayer=box.currentPlayer;
-   }
-   return *this;
-}
-
-KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
-{
-   if(dim()!=box.dim())
-   {
-      setDim(box.dim());
-   }
-
-   for(int i=0;i<dim();i++)
-      for(int j=0;j<dim();j++)
-      {
-         *cubes[i][j]=*box[i][j];
-      }
-
-   currentPlayer=(KCubeBoxWidget::Player)box.player();
-
-   return *this;
-}
-*/
-
 void KCubeBoxWidget::reset()
 {
    stopActivities();
 
    int i,j;
-   // IDW test. for(i=0;i<dim();i++)
-      // IDW test. for(j=0;j<dim();j++)
    for (i = 0; i < m_side; i++)
       for (j = 0; j < m_side; j++)
       {
@@ -205,17 +115,13 @@ void KCubeBoxWidget::reset()
       }
 
    m_cubesToWin [Cube::Nobody] = 0;
-   // IDW test. m_cubesToWin [Cube::One]    = dim() * dim();
-   // IDW test. m_cubesToWin [Cube::Two]    = dim() * dim();
    m_cubesToWin [Cube::One]    = m_side * m_side;
    m_cubesToWin [Cube::Two]    = m_side * m_side;
 
    KCubeWidget::enableClicks(true);
 
-   // m_step = KMessageBox::Yes;	// IDW test.
    m_step = KMessageBox::No;	// IDW test.
 
-   // IDW test. currentPlayer=One;
    m_currentPlayer = One;
 
    emit playerChanged(One);
@@ -234,14 +140,9 @@ void KCubeBoxWidget::undo()
    Player oldPlayer = m_currentPlayer;
 
    // IDW TODO - Skip over computer players. Avoid undo if two computer players?
-   // IDW test. *this=*undoBox;
    bool isAI = false;
    m_box->undoPosition (m_currentPlayer, isAI);
 
-   // IDW test. if(oldPlayer!=currentPlayer)
-      // IDW test. emit playerChanged(currentPlayer);
-
-   // IDW test. checkComputerplayer(currentPlayer);
    if (oldPlayer != m_currentPlayer)
       emit playerChanged (m_currentPlayer);
 
@@ -254,10 +155,8 @@ void KCubeBoxWidget::getHint()
       return;
 
    int row=0,column=0;
-   // IDW test. CubeBox field=CubeBox(*this);
 
    emit startedThinking();
-   // IDW test. bool done = brain.getMove (row,column,(CubeBox::Player)currentPlayer,field);
    bool done = brain.getMove (row, column, m_currentPlayer, m_box);
    if (delayedShutdown) {
       delayedShutdown = false;
@@ -266,7 +165,6 @@ void KCubeBoxWidget::getHint()
    }
    emit stoppedThinking();
 
-   // IDW test. qDebug() << "HINT FOR PLAYER" << currentPlayer << "X" << row << "Y" << column;
    qDebug() << "HINT FOR PLAYER" << m_currentPlayer << "X" << row << "Y" << column;
    if (done) {
       startAnimation (Hint, row, column);
@@ -276,8 +174,6 @@ void KCubeBoxWidget::getHint()
 
 void KCubeBoxWidget::setColors ()
 {
-   // IDW test. for (int row=0; row<dim(); row++) {
-      // IDW test. for (int col=0; col<dim(); col++) {
    for (int row = 0; row < m_side; row++) {
       for (int col = 0; col < m_side; col++) {
          cubes[row][col]->updateColors();
@@ -287,15 +183,10 @@ void KCubeBoxWidget::setColors ()
 
 void KCubeBoxWidget::setDim(int d)
 {
-   // IDW test. if(d != dim())
    if (d != m_side) {
-      // IDW test. undoBox->setDim(d);
-      // IDW test. CubeBoxBase<KCubeWidget>::setDim(d);
-      delete m_box; // IDW test.
-      // IDW test. delete undoBox; // IDW test.
-      m_box   = new AI_Box (d); // IDW test.
-      // IDW test. undoBox = new AI_Box (d); // IDW test.
-      m_side  = d; // IDW test.
+      delete m_box;
+      m_box   = new AI_Box (d);
+      m_side  = d;
    }
 }
 
@@ -343,13 +234,10 @@ void KCubeBoxWidget::saveProperties(KConfigGroup& config)
       stopActivities();
 
    // save current player
-   // IDW test. config.writeEntry("onTurn",(int)currentPlayer);
    config.writeEntry ("onTurn", (int) m_currentPlayer);
 
    QStringList list;
-   //list.setAutoDelete(true);
    QString owner, value, key;
-   // IDW test. int cubeDim=dim();
    int cubeDim = m_side;
 
    for(int row=0; row < cubeDim ; row++)
@@ -364,8 +252,7 @@ void KCubeBoxWidget::saveProperties(KConfigGroup& config)
 
 	list.clear();
       }
-  // IDW test. config.writeEntry("CubeDim",dim());
-  config.writeEntry ("CubeDim", m_side);
+   config.writeEntry ("CubeDim", m_side);
 }
 
 void KCubeBoxWidget::readProperties(const KConfigGroup& config)
@@ -437,7 +324,6 @@ void KCubeBoxWidget::readProperties(const KConfigGroup& config)
        KMessageBox::sorry (this, i18n("Current player is neither 1 nor 2."));
        onTurn = 1;
    }
-   // IDW test. currentPlayer=(Player)onTurn;
    m_currentPlayer = (Player)onTurn;
    emit playerChanged(onTurn);
    checkComputerplayer((Player)onTurn);
@@ -478,14 +364,11 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
       return false;
 
    // make the game start when computer player is player one and user clicks
-   // IDW test. if(isClick && currentPlayer == One && computerPlOne)
    if (isClick && m_currentPlayer == One && computerPlOne)
    {
-      // IDW test. checkComputerplayer(currentPlayer);
       checkComputerplayer (m_currentPlayer);
       return false;
    }
-   // IDW test. else if ((Cube::Owner)currentPlayer==cubes[row][column]->owner() ||
    else if ((Cube::Owner)m_currentPlayer == cubes[row][column]->owner() ||
 		   cubes[row][column]->owner()==Cube::Nobody)
    {
@@ -501,14 +384,10 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
    // checking if a process is running or the Widget isn't shown yet
    if(isActive() || !isVisible())
       return;
-   // IDW test. if((player==One && computerPlOne && currentPlayer==One)
-         // IDW test. || (player==Two && computerPlTwo && currentPlayer==Two))
    if ((player == One && computerPlOne && m_currentPlayer == One) ||
-       (player == Two && computerPlTwo && m_currentPlayer == Two))
-   {
+       (player == Two && computerPlTwo && m_currentPlayer == Two)) {
       KCubeWidget::enableClicks(false);
 
-      // IDW test. CubeBox field(*this);
       int row=0,column=0;
       emit startedThinking();
       qDebug() << "Calling brain.getMove() for player" << player;
@@ -524,7 +403,6 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
          brain.postMove ((CubeBox::Player)player, row, column);
       }
       */
-      // IDW test. brain.getMove (row, column, (CubeBoxBase<Cube>::Player) player, field);
       brain.getMove (row, column, player, m_box);
       // IDW TODO - Use m_box to make the move and return a list of steps.
       qDebug() << "TIME of MOVE" << t.elapsed();
@@ -588,12 +466,6 @@ bool KCubeBoxWidget::isComputer(Player player) const
    else
       return computerPlTwo;
 }
-/* IDW delete.
-int KCubeBoxWidget::skill() const
-{
-   return brain.skill();
-}
-*/
 
 /* ***************************************************************** **
 **                   initializing functions                          **
@@ -638,7 +510,6 @@ void KCubeBoxWidget::init()
    m_cubesToWin [Cube::One]    = m_side * m_side;
    m_cubesToWin [Cube::Two]    = m_side * m_side;
 
-   // IDW test. currentPlayer=One;
    m_currentPlayer = One;
    animationTime=Prefs::animationSpeed() * 150;
    animationTimer=new QTimer(this);
@@ -666,7 +537,6 @@ void KCubeBoxWidget::init()
 
 void KCubeBoxWidget::initCubes()
 {
-   // IDW test. const int s=dim();
    const int s = m_side;
    int i,j;
 
@@ -689,7 +559,6 @@ void KCubeBoxWidget::initCubes()
       }
 
    // initialize cubes
-   // IDW test. int max=dim()-1;
    int max = m_side - 1;
 
    cubes[0][0]->setMax(2);
@@ -848,19 +717,14 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
    int hairline = drawHairlines ? frameWidth / 10 : 0;
    qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth << "hairline" << hairline;
    boxSize = boxSize - (2 * frameWidth);
-   // IDW test. cubeSize = ((boxSize - hairline) / dim()) - hairline;
-   // IDW test. boxSize = ((cubeSize + hairline) * dim()) + hairline;
    cubeSize = ((boxSize - hairline) / m_side) - hairline;
    boxSize = ((cubeSize + hairline) * m_side) + hairline;
    topLeft.setX ((w - boxSize)/2);
    topLeft.setY ((h - boxSize)/2);
 
-   // IDW test. qDebug() << "Dimension:" << dim() << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    qDebug() << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    makeSVGBackground (w, h);
    makeSVGCubes (cubeSize);
-   // IDW test. for (int i = 0; i < dim(); i++) {
-      // IDW test. for (int j = 0; j < dim(); j++) {
    for (int i = 0; i < m_side; i++) {
       for (int j = 0; j < m_side; j++) {
          cubes[i][j]->move (topLeft.x() + hairline + i * (cubeSize + hairline),
@@ -894,22 +758,17 @@ void KCubeBoxWidget::doMove(int row,int column)
 
    // IDW TODO. Allow undo and redo of computer moves.
 
-   // IDW test. bool computerMove = ((computerPlOne && currentPlayer==One) ||
-                        // IDW test. (computerPlTwo && currentPlayer==Two));
    bool computerMove = ((computerPlOne && m_currentPlayer == One) ||
                         (computerPlTwo && m_currentPlayer == Two));
    if (! computerMove) { // Make only human-players' moves undoable.
       // For the undo-function: make a copy of the playfield.
       // IDW test. *undoBox = *this;
       m_box->recordPosition (m_currentPlayer, computerMove);
-      // IDW test. brain.postMove ((CubeBox::Player)currentPlayer, row, column); // IDW test.
       brain.postMove (m_currentPlayer, row, column); // IDW test.
    }
 
    // Increase this cube's count and previous owner's target: decrease current
    // player's target (the increase() method returns the previous owner).
-   // IDW test. m_cubesToWin [cubes[row][column]->increase((Cube::Owner)currentPlayer)] ++;
-   // IDW test. m_cubesToWin [currentPlayer] --;
    m_cubesToWin [cubes[row][column]->increase((Cube::Owner)m_currentPlayer)] ++;
    m_cubesToWin [m_currentPlayer] --;
 
@@ -951,7 +810,6 @@ void KCubeBoxWidget::startCascade (int row, int col)
    KCubeWidget::enableClicks(false);
 
    saturated.clear();		// Start a list of cascaded moves.
-   // IDW test. saturated.append (row * dim() + col);
    saturated.append (row * m_side + col);
 
    m_row = row;
@@ -968,8 +826,6 @@ void KCubeBoxWidget::continueCascade()
          continue;
       }
 
-      // IDW test. qDebug() << m_cubesToWin [currentPlayer] << "cubes to win for player" << currentPlayer;
-      // IDW test. if (m_cubesToWin [currentPlayer] <= 0) {
       qDebug() << m_cubesToWin [m_currentPlayer] << "cubes to win for player" << m_currentPlayer;
       if (m_cubesToWin [m_currentPlayer] <= 0) {
          emit stoppedMoving();
@@ -1068,9 +924,7 @@ void KCubeBoxWidget::nextAnimationStep()
 
 void KCubeBoxWidget::scatterDots (int step)
 {
-   // IDW test. Cube::Owner player = (Cube::Owner)(currentPlayer);
    Cube::Owner player = (Cube::Owner) m_currentPlayer;
-   // IDW test. int d = dim() - 1;
    int d = m_side - 1;
    if (m_row > 0) cubes[m_row-1][m_col]->migrateDot (+1,  0, step, player);
    if (m_row < d) cubes[m_row+1][m_col]->migrateDot (-1,  0, step, player);
@@ -1106,7 +960,6 @@ bool KCubeBoxWidget::nextMoveStep()
        return false;		// No more moves in this cascade.
    }
 
-   // IDW test. int d = dim();
    int d = m_side;
    int index = saturated.takeLast();
    int row = index / d;
@@ -1147,7 +1000,6 @@ bool KCubeBoxWidget::nextMoveStep()
        saturated.append (index);	// Cube is still saturated.
    }
 
-   // IDW test. if (m_cubesToWin [currentPlayer] <= 0) {
    if (m_cubesToWin [m_currentPlayer] <= 0) {
       brain.dumpStats();
 
@@ -1155,7 +1007,6 @@ bool KCubeBoxWidget::nextMoveStep()
 	  cubes[index/d][index%d]->setNeutral();
       }
       saturated.clear();
-      // IDW test. emit playerWon((int)currentPlayer);
       emit playerWon ((int) m_currentPlayer);
       return false;
    }
@@ -1171,13 +1022,8 @@ bool KCubeBoxWidget::nextMoveStep()
 
 Player KCubeBoxWidget::changePlayer()
 {
-   // IDW test. currentPlayer=(currentPlayer==One)? Two : One;
    m_currentPlayer = (m_currentPlayer==One) ? Two : One;
 
-   // IDW test. emit playerChanged(currentPlayer);
-   // IDW test. checkComputerplayer(currentPlayer);
-   // IDW test. KCubeWidget::enableClicks(true);
-   // IDW test. return currentPlayer;
    emit playerChanged (m_currentPlayer);
    checkComputerplayer (m_currentPlayer);
    KCubeWidget::enableClicks (true);
@@ -1189,7 +1035,6 @@ const QPixmap & KCubeBoxWidget::playerPixmap (const int p)
    return ((p == 1) ? status1 : status2);
 }
 
-// IDW test. void KCubeBoxWidget::increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column)
 void KCubeBoxWidget::increaseNeighbours(Player forWhom,int row,int column)
 {
    KCubeWidget::Owner player = (KCubeWidget::Owner)(forWhom);
@@ -1200,7 +1045,6 @@ void KCubeBoxWidget::increaseNeighbours(Player forWhom,int row,int column)
       m_cubesToWin [cubes[row-1][column]->increase(player)] ++;
       m_cubesToWin [player] --;
    }
-   // IDW test. if (row != dim()-1) {
    if (row != m_side - 1) {
       m_cubesToWin [cubes[row+1][column]->increase(player)] ++;
       m_cubesToWin [player] --;
@@ -1209,7 +1053,6 @@ void KCubeBoxWidget::increaseNeighbours(Player forWhom,int row,int column)
       m_cubesToWin [cubes[row][column-1]->increase(player)] ++;
       m_cubesToWin [player] --;
    }
-   // IDW test. if (column != dim()-1) {
    if (column != m_side - 1) {
       m_cubesToWin [cubes[row][column+1]->increase(player)] ++;
       m_cubesToWin [player] --;

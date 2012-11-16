@@ -23,7 +23,7 @@
 #include "cube.h"
 #include "ai_kepler.h"
 #include "ai_newton.h"
-#include "ai_box.h"	// IDW test.
+#include "ai_box.h"
 
 #include <QApplication>
 
@@ -173,7 +173,6 @@ bool AI_Main::getMove (int & row, int & column,
    m_player  = player;
 
    // IDW TODO - Change the CubeBox model.
-   // IDW test. copyCubeBox (box);
    if (m_box == 0) {
        m_box = new AI_Box (box->side());
    }
@@ -181,7 +180,7 @@ bool AI_Main::getMove (int & row, int & column,
        delete m_box;
        m_box = new AI_Box (box->side());
    }
-   m_box->initPosition (box, (Player) player, true); // IDW TODO - No (Player).
+   m_box->initPosition (box, player, true);
 
    /* IDW TODO - If a thread is to be used, it will have to return the
     *            calculated move (m_move) via a signal (simulated click?).
@@ -277,8 +276,7 @@ Move AI_Main::tryMoves (Player player, int side, int * owners,
                                side, ownersCopy, valuesCopy, maxValues);
       */
       m_box->recordPosition ((Player) player, true); // IDW TODO - No (Player).
-      // IDW test. bool won = doMove (player, cubesToMove[n].row*side + cubesToMove[n].col);
-      bool won = m_box->doMove ((Player) player, cubesToMove[n].row*side + cubesToMove[n].col); // IDW TODO - No (Player).
+      bool won = m_box->doMove (player, cubesToMove[n].row*side + cubesToMove[n].col);
       n_simulate++;
 
       double val;
@@ -296,7 +294,6 @@ Move AI_Main::tryMoves (Player player, int side, int * owners,
 	 // IDW TODO - On second thoughts, it might be best to find out the best
 	 //            or worst that can happen if moves == 1.
 	 // Stop the recursion.
-         // IDW test. val = m_currentAI->assessField (player, side, ownersCopy, valuesCopy);
 	 // IDW TODO - Should assessField param 3 be type (Player *)?
          val = m_currentAI->assessField (player, side, (int *)(m_box->m_owners), m_box->m_values);
 	 n_assess++;
@@ -313,8 +310,6 @@ Move AI_Main::tryMoves (Player player, int side, int * owners,
          // Do the MiniMax calculation for the next recursion level.
          qDebug() << tag(level) << "CALL tryMoves: Player" << opponent << "level" << level+1;
 	 // IDW TODO - Should tryMoves param be reorganised?
-         // IDW test. Move move = tryMoves (opponent, side, ownersCopy, valuesCopy,
-                               // IDW test. maxValues, level + 1);
 	 // IDW TODO - Do we need to be carrying maxValues around everywhere?
          Move move = tryMoves (opponent, side, (int *)(m_box->m_owners), m_box->m_values,
                                maxValues, level + 1);
@@ -555,7 +550,6 @@ bool AI_Main::simulateMove (Player player, int row, int col, int side,
 
    values[index]++;			// Increase the cube to be moved.
    owners[index] = player;		// If neutral, take ownership.
-   // cubes[row][column]->increase((Cube::Owner)player); // IDW DELETE this.
 
    do {
       finished  = true;
@@ -710,26 +704,6 @@ void AI_Main::dumpStats()
    delete [] m_values;
    delete [] m_maxValues;	// Delete in getMove(), if dumpStats() not used.
 }
-
-/* IDW test.
-void AI_Main::copyCubeBox (CubeBox & box)
-{
-   m_side      = box.dim();
-   m_nCubes    = m_side * m_side;
-   m_owners    = new int [m_nCubes];
-   m_values    = new int [m_nCubes];
-   m_maxValues = new int [m_nCubes];
-
-   for (int x = 0; x < m_side; x++) {
-      for (int y = 0; y < m_side; y++) {
-         int index           = x * m_side + y;
-         m_owners [index]    = box[x][y]->owner();
-         m_values [index]    = box[x][y]->value();
-         m_maxValues [index] = box[x][y]->max();
-      }
-   }
-}
-*/
 
 QString AI_Main::tag (int level)
 {

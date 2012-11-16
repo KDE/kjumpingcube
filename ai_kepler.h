@@ -23,9 +23,6 @@
 #define AI_KEPLER_H
 
 #include "ai_base.h"
-// IDW test. #include "cubebox.h"
-
-// IDW test. class CubeBox;
 
 /**
 * Class AI_Kepler computes the value of moving a cube and the value of the
@@ -57,7 +54,6 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The value of a useful move (1 is best)
    */
-   // IDW test. int    assessCube (int row, int col, CubeBox::Player, CubeBox& box) const;
    int    assessCube (int row, int col, Player player,
                       int side, int * owners, int * values,
                       int * maxValues) const;
@@ -72,13 +68,11 @@ public:
     *
     * @return        The value of the position
     */
-   // IDW test. double assessField (CubeBox::Player player, CubeBox& box) const;
    double assessField (Player player,
                        int side, int * owners, int * values) const;
 
 private:
    // A helper method for assessCube().
-   // IDW test. int getDiff (int row, int col, CubeBox::Player player, CubeBox& box) const;
    int getDiff (int row, int col, Player player,
                 int side, int * owners, int * values, int * maxValues) const;
 };

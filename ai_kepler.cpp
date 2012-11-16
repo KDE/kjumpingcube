@@ -27,49 +27,6 @@ AI_Kepler::AI_Kepler()
 {
 }
 
-/* IDW test.
-int AI_Kepler::assessCube (int row, int col, CubeBox::Player player,
-                           CubeBox & box) const
-{
-   int diff = 10000, temp = 10000;
-
-   // qDebug() << "assessCube(" << row << col << "player" << player;
-
-   // Check the neighbors.
-   if (row > 0) {
-      temp = getDiff (row - 1, col, player, box);
-      if (temp < diff)
-         diff = temp;
-   }
-   if (row < box.dim()-1) {
-      temp = getDiff (row + 1, col, player, box);
-      if (temp < diff)
-         diff = temp;
-   }
-   if (col > 0) {
-      temp = getDiff (row, col - 1, player, box);
-      if (temp < diff)
-         diff = temp;
-   }
-   if (col < box.dim()-1) {
-      temp = getDiff (row, col + 1, player, box);
-      if (temp < diff)
-         diff = temp;
-   }
-
-   temp = box[row][col]->max() - box[row][col]->value();
-
-   int val;
-   val = diff - temp + 1;
-   val = val * (temp + 1);
-   if (val <= 0) {
-      val = 999 - val;
-   }
-
-   return val;
-}
-*/
-
 int AI_Kepler::assessCube (int row, int col, Player player,
                            int side, int * owners, int * values,
                            int * maxValues) const
@@ -111,51 +68,6 @@ int AI_Kepler::assessCube (int row, int col, Player player,
    return val;
 }
 
-/* IDW test.
-double AI_Kepler::assessField (CubeBox::Player player, CubeBox& box) const
-{
-   int    cubesOne       = 0;
-   int    cubesTwo       = 0;
-   int    pointsOne      = 0;
-   int    pointsTwo      = 0;
-   CubeBox::Player otherPlayer    = (player == CubeBox::One) ?
-                                     CubeBox::Two : CubeBox::One;
-   bool   playerWon      = true;
-   bool   otherPlayerWon = true;
-
-   int d = box.dim();
-   int i, j;
-
-   for (i = 0; i < d; i++) {
-      for (j = 0; j < d; j++) {
-         Cube * cube = box[i][j];
-	 int points  = cube->value();
-         if (cube->owner() == (Cube::Owner)CubeBox::One) {
-            cubesOne++;
-            pointsOne += points * points;
-         }
-         else if (cube->owner() == (Cube::Owner)CubeBox::Two) {
-            cubesTwo++;
-	    pointsTwo += points * points;
-         }
-
-         if(cube->owner() != (Cube::Owner)player)
-            playerWon = false;
-
-         if(cube->owner() != (Cube::Owner)otherPlayer)
-            otherPlayerWon = false;
-      }
-   }
-
-   if (player == CubeBox::One) {
-      return cubesOne * cubesOne + pointsOne - cubesTwo * cubesTwo - pointsTwo;
-   }
-   else {
-      return cubesTwo * cubesTwo + pointsTwo - cubesOne * cubesOne - pointsOne;
-   }
-}
-*/
-
 double AI_Kepler::assessField (Player player,
                                int side, int * owners, int * values) const
 {
@@ -188,22 +100,6 @@ double AI_Kepler::assessField (Player player,
       return cubesTwo * cubesTwo + pointsTwo - cubesOne * cubesOne - pointsOne;
    }
 }
-
-/* IDW test.
-int AI_Kepler::getDiff (int row,int col, CubeBox::Player player, CubeBox& box) const
-{
-   int diff;
-
-   if (box[row][col]->owner() != (Cube::Owner)player) {
-      diff = (box[row][col]->max() - box[row][col]->value());
-   }
-   else {
-      diff = (box[row][col]->max() - box[row][col]->value() + 1);
-   }
-
-   return diff;
-}
-*/
 
 int AI_Kepler::getDiff (int row, int col, Player player, int side,
                         int * owners, int * values, int * maxValues) const

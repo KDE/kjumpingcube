@@ -21,9 +21,6 @@
 #ifndef AI_BASE_H
 #define AI_BASE_H
 
-// IDW test. #include "cubebox.h"
-// IDW test. #include "cube.h"
-
 #include "ai_globals.h"		// Include Player enum.
 
 #include <QString> // IDW test.
@@ -52,9 +49,6 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The priority of a useful move (1 is highest)
    */
-   // IDW test. virtual int assessCube (int row, int col, CubeBox::Player player,
-                           // IDW test. CubeBox& box) const = 0;
-   // IDW test. virtual int assessCube (int row, int col, CubeBox::Player player,
    virtual int assessCube (int row, int col, Player player,
                            int side, int * owners, int * values,
                            int * maxValues) const = 0;
@@ -68,8 +62,6 @@ public:
     *
     * @return        The value of the position
     */
-   // IDW test. virtual double assessField (CubeBox::Player player, CubeBox& box) const = 0;
-   // IDW test. virtual double assessField (CubeBox::Player player,
    virtual double assessField (Player player,
                                int side, int * owners, int * values) const = 0;
 };

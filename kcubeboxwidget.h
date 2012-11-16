@@ -25,23 +25,18 @@
 #include <QSvgRenderer>
 #include <QTime> // IDW
 
-// #include "cubeboxbase.h" // IDW - Can DELETE this?
 #include "kcubewidget.h"
-// #include "brain.h" // IDW DELETE this.
 #include "ai_main.h"
 #include "ai_box.h"
+
 #include <QWidget>
-//Added by qt3to4:
-#include <QGridLayout>
 #include <QPaintEvent>
 #include <QResizeEvent>
 
 class KConfigGroup;
-class QGridLayout;
-// IDW test. class CubeBox;
 class QTimer;
 
-class KCubeBoxWidget : public QWidget // IDW test. , public CubeBoxBase<KCubeWidget>
+class KCubeBoxWidget : public QWidget
 {
    Q_OBJECT
 public:
@@ -49,12 +44,7 @@ public:
 
    explicit KCubeBoxWidget(const int dim=1,QWidget *parent=0);
 
-   // explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
-   // KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
    virtual ~KCubeBoxWidget();
-
-    // IDW test. KCubeBoxWidget& operator= (CubeBox& box);
-    // IDW test. KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
 
    /**
     * Make sure all move and brain activity is over before destroying widget.
@@ -88,9 +78,6 @@ public:
    * @param flag: true for computer, false for human
    */
    void setComputerplayer(Player player,bool flag);
-
-   /** returns current skill, according to Prefs::EnumSkill */
-   // IDW delete. int skill() const;
 
    /** returns true if player 'player' is a computerPlayer */
    bool isComputer(Player player) const;
@@ -173,7 +160,6 @@ private:
    QPoint topLeft;
    int cubeSize;
 
-   // IDW test. CubeBox *undoBox;
    AI_Box * m_box;
    int      m_side;
    Player   m_currentPlayer;
@@ -181,7 +167,6 @@ private:
 
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
 
-   // Brain brainPrev; // IDW DELETE this.
    AI_Main brain;
 
    QTimer *animationTimer;
@@ -216,8 +201,7 @@ private:
    void startAnimation (int row, int col);
    void scatterDots (int step);
 
-   // IDW test. void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
-   void increaseNeighbours(Player forWhom, int row, int column);
+   void increaseNeighbours (Player forWhom, int row, int column);
 
 private slots:
    void nextAnimationStep();
@@ -234,4 +218,3 @@ private slots:
 };
 
 #endif // KCUBEBOXWIDGET_H
-

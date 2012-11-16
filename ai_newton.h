@@ -23,9 +23,6 @@
 #define AI_NEWTON_H
 
 #include "ai_base.h"
-// IDW test. #include "cubebox.h"
-
-// IDW test. class CubeBox;
 
 /**
 * Class AI_Newton computes the priority of moving a cube and the value of the
@@ -56,7 +53,6 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The priority of a useful move (1 is highest)
    */
-   // IDW test. int    assessCube (int row, int col, CubeBox::Player, CubeBox& box) const;
    int    assessCube (int row, int col, Player player, int side,
                       int * owners, int * values, int * maxValues) const;
 
@@ -70,7 +66,6 @@ public:
     *
     * @return        The value of the position
     */
-   // IDW test. double assessField (CubeBox::Player player, CubeBox& box) const;
    double assessField (Player player,
                        int side, int * owners, int * values) const;
 };
