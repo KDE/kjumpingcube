@@ -39,11 +39,11 @@ public:
    */
    explicit CubeBox(const int dim=1);
    CubeBox(const CubeBox&);
-   explicit CubeBox(KCubeBoxWidget&);
+   // IDW test. explicit CubeBox(KCubeBoxWidget&);
    virtual ~CubeBox();
 
    // CubeBox& operator= (const CubeBox& box); // IDW test.
-   CubeBox& operator= (KCubeBoxWidget& box);
+   // IDW test. CubeBox& operator= (KCubeBoxWidget& box);
 
 /*
    bool simulateMove(Player fromWhom,int row, int column);

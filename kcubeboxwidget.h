@@ -25,10 +25,11 @@
 #include <QSvgRenderer>
 #include <QTime> // IDW
 
-#include "cubeboxbase.h"
+// #include "cubeboxbase.h" // IDW - Can DELETE this?
 #include "kcubewidget.h"
 // #include "brain.h" // IDW DELETE this.
 #include "ai_main.h"
+#include "ai_box.h"
 #include <QWidget>
 //Added by qt3to4:
 #include <QGridLayout>
@@ -37,10 +38,10 @@
 
 class KConfigGroup;
 class QGridLayout;
-class CubeBox;
+// IDW test. class CubeBox;
 class QTimer;
 
-class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
+class KCubeBoxWidget : public QWidget // IDW test. , public CubeBoxBase<KCubeWidget>
 {
    Q_OBJECT
 public:
@@ -48,12 +49,12 @@ public:
 
    explicit KCubeBoxWidget(const int dim=1,QWidget *parent=0);
 
-   explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
-   KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
+   // explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
+   // KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
    virtual ~KCubeBoxWidget();
 
-   KCubeBoxWidget& operator= (CubeBox& box);
-   KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
+    // IDW test. KCubeBoxWidget& operator= (CubeBox& box);
+    // IDW test. KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
 
    /**
     * Make sure all move and brain activity is over before destroying widget.
@@ -172,7 +173,11 @@ private:
    QPoint topLeft;
    int cubeSize;
 
-   CubeBox *undoBox;
+   // IDW test. CubeBox *undoBox;
+   AI_Box * m_box;
+   int      m_side;
+   Player   m_currentPlayer;
+   KCubeWidget * ** cubes;
 
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
 
@@ -211,7 +216,8 @@ private:
    void startAnimation (int row, int col);
    void scatterDots (int step);
 
-   void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
+   // IDW test. void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
+   void increaseNeighbours(Player forWhom, int row, int column);
 
 private slots:
    void nextAnimationStep();

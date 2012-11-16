@@ -27,11 +27,13 @@
 #include <krandomsequence.h>
 
 #include "ai_base.h"
-#include "cubebox.h"
+// IDW test. #include "cubebox.h"
 
 /* IDW TODO - Use a thread and return the move via a signal.
 class ThreadedAI;
 */
+
+class AI_Box;
 
 struct Move
 {
@@ -58,7 +60,8 @@ class AI_Main
 public:
 
    void startStats();
-   void postMove (CubeBox::Player player, int x, int y);
+   // IDW test. void postMove (CubeBox::Player player, int x, int y);
+   void postMove (Player player, int x, int y);
    void dumpStats();
 
    /* IDW TODO - Use a thread and return the move via a signal.
@@ -82,8 +85,9 @@ public:
    * @return false if computing was stopped
    * @see AI_Main#stop;
    */
-   bool getMove (int & row, int & column,
-                 CubeBox::Player player, CubeBox & field);
+   // IDW test. bool getMove (int & row, int & column,
+                 // IDW test. CubeBox::Player player, CubeBox & field);
+   bool getMove (int & row, int & column, Player player, AI_Box * box);
 
    /**
     *  Stops the AI, but not till the end of the current cycle.
@@ -112,7 +116,10 @@ private:
    Move       m_move;
    */
 
-   CubeBox::Player m_player;
+   // IDW test. CubeBox::Player m_player;
+   Player     m_player;
+
+   AI_Box *   m_box; // IDW test.
 
    int        m_side;
    int        m_nCubes;
@@ -130,10 +137,10 @@ private:
    *
    * @return        The best move found and the value of the position reached.
    */
-   Move tryMoves (CubeBox::Player player, int side, int * owners, int * values,
+   Move tryMoves (Player player, int side, int * owners, int * values,
                                                     int * maxValues, int level);
 
-   bool simulateMove (CubeBox::Player player, int row, int col,
+   bool simulateMove (Player player, int row, int col,
                       int side, int * owners, int * values, int * maxValues);
 
    /**
@@ -146,7 +153,7 @@ private:
    * @param debug if debugmessages should be printed
    * @return number of found cubes to move
    */
-   int findCubesToMove (Move * c2m, CubeBox::Player player, int side,
+   int findCubesToMove (Move * c2m, Player player, int side,
                         int * owners, int * values, int * maxValues);
 
    void boxPrint (int side, int * owners, int * values);
@@ -167,7 +174,7 @@ private:
    int  m_maxLevel;
 
    /** the player for which to check the moves */
-   CubeBox::Player currentPlayer;
+   Player currentPlayer;
 
    /** Flag, if the AI has to be stopped. */
    bool m_stopped;
@@ -189,7 +196,7 @@ private:
    };
 
    struct MoveStats {
-      int player;
+      Player player;
       int moveNo;
       int x;
       int y;
@@ -206,7 +213,7 @@ private:
    QString tag (int level);
    void initStats (int player);
    void saveStats (Move & move);
-   void copyCubeBox (CubeBox & box);
+   // IDW test. void copyCubeBox (CubeBox & box);
 };
 
 /* IDW TODO - Use a thread and return the move via a signal.

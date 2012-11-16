@@ -50,6 +50,7 @@ CubeBox::CubeBox(const CubeBox& box)
    currentPlayer=box.currentPlayer;
 }
 
+/* IDW test. No longer needed?
 CubeBox::CubeBox(KCubeBoxWidget& box)
       :CubeBoxBase<Cube>(box.dim())
 {
@@ -66,6 +67,7 @@ CubeBox::CubeBox(KCubeBoxWidget& box)
    currentPlayer=(CubeBox::Player)box.player();
 
 }
+*/
 
 
 CubeBox::~CubeBox()
@@ -97,7 +99,7 @@ CubeBox& CubeBox::operator=(const CubeBox& box)
 }
 End IDW test. */
 
-
+/* IDW test. Is this still needed?
 CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 {
    qDebug() << "OPERATOR = KCubeBoxWidget, size" << dim(); // IDW test.
@@ -116,8 +118,7 @@ CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 
    return *this;
 }
-
-
+*/
 
 /*
 bool CubeBox::simulateMove(Player fromWhom,int row, int column)

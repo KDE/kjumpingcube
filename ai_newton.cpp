@@ -27,7 +27,7 @@ AI_Newton::AI_Newton()
 {
 }
 
-int AI_Newton::assessCube (int row, int col, CubeBox::Player player,
+int AI_Newton::assessCube (int row, int col, Player player,
                            int side, int * owners, int * values,
                            int * maxValues) const
 {
@@ -109,6 +109,7 @@ int AI_Newton::assessCube (int row, int col, CubeBox::Player player,
    return PlayHereAnyway;
 }
 
+/* IDW test.
 int AI_Newton::assessCube (int row, int col, CubeBox::Player player,
                        CubeBox & box) const
 {
@@ -188,7 +189,9 @@ int AI_Newton::assessCube (int row, int col, CubeBox::Player player,
 
    return PlayHereAnyway;
 }
+*/
 
+/* IDW test.
 double AI_Newton::assessField (CubeBox::Player player, CubeBox& box) const
 {
    int    cubesOne       = 0;
@@ -231,34 +234,34 @@ double AI_Newton::assessField (CubeBox::Player player, CubeBox& box) const
       return cubesTwo * cubesTwo + pointsTwo - cubesOne * cubesOne - pointsOne;
    }
 }
+*/
 
-double AI_Newton::assessField (CubeBox::Player player,
+double AI_Newton::assessField (Player player,
                                int side, int * owners, int * values) const
 {
    int    cubesOne       = 0;
    int    cubesTwo       = 0;
    int    pointsOne      = 0;
    int    pointsTwo      = 0;
-   CubeBox::Player otherPlayer = (player == CubeBox::One) ?
-                                 CubeBox::Two : CubeBox::One;
+   Player otherPlayer = (player == One) ? Two : One;
    int x, y, index, points;
 
    for (x = 0; x < side; x++) {
       for (y = 0; y < side; y++) {
 	 index = x * side + y;
 	 points  = values[index];
-         if (owners[index] == (Cube::Owner)CubeBox::One) {
+         if (owners[index] == One) {
             cubesOne++;
             pointsOne += points * points;
          }
-         else if (owners[index] == (Cube::Owner)CubeBox::Two) {
+         else if (owners[index] == Two) {
             cubesTwo++;
 	    pointsTwo += points * points;
          }
       }
    }
 
-   if (player == CubeBox::One) {
+   if (player == One) {
       return cubesOne * cubesOne + pointsOne - cubesTwo * cubesTwo - pointsTwo;
    }
    else {
