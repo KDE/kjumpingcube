@@ -552,29 +552,6 @@ void KCubeBoxWidget::initCubes()
                              SLOT(checkClick(int,int,bool)));
          cubes[i][j]->show();
       }
-/* IDW TODO - DELETE.
-   // initialize cubes
-   int max = m_side - 1;
-
-   cubes[0][0]->setMax(2);
-   cubes[0][max]->setMax(2);
-   cubes[max][0]->setMax(2);
-   cubes[max][max]->setMax(2);
-
-   for(i=1;i<max;i++)
-   {
-      cubes[i][0]->setMax(3);
-      cubes[i][max]->setMax(3);
-      cubes[0][i]->setMax(3);
-      cubes[max][i]->setMax(3);
-   }
-
-   for(i=1;i<max;i++)
-     for(j=1;j<max;j++)
-      {
-         cubes[i][j]->setMax(4);
-      }
-*/
 }
 
 void KCubeBoxWidget::makeStatusPixmaps (const int width)

@@ -34,7 +34,7 @@ class QPaintEvent;
 /**
 * 
 */
-class KCubeWidget : public QFrame // IDW TODO - DELETE. , public Cube 
+class KCubeWidget : public QFrame
 {
    Q_OBJECT
          
@@ -47,24 +47,16 @@ public:
    Player owner() { return m_owner; }
    int    value() { return m_value; }
 
-   void setPixmaps (QList<QPixmap> * ptr);
    void setOwner   (Player newOwner); 
    void setValue   (int newValue);
-   
-   /** takes the information from a Cube */
-   // IDW TODO - DELETE. KCubeWidget& operator=(const Cube&);
-   // IDW TODO - DELETE. KCubeWidget& operator=(const KCubeWidget&);
+   void setPixmaps (QList<QPixmap> * ptr);
 
    /** 
    * sets the coordinates of the Cube in a Cubebox;
    * needed for identification when clicked.
    */ 
    void setCoordinates (int row, int col, int limit);
-   /** returns the row */
-   int row() const;
-   /** returns the column */
-   int column() const;
-   
+
    /** enables or disables possibility to click a cube*/
    static void enableClicks(bool flag);
 
@@ -82,14 +74,14 @@ public slots:
    virtual void reset();
    /** shows changed colors*/
    virtual void updateColors();
-      
+
 signals:
    void clicked(int row,int column,bool isClick);
-   
+
 protected:
    /** checks, if mouseclick was inside this cube*/
    virtual void mouseReleaseEvent(QMouseEvent*);
-   
+
    /** refreshes the contents of the Cube */
    virtual void paintEvent(QPaintEvent*);
 

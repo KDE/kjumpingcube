@@ -42,8 +42,7 @@ void KCubeWidget::enableClicks(bool flag)
 ** ****************************************************** */
 
 KCubeWidget::KCubeWidget (QWidget* parent, Player owner, int value, int max)
-              : QFrame(parent) /* IDW TODO - DELETE. ,
-                Cube(owner,value,max) */
+              : QFrame(parent)
 {
   setMinimumSize (20,20);
   setFrameStyle(QFrame::Panel | QFrame::Raised);
@@ -70,32 +69,6 @@ KCubeWidget::KCubeWidget (QWidget* parent, Player owner, int value, int max)
 KCubeWidget::~KCubeWidget()
 {
 }
-
-/* IDW TODO - DELETE.
-KCubeWidget& KCubeWidget::operator=(const Cube& cube)
-{
-   if(this!=&cube)
-   {
-      setOwner(cube.owner());
-      setValue(cube.value());
-      setMax(cube.max());
-   }
-
-   return *this;
-}
-
-KCubeWidget& KCubeWidget::operator=(const KCubeWidget& cube)
-{
-   if(this!=&cube)
-   {
-      setOwner(cube.owner());
-      setValue(cube.value());
-      setMax(cube.max());
-   }
-
-   return *this;
-}
-*/
 
 void KCubeWidget::setPixmaps (QList<QPixmap> * ptr)
 {
@@ -152,16 +125,6 @@ void KCubeWidget::setCoordinates (int row, int col, int limit)
    m_limit = limit;
 }
 
-int KCubeWidget::row() const
-{
-   return m_row;
-}
-
-int KCubeWidget::column() const
-{
-   return m_col;
-}
-
 /* ****************************************************** **
 **                   public slots                         **
 ** ****************************************************** */
@@ -192,7 +155,7 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
   if(e->button() == Qt::LeftButton && _clicksAllowed)
   {
     e->accept();
-    emit clicked (row(),column(),true);
+    emit clicked (m_row, m_col, true);
   }
 }
 
