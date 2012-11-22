@@ -167,10 +167,6 @@ private:
    bool     m_gameHasBeenWon;
    QList<int> * m_steps;
 
-/* IDW TODO - DELETE.
-   int m_cubesToWin[3];		// Number of cubes for each player to capture.
-*/
-
    AI_Main brain;
 
    QTimer *animationTimer;
@@ -187,9 +183,6 @@ private:
 
    QList<int> saturated;	// List of over-full cubes, as in cascade moves.
 
-   // IDW TODO - DELETE. void startCascade (int row, int col);
-   // IDW TODO - DELETE. bool nextMoveStep();
-
    void stopAnimation();
 
    Player changePlayer();
@@ -203,16 +196,10 @@ private:
    void doMove(int row,int column);
    void doStep();
    void startAnimation (AnimationType type, int row, int col);
-   void startAnimation (int row, int col);
    void scatterDots (int step);
-
-/* IDW TODO - DELETE.
-   void increaseNeighbours (Player forWhom, int row, int column);
-*/
 
 private slots:
    void nextAnimationStep();
-   // IDW TODO - DELETE. void continueCascade();
    /**
    * checks if cube at ['row','column'] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield
@@ -221,7 +208,6 @@ private slots:
 
    /** turns off blinking, if an other cube is clicked */
    void stopHint (bool shutdown = false);
-
 };
 
 #endif // KCUBEBOXWIDGET_H
