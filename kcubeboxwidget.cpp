@@ -162,7 +162,7 @@ void KCubeBoxWidget::undo()
    for (int x = 0; x < m_side; x++) {
        for (int y = 0; y < m_side; y++) {
 	   int index = x * m_side + y;
-           cubes[x][y]->setOwner ((Cube::Owner) m_box->owner (index));
+           cubes[x][y]->setOwner (m_box->owner (index));
            cubes[x][y]->setValue (m_box->value (index));
        }
    }
@@ -209,6 +209,7 @@ void KCubeBoxWidget::setDim(int d)
       delete m_box;
       m_box   = new AI_Box (d);
       m_side  = d;
+      reset();
    }
 }
 
@@ -318,15 +319,15 @@ void KCubeBoxWidget::readProperties(const KConfigGroup& config)
                                            "range 0 to 2.").arg(key));
 	    owner = 0;
 	}
-	maxValue = (owner == 0) ? 1 : cubes[row][column]->max();
+	maxValue = (owner == 0) ? 1 : m_box->maxValue (row * cubeDim + column);
 	if ((value < 1) || (value > maxValue)) {
 	    KMessageBox::sorry (this, i18n("Value of cube %1 is outside the "
                                            "range 1 to %2.")
                                            .arg(key).arg(maxValue));
 	    value = maxValue;
 	}
-	cubes[row][column]->setOwner((KCubeWidget::Owner)owner);
-	cubes[row][column]->setValue(value);
+	cubes[row][column]->setOwner ((Player) owner);
+	cubes[row][column]->setValue (value);
 
 	list.clear();
       }
@@ -382,8 +383,8 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
       checkComputerplayer (m_currentPlayer);
       return false;
    }
-   else if ((Cube::Owner)m_currentPlayer == cubes[row][column]->owner() ||
-		   cubes[row][column]->owner()==Cube::Nobody)
+   else if (m_currentPlayer == cubes[row][column]->owner() ||
+		   cubes[row][column]->owner() == Nobody)
    {
       doMove(row,column);
       return true;
@@ -539,6 +540,7 @@ void KCubeBoxWidget::initCubes()
    {
       cubes[i]=new KCubeWidget*[s];
    }
+
    for(i=0;i<s;i++)
       for(j=0;j<s;j++)
       {
@@ -550,7 +552,7 @@ void KCubeBoxWidget::initCubes()
                              SLOT(checkClick(int,int,bool)));
          cubes[i][j]->show();
       }
-
+/* IDW TODO - DELETE.
    // initialize cubes
    int max = m_side - 1;
 
@@ -572,6 +574,7 @@ void KCubeBoxWidget::initCubes()
       {
          cubes[i][j]->setMax(4);
       }
+*/
 }
 
 void KCubeBoxWidget::makeStatusPixmaps (const int width)
@@ -789,7 +792,7 @@ void KCubeBoxWidget::doStep()
 	 int maxValue = m_box->maxValue (index);
          if (startStep) {
             int value = cubes[x][y]->value() + 1;
-            cubes[x][y]->setOwner ((Cube::Owner) m_currentPlayer);
+            cubes[x][y]->setOwner (/* (Cube::Owner) */ m_currentPlayer);
             cubes[x][y]->setValue (value);
 	    if (value > maxValue) {
                cubes[x][y]->setDark();
@@ -893,7 +896,7 @@ void KCubeBoxWidget::nextAnimationStep()
 void KCubeBoxWidget::scatterDots (int step)
 {
    qDebug() << "KCubeBoxWidget::scatterDots (" << step << ")";
-   Cube::Owner player = (Cube::Owner) m_currentPlayer;
+   Player player = m_currentPlayer;
    int d = m_side - 1;
    if (m_row > 0) cubes[m_row-1][m_col]->migrateDot (+1,  0, step, player);
    if (m_row < d) cubes[m_row+1][m_col]->migrateDot (-1,  0, step, player);
@@ -918,7 +921,8 @@ void KCubeBoxWidget::stopAnimation()
    case RapidBlink:
    case Darken:
    case Scatter:
-      cubes[m_row][m_col]->decrease(); // IDW test. Should use setVal().
+      int max = m_box->maxValue (m_row * m_side + m_col);
+      cubes[m_row][m_col]->setValue (cubes[m_row][m_col]->value() - max);
       doStep();
       break;
    }

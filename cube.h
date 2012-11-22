@@ -44,7 +44,7 @@ public:
    * changes owner of the Cube
    * @return old Owner
    */
-   virtual Owner setOwner(Owner owner);
+   void setOwner(Owner owner);
 
    /**
    * changes value of the Cube

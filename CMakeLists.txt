@@ -21,13 +21,10 @@ set(kjumpingcube_SRCS
    kcubeboxwidget.cpp 
    main.cpp 
    kcubewidget.cpp 
-   cube.cpp 
-#   brain.cpp 
    ai_main.cpp
    ai_kepler.cpp
    ai_newton.cpp
    ai_box.cpp )
-#   cubebox.cpp )
 
 kde4_add_ui_files(kjumpingcube_SRCS settings.ui )
 

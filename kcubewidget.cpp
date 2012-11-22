@@ -41,9 +41,9 @@ void KCubeWidget::enableClicks(bool flag)
 **                 public functions                       **
 ** ****************************************************** */
 
-KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
-              : QFrame(parent),
-                Cube(owner,value,max)
+KCubeWidget::KCubeWidget (QWidget* parent, Player owner, int value, int max)
+              : QFrame(parent) /* IDW TODO - DELETE. ,
+                Cube(owner,value,max) */
 {
   setMinimumSize (20,20);
   setFrameStyle(QFrame::Panel | QFrame::Raised);
@@ -57,6 +57,8 @@ KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
   m_scale = 1.0;
   m_row = 0;
   m_col = 0;
+  m_owner = owner;
+  m_value = value;
 
   pixmaps = 0;
   blinking = None;
@@ -69,6 +71,7 @@ KCubeWidget::~KCubeWidget()
 {
 }
 
+/* IDW TODO - DELETE.
 KCubeWidget& KCubeWidget::operator=(const Cube& cube)
 {
    if(this!=&cube)
@@ -92,25 +95,27 @@ KCubeWidget& KCubeWidget::operator=(const KCubeWidget& cube)
 
    return *this;
 }
+*/
 
 void KCubeWidget::setPixmaps (QList<QPixmap> * ptr)
 {
    pixmaps = ptr;
 }
 
-KCubeWidget::Owner KCubeWidget::setOwner(Owner newOwner)
+void KCubeWidget::setOwner (Player newOwner)
 {
-   Owner old=Cube::setOwner(newOwner);
-
-   updateColors();
-
-   return old;
+   if (newOwner != m_owner) {
+      m_owner = newOwner;
+      updateColors();
+   }
 }
 
 void KCubeWidget::setValue(int newValue)
 {
-   Cube::setValue(newValue);
-   update();
+   if (newValue != m_value) {
+      m_value = newValue;
+      update();
+   }
 }
 
 void KCubeWidget::shrink (qreal scale)
@@ -128,8 +133,7 @@ void KCubeWidget::expand (qreal scale)
    update();
 }
 
-void KCubeWidget::migrateDot (int rowDiff, int colDiff, int step,
-       	                      Cube::Owner player)
+void KCubeWidget::migrateDot (int rowDiff, int colDiff, int step, Player player)
 {
    migrating = 2;
    qreal scale = (step < 4) ? 1.0 - 0.3 * step : 0.0;
@@ -165,8 +169,8 @@ int KCubeWidget::column() const
 void KCubeWidget::reset()
 {
   blinking = None;
-  setValue(1);
-  setOwner(Nobody);
+  setValue (1);
+  setOwner (Nobody);
 }
 
 

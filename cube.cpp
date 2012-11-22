@@ -34,12 +34,12 @@ Cube::Cube(Owner owner,int value,int maximum)
 }
 
 
-Cube::Owner Cube::setOwner(Owner owner)
+void Cube::setOwner(Owner owner)
 {
-   Owner old=_owner;
+   // IDW test. Owner old=_owner;
    _owner=owner;
    
-   return old;
+   // IDW test. return old;
 }
 
 void Cube::setValue(int value)
@@ -81,7 +81,8 @@ int Cube::value() const
 Cube::Owner Cube::increase(Owner newOwner)
 {
    setValue(value()+1);
-   return (setOwner(newOwner));
+   // IDW test. return (setOwner(newOwner));
+   return Cube::Nobody;
 }
 
 int Cube::max() const
