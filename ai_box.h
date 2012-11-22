@@ -52,15 +52,17 @@ public:
                                           m_owners [index] : Nobody); }
     int      value  (int index) { return (((index >= 0) && (index < m_nCubes)) ?
                                           m_values [index] : 1); }
+    int      maxValue (int index) { return (((index >= 0) && (index < m_nCubes))
+                           ? m_maxValues [index] : 4); }
 
     bool     doMove  (Player player, int index, QList<int> * steps = 0);
     void     printBox();
     bool     oldMove (Player player, int index);
 
-    void     recordPosition (Player   player, bool   isAI);
-    void     undoPosition   (Player & player, bool & isAI);
-    void     redoPosition   (Player & player, bool & isAI);
-    void     initPosition   (AI_Box * box, Player player, bool isAI);
+    void     copyPosition (Player   player, bool   isAI);
+    void     undoPosition (Player & player, bool & isAI);
+    void     redoPosition (Player & player, bool & isAI);
+    void     initPosition (AI_Box * box, Player player, bool isAI);
 
     void     clear();
 

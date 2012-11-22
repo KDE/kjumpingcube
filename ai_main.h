@@ -128,11 +128,9 @@ private:
    *
    * @return        The best move found and the value of the position reached.
    */
-   Move tryMoves (Player player, int side, int * owners, int * values,
-                                                    int * maxValues, int level);
-
-   bool simulateMove (Player player, int row, int col,
-                      int side, int * owners, int * values, int * maxValues);
+   // IDW test. Move tryMoves (Player player, int side, int * owners, int * values,
+                                                    // IDW test. int * maxValues, int level);
+   Move tryMoves (Player player, int level);
 
    /**
    * Checks the given playingfield, which cubes are favorable to do a move

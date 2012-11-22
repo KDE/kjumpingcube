@@ -19,6 +19,7 @@
 #include "ai_box.h"
 // #include <QStack>
 
+#include <QDebug>
 #include "stdio.h"
 
 Position * emptyPosition (int nCubes)
@@ -41,7 +42,7 @@ AI_Box::AI_Box (int side)
     m_stack      (new int [m_nCubes]),
     m_stackPtr   (-1)
 {
-    printf ("\nAI_Box CONSTRUCTOR, side = %d\n", side);
+    fprintf (stderr, "\nAI_Box CONSTRUCTOR, side = %d\n", m_side);
 
     Position * pos = emptyPosition (m_nCubes);
     m_undoList.append (pos);
@@ -49,8 +50,6 @@ AI_Box::AI_Box (int side)
     m_values = pos->values;
     indexNeighbors();
     clear();
-    m_undoIndex = 1;
-    m_redoLimit = m_undoIndex;
 }
 
 AI_Box::~AI_Box()
@@ -75,7 +74,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
     if (m_maxValues [index] == m_values [index]++) {	// Increase the cube.
         // overloaded.push (index);	// Stack an expansion step.
 	m_stack [++m_stackPtr] = index;
-	// printf ("Overload at %d, value %d\n", index, m_values[index]);
+	// fprintf (stderr, "Overload at %d, value %d\n", index, m_values[index]);
     }
     if (steps) {
         steps->append (index + 1);	// Record the beginning of the move.
@@ -89,7 +88,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
                 steps->append (0);
             }
             // printBox();
-            // printf ("PLAYER WON\n");
+            // fprintf (stderr, "PLAYER WON\n");
             return true;;
         }
     }
@@ -99,7 +98,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
         // Decrease an overloaded cube.
         // index = overloaded.pop();
 	index = m_stack [m_stackPtr--];
-	// printf ("  Expand at %d, value %d\n", index, m_values[index]);
+	// fprintf (stderr, "  Expand at %d, value %d\n", index, m_values[index]);
         m_values[index] = m_values[index] - m_maxValues[index];
 
         // Append -index-1 to move list, if not still overloaded.
@@ -120,7 +119,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
                 // Continue a cascade.
                 // overloaded.push (indexN);
                 m_stack [++m_stackPtr] = indexN;
-		// printf ("Overload at %d, value %d\n", indexN, m_values[indexN]);
+		// fprintf (stderr, "Overload at %d, value %d\n", indexN, m_values[indexN]);
             }
             if (steps) {
                 steps->append (indexN + 1); // Record beginning of move-step.
@@ -134,7 +133,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
             // The cube is still overloaded, so move there again.
             // overloaded.push (index);
             m_stack [++m_stackPtr] = index;
-	    // printf ("  RE-Overload at %d, value %d\n", index, m_values[index]);
+	    // fprintf (stderr, "  RE-Overload at %d, value %d\n", index, m_values[index]);
         }
         if (m_cubesToWin [player] <= 0) {
             // Append 0 to the move-step list and return player-won.
@@ -142,7 +141,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
                 steps->append (0);
             }
             // printBox();
-            // printf ("PLAYER WON\n");
+            // fprintf (stderr, "PLAYER WON\n");
             return true;
         }
         // printBox();
@@ -207,31 +206,41 @@ bool AI_Box::oldMove (Player player, int pos)
    return false;
 }
 
-void AI_Box::recordPosition (Player player, bool isAI)
+void AI_Box::copyPosition (Player player, bool isAI)
 {
     // IDW TODO - Relationship of m_undoList, m_undoIndex, clear() and ctor.
     //            Is the starting position (always) on the undo list?
     //            NOTE: Not all AI_Box instances use the undo list (?).
+    qDebug() << "AI_Box::copyPosition (" << player << "," << isAI << ")";
+    printBox();
+    qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
     if (m_undoIndex >= m_undoList.count()) {
+	qDebug() << "Call emptyPosition (" << m_nCubes << ")";
         m_undoList.append (emptyPosition (m_nCubes));
     }
+    qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
     Position * pos = m_undoList.at (m_undoIndex);
     save (pos, player, isAI);
     m_undoIndex++;
     m_redoLimit = m_undoIndex;
     m_owners = pos->owners;
     m_values = pos->values;
+    printBox();
 }
 
 void AI_Box::undoPosition (Player & player, bool & isAI)
 {
     if (m_undoIndex > 1) {
 	m_undoIndex--;
-	Position * pos = m_undoList.at (m_undoIndex);
+	Position * pos = m_undoList.at (m_undoIndex - 1);
 	restore (pos);
 	player = pos->player;
 	isAI   = pos->isAI;
     }
+    // IDW TODO - Return true/false dep. on whether any moves left to undo.
+    // return (m_undoIndex > 1);
+    qDebug() << "UNDO: m_undoIndex" << m_undoIndex << "player" << player << "isAI" << isAI;
+    printBox();
 }
 
 void AI_Box::redoPosition (Player & player, bool & isAI)
@@ -243,6 +252,10 @@ void AI_Box::redoPosition (Player & player, bool & isAI)
 	isAI   = pos->isAI;
 	m_undoIndex++;
     }
+    // IDW TODO - Return true/false dep. on whether any moves left to redo.
+    // return (m_undoIndex < m_redoLimit);
+    qDebug() << "REDO: m_undoIndex" << m_undoIndex << "player" << player << "isAI" << isAI;
+    printBox();
 }
 
 void AI_Box::initPosition (AI_Box * box, Player player, bool isAI)
@@ -309,6 +322,9 @@ void AI_Box::clear()
     m_cubesToWin [Nobody] = 0;
     m_cubesToWin [One]    = m_nCubes;
     m_cubesToWin [Two]    = m_nCubes;
+
+    m_undoIndex = 1;
+    m_redoLimit = m_undoIndex;
 }
 
 void AI_Box::indexNeighbors()
@@ -338,11 +354,11 @@ void AI_Box::indexNeighbors()
             m_maxValues [index]++;	// Has a neighbor on the West side.
             m_neighbors [3 * m_nCubes + index] = index - 1;
         }
-        // printf ("%d neighbors at ", m_maxValues [index]);
+        // fprintf (stderr, "%d neighbors at ", m_maxValues [index]);
         // for (int nb = 0; nb < 4; nb++) {
-            // printf ("%2d ", m_neighbors [nb * m_nCubes + index]);
+            // fprintf (stderr, "%2d ", m_neighbors [nb * m_nCubes + index]);
         // }
-        // printf ("\n");
+        // fprintf (stderr, "\n");
     }
 }
 
@@ -350,14 +366,17 @@ void AI_Box::printBox()
 {
     // IDW test. For debugging.
     for (int y = 0; y < m_side; y++) {
-        fprintf (stdout, "   ");
+        fprintf (stderr, "   ");
         for (int x = 0; x < m_side; x++) {
 	    int index = x * m_side + y;
-	    if (m_owners[index] == Nobody) fprintf (stdout, "  .");
-	    else fprintf (stdout, " %2d", (m_owners[index] == One) ?
+	    if (m_owners[index] == Nobody) fprintf (stderr, "  .");
+	    else fprintf (stderr, " %2d", (m_owners[index] == One) ?
 		     m_values[index] : -m_values[index]);
         }
-        fprintf (stdout, "\n");
+        fprintf (stderr, "\n");
     }
-    fprintf (stdout, "\n");
+    fprintf (stderr, "    %2d %2d %2d to win, pointers %d %d\n",
+             m_cubesToWin [Nobody], m_cubesToWin [One], m_cubesToWin [Two],
+	     m_owners, m_values);
+    fprintf (stderr, "\n");
 }

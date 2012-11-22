@@ -253,8 +253,9 @@ void KJumpingCube::undo()
 {
    if(view->isActive())
       return;
+   // IDW TODO - Return true/false dep. on whether any moves left to undo.
    view->undo();
-   undoAction->setEnabled(false);
+   // IDW test. TODO - Set false when no more saved moves. undoAction->setEnabled(false);
 }
 
 void KJumpingCube::changePlayer(int newPlayer)

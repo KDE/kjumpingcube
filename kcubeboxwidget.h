@@ -164,8 +164,12 @@ private:
    int      m_side;
    Player   m_currentPlayer;
    KCubeWidget * ** cubes;
+   bool     m_gameHasBeenWon;
+   QList<int> * m_steps;
 
+/* IDW TODO - DELETE.
    int m_cubesToWin[3];		// Number of cubes for each player to capture.
+*/
 
    AI_Main brain;
 
@@ -175,16 +179,16 @@ private:
    int  m_row;
    int  m_col;
    bool fullSpeed;
+   AnimationType cascadeAnimation;
    AnimationType currentAnimation;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
-   int  stepTime;
 
    QList<int> saturated;	// List of over-full cubes, as in cascade moves.
 
-   void startCascade (int row, int col);
-   bool nextMoveStep();
+   // IDW TODO - DELETE. void startCascade (int row, int col);
+   // IDW TODO - DELETE. bool nextMoveStep();
 
    void stopAnimation();
 
@@ -197,15 +201,18 @@ private:
    * and starts the Loop for checking the playingfield
    */
    void doMove(int row,int column);
+   void doStep();
    void startAnimation (AnimationType type, int row, int col);
    void startAnimation (int row, int col);
    void scatterDots (int step);
 
+/* IDW TODO - DELETE.
    void increaseNeighbours (Player forWhom, int row, int column);
+*/
 
 private slots:
    void nextAnimationStep();
-   void continueCascade();
+   // IDW TODO - DELETE. void continueCascade();
    /**
    * checks if cube at ['row','column'] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield
