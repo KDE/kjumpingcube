@@ -41,7 +41,7 @@ void KCubeWidget::enableClicks(bool flag)
 **                 public functions                       **
 ** ****************************************************** */
 
-KCubeWidget::KCubeWidget (QWidget* parent, Player owner, int value, int max)
+KCubeWidget::KCubeWidget (QWidget* parent)
               : QFrame(parent)
 {
   setMinimumSize (20,20);
@@ -56,8 +56,8 @@ KCubeWidget::KCubeWidget (QWidget* parent, Player owner, int value, int max)
   m_scale = 1.0;
   m_row = 0;
   m_col = 0;
-  m_owner = owner;
-  m_value = value;
+  m_owner = Nobody;
+  m_value = 1;
 
   pixmaps = 0;
   blinking = None;

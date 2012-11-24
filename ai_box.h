@@ -55,6 +55,25 @@ public:
     int      maxValue (int index) { return (((index >= 0) && (index < m_nCubes))
                            ? m_maxValues [index] : 4); }
 
+    // For performance, avoid setOwner() and setValue() in the game engine (AI).
+    // However, they are good to use when loading a saved game, for example.
+    void     setOwner (int index, Player owner)
+                                { if ((index >= 0) && (index < m_nCubes) &&
+                                      (owner >= Nobody) && (owner <= Two)) {
+                                      if (owner != m_owners [index]) {
+                                          m_cubesToWin [m_owners [index]] ++;
+                                          m_cubesToWin [owner] --;
+                                      }
+                                      m_owners [index] = owner;
+                                  } 
+                                }
+    void     setValue (int index, int value)
+                                { if ((index >= 0) && (index < m_nCubes) &&
+                                      (value >= 1)) {
+                                      m_values [index] = value;
+                                  } 
+                                }
+
     bool     doMove  (Player player, int index, QList<int> * steps = 0);
     void     printBox();
     bool     oldMove (Player player, int index);

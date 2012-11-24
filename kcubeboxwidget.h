@@ -136,8 +136,6 @@ protected slots:
    void setNormalCursor();
 
 private:
-   int m_step;	// IDW test: use a KMessageBox to pause between computer moves.
-
    void init();
 
    QSvgRenderer svg;
@@ -185,9 +183,14 @@ private:
 
    void stopAnimation();
 
-   Player changePlayer();
-   bool computerPlOne;
-   bool computerPlTwo;
+   // IDW test. Moved to slot section. Player changePlayer();
+   bool   computerPlOne;
+   bool   computerPlTwo;
+
+   bool   m_pauseForComputer;
+   Player m_playerWaiting;
+   bool   m_pauseForStep;
+   bool   m_waitingForStep;
 
    /**
    * increases the cube at row 'row' and column 'column' ,
@@ -205,6 +208,7 @@ private slots:
    * if true, it increases this cube and checks the playingfield
    */
    bool checkClick(int row,int column,bool isClick);
+   Player changePlayer();
 
    /** turns off blinking, if an other cube is clicked */
    void stopHint (bool shutdown = false);

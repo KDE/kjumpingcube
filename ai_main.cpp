@@ -555,7 +555,8 @@ int AI_Main::findCubesToMove (Move * c2m, Player player, int side,
 void AI_Main::boxPrint (int side, int * owners, int * values)
 {
    // IDW test. For debugging.
-   fprintf (stderr, "AI_Main::boxPrint (%d, %d, %d)\n", side, owners, values);
+   fprintf (stderr, "AI_Main::boxPrint (%d, %lu, %lu)\n",
+            side, (long) owners, (long) values);
    for (int y = 0; y < side; y++) {
       fprintf (stderr, "   ");
       for (int x = 0; x < side; x++) {
