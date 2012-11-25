@@ -50,7 +50,7 @@ public:
    *                 > 0 - The priority of a useful move (1 is highest)
    */
    virtual int assessCube (int row, int col, Player player,
-                           int side, int * owners, int * values,
+                           int side, Player * owners, int * values,
                            int * maxValues) const = 0;
 
    /**
@@ -62,8 +62,8 @@ public:
     *
     * @return        The value of the position
     */
-   virtual double assessField (Player player,
-                               int side, int * owners, int * values) const = 0;
+   virtual double assessField (Player player, int side,
+                               Player * owners, int * values) const = 0;
 };
 
 #endif // AI_BASE_H

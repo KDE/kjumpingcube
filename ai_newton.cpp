@@ -21,14 +21,13 @@
 **************************************************************************** */
 
 #include "ai_newton.h"
-#include "cube.h"
 
 AI_Newton::AI_Newton()
 {
 }
 
 int AI_Newton::assessCube (int row, int col, Player player,
-                           int side, int * owners, int * values,
+                           int side, Player * owners, int * values,
                            int * maxValues) const
 {
    enum Value {InvalidMove = -2, StrongerOpponent = 999,
@@ -39,11 +38,10 @@ int AI_Newton::assessCube (int row, int col, Player player,
                CanConsolidate,
                CanReachMaximum, CanExpand, IncreaseEdge, IncreaseCenter,
                PlayHereAnyway};
-   Cube::Owner p         = (Cube::Owner) player;	// This player.
-   Cube::Owner o         = (p == Cube::One) ?
-                            Cube::Two : Cube::One;	// The other player.
+   Player      p         = player;			// This player.
+   Player      o         = (p == One) ?  Two : One;	// The other player.
    int         index     = row * side + col;		// This cube.
-   Cube::Owner cOwner    = (Cube::Owner) owners[index];	// This cubes's owner.
+   Player      cOwner    = owners[index];		// This cubes's owner.
 
    if (cOwner == o)
       return InvalidMove;	// ERROR: The other player owns this cube.
@@ -94,7 +92,7 @@ int AI_Newton::assessCube (int row, int col, Player player,
    if (cRank == oRank)               	 return EqualOpponent;
    if ((cRank <= 0) && (oCount > 0))     return CanTake;
 
-   bool vacant  =  (cOwner == Cube::Nobody);
+   bool vacant  =  (cOwner == Nobody);
    bool nVacant = ((pCount + oCount) == 0);
    int  cMax    = maxValues[index];
    if (vacant && nVacant && (cMax == 2)) return OccupyCorner;
@@ -110,7 +108,7 @@ int AI_Newton::assessCube (int row, int col, Player player,
 }
 
 double AI_Newton::assessField (Player player,
-                               int side, int * owners, int * values) const
+                               int side, Player * owners, int * values) const
 {
    int    cubesOne       = 0;
    int    cubesTwo       = 0;

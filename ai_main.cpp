@@ -20,7 +20,6 @@
 **************************************************************************** */
 
 #include "ai_main.h"
-#include "cube.h"
 #include "ai_kepler.h"
 #include "ai_newton.h"
 #include "ai_box.h"
@@ -156,7 +155,7 @@ bool AI_Main::isActive() const
    return m_active;
 }
 
-bool AI_Main::getMove (int & index, Player player, AI_Box * box)
+bool AI_Main::getMove (int & index, const Player player, AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
    if (isActive())
@@ -244,7 +243,7 @@ Move AI_Main::tryMoves (Player player, int level)
    Move * cubesToMove = new Move [nCubes];
    boxPrint (m_side, (int *) m_box->m_owners, m_box->m_values); // IDW test.
    int moves = findCubesToMove (cubesToMove, player, m_side,
-               (int *) m_box->m_owners, m_box->m_values, m_box->m_maxValues);
+                       m_box->m_owners, m_box->m_values, m_box->m_maxValues);
 
    qDebug() << tag(level) << "Level" << level << "Player" << player
             << "number of likely moves" << moves;
@@ -307,7 +306,8 @@ Move AI_Main::tryMoves (Player player, int level)
 	 //            or worst that can happen if moves == 1.
 	 // Stop the recursion.
 	 // IDW TODO - Should assessField param 3 be type (Player *)?
-         val = m_currentAI->assessField (player, m_side, (int *)(m_box->m_owners), m_box->m_values);
+         val = m_currentAI->assessField (player, m_side,
+                                         m_box->m_owners, m_box->m_values);
 	 n_assess++;
          cubesToMove[n].val = val; // IDW test. For debug output.
          qDebug() << tag(level) << "END RECURSION: Player" << player
@@ -377,7 +377,7 @@ Move AI_Main::tryMoves (Player player, int level)
 }
 
 int AI_Main::findCubesToMove (Move * c2m, Player player, int side,
-                              int * owners, int * values, int * maxValues)
+                              Player * owners, int * values, int * maxValues)
 {
    // IDW TODO - Streamline and tidy up this method.
    int x, y, index, n;
@@ -559,8 +559,8 @@ void AI_Main::boxPrint (int side, int * owners, int * values)
       fprintf (stderr, "   ");
       for (int x = 0; x < side; x++) {
 	 int index = x * side + y;
-	 if (owners[index] == Cube::Nobody) fprintf (stderr, "  .");
-	 else fprintf (stderr, " %2d", (owners[index] == Cube::One) ?
+	 if (owners[index] == Nobody) fprintf (stderr, "  .");
+	 else fprintf (stderr, " %2d", (owners[index] == One) ?
 		 values[index] : -values[index]);
       }
       fprintf (stderr, "\n");

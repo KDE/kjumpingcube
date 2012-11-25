@@ -54,9 +54,8 @@ public:
    * @return         < 0 - The move is invalid or wasteful
    *                 > 0 - The value of a useful move (1 is best)
    */
-   int    assessCube (int row, int col, Player player,
-                      int side, int * owners, int * values,
-                      int * maxValues) const;
+   int    assessCube (int row, int col, Player player, int side,
+                      Player * owners, int * values, int * maxValues) const;
 
    /**
     * Assess the value of a position reached after trying a move.  The move that
@@ -68,13 +67,13 @@ public:
     *
     * @return        The value of the position
     */
-   double assessField (Player player,
-                       int side, int * owners, int * values) const;
+   double assessField (Player player, int side,
+                       Player * owners, int * values) const;
 
 private:
    // A helper method for assessCube().
-   int getDiff (int row, int col, Player player,
-                int side, int * owners, int * values, int * maxValues) const;
+   int getDiff (int row, int col, Player player, int side,
+                Player * owners, int * values, int * maxValues) const;
 };
 
 #endif // AI_KEPLER_H

@@ -73,8 +73,7 @@ public:
    explicit AI_Main();
    virtual ~AI_Main();
 
-   // IDW TODO - It would be good to use const for CubeBox parameters where possible,
-   //            but something back in cubeboxbase.h prevents that.
+   // IDW TODO - It would be good to use const for more parameters if possible.
 
    /**
    * Computes a good possible move at the given field.
@@ -83,7 +82,7 @@ public:
    * @return false if computing was stopped
    * @see AI_Main#stop;
    */
-   bool getMove (int & index, Player player, AI_Box * box);
+   bool getMove (int & index, const Player player, AI_Box * box);
 
    /**
     *  Stops the AI, but not till the end of the current cycle.
@@ -143,7 +142,7 @@ private:
    * @return number of found cubes to move
    */
    int findCubesToMove (Move * c2m, Player player, int side,
-                        int * owners, int * values, int * maxValues);
+                        Player * owners, int * values, int * maxValues);
 
    void boxPrint (int side, int * owners, int * values);
 

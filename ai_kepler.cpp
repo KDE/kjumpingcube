@@ -21,15 +21,13 @@
 **************************************************************************** */
 
 #include "ai_kepler.h"
-#include "cube.h"
 
 AI_Kepler::AI_Kepler()
 {
 }
 
-int AI_Kepler::assessCube (int row, int col, Player player,
-                           int side, int * owners, int * values,
-                           int * maxValues) const
+int AI_Kepler::assessCube (int row, int col, Player player, int side,
+                           Player * owners, int * values, int * maxValues) const
 {
    int diff = 10000, temp = 10000;
 
@@ -68,8 +66,8 @@ int AI_Kepler::assessCube (int row, int col, Player player,
    return val;
 }
 
-double AI_Kepler::assessField (Player player,
-                               int side, int * owners, int * values) const
+double AI_Kepler::assessField (Player player, int side,
+                               Player * owners, int * values) const
 {
    int    cubesOne       = 0;
    int    cubesTwo       = 0;
@@ -102,12 +100,12 @@ double AI_Kepler::assessField (Player player,
 }
 
 int AI_Kepler::getDiff (int row, int col, Player player, int side,
-                        int * owners, int * values, int * maxValues) const
+                        Player * owners, int * values, int * maxValues) const
 {
    int diff;
    int index = row * side + col;
 
-   if (owners[index] != (Cube::Owner)player) {
+   if (owners[index] != player) {
       diff = maxValues[index] - values[index];
    }
    else {
