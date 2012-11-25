@@ -59,7 +59,7 @@ class AI_Main
 public:
 
    void startStats();
-   void postMove (Player player, int x, int y);
+   void postMove (Player player, int index);
    void dumpStats();
 
    /* IDW TODO - Use a thread and return the move via a signal.
@@ -83,7 +83,7 @@ public:
    * @return false if computing was stopped
    * @see AI_Main#stop;
    */
-   bool getMove (int & row, int & column, Player player, AI_Box * box);
+   bool getMove (int & index, Player player, AI_Box * box);
 
    /**
     *  Stops the AI, but not till the end of the current cycle.

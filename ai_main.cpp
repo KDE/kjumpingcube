@@ -156,8 +156,7 @@ bool AI_Main::isActive() const
    return m_active;
 }
 
-bool AI_Main::getMove (int & row, int & column,
-                       Player player, AI_Box * box)
+bool AI_Main::getMove (int & index, Player player, AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
    if (isActive())
@@ -213,11 +212,10 @@ bool AI_Main::getMove (int & row, int & column,
    saveStats (move);		// IDW test. Statistics collection.
 
    // Pass the best move found back to the caller.
-   row    = move.row;
-   column = move.col;
+   index = move.row * m_side + move.col;
 
    qDebug() << tag(0) << "MOVE" << m_currentMoveNo << "for PLAYER" << m_player
-            << "X" << row << "Y" << column;
+            << "X" << move.row << "Y" << move.col;
    m_active = false;
 
    return (! m_stopped);
@@ -576,10 +574,12 @@ void AI_Main::startStats()
    m_moveStats.clear();
 }
 
-void AI_Main::postMove (Player player, int x, int y)
+void AI_Main::postMove (Player player, int index)
 {
    // IDW test. Statistics collection.
    // Used to record a move by a human player or other AI (e.g. Brain class).
+   int x = index / m_side;
+   int y = index % m_side;
    m_maxLevel    = m_ai_maxLevel[player];
    m_currentMove = new MoveStats [1];
 

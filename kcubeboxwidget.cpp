@@ -40,6 +40,7 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
 {
    m_box = new AI_Box (m_side);
    m_steps = new QList<int>;
+   cubes.clear();
    init();
    m_gameHasBeenWon   = false;
    m_pauseForComputer = false;	// IDW test. TODO - Put this in Settings.
@@ -52,9 +53,10 @@ KCubeBoxWidget::~KCubeBoxWidget()
 {
    if(isActive())
     stopActivities();
-   if(cubes)
-      deleteCubes(); // IDW TODO - Needed?
-   delete m_box; // IDW test.
+   // if(cubes)
+      // deleteCubes(); // IDW TODO - Needed?
+   delete m_steps;
+   delete m_box;
 }
 
 void KCubeBoxWidget::loadSettings(){
@@ -122,12 +124,9 @@ void KCubeBoxWidget::reset()
 {
    stopActivities();
 
-   int i,j;
-   for (i = 0; i < m_side; i++)
-      for (j = 0; j < m_side; j++)
-      {
-         cubes[i][j]->reset();
-      }
+   foreach (KCubeWidget * cube, cubes) {
+      cube->reset();
+   }
 
    m_box->clear();
 
@@ -145,10 +144,9 @@ void KCubeBoxWidget::reset()
    brain.startStats();
 }
 
-void KCubeBoxWidget::undo()
-{
+void KCubeBoxWidget::undo() {
    // IDW TODO - Return true/false dep. on whether any moves left to undo.
-   if(isActive())
+   if (isActive())
       return;
 
    // IDW test. Player oldPlayer=currentPlayer;
@@ -161,27 +159,27 @@ void KCubeBoxWidget::undo()
    // IDW test. m_box->redoPosition (m_currentPlayer, isAI);
 
    // IDW TODO - Update the cube display after an undo or redo.
-   for (int x = 0; x < m_side; x++) {
-       for (int y = 0; y < m_side; y++) {
-	   int index = x * m_side + y;
-           cubes[x][y]->setOwner (m_box->owner (index));
-           cubes[x][y]->setValue (m_box->value (index));
-       }
+   int index = 0;
+   foreach (KCubeWidget * cube, cubes) {
+       cube->setOwner (m_box->owner (index));
+       cube->setValue (m_box->value (index));
+       index++;
    }
    if (oldPlayer != m_currentPlayer)
       emit playerChanged (m_currentPlayer);
 
    checkComputerplayer (m_currentPlayer);
 }
+
 void KCubeBoxWidget::getHint()
 {
    if(isActive())
       return;
 
-   int row=0,column=0;
+   int index = 0;
 
    emit startedThinking();
-   bool done = brain.getMove (row, column, m_currentPlayer, m_box);
+   bool done = brain.getMove (index, m_currentPlayer, m_box);
    if (delayedShutdown) {
       delayedShutdown = false;
       emit shutdownNow();
@@ -189,19 +187,17 @@ void KCubeBoxWidget::getHint()
    }
    emit stoppedThinking();
 
-   qDebug() << "HINT FOR PLAYER" << m_currentPlayer << "X" << row << "Y" << column;
+   qDebug() << "HINT FOR PLAYER" << m_currentPlayer << "X" << index / m_side << "Y" << index % m_side;
    if (done) {
-      startAnimation (Hint, row, column);
+      startAnimation (Hint, index);
    }
    // If (! done), we interrupted the brain, so we do not want the hint.
 }
 
 void KCubeBoxWidget::setColors ()
 {
-   for (int row = 0; row < m_side; row++) {
-      for (int col = 0; col < m_side; col++) {
-         cubes[row][col]->updateColors();
-      }
+   foreach (KCubeWidget * cube, cubes) {
+      cube->updateColors();
    }
 }
 
@@ -211,6 +207,7 @@ void KCubeBoxWidget::setDim(int d)
       delete m_box;
       m_box   = new AI_Box (d);
       m_side  = d;
+      initCubes();
       reset();
    }
 }
@@ -267,8 +264,6 @@ void KCubeBoxWidget::saveProperties (KConfigGroup & config)
    for (int x = 0; x < m_side; x++) {
      for (int y = 0; y < m_side; y++) {
 	key.sprintf ("%u,%u", x, y);
-	// IDW test. owner.sprintf("%u",cubes[row][y]->owner());
-	// IDW test. value.sprintf("%u",cubes[row][y]->value());
 	int index = x * m_side + y;
 	owner.sprintf ("%u", m_box->owner (index));
 	value.sprintf ("%u", m_box->value (index));
@@ -331,8 +326,8 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
                                            .arg(key).arg(maxValue));
 	    value = maxValue;
 	}
-	cubes[x][y]->setOwner ((Player) owner);
-	cubes[x][y]->setValue (value);
+	cubes.at (index)->setOwner ((Player) owner);
+	cubes.at (index)->setValue (value);
 	m_box->setOwner (index, (Player) owner);
 	m_box->setValue (index, value);
 
@@ -380,7 +375,7 @@ void KCubeBoxWidget::stopHint (bool shutdown)
 */
 }
 
-bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
+bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
 {
    // IDW test. if (m_pauseForStep && (currentAnimation != None) && (! isMoving())) {
    if (isClick && m_waitingForStep) {
@@ -393,15 +388,16 @@ bool KCubeBoxWidget::checkClick(int row,int column, bool isClick)
       return false;
 
    // make the game start when computer player is player one and user clicks
+   int index = x * m_side + y;
    // IDW test. if (isClick && m_currentPlayer == One && computerPlOne)
    // IDW test. if (isClick && m_pauseForComputer && isComputer (m_currentPlayer)) {
    if (isClick && (m_playerWaiting != Nobody)) {
       checkComputerplayer (m_playerWaiting);
       return false;
    }
-   else if (m_currentPlayer == cubes[row][column]->owner() ||
-		   cubes[row][column]->owner() == Nobody) {
-      doMove(row,column);
+   else if (m_currentPlayer == cubes.at (index)->owner() ||
+            cubes.at (index)->owner() == Nobody) {
+      doMove (index);
       return true;
    }
    return false;
@@ -421,11 +417,11 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       m_playerWaiting = Nobody;
       KCubeWidget::enableClicks(false);
 
-      int row=0,column=0;
+      int index = 0;
       emit startedThinking();
       qDebug() << "Calling brain.getMove() for player" << player;
       t.start();
-      brain.getMove (row, column, player, m_box);
+      brain.getMove (index, player, m_box);
       qDebug() << "TIME of MOVE" << t.elapsed();
       qDebug() << "==============================================================";
       if (delayedShutdown) {
@@ -441,10 +437,10 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       // Blink the cube to be moved (twice).  The realMove = true flag tells
       // the cube to simulate a mouse click and trigger the move animation,
       // but not until after the blinking is finished.  The cube's "clicked"
-      // signal is connected to "checkClick (row, column, false)".`
+      // signal is connected to "checkClick (x, y, false)".`
 
-      startAnimation (ComputerMove, row, column);
-      // checkClick (row, column, false); // Use this for IDW high-speed test.
+      startAnimation (ComputerMove, index);
+      // checkClick (index / m_side, index % m_side, false); // Use this for IDW high-speed test.
    }
 }
 
@@ -540,27 +536,19 @@ void KCubeBoxWidget::init()
 
 void KCubeBoxWidget::initCubes()
 {
-   const int s = m_side;
-   int i,j;
+   qDeleteAll (cubes);
+   cubes.clear();
 
-   // create new cubes
-   cubes = new KCubeWidget**[s];
-   for(i=0;i<s;i++)
-   {
-      cubes[i]=new KCubeWidget*[s];
+   int nCubes = m_side * m_side;
+   for (int n = 0; n < nCubes; n++) {
+      KCubeWidget * cube = new KCubeWidget (this);
+      cubes.append (cube);
+      cube->setCoordinates (n / m_side, n % m_side, m_side - 1);
+      cube->setPixmaps (&elements);
+      connect (cube, SIGNAL (clicked(int,int,bool)),
+                     SLOT   (checkClick(int,int,bool)));
+      cube->show();
    }
-
-   for(i=0;i<s;i++)
-      for(j=0;j<s;j++)
-      {
-         cubes[i][j] = new KCubeWidget (this);
-         cubes[i][j]->setCoordinates (i, j, s - 1);
-         cubes[i][j]->setPixmaps (&elements);
-         // connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),SLOT(stopHint()));
-         connect(cubes[i][j],SIGNAL(clicked(int,int,bool)),
-                             SLOT(checkClick(int,int,bool)));
-         cubes[i][j]->show();
-      }
 }
 
 void KCubeBoxWidget::makeStatusPixmaps (const int width)
@@ -707,11 +695,13 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
    qDebug() << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    makeSVGBackground (w, h);
    makeSVGCubes (cubeSize);
-   for (int i = 0; i < m_side; i++) {
-      for (int j = 0; j < m_side; j++) {
-         cubes[i][j]->move (topLeft.x() + hairline + i * (cubeSize + hairline),
-                            topLeft.y() + hairline + j * (cubeSize + hairline));
-         cubes[i][j]->resize (cubeSize, cubeSize);
+   for (int x = 0; x < m_side; x++) {
+      for (int y = 0; y < m_side; y++) {
+	 int index = x * m_side + y;
+         cubes.at (index)->move (
+                            topLeft.x() + hairline + x * (cubeSize + hairline),
+                            topLeft.y() + hairline + y * (cubeSize + hairline));
+         cubes.at (index)->resize (cubeSize, cubeSize);
       }
    }
 }
@@ -732,7 +722,7 @@ void  KCubeBoxWidget::deleteCubes()
 **                   other private functions                         **
 ** ***************************************************************** */
 
-void KCubeBoxWidget::doMove(int row,int column)
+void KCubeBoxWidget::doMove (int index)
 {
    // if a move hasn't finished yet don't do another move
    if(isActive())
@@ -745,9 +735,8 @@ void KCubeBoxWidget::doMove(int row,int column)
    if (! computerMove) { // Make only human-players' moves undoable.
       // For the undo-function: make a copy of the playfield.
       m_box->copyPosition (m_currentPlayer, computerMove);
-      brain.postMove (m_currentPlayer, row, column); // IDW test.
+      brain.postMove (m_currentPlayer, index); // IDW test.
    }
-   int index = row * m_side + column;
    m_steps->clear();
    m_gameHasBeenWon = m_box->doMove (m_currentPlayer, index, m_steps);
    m_box->printBox(); // IDW test.
@@ -773,21 +762,18 @@ void KCubeBoxWidget::doStep()
 
          startStep = (index > 0);
          index = startStep ? (index - 1) : (-index - 1);
-         int x = index / m_side;
-         int y = index % m_side;
 	 int maxValue = m_box->maxValue (index);
          if (startStep) {
-            int value = cubes[x][y]->value() + 1;
-            cubes[x][y]->setOwner (/* (Cube::Owner) */ m_currentPlayer);
-            cubes[x][y]->setValue (value);
+            int value = cubes.at (index)->value() + 1;
+            cubes.at (index)->setOwner (m_currentPlayer);
+            cubes.at (index)->setValue (value);
 	    if (value > maxValue) {
-               cubes[x][y]->setDark();
+               cubes.at (index)->setDark();
 	    }
-	    // IDW test. qDebug() << "INCREMENT" << index << x << y << "to" << value << "maxVal" << maxValue << "dark" << (value > maxValue);
+	    // IDW test. qDebug() << "INCREMENT" << index << index / m_side << index % m_side << "to" << value << "maxVal" << maxValue << "dark" << (value > maxValue);
          }
          else {
-	    // IDW test. cubes[x][y]->setNeutral();
-	    startAnimation (cascadeAnimation, x, y);
+	    startAnimation (cascadeAnimation, index);
          }
       }
       else {
@@ -804,12 +790,11 @@ void KCubeBoxWidget::doStep()
    } while (startStep || (cascadeAnimation == None));
 }
 
-void KCubeBoxWidget::startAnimation (AnimationType type, int row, int col)
+void KCubeBoxWidget::startAnimation (AnimationType type, int index)
 {
    int interval = 0;
    currentAnimation = type;
-   m_row = row;
-   m_col = col;
+   m_index = index;
    switch (currentAnimation) {
    case None:
       animationCount = 0;
@@ -819,17 +804,17 @@ void KCubeBoxWidget::startAnimation (AnimationType type, int row, int col)
    case ComputerMove:
       interval = 150 + (Prefs::animationSpeed() - 1) * 50;	// 150-600 msec.
       animationCount = 4;
-      cubes[m_row][m_col]->setLight();
+      cubes.at (index)->setLight();
       break;
    case Darken:
       interval = animationTime;
       animationCount = 1;
-      cubes[m_row][m_col]->setDark();
+      cubes.at (index)->setDark();
       break;
    case RapidBlink:
       interval = 60 + Prefs::animationSpeed() * 30;		// 120-360 msec.
       animationCount = 4;
-      cubes[m_row][m_col]->setLight();
+      cubes.at (index)->setLight();
       break;
    case Scatter:
       interval = (animationTime + animationSteps/2) / animationSteps;
@@ -843,7 +828,7 @@ void KCubeBoxWidget::startAnimation (AnimationType type, int row, int col)
       return;
    }
    animationTimer->start();
-   // IDW test. qDebug() << "START ANIMATION" << m_row << m_col << "type" << currentAnimation << "count" << animationCount << "interval" << interval;
+   // IDW test. qDebug() << "START ANIMATION" << m_index / m_side << m_index % m_side << "type" << currentAnimation << "count" << animationCount << "interval" << interval;
 }
 
 void KCubeBoxWidget::nextAnimationStep()
@@ -861,10 +846,10 @@ void KCubeBoxWidget::nextAnimationStep()
    case ComputerMove:
    case RapidBlink:
       if (animationCount%2 == 1) {
-         cubes[m_row][m_col]->setDark();
+         cubes.at (m_index)->setDark();
       }
       else {
-         cubes[m_row][m_col]->setLight();
+         cubes.at (m_index)->setLight();
       }
       break;
    case Darken:
@@ -872,13 +857,13 @@ void KCubeBoxWidget::nextAnimationStep()
    case Scatter:
       int step = animationSteps - animationCount;
       if (step <= 2) {
-         cubes[m_row][m_col]->shrink(1.0 - step * 0.3);
+         cubes.at (m_index)->shrink(1.0 - step * 0.3);
       }
       else if (step < 7) {
-         cubes[m_row][m_col]->expand((step - 2) * 0.2);
+         cubes.at (m_index)->expand((step - 2) * 0.2);
       }
       else if (step == 7) {
-         cubes[m_row][m_col]->expand(1.2);
+         cubes.at (m_index)->expand(1.2);
          scatterDots (0);
       }
       else {
@@ -893,10 +878,12 @@ void KCubeBoxWidget::scatterDots (int step)
    // IDW test. qDebug() << "KCubeBoxWidget::scatterDots (" << step << ")";
    Player player = m_currentPlayer;
    int d = m_side - 1;
-   if (m_row > 0) cubes[m_row-1][m_col]->migrateDot (+1,  0, step, player);
-   if (m_row < d) cubes[m_row+1][m_col]->migrateDot (-1,  0, step, player);
-   if (m_col > 0) cubes[m_row][m_col-1]->migrateDot ( 0, +1, step, player);
-   if (m_col < d) cubes[m_row][m_col+1]->migrateDot ( 0, -1, step, player);
+   int x = m_index / m_side;
+   int y = m_index % m_side;
+   if (x > 0) cubes.at (m_index - m_side)->migrateDot (+1,  0, step, player);
+   if (x < d) cubes.at (m_index + m_side)->migrateDot (-1,  0, step, player);
+   if (y > 0) cubes.at (m_index - 1)     ->migrateDot ( 0, +1, step, player);
+   if (y < d) cubes.at (m_index + 1)     ->migrateDot ( 0, -1, step, player);
 }
 
 void KCubeBoxWidget::stopAnimation()
@@ -908,16 +895,16 @@ void KCubeBoxWidget::stopAnimation()
       break;
    case Hint:
    case ComputerMove:
-      cubes[m_row][m_col]->setNeutral();
+      cubes.at (m_index)->setNeutral();
       if (currentAnimation == ComputerMove) { // IDW TODO - Check shutdown.
-         checkClick (m_row, m_col, false);
+         checkClick (m_index / m_side, m_index % m_side, false);
       }
       break;
    case RapidBlink:
    case Darken:
    case Scatter:
-      int max = m_box->maxValue (m_row * m_side + m_col);
-      cubes[m_row][m_col]->setValue (cubes[m_row][m_col]->value() - max);
+      int max = m_box->maxValue (m_index);
+      cubes.at (m_index)->setValue (cubes.at (m_index)->value() - max);
       doStep();
       break;
    }

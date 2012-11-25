@@ -32,6 +32,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QResizeEvent>
+#include <QList>
 
 class KConfigGroup;
 class QTimer;
@@ -67,9 +68,10 @@ public:
    void setColors ();
 
    /**
-   * sets number of Cubes in a row/column to 'size'.
+   * Set the number of cubes in a row or column.  If the number has changed,
+   * delete the existing set of cubes and create a new one.
    */
-   virtual void setDim(int dim);
+   virtual void setDim (int dim);
 
    /**
    * sets player 'player' as computer or human
@@ -161,7 +163,7 @@ private:
    AI_Box * m_box;
    int      m_side;
    Player   m_currentPlayer;
-   KCubeWidget * ** cubes;
+   QList<KCubeWidget *> cubes;
    bool     m_gameHasBeenWon;
    QList<int> * m_steps;
 
@@ -170,16 +172,13 @@ private:
    QTimer *animationTimer;
    bool delayedShutdown;	// True if the brain is active at Quit time.
 
-   int  m_row;
-   int  m_col;
+   int  m_index;
    bool fullSpeed;
    AnimationType cascadeAnimation;
    AnimationType currentAnimation;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
-
-   QList<int> saturated;	// List of over-full cubes, as in cascade moves.
 
    void stopAnimation();
 
@@ -193,21 +192,20 @@ private:
    bool   m_waitingForStep;
 
    /**
-   * increases the cube at row 'row' and column 'column' ,
-   * and starts the Loop for checking the playingfield
+   * Increases the cube at 'index' and starts the animation loop, if required.
    */
-   void doMove(int row,int column);
+   void doMove (int index);
    void doStep();
-   void startAnimation (AnimationType type, int row, int col);
+   void startAnimation (AnimationType type, int index);
    void scatterDots (int step);
 
 private slots:
    void nextAnimationStep();
    /**
-   * checks if cube at ['row','column'] is clickable by the current player.
+   * checks if cube at [x, y] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield
    */
-   bool checkClick(int row,int column,bool isClick);
+   bool checkClick (int x, int y, bool isClick);
    Player changePlayer();
 
    /** turns off blinking, if an other cube is clicked */
