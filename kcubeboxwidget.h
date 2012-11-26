@@ -110,6 +110,8 @@ public slots:
 
    void loadSettings();
 
+   void computerMoveDone (int index);
+
 signals:
    void playerChanged(int newPlayer);
    void colorChanged(int player);
@@ -176,6 +178,7 @@ private:
    bool fullSpeed;
    AnimationType cascadeAnimation;
    AnimationType currentAnimation;
+   AnimationType m_computerMoveType;
    int  animationCount;
    int  animationSteps;
    int  animationTime;

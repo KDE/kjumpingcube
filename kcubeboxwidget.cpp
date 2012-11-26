@@ -43,6 +43,7 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
    cubes.clear();
    init();
    m_gameHasBeenWon   = false;
+   m_computerMoveType = Hint;
    m_pauseForComputer = false;	// IDW test. TODO - Put this in Settings.
    m_pauseForStep     = false;	// IDW test. TODO - Put this in Settings.
    m_playerWaiting    = computerPlOne ? One : Nobody;
@@ -171,15 +172,40 @@ void KCubeBoxWidget::undo() {
    checkComputerplayer (m_currentPlayer);
 }
 
+void KCubeBoxWidget::checkComputerplayer(Player player)
+{
+   // Check if a process is running or the widget is not shown yet
+   if (isActive() || (! isVisible()))
+      return;
+   if ((player == One && computerPlOne && m_currentPlayer == One) ||
+       (player == Two && computerPlTwo && m_currentPlayer == Two)) {
+      if (m_pauseForComputer && (m_playerWaiting == Nobody)) {
+         m_playerWaiting = player;
+         return;
+      }
+      m_playerWaiting = Nobody;
+      KCubeWidget::enableClicks (false);
+
+      m_computerMoveType = ComputerMove;
+      emit startedThinking();
+      qDebug() << "Calling brain.getMove() for player" << player;
+      t.start(); // IDW test.
+      brain.getMove (player, m_box);
+   }
+}
+
 void KCubeBoxWidget::getHint()
 {
-   if(isActive())
+   if (isActive())
       return;
 
-   int index = 0;
-
+   m_computerMoveType = Hint;
    emit startedThinking();
-   bool done = brain.getMove (index, m_currentPlayer, m_box);
+   brain.getMove (m_currentPlayer, m_box);
+}
+
+void KCubeBoxWidget::computerMoveDone (int index)
+{
    if (delayedShutdown) {
       delayedShutdown = false;
       emit shutdownNow();
@@ -187,11 +213,23 @@ void KCubeBoxWidget::getHint()
    }
    emit stoppedThinking();
 
-   qDebug() << "HINT FOR PLAYER" << m_currentPlayer << "X" << index / m_side << "Y" << index % m_side;
-   if (done) {
-      startAnimation (Hint, index);
+   // We do not care if we interrupted the computer.  It was probably
+   // taking too long, so we will just take the best move it had so far.
+
+   if (m_computerMoveType == ComputerMove) {
+      qDebug() << "TIME of MOVE" << t.elapsed();
+      qDebug() << "==============================================================";
    }
-   // If (! done), we interrupted the brain, so we do not want the hint.
+   else if (m_computerMoveType == Hint) {
+      qDebug() << "HINT FOR PLAYER" << m_currentPlayer
+               << "X" << index / m_side << "Y" << index % m_side;
+   }
+
+   // Blink the cube to be moved (twice).
+   startAnimation (m_computerMoveType, index);
+
+   // checkClick (index / m_side, index % m_side, false);
+   // Use this for IDW high-speed test.
 }
 
 void KCubeBoxWidget::setColors ()
@@ -234,11 +272,13 @@ bool KCubeBoxWidget::shutdown()
 
 void KCubeBoxWidget::stopActivities()
 {
+   qDebug() << "STOP ACTIVITIES";
    if (animationTimer->isActive()) {
       fullSpeed = true;		// If moving, complete the move immediately.
       stopAnimation();
    }
    if (brain.isActive()) {
+      qDebug() << "BRAIN IS ACTIVE";
       brain.stop();
       emit stoppedThinking();
    }
@@ -352,7 +392,8 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
 void KCubeBoxWidget::setWaitCursor()
 {
    // IDW test. setCursor(Qt::BusyCursor); TODO - Decide on wristwatch v. disk.
-   setCursor(Qt::WaitCursor);
+   // setCursor(Qt::WaitCursor);
+   setCursor(Qt::BusyCursor);
 }
 
 
@@ -401,47 +442,6 @@ bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
       return true;
    }
    return false;
-}
-
-void KCubeBoxWidget::checkComputerplayer(Player player)
-{
-   // checking if a process is running or the Widget isn't shown yet
-   if(isActive() || !isVisible())
-      return;
-   if ((player == One && computerPlOne && m_currentPlayer == One) ||
-       (player == Two && computerPlTwo && m_currentPlayer == Two)) {
-      if (m_pauseForComputer && (m_playerWaiting == Nobody)) {
-         m_playerWaiting = player;
-         return;
-      }
-      m_playerWaiting = Nobody;
-      KCubeWidget::enableClicks(false);
-
-      int index = 0;
-      emit startedThinking();
-      qDebug() << "Calling brain.getMove() for player" << player;
-      t.start();
-      brain.getMove (index, player, m_box);
-      qDebug() << "TIME of MOVE" << t.elapsed();
-      qDebug() << "==============================================================";
-      if (delayedShutdown) {
-         delayedShutdown = false;
-         emit shutdownNow();
-         return;
-      }
-      emit stoppedThinking();
-
-      // We do not care if we interrupted the computer.  It was probably taking
-      // too long, so we will just take the best move it had so far.
-
-      // Blink the cube to be moved (twice).  The realMove = true flag tells
-      // the cube to simulate a mouse click and trigger the move animation,
-      // but not until after the blinking is finished.  The cube's "clicked"
-      // signal is connected to "checkClick (x, y, false)".`
-
-      startAnimation (ComputerMove, index);
-      // checkClick (index / m_side, index % m_side, false); // Use this for IDW high-speed test.
-   }
 }
 
 /* ***************************************************************** **
@@ -526,6 +526,7 @@ void KCubeBoxWidget::init()
    connect(this,SIGNAL(startedMoving()),SLOT(setWaitCursor()));
    connect(this,SIGNAL(stoppedMoving()),SLOT(setNormalCursor()));
    connect(this,SIGNAL(playerWon(int)),SLOT(stopActivities()));
+   connect(&brain,SIGNAL(done(int)),SLOT(computerMoveDone(int)));
 
    setNormalCursor();
 

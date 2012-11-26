@@ -26,7 +26,6 @@
 
 #include <QApplication>
 
-// #define DEBUG // Uncomment this to get AI_Main's debug messages
 #include <assert.h>
 
 #include <QDebug>
@@ -34,18 +33,38 @@
 
 #include "prefs.h"
 
-   // int nBits = sizeof(long int) * 8;
-   // double maxValue = (nBits >= 32) ? - 0x7fffffff : - 0x7fff; 
-   // qDebug() << "nBits" << nBits << "maxValue" << maxValue;
+// Use a thread and return the move via a signal.
+class ThreadedAI : public QThread
+{
+   Q_OBJECT
+public:
+   ThreadedAI (AI_Main * ai)
+      : m_ai (ai)
+   { }
+
+   virtual void run() {
+      int index = m_ai->computeMove();
+      emit done (index);
+   }
+
+   void stop() {
+      qDebug() << "STOP THREAD REQUESTED";
+      { QMutexLocker lock (&m_ai->endMutex); m_ai->stop(); }
+      wait();
+      qDebug() << "STOP THREAD DONE";
+   }
+signals:
+   void done (int index);
+
+private:
+   AI_Main * m_ai;
+};
 
 const int BigValue = 0x3fffffff;
 
 AI_Main::AI_Main()
-   /* IDW TODO - Use a thread and return the move via a signal.
    :
-   m_thread (new ThreadedAI (this))
-   */
-   :
+   m_thread (new ThreadedAI (this)),
    m_box (0),
    m_side (1)
 {
@@ -64,6 +83,7 @@ AI_Main::AI_Main()
 
    m_random.setSeed (0);
 
+   connect (m_thread, SIGNAL(done(int)), this, SIGNAL(done(int)));
 /*
    // Speed test for Move algorithms.
    QTime t;
@@ -106,6 +126,7 @@ AI_Main::~AI_Main()
 {
    delete m_AI_Kepler;
    delete m_AI_Newton;
+   delete m_thread;
 }
 
 void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
@@ -138,16 +159,10 @@ void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
    }
 }
 
-/*
-int AI_Main::skill() const
-{
-   return m_skill;
-}
-*/
-
 void AI_Main::stop()
 {
    m_stopped = true;
+   qDebug() << "M_STOPPED IS" << m_stopped;
 }
 
 bool AI_Main::isActive() const
@@ -155,11 +170,11 @@ bool AI_Main::isActive() const
    return m_active;
 }
 
-bool AI_Main::getMove (int & index, const Player player, AI_Box * box)
+void AI_Main::getMove (const Player player, AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
    if (isActive())
-      return false;
+      return;
 
    m_currentAI = m_ai[player];
    m_skill     = m_ai_skill[player];
@@ -171,7 +186,6 @@ bool AI_Main::getMove (int & index, const Player player, AI_Box * box)
    m_stopped = false;
    m_player  = player;
 
-   // IDW TODO - Change the CubeBox model.
    if (m_box == 0) {
        qDebug() << "NEW AI_Box REQUIRED: side =" << box->side();
        m_box = new AI_Box (box->side());
@@ -182,54 +196,37 @@ bool AI_Main::getMove (int & index, const Player player, AI_Box * box)
        m_box = new AI_Box (box->side());
    }
    m_side = m_box->side();
-   m_box->printBox();
    m_box->initPosition (box, player, true);
+
    qDebug() << "INITIAL POSITION";
    m_box->printBox();
 
-   /* IDW TODO - If a thread is to be used, it will have to return the
-    *            calculated move (m_move) via a signal (simulated click?).
-    *
-   m_thread->start(QThread::IdlePriority);
-   m_thread->wait();
-   */
+   m_thread->start (QThread::IdlePriority);
+   return;
+}
 
+int AI_Main::computeMove()
+{
    // Start the recursive MiniMax algorithm on a copy of the current cube box.
-   // IDW test. Move move = tryMoves (m_player, m_side, m_owners, m_values, m_maxValues, 0);
    qDebug() << tag(0) << "Calling tryMoves(), level zero, player" << m_player;
    Move move = tryMoves (m_player, 0);
-
-   qDebug() << tag(0) << "Returned from tryMoves(), level zero, player" << m_player
-            << "value" << move.val
+   qDebug() << tag(0) << "Returned from tryMoves(), level zero, player"
+            << m_player << "value" << move.val
             << "simulate" << n_simulate << "assess" << n_assess;
    qDebug() << "==============================================================";
-
-   // delete [] m_owners;
-   // delete [] m_values;
-   // delete [] m_maxValues;	// IDW test. Needed in dumpStats().
 
    saveStats (move);		// IDW test. Statistics collection.
 
    // Pass the best move found back to the caller.
-   index = move.row * m_side + move.col;
+   int index = move.row * m_side + move.col;
 
    qDebug() << tag(0) << "MOVE" << m_currentMoveNo << "for PLAYER" << m_player
             << "X" << move.row << "Y" << move.col;
    m_active = false;
 
-   return (! m_stopped);
+   return (index);		// Return the move-index via a signal.
 }
 
-/* IDW TODO - Use a thread and return the move via a signal.
-void AI_Main::computeMove()
-{
-   m_move = tryMoves (m_player, m_side, m_owners, m_values, m_maxValues, 0);
-   qDebug() << "Player" << m_player << "best move" << m_move.row << m_move.col;
-}
-*/
-
-// IDW test. Move AI_Main::tryMoves (Player player, int side, int * owners,
-                        // IDW test. int * values, int * maxValues, int level)
 Move AI_Main::tryMoves (Player player, int level)
 {
    m_currentLevel = level; // IDW test. To limit qDebug() in findCubesToMove().
@@ -258,11 +255,6 @@ Move AI_Main::tryMoves (Player player, int level)
    // IDW TODO - Apply alpha-beta pruning to the sorted moves.  Maybe we can
    //    allow low-priority moves and sacrifices ...
 
-   /* IDW test.
-   int * ownersCopy = new int [nCubes];
-   int * valuesCopy = new int [nCubes];
-   */
-
    m_currentMove->searchStats->at(level)->n_moves += moves;
 
    for (int n = 0; n < moves; n++) {
@@ -275,15 +267,6 @@ Move AI_Main::tryMoves (Player player, int level)
                << "X"<< cubesToMove[n].row << "Y" << cubesToMove[n].col
                << "val" << cubesToMove[n].val;
 
-      /* IDW test.
-      // Copy the contents of the the cube box.
-      for (int index = 0; index < nCubes; index++) {
-         ownersCopy[index] = owners[index];
-         valuesCopy[index] = values[index];
-      }
-      bool won = simulateMove (player, cubesToMove[n].row, cubesToMove[n].col,
-                               side, ownersCopy, valuesCopy, maxValues);
-      */
       m_box->copyPosition (player, true);
       bool won = m_box->doMove (player,
                                 cubesToMove[n].row*m_side + cubesToMove[n].col);
@@ -321,10 +304,6 @@ Move AI_Main::tryMoves (Player player, int level)
 
          // Do the MiniMax calculation for the next recursion level.
          qDebug() << tag(level) << "CALL tryMoves: Player" << opponent << "level" << level+1;
-	 // IDW TODO - Should tryMoves param be reorganised?
-	 // IDW TODO - Do we need to be carrying maxValues around everywhere?
-         // IDW test. Move move = tryMoves (opponent, side, (int *)(m_box->m_owners), m_box->m_values,
-                               // IDW test. maxValues, level + 1);
          Move move = tryMoves (opponent, level + 1);
          val = move.val;
          cubesToMove[n].val = val; // IDW test. For debug output.
@@ -342,6 +321,11 @@ Move AI_Main::tryMoves (Player player, int level)
                   << "assessment" << val;
       }
       m_box->undoPosition (player, isAI);
+      qApp->processEvents(); // IDW test.
+      if (m_stopped) {
+	 qDebug() << "STOPPED AT LEVEL" << level;
+         break;
+      }
    }
 
    if (level == 0) {
@@ -355,12 +339,6 @@ Move AI_Main::tryMoves (Player player, int level)
    }
 
    delete [] cubesToMove;
-   // IDW TODO - Need to do m_box->undoPosition (player, isAI) somewhere here.
-
-   /* IDW test.
-   delete [] ownersCopy;
-   delete [] valuesCopy;
-   */
 
    qDebug();
    qDebug() << tag(level) << "BEST MOVE at level" << level << "Player" << player
@@ -454,10 +432,6 @@ int AI_Main::findCubesToMove (Move * c2m, Player player, int side,
               val = m_currentAI->assessCube (x, y, player,
                                              side, owners, values, maxValues);
 
-#ifdef DEBUG
-              if (m_currentLevel == 0)
-                 qDebug() << x << "," << y << " : " << val;
-#endif
               // Only if val > 0 is it a likely move.
               if ( val > 0 ) {
                  if (val < min) {
@@ -667,3 +641,6 @@ QString AI_Main::tag (int level)
     QString mv = QString::number(m_currentMoveNo).rightJustified(3, '0');
     return (QString ("%1 %2 %3")).arg(m_currentMove->player).arg(mv).arg(indent);
 }
+
+#include "ai_main.moc"
+#include "moc_ai_main.cpp"
