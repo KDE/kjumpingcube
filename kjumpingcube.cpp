@@ -71,9 +71,6 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
    connect(view,SIGNAL(dimensionsChanged()),SLOT(newGame()));
 
-   // Used if Quit was delayed until Brain (AI) calculations finished cleanly.
-   connect(view,SIGNAL(shutdownNow()),SLOT(close()));
-
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
 
@@ -92,9 +89,10 @@ KJumpingCube::KJumpingCube()
 
 bool KJumpingCube::queryClose()
 {
-  // If false, the Brain (AI) is active: quitting now will cause a crash.  The
-  // view->shutdownNow() signal retries close() after Brain activity finishes.
-  return (view->shutdown());
+  // Terminate the AI or animation cleanly if either is active.
+  // If the Brain (AI) is active, quitting could cause a crash.
+  view->shutdown();
+  return true;
 }
 
 void KJumpingCube::initKAction() {
@@ -117,10 +115,12 @@ void KJumpingCube::initKAction() {
   stopAction = actionCollection()->addAction( QLatin1String( "game_stop" ));
   stopAction->setIcon(KIcon( QLatin1String( "process-stop" )));
   stopAction->setText(i18n("Stop"));
-  stopAction->setToolTip(i18n("Force the computer to move immediately"));
+  stopAction->setToolTip(i18n("Force the computer to stop calculating or "
+                              "animating a move"));
   stopAction->setWhatsThis
 		(i18n("Stop the computer's calculation of its current move "
-			"and force it to move immediately"));
+                      "and force it to use the best one found so far, or stop "
+                      "an animation and skip to the end"));
   stopAction->setShortcut(Qt::Key_Escape);
   stopAction->setEnabled(false);
   connect(stopAction, SIGNAL(triggered(bool)), SLOT(stop()));
@@ -287,13 +287,13 @@ void KJumpingCube::enableStop_Moving()
 {
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->showMessage(i18n("Performing move."));
+  statusBar()->showMessage(i18n("Performing a move."));
 }
 
 void KJumpingCube::enableStop_Thinking(){
   stopAction->setEnabled(true);
   hintAction->setEnabled(false);
-  statusBar()->showMessage(i18n("Computing next move."));
+  statusBar()->showMessage(i18n("Computing a move."));
 }
 
 /**

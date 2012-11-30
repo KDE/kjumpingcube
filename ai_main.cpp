@@ -46,13 +46,23 @@ public:
       int index = m_ai->computeMove();
       emit done (index);
    }
-
+/* IDW test. TODO - This is not actually used. Is it needed?
+ *                  I think AI_Main::stop() sets m_stopped atomically and even
+ *                  if it does not, the thread will see it next time around. And
+ *                  the thread is read-only with respect to m_stopped ...
+ *
+ *                  ATM, KCubeBoxWidget calls AI_Main::stop() not this stop()
+ *                  and it works ...
+ *
+ * IDW test. TODO - See AI_Main::stop(). It works, but does it need a QMutex?
+ *
    void stop() {
       qDebug() << "STOP THREAD REQUESTED";
       { QMutexLocker lock (&m_ai->endMutex); m_ai->stop(); }
       wait();
       qDebug() << "STOP THREAD DONE";
    }
+*/
 signals:
    void done (int index);
 
@@ -162,7 +172,7 @@ void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
 void AI_Main::stop()
 {
    m_stopped = true;
-   qDebug() << "M_STOPPED IS" << m_stopped;
+   m_thread->wait();
 }
 
 bool AI_Main::isActive() const
@@ -321,7 +331,6 @@ Move AI_Main::tryMoves (Player player, int level)
                   << "assessment" << val;
       }
       m_box->undoPosition (player, isAI);
-      qApp->processEvents(); // IDW test.
       if (m_stopped) {
 	 qDebug() << "STOPPED AT LEVEL" << level;
          break;

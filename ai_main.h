@@ -56,7 +56,7 @@ class AI_Main : public QObject
 {
    Q_OBJECT
 public:
-   QMutex endMutex;		// Used when stopping the threaded calculation.
+   // QMutex endMutex;		// Use when stopping the threaded calculation?
    int computeMove();		// The threaded part of the move calculation.
 
    // Statistics-gathering procedures.
@@ -83,7 +83,7 @@ public:
 
    /**
     *  Stop the AI, but not till the end of the current cycle.  The AI will
-    *  then return the best move found so far.
+    *  then return the best move found so far, via signal done(int index).
     */
    void stop();
 

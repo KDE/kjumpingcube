@@ -71,9 +71,7 @@ void KCubeBoxWidget::loadSettings(){
   color0 = Prefs::color0();
 
   animationTime = Prefs::animationSpeed() * 150;
-  fullSpeed = false;
   if (Prefs::animationNone()) {
-     fullSpeed = true;
      cascadeAnimation = None;
   }
   else if (Prefs::animationDelay() || (Prefs::animationSpeed() <= 1)) {
@@ -132,6 +130,7 @@ void KCubeBoxWidget::reset()
    m_box->clear();
 
    KCubeWidget::enableClicks(true);
+   currentAnimation = None;
 
    m_currentPlayer = One;
 
@@ -206,13 +205,6 @@ void KCubeBoxWidget::getHint()
 
 void KCubeBoxWidget::computerMoveDone (int index)
 {
-   if (delayedShutdown) {
-      delayedShutdown = false;
-      emit shutdownNow();
-      return;
-   }
-   emit stoppedThinking();
-
    // We do not care if we interrupted the computer.  It was probably
    // taking too long, so we will just take the best move it had so far.
 
@@ -225,7 +217,8 @@ void KCubeBoxWidget::computerMoveDone (int index)
                << "X" << index / m_side << "Y" << index % m_side;
    }
 
-   // Blink the cube to be moved (twice).
+   // Blink the cube to be moved (twice).  When done, emit stoppedThinking()
+   // and simulate a click if it is a ComputerMove, not a Hint.
    startAnimation (m_computerMoveType, index);
 
    // checkClick (index / m_side, index % m_side, false);
@@ -258,29 +251,27 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
       computerPlTwo=flag;
 }
 
-bool KCubeBoxWidget::shutdown()
+void KCubeBoxWidget::shutdown()
 {
+   // Shut down gracefully, avoiding a possible crash when the user hits Quit.
    if (animationTimer->isActive()) {
       animationTimer->stop();	// Stop move or hint animation immediately.
    }
    if (brain.isActive()) {
-      brain.stop();		// Brain stops only after next "thinking" cycle.
-      delayedShutdown = true;
+      brain.disconnect();	// Ignore the AI thread's signal of its move.
+      brain.stop();		// Stop the AI thread ASAP.
    }
-   return (! delayedShutdown);
 }
 
 void KCubeBoxWidget::stopActivities()
 {
    qDebug() << "STOP ACTIVITIES";
    if (animationTimer->isActive()) {
-      fullSpeed = true;		// If moving, complete the move immediately.
-      stopAnimation();
+      stopAnimation (true);	// If moving, do the rest of the steps ASAP.
    }
    if (brain.isActive()) {
       qDebug() << "BRAIN IS ACTIVE";
-      brain.stop();
-      emit stoppedThinking();
+      brain.stop();		// Keep Stop enabled, for the blink animation.
    }
 }
 
@@ -389,31 +380,15 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
 /* ***************************************************************** **
 **                               slots                               **
 ** ***************************************************************** */
+
 void KCubeBoxWidget::setWaitCursor()
 {
-   // IDW test. setCursor(Qt::BusyCursor); TODO - Decide on wristwatch v. disk.
-   // setCursor(Qt::WaitCursor);
-   setCursor(Qt::BusyCursor);
+   setCursor (Qt::BusyCursor);
 }
-
-
 
 void KCubeBoxWidget::setNormalCursor()
 {
-   setCursor(Qt::PointingHandCursor);
-}
-
-void KCubeBoxWidget::stopHint (bool shutdown)
-{
-    // IDW TODO - Rewrite this?
-/*
-   int d=dim();
-   for(int i=0;i<d;i++)
-      for(int j=0;j<d;j++)
-      {
-         cubes[i][j]->stopHint (shutdown);
-      }
-*/
+   setCursor (Qt::PointingHandCursor);
 }
 
 bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
@@ -482,9 +457,6 @@ bool KCubeBoxWidget::isComputer(Player player) const
 ** ***************************************************************** */
 void KCubeBoxWidget::init()
 {
-   delayedShutdown = false;	// True if we need to quit, but brain is active.
-
-   fullSpeed      = false;
    currentAnimation = None;
    animationSteps = 12;
    animationCount = 0;
@@ -741,54 +713,63 @@ void KCubeBoxWidget::doMove (int index)
    m_steps->clear();
    m_gameHasBeenWon = m_box->doMove (m_currentPlayer, index, m_steps);
    m_box->printBox(); // IDW test.
-   // IDW test. qDebug() << "GAME WON?" << m_gameHasBeenWon << "STEPS" << (* m_steps);
+   qDebug() << "GAME WON?" << m_gameHasBeenWon << "STEPS" << (* m_steps);
+   if (m_steps->count() > 1) {
+      emit startedMoving();	// This will be a stoppable animation.
+   }
+   currentAnimation = cascadeAnimation;
    doStep();
 }
 
 void KCubeBoxWidget::doStep()
 {
+   // Re-draw all cubes affected by a move, proceeding one step at a time.
    int index;
    bool startStep = true;
    do {
       if (! m_steps->isEmpty()) {
-         index = m_steps->takeFirst();
+         index = m_steps->takeFirst();		// Get a cube to be re-drawn.
+
+         // Check if the player wins at this step (no more cubes are re-drawn).
          if (index == 0) {
             qDebug() << "Win for player" << m_currentPlayer << "at this step.";
             emit stoppedMoving();
             currentAnimation = None;
-            emit playerWon ((int) m_currentPlayer);
-            reset();
+            emit playerWon ((int) m_currentPlayer);	// Trigger a popup.
+            reset();					// Clear the cube box.
             return;
          }
 
-         startStep = (index > 0);
+         // Update the view of a cube, either immediately or via animation.
+         startStep = (index > 0);		// + -> increment, - -> expand.
          index = startStep ? (index - 1) : (-index - 1);
-	 int maxValue = m_box->maxValue (index);
-         if (startStep) {
-            int value = cubes.at (index)->value() + 1;
+         int value = cubes.at (index)->value();
+         int max   = m_box->maxValue (index);
+         if (startStep) {				// Add 1 and take.
             cubes.at (index)->setOwner (m_currentPlayer);
-            cubes.at (index)->setValue (value);
-	    if (value > maxValue) {
+            cubes.at (index)->setValue (value + 1);
+            if ((value >= max) && (currentAnimation != None)) {
                cubes.at (index)->setDark();
-	    }
-	    // IDW test. qDebug() << "INCREMENT" << index << index / m_side << index % m_side << "to" << value << "maxVal" << maxValue << "dark" << (value > maxValue);
+            }
+         }
+         else if (currentAnimation == None) {		// Decrease immediately.
+            cubes.at (index)->setValue (value - max);
+            cubes.at (index)->setNeutral();		// Maybe user hit Stop.
          }
          else {
-	    startAnimation (cascadeAnimation, index);
+            startAnimation (currentAnimation, index);	// Animate and decrease.
          }
       }
       else {
-	 qDebug() << "End of move for player" << m_currentPlayer;
+         // Views of the cubes at all steps of the move have been updated.
+         qDebug() << "End of move for player" << m_currentPlayer;
          emit stoppedMoving();
          currentAnimation = None;
          KCubeWidget::enableClicks(true);
-
-	 // The queued call to changePlayer() lets the graphics-update finish
-	 // before a possible computer move that might take time to calculate.
-         QMetaObject::invokeMethod (this, "changePlayer", Qt::QueuedConnection);
+         changePlayer();
          return;
       }
-   } while (startStep || (cascadeAnimation == None));
+   } while (startStep || (currentAnimation == None));
 }
 
 void KCubeBoxWidget::startAnimation (AnimationType type, int index)
@@ -799,7 +780,7 @@ void KCubeBoxWidget::startAnimation (AnimationType type, int index)
    switch (currentAnimation) {
    case None:
       animationCount = 0;
-      return;
+      return;				// Should never happen.
       break;
    case Hint:
    case ComputerMove:
@@ -836,17 +817,17 @@ void KCubeBoxWidget::nextAnimationStep()
 {
    animationCount--;
    if (animationCount < 1) {
-      stopAnimation();
+      stopAnimation (false);		// Finish normally.
       return;
    }
    switch (currentAnimation) {
    case None:
-      return;
+      return;				// Should not happen (see doStep()).
       break;
    case Hint:
    case ComputerMove:
    case RapidBlink:
-      if (animationCount%2 == 1) {
+      if (animationCount%2 == 1) {	// Set light or dark phase.
          cubes.at (m_index)->setDark();
       }
       else {
@@ -854,10 +835,10 @@ void KCubeBoxWidget::nextAnimationStep()
       }
       break;
    case Darken:
-      break;
+      break;				// Should never happen (1 tick).
    case Scatter:
       int step = animationSteps - animationCount;
-      if (step <= 2) {
+      if (step <= 2) {			// Set the animation phase.
          cubes.at (m_index)->shrink(1.0 - step * 0.3);
       }
       else if (step < 7) {
@@ -887,27 +868,33 @@ void KCubeBoxWidget::scatterDots (int step)
    if (y < d) cubes.at (m_index + 1)     ->migrateDot ( 0, -1, step, player);
 }
 
-void KCubeBoxWidget::stopAnimation()
+void KCubeBoxWidget::stopAnimation (bool completeAllSteps)
 {
+   // Animation ended normally or the user hit Stop (completeAllSteps = true).
    animationTimer->stop();
+   cubes.at (m_index)->setNeutral();
    switch (currentAnimation) {
-   case None:
-      return;
-      break;
    case Hint:
    case ComputerMove:
-      cubes.at (m_index)->setNeutral();
-      if (currentAnimation == ComputerMove) { // IDW TODO - Check shutdown.
+      emit stoppedThinking();
+      if (currentAnimation == ComputerMove) {
          checkClick (m_index / m_side, m_index % m_side, false);
       }
       break;
    case RapidBlink:
    case Darken:
    case Scatter:
-      int max = m_box->maxValue (m_index);
-      cubes.at (m_index)->setValue (cubes.at (m_index)->value() - max);
-      doStep();
+      cubes.at (m_index)->setValue (cubes.at (m_index)->value() -
+                                              m_box->maxValue (m_index));
+
+      if (completeAllSteps) {		// If called by stopActivities().
+         qDebug() << "Stop at index" << m_index << "anim" << currentAnimation;
+         currentAnimation = None;	// Do the rest of the steps immediately.
+      }
+      doStep();				// Go and update the next cube.
       break;
+   case None:
+      break;				// Should never happen.
    }
 }
 

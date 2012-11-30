@@ -48,11 +48,9 @@ public:
    virtual ~KCubeBoxWidget();
 
    /**
-    * Make sure all move and brain activity is over before destroying widget.
-    *
-    * @return True if we can shut down immediately, false if Brain is active.
+    * Make sure all animation and AI activity is over before destroying widget.
     * */
-   bool shutdown();
+   void shutdown();
 
    /**
    * reset cubebox for a new game
@@ -121,7 +119,6 @@ signals:
    void stoppedMoving();
    void stoppedThinking();
    void dimensionsChanged();
-   void shutdownNow();
 
 protected:
    virtual QSize sizeHint() const;
@@ -172,18 +169,14 @@ private:
    AI_Main brain;
 
    QTimer *animationTimer;
-   bool delayedShutdown;	// True if the brain is active at Quit time.
 
    int  m_index;
-   bool fullSpeed;
    AnimationType cascadeAnimation;
    AnimationType currentAnimation;
    AnimationType m_computerMoveType;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
-
-   void stopAnimation();
 
    // IDW test. Moved to slot section. Player changePlayer();
    bool   computerPlOne;
@@ -201,18 +194,18 @@ private:
    void doStep();
    void startAnimation (AnimationType type, int index);
    void scatterDots (int step);
+   void stopAnimation (bool completeAllSteps);
+
+   Player changePlayer();
 
 private slots:
    void nextAnimationStep();
+
    /**
    * checks if cube at [x, y] is clickable by the current player.
    * if true, it increases this cube and checks the playingfield
    */
    bool checkClick (int x, int y, bool isClick);
-   Player changePlayer();
-
-   /** turns off blinking, if an other cube is clicked */
-   void stopHint (bool shutdown = false);
 };
 
 #endif // KCUBEBOXWIDGET_H
