@@ -36,6 +36,7 @@
 
 class KConfigGroup;
 class QTimer;
+class QLabel;
 
 class KCubeBoxWidget : public QWidget
 {
@@ -186,6 +187,7 @@ private:
    Player m_playerWaiting;
    bool   m_pauseForStep;
    bool   m_waitingForStep;
+   QLabel * m_popup;
 
    /**
    * Increases the cube at 'index' and starts the animation loop, if required.
@@ -197,6 +199,9 @@ private:
    void stopAnimation (bool completeAllSteps);
 
    Player changePlayer();
+
+   void showPopup (const QString & message);
+   void hidePopup();
 
 private slots:
    void nextAnimationStep();

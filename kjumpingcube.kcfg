@@ -93,5 +93,13 @@
       <label>Skill of computer player 2.</label>
       <default>Average</default>
     </entry>
+    <entry name="PauseForComputer" type="Bool">
+      <label>Pause before each computer move.</label>
+      <default>false</default>
+    </entry>
+    <entry name="PauseForStep" type="Bool">
+      <label>Pause before each cascade step.</label>
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

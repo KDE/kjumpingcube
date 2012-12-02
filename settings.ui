@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>676</width>
-    <height>565</height>
+    <width>547</width>
+    <height>624</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -21,7 +21,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_9">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_15">
+       <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
          <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
@@ -290,6 +290,13 @@
             </layout>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="kcfg_PauseForComputer">
+          <property name="text">
+           <string>Pause before each computer move</string>
+          </property>
          </widget>
         </item>
        </layout>
@@ -578,6 +585,13 @@
             </layout>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="kcfg_PauseForStep">
+          <property name="text">
+           <string>Pause before each cascade step</string>
+          </property>
          </widget>
         </item>
        </layout>

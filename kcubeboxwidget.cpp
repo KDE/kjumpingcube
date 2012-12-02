@@ -26,6 +26,7 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <QTimer>
+#include <QLabel>
 #include <QPainter>
 
 #include <assert.h>
@@ -36,7 +37,8 @@
 KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
         : QWidget(parent),
 	  m_side (d),
-	  m_currentPlayer (One)
+	  m_currentPlayer (One),
+	  m_popup (new QLabel (this))
 {
    m_box = new AI_Box (m_side);
    m_steps = new QList<int>;
@@ -44,8 +46,6 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
    init();
    m_gameHasBeenWon   = false;
    m_computerMoveType = Hint;
-   m_pauseForComputer = false;	// IDW test. TODO - Put this in Settings.
-   m_pauseForStep     = false;	// IDW test. TODO - Put this in Settings.
    m_playerWaiting    = computerPlOne ? One : Nobody;
    m_waitingForStep   = false;
 }
@@ -84,6 +84,14 @@ void KCubeBoxWidget::loadSettings(){
      cascadeAnimation = Scatter;
   }
 
+  // IDW TODO - Delete? bool oldPauseForStep = m_pauseForStep;
+  m_pauseForStep       = Prefs::pauseForStep();
+  m_pauseForComputer   = Prefs::pauseForComputer();
+  qDebug() << "m_pauseForComputer" << m_pauseForComputer << "m_pauseForStep" << m_pauseForStep; // IDW test.
+
+  if (! m_pauseForComputer) {
+      hidePopup();
+  }
   setDim (Prefs::cubeDim());
 
   if (reColorCubes) {
@@ -106,12 +114,25 @@ void KCubeBoxWidget::loadSettings(){
   setComputerplayer (One, Prefs::computerPlayer1());
   setComputerplayer (Two, Prefs::computerPlayer2());
 
+  // IDW TODO - There are just too many actions flowing from settings changes.
+  //            Simplify them or work out proper inter-dependencies.
+  // IDW TODO - This code is not needed if we leave things so that the popup is
+  //            still showing and the first click triggers all remaining steps.
+  // if ((! m_pauseForStep) && oldPauseForStep) {
+     // IDW TODO - This is the same as part 1 of checkClick().
+     // if (animationTimer->isActive() || m_waitingForStep) {
+        // m_waitingForStep = false;
+        // animationTimer->start();
+     // }
+  // }
   if (reSizeCubes) {
      // Start a new game (in the KJumpingCube object).
      emit dimensionsChanged();
+     // IDW test. Does stop(), disable Undo, reset() AGAIN and status message.
      return;
   }
-  else { // IDW TODO - Fix this test for empty box. if (m_cubesToWin [Cube::Nobody] > 0) {
+  else if (! m_box->isClear()) {		// If not first move...
+  // IDW TODO - Fix test for empty box. if (m_cubesToWin [Cube::Nobody] > 0) {
      // Continue current game, maybe with change of computer player settings.
      checkComputerplayer (m_currentPlayer);
      return;
@@ -121,7 +142,7 @@ void KCubeBoxWidget::loadSettings(){
 
 void KCubeBoxWidget::reset()
 {
-   stopActivities();
+   // IDW TODO - Delete? stopActivities();
 
    foreach (KCubeWidget * cube, cubes) {
       cube->reset();
@@ -178,9 +199,15 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       return;
    if ((player == One && computerPlOne && m_currentPlayer == One) ||
        (player == Two && computerPlTwo && m_currentPlayer == Two)) {
-      if (m_pauseForComputer && (m_playerWaiting == Nobody)) {
-         m_playerWaiting = player;
-         return;
+      if (m_pauseForComputer) {
+         if (m_playerWaiting == Nobody) {
+            m_playerWaiting = player;
+	    showPopup (i18n ("Click anywhere to continue"));
+            return;
+         }
+	 else {
+            hidePopup();
+         }
       }
       m_playerWaiting = Nobody;
       KCubeWidget::enableClicks (false);
@@ -235,10 +262,15 @@ void KCubeBoxWidget::setColors ()
 void KCubeBoxWidget::setDim(int d)
 {
    if (d != m_side) {
+      shutdown();
       delete m_box;
       m_box   = new AI_Box (d);
       m_side  = d;
       initCubes();
+      // IDW TODO - Crashed in slot computerMoveDone(int). Starts animation with
+      //            too large an index? Going from larger to smaller box.
+      // Should we do setDim and return and do the rest of loadSettings later?
+      connect(&brain, SIGNAL(done(int)), SLOT(computerMoveDone(int)));
       reset();
    }
 }
@@ -266,7 +298,8 @@ void KCubeBoxWidget::shutdown()
 void KCubeBoxWidget::stopActivities()
 {
    qDebug() << "STOP ACTIVITIES";
-   if (animationTimer->isActive()) {
+   if (animationTimer->isActive() || m_waitingForStep) {
+      m_waitingForStep = false;
       stopAnimation (true);	// If moving, do the rest of the steps ASAP.
    }
    if (brain.isActive()) {
@@ -393,7 +426,6 @@ void KCubeBoxWidget::setNormalCursor()
 
 bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
 {
-   // IDW test. if (m_pauseForStep && (currentAnimation != None) && (! isMoving())) {
    if (isClick && m_waitingForStep) {
       m_waitingForStep = false;
       animationTimer->start();
@@ -405,8 +437,8 @@ bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
 
    // make the game start when computer player is player one and user clicks
    int index = x * m_side + y;
+   qDebug() << "CLICK" << x << y << "index" << index;
    // IDW test. if (isClick && m_currentPlayer == One && computerPlOne)
-   // IDW test. if (isClick && m_pauseForComputer && isComputer (m_currentPlayer)) {
    if (isClick && (m_playerWaiting != Nobody)) {
       checkComputerplayer (m_playerWaiting);
       return false;
@@ -708,7 +740,7 @@ void KCubeBoxWidget::doMove (int index)
    if (! computerMove) { // Make only human-players' moves undoable.
       // For the undo-function: make a copy of the playfield.
       m_box->copyPosition (m_currentPlayer, computerMove);
-      brain.postMove (m_currentPlayer, index); // IDW test.
+      brain.postMove (m_currentPlayer, index, m_side); // IDW test.
    }
    m_steps->clear();
    m_gameHasBeenWon = m_box->doMove (m_currentPlayer, index, m_steps);
@@ -735,7 +767,9 @@ void KCubeBoxWidget::doStep()
             qDebug() << "Win for player" << m_currentPlayer << "at this step.";
             emit stoppedMoving();
             currentAnimation = None;
+	    brain.dumpStats();	// IDW test.
             emit playerWon ((int) m_currentPlayer);	// Trigger a popup.
+	    stopActivities();				// End the move display.
             reset();					// Clear the cube box.
             return;
          }
@@ -911,6 +945,31 @@ Player KCubeBoxWidget::changePlayer()
 const QPixmap & KCubeBoxWidget::playerPixmap (const int p)
 {
    return ((p == 1) ? status1 : status2);
+}
+
+void KCubeBoxWidget::showPopup (const QString & message)
+{
+   QFont f;
+   // f.setPixelSize ((int) (cubes.at (0)->height() * 0.2 + 0.5));
+   f.setPixelSize ((int) (height() * 0.02 + 0.5));
+   f.setWeight (QFont::Bold);
+   f.setStretch (QFont::Expanded);
+   // m_popup->setBrush (QColor (0.5, 1.0, 1.0, 1.0));
+   // m_popup->setStyleSheet("QLabel { background-color : none; color : rgba(255, 255, 255, 50%); }");
+   m_popup->setStyleSheet("QLabel { color : rgba(255, 255, 255, 75%); }");
+   m_popup->setFont (f);
+
+   m_popup->setText (message);
+   m_popup->move ((this->width()  - m_popup->width()) / 2,
+                  (this->height() - m_popup->height()) / 2 +
+		  (cubes.at (0)->height() / 5)); 
+   m_popup->raise();
+   m_popup->show();
+}
+
+void KCubeBoxWidget::hidePopup()
+{
+   m_popup->hide();
 }
 
 #include "kcubeboxwidget.moc"

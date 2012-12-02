@@ -134,6 +134,7 @@ void KJumpingCube::initKAction() {
 }
 
 void KJumpingCube::newGame(){
+   stop();				// Stop the current move (if any).
    undoAction->setEnabled(false);
    view->reset();
    statusBar()->showMessage(i18n("New Game"),MESSAGE_TIME);
