@@ -72,6 +72,11 @@ private:
 
 const int BigValue = 0x3fffffff;
 
+const char * text[] = {"TakeOrBeTaken",  "EqualOpponent",   "CanTake",
+                       "OccupyCorner",   "OccupyEdge",      "OccupyCenter",
+                       "CanConsolidate", "CanReachMaximum", "CanExpand",
+                       "IncreaseEdge",   "IncreaseCenter",  "PlayHereAnyway"};
+
 AI_Main::AI_Main()
    :
    m_thread (new ThreadedAI (this)),
@@ -196,16 +201,7 @@ void AI_Main::getMove (const Player player, AI_Box * box)
    m_stopped = false;
    m_player  = player;
 
-   if (m_box == 0) {
-       qDebug() << "NEW AI_Box REQUIRED: side =" << box->side();
-       m_box = new AI_Box (box->side());
-   }
-   else if (m_side != box->side()) {
-       qDebug() << "NEW AI_Box SIZE NEEDED: was" << m_side << "now" << box->side();
-       delete m_box;
-       m_box = new AI_Box (box->side());
-   }
-   m_side = m_box->side();
+   checkWorkspace (box->side());
    m_box->initPosition (box, player, true);
 
    qDebug() << "INITIAL POSITION";
@@ -255,10 +251,14 @@ Move AI_Main::tryMoves (Player player, int level)
    qDebug() << tag(level) << "Level" << level << "Player" << player
             << "number of likely moves" << moves;
    for (int n = 0; n < moves; n++) {
+      int v = cubesToMove[n].val;
+      QString s = "";
+      if ((v > 0) && (v <= 12)) s = QString(text[v-1]);
       qDebug() << tag(level) << "    " << "X" << cubesToMove[n].row
                          << "Y" << cubesToMove[n].col
-                         << "val" << cubesToMove[n].val;
+                         << "val" << cubesToMove[n].val << s;
    }
+   if (level == 0) saveLikelyMoves (moves, cubesToMove); // IDW test.
 
    // IDW TODO - Sort the moves by priority in findCubesToMove() (1 first),
    //    shuffle moves that have the same value (to avoid repetitious openings).
@@ -533,6 +533,20 @@ int AI_Main::findCubesToMove (Move * c2m, Player player, int side,
    return qMin (moves, maxMoves);
 }
 
+void AI_Main::checkWorkspace (int side)
+{
+   if (m_box == 0) {
+       qDebug() << "NEW AI_Box REQUIRED: side =" << side;
+       m_box = new AI_Box (side);
+   }
+   else if (m_side != side) {
+       qDebug() << "NEW AI_Box SIZE NEEDED: was" << m_side << "now" << side;
+       delete m_box;
+       m_box = new AI_Box (side);
+   }
+   m_side = side;
+}
+
 void AI_Main::boxPrint (int side, int * owners, int * values)
 {
    // IDW test. For debugging.
@@ -557,12 +571,15 @@ void AI_Main::startStats()
    m_moveStats.clear();
 }
 
-void AI_Main::postMove (Player player, int index)
+void AI_Main::postMove (Player player, int index, int side)
 {
    // IDW test. Statistics collection.
-   // Used to record a move by a human player or other AI (e.g. Brain class).
+   // Used to record a move by a human player.
+   checkWorkspace (side);
+
    int x = index / m_side;
    int y = index % m_side;
+   qDebug() << "AI_Main::postMove(): index" << index << "at" << x << y << "m_side" << m_side;
    m_maxLevel    = m_ai_maxLevel[player];
    m_currentMove = new MoveStats [1];
 
@@ -593,6 +610,8 @@ void AI_Main::initStats (int player)
    m_currentMove->moveNo     = m_currentMoveNo;
    m_currentMove->n_simulate = 0;
    m_currentMove->n_assess   = 0;
+   m_currentMove->nLikelyMoves = 0;
+   m_currentMove->likelyMoves = 0;
    m_currentMove->searchStats = new QList<SearchStats *>();
 
    qDebug() << tag(0) << "PLAYER" << player << m_currentAI->whoami() << "skill" << m_skill << "max level" << m_maxLevel;
@@ -605,6 +624,16 @@ void AI_Main::initStats (int player)
 
    n_simulate = 0;
    n_assess = 0;
+}
+
+void AI_Main::saveLikelyMoves (int nMoves, Move * moves)
+{
+   Move * m = new Move [nMoves];
+   m_currentMove->nLikelyMoves = nMoves;
+   m_currentMove->likelyMoves = m;
+   for (int n = 0; n < nMoves; n++) {
+      m [n] = moves [n];
+   }
 }
 
 void AI_Main::saveStats (Move & move)
@@ -632,6 +661,18 @@ void AI_Main::dumpStats()
       qDebug() << m->player << m->moveNo << "X" << m->x << "Y" << m->y
                << "value" << m->value << m->n_simulate << m->n_assess << l;
 
+      if (m->nLikelyMoves > 0) {
+         qDebug() << "     Number of likely moves" << m->nLikelyMoves;
+         for (int n = 0; n < m->nLikelyMoves; n++) {
+            int v = m->likelyMoves[n].val;
+	    QString s = "";
+	    if ((v > 0) && (v <= 12)) s = QString(text[v-1]);
+            qDebug() << "    " << "X" << m->likelyMoves[n].row
+                               << "Y" << m->likelyMoves[n].col
+                               << "val" << m->likelyMoves[n].val << s;
+         }
+         delete m->likelyMoves;
+      }
       bool won = statsBox->doMove (m->player, m->x * m_side + m->y);
       statsBox->printBox();
       qDeleteAll (*(m->searchStats));

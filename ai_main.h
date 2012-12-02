@@ -62,7 +62,7 @@ public:
    // Statistics-gathering procedures.
    // -------------------------------
    void startStats();
-   void postMove (Player player, int index);
+   void postMove (Player player, int index, int side);
    void dumpStats();
 
    /**
@@ -147,6 +147,13 @@ private:
    int findCubesToMove (Move * c2m, Player player, int side,
                         Player * owners, int * values, int * maxValues);
 
+   /**
+    * Make sure a cube box of the correct size is available as a workspace.
+    *
+    * @param side    The number of rows/columns in the cube box.
+    */
+   void checkWorkspace (int side);
+
    AI_Base * m_AI_Kepler;	// Pointer to a Kepler-style player.
    AI_Base * m_AI_Newton;	// Pointer to a Newton-style player.
 
@@ -182,6 +189,8 @@ private:
       int value;
       int n_simulate;
       int n_assess;
+      int nLikelyMoves;
+      Move * likelyMoves;
       QList<SearchStats *> * searchStats;
    };
 
@@ -194,6 +203,7 @@ private:
    QString tag (int level);
    void initStats (int player);
    void saveStats (Move & move);
+   void saveLikelyMoves (int nMoves, Move * moves);
 };
 
 #endif //AI_MAIN_H
