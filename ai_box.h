@@ -84,6 +84,7 @@ public:
     void     initPosition (AI_Box * box, Player player, bool isAI);
 
     void     clear();
+    bool     isClear()          { return (m_cubesToWin [Nobody] == 0); }
 
 private:
     int      m_side;

@@ -375,8 +375,10 @@ void AI_Box::printBox()
         }
         fprintf (stderr, "\n");
     }
+/* IDW test.
     fprintf (stderr, "    %2d %2d %2d to win, pointers %lu %lu\n",
              m_cubesToWin [Nobody], m_cubesToWin [One], m_cubesToWin [Two],
 	     (long) m_owners, (long) m_values);
     fprintf (stderr, "\n");
+*/
 }
