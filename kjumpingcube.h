@@ -52,7 +52,7 @@ protected:
 private:
   KCubeBoxWidget *view;
 	QLabel *currentPlayer;
-	QAction *undoAction, *stopAction, *hintAction;
+	QAction *undoAction, *redoAction, *stopAction, *hintAction;
 
   KUrl gameURL;
   void initKAction();
@@ -65,12 +65,14 @@ private slots:
   void openGame();
   void stop();
   void undo();
+  void redo();
   void changePlayer(int newPlayer);
   void changePlayerPixmap(int player);
   void showWinner(int);
   void disableStop();
   void enableStop_Moving();
   void enableStop_Thinking();
+  void newMoveSeen();
 
   void showOptions();
 };

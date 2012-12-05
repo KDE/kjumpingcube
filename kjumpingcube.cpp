@@ -70,6 +70,7 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(startedThinking()),SLOT(enableStop_Thinking()));
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
    connect(view,SIGNAL(dimensionsChanged()),SLOT(newGame()));
+   connect(view,SIGNAL(newMove()),SLOT(newMoveSeen()));
 
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
@@ -128,15 +129,22 @@ void KJumpingCube::initKAction() {
   undoAction = KStandardGameAction::undo(this, SLOT(undo()), this);
   actionCollection()->addAction(undoAction->objectName(), undoAction);
   undoAction->setEnabled(false);
+
+  redoAction = KStandardGameAction::redo(this, SLOT(redo()), this);
+  actionCollection()->addAction(redoAction->objectName(), redoAction);
+  redoAction->setEnabled(false);
+
   KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
 
   setupGUI();
 }
 
-void KJumpingCube::newGame(){
+void KJumpingCube::newGame()
+{
    stop();				// Stop the current move (if any).
-   undoAction->setEnabled(false);
    view->reset();
+   undoAction->setEnabled(false);
+   redoAction->setEnabled(false);
    statusBar()->showMessage(i18n("New Game"),MESSAGE_TIME);
 }
 
@@ -252,16 +260,29 @@ void KJumpingCube::stop()
 
 void KJumpingCube::undo()
 {
-   if(view->isActive())
-      return;
-   // IDW TODO - Return true/false dep. on whether any moves left to undo.
-   view->undo();
-   // IDW test. TODO - Set false when no more saved moves. undoAction->setEnabled(false);
+   // IDW test. if(view->isActive())
+      // IDW test. return;
+   int moreToUndo = view->undoRedo (-1);
+   if (moreToUndo >= 0) {
+      undoAction->setEnabled (moreToUndo == 1);
+   }
+   redoAction->setEnabled (true);
+}
+
+void KJumpingCube::redo()
+{
+   // IDW test. if(view->isActive())
+      // IDW test. return;
+   int moreToRedo = view->undoRedo (+1);
+   if (moreToRedo >= 0) {
+      redoAction->setEnabled (moreToRedo == 1);
+   }
+   undoAction->setEnabled (true);
 }
 
 void KJumpingCube::changePlayer(int newPlayer)
 {
-   undoAction->setEnabled(true);
+   // IDW TODO - Can condense this method and the next AND the corr. signals.
    changePlayerPixmap(newPlayer);
 }
 
@@ -274,6 +295,12 @@ void KJumpingCube::showWinner(int player) {
   QString s = i18n("Winner is Player %1!", player);
   // Comment this out for IDW high-speed test.
   KMessageBox::information (this, s, i18n("Winner"));
+}
+
+void KJumpingCube::newMoveSeen()
+{
+    undoAction->setEnabled(true);
+    redoAction->setEnabled(false);
 }
 
 void KJumpingCube::disableStop()

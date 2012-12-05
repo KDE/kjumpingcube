@@ -50,6 +50,8 @@ AI_Box::AI_Box (int side)
     m_values = pos->values;
     indexNeighbors();
     clear();
+    pos->player = One;			// Player 1 is going to play.
+    pos->isAI   = false;
 }
 
 AI_Box::~AI_Box()
@@ -65,6 +67,8 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
 {
     Player     oldOwner = m_owners[index];
     if ((oldOwner != player) && (oldOwner != Nobody)) {
+	qDebug() << "ILLEGAL MOVE: player" << player << "at"
+                                           << index/m_side << index%m_side;
         return false;			// The move is not valid.
     }
 
@@ -208,12 +212,8 @@ bool AI_Box::oldMove (Player player, int pos)
 
 void AI_Box::copyPosition (Player player, bool isAI)
 {
-    // IDW TODO - Relationship of m_undoList, m_undoIndex, clear() and ctor.
-    //            Is the starting position (always) on the undo list?
-    //            NOTE: Not all AI_Box instances use the undo list (?).
     qDebug() << "AI_Box::copyPosition (" << player << "," << isAI << ")";
     printBox();
-    qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
     if (m_undoIndex >= m_undoList.count()) {
 	qDebug() << "Call emptyPosition (" << m_nCubes << ")";
         m_undoList.append (emptyPosition (m_nCubes));
@@ -221,14 +221,14 @@ void AI_Box::copyPosition (Player player, bool isAI)
     qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
     Position * pos = m_undoList.at (m_undoIndex);
     save (pos, player, isAI);
-    m_undoIndex++;
-    m_redoLimit = m_undoIndex;
     m_owners = pos->owners;
     m_values = pos->values;
     printBox();
+    m_undoIndex++;
+    m_redoLimit = m_undoIndex;
 }
 
-void AI_Box::undoPosition (Player & player, bool & isAI)
+bool AI_Box::undoPosition (Player & player, bool & isAI)
 {
     if (m_undoIndex > 1) {
 	m_undoIndex--;
@@ -237,13 +237,11 @@ void AI_Box::undoPosition (Player & player, bool & isAI)
 	player = pos->player;
 	isAI   = pos->isAI;
     }
-    // IDW TODO - Return true/false dep. on whether any moves left to undo.
-    // return (m_undoIndex > 1);
-    qDebug() << "UNDO: m_undoIndex" << m_undoIndex << "player" << player << "isAI" << isAI;
     printBox();
+    return (m_undoIndex > 1);
 }
 
-void AI_Box::redoPosition (Player & player, bool & isAI)
+bool AI_Box::redoPosition (Player & player, bool & isAI)
 {
     if (m_undoIndex < m_redoLimit) {
 	Position * pos = m_undoList.at (m_undoIndex);
@@ -252,10 +250,8 @@ void AI_Box::redoPosition (Player & player, bool & isAI)
 	isAI   = pos->isAI;
 	m_undoIndex++;
     }
-    // IDW TODO - Return true/false dep. on whether any moves left to redo.
-    // return (m_undoIndex < m_redoLimit);
-    qDebug() << "REDO: m_undoIndex" << m_undoIndex << "player" << player << "isAI" << isAI;
     printBox();
+    return (m_undoIndex < m_redoLimit);
 }
 
 void AI_Box::initPosition (AI_Box * box, Player player, bool isAI)
@@ -279,7 +275,8 @@ void AI_Box::initPosition (AI_Box * box, Player player, bool isAI)
 
 void AI_Box::save (Position * pos, Player player, bool isAI)
 {
-    pos->player = player;
+    // The NEXT player will face this position, after THIS player has moved.
+    pos->player = (player == Two) ? One : Two;
     pos->isAI   = isAI;
     pos->nCubes = m_nCubes;
     for (int n = 0; n < m_nCubes; n++) {

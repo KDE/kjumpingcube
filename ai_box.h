@@ -79,8 +79,8 @@ public:
     bool     oldMove (Player player, int index);
 
     void     copyPosition (Player   player, bool   isAI);
-    void     undoPosition (Player & player, bool & isAI);
-    void     redoPosition (Player & player, bool & isAI);
+    bool     undoPosition (Player & player, bool & isAI);
+    bool     redoPosition (Player & player, bool & isAI);
     void     initPosition (AI_Box * box, Player player, bool isAI);
 
     void     clear();

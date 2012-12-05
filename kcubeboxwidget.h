@@ -58,8 +58,14 @@ public:
    */
    void reset();
 
-   /** undo last move */
-   void undo();
+   /**
+    * Undo or redo a move.
+    *
+    * @param   actionType  -1 = undo, +1 = redo
+    *
+    * @return  -1 = Busy, 0 = No more to undo/redo, 1 = More moves to undo/redo.
+    */
+   int undoRedo (int actionType);
 
    /**
    * Set colors that are used to show owners of the cubes.
@@ -114,6 +120,7 @@ public slots:
 signals:
    void playerChanged(int newPlayer);
    void colorChanged(int player);
+   void newMove();
    void playerWon(int player);
    void startedMoving();
    void startedThinking();
@@ -188,6 +195,7 @@ private:
    bool   m_pauseForStep;
    bool   m_waitingForStep;
    QLabel * m_popup;
+   bool   m_ignoreMove;
 
    /**
    * Increases the cube at 'index' and starts the animation loop, if required.

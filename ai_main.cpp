@@ -26,8 +26,6 @@
 
 #include <QApplication>
 
-#include <assert.h>
-
 #include <QDebug>
 #include <QTime>
 
@@ -268,10 +266,6 @@ Move AI_Main::tryMoves (Player player, int level)
    m_currentMove->searchStats->at(level)->n_moves += moves;
 
    for (int n = 0; n < moves; n++) {
-      qDebug() << "\n";
-      if (level == 0) {
-         qDebug() << "==============================================================";
-      }
       qDebug() << tag(level) << "TRY" << n << "at level" << level
                << "Player" << player
                << "X"<< cubesToMove[n].row << "Y" << cubesToMove[n].col
@@ -330,7 +324,10 @@ Move AI_Main::tryMoves (Player player, int level)
 	          << "X" << bestMove.row << "Y" << bestMove.col
                   << "assessment" << val;
       }
+      Player p = player;
       m_box->undoPosition (player, isAI);
+      if (p != player) qDebug() << "ERROR: PLAYER CHANGED: from" << p <<
+                                                            "to" << player;
       if (m_stopped) {
 	 qDebug() << "STOPPED AT LEVEL" << level;
          break;

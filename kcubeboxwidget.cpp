@@ -38,9 +38,11 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
         : QWidget(parent),
 	  m_side (d),
 	  m_currentPlayer (One),
-	  m_popup (new QLabel (this))
+	  m_popup (new QLabel (this)),
+	  m_ignoreMove (false)
 {
    m_box = new AI_Box (m_side);
+   qDebug() << "CONSTRUCT KCubeBoxWidget: side" << m_side;
    m_steps = new QList<int>;
    cubes.clear();
    init();
@@ -165,21 +167,24 @@ void KCubeBoxWidget::reset()
    brain.startStats();
 }
 
-void KCubeBoxWidget::undo() {
-   // IDW TODO - Return true/false dep. on whether any moves left to undo.
-   if (isActive())
-      return;
+int KCubeBoxWidget::undoRedo (int actionType)
+{
+   // IDW TODO - A user-friendly way to defer undo/redo if computer is moving.
+   // IDW test. if (isActive())
+      // IDW test. return -1;
+   if (isActive()) {
+      stopActivities();
+      m_ignoreMove = true;
+   }
 
-   // IDW test. Player oldPlayer=currentPlayer;
    Player oldPlayer = m_currentPlayer;
 
-   // IDW TODO - Skip over computer players. Avoid undo if two computer players?
    bool isAI = false;
-   m_box->undoPosition (m_currentPlayer, isAI);
-   // IDW test. m_box->undoPosition (m_currentPlayer, isAI);
-   // IDW test. m_box->redoPosition (m_currentPlayer, isAI);
+   bool moreToDo = (actionType < 0) ?
+      m_box->undoPosition (m_currentPlayer, isAI) :
+      m_box->redoPosition (m_currentPlayer, isAI);
 
-   // IDW TODO - Update the cube display after an undo or redo.
+   // Update the cube display after an undo or redo.
    int index = 0;
    foreach (KCubeWidget * cube, cubes) {
        cube->setOwner (m_box->owner (index));
@@ -189,7 +194,10 @@ void KCubeBoxWidget::undo() {
    if (oldPlayer != m_currentPlayer)
       emit playerChanged (m_currentPlayer);
 
-   checkComputerplayer (m_currentPlayer);
+   if ((actionType > 0) && (! moreToDo)) {	// If end of Redo's: restart AI.
+      checkComputerplayer (m_currentPlayer);
+   }
+   return (moreToDo ? 1 : 0);
 }
 
 void KCubeBoxWidget::checkComputerplayer(Player player)
@@ -216,6 +224,7 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       emit startedThinking();
       qDebug() << "Calling brain.getMove() for player" << player;
       t.start(); // IDW test.
+      m_ignoreMove = false;
       brain.getMove (player, m_box);
    }
 }
@@ -227,6 +236,7 @@ void KCubeBoxWidget::getHint()
 
    m_computerMoveType = Hint;
    emit startedThinking();
+   m_ignoreMove = false;
    brain.getMove (m_currentPlayer, m_box);
 }
 
@@ -242,6 +252,10 @@ void KCubeBoxWidget::computerMoveDone (int index)
    else if (m_computerMoveType == Hint) {
       qDebug() << "HINT FOR PLAYER" << m_currentPlayer
                << "X" << index / m_side << "Y" << index % m_side;
+   }
+   if (m_ignoreMove) {
+      m_ignoreMove = false;
+      return;
    }
 
    // Blink the cube to be moved (twice).  When done, emit stoppedThinking()
@@ -292,6 +306,7 @@ void KCubeBoxWidget::shutdown()
    if (brain.isActive()) {
       brain.disconnect();	// Ignore the AI thread's signal of its move.
       brain.stop();		// Stop the AI thread ASAP.
+      m_ignoreMove = true;
    }
 }
 
@@ -311,9 +326,12 @@ void KCubeBoxWidget::stopActivities()
 void KCubeBoxWidget::saveProperties (KConfigGroup & config)
 {
    // IDW TODO - Save settings for computer player(s), animation, etc.
+   //            Is Undo right for interrupted animation????
+   //            Do we need Undo for interrupted computer move?
+   //            What happens to the signal when the computer move ends?
    if (isMoving()) {
       stopActivities();
-      undo();
+      undoRedo (-1);		// Undo incomplete move.
    }
    else if (brain.isActive()) {
       stopActivities();
@@ -729,27 +747,32 @@ void  KCubeBoxWidget::deleteCubes()
 
 void KCubeBoxWidget::doMove (int index)
 {
-   // if a move hasn't finished yet don't do another move
-   if(isActive())
+   // If a move has not finished yet do not do another move.
+   if (isActive())
       return;
 
    // IDW TODO. Allow undo and redo of computer moves.
+   //           Done, but needs further testing, esp. for race conditions
+   //           and the use of m_ignoreMove.
 
    bool computerMove = ((computerPlOne && m_currentPlayer == One) ||
                         (computerPlTwo && m_currentPlayer == Two));
-   if (! computerMove) { // Make only human-players' moves undoable.
-      // For the undo-function: make a copy of the playfield.
-      m_box->copyPosition (m_currentPlayer, computerMove);
+
+   // Make a copy of the position and player to move for the Undo function.
+   m_box->copyPosition (m_currentPlayer, computerMove);
+
+   if (! computerMove) { // IDW test. Record a human move in the statistics.
       brain.postMove (m_currentPlayer, index, m_side); // IDW test.
    }
+   emit newMove();		// GUI must update Undo and Redo actions.
    m_steps->clear();
    m_gameHasBeenWon = m_box->doMove (m_currentPlayer, index, m_steps);
    m_box->printBox(); // IDW test.
    qDebug() << "GAME WON?" << m_gameHasBeenWon << "STEPS" << (* m_steps);
    if (m_steps->count() > 1) {
       emit startedMoving();	// This will be a stoppable animation.
+      currentAnimation = cascadeAnimation;
    }
-   currentAnimation = cascadeAnimation;
    doStep();
 }
 
