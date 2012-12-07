@@ -157,16 +157,22 @@ void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
    for (int player = 1; player <= 2; player++) {
       switch (m_ai_skill[player]) {
       case Prefs::EnumSkill1::Beginner:
-         m_ai_maxLevel[player] = 1;
+         m_ai_maxLevel[player] = 0;
+         break;
+      case Prefs::EnumSkill1::Novice:
+         m_ai_maxLevel[player] = 0;
          break;
       case Prefs::EnumSkill1::Average:
+         m_ai_maxLevel[player] = 1;
+         break;
+      case Prefs::EnumSkill1::Strong:
          m_ai_maxLevel[player] = 3;
          break;
       case Prefs::EnumSkill1::Expert:
          m_ai_maxLevel[player] = 5;
          break;
       default:
-         m_ai_maxLevel[player] = 3;
+         m_ai_maxLevel[player] = 1;
          break;
       }
    }

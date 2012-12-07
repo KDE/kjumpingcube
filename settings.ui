@@ -84,7 +84,7 @@
              <item>
               <widget class="QSlider" name="kcfg_Skill1">
                <property name="maximum">
-                <number>2</number>
+                <number>4</number>
                </property>
                <property name="pageStep">
                 <number>1</number>
@@ -222,7 +222,7 @@
              <item>
               <widget class="QSlider" name="kcfg_Skill2">
                <property name="maximum">
-                <number>2</number>
+                <number>4</number>
                </property>
                <property name="pageStep">
                 <number>1</number>
@@ -321,7 +321,7 @@
               <number>3</number>
              </property>
              <property name="maximum">
-              <number>10</number>
+              <number>15</number>
              </property>
              <property name="pageStep">
               <number>1</number>
@@ -365,7 +365,7 @@
              <item>
               <widget class="QLabel" name="label_5">
                <property name="text">
-                <string>10x10</string>
+                <string>15x15</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
