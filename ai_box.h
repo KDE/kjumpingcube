@@ -20,6 +20,7 @@
 
 #include "ai_globals.h"		// Include Player enum.
 
+#include <QObject>
 #include <QList>
 
 /**
@@ -28,23 +29,18 @@
 * @short The Box AI algorithms
 */
 
-typedef struct {
-    Player   player;
-    bool     isAI;
-    int      nCubes;
-    Player * owners;
-    int *    values;
-} Position;
+// Minimum and maximum size of cube box.  Must be consistent with settings.ui.
+const int minSide = 3;
+const int maxSide = 15;
 
-class AI_Box
+class AI_Box : public QObject
 {
-friend class AI_Main;
-
+    Q_OBJECT
 public:
     /**
     * The KJumpingCube AI_Box constructor.
     */
-    AI_Box          (int side);
+    AI_Box          (QObject * parent = 0, int side = 5);
     virtual  ~AI_Box();
 
     int      side()             { return m_side; }
@@ -76,7 +72,6 @@ public:
 
     bool     doMove  (Player player, int index, QList<int> * steps = 0);
     void     printBox();
-    bool     oldMove (Player player, int index);
 
     void     copyPosition (Player   player, bool   isAI);
     bool     undoPosition (Player & player, bool & isAI);
@@ -86,14 +81,26 @@ public:
     void     clear();
     bool     isClear()          { return (m_cubesToWin [Nobody] == 0); }
 
-private:
+protected:
     int      m_side;
     int      m_nCubes;
     Player * m_owners;
     int *    m_values;
     int *    m_maxValues;
-    int      m_cubesToWin [3];
     int *    m_neighbors;
+
+    void     resizeBox (int side);
+
+private:
+    typedef struct {
+        Player   player;
+        bool     isAI;
+        int      nCubes;
+        Player * owners;
+        int *    values;
+    } Position;
+
+    int      m_cubesToWin [3];
     int *    m_stack;
     int      m_stackPtr;
 
@@ -106,6 +113,11 @@ private:
     void     save    (Position * position, Player player, bool isAI);
     void     restore (Position * position);
     void     discard (Position * position);
+    Position * emptyPosition (int nCubes);
+    void     createBox (int side);
+    void     destroyBox();
+
+    QObject * m_parent; // IDW test.
 };
 
 #endif // AI_BOX_H

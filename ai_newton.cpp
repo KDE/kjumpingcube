@@ -26,116 +26,68 @@ AI_Newton::AI_Newton()
 {
 }
 
-int AI_Newton::assessCube (int row, int col, Player player,
-                           int side, Player * owners, int * values,
-                           int * maxValues) const
+int AI_Newton::assessCube (const int index,         const Player player,
+                           const int neighbors [4], const Player owners[],
+                           const int values[],      const int    maxValues[]
+                          ) const
 {
-   enum Value {InvalidMove = -2, StrongerOpponent = 999,
+   enum Value {StrongerOpponent = HighValue,
                TakeOrBeTaken = 1, EqualOpponent, CanTake,
                OccupyCorner, OccupyEdge, OccupyCenter,
-//               CanExpand, CanConsolidate, // 1 Aug 2012, changed the order.
-//               CanReachMaximum, IncreaseEdge, IncreaseCenter,
                CanConsolidate,
                CanReachMaximum, CanExpand, IncreaseEdge, IncreaseCenter,
                PlayHereAnyway};
    Player      p         = player;			// This player.
    Player      o         = (p == One) ?  Two : One;	// The other player.
-   int         index     = row * side + col;		// This cube.
    Player      cOwner    = owners[index];		// This cubes's owner.
-
-   if (cOwner == o)
-      return InvalidMove;	// ERROR: The other player owns this cube.
 
    int         pCount = 0;
    int         pRank  = 4;
    int         oCount = 0;
    int         oRank  = 4;
    int         cRank  = maxValues[index] - values[index];
-   int         n[4];
    int         nCount = 0;
-
-   // Get a list of neighbors.
-   if (row > 0) {
-       n[nCount++] = index - side;
-   }
-   if (row < side-1) {
-       n[nCount++] = index + side;
-   }
-   if (col > 0) {
-       n[nCount++] = index - 1;
-   }
-   if (col < side-1) {
-       n[nCount++] = index + 1;
-   }
+   int         pos    = 0;
 
    // Get statistics for neighbors: count and best rank for player and other.
-   for (int i = 0; i < nCount; i++) {
-      int rank;
-      int pos = n[i];
+   for (int i = 0; i < 4; i++) {
+      if ((pos = neighbors [i]) < 0) {
+         continue;			// No neighbor on this side.
+      }
+      int rank = maxValues[pos] - values[pos];
       if (owners[pos] == p) {		// Neighbor is owned by this player.
          pCount++;
-         rank  = maxValues[pos] - values[pos];	// Rank = how near to full.
          pRank = (rank < pRank) ? rank : pRank;
       }
       else if (owners[pos] == o) {	// Neighbor is owned by other player.
          oCount++;
-         rank  = maxValues[pos] - values[pos];	// Rank = how near to full.
          oRank = (rank < oRank) ? rank : oRank;
       }
-      // Otherwise, nobody owns it.
+      else {				// Otherwise, nobody owns it.
+         oRank = (rank < oRank) ? rank : oRank;
+      }
    }
 
    if (oRank < cRank)                	 return StrongerOpponent;
    // return PlayHereAnyway; // IDW test. Try ALL REASONABLE MOVES.
 
-   if ((cRank <= 0) && (oRank <= 0))	 return TakeOrBeTaken;
-   if (cRank == oRank)               	 return EqualOpponent;
-   if ((cRank <= 0) && (oCount > 0))     return CanTake;
+   if ((cRank <= 0) && (oRank <= 0))	 return TakeOrBeTaken;	// Value 1.
+   if ((cRank == oRank) && (oCount > 0)) return EqualOpponent;	// Value 2.
+   if ((cRank <= 0) && (oCount > 0))     return CanTake;	// Value 3.
 
    bool vacant  =  (cOwner == Nobody);
    bool nVacant = ((pCount + oCount) == 0);
    int  cMax    = maxValues[index];
-   if (vacant && nVacant && (cMax == 2)) return OccupyCorner;
-   if (vacant && nVacant && (cMax == 3)) return OccupyEdge;
-   if (vacant && nVacant && (cMax == 4)) return OccupyCenter;
-   if ((cRank <= 0)  && (pCount == 0))   return CanExpand;
-   if ((cRank <= 0)  && (pCount > 0))    return CanConsolidate;
-   if (cRank == 1)                       return CanReachMaximum;
-   if (cMax == 3)                        return IncreaseEdge;
-   if (cMax == 4)                        return IncreaseCenter;
+   if (vacant && nVacant && (cMax == 2)) return OccupyCorner;	// Value 4.
+   if (vacant && nVacant && (cMax == 3)) return OccupyEdge;	// Value 5.
+   if (vacant && nVacant && (cMax == 4)) return OccupyCenter;	// Value 6.
+   // Sun 2 Dec 2012 - This seems to play well on sizes 3, 5 and 7.
+   return PlayHereAnyway; // IDW test. Ignore val > 6. Try ALL REASONABLE MOVES.
+   if ((cRank <= 0)  && (pCount == 0))   return CanExpand;	// Value 9.
+   if ((cRank <= 0)  && (pCount > 0))    return CanConsolidate;	// Value 7.
+   if (cRank == 1)                       return CanReachMaximum;// Value 8.
+   if (cMax == 3)                        return IncreaseEdge;	// Value 10.
+   if (cMax == 4)                        return IncreaseCenter;	// Value 11.
 
-   return PlayHereAnyway;
-}
-
-double AI_Newton::assessField (Player player,
-                               int side, Player * owners, int * values) const
-{
-   int    cubesOne       = 0;
-   int    cubesTwo       = 0;
-   int    pointsOne      = 0;
-   int    pointsTwo      = 0;
-   Player otherPlayer = (player == One) ? Two : One;
-   int x, y, index, points;
-
-   for (x = 0; x < side; x++) {
-      for (y = 0; y < side; y++) {
-	 index = x * side + y;
-	 points  = values[index];
-         if (owners[index] == One) {
-            cubesOne++;
-            pointsOne += points * points;
-         }
-         else if (owners[index] == Two) {
-            cubesTwo++;
-	    pointsTwo += points * points;
-         }
-      }
-   }
-
-   if (player == One) {
-      return cubesOne * cubesOne + pointsOne - cubesTwo * cubesTwo - pointsTwo;
-   }
-   else {
-      return cubesTwo * cubesTwo + pointsTwo - cubesOne * cubesOne - pointsOne;
-   }
+   return PlayHereAnyway;					// Value 12.
 }

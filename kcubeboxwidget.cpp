@@ -19,6 +19,9 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 **************************************************************************** */
+
+#include "ai_main.h"
+#include "ai_box.h"
 #include "kcubeboxwidget.h"
 
 #include <KgTheme>
@@ -41,8 +44,10 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
 	  m_popup (new QLabel (this)),
 	  m_ignoreMove (false)
 {
-   m_box = new AI_Box (m_side);
    qDebug() << "CONSTRUCT KCubeBoxWidget: side" << m_side;
+   m_box = new AI_Box  (this, m_side);
+   qDebug() << "AI_Box CONSTRUCTED by KCubeBoxWidget::KCubeBoxWidget()";
+   m_ai  = new AI_Main (this, m_side);
    m_steps = new QList<int>;
    cubes.clear();
    init();
@@ -59,7 +64,7 @@ KCubeBoxWidget::~KCubeBoxWidget()
    // if(cubes)
       // deleteCubes(); // IDW TODO - Needed?
    delete m_steps;
-   delete m_box;
+   // IDW TODO - Not needed. m_box is a QObject. delete m_box;
 }
 
 void KCubeBoxWidget::loadSettings(){
@@ -108,7 +113,7 @@ void KCubeBoxWidget::loadSettings(){
      setColors ();
   }
 
-  brain.setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
+  m_ai->setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
                   Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
   qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1() << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
   qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2() << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
@@ -164,7 +169,7 @@ void KCubeBoxWidget::reset()
    // When re-starting, WAIT FOR A CLICK.
    // checkComputerplayer(One); // Enable this line for IDW high-speed test.
 
-   brain.startStats();
+   m_ai->startStats();
 }
 
 int KCubeBoxWidget::undoRedo (int actionType)
@@ -222,10 +227,10 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
 
       m_computerMoveType = ComputerMove;
       emit startedThinking();
-      qDebug() << "Calling brain.getMove() for player" << player;
+      qDebug() << "Calling m_ai->getMove() for player" << player;
       t.start(); // IDW test.
       m_ignoreMove = false;
-      brain.getMove (player, m_box);
+      m_ai->getMove (player, m_box);
    }
 }
 
@@ -237,13 +242,20 @@ void KCubeBoxWidget::getHint()
    m_computerMoveType = Hint;
    emit startedThinking();
    m_ignoreMove = false;
-   brain.getMove (m_currentPlayer, m_box);
+   m_ai->getMove (m_currentPlayer, m_box);
 }
 
 void KCubeBoxWidget::computerMoveDone (int index)
 {
    // We do not care if we interrupted the computer.  It was probably
    // taking too long, so we will just take the best move it had so far.
+
+   if ((index < 0) || (index >= (m_side * m_side))) {
+      emit stoppedThinking();
+      KMessageBox::sorry (this,
+                          i18n ("The computer could not find a valid move."));
+      return;
+   }
 
    if (m_computerMoveType == ComputerMove) {
       qDebug() << "TIME of MOVE" << t.elapsed();
@@ -278,13 +290,14 @@ void KCubeBoxWidget::setDim(int d)
    if (d != m_side) {
       shutdown();
       delete m_box;
-      m_box   = new AI_Box (d);
+      m_box   = new AI_Box (this, d);
+      qDebug() << "AI_Box CONSTRUCTED by KCubeBoxWidget::setDim()";
       m_side  = d;
       initCubes();
       // IDW TODO - Crashed in slot computerMoveDone(int). Starts animation with
       //            too large an index? Going from larger to smaller box.
       // Should we do setDim and return and do the rest of loadSettings later?
-      connect(&brain, SIGNAL(done(int)), SLOT(computerMoveDone(int)));
+      connect(m_ai, SIGNAL(done(int)), SLOT(computerMoveDone(int)));
       reset();
    }
 }
@@ -303,9 +316,9 @@ void KCubeBoxWidget::shutdown()
    if (animationTimer->isActive()) {
       animationTimer->stop();	// Stop move or hint animation immediately.
    }
-   if (brain.isActive()) {
-      brain.disconnect();	// Ignore the AI thread's signal of its move.
-      brain.stop();		// Stop the AI thread ASAP.
+   if (m_ai->isActive()) {
+      m_ai->disconnect();	// Ignore the AI thread's signal of its move.
+      m_ai->stop();		// Stop the AI thread ASAP.
       m_ignoreMove = true;
    }
 }
@@ -317,9 +330,9 @@ void KCubeBoxWidget::stopActivities()
       m_waitingForStep = false;
       stopAnimation (true);	// If moving, do the rest of the steps ASAP.
    }
-   if (brain.isActive()) {
+   if (m_ai->isActive()) {
       qDebug() << "BRAIN IS ACTIVE";
-      brain.stop();		// Keep Stop enabled, for the blink animation.
+      m_ai->stop();		// Keep Stop enabled, for the blink animation.
    }
 }
 
@@ -333,7 +346,7 @@ void KCubeBoxWidget::saveProperties (KConfigGroup & config)
       stopActivities();
       undoRedo (-1);		// Undo incomplete move.
    }
-   else if (brain.isActive()) {
+   else if (m_ai->isActive()) {
       stopActivities();
    }
 
@@ -367,14 +380,13 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
   QStringList list;
   QString     key;
   int         owner, value, maxValue;
-  int         minDim = 3, maxDim = 10;
 
-  // Dimension must be 3 to 10.
-  int cubeDim = config.readEntry ("CubeDim", minDim);
-  if ((cubeDim < minDim) || (cubeDim > maxDim)) {
+  // Dimension must be 3 to 15 (see definition in ai_box.h).
+  int cubeDim = config.readEntry ("CubeDim", minSide);
+  if ((cubeDim < minSide) || (cubeDim > maxSide)) {
      KMessageBox::sorry (this, i18n("The file's cube box size is outside "
                                     "the range %1 to %2. It will be set to %1.")
-                                    .arg(minDim).arg(maxDim));
+                                    .arg(minSide).arg(maxSide));
      cubeDim = 3;
   }
   m_side = 1;			// Force setDim() to create a new AI_Box.
@@ -478,7 +490,7 @@ bool KCubeBoxWidget::isActive() const
    bool flag=false;
    if(animationTimer->isActive())
       flag=true;
-   else if(brain.isActive())
+   else if(m_ai->isActive())
       flag=true;
 
    return flag;
@@ -548,13 +560,13 @@ void KCubeBoxWidget::init()
    connect(this,SIGNAL(startedMoving()),SLOT(setWaitCursor()));
    connect(this,SIGNAL(stoppedMoving()),SLOT(setNormalCursor()));
    connect(this,SIGNAL(playerWon(int)),SLOT(stopActivities()));
-   connect(&brain,SIGNAL(done(int)),SLOT(computerMoveDone(int)));
+   connect(m_ai,SIGNAL(done(int)),SLOT(computerMoveDone(int)));
 
    setNormalCursor();
 
    emit playerChanged(One);
 
-   brain.startStats();
+   m_ai->startStats();
 }
 
 void KCubeBoxWidget::initCubes()
@@ -762,7 +774,7 @@ void KCubeBoxWidget::doMove (int index)
    m_box->copyPosition (m_currentPlayer, computerMove);
 
    if (! computerMove) { // IDW test. Record a human move in the statistics.
-      brain.postMove (m_currentPlayer, index, m_side); // IDW test.
+      m_ai->postMove (m_currentPlayer, index, m_side); // IDW test.
    }
    emit newMove();		// GUI must update Undo and Redo actions.
    m_steps->clear();
@@ -790,7 +802,7 @@ void KCubeBoxWidget::doStep()
             qDebug() << "Win for player" << m_currentPlayer << "at this step.";
             emit stoppedMoving();
             currentAnimation = None;
-	    brain.dumpStats();	// IDW test.
+	    m_ai->dumpStats();	// IDW test.
             emit playerWon ((int) m_currentPlayer);	// Trigger a popup.
 	    stopActivities();				// End the move display.
             reset();					// Clear the cube box.

@@ -90,8 +90,8 @@ KJumpingCube::KJumpingCube()
 
 bool KJumpingCube::queryClose()
 {
-  // Terminate the AI or animation cleanly if either is active.
-  // If the Brain (AI) is active, quitting could cause a crash.
+  // Terminate the AI or animation cleanly if either one is active.
+  // If the AI is active, quitting immediately could cause a crash.
   view->shutdown();
   return true;
 }

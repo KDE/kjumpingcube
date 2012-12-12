@@ -26,8 +26,6 @@
 #include <QTime> // IDW
 
 #include "kcubewidget.h"
-#include "ai_main.h"
-#include "ai_box.h"
 
 #include <QWidget>
 #include <QPaintEvent>
@@ -35,6 +33,8 @@
 #include <QList>
 
 class KConfigGroup;
+class AI_Main;
+class AI_Box;
 class QTimer;
 class QLabel;
 
@@ -174,7 +174,7 @@ private:
    bool     m_gameHasBeenWon;
    QList<int> * m_steps;
 
-   AI_Main brain;
+   AI_Main * m_ai;
 
    QTimer *animationTimer;
 

@@ -22,62 +22,67 @@
 #include <QDebug>
 #include "stdio.h"
 
-Position * emptyPosition (int nCubes)
-{
-    Position * pos = new Position;
-    pos->nCubes = nCubes;
-    pos->owners = new Player [nCubes];
-    pos->values = new int [nCubes];
-    return pos;
-}
-
-AI_Box::AI_Box (int side)
+AI_Box::AI_Box (QObject * parent, int side)
     :
-    m_side       (side),
-    m_nCubes     (side * side),
-    m_owners     (0),
-    m_values     (0),
-    m_maxValues  (new int [m_nCubes]),
-    m_neighbors  (new int [4 * m_nCubes]),
-    m_stack      (new int [m_nCubes]),
-    m_stackPtr   (-1)
+    QObject      (parent)
 {
-    fprintf (stderr, "\nAI_Box CONSTRUCTOR, side = %d\n", m_side);
-
-    Position * pos = emptyPosition (m_nCubes);
-    m_undoList.append (pos);
-    m_owners = pos->owners;
-    m_values = pos->values;
-    indexNeighbors();
-    clear();
-    pos->player = One;			// Player 1 is going to play.
-    pos->isAI   = false;
+    m_parent = parent; // IDW test.
+    fprintf (stderr, "\nAI_Box CONSTRUCTOR, side = %d\n", side);
+    createBox (side);
 }
 
 AI_Box::~AI_Box()
 {
+    destroyBox();
+}
+
+void AI_Box::createBox (int side)
+{
+    m_side         = ((side >= minSide) && (side <= maxSide)) ? side : 5;
+    m_nCubes       = side * side;
+    Position * pos = emptyPosition (m_nCubes);
+    pos->player    = One;
+    pos->isAI      = false;
+    m_maxValues    = new int [m_nCubes];
+    m_neighbors    = new int [4 * m_nCubes];
+    m_stack        = new int [m_nCubes];
+    m_stackPtr     = -1;
+    m_owners       = pos->owners;
+    m_values       = pos->values;
+    indexNeighbors();
+    clear();
+    m_undoList.append (pos);
+}
+
+void AI_Box::destroyBox()
+{
     delete m_maxValues;
     delete m_neighbors;
+    delete m_stack;
     while (! m_undoList.isEmpty()) {
 	discard (m_undoList.takeLast());
     }
 }
 
+void AI_Box::resizeBox (int side)
+{
+    destroyBox();
+    createBox (side);
+}
+
 bool AI_Box::doMove (Player player, int index, QList<int> * steps)
 {
-    Player     oldOwner = m_owners[index];
+    Player oldOwner = m_owners[index];
     if ((oldOwner != player) && (oldOwner != Nobody)) {
-	qDebug() << "ILLEGAL MOVE: player" << player << "at"
-                                           << index/m_side << index%m_side;
+	qDebug() << "ILLEGAL MOVE: player" << player << "old" << oldOwner <<
+                                      "at" << index/m_side << index%m_side;
         return false;			// The move is not valid.
     }
 
-    // QStack<int> overloaded;
     m_stackPtr = -1;
     m_owners[index] = player;		// Take ownership if not already owned.
     if (m_maxValues [index] == m_values [index]++) {	// Increase the cube.
-        // overloaded.push (index);	// Stack an expansion step.
-	m_stack [++m_stackPtr] = index;
+	m_stack [++m_stackPtr] = index;	// Stack an expansion step.
 	// fprintf (stderr, "Overload at %d, value %d\n", index, m_values[index]);
     }
     if (steps) {
@@ -97,10 +102,8 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
         }
     }
 
-    // while (! overloaded.isEmpty()) {
     while (m_stackPtr >= 0) {
-        // Decrease an overloaded cube.
-        // index = overloaded.pop();
+        // Pop the stack and decrease an overloaded cube.
 	index = m_stack [m_stackPtr--];
 	// fprintf (stderr, "  Expand at %d, value %d\n", index, m_values[index]);
         m_values[index] = m_values[index] - m_maxValues[index];
@@ -112,16 +115,16 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
 
         // Move each neighbor.
         int indexN;
+	int offset = index * 4;
         for (int nb = 0; nb < 4; nb++) {
-            if ((indexN = m_neighbors [nb * m_nCubes + index]) < 0)
+            if ((indexN = m_neighbors [offset + nb]) < 0)
                 continue;		// No neighbor on this side.
 
             // Increase the neighbor and take over ownership.
             oldOwner = m_owners[indexN];
             m_owners[indexN] = player;
             if (m_maxValues [indexN] == m_values [indexN]++) {
-                // Continue a cascade.
-                // overloaded.push (indexN);
+                // Continue a cascade by pushing a new step onto the stack.
                 m_stack [++m_stackPtr] = indexN;
 		// fprintf (stderr, "Overload at %d, value %d\n", indexN, m_values[indexN]);
             }
@@ -134,8 +137,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
             }
         }
         if (m_values[index] > m_maxValues[index]) {
-            // The cube is still overloaded, so move there again.
-            // overloaded.push (index);
+            // The cube is still overloaded, so push it back onto the stack.
             m_stack [++m_stackPtr] = index;
 	    // fprintf (stderr, "  RE-Overload at %d, value %d\n", index, m_values[index]);
         }
@@ -153,61 +155,6 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
 
     // printBox();
     return false;
-}
-
-bool AI_Box::oldMove (Player player, int pos)
-{
-   bool finished;
-   bool playerWon = false;
-
-   int x, y, index;
-
-   if (m_owners[pos] != player && m_owners[pos] != Nobody)
-      return false;			// The move is not valid.
-
-   m_values[pos]++;			// Increase the cube to be moved.
-   m_owners[pos] = player;		// If neutral, take ownership.
-
-   do {
-      finished  = true;
-      playerWon = true;
-
-      // Check all cubes for overflow. Keep on checking till all moves are done.
-      for (x = 0; x < m_side; x++) {
-         for (y = 0; y < m_side; y++) {
-	    index = x * m_side + y;
-            if (m_values[index] > m_maxValues[index]) {
-	       // Increase the neighboring cubes and take them over.
-	       if (x > 0) {
-		   m_values[index-m_side]++;	// West.
-		   m_owners[index-m_side] = player;
-	       }
-	       if (x < m_side-1) {
-		   m_values[index+m_side]++;	// East.
-		   m_owners[index+m_side] = player;
-	       }
-	       if (y > 0) {
-		   m_values[index-1]++;		// North.
-		   m_owners[index-1] = player;
-	       }
-	       if (y < m_side-1) {
-		   m_values[index+1]++;		// South.
-		   m_owners[index+1] = player;
-	       }
-               m_values[index] = m_values[index] - m_maxValues[index];
-               finished = false;
-            }
-
-            if (m_owners[index] != player)
-               playerWon = false;
-         }
-      }
-
-      if (playerWon)
-         return true;
-   } while (! finished);
-
-   return false;
 }
 
 void AI_Box::copyPosition (Player player, bool isAI)
@@ -308,6 +255,15 @@ void AI_Box::discard (Position * pos)
     delete pos;
 }
 
+AI_Box::Position * AI_Box::emptyPosition (int nCubes)
+{
+    Position * pos = new Position;
+    pos->nCubes = nCubes;
+    pos->owners = new Player [nCubes];
+    pos->values = new int [nCubes];
+    return pos;
+}
+
 void AI_Box::clear()
 {
     for (int index = 0; index < m_nCubes; index++) {
@@ -326,36 +282,33 @@ void AI_Box::clear()
 
 void AI_Box::indexNeighbors()
 {
+    int offset = 0;
     for (int index = 0; index < m_nCubes; index++) {
         m_maxValues [index] = 0;
         for (int nb = 0; nb < 4; nb++) {
-            m_neighbors [nb * m_nCubes + index] = -1;
+            m_neighbors [offset + nb] = -1;
         }
 
-        int x = index % m_side;
-        int y = index / m_side;
+        int x = index / m_side;
+        int y = index % m_side;
         int limit = m_side - 1;
         if (y > 0) {
             m_maxValues [index]++;	// Has a neighbor on the North side.
-            m_neighbors [index] = index - m_side;
+            m_neighbors [offset]     = index - 1;
         }
         if (y < limit) {
             m_maxValues [index]++;	// Has a neighbor on the South side.
-            m_neighbors [m_nCubes + index] = index + m_side;
+            m_neighbors [offset + 1] = index + 1;
         }
         if (x < limit) {
             m_maxValues [index]++;	// Has a neighbor on the East side.
-            m_neighbors [2 * m_nCubes + index] = index + 1;
+            m_neighbors [offset + 2] = index + m_side;
         }
         if (x > 0) {
             m_maxValues [index]++;	// Has a neighbor on the West side.
-            m_neighbors [3 * m_nCubes + index] = index - 1;
+            m_neighbors [offset + 3] = index - m_side;
         }
-        // fprintf (stderr, "%d neighbors at ", m_maxValues [index]);
-        // for (int nb = 0; nb < 4; nb++) {
-            // fprintf (stderr, "%2d ", m_neighbors [nb * m_nCubes + index]);
-        // }
-        // fprintf (stderr, "\n");
+	offset = offset + 4;
     }
 }
 
@@ -379,3 +332,5 @@ void AI_Box::printBox()
     fprintf (stderr, "\n");
 */
 }
+
+#include "ai_box.moc"

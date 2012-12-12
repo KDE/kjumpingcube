@@ -20,4 +20,9 @@
 
 enum Player {Nobody, One, Two};
 
+// Used in AI_Main and the inheritors of AI_Base (e.g. AI_Kepler, AI_Newton).
+const int HighValue     = 999;
+const int VeryHighValue = 9999;
+const int WinnerPlus1   = 0x3fffffff;
+
 #endif // AI_GLOBALS_H

@@ -28,62 +28,84 @@
 #include <krandomsequence.h>
 
 #include "ai_base.h"
+#include "ai_box.h"
 
 class ThreadedAI;
-class AI_Box;
 
 struct Move
 {
-   int row;
-   int col;
+   int index;
    int val;
 };
 
 // IDW TODO - Re-write the API documentation.
 
 /**
-* Class AI_Main computes a (good) possible move from a given position.
-*
-* It puts a value on every cube by looking at its neighbours and picks a
-* short list of likely cubes to move, because it takes too long to check
-* every possible move.  It then simulates what would happen if you click
-* on these cubes.  This is all done recursively to a certain depth and the
-* position is valued.  The move that leads to the best position is chosen.
-*
-* @short The "brain" of KJumpingCube.
-*/
-class AI_Main : public QObject
+ * Class AI_Main computes a (good) possible move from a given position.
+ *
+ * It puts a value on every cube by looking at its neighbours and picks a
+ * short list of likely cubes to move (it takes too long to check every
+ * possible move).  It then simulates what would happen if you click on
+ * these cubes.  This is all done recursively to a certain depth and the
+ * position is valued.  The move that leads to the best position is chosen.
+ *
+ * @short The "computer player" of KJumpingCube.
+ */
+
+/**
+ * Number of available skill-levels for computer players.  Must be consistent
+ * with the Qt Designer form and the file "settings.ui" that it generates.
+ */
+const int nSkillLevels = 5;
+
+/**
+ * Extent of lookahead for each computer skill-level.  0 = perform moves and
+ * evaluate the resulting positions, selecting the move with the best value
+ * of those being considered.  n > 0 = perform n moves recursively, using
+ * the MiniMax algorithm, then perform one more move and evaluate it, e.g.
+ * depth 1 causes the computer to evaluate your responses to its moves.
+ */
+const int depths [nSkillLevels] = {0, 0, 1, 3, 5};
+
+/**
+ * The maximum number of moves considered at each level of lookahead.  This
+ * limits the size of the move-tree and the amount of computation involved.
+ * The most likely moves are chosen using values supplied by assessCube()
+ * (see the AI_Kepler and AI_Newton classes for examples).
+ */
+const int maxBreadth = 4;
+
+class AI_Main : public AI_Box
 {
+   // NOTE: Inheriting AI_Box gives AI_Main direct access to AI_Box's protected
+   //       data arrays.  Speed of computation is essential here.
    Q_OBJECT
 public:
-   // QMutex endMutex;		// Use when stopping the threaded calculation?
-   int computeMove();		// The threaded part of the move calculation.
-
-   // Statistics-gathering procedures.
-   // -------------------------------
-   void startStats();
-   void postMove (Player player, int index, int side);
-   void dumpStats();
-
    /**
-   * The constructor for the KJumpingCube AI (or "brain").
+   * The constructor for the KJumpingCube AI (or "computer player").
    */
-   explicit AI_Main();
+   explicit AI_Main (QObject * parent, int side);
    virtual ~AI_Main();
 
    // IDW TODO - It would be good to use const for more parameters if possible.
 
    /**
-   * Compute a good move for a player from a given position.
+   * Compute a good move for a player from a given position, providing either
+   * a computer-player move or a hint for a human player.  The main calculation
+   * is threaded and returns its result via signal "done (int index)".
    *
    * @param player  Player for whom a move is to be computed.
    * @param box     The player's position before the move.
    */
    void getMove (const Player player, AI_Box * box);
 
+   int computeMove();		// The threaded part of the move calculation.
+
+   // QMutex endMutex;		// Use when stopping the threaded calculation?
+
    /**
     *  Stop the AI, but not till the end of the current cycle.  The AI will
-    *  then return the best move found so far, via signal done(int index).
+    *  then return the best move found so far, via signal "done (int index)".
     */
    void stop();
 
@@ -110,13 +132,8 @@ private:
    ThreadedAI * m_thread;	// A thread to run computeMove() and tryMoves().
 
    Player     m_player;		// The player whose best move is to be found.
-   AI_Box *   m_box;		// The successive positions being evaluated.
 
-   int        m_side;		// The number of rows/columns in the cube box.
-   int        m_nCubes;		// The number of cubes in the cube box.
-   int *      m_owners;		// The m_nCubes owners of the cubes.
-   int *      m_values;		// The m_nCubes values of the cubes.
-   int *      m_maxValues;	// The m_nCubes maximum values of the cubes.
+   int *      m_randomSeq;	// A random order for trying out moves.
 
    /**
    * Recursively check and evaluate moves available at a given position, using
@@ -126,25 +143,25 @@ private:
    * moves and the resulting positions.
    *
    * @param player  Player for whom moves are being evaluated.
-   * @param level   Current level of recursion (i.e. level in move tree).
+   * @param level   Current level of recursion (i.e. level in move-tree).
    *
    * @return        The best move found and the value of the position reached.
    */
    Move tryMoves (Player player, int level);
 
    /**
-   * Checks a position to find moves that are likely to give good results.
+   * Check a position to find moves that are likely to give good results.
+   * Return at most maxBreadth moves, to reduce computation time in tryMoves().
    *
-   * @param c2m     Array in which likely moves will be stored.
-   * @param player  The player who is to move.
-   * @param side    The number of rows/columns in the cube box.
-   * @param owners  The owner of each cube in the box.
-   * @param values  The value of each cube in the box.
+   * @param c2m       The array in which likely moves will be stored.
+   * @param player    The player who is to move.
+   * @param owners    The owner of each cube in the box.
+   * @param values    The value of each cube in the box.
    * @param maxValues The maximum value of each cube in the box.
    *
-   * @return        The likely moves found.
+   * @return          The number of likely moves found.
    */
-   int findCubesToMove (Move * c2m, Player player, int side,
+   int findCubesToMove (Move * c2m, Player player,
                         Player * owners, int * values, int * maxValues);
 
    /**
@@ -172,9 +189,14 @@ private:
 
    KRandomSequence m_random;	// Random number generator.
 
-   int n_simulate;		// Number of moves simulated in the search.
-   int n_assess;		// Number of positions assessed in the search.
+public:
+   // Statistics-gathering procedures.
+   // -------------------------------
+   void startStats();
+   void postMove (Player player, int index, int side);
+   void dumpStats();
 
+private:
    // Statistical data and methods.
    // -----------------------------
    struct SearchStats {
@@ -197,6 +219,9 @@ private:
    int m_currentMoveNo;
    MoveStats * m_currentMove;
    QList<MoveStats *> m_moveStats;
+
+   int n_simulate;		// Number of moves simulated in the search.
+   int n_assess;		// Number of positions assessed in the search.
 
    void boxPrint (int side, int * owners, int * values);
 
