@@ -201,7 +201,7 @@ bool AI_Box::redoPosition (Player & player, bool & isAI)
     return (m_undoIndex < m_redoLimit);
 }
 
-void AI_Box::initPosition (AI_Box * box, Player player, bool isAI)
+void AI_Box::initPosition (const AI_Box * box, Player player, bool isAI)
 {
     if (box->side() != m_side) return;
 

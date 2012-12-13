@@ -38,8 +38,6 @@ struct Move
    int val;
 };
 
-// IDW TODO - Re-write the API documentation.
-
 /**
  * Class AI_Main computes a (good) possible move from a given position.
  *
@@ -87,8 +85,6 @@ public:
    explicit AI_Main (QObject * parent, int side);
    virtual ~AI_Main();
 
-   // IDW TODO - It would be good to use const for more parameters if possible.
-
    /**
    * Compute a good move for a player from a given position, providing either
    * a computer-player move or a hint for a human player.  The main calculation
@@ -97,7 +93,7 @@ public:
    * @param player  Player for whom a move is to be computed.
    * @param box     The player's position before the move.
    */
-   void getMove (const Player player, AI_Box * box);
+   void getMove (const Player player, const AI_Box * box);
 
    int computeMove();		// The threaded part of the move calculation.
 
@@ -161,15 +157,15 @@ private:
    *
    * @return          The number of likely moves found.
    */
-   int findCubesToMove (Move * c2m, Player player,
-                        Player * owners, int * values, int * maxValues);
+   int findCubesToMove (Move * c2m, const Player player, const Player * owners,
+                                    const int * values, const int * maxValues);
 
    /**
     * Make sure a cube box of the correct size is available as a workspace.
     *
     * @param side    The number of rows/columns in the cube box.
     */
-   void checkWorkspace (int side);
+   void checkWorkspace (const int side);
 
    AI_Base * m_AI_Kepler;	// Pointer to a Kepler-style player.
    AI_Base * m_AI_Newton;	// Pointer to a Newton-style player.

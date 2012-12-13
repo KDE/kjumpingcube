@@ -43,13 +43,16 @@ public:
     AI_Box          (QObject * parent = 0, int side = 5);
     virtual  ~AI_Box();
 
-    int      side()             { return m_side; }
-    Player   owner  (int index) { return (((index >= 0) && (index < m_nCubes)) ?
-                                          m_owners [index] : Nobody); }
-    int      value  (int index) { return (((index >= 0) && (index < m_nCubes)) ?
-                                          m_values [index] : 1); }
-    int      maxValue (int index) { return (((index >= 0) && (index < m_nCubes))
-                           ? m_maxValues [index] : 4); }
+    int      side() const       { return m_side; }
+    Player   owner    (int index) const
+                      { return (((index >= 0) && (index < m_nCubes)) ?
+                                m_owners [index] : Nobody); }
+    int      value    (int index) const
+                      { return (((index >= 0) && (index < m_nCubes)) ?
+                                m_values [index] : 1); }
+    int      maxValue (int index) const
+                      { return (((index >= 0) && (index < m_nCubes)) ?
+                                m_maxValues [index] : 4); }
 
     // For performance, avoid setOwner() and setValue() in the game engine (AI).
     // However, they are good to use when loading a saved game, for example.
@@ -76,7 +79,7 @@ public:
     void     copyPosition (Player   player, bool   isAI);
     bool     undoPosition (Player & player, bool & isAI);
     bool     redoPosition (Player & player, bool & isAI);
-    void     initPosition (AI_Box * box, Player player, bool isAI);
+    void     initPosition (const AI_Box * box, Player player, bool isAI);
 
     void     clear();
     bool     isClear()          { return (m_cubesToWin [Nobody] == 0); }

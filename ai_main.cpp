@@ -161,7 +161,7 @@ bool AI_Main::isActive() const
    return m_active;
 }
 
-void AI_Main::getMove (const Player player, AI_Box * box)
+void AI_Main::getMove (const Player player, const AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
    if (isActive())
@@ -341,8 +341,9 @@ Move AI_Main::tryMoves (Player player, int level)
    return bestMove;
 }
 
-int AI_Main::findCubesToMove (Move * c2m, Player player,
-                              Player * owners, int * values, int * maxValues)
+int AI_Main::findCubesToMove (Move * c2m, const Player player,
+                              const Player * owners, const int * values,
+                              const int * maxValues)
 {
    int index, n;
    int opponent  = (player == One) ? Two : One;
@@ -432,7 +433,6 @@ int AI_Main::findCubesToMove (Move * c2m, Player player,
 
    // If more than maxMoves moves are favorable, take maxMoves random
    // moves because it will take too long to check more.
-   // int maxMoves = (m_currentMoveNo > (m_nCubes / 3)) ? 10 : 4;
    return qMin (moves, maxBreadth);
 }
 

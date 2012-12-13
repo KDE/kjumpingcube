@@ -62,8 +62,8 @@ KJumpingCube::KJumpingCube()
    view->setObjectName( QLatin1String("KCubeBoxWidget" ));
    view->makeStatusPixmaps (30);
 
-   connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayer(int)));
-   connect(view,SIGNAL(colorChanged(int)),SLOT(changePlayerPixmap(int)));
+   connect(view,SIGNAL(playerChanged(int)),SLOT(changePlayerColor(int)));
+   connect(view,SIGNAL(colorChanged(int)),SLOT(changePlayerColor(int)));
    connect(view,SIGNAL(stoppedMoving()),SLOT(disableStop()));
    connect(view,SIGNAL(stoppedThinking()),SLOT(disableStop()));
    connect(view,SIGNAL(startedMoving()),SLOT(enableStop_Moving()));
@@ -81,11 +81,10 @@ KJumpingCube::KJumpingCube()
 
    currentPlayer = new QLabel ();
    currentPlayer->setFrameStyle (QFrame::NoFrame);
-   changePlayerPixmap(1);
+   changePlayerColor(One);
    statusBar()->addPermanentWidget (currentPlayer);
 
    initKAction();
-   changePlayer(1);
 }
 
 bool KJumpingCube::queryClose()
@@ -280,15 +279,9 @@ void KJumpingCube::redo()
    undoAction->setEnabled (true);
 }
 
-void KJumpingCube::changePlayer(int newPlayer)
+void KJumpingCube::changePlayerColor (int newPlayer)
 {
-   // IDW TODO - Can condense this method and the next AND the corr. signals.
-   changePlayerPixmap(newPlayer);
-}
-
-void KJumpingCube::changePlayerPixmap(int player)
-{
-   currentPlayer->setPixmap (view->playerPixmap (player));
+   currentPlayer->setPixmap (view->playerPixmap (newPlayer));
 }
 
 void KJumpingCube::showWinner(int player) {
