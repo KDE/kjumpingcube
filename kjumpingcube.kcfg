@@ -25,16 +25,6 @@
       <label>Animation type Scatter dots.</label>
       <default>true</default>
     </entry>
-    <entry name="AnimationType" type="Enum">
-      <choices>
-        <choice name="None"/>
-        <choice name="Delay"/>
-        <choice name="Blink"/>
-        <choice name="Spread"/>
-      </choices>
-      <label>Type of animation of overflowing dice</label>
-      <default>Spread</default>
-    </entry>
     <entry name="Color0" type="Color">
       <label>Color of neutral cubes.</label>
       <default>#debc85</default>
