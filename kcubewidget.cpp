@@ -134,6 +134,7 @@ void KCubeWidget::reset()
   blinking = None;
   setValue (1);
   setOwner (Nobody);
+  update();
 }
 
 
