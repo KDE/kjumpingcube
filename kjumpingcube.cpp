@@ -71,6 +71,8 @@ KJumpingCube::KJumpingCube()
    connect(view,SIGNAL(playerWon(int)),SLOT(showWinner(int)));
    connect(view,SIGNAL(dimensionsChanged()),SLOT(newGame()));
    connect(view,SIGNAL(newMove()),SLOT(newMoveSeen()));
+   connect(view,SIGNAL(buttonChange(bool,bool,const QString&)),
+                  SLOT(changeButton(bool,bool,const QString&)));
 
    // tell the KMainWindow that this is indeed the main widget
    setCentralWidget(view);
@@ -85,6 +87,10 @@ KJumpingCube::KJumpingCube()
    statusBar()->addPermanentWidget (currentPlayer);
 
    initKAction();
+
+   if (Prefs::computerPlayer1()) {
+      changeButton (true, false, i18n("Start computer move"));
+   }
 }
 
 bool KJumpingCube::queryClose()
@@ -133,15 +139,59 @@ void KJumpingCube::initKAction() {
   actionCollection()->addAction(redoAction->objectName(), redoAction);
   redoAction->setEnabled(false);
 
-  KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
+  actionButton = new QPushButton (this);
+  actionButton->setObjectName ("ActionButton");
+  // Style sheet for action button: parameters for red/green and clicked colors.
+  buttonLook =
+       "QPushButton#ActionButton { color: white; background-color: %1; "
+           "border-style: outset; border-width: 2px; border-radius: 10px; "
+           "border-color: beige; font: bold 14px; min-width: 10em; "
+           "padding: 6px; } "
+       "QPushButton#ActionButton:pressed { background-color: %2; "
+           "border-style: inset; } "
+       "QPushButton#ActionButton:disabled { color: lightGray;"
+            "border-color: gray; background-color: steelblue; }";
+
+  KAction * b = new KAction (this);
+  actionCollection()->addAction ( QLatin1String ("action_button"), b);
+  b->setDefaultWidget (actionButton);
+  changeButton (true, true);		// Load the button's style sheet.
+  changeButton (false);			// Set the button to be inactive.
+  connect (actionButton, SIGNAL(clicked()), view, SLOT(buttonClick()));
+
+  action = KStandardAction::preferences(this, SLOT(showOptions()), actionCollection());
+  qDebug() << "PREFERENCES ACTION is" << action->objectName();
+  action->setIconText (i18n("Settings"));
 
   setupGUI();
 }
 
+void KJumpingCube::changeButton (bool enabled, bool stop,
+                                 const QString & caption)
+{
+    qDebug() << "KJumpingCube::changeButton (" << enabled << stop << caption;
+    if (! enabled) {			// Inactive look (computer not busy).
+        actionButton->setText ("Not active");
+        actionButton->setEnabled (false);
+        return;
+    }
+    if (stop) {				// Red look (stop something).
+        actionButton->setStyleSheet (buttonLook.arg("rgb(224, 0, 0)")
+                                               .arg("rgb(200, 0, 0)"));
+    }
+    else {				// Green look (continue something).
+        actionButton->setStyleSheet (buttonLook.arg("rgb(0, 200, 0)")
+                                               .arg("rgb(0, 170, 0)"));
+    }
+    actionButton->setText (caption);
+    actionButton->setEnabled (true);
+}
+
 void KJumpingCube::newGame()
 {
-   stop();				// Stop the current move (if any).
-   view->reset();
+   // IDW DELETE. stop();		// Stop the current move (if any).
+   view->shutdown();			// Stop the current move (if any).
+   view->reset();			// Clear the cubebox.
    undoAction->setEnabled(false);
    redoAction->setEnabled(false);
    statusBar()->showMessage(i18n("New Game"),MESSAGE_TIME);
@@ -149,6 +199,8 @@ void KJumpingCube::newGame()
 
 void KJumpingCube::saveGame(bool saveAs)
 {
+   // IDW TODO. if (view->waitToSave (saveAs)) return;
+
    if(saveAs || gameURL.isEmpty())
    {
       int result=0;
@@ -204,6 +256,8 @@ void KJumpingCube::saveGame(bool saveAs)
 
 void KJumpingCube::openGame()
 {
+   // IDW TODO. if (view->waitToLoad()) return;
+
    bool fileOk=true;
    KUrl url;
 
@@ -259,6 +313,8 @@ void KJumpingCube::stop()
 
 void KJumpingCube::undo()
 {
+   // IDW TODO. if (view->waitToUndo()) return;
+
    // IDW test. if(view->isActive())
       // IDW test. return;
    int moreToUndo = view->undoRedo (-1);

@@ -39,32 +39,34 @@
 
 KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
         : QWidget(parent),
-	  m_side (d),
+          m_state         (NotStarted),
+          m_busyState     (NA),
+          m_waitingState  (Nil),
+	  m_side          (d),
 	  m_currentPlayer (One),
-	  m_popup (new QLabel (this)),
-	  m_ignoreMove (false)
+	  m_popup         (new QLabel (this)),
+	  m_ignoreComputerMove    (false)
 {
    qDebug() << "CONSTRUCT KCubeBoxWidget: side" << m_side;
    m_box = new AI_Box  (this, m_side);
-   qDebug() << "AI_Box CONSTRUCTED by KCubeBoxWidget::KCubeBoxWidget()";
    m_ai  = new AI_Main (this, m_side);
    m_steps = new QList<int>;
    cubes.clear();
    init();
    m_gameHasBeenWon   = false;
-   m_computerMoveType = Hint;
-   m_playerWaiting    = computerPlOne ? One : Nobody;
+   // IDW DELETE. m_computerMoveType = Hint;
    m_waitingForStep   = false;
+   m_playerWaiting    = computerPlOne ? One : Nobody;
+   m_state        = computerPlOne ? Waiting : HumanToMove;
+   m_waitingState = computerPlOne ? ComputerToMove : Nil;
 }
 
 KCubeBoxWidget::~KCubeBoxWidget()
 {
-   if(isActive())
-    stopActivities();
-   // if(cubes)
-      // deleteCubes(); // IDW TODO - Needed?
+   if (isActive()) {
+      stopActivities();
+   }
    delete m_steps;
-   // IDW TODO - Not needed. m_box is a QObject. delete m_box;
 }
 
 void KCubeBoxWidget::loadSettings(){
@@ -91,7 +93,6 @@ void KCubeBoxWidget::loadSettings(){
      cascadeAnimation = Scatter;
   }
 
-  // IDW TODO - Delete? bool oldPauseForStep = m_pauseForStep;
   m_pauseForStep       = Prefs::pauseForStep();
   m_pauseForComputer   = Prefs::pauseForComputer();
   qDebug() << "m_pauseForComputer" << m_pauseForComputer << "m_pauseForStep" << m_pauseForStep; // IDW test.
@@ -149,7 +150,7 @@ void KCubeBoxWidget::loadSettings(){
 
 void KCubeBoxWidget::reset()
 {
-   // IDW TODO - Delete? stopActivities();
+   // IDW TODO - Delete? stopActivities(); shutdown() here only (except Quit)?
 
    foreach (KCubeWidget * cube, cubes) {
       cube->reset();
@@ -162,8 +163,16 @@ void KCubeBoxWidget::reset()
 
    m_currentPlayer = One;
 
-   m_playerWaiting    = computerPlOne ? One : Nobody;
-   m_waitingForStep   = false;
+   m_waitingForStep = false;
+   m_playerWaiting  = computerPlOne ? One : Nobody;
+   m_state          = computerPlOne ? Waiting : HumanToMove;
+   m_waitingState   = computerPlOne ? ComputerToMove : Nil;
+   if (computerPlOne) {
+      emit buttonChange (true, false, i18n("Start computer move"));
+   }
+   else {
+      emit buttonChange (false);
+   }
 
    emit playerChanged(One);
    // When re-starting, WAIT FOR A CLICK.
@@ -179,7 +188,7 @@ int KCubeBoxWidget::undoRedo (int actionType)
       // IDW test. return -1;
    if (isActive()) {
       stopActivities();
-      m_ignoreMove = true;
+      m_ignoreComputerMove = true;
    }
 
    Player oldPlayer = m_currentPlayer;
@@ -215,21 +224,31 @@ void KCubeBoxWidget::checkComputerplayer(Player player)
       if (m_pauseForComputer) {
          if (m_playerWaiting == Nobody) {
             m_playerWaiting = player;
-	    showPopup (i18n ("Click anywhere to continue"));
+	    // IDW DELETE. showPopup (i18n ("Click anywhere to continue"));
+            m_state = Waiting;
+            m_waitingState = ComputerToMove;
+            if (computerPlOne && computerPlTwo) {
+                emit buttonChange (true, false, i18n("Continue game"));
+            }
+            else {
+                emit buttonChange (true, false, i18n("Start computer move"));
+            }
             return;
          }
 	 else {
-            hidePopup();
+            // IDW DELETE. hidePopup();
          }
       }
       m_playerWaiting = Nobody;
       KCubeWidget::enableClicks (false);
 
-      m_computerMoveType = ComputerMove;
+      // IDW DELETE. m_computerMoveType = ComputerMove;
       emit startedThinking();
+      emit buttonChange (true, true, i18n("Stop computing"));	// Red look.
       qDebug() << "Calling m_ai->getMove() for player" << player;
       t.start(); // IDW test.
-      m_ignoreMove = false;
+      m_state = ComputingMove;	// IDW TODO - Set null sub-states ???
+      m_ignoreComputerMove = false;
       m_ai->getMove (player, m_box);
    }
 }
@@ -239,9 +258,12 @@ void KCubeBoxWidget::getHint()
    if (isActive())
       return;
 
-   m_computerMoveType = Hint;
+   // IDW DELETE. m_computerMoveType = Hint;
+   m_state = Busy;
+   m_busyState = ComputingHint;	// IDW TODO - m_waitingState = Nil; ???
    emit startedThinking();
-   m_ignoreMove = false;
+   emit buttonChange (true, true, i18n("Stop computing"));	// Red look.
+   m_ignoreComputerMove = false;
    m_ai->getMove (m_currentPlayer, m_box);
 }
 
@@ -250,29 +272,56 @@ void KCubeBoxWidget::computerMoveDone (int index)
    // We do not care if we interrupted the computer.  It was probably
    // taking too long, so we will just take the best move it had so far.
 
+   if (m_ignoreComputerMove) {
+      // Whatever set this will start a new game or close down KJumpingCube.
+      m_ignoreComputerMove = false;
+      return;
+   }
    if ((index < 0) || (index >= (m_side * m_side))) {
       emit stoppedThinking();
+      emit buttonChange (false);				// Inactive.
       KMessageBox::sorry (this,
                           i18n ("The computer could not find a valid move."));
+      // IDW TODO - What to do about state values ???
       return;
    }
 
-   if (m_computerMoveType == ComputerMove) {
+   // IDW DELETE. if (m_computerMoveType == ComputerMove) {
+   // }
+   // else if (m_computerMoveType == Hint) {
+   // }
+
+   // IDW TODO - Check states.  ComputingMove, Busy, Waiting.
+   // IDW TODO - Set appropriate button states and captions.
+   switch (m_state) {
+   case ComputingMove:
       qDebug() << "TIME of MOVE" << t.elapsed();
-      qDebug() << "==============================================================";
-   }
-   else if (m_computerMoveType == Hint) {
+      qDebug() << "===========================================================";
+      m_state = Busy;
+      m_busyState = ShowingMove;
+      startAnimation (ComputerMove, index);
+      break;
+   case Busy:
       qDebug() << "HINT FOR PLAYER" << m_currentPlayer
                << "X" << index / m_side << "Y" << index % m_side;
-   }
-   if (m_ignoreMove) {
-      m_ignoreMove = false;
+      m_busyState = ShowingHint;
+      startAnimation (Hint, index);
+      break;
+   case Waiting:
+      qDebug() << "TIME of MOVE" << t.elapsed();
+      qDebug() << "===========================================================";
+      startAnimation (ComputerMove, index);
+      break;
+   default:
       return;
+      break;
    }
 
+   // IDW TODO - Re-word this comment.
    // Blink the cube to be moved (twice).  When done, emit stoppedThinking()
    // and simulate a click if it is a ComputerMove, not a Hint.
-   startAnimation (m_computerMoveType, index);
+   emit buttonChange (true, true, i18n("Stop moving"));
+   // IDW test DELETE. startAnimation (m_computerMoveType, index);
 
    // checkClick (index / m_side, index % m_side, false);
    // Use this for IDW high-speed test.
@@ -297,7 +346,6 @@ void KCubeBoxWidget::setDim(int d)
       // IDW TODO - Crashed in slot computerMoveDone(int). Starts animation with
       //            too large an index? Going from larger to smaller box.
       // Should we do setDim and return and do the rest of loadSettings later?
-      connect(m_ai, SIGNAL(done(int)), SLOT(computerMoveDone(int)));
       reset();
    }
 }
@@ -308,6 +356,10 @@ void KCubeBoxWidget::setComputerplayer(Player player,bool flag)
       computerPlOne=flag;
    else if(player==Two)
       computerPlTwo=flag;
+   // IDW TODO - If current player is not computer, m_playerWaiting = Nobody.
+   if ((player == m_currentPlayer) && (! flag)) {
+      m_playerWaiting = Nobody;	// Current player is human.
+   }
 }
 
 void KCubeBoxWidget::shutdown()
@@ -317,9 +369,8 @@ void KCubeBoxWidget::shutdown()
       animationTimer->stop();	// Stop move or hint animation immediately.
    }
    if (m_ai->isActive()) {
-      m_ai->disconnect();	// Ignore the AI thread's signal of its move.
       m_ai->stop();		// Stop the AI thread ASAP.
-      m_ignoreMove = true;
+      m_ignoreComputerMove = true;
    }
 }
 
@@ -377,6 +428,7 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
   // IDW TODO - Restore settings for computer player(s), animation, etc.
   // IDW TODO - If a computer player is "on turn", wait for a click or use
   //            a KMessageBox ...
+  qDebug() << "Entering KCubeBoxWidget::readProperties ...";
   QStringList list;
   QString     key;
   int         owner, value, maxValue;
@@ -389,8 +441,9 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
                                     .arg(minSide).arg(maxSide));
      cubeDim = 3;
   }
-  m_side = 1;			// Force setDim() to create a new AI_Box.
+  m_side = 1;					// Create a new cube box.
   setDim (cubeDim);
+  reCalculateGraphics (width(), height());	// Re-draw the cube box.
 
   for (int x = 0; x < m_side; x++) {
     for (int y = 0; y < m_side; y++) {
@@ -438,6 +491,7 @@ void KCubeBoxWidget::readProperties (const KConfigGroup& config)
    m_currentPlayer = (Player) onTurn;
    emit playerChanged (m_currentPlayer);
    checkComputerplayer (m_currentPlayer);
+   qDebug() << "Leaving KCubeBoxWidget::readProperties ...";
 }
 
 /* ***************************************************************** **
@@ -456,6 +510,11 @@ void KCubeBoxWidget::setNormalCursor()
 
 bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
 {
+   // IDW TODO - This needs a re-write. Do we need more than just REAL click?
+   //            Button will handle m_waitingForStep, start game, continue game:
+   //            leaving just doMove() for human player or computer player.
+   // IDW TODO - Write a new mouse-click event for KCubeBoxWidget? Remove the
+   //            one that KCubeWidget has?
    if (isClick && m_waitingForStep) {
       m_waitingForStep = false;
       animationTimer->start();
@@ -479,6 +538,35 @@ bool KCubeBoxWidget::checkClick (int x, int y, bool isClick)
       return true;
    }
    return false;
+}
+
+void KCubeBoxWidget::buttonClick()
+{
+   qDebug() << "BUTTON CLICK seen";
+   switch (m_state) {
+   case Waiting:
+      switch (m_waitingState) {
+      case WaitingToStep:
+         animationTimer->start();
+         m_waitingForStep = false;
+         break;
+      case ComputerToMove:
+         checkComputerplayer (m_playerWaiting);
+         break;
+      default:
+         break;
+      }
+      break;
+   case Busy:
+      break;
+   case ComputingMove:
+      qDebug() << "BRAIN IS ACTIVE";
+      m_ai->stop();		// Keep Stop enabled, for the blink animation.
+      break;
+   default:
+      emit buttonChange (false);
+      break;
+   }
 }
 
 /* ***************************************************************** **
@@ -746,13 +834,6 @@ QSize  KCubeBoxWidget::sizeHint() const
    return QSize(400,400);
 }
 
-void  KCubeBoxWidget::deleteCubes()
-{
-   // IDW test. CubeBoxBase<KCubeWidget>::deleteCubes();
-   qDebug() << "ENTERED NO-OP PROCEDURE KCubeBoxWidget::deleteCubes()";
-}
-
-
 /* ***************************************************************** **
 **                   other private functions                         **
 ** ***************************************************************** */
@@ -765,7 +846,7 @@ void KCubeBoxWidget::doMove (int index)
 
    // IDW TODO. Allow undo and redo of computer moves.
    //           Done, but needs further testing, esp. for race conditions
-   //           and the use of m_ignoreMove.
+   //           and the use of m_ignoreComputerMove.
 
    bool computerMove = ((computerPlOne && m_currentPlayer == One) ||
                         (computerPlTwo && m_currentPlayer == Two));
@@ -801,6 +882,7 @@ void KCubeBoxWidget::doStep()
          if (index == 0) {
             qDebug() << "Win for player" << m_currentPlayer << "at this step.";
             emit stoppedMoving();
+            emit buttonChange (false);			// Inactive.
             currentAnimation = None;
 	    m_ai->dumpStats();	// IDW test.
             emit playerWon ((int) m_currentPlayer);	// Trigger a popup.
@@ -827,12 +909,16 @@ void KCubeBoxWidget::doStep()
          }
          else {
             startAnimation (currentAnimation, index);	// Animate and decrease.
+	    if (! m_pauseForStep) {
+	       emit buttonChange (true, true, i18n("Stop animation"));
+	    }
          }
       }
       else {
          // Views of the cubes at all steps of the move have been updated.
          qDebug() << "End of move for player" << m_currentPlayer;
          emit stoppedMoving();
+         emit buttonChange (false);			// Inactive.
          currentAnimation = None;
          KCubeWidget::enableClicks(true);
          changePlayer();
@@ -875,7 +961,10 @@ void KCubeBoxWidget::startAnimation (AnimationType type, int index)
    animationTimer->setInterval (interval);
    if (m_pauseForStep &&
        (currentAnimation != Hint) && (currentAnimation != ComputerMove)) {
-      m_waitingForStep = true;		// Timer will start on next click.
+      m_waitingForStep = true;
+      m_state = Waiting;		// Timer will start on next buttonClick.
+      m_waitingState = WaitingToStep;
+      emit buttonChange (true, false, i18n("Show next step"));
       return;
    }
    animationTimer->start();
@@ -946,7 +1035,11 @@ void KCubeBoxWidget::stopAnimation (bool completeAllSteps)
    case Hint:
    case ComputerMove:
       emit stoppedThinking();
+      emit buttonChange (false);	// Inactive.
       if (currentAnimation == ComputerMove) {
+         // IDW TODO - Handle Busy states.
+         // IDW TODO - Handle Waiting states.
+         // IDW TODO - Only go to next move if BusyState:ShowingMove.
          checkClick (m_index / m_side, m_index % m_side, false);
       }
       break;

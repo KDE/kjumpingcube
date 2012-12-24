@@ -29,6 +29,7 @@
 
 class QAction;
 class KCubeBoxWidget;
+class QPushButton;
 
 /**
  * This class serves as the main window for KJumpingCube.  It handles the
@@ -57,6 +58,9 @@ private:
   KUrl gameURL;
   void initKAction();
 
+  QPushButton * actionButton;
+  QString       buttonLook;
+
 private slots:
   void newGame();
   void saveGame(bool saveAs=false);
@@ -72,6 +76,8 @@ private slots:
   void enableStop_Moving();
   void enableStop_Thinking();
   void newMoveSeen();
+  void changeButton (bool enabled, bool stop = false,
+                     const QString & caption = QString());
 
   void showOptions();
 };

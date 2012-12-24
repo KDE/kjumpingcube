@@ -117,6 +117,8 @@ public slots:
 
    void computerMoveDone (int index);
 
+   void buttonClick();
+
 signals:
    void playerChanged(int newPlayer);
    void colorChanged(int player);
@@ -127,10 +129,11 @@ signals:
    void stoppedMoving();
    void stoppedThinking();
    void dimensionsChanged();
+   void buttonChange(bool enabled, bool stop = false,
+                     const QString & caption = QString(""));
 
 protected:
    virtual QSize sizeHint() const;
-   virtual void deleteCubes();
    virtual void initCubes();
    virtual void paintEvent (QPaintEvent * event);
    virtual void resizeEvent (QResizeEvent * event);
@@ -153,6 +156,16 @@ private:
    void makeSVGCubes (const int width);
    void colorImage (QImage & img, const QColor & c, const int w);
    void reCalculateGraphics (const int w, const int h);
+
+   enum State        {NotStarted, HumanToMove, ComputingMove, Busy, Waiting};
+   enum BusyState    {NA, ComputingHint, ShowingHint, ShowingMove,
+                      AnimatingMove};
+   enum WaitingState {Nil, WaitingToUndo, WaitingToLoad, WaitingToSave,
+                      WaitingToStep, ComputerToMove};
+
+   State              m_state;
+   BusyState          m_busyState;
+   WaitingState       m_waitingState;
 
    int sWidth;			// Width of status pixmaps (used if recoloring).
    QPixmap status1;		// Status-bar pixmaps for players 1 and 2.
@@ -181,7 +194,7 @@ private:
    int  m_index;
    AnimationType cascadeAnimation;
    AnimationType currentAnimation;
-   AnimationType m_computerMoveType;
+   // IDW DELETE. AnimationType m_computerMoveType;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
@@ -195,7 +208,7 @@ private:
    bool   m_pauseForStep;
    bool   m_waitingForStep;
    QLabel * m_popup;
-   bool   m_ignoreMove;
+   bool   m_ignoreComputerMove;
 
    /**
    * Increases the cube at 'index' and starts the animation loop, if required.
