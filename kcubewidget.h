@@ -75,7 +75,7 @@ public slots:
    virtual void updateColors();
 
 signals:
-   void clicked(int row,int column,bool isClick);
+   void clicked (int row, int column);
 
 protected:
    /** checks, if mouseclick was inside this cube*/

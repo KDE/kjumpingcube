@@ -25,7 +25,7 @@
 #include <QLabel>
 
 #include <kxmlguiwindow.h>
-#include <kurl.h>
+#include <game.h>
 
 class QAction;
 class KCubeBoxWidget;
@@ -46,36 +46,30 @@ public:
   /** Default Constructor */
   KJumpingCube();
 
+public slots:
+   void setAction (Action a, const bool onOff);
+
 protected:
   /// To make sure all activity ceases before closing.
   bool queryClose();
 
 private:
-  KCubeBoxWidget *view;
+  Game * m_game;
+  KCubeBoxWidget * m_view;
 	QLabel *currentPlayer;
 	QAction *undoAction, *redoAction, *stopAction, *hintAction;
 
-  KUrl gameURL;
   void initKAction();
 
   QPushButton * actionButton;
   QString       buttonLook;
 
 private slots:
-  void newGame();
-  void saveGame(bool saveAs=false);
-  inline void saveAs() { saveGame(true); }
-  inline void save() { saveGame(false); }
-  void openGame();
   void stop();
-  void undo();
-  void redo();
   void changePlayerColor (int newPlayer);
-  void showWinner(int);
   void disableStop();
   void enableStop_Moving();
   void enableStop_Thinking();
-  void newMoveSeen();
   void changeButton (bool enabled, bool stop = false,
                      const QString & caption = QString());
 

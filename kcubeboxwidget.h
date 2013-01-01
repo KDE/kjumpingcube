@@ -25,6 +25,7 @@
 #include <QSvgRenderer>
 #include <QTime> // IDW
 
+#include "ai_globals.h"
 #include "kcubewidget.h"
 
 #include <QWidget>
@@ -33,7 +34,6 @@
 #include <QList>
 
 class KConfigGroup;
-class AI_Main;
 class AI_Box;
 class QTimer;
 class QLabel;
@@ -42,11 +42,14 @@ class KCubeBoxWidget : public QWidget
 {
    Q_OBJECT
 public:
-   enum AnimationType {None, Hint, ComputerMove, Darken, RapidBlink, Scatter};
-
-   explicit KCubeBoxWidget(const int dim=1,QWidget *parent=0);
+   explicit KCubeBoxWidget (const int dim = 1, QWidget * parent = 0);
 
    virtual ~KCubeBoxWidget();
+
+   void displayPosition (const AI_Box * box);
+   void displayCube     (int index, Player owner, int value);
+   void highlightCube   (int index, bool highlight);
+   int  cubeValue       (int index) { return cubes.at(index)->value(); }
 
    /**
     * Make sure all animation and AI activity is over before destroying widget.
@@ -59,15 +62,6 @@ public:
    void reset();
 
    /**
-    * Undo or redo a move.
-    *
-    * @param   actionType  -1 = undo, +1 = redo
-    *
-    * @return  -1 = Busy, 0 = No more to undo/redo, 1 = More moves to undo/redo.
-    */
-   int undoRedo (int actionType);
-
-   /**
    * Set colors that are used to show owners of the cubes.
    */
    void setColors ();
@@ -78,59 +72,19 @@ public:
    */
    virtual void setDim (int dim);
 
-   /**
-   * sets player 'player' as computer or human
-   *
-   * @param player
-   * @param flag: true for computer, false for human
-   */
-   void setComputerplayer(Player player,bool flag);
-
-   /** returns true if player 'player' is a computerPlayer */
-   bool isComputer(Player player) const;
-
-   /** returns true if CubeBox is doing a move or getting a hint */
-   bool isActive() const;
-   bool isMoving() const;
-
-   /**
-   * checks if 'player' is a computerplayer an computes next move if TRUE
-   */
-   void checkComputerplayer(Player player);
-
-   inline void saveGame(KConfigGroup&c) { saveProperties(c); }
-   inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
-
    void makeStatusPixmaps (const int width);
    const QPixmap & playerPixmap (const int p);
 
-public slots:
-   /** stops all activities like getting a hint or doing a move */
-   void stopActivities();
-   /**
-    * computes a possibility to move and shows it by highlightning
-    * this cube
-    */
-   void getHint();
+   /** sets the cursor to an waitcursor */
+   void setWaitCursor();
+   /** restores the original cursor */
+   void setNormalCursor();
 
-   void loadSettings();
-
-   void computerMoveDone (int index);
-
-   void buttonClick();
+   bool loadSettings();
 
 signals:
-   void playerChanged(int newPlayer);
-   void colorChanged(int player);
-   void newMove();
-   void playerWon(int player);
-   void startedMoving();
-   void startedThinking();
-   void stoppedMoving();
-   void stoppedThinking();
-   void dimensionsChanged();
-   void buttonChange(bool enabled, bool stop = false,
-                     const QString & caption = QString(""));
+   void animationDone (int index);
+   void mouseClick (int x, int y);
 
 protected:
    virtual QSize sizeHint() const;
@@ -138,34 +92,18 @@ protected:
    virtual void paintEvent (QPaintEvent * event);
    virtual void resizeEvent (QResizeEvent * event);
 
-   void saveProperties(KConfigGroup&);
-   void readProperties(const KConfigGroup&);
-
-protected slots:
-   /** sets the cursor to an waitcursor */
-   void setWaitCursor();
-   /** restores the original cursor */
-   void setNormalCursor();
-
 private:
+   enum AnimationType {None, ComputerMove, Darken, RapidBlink, Scatter};
+
    void init();
 
+   QTime t; // IDW test.
+
    QSvgRenderer svg;
-   QTime t; // IDW
    void makeSVGBackground (const int w, const int h);
    void makeSVGCubes (const int width);
    void colorImage (QImage & img, const QColor & c, const int w);
    void reCalculateGraphics (const int w, const int h);
-
-   enum State        {NotStarted, HumanToMove, ComputingMove, Busy, Waiting};
-   enum BusyState    {NA, ComputingHint, ShowingHint, ShowingMove,
-                      AnimatingMove};
-   enum WaitingState {Nil, WaitingToUndo, WaitingToLoad, WaitingToSave,
-                      WaitingToStep, ComputerToMove};
-
-   State              m_state;
-   BusyState          m_busyState;
-   WaitingState       m_waitingState;
 
    int sWidth;			// Width of status pixmaps (used if recoloring).
    QPixmap status1;		// Status-bar pixmaps for players 1 and 2.
@@ -180,46 +118,30 @@ private:
    QPoint topLeft;
    int cubeSize;
 
-   AI_Box * m_box;
    int      m_side;
-   Player   m_currentPlayer;
    QList<KCubeWidget *> cubes;
-   bool     m_gameHasBeenWon;
-   QList<int> * m_steps;
-
-   AI_Main * m_ai;
 
    QTimer *animationTimer;
 
    int  m_index;
    AnimationType cascadeAnimation;
    AnimationType currentAnimation;
-   // IDW DELETE. AnimationType m_computerMoveType;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
 
-   // IDW test. Moved to slot section. Player changePlayer();
-   bool   computerPlOne;
-   bool   computerPlTwo;
-
-   bool   m_pauseForComputer;
-   Player m_playerWaiting;
-   bool   m_pauseForStep;
-   bool   m_waitingForStep;
    QLabel * m_popup;
-   bool   m_ignoreComputerMove;
 
+public:
    /**
-   * Increases the cube at 'index' and starts the animation loop, if required.
+   * Starts the animation loop.
    */
-   void doMove (int index);
-   void doStep();
-   void startAnimation (AnimationType type, int index);
-   void scatterDots (int step);
-   void stopAnimation (bool completeAllSteps);
+   void startAnimation (bool cascading, int index);
+   void killAnimation();
 
-   Player changePlayer();
+private:
+   void scatterDots (int step);
+   // IDW DELETE. void stopAnimation (bool completeAllSteps);
 
    void showPopup (const QString & message);
    void hidePopup();
@@ -227,11 +149,7 @@ private:
 private slots:
    void nextAnimationStep();
 
-   /**
-   * checks if cube at [x, y] is clickable by the current player.
-   * if true, it increases this cube and checks the playingfield
-   */
-   bool checkClick (int x, int y, bool isClick);
+   bool checkClick (int x, int y);
 };
 
 #endif // KCUBEBOXWIDGET_H

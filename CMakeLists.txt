@@ -21,6 +21,7 @@ set(kjumpingcube_SRCS
    kcubeboxwidget.cpp 
    main.cpp 
    kcubewidget.cpp 
+   game.cpp
    ai_main.cpp
    ai_kepler.cpp
    ai_newton.cpp
