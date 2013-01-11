@@ -19,12 +19,10 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 **************************************************************************** */
+
 #include "kjumpingcube.h"
 #include "kcubeboxwidget.h"
-
-// Settings
-#include "ui_settings.h"
-
+#include "settingswidget.h"
 #include "prefs.h"
 
 #include <QSignalMapper>
@@ -42,22 +40,9 @@
 
 #define MESSAGE_TIME 2000
 
-class SettingsWidget : public QWidget, public Ui::Settings
-{
-public:
-    SettingsWidget(QWidget *parent)
-        : QWidget(parent)
-        {
-            setupUi(this);
-        }
-};
-
 KJumpingCube::KJumpingCube()
-   // :
-   // m_view (new KCubeBoxWidget (Prefs::cubeDim(), this)),
-   // m_game (new Game (Prefs::cubeDim(), m_view))
-  // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
 {
+  // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
    qDebug() << "KJumpingCube::KJumpingCube() CONSTRUCTOR";
    m_view = new KCubeBoxWidget (Prefs::cubeDim(), this);
    m_game = new Game (Prefs::cubeDim(), m_view);
@@ -66,6 +51,8 @@ KJumpingCube::KJumpingCube()
    connect(m_game,SIGNAL(playerChanged(int)),SLOT(changePlayerColor(int)));
    connect(m_game,SIGNAL(buttonChange(bool,bool,const QString&)),
                   SLOT(changeButton(bool,bool,const QString&)));
+   connect(m_game,SIGNAL(statusMessage(const QString&, bool)),
+                  SLOT(statusMessage(const QString&, bool)));
 
    // Tell the KMainWindow that this is indeed the main widget.
    setCentralWidget (m_view);
@@ -83,9 +70,7 @@ KJumpingCube::KJumpingCube()
 
    connect (m_game, SIGNAL (setAction(const Action,const bool)),
                     SLOT   (setAction(const Action,const bool)));
-   if (Prefs::computerPlayer1()) {
-      changeButton (true, false, i18n("Start computer move"));
-   }
+   m_game->gameActions (NEW);		// Start a new game.
 }
 
 bool KJumpingCube::queryClose()
@@ -105,12 +90,15 @@ void KJumpingCube::initKAction() {
   action = KStandardGameAction::gameNew (gameMapper, SLOT (map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, NEW);
+
   action = KStandardGameAction::load    (gameMapper, SLOT (map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, LOAD);
+
   action = KStandardGameAction::save    (gameMapper, SLOT (map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE);
+
   action = KStandardGameAction::saveAs  (gameMapper, SLOT (map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE_AS);
@@ -118,21 +106,7 @@ void KJumpingCube::initKAction() {
   action = KStandardGameAction::hint    (gameMapper, SLOT(map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, HINT);
-/* IDW DELETE.
-  action = actionCollection()->addAction (QLatin1String ("game_stop"));
-  action->setIcon (KIcon( QLatin1String( "process-stop" )));
-  action->setText (i18n("Stop"));
-  action->setToolTip (i18n("Force the computer to stop calculating or "
-                               "animating a move"));
-  action->setWhatsThis
-		(i18n("Stop the computer's calculation of its current move "
-                      "and force it to use the best one found so far, or stop "
-                      "an animation and skip to the end"));
-  action->setShortcut (Qt::Key_Escape);
-  gameMapper->setMapping (action, STOP);
-  connect (action, SIGNAL(triggered(bool)), gameMapper, SLOT(map()));
-  action->setEnabled (false);
-*/
+
   action = KStandardGameAction::undo    (gameMapper, SLOT (map()), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, UNDO);
@@ -178,32 +152,16 @@ void KJumpingCube::changeButton (bool enabled, bool stop,
                                  const QString & caption)
 {
     qDebug() << "KJumpingCube::changeButton (" << enabled << stop << caption;
-    if (! enabled) {			// Inactive look (computer not busy).
-        actionButton->setText ("Not active");
-        actionButton->setEnabled (false);
-        return;
-    }
-    if (stop) {				// Red look (stop something).
+    if (enabled && stop) {		// Red look (stop something).
         actionButton->setStyleSheet (buttonLook.arg("rgb(224, 0, 0)")
                                                .arg("rgb(200, 0, 0)"));
     }
-    else {				// Green look (continue something).
+    else if (enabled) {			// Green look (continue something).
         actionButton->setStyleSheet (buttonLook.arg("rgb(0, 200, 0)")
                                                .arg("rgb(0, 170, 0)"));
     }
     actionButton->setText (caption);
-    actionButton->setEnabled (true);
-}
-
-void KJumpingCube::stop()
-{
-
-   if(m_game->isMoving())
-       undoAction->setEnabled(true);
-
-   m_game->stopActivities();
-
-   statusBar()->showMessage(i18n("stopped activity"),MESSAGE_TIME);
+    actionButton->setEnabled (enabled);
 }
 
 void KJumpingCube::changePlayerColor (int newPlayer)
@@ -211,45 +169,23 @@ void KJumpingCube::changePlayerColor (int newPlayer)
    currentPlayer->setPixmap (m_view->playerPixmap (newPlayer));
 }
 
-// IDW TODO - Do disableStop(), enableStop_Moving() and enableStop_Thinking()
-//            from the Game class, using setAction and statusMessage signals.
-void KJumpingCube::disableStop()
+void KJumpingCube::showOptions()
 {
-  stopAction->setEnabled(false);
-  hintAction->setEnabled(true);
-  statusBar()->clearMessage();
+   // Show the Preferences/Settings/Configuration dialog.
+   if (KConfigDialog::showDialog ("settings")) {
+      return;
+   }
+   KConfigDialog * dialog = new KConfigDialog (this, "settings", Prefs::self());
+   dialog->setFaceType (KPageDialog::Plain);
+   SettingsWidget * settingsWidget = new SettingsWidget (this);
+   dialog->addPage (settingsWidget, i18n("General"), "games-config-options");
+   connect (dialog, SIGNAL(settingsChanged(QString)),
+           m_game,  SLOT(newSettings()));
+   dialog->show();
+   m_game->setDialog (settingsWidget);
 }
 
-void KJumpingCube::enableStop_Moving()
-{
-  stopAction->setEnabled(true);
-  hintAction->setEnabled(false);
-  statusBar()->showMessage(i18n("Performing a move."));
-}
-
-void KJumpingCube::enableStop_Thinking(){
-  stopAction->setEnabled(true);
-  hintAction->setEnabled(false);
-  statusBar()->showMessage(i18n("Computing a move."));
-}
-// End of IDW TODO.
-
-/**
- * Show Configure dialog.
- */
-void KJumpingCube::showOptions(){
-  if(KConfigDialog::showDialog("settings"))
-    return;
-
-  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self());
-  dialog->setFaceType(KPageDialog::Plain);
-  dialog->addPage(new SettingsWidget(this), i18n("General"),
-                  "games-config-options");
-  connect(dialog,SIGNAL(settingsChanged(QString)),m_game,SLOT(loadSettings()));
-  dialog->show();
-}
-
-void KJumpingCube::setAction (Action a, const bool onOff)
+void KJumpingCube::setAction (const Action a, const bool onOff)
 {
     // These must match enum Action (see file game.h) and be in the same order.
     const char * name [] = {"game_new",  "move_hint",   "action_button",
@@ -259,5 +195,14 @@ void KJumpingCube::setAction (Action a, const bool onOff)
     ((QAction *) actionCollection()->action (name [a]))->setEnabled (onOff);
 }
 
-#include "kjumpingcube.moc"
+void KJumpingCube::statusMessage (const QString & message, bool timed)
+{
+  if (timed) {
+    statusBar()->showMessage (message, MESSAGE_TIME);
+  }
+  else {
+    statusBar()->showMessage (message);
+  }
+}
 
+#include "kjumpingcube.moc"

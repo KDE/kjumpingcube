@@ -116,7 +116,6 @@ AI_Main::AI_Main (QObject * parent, int side) : AI_Box (parent, side)
              Prefs::EnumSkill2::Beginner, true, false);
 
    m_stopped = false;
-   m_active = false;
    m_currentLevel = 0;
 
    m_random.setSeed (0);
@@ -143,10 +142,13 @@ void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
    m_ai_skill[2] = skill2;
 
    m_ai_maxLevel[0] = 0;
+   m_ai_maxLevel[1] = depths[skill1];
+   m_ai_maxLevel[2] = depths[skill2];
+
    for (int player = 1; player <= 2; player++) {
-      for (int skill = 0; skill < nSkillLevels; skill++) {
-         m_ai_maxLevel[player] = depths [skill];
-      }
+       qDebug() << "AI_Main::setSkill: Player" << player << m_ai[player]->whoami()
+                << "skill" << m_ai_skill[player]
+                << "maxLevel" << m_ai_maxLevel[player];
    }
 }
 
@@ -156,24 +158,17 @@ void AI_Main::stop()
    m_thread->wait();
 }
 
-bool AI_Main::isActive() const
-{
-   return m_active;
-}
-
 void AI_Main::getMove (const Player player, const AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
-   if (isActive())
-      return;
 
    m_currentAI = m_ai[player];
    m_skill     = m_ai_skill[player];
    m_maxLevel  = m_ai_maxLevel[player];
+   qDebug() << "AI" << m_currentAI->whoami() << "skill" << m_skill << "m_maxLevel" << m_maxLevel;
 
    initStats (player);	// IDW test. Statistics collection.
 
-   m_active  = true;
    m_stopped = false;
    m_player  = player;
 
@@ -206,7 +201,6 @@ int AI_Main::computeMove()
 
    qDebug() << tag(0) << "MOVE" << m_currentMoveNo << "for PLAYER" << m_player
             << "X" << move.index/m_side << "Y" << move.index%m_side;
-   m_active = false;
 
    return (move.index);		// Return the best move found, via a signal.
 }

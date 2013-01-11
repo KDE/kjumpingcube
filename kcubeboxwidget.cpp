@@ -20,7 +20,6 @@
 **************************************************************************** */
 
 #include "kcubeboxwidget.h"
-#include "ai_box.h"
 
 #include <KgTheme>
 #include <KStandardDirs>
@@ -51,6 +50,7 @@ KCubeBoxWidget::~KCubeBoxWidget()
 
 bool KCubeBoxWidget::loadSettings()
 {
+  qDebug() << "LOAD VIEW SETTINGS";
   bool reColorCubes = ((color1 != Prefs::color1()) ||
                        (color2 != Prefs::color2()) ||
                        (color0 != Prefs::color0()));
@@ -75,8 +75,6 @@ bool KCubeBoxWidget::loadSettings()
 
   animationTime = Prefs::animationSpeed() * 150;
 
-  setDim (Prefs::cubeDim());
-
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
   }
@@ -98,17 +96,6 @@ void KCubeBoxWidget::reset()
 
    KCubeWidget::enableClicks(true);
    currentAnimation = None;
-}
-
-void KCubeBoxWidget::displayPosition (const AI_Box * box)
-{
-   // Update the entire cube display.
-   int index = 0;
-   foreach (KCubeWidget * cube, cubes) {
-       cube->setOwner (box->owner (index));
-       cube->setValue (box->value (index));
-       index++;
-   }
 }
 
 void KCubeBoxWidget::displayCube (int index, Player owner, int value)
@@ -139,32 +126,12 @@ void KCubeBoxWidget::setDim(int d)
    if (d != m_side) {
       m_side  = d;
       initCubes();
-      // IDW NOTE: reCalculateGraphics is also done in loadSettings() and
-      //           setDim() is also called from Game::readProperties() (LOAD).
+      // IDW NOTE: reCalculateGraphics is also done in loadSettings().
+      // IDW TODO - Where and where not to call reCalculateGraphics()?
       reCalculateGraphics (width(), height()); // IDW test. Temporary kludge.
       reset();
    }
 }
-
-/* IDW TODO - Re-implement these as an animation shutdown function.
- *
-void KCubeBoxWidget::shutdown()
-{
-   // Shut down gracefully, avoiding a possible crash when the user hits Quit.
-   if (animationTimer->isActive()) {
-      animationTimer->stop();	// Stop move or hint animation immediately.
-   }
-}
-
-void KCubeBoxWidget::stopActivities()
-{
-   qDebug() << "STOP ACTIVITIES";
-   if (animationTimer->isActive() || m_waitingForStep) {
-      m_waitingForStep = false;
-      stopAnimation (true);	// If moving, do the rest of the steps ASAP.
-   }
-}
-*/
 
 /* ***************************************************************** **
 **                               slots                               **
@@ -230,11 +197,12 @@ void KCubeBoxWidget::init()
 
    // At this point the user's currently preferred number of cubes and colors
    // are already loaded, so there should be no change and no SVG rendering yet.
-   loadSettings();
+   // IDW TODO - DELETE? loadSettings();
 
    connect(animationTimer,SIGNAL(timeout()),SLOT(nextAnimationStep()));
 
    setNormalCursor();
+   setPopup();
 }
 
 void KCubeBoxWidget::initCubes()
@@ -407,6 +375,7 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
          cubes.at (index)->resize (cubeSize, cubeSize);
       }
    }
+   setPopup();
 }
 
 QSize  KCubeBoxWidget::sizeHint() const
@@ -511,78 +480,46 @@ void KCubeBoxWidget::scatterDots (int step)
    if (y < d) cubes.at (m_index + 1)     ->migrateDot ( 0, -1, step, player);
 }
 
-void KCubeBoxWidget::killAnimation()
+int KCubeBoxWidget::killAnimation()
 {
    if (animationTimer->isActive()) {
       animationTimer->stop();   	// Stop current animation immediately.
    }
+   return m_index;
 }
-
-/* IDW TODO - De-integrate this.  Use a signal to kick doStep() off again.
-      AND deduct maxValue ????  OR pass it into the view somehow.
-void KCubeBoxWidget::stopAnimation (bool completeAllSteps)
-{
-   // Animation ended normally or the user hit Stop (completeAllSteps = true).
-   animationTimer->stop();
-   cubes.at (m_index)->setNeutral();
-   switch (currentAnimation) {
-   case Hint:
-   case ComputerMove:
-      emit stoppedThinking();
-      emit buttonChange (false);	// Inactive.
-      if (currentAnimation == ComputerMove) {
-         // IDW TODO - Handle Busy states.
-         // IDW TODO - Handle Waiting states.
-         // IDW TODO - Only go to next move if BusyState:ShowingMove.
-         checkClick (m_index / m_side, m_index % m_side, false);
-      }
-      break;
-   case RapidBlink:
-   case Darken:
-   case Scatter:
-
-      cubes.at (m_index)->setValue (cubes.at (m_index)->value() -
-                                              m_box->maxValue (m_index));
-      if (completeAllSteps) {		// If called by stopActivities().
-         qDebug() << "Stop at index" << m_index << "anim" << currentAnimation;
-         currentAnimation = None;	// Do the rest of the steps immediately.
-      }
-      doStep();				// Go and update the next cube.
-      break;
-   case None:
-      break;				// Should never happen.
-   }
-}
-*/
 
 const QPixmap & KCubeBoxWidget::playerPixmap (const int p)
 {
    return ((p == 1) ? status1 : status2);
 }
 
-void KCubeBoxWidget::showPopup (const QString & message)
+void KCubeBoxWidget::setPopup()
 {
    QFont f;
-   // f.setPixelSize ((int) (cubes.at (0)->height() * 0.2 + 0.5));
-   f.setPixelSize ((int) (height() * 0.02 + 0.5));
+   f.setPixelSize ((int) (height() * 0.04 + 0.5));
    f.setWeight (QFont::Bold);
    f.setStretch (QFont::Expanded);
-   // m_popup->setBrush (QColor (0.5, 1.0, 1.0, 1.0));
-   // m_popup->setStyleSheet("QLabel { background-color : none; color : rgba(255, 255, 255, 50%); }");
    m_popup->setStyleSheet("QLabel { color : rgba(255, 255, 255, 75%); }");
    m_popup->setFont (f);
+   m_popup->resize (width(), (int) (height() * 0.08 + 0.5));
+   m_popup->setAlignment (Qt::AlignCenter);
+}
 
+void KCubeBoxWidget::showPopup (const QString & message)
+{
    m_popup->setText (message);
    m_popup->move ((this->width()  - m_popup->width()) / 2,
                   (this->height() - m_popup->height()) / 2 +
-		  (cubes.at (0)->height() / 5)); 
+                  (cubes.at (0)->height() / 5));
    m_popup->raise();
    m_popup->show();
+   update();
 }
 
 void KCubeBoxWidget::hidePopup()
 {
    m_popup->hide();
+   update();
 }
 
 #include "kcubeboxwidget.moc"

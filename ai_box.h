@@ -82,7 +82,6 @@ public:
     void     initPosition (const AI_Box * box, Player player, bool isAI);
 
     void     clear();
-    bool     isClear()          { return (m_cubesToWin [Nobody] == 0); }
 
 protected:
     int      m_side;

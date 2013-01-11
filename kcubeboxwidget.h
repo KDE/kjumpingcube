@@ -34,7 +34,6 @@
 #include <QList>
 
 class KConfigGroup;
-class AI_Box;
 class QTimer;
 class QLabel;
 
@@ -46,15 +45,9 @@ public:
 
    virtual ~KCubeBoxWidget();
 
-   void displayPosition (const AI_Box * box);
    void displayCube     (int index, Player owner, int value);
    void highlightCube   (int index, bool highlight);
    int  cubeValue       (int index) { return cubes.at(index)->value(); }
-
-   /**
-    * Make sure all animation and AI activity is over before destroying widget.
-    * */
-   void shutdown();
 
    /**
    * reset cubebox for a new game
@@ -137,14 +130,14 @@ public:
    * Starts the animation loop.
    */
    void startAnimation (bool cascading, int index);
-   void killAnimation();
-
-private:
-   void scatterDots (int step);
-   // IDW DELETE. void stopAnimation (bool completeAllSteps);
+   int killAnimation();
 
    void showPopup (const QString & message);
    void hidePopup();
+
+private:
+   void setPopup();
+   void scatterDots (int step);
 
 private slots:
    void nextAnimationStep();

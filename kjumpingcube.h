@@ -47,7 +47,7 @@ public:
   KJumpingCube();
 
 public slots:
-   void setAction (Action a, const bool onOff);
+   void setAction (const Action a, const bool onOff);
 
 protected:
   /// To make sure all activity ceases before closing.
@@ -56,8 +56,8 @@ protected:
 private:
   Game * m_game;
   KCubeBoxWidget * m_view;
-	QLabel *currentPlayer;
-	QAction *undoAction, *redoAction, *stopAction, *hintAction;
+  QLabel *currentPlayer;
+  QAction *undoAction, *redoAction, *stopAction, *hintAction;
 
   void initKAction();
 
@@ -65,13 +65,10 @@ private:
   QString       buttonLook;
 
 private slots:
-  void stop();
   void changePlayerColor (int newPlayer);
-  void disableStop();
-  void enableStop_Moving();
-  void enableStop_Thinking();
   void changeButton (bool enabled, bool stop = false,
                      const QString & caption = QString());
+  void statusMessage (const QString & message, bool timed);
 
   void showOptions();
 };

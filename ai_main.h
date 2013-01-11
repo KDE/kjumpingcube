@@ -106,11 +106,6 @@ public:
    void stop();
 
    /**
-    * Return true if the AI is running at the moment.
-    */
-   bool isActive() const;
-
-   /**
     * Set skill and AI players according to current preferences or settings.
     */
    void setSkill (int skill1, bool kepler1, bool newton1,
@@ -181,7 +176,6 @@ private:
    int  m_currentLevel;		// Current search depth (or lookahead).
 
    bool m_stopped;		// True if the AI has to be stopped.
-   bool m_active;		// True if the AI is running.
 
    KRandomSequence m_random;	// Random number generator.
 
