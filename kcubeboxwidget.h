@@ -106,7 +106,6 @@ private:
    QColor color1;		// Player 1's color.
    QColor color2;		// Player 2's color.
    QColor color0;		// Color for neutral cubes.
-   bool drawHairlines;		// T = draw hairlines between cubes, F = do not.
 
    QPoint topLeft;
    int cubeSize;

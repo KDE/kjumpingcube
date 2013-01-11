@@ -172,7 +172,6 @@ void KCubeBoxWidget::init()
    theme.readFromDesktopFile(KStandardDirs::locate("appdata",
                                                    "pics/default.desktop"));
    svg.load (theme.graphicsPath());
-   drawHairlines = (theme.customData("DrawHairlines") == "0") ? false : true;
 
    initCubes();
 
@@ -333,11 +332,10 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 {
    int boxSize = qMin(w, h);
    int frameWidth = boxSize / 30;
-   int hairline = drawHairlines ? frameWidth / 10 : 0;
-   qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth << "hairline" << hairline;
+   qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth;
    boxSize = boxSize - (2 * frameWidth);
-   cubeSize = ((boxSize - hairline) / m_side) - hairline;
-   boxSize = ((cubeSize + hairline) * m_side) + hairline;
+   cubeSize = (boxSize / m_side);
+   boxSize = (cubeSize * m_side);
    topLeft.setX ((w - boxSize)/2);
    topLeft.setY ((h - boxSize)/2);
 
@@ -348,8 +346,8 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
       for (int y = 0; y < m_side; y++) {
 	 int index = x * m_side + y;
          cubes.at (index)->move (
-                            topLeft.x() + hairline + x * (cubeSize + hairline),
-                            topLeft.y() + hairline + y * (cubeSize + hairline));
+                            topLeft.x() + (x * cubeSize),
+                            topLeft.y() + (y * cubeSize));
          cubes.at (index)->resize (cubeSize, cubeSize);
       }
    }
