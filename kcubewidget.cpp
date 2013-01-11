@@ -22,7 +22,6 @@
 #include "kcubewidget.h"
 
 #include <QPainter>
-#include <QTimer>
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPixmap>

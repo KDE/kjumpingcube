@@ -23,7 +23,6 @@
 #define KCUBEBOXWIDGET_H
 
 #include <QSvgRenderer>
-#include <QTime> // IDW
 
 #include "ai_globals.h"
 #include "kcubewidget.h"
@@ -89,8 +88,6 @@ private:
    enum AnimationType {None, ComputerMove, Darken, RapidBlink, Scatter};
 
    void init();
-
-   QTime t; // IDW test.
 
    QSvgRenderer svg;
    void makeSVGBackground (const int w, const int h);
