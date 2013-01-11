@@ -54,7 +54,6 @@ bool KCubeBoxWidget::loadSettings()
   bool reColorCubes = ((color1 != Prefs::color1()) ||
                        (color2 != Prefs::color2()) ||
                        (color0 != Prefs::color0()));
-  bool reSizeCubes  = (m_side != Prefs::cubeDim());
 
   color1 = Prefs::color1();
   color2 = Prefs::color2();
@@ -75,13 +74,11 @@ bool KCubeBoxWidget::loadSettings()
 
   animationTime = Prefs::animationSpeed() * 150;
 
+  // NOTE: When the box-size (Prefs::cubeDim()) changes, Game::newGame() calls
+  //       KCubeBoxWidget::loadSettings() first, then KCubeBoxWidget::setDim(). 
+
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
-  }
-  if (reSizeCubes) {
-     reCalculateGraphics (width(), height());
-  }
-  else if (reColorCubes) {
      makeSVGCubes (cubeSize);
      setColors ();
   }
@@ -126,9 +123,7 @@ void KCubeBoxWidget::setDim(int d)
    if (d != m_side) {
       m_side  = d;
       initCubes();
-      // IDW NOTE: reCalculateGraphics is also done in loadSettings().
-      // IDW TODO - Where and where not to call reCalculateGraphics()?
-      reCalculateGraphics (width(), height()); // IDW test. Temporary kludge.
+      reCalculateGraphics (width(), height());
       reset();
    }
 }
@@ -151,9 +146,6 @@ bool KCubeBoxWidget::checkClick (int x, int y)
 {
    /* IDW TODO - Remove this from the view OR rewrite it as a MouseEvent().
     *
-   // IDW TODO - This needs a re-write. Do we need more than just REAL click?
-   //            Button will handle m_waitingForStep, start game, continue game:
-   //            leaving just doMove() for human player or computer player.
    // IDW TODO - Write a new mouse-click event for KCubeBoxWidget? Remove the
    //            one that KCubeWidget has?
    */
@@ -177,30 +169,17 @@ void KCubeBoxWidget::init()
    color0 = Prefs::color0();
 
    KgTheme theme((QByteArray()));
-   theme.readFromDesktopFile(KStandardDirs::locate("appdata", "pics/default.desktop"));
-
-   t.start();
-   qDebug() << t.restart() << "msec";
+   theme.readFromDesktopFile(KStandardDirs::locate("appdata",
+                                                   "pics/default.desktop"));
    svg.load (theme.graphicsPath());
-   qDebug() << t.restart() << "msec" << "SVG loaded ...";
-   if (svg.isValid())
-	qDebug() << "SVG is valid ...";
-   else
-	qDebug() << "SVG is NOT valid ...";
    drawHairlines = (theme.customData("DrawHairlines") == "0") ? false : true;
 
    initCubes();
 
-   animationTime=Prefs::animationSpeed() * 150;
-   animationTimer=new QTimer(this);
-   KCubeWidget::enableClicks(true);
+   animationTime = Prefs::animationSpeed() * 150;
+   animationTimer = new QTimer(this);
 
-   // At this point the user's currently preferred number of cubes and colors
-   // are already loaded, so there should be no change and no SVG rendering yet.
-   // IDW TODO - DELETE? loadSettings();
-
-   connect(animationTimer,SIGNAL(timeout()),SLOT(nextAnimationStep()));
-
+   connect (animationTimer, SIGNAL(timeout()), SLOT(nextAnimationStep()));
    setNormalCursor();
    setPopup();
 }
@@ -347,7 +326,6 @@ void KCubeBoxWidget::paintEvent (QPaintEvent * /* event unused */)
 
 void KCubeBoxWidget::resizeEvent (QResizeEvent * event)
 {
-   qDebug() << endl << "KCubeBoxWidget::resizeEvent:" << event->size() << this->size();
    reCalculateGraphics (event->size().width(), event->size().height());
 }
 
@@ -419,7 +397,6 @@ void KCubeBoxWidget::startAnimation (bool cascading, int index)
    }
    animationTimer->setInterval (interval);
    animationTimer->start();
-   // IDW test. qDebug() << "START ANIMATION" << m_index / m_side << m_index % m_side << "type" << currentAnimation << "count" << animationCount << "interval" << interval;
 }
 
 void KCubeBoxWidget::nextAnimationStep()
@@ -468,8 +445,6 @@ void KCubeBoxWidget::nextAnimationStep()
 
 void KCubeBoxWidget::scatterDots (int step)
 {
-   // IDW test. qDebug() << "KCubeBoxWidget::scatterDots (" << step << ")";
-   // IDW DELETE. Player player = currentPlayer;
    Player player = cubes.at(m_index)->owner();
    int d = m_side - 1;
    int x = m_index / m_side;

@@ -739,9 +739,6 @@ void Game::setDim (int d)
       qDebug() << "AI_Box CONSTRUCTED by Game::setDim()";
       m_side  = d;
       m_view->setDim (d);
-      // IDW TODO - Crashed in slot moveCalculationDone(int). Starts animation
-      //            with too large an index? Going from larger to smaller box.
-      // Should we do setDim and return and do the rest of loadSettings later?
       reset();
    }
 }
