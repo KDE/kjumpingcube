@@ -74,7 +74,10 @@ public slots:
    void gameActions (const int action);
 
    /**
-    * Check changes in the user's preferences or settings.
+    * Check changes in the user's preferences or settings.  Some settings can
+    * be used immediately, some must wait until the start of the next turn and
+    * a change in box size may require the user's OK (or not) to abandon a game
+    * in progress and start a new game.
     */
    void newSettings();
 
@@ -87,15 +90,12 @@ private slots:
    void startHumanMove (int x, int y);
 
 private:
-   enum State        {NotStarted, HumanMoving, ComputerMoving};
-   enum Activity     {Idle, Computing, ShowingMove, AnimatingMove};
-   enum WaitingState {Nil, WaitingToStep, ComputerToMove};
-
    /**
    * Check if the current player is a computer player and, if so, start the
-   * next move. Otherwise, wait for a human player to move.
+   * next move or perhaps wait for the user to click the button to show that
+   * he or she is ready.  Otherwise, wait for a human player to move.
    */
-   void startNextTurn();
+   void setUpNextTurn();
 
    /**
     * Starts calculating a computer move or hint (using asynchronous AI thread).
@@ -156,9 +156,18 @@ private:
    void buttonClick();
 
    /**
-    * Act upon changes in the user's preferences or settings.
+    * Act on changes in settings that can be used immediately.  Color changes
+    * can take effect when control returns to the event loop, the other settings
+    * next time they are used.  They include animation settings, AI players and
+    * their skill levels.
     */
-   void loadSettings();
+   void loadImmediateSettings();
+
+   /**
+    * Act on changes in the user's choice of players and computer-player pause.
+    * These can take effect only at the start of a turn.
+    */
+   void loadPlayerSettings();
 
 private slots:
    /**
@@ -211,18 +220,23 @@ protected:
 private:
    QTime t; // IDW test.
 
-   State            m_state;
+   enum Activity     {Idle, Computing, ShowingMove, AnimatingMove};
+   enum WaitingState {Nil, WaitingToStep, ComputerToMove};
+
    Activity         m_activity;
    WaitingState     m_waitingState;
+   bool             m_waitingToMove;
+   int              m_moveNo;
+   int              m_endMoveNo;
    bool             m_interrupting;
    bool             m_newSettings;
+   bool             m_stoppedCalculation;
 
    KCubeBoxWidget * m_view;		// Displayed cubes.
    SettingsWidget * m_dialog;		// Displayed settings, 0 = not yet used.
    AI_Box *         m_box;		// Game engine's cubes.
    int              m_side;		// Cube box size, from Prefs::cubeDim().
    Player           m_currentPlayer;	// Current player: One or Two.
-   bool             m_gameHasBeenWon;
    QList<int> *     m_steps;		// Steps in a move to be displayed.
 
    AI_Main *        m_ai;		// Current computer player.
@@ -261,11 +275,11 @@ private:
    /**
     * Undo or redo a move.
     *
-    * @param   actionType  -1 = undo, +1 = redo
+    * @param   change  -1 = undo, +1 = redo
     *
-    * @return  -1 = Busy, 0 = No more to undo/redo, 1 = More moves to undo/redo.
+    * @return  true = More moves to undo/redo, false = No more to undo/redo.
     */
-   int undoRedo (int actionType);
+   bool undoRedo (int change);
 
    /**
    * Set the number of cubes in a row or column.  If the number has changed,
@@ -278,14 +292,10 @@ private:
     */
    bool isComputer (Player player) const;
 
-   /** returns true if CubeBox is doing a move or getting a hint */
+   /** Returns true if CubeBox is doing a move or getting a hint. */
    bool isActive() const;
-   bool isMoving() const;
 
    inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
-
-   /** stops all activities like getting a hint or doing a move */
-   void stopActivities();
 };
 
 #endif // GAME_H

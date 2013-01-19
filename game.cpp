@@ -37,19 +37,23 @@
 
 #include "prefs.h"
 
+#define LARGE_NUMBER 999999
+
 Game::Game (const int d, KCubeBoxWidget * view)
    :
-   QObject ((QObject *) view),	// Auto-delete Game when view is deleted.
-   m_state         (     NotStarted),
+   QObject ((QObject *) view),		// Delete Game when view is deleted.
    m_activity           (Idle),
    m_waitingState       (Nil),
+   m_waitingToMove      (false),
+   m_moveNo             (0),		// Game not started.
+   m_endMoveNo          (LARGE_NUMBER),	// Game not finished.
    m_interrupting       (false),
    m_newSettings        (false),
+   m_stoppedCalculation (false),
    m_view               (view),
    m_dialog             (0),
    m_side               (d),
    m_currentPlayer      (One),
-   m_gameHasBeenWon     (false),
    m_index              (0),
    m_fullSpeed          (false),
    computerPlOne        (false),
@@ -118,72 +122,62 @@ void Game::newSettings()
 {
    qDebug() << "NEW SETTINGS" << m_newSettings << "m_activity" << m_activity
             << "size:" << Prefs::cubeDim() << "m_side" << m_side;
+   loadImmediateSettings();
+
    m_newSettings = true;
    if (m_side != Prefs::cubeDim()) {
-       QMetaObject::invokeMethod (this, "newGame", Qt::QueuedConnection);
-       return;
+      QMetaObject::invokeMethod (this, "newGame", Qt::QueuedConnection);
+      return;
    }
-   else if (m_activity == Idle) {
-      loadSettings();
+   else if (m_waitingToMove) {	// IDW TODO - Waiting to move and not Hinting?
+      loadPlayerSettings();
       m_newSettings = false;
+      setUpNextTurn();
    }
+   // Else, the remaining settings will be loaded at the next start of a turn.
+   // They set computer pause on/off and computer player 1 or 2 on/off.
 }
 
-void Game::loadSettings()
+void Game::loadImmediateSettings()
+{
+   // Color changes can take place as soon as control returns to the event loop.
+   // Changes of animation type or speed will take effect next time there is an
+   // animation step to do, regardless of current activity.
+   bool reColorCubes = m_view->loadSettings();
+   m_fullSpeed = Prefs::animationNone();	// IDW TODO - Animation running?
+   m_pauseForStep = Prefs::pauseForStep();	// IDW TODO - Animation running?
+   if (reColorCubes) {
+      emit playerChanged (m_currentPlayer);	// Re-display status bar icon.
+   }
+
+   // Choices of computer AIs and skills will take effect next time there is a
+   // computer move or hint.  They will not affect any calculation in progress.
+   m_ai->setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
+                   Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
+
+   qDebug() << "m_pauseForStep" << m_pauseForStep;
+   qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1()
+            << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
+   qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2()
+            << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
+}
+
+void Game::loadPlayerSettings()
 {
   qDebug() << "GAME LOAD SETTINGS entered";
-  bool oldPauseForStep     = m_pauseForStep;
-  bool oldPauseForComputer = m_pauseForComputer;
   bool oldComputerPlayer   = isComputer (m_currentPlayer);
-  bool oldFullSpeed        = m_fullSpeed;
 
-  m_pauseForStep           = Prefs::pauseForStep();
   m_pauseForComputer       = Prefs::pauseForComputer();
-  // IDW TODO - Compound settings, e.g. for "Interrupt game" action ...
-  //            m_freeRunning = (computerPlOne && computerPlTwo &&
-  //                             (! m_pauseForComputer) && (! m_pauseForStep));
-
   computerPlOne            = Prefs::computerPlayer1();
   computerPlTwo            = Prefs::computerPlayer2();
 
-  m_fullSpeed              = Prefs::animationNone();
+  qDebug() << "AI 1" << computerPlOne << "AI 2" << computerPlTwo
+           << "m_pauseForComputer" << m_pauseForComputer;
 
-  // IDW TODO - Could this cause a (harmful) race condition?
-  m_ai->setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
-                  Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
-
-  qDebug() << "m_pauseForComputer" << m_pauseForComputer
-           << "m_pauseForStep" << m_pauseForStep; // IDW test.
-  qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1()
-           << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
-  qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2()
-           << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
-
-// IDW TODO - There are just too many actions flowing from settings changes.
-//            Simplify them or work out proper inter-dependencies.
-
-  // NOTE: For a change in box-size (Prefs::cubeDim()), see Game::newSettings().
-  //       It might require a current game to finish and a new game to start.
-
-  if (oldPauseForComputer && (! m_pauseForComputer) &&
-      (m_waitingState == ComputerToMove)) {
-     if (isComputer (m_currentPlayer)) {
-        buttonClick();
-	return;
-     }
-     else {
-	m_waitingState = Nil;
-     }
+  if (isComputer (m_currentPlayer) && (! oldComputerPlayer)) {
+     qDebug() << "New computer player set: must wait.";
+     m_waitingState = ComputerToMove;	// New player: don't start playing yet.
   }
-  if (oldPauseForStep && (! m_pauseForStep) &&
-      (m_waitingState == WaitingToStep)) {
-     buttonClick();
-  }
-  bool reColorCubes        = m_view->loadSettings();
-  if (m_state == NotStarted) {		// If first move...
-     return;
-  }
-  startNextTurn();
 }
 
 void Game::startHumanMove (int x, int y)
@@ -193,27 +187,34 @@ void Game::startHumanMove (int x, int y)
    qDebug() << "CLICK" << x << y << "index" << index;
    if (humanPlayer && ((m_currentPlayer == m_box->owner(index)) ||
        (m_box->owner(index) == Nobody))) {
-      m_state = HumanMoving;		// Needed when m_state == NotStarted.
+      m_waitingToMove = false;
+      m_moveNo++;
       qDebug() << "doMove (" << index;
       doMove (index);
    }
 }
 
-void Game::startNextTurn()
+void Game::setUpNextTurn()
 {
-   // Called from load settings, load game, change player and undo/redo.
-   qDebug() << "startNextTurn" << m_currentPlayer
+   // Called from newSettings(), new game, load, change player and undo/redo.
+   if (m_newSettings) {
+      m_newSettings = false;
+      loadPlayerSettings();
+   }
+   qDebug() << "setUpNextTurn" << m_currentPlayer
             << computerPlOne << computerPlTwo << "pause" << m_pauseForComputer
-            << "wait" << m_waitingState << "state" << m_state;
+            << "wait" << m_waitingState << "waiting" << m_waitingToMove;
    if (isComputer (m_currentPlayer)) {
       // A computer player is to move.
       KCubeWidget::enableClicks (false);
       qDebug() << "(m_pauseForComputer || (m_waitingState == ComputerToMove))"
                << (m_pauseForComputer || (m_waitingState == ComputerToMove));
-      if (m_pauseForComputer || (m_waitingState == ComputerToMove)) {
+      if (m_pauseForComputer || (m_waitingState == ComputerToMove) ||
+          (m_moveNo == 0)) {
          m_waitingState = ComputerToMove;
+	 m_waitingToMove = true;
          if (computerPlOne && computerPlTwo) {
-            if (m_state == NotStarted) {
+            if (m_moveNo == 0) {
                emit buttonChange (true, false, i18n("Start game"));
             }
             else {
@@ -230,7 +231,7 @@ void Game::startNextTurn()
       // Start the computer's move.
       qDebug() << "COMPUTER MUST MOVE";
       m_waitingState = Nil;
-      m_state = ComputerMoving;
+      m_waitingToMove = false;
       computeMove();
    }
    else {
@@ -238,6 +239,7 @@ void Game::startNextTurn()
       qDebug() << "HUMAN TO MOVE";
       KCubeWidget::enableClicks (true);
       m_waitingState = Nil;
+      m_waitingToMove = true;
       if (computerPlOne || computerPlTwo) {
          emit buttonChange (false, false, i18n("Your turn"));
       }
@@ -245,7 +247,6 @@ void Game::startNextTurn()
          emit buttonChange (false, false, i18n("Player %1", m_currentPlayer));
       }
       // Wait for a click on the cube to be moved.
-      m_state = (m_state == NotStarted) ? NotStarted : HumanMoving;
    }
 }
 
@@ -261,7 +262,7 @@ void Game::computeMove()
       emit buttonChange (true, true, i18n("Stop computing"));	// Red look.
    }
    emit setAction (HINT, false);
-   emit statusMessage (i18n("Computing a move."), false);
+   emit statusMessage (i18n("Computing a move"), false);
    m_activity = Computing;
    m_ignoreComputerMove = false;
    m_ai->getMove (m_currentPlayer, m_box);
@@ -278,11 +279,17 @@ void Game::moveCalculationDone (int index)
       m_ignoreComputerMove = false;
       return;
    }
-   emit statusMessage (QString(""), false);
-   // IDW TODO - Three cases of blank blue button to be resolved. Delete all 3?
+
+   if (m_stoppedCalculation) {
+      m_stoppedCalculation = false;
+      emit statusMessage (i18n("Interrupted calculation of move"), true);
+   }
+   else {
+      emit statusMessage (QString(""), false);
+   }
+
    if ((index < 0) || (index >= (m_side * m_side))) {
       m_view->setNormalCursor();
-      // IDW TODO - DELETE? emit buttonChange (false);		// Inactive.
       KMessageBox::sorry (m_view,
                           i18n ("The computer could not find a valid move."));
       // IDW TODO - What to do about state values and BUTTON ???
@@ -294,12 +301,12 @@ void Game::moveCalculationDone (int index)
 
    // Blink the cube to be moved (twice).
    m_view->startAnimation (false, index);
+   m_moveNo++;
 
    m_activity = ShowingMove;
    if ((! (computerPlOne && computerPlOne)) || m_interrupting) {
       emit buttonChange (true, true, i18n("Stop showing move"));
    }
-   // IDW TODO - DELETE? emit statusMessage (i18n("Showing a move."), false);
 }
 
 void Game::showingDone (int index)
@@ -309,32 +316,17 @@ void Game::showingDone (int index)
    }
    else {
       moveDone();			// Finish Hint animation.
-      m_state = (m_state == NotStarted) ? NotStarted : HumanMoving;
-      // IDW TODO - Duplicated code: need something like setHumanPlayer().
-      if (computerPlOne || computerPlTwo) {
-         emit buttonChange (false, false, i18n("Your turn"));
-      }
-      else {
-         emit buttonChange (false, false, i18n("Player %1", m_currentPlayer));
-      }
-      emit statusMessage (QString(""), false);
+      setUpNextTurn();
    }
 }
 
 void Game::doMove (int index)
 {
-   // IDW TODO. Allow undo and redo of computer moves.
-   // IDW TODO - When undoing/redoing computer vs. human, cannot click and
-   //            change a move. Should be OK for human and NOT for computer.
-   //
-   //           Done, but needs further testing, esp. for race conditions
-   //           and the use of m_ignoreComputerMove.
-
    bool computerMove = ((computerPlOne && m_currentPlayer == One) ||
                         (computerPlTwo && m_currentPlayer == Two));
 
    // Make a copy of the position and player to move for the Undo function.
-   m_box->copyPosition (m_currentPlayer, computerMove);
+   m_box->copyPosition (m_currentPlayer, computerMove, index);
 
    if (! computerMove) { // IDW test. Record a human move in the statistics.
       m_ai->postMove (m_currentPlayer, index, m_side); // IDW test.
@@ -342,12 +334,12 @@ void Game::doMove (int index)
    emit setAction (UNDO, true);	// Update Undo and Redo actions.
    emit setAction (REDO, false);
    m_steps->clear();
-   m_gameHasBeenWon = m_box->doMove (m_currentPlayer, index, m_steps);
+   bool won = m_box->doMove (m_currentPlayer, index, m_steps);
+   qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
    m_box->printBox(); // IDW test.
-   qDebug() << "GAME WON?" << m_gameHasBeenWon << "STEPS" << (* m_steps);
    if (m_steps->count() > 1) {
       m_view->setWaitCursor();	//This will be a stoppable animation.
-      emit statusMessage (i18n("Performing a move."), false);
+      emit statusMessage (i18n("Performing a move"), false);
    }
    m_activity = AnimatingMove;
    doStep();
@@ -365,6 +357,7 @@ void Game::doStep()
          // Check if the player wins at this step (no more cubes are re-drawn).
          if (index == 0) {
             moveDone();
+	    m_endMoveNo = m_moveNo;
 	    emit buttonChange (false, false, i18n("Game over"));
 	    m_ai->dumpStats();	// IDW test.
             QString s = i18n("The winner is Player %1!", m_currentPlayer);
@@ -430,44 +423,34 @@ void Game::moveDone()
    m_view->setNormalCursor();
    m_activity = Idle;
    setAction (HINT, true);
-   emit statusMessage (QString(""), false);
    m_fullSpeed = Prefs::animationNone();
    m_view->hidePopup();
    if (m_interrupting) {
       m_interrupting = false;
       m_waitingState = ComputerToMove;
-      // IDW TODO - Do suspended action?
-   }
-   if (m_newSettings) {
-      m_newSettings = false;
-      loadSettings();
    }
 }
 
 Player Game::changePlayer()
 {
    m_currentPlayer = (m_currentPlayer == One) ? Two : One;
-
    emit playerChanged (m_currentPlayer);
-   startNextTurn();
+   setUpNextTurn();
    return m_currentPlayer;
 }
 
 void Game::buttonClick()
 {
-   qDebug() << "BUTTON CLICK seen: m_state" << m_state
+   qDebug() << "BUTTON CLICK seen: waiting" << m_waitingToMove
             << "m_activity" << m_activity << "m_waitingState" << m_waitingState;
-   // IDW TODO - Add an "Interrupt game" action for computer v. computer games.
-   //            This is to allow easy break-in for Save, Load or Undo.
-   //            m_freeRunning = (computerPlOne && computerPlTwo && (! m_pauseForComputer) && (! m_pauseForStep));
    if (m_waitingState == Nil) {
       if ((! m_interrupting) && computerPlOne && computerPlTwo) {
          m_interrupting = true;
 	 m_view->showPopup (i18n("Finishing move..."));
       }
       else if (m_activity == Computing) {
-         m_ai->stop();		// Keep Stop mode on for the blink animation.
-         emit statusMessage (i18n("Interrupted calculation of move."), true);
+         m_ai->stop();
+	 m_stoppedCalculation = true;
       }
       else if (m_activity == ShowingMove) {
 	 int index = m_view->killAnimation();
@@ -486,7 +469,6 @@ void Game::buttonClick()
 	 doStep();
          break;
       case ComputerToMove:
-	 m_state = ComputerMoving;
          computeMove();
          break;
       default:
@@ -502,21 +484,32 @@ void Game::buttonClick()
 
 void Game::newGame()
 {
-   qDebug() << "NEW GAME entered" << m_state << "won?" << m_gameHasBeenWon;
+   qDebug() << "NEW GAME entered: waiting" << m_waitingToMove
+            << "won?" << (m_moveNo >= m_endMoveNo);
+   // IDW TODO - What if user keeps hitting New? Do we keep on doing this stuff?
    if (newGameOK()) {
+      qDebug() << "QDEBUG: newGameOK() =" << true;
       shutdown();			// Stop the current move (if any).
       m_view->setNormalCursor();
       m_view->hidePopup();
+      loadImmediateSettings();
+      loadPlayerSettings();
+      m_newSettings = false;
+      qDebug() << "newGame() loadSettings DONE: waiting" << m_waitingToMove
+               << "won?" << (m_moveNo >= m_endMoveNo)
+               << "move" << m_moveNo << m_endMoveNo;
       qDebug() << "setDim (" << Prefs::cubeDim() << ") m_side" << m_side;
       setDim (Prefs::cubeDim());
       qDebug() << "Entering reset();";
-      reset();				// Clear the cubebox.
+      reset();				// Clear cubebox, initialise states.
       emit setAction (UNDO, false);
       emit setAction (REDO, false);
       emit statusMessage (i18n("New Game"), false);
-      m_state = NotStarted;
-      startNextTurn();
+      m_moveNo = 0;
+      m_endMoveNo = LARGE_NUMBER;
+      setUpNextTurn();
    }
+   else qDebug() << "QDEBUG: newGameOK() =" << false;
 }
 
 void Game::saveGame (bool saveAs)
@@ -612,39 +605,32 @@ void Game::loadGame()
 
 void Game::undo()
 {
-   int moreToUndo = undoRedo (-1);
-   if (moreToUndo >= 0) {
-      emit setAction (UNDO, (moreToUndo == 1));
-   }
+   bool moreToUndo = undoRedo (-1);
+   emit setAction (UNDO, moreToUndo);
    emit setAction (REDO, true);
 }
 
 void Game::redo()
 {
-   int moreToRedo = undoRedo (+1);
-   if (moreToRedo >= 0) {
-      emit setAction (REDO, (moreToRedo == 1));
-   }
+   bool moreToRedo = undoRedo (+1);
+   emit setAction (REDO, moreToRedo);
    emit setAction (UNDO, true);
 }
 
 bool Game::newGameOK()
 {
-   if (m_newSettings) {
-      loadSettings();
-      m_newSettings = false;
-      qDebug() << "newGame() loadSettings DONE" << m_state
-               << "won?" << m_gameHasBeenWon;
+   if ((m_moveNo == 0) || (m_moveNo >= m_endMoveNo)) {
+      // OK: game finished or not yet started.  Settings might have changed.
+      return true;
    }
-   if ((m_state == NotStarted) && (m_side == Prefs::cubeDim())) return false;
-   if ((m_state == NotStarted) || m_gameHasBeenWon) return true;
 
+   // Check if it is OK to abandon the current game.
    QString query;
    if (m_side != Prefs::cubeDim()) {
-      query = i18n("You have changed the board size setting and "
-                   "that will end the game you are currently playing.\n\n"
-                   "Do you wish to abandon the current game or "
-                   "continue and and keep the previous setting?");
+      query = i18n("You have changed the size setting of the game and "
+                   "that requires a new game to start.\n\n"
+                   "Do you wish to abandon the current game or continue "
+                   "playing and and restore the previous size setting?");
    }
    else {
       query = i18n("You have requested a new game, but "
@@ -655,79 +641,66 @@ bool Game::newGameOK()
    int reply = KMessageBox::questionYesNo (m_view, query, i18n("New Game?"),
                                            KGuiItem (i18n("Abandon Game")),
                                            KGuiItem (i18n("Continue Game")));
-   if (reply == KMessageBox::No) {
-      qDebug() << "CONTINUE GAME: reset size" << Prefs::cubeDim()
-               << "back to" << m_side;
+   if (reply == KMessageBox::Yes) {
+      qDebug() << "ABANDON GAME";
+      return true;			// Start a new game.
+   }
+   if (m_side != Prefs::cubeDim()) {
+      // Restore the setting: also the dialog-box copy if it has been created.
+      qDebug() << "Reset size" << Prefs::cubeDim() << "back to" << m_side;
       Prefs::setCubeDim (m_side);
-      if (m_dialog) {		// Update dialog if it has been loaded.
+      if (m_dialog) {
           m_dialog->kcfg_CubeDim->setValue (m_side);
       }
       Prefs::self()->writeConfig();
-      return false;
    }
-   qDebug() << "ABANDON GAME";
-   return true;
+   qDebug() << "CONTINUE GAME";
+   return false;			// Continue the current game.
 }
 
 void Game::reset()
 {
-   // IDW TODO - Delete? stupActivities(); shutdown() here only (except Quit)?
-
    m_view->reset();
    m_box->clear();
 
    m_fullSpeed = Prefs::animationNone();	// Animate cascade moves?
 
    m_currentPlayer = One;
-   m_gameHasBeenWon = false;
 
-   // m_state          = computerPlOne ? ComputerMoving : HumanMoving;
    m_waitingState   = computerPlOne ? ComputerToMove : Nil;
-   qDebug() << "RESET: state" << m_state << "wait" << m_waitingState;
-   if (computerPlOne) {
-      if (computerPlTwo) {
-         emit buttonChange (true, false, i18n("Start game"));
-      }
-      else {
-         emit buttonChange (true, false, i18n("Start computer move"));
-      }
-   }
-   else {
-      // IDW TODO - DELETE? Will something later set the button?
-      // emit buttonChange (false);
-   }
-
-   emit playerChanged (One);
-   // startNextTurn(); // Enable this line for IDW high-speed test.
+   qDebug() << "RESET: activity" << m_activity << "wait" << m_waitingState;
 
    m_ai->startStats();
 }
 
-int Game::undoRedo (int actionType)
+bool Game::undoRedo (int change)
 {
    Player oldPlayer = m_currentPlayer;
 
    bool isAI = false;
-   bool moreToDo = (actionType < 0) ?
-      m_box->undoPosition (m_currentPlayer, isAI) :
-      m_box->redoPosition (m_currentPlayer, isAI);
+   int  index = 0;
+   bool moreToDo = (change < 0) ?
+      m_box->undoPosition (m_currentPlayer, isAI, index) :
+      m_box->redoPosition (m_currentPlayer, isAI, index);
 
    // Update the cube display after an undo or redo.
    for (int n = 0; n < (m_side * m_side); n++) {
       m_view->displayCube (n, m_box->owner (n), m_box->value (n));
       m_view->highlightCube (n, false);
    }
-   // IDW TODO - Blink the cube where the undone or redone move started.
+   m_view->timedCubeHighlight (index);		// Show which cube was moved.
 
-   if (oldPlayer != m_currentPlayer)
+   if (oldPlayer != m_currentPlayer) {
       emit playerChanged (m_currentPlayer);
-
-   if ((actionType > 0) && (! moreToDo)) {	// If end of Redo's: restart AI
-      if (! m_gameHasBeenWon) {
-         startNextTurn();			// ... but not if game is over.
-      }
    }
-   return (moreToDo ? 1 : 0);
+   m_moveNo = m_moveNo + change;
+   if (m_moveNo < m_endMoveNo) {		// ... but not if game is over.
+      m_waitingState = isComputer (m_currentPlayer) ? ComputerToMove
+                                                    : m_waitingState;
+      setUpNextTurn();
+   }
+   // IDW TODO - If we re-did the winning move, DON'T allow another move!
+   return moreToDo;
 }
 
 void Game::setDim (int d)
@@ -739,7 +712,6 @@ void Game::setDim (int d)
       qDebug() << "AI_Box CONSTRUCTED by Game::setDim()";
       m_side  = d;
       m_view->setDim (d);
-      reset();
    }
 }
 
@@ -753,23 +725,6 @@ void Game::shutdown()
    }
    else {
       m_activity = Idle;	// In case it was ShowingMove or AnimatingMove.
-   }
-}
-
-void Game::stopActivities()
-{
-   // IDW TODO - REWRITE THIS .................................................
-   // IDW TODO - Status bar messages when activity stops - not necessarily here.
-   qDebug() << "STOP ACTIVITIES";
-   m_fullSpeed = true;
-   if (m_activity == AnimatingMove) {
-      m_view->killAnimation();
-   }
-   else if (m_activity == Computing) {
-      qDebug() << "BRAIN IS ACTIVE";
-      m_ai->stop();		// Keep Stop enabled, for the blink animation.
-   }
-   else if (m_activity == ShowingMove) {
    }
 }
 
@@ -826,6 +781,7 @@ void Game::readProperties (const KConfigGroup& config)
 
   m_side = 1;					// Create a new cube box.
   setDim (cubeDim);
+  reset();		// IDW TODO - NEEDED? Is newGame() init VALID here?
 
   for (int x = 0; x < m_side; x++) {
     for (int y = 0; y < m_side; y++) {
@@ -872,7 +828,7 @@ void Game::readProperties (const KConfigGroup& config)
    // IDW TODO - Set appropriate states and button text: NOT "Start Game".
    m_currentPlayer = (Player) onTurn;
    emit playerChanged (m_currentPlayer);
-   startNextTurn();
+   setUpNextTurn();
    qDebug() << "Leaving Game::readProperties ...";
 }
 
@@ -881,11 +837,6 @@ bool Game::isActive() const
    // IDW TODO - What if shutdown() is in effect? Could have
    //            m_activity == Computing and m_ignoreComputerMove == true.
    return (m_activity != Idle);
-}
-
-bool Game::isMoving() const
-{
-   return (m_activity == AnimatingMove);
 }
 
 bool Game::isComputer (Player player) const

@@ -111,6 +111,23 @@ void KCubeBoxWidget::highlightCube (int index, bool highlight)
    }
 }
 
+void KCubeBoxWidget::timedCubeHighlight (int index)
+{
+   if (m_highlighted > 0) {
+      highlightDone();
+   }
+   cubes.at(index)->setDark();
+   m_highlighted = index;
+   m_highlightTimer->start();
+}
+
+void KCubeBoxWidget::highlightDone()
+{
+   cubes.at(m_highlighted)->setNeutral();
+   m_highlightTimer->stop();
+   m_highlighted = -1;
+}
+
 void KCubeBoxWidget::setColors ()
 {
    foreach (KCubeWidget * cube, cubes) {
@@ -178,7 +195,12 @@ void KCubeBoxWidget::init()
    animationTime = Prefs::animationSpeed() * 150;
    animationTimer = new QTimer(this);
 
+   m_highlightTimer = new QTimer(this);
+   m_highlightTimer->setInterval (1500);
+   m_highlighted = -1;
+
    connect (animationTimer, SIGNAL(timeout()), SLOT(nextAnimationStep()));
+   connect (m_highlightTimer, SIGNAL(timeout()), SLOT(highlightDone()));
    setNormalCursor();
    setPopup();
 }
@@ -230,19 +252,16 @@ void KCubeBoxWidget::makeStatusPixmaps (const int width)
 
 void KCubeBoxWidget::makeSVGBackground (const int w, const int h)
 {
-   qDebug() << t.restart() << "msec";
    QImage img (w, h, QImage::Format_ARGB32_Premultiplied);
    QPainter p (&img);
    img.fill (0);
    svg.render (&p, "background");
    p.end();
    background = QPixmap::fromImage (img);
-   qDebug() << t.restart() << "msec" << "SVG background rendered";
 }
 
 void KCubeBoxWidget::makeSVGCubes (const int width)
 {
-   qDebug() << t.restart() << "msec";
    QImage img (width, width, QImage::Format_ARGB32_Premultiplied);
    QPainter q;                 // Paints whole faces of the dice.
 
@@ -302,7 +321,6 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
      elements.append
        ((i == Pip) ? QPixmap::fromImage (pip) : QPixmap::fromImage (img));
    }
-   qDebug() << t.restart() << "msec" << "SVG rendered";
 }
 
 void KCubeBoxWidget::colorImage (QImage & img, const QColor & c, const int w)

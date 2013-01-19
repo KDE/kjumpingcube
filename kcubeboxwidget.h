@@ -44,9 +44,10 @@ public:
 
    virtual ~KCubeBoxWidget();
 
-   void displayCube     (int index, Player owner, int value);
-   void highlightCube   (int index, bool highlight);
-   int  cubeValue       (int index) { return cubes.at(index)->value(); }
+   void displayCube        (int index, Player owner, int value);
+   void highlightCube      (int index, bool highlight);
+   void timedCubeHighlight (int index);
+   int  cubeValue          (int index) { return cubes.at(index)->value(); }
 
    /**
    * reset cubebox for a new game
@@ -119,6 +120,9 @@ private:
    int  animationSteps;
    int  animationTime;
 
+   QTimer * m_highlightTimer;	// Timer for highlighted cube.
+   int  m_highlighted;		// Cube that has been highlighted.
+
    QLabel * m_popup;
 
 public:
@@ -137,6 +141,7 @@ private:
 
 private slots:
    void nextAnimationStep();
+   void highlightDone();	// Timeout of the highlighted cube.
 
    bool checkClick (int x, int y);
 };
