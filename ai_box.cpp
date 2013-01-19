@@ -43,6 +43,7 @@ void AI_Box::createBox (int side)
     Position * pos = emptyPosition (m_nCubes);
     pos->player    = One;
     pos->isAI      = false;
+    pos->index     = 0;
     m_maxValues    = new int [m_nCubes];
     m_neighbors    = new int [4 * m_nCubes];
     m_stack        = new int [m_nCubes];
@@ -157,7 +158,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
     return false;
 }
 
-void AI_Box::copyPosition (Player player, bool isAI)
+void AI_Box::copyPosition (Player player, bool isAI, int index)
 {
     qDebug() << "AI_Box::copyPosition (" << player << "," << isAI << ")";
     printBox();
@@ -168,6 +169,7 @@ void AI_Box::copyPosition (Player player, bool isAI)
     qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
     Position * pos = m_undoList.at (m_undoIndex);
     save (pos, player, isAI);
+    pos->index = index; // IDW TODO - Do this in save()?
     m_owners = pos->owners;
     m_values = pos->values;
     printBox();
@@ -175,26 +177,37 @@ void AI_Box::copyPosition (Player player, bool isAI)
     m_redoLimit = m_undoIndex;
 }
 
-bool AI_Box::undoPosition (Player & player, bool & isAI)
+bool AI_Box::undoPosition (Player & player, bool & isAI, int & index)
+{
+    bool result = undoPosition (player);
+    if (m_undoIndex > 0) {
+        Position * pos = m_undoList.at (m_undoIndex);
+        isAI   = pos->isAI;
+        index  = pos->index;
+    }
+    return result;
+}
+
+bool AI_Box::undoPosition (Player & player)
 {
     if (m_undoIndex > 1) {
 	m_undoIndex--;
 	Position * pos = m_undoList.at (m_undoIndex - 1);
 	restore (pos);
 	player = pos->player;
-	isAI   = pos->isAI;
     }
     printBox();
     return (m_undoIndex > 1);
 }
 
-bool AI_Box::redoPosition (Player & player, bool & isAI)
+bool AI_Box::redoPosition (Player & player, bool & isAI, int & index)
 {
     if (m_undoIndex < m_redoLimit) {
 	Position * pos = m_undoList.at (m_undoIndex);
 	restore (pos);
 	player = pos->player;
 	isAI   = pos->isAI;
+	index  = pos->index;
 	m_undoIndex++;
     }
     printBox();
@@ -216,6 +229,8 @@ void AI_Box::initPosition (const AI_Box * box, Player player, bool isAI)
     restore (pos);
     pos->player = player;
     pos->isAI   = isAI;
+    // IDW TODO - Need index parameter? initPosition() is used only by AI_Main.
+    pos->index  = 0;
     m_undoIndex = 1;
     m_redoLimit = m_undoIndex;
 }
@@ -314,6 +329,7 @@ void AI_Box::indexNeighbors()
 
 void AI_Box::printBox()
 {
+    return;
     // IDW test. For debugging.
     for (int y = 0; y < m_side; y++) {
         fprintf (stderr, "   ");

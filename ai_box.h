@@ -76,9 +76,10 @@ public:
     bool     doMove  (Player player, int index, QList<int> * steps = 0);
     void     printBox();
 
-    void     copyPosition (Player   player, bool   isAI);
-    bool     undoPosition (Player & player, bool & isAI);
-    bool     redoPosition (Player & player, bool & isAI);
+    void     copyPosition (Player   player, bool   isAI, int index);
+    bool     undoPosition (Player & player, bool & isAI, int & index);
+    bool     undoPosition (Player & player);
+    bool     redoPosition (Player & player, bool & isAI, int & index);
     void     initPosition (const AI_Box * box, Player player, bool isAI);
 
     void     clear();
@@ -97,6 +98,7 @@ private:
     typedef struct {
         Player   player;
         bool     isAI;
+        int      index;
         int      nCubes;
         Player * owners;
         int *    values;

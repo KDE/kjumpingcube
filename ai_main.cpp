@@ -96,6 +96,7 @@ void makeRandomSequence (int nMax, int * seq, KRandomSequence & random)
       seq[z] = seq[last];
       seq[last] = temp;
    }
+   return;
    for (int n = 0; n < nMax; n++) {
       fprintf (stderr, " %d", seq[n]);
    }
@@ -162,6 +163,9 @@ void AI_Main::getMove (const Player player, const AI_Box * box)
 {
    qDebug() << "\nEntering AI_Main::getMove() for player" << player;
 
+   // These settings are immutable once the thread starts and getMove() returns.
+   // If AI_Main::setSkill() is called when the thread is active, the new values
+   // will not take effect until the next move or hint.
    m_currentAI = m_ai[player];
    m_skill     = m_ai_skill[player];
    m_maxLevel  = m_ai_maxLevel[player];
@@ -173,7 +177,6 @@ void AI_Main::getMove (const Player player, const AI_Box * box)
    m_player  = player;
 
    checkWorkspace (box->side());
-   // IDW test m_box->initPosition (box, player, true);
    initPosition (box, player, true);
 
    qDebug() << "INITIAL POSITION";
@@ -209,7 +212,6 @@ Move AI_Main::tryMoves (Player player, int level)
 {
    m_currentLevel = level; // IDW test. To limit qDebug() in findCubesToMove().
    long maxValue = -WinnerPlus1;
-   bool isAI = true;
 
    Move bestMove = {-1, -WinnerPlus1};
 
@@ -219,7 +221,7 @@ Move AI_Main::tryMoves (Player player, int level)
    int moves = findCubesToMove (cubesToMove, player,
                        m_owners, m_values, m_maxValues);
 
-   qDebug() << tag(level) << "Level" << level << "Player" << player
+/*   qDebug() << tag(level) << "Level" << level << "Player" << player
             << "number of likely moves" << moves;
    for (int n = 0; n < moves; n++) {
       int v = cubesToMove[n].val;
@@ -228,7 +230,7 @@ Move AI_Main::tryMoves (Player player, int level)
       qDebug() << tag(level) << "    " << "X" << cubesToMove[n].index/m_side
                          << "Y" << cubesToMove[n].index%m_side
                          << "val" << cubesToMove[n].val << s;
-   }
+   } */
    if (level == 0) saveLikelyMoves (moves, cubesToMove); // IDW test.
 
    // IDW TODO - Sort the moves by priority in findCubesToMove() (1 first),
@@ -239,13 +241,13 @@ Move AI_Main::tryMoves (Player player, int level)
    m_currentMove->searchStats->at(level)->n_moves += moves;
 
    for (int n = 0; n < moves; n++) {
-      qDebug() << tag(level) << "TRY" << n << "at level" << level
+/*      qDebug() << tag(level) << "TRY" << n << "at level" << level
                << "Player" << player
                << "X"<< cubesToMove[n].index/m_side
                << "Y" << cubesToMove[n].index%m_side
-               << "val" << cubesToMove[n].val;
+               << "val" << cubesToMove[n].val; */
 
-      copyPosition (player, true);
+      copyPosition (player, true, 0);
       bool won = doMove (player, cubesToMove[n].index);
       n_simulate++;
 
@@ -260,7 +262,7 @@ Move AI_Main::tryMoves (Player player, int level)
                   << "wins at level" << level
                   << "move" << cubesToMove[n].index/m_side
                   << cubesToMove[n].index%m_side;
-         undoPosition (player, isAI);
+         undoPosition (player);
          break;
       }
       else if (level >= m_maxLevel) {
@@ -269,9 +271,9 @@ Move AI_Main::tryMoves (Player player, int level)
                                             m_owners, m_values);
 	 n_assess++;
          cubesToMove[n].val = val; // IDW test. For debug output.
-         qDebug() << tag(level) << "END RECURSION: Player" << player
+/*         qDebug() << tag(level) << "END RECURSION: Player" << player
                   << "X" << cubesToMove[n].index/m_side
-                  << "Y" << cubesToMove[n].index%m_side << "assessment" << val;
+                  << "Y" << cubesToMove[n].index%m_side << "assessment" << val; */
          boxPrint (m_side, (int *)(m_owners), m_values);// IDW test.
       }
       else {
@@ -279,14 +281,14 @@ Move AI_Main::tryMoves (Player player, int level)
          Player opponent = (player == One) ?  Two : One;
 
          // Do the MiniMax calculation for the next recursion level.
-         qDebug() << tag(level) << "CALL tryMoves: Player" << opponent
-                                << "level" << level+1;
+/*         qDebug() << tag(level) << "CALL tryMoves: Player" << opponent
+                                << "level" << level+1; */
          Move move = tryMoves (opponent, level + 1);
          val = move.val;
          cubesToMove[n].val = val; // IDW test. For debug output.
-         qDebug() << tag(level) << "RETURN to level" << level
+/*         qDebug() << tag(level) << "RETURN to level" << level
                   << "Player" << player << "X" << move.index/m_side
-                  << "Y" << move.index%m_side << "assessment" << val;
+                  << "Y" << move.index%m_side << "assessment" << val; */
       }
 
       if (val > maxValue) {
@@ -299,7 +301,7 @@ Move AI_Main::tryMoves (Player player, int level)
                   << "Y" << bestMove.index%m_side << "assessment" << val;
       }
       Player p = player;
-      undoPosition (player, isAI);
+      undoPosition (player);
       if (p != player) qDebug() << "ERROR: PLAYER CHANGED: from" << p <<
                                                             "to" << player;
       if (m_stopped) {
@@ -442,6 +444,7 @@ void AI_Main::checkWorkspace (int side)
 
 void AI_Main::boxPrint (int side, int * owners, int * values)
 {
+   return;
    // IDW test. For debugging.
    fprintf (stderr, "AI_Main::boxPrint (%d, %lu, %lu)\n",
             side, (long) owners, (long) values);
