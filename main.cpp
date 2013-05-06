@@ -51,8 +51,9 @@ int main(int argc, char *argv[])
     KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
     // All session management is handled in the RESTORE macro
-	if (application.isSessionRestored())
+    if (application.isSessionRestored()) {
         RESTORE(KJumpingCube)
+    }
     else {
 		KJumpingCube *kjumpingcube = new KJumpingCube;
 		kjumpingcube->show();
