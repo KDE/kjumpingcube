@@ -127,8 +127,8 @@ void KJumpingCube::initKAction() {
            "padding: 6px; } "
        "QPushButton#ActionButton:pressed { background-color: %2; "
            "border-style: inset; } "
-       "QPushButton#ActionButton:disabled { color: lightGray;"
-            "border-color: gray; background-color: steelblue; }";
+       "QPushButton#ActionButton:disabled { color: white;"
+            "border-color: beige; background-color: steelblue; }";
   gameMapper->setMapping (actionButton, BUTTON);
   connect (actionButton, SIGNAL(clicked()), gameMapper, SLOT(map()));
 
@@ -153,12 +153,12 @@ void KJumpingCube::changeButton (bool enabled, bool stop,
 {
     qDebug() << "KJumpingCube::changeButton (" << enabled << stop << caption;
     if (enabled && stop) {		// Red look (stop something).
-        actionButton->setStyleSheet (buttonLook.arg("rgb(224, 0, 0)")
-                                               .arg("rgb(200, 0, 0)"));
+        actionButton->setStyleSheet (buttonLook.arg("rgb(210, 0, 0)")
+                                               .arg("rgb(180, 0, 0)"));
     }
     else if (enabled) {			// Green look (continue something).
-        actionButton->setStyleSheet (buttonLook.arg("rgb(0, 200, 0)")
-                                               .arg("rgb(0, 170, 0)"));
+        actionButton->setStyleSheet (buttonLook.arg("rgb(0, 170, 0)")
+                                               .arg("rgb(0, 150, 0)"));
     }
     actionButton->setText (caption);
     actionButton->setEnabled (enabled);
