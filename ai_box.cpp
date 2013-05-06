@@ -329,7 +329,7 @@ void AI_Box::indexNeighbors()
 
 void AI_Box::printBox()
 {
-    return;
+    // return;
     // IDW test. For debugging.
     for (int y = 0; y < m_side; y++) {
         fprintf (stderr, "   ");
