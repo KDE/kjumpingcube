@@ -49,7 +49,6 @@ Game::Game (const int d, KCubeBoxWidget * view)
    m_endMoveNo          (LARGE_NUMBER),	// Game not finished.
    m_interrupting       (false),
    m_newSettings        (false),
-   m_stoppedCalculation (false),
    m_view               (view),
    m_dialog             (0),
    m_side               (d),
@@ -59,8 +58,7 @@ Game::Game (const int d, KCubeBoxWidget * view)
    computerPlOne        (false),
    computerPlTwo        (false),
    m_pauseForComputer   (false),
-   m_pauseForStep       (false),
-   m_ignoreComputerMove (false)
+   m_pauseForStep       (false)
 {
    qDebug() << "CONSTRUCT Game: side" << m_side;
    m_box                = new AI_Box  (this, m_side);
@@ -74,7 +72,7 @@ Game::Game (const int d, KCubeBoxWidget * view)
 
 Game::~Game()
 {
-   if (isActive()) {
+   if ((m_activity != Idle) && (m_activity != Aborting)) {
       shutdown();
    }
    delete m_steps;
@@ -83,7 +81,7 @@ Game::~Game()
 void Game::gameActions (const int action)
 {
    qDebug() << "GAME ACTION IS" << action;
-   if (isActive() && (action != BUTTON) && (action != NEW)) {
+   if ((m_activity != Idle) && (action != BUTTON) && (action != NEW)) {
       m_view->showPopup (i18n("Sorry, doing a move..."));
       return;
    }
@@ -94,6 +92,7 @@ void Game::gameActions (const int action)
       break;
    case HINT:
       if (! isComputer (m_currentPlayer)) {
+         KCubeWidget::enableClicks (false);
          computeMove();
       }
       break;
@@ -129,7 +128,8 @@ void Game::newSettings()
       QMetaObject::invokeMethod (this, "newGame", Qt::QueuedConnection);
       return;
    }
-   else if (m_waitingToMove) {	// IDW TODO - Waiting to move and not Hinting?
+   // Waiting to move and not Hinting?
+   else if (m_waitingToMove && (m_activity == Idle)) {
       loadPlayerSettings();
       m_newSettings = false;
       setUpNextTurn();
@@ -140,12 +140,14 @@ void Game::newSettings()
 
 void Game::loadImmediateSettings()
 {
+   qDebug() << "GAME LOAD IMMEDIATE SETTINGS entered";
+
    // Color changes can take place as soon as control returns to the event loop.
    // Changes of animation type or speed will take effect next time there is an
    // animation step to do, regardless of current activity.
    bool reColorCubes = m_view->loadSettings();
-   m_fullSpeed = Prefs::animationNone();	// IDW TODO - Animation running?
-   m_pauseForStep = Prefs::pauseForStep();	// IDW TODO - Animation running?
+   m_fullSpeed = Prefs::animationNone();
+   m_pauseForStep = Prefs::pauseForStep();
    if (reColorCubes) {
       emit playerChanged (m_currentPlayer);	// Re-display status bar icon.
    }
@@ -164,24 +166,25 @@ void Game::loadImmediateSettings()
 
 void Game::loadPlayerSettings()
 {
-  qDebug() << "GAME LOAD SETTINGS entered";
-  bool oldComputerPlayer   = isComputer (m_currentPlayer);
+   qDebug() << "GAME LOAD PLAYER SETTINGS entered";
+   bool oldComputerPlayer   = isComputer (m_currentPlayer);
 
-  m_pauseForComputer       = Prefs::pauseForComputer();
-  computerPlOne            = Prefs::computerPlayer1();
-  computerPlTwo            = Prefs::computerPlayer2();
+   m_pauseForComputer       = Prefs::pauseForComputer();
+   computerPlOne            = Prefs::computerPlayer1();
+   computerPlTwo            = Prefs::computerPlayer2();
 
-  qDebug() << "AI 1" << computerPlOne << "AI 2" << computerPlTwo
-           << "m_pauseForComputer" << m_pauseForComputer;
+   qDebug() << "AI 1" << computerPlOne << "AI 2" << computerPlTwo
+            << "m_pauseForComputer" << m_pauseForComputer;
 
-  if (isComputer (m_currentPlayer) && (! oldComputerPlayer)) {
-     qDebug() << "New computer player set: must wait.";
-     m_waitingState = ComputerToMove;	// New player: don't start playing yet.
-  }
+   if (isComputer (m_currentPlayer) && (! oldComputerPlayer)) {
+      qDebug() << "New computer player set: must wait.";
+      m_waitingState = ComputerToMove;	// New player: don't start playing yet.
+   }
 }
 
 void Game::startHumanMove (int x, int y)
 {
+   // IDW TODO - Check all cases of KCubeWidget::enableClicks (true/false).
    int  index = x * m_side + y;
    bool humanPlayer = (! isComputer (m_currentPlayer));
    qDebug() << "CLICK" << x << y << "index" << index;
@@ -190,6 +193,7 @@ void Game::startHumanMove (int x, int y)
       m_waitingToMove = false;
       m_moveNo++;
       qDebug() << "doMove (" << index;
+      KCubeWidget::enableClicks (false);
       doMove (index);
    }
 }
@@ -255,16 +259,10 @@ void Game::computeMove()
    qDebug() << "Calling m_ai->getMove() for player" << m_currentPlayer;
    t.start(); // IDW test.
    m_view->setWaitCursor();
-   if (computerPlOne && computerPlTwo && (! m_interrupting)) {
-      emit buttonChange (true, true, i18n("Interrupt game"));	// Red look.
-   }
-   else {
-      emit buttonChange (true, true, i18n("Stop computing"));	// Red look.
-   }
+   m_activity = Computing;
+   setStopAction();
    emit setAction (HINT, false);
    emit statusMessage (i18n("Computing a move"), false);
-   m_activity = Computing;
-   m_ignoreComputerMove = false;
    m_ai->getMove (m_currentPlayer, m_box);
 }
 
@@ -273,20 +271,18 @@ void Game::moveCalculationDone (int index)
    // We do not care if we interrupted the computer.  It was probably taking
    // too long, so we will use the best move it had so far.
 
-   m_activity = Idle;
-   if (m_ignoreComputerMove) {
-      // We are starting a new game or closing KJumpingCube.
-      m_ignoreComputerMove = false;
+   // We are starting a new game or closing KJumpingCube.  See shutdown().
+   if (m_activity == Aborting) {
+      m_activity = Idle;
       return;
    }
 
-   if (m_stoppedCalculation) {
-      m_stoppedCalculation = false;
-      emit statusMessage (i18n("Interrupted calculation of move"), true);
+   QString s = QString("");
+   if (m_activity == Stopping) {
+      s = i18n("Interrupted calculation of move");
    }
-   else {
-      emit statusMessage (QString(""), false);
-   }
+   m_activity = Idle;
+   emit statusMessage (s, true);
 
    if ((index < 0) || (index >= (m_side * m_side))) {
       m_view->setNormalCursor();
@@ -304,9 +300,7 @@ void Game::moveCalculationDone (int index)
    m_moveNo++;
 
    m_activity = ShowingMove;
-   if ((! (computerPlOne && computerPlOne)) || m_interrupting) {
-      emit buttonChange (true, true, i18n("Stop showing move"));
-   }
+   setStopAction();
 }
 
 void Game::showingDone (int index)
@@ -316,7 +310,7 @@ void Game::showingDone (int index)
    }
    else {
       moveDone();			// Finish Hint animation.
-      setUpNextTurn();
+      setUpNextTurn();			// Wait: unless player setting changed.
    }
 }
 
@@ -389,12 +383,7 @@ void Game::doStep()
                return;
             }
 	    // Now set the button up and start the animation.
-	    if (m_pauseForStep) {
-               // IDW TODO - DELETE? emit buttonChange (false);
-            }
-	    else if ((! (computerPlOne && computerPlOne)) || m_interrupting) {
-               emit buttonChange (true, true, i18n("Stop animation"));
-            }
+            setStopAction();
             m_view->startAnimation (true, index);
          }
       }
@@ -443,38 +432,62 @@ void Game::buttonClick()
 {
    qDebug() << "BUTTON CLICK seen: waiting" << m_waitingToMove
             << "m_activity" << m_activity << "m_waitingState" << m_waitingState;
-   if (m_waitingState == Nil) {
-      if ((! m_interrupting) && computerPlOne && computerPlTwo) {
-         m_interrupting = true;
+   if (m_waitingState == Nil) {		// Button is red: stop an activity.
+      if ((! m_pauseForComputer) && (! m_interrupting) &&
+          (computerPlOne && computerPlTwo)) {
+         m_interrupting = true;		// Interrupt a non-stop AI v AI game.
 	 m_view->showPopup (i18n("Finishing move..."));
+	 setStopAction();		// Change to text for current activity.
       }
       else if (m_activity == Computing) {
-         m_ai->stop();
-	 m_stoppedCalculation = true;
+         m_ai->stop();			// Stop calculating a move or hint.
+         m_activity = Stopping;
       }
       else if (m_activity == ShowingMove) {
 	 int index = m_view->killAnimation();
-         showingDone (index);
+         showingDone (index);		// Stop showing where a move or hint is.
 	 m_view->highlightCube (index, false);
       }
       else if (m_activity == AnimatingMove) {
-         qDebug() << "STOP ANIMATING MOVE";
-         m_fullSpeed = true;
-         stepAnimationDone (m_view->killAnimation());
+	 int index = m_view->killAnimation();
+         m_fullSpeed = true;		// Go to end of move right now, skipping
+         stepAnimationDone (index);	// all later steps of animation.
       }
    }
-   else {
+   else {				// Button is green: start an activity.
       switch (m_waitingState) {
       case WaitingToStep:
-	 doStep();
+	 doStep();			// Start next animation step.
          break;
       case ComputerToMove:
-         computeMove();
+         computeMove();			// Start next computer move.
          break;
       default:
          break;
       }
       m_waitingState = Nil;
+   }
+}
+
+void Game::setStopAction()
+{
+   // Red button setting for non-stop AI v. AI game.
+   if ((! m_pauseForComputer) && (! m_interrupting) &&
+       (computerPlOne && computerPlTwo)) {
+      if (m_activity == Computing) {		// Starting AI v. AI move.
+         emit buttonChange (true, true, i18n("Interrupt game"));
+      }
+      return;					// Continuing AI v. AI move.
+   }
+   // Red button settings for AI v. human, two human players or pausing game.
+   if (m_activity == Computing) {		// Calculating hint or AI move.
+      emit buttonChange (true, true, i18n("Stop computing"));
+   }
+   else if (m_activity == ShowingMove) {	// Showing hint or AI move.
+      emit buttonChange (true, true, i18n("Stop showing move"));
+   }
+   else if (m_activity == AnimatingMove) {	// Animating AI or human move.
+      emit buttonChange (true, true, i18n("Stop animation"));
    }
 }
 
@@ -486,7 +499,6 @@ void Game::newGame()
 {
    qDebug() << "NEW GAME entered: waiting" << m_waitingToMove
             << "won?" << (m_moveNo >= m_endMoveNo);
-   // IDW TODO - What if user keeps hitting New? Do we keep on doing this stuff?
    if (newGameOK()) {
       qDebug() << "QDEBUG: newGameOK() =" << true;
       shutdown();			// Stop the current move (if any).
@@ -721,9 +733,12 @@ void Game::shutdown()
    m_view->killAnimation();	// Stop animation immediately (if active).
    if (m_activity == Computing) {
       m_ai->stop();		// Stop AI ASAP (moveCalculationDone() => Idle).
-      m_ignoreComputerMove = true;
+      m_activity = Aborting;
    }
-   else {
+   else if (m_activity == Stopping) {
+      m_activity = Aborting;
+   }
+   else if (m_activity != Aborting) {
       m_activity = Idle;	// In case it was ShowingMove or AnimatingMove.
    }
 }
@@ -830,13 +845,6 @@ void Game::readProperties (const KConfigGroup& config)
    emit playerChanged (m_currentPlayer);
    setUpNextTurn();
    qDebug() << "Leaving Game::readProperties ...";
-}
-
-bool Game::isActive() const
-{
-   // IDW TODO - What if shutdown() is in effect? Could have
-   //            m_activity == Computing and m_ignoreComputerMove == true.
-   return (m_activity != Idle);
 }
 
 bool Game::isComputer (Player player) const

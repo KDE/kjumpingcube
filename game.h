@@ -156,6 +156,13 @@ private:
    void buttonClick();
 
    /**
+    * Set the action-button to be red, enabled and with text relevant to
+    * stopping the current activity (AI v AI game OR computing, showing or
+    * animating a move).
+    */
+   void setStopAction();
+
+   /**
     * Act on changes in settings that can be used immediately.  Color changes
     * can take effect when control returns to the event loop, the other settings
     * next time they are used.  They include animation settings, AI players and
@@ -220,17 +227,17 @@ protected:
 private:
    QTime t; // IDW test.
 
-   enum Activity     {Idle, Computing, ShowingMove, AnimatingMove};
+   enum Activity     {Idle, Computing, Stopping, Aborting,
+                      ShowingMove, AnimatingMove};
    enum WaitingState {Nil, WaitingToStep, ComputerToMove};
 
-   Activity         m_activity;
-   WaitingState     m_waitingState;
-   bool             m_waitingToMove;
-   int              m_moveNo;
-   int              m_endMoveNo;
-   bool             m_interrupting;
-   bool             m_newSettings;
-   bool             m_stoppedCalculation;
+   Activity         m_activity;		// Current computer activity.
+   WaitingState     m_waitingState;	// Current pause state.
+   bool             m_waitingToMove;	// If true, AI paused or human to move.
+   int              m_moveNo;		// Current move number, 0 = not started.
+   int              m_endMoveNo;	// Winning move number, if game is over.
+   bool             m_interrupting;	// If user has interrupted AI v. AI.
+   bool             m_newSettings;	// If new player settings during a move.
 
    KCubeBoxWidget * m_view;		// Displayed cubes.
    SettingsWidget * m_dialog;		// Displayed settings, 0 = not yet used.
@@ -241,26 +248,25 @@ private:
 
    AI_Main *        m_ai;		// Current computer player.
 
-   int  m_index;
-   bool m_fullSpeed;
+   int              m_index;		// Location of move.
+   bool             m_fullSpeed;	// If true, no animation of moves.
 
-   bool   computerPlOne;
-   bool   computerPlTwo;
+   bool             computerPlOne;	// If true, Player 1 is an AI.
+   bool             computerPlTwo;	// If true, Player 2 is an AI.
 
-   bool   m_pauseForComputer;
-   bool   m_pauseForStep;
-   bool   m_ignoreComputerMove;
+   bool             m_pauseForComputer;	// If true, pause before each AI move.
+   bool             m_pauseForStep;	// If true, pause before animation step.
 
-   KUrl   m_gameURL;
+   KUrl             m_gameURL;		// Location of load/save file.
 
-private slots:				// Slot needed for queued invocation.
-   void   newGame();
+private slots:
+   void   newGame();			// Slot needed for queued invocation.
 
 private:
-   void   saveGame (bool saveAs);
-   void   loadGame();
-   void   undo();
-   void   redo();
+   void   saveGame (bool saveAs);	// Standard save-game action.
+   void   loadGame();			// Standard load-game action.
+   void   undo();			// Standard undo-move action.
+   void   redo();			// Standard redo-move action.
 
    /**
     * Check if it is OK to start a new game, maybe ending a current game.
@@ -291,9 +297,6 @@ private:
     * Returns true if the player is a computer player.
     */
    bool isComputer (Player player) const;
-
-   /** Returns true if CubeBox is doing a move or getting a hint. */
-   bool isActive() const;
 
    inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
 };
