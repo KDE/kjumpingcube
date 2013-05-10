@@ -100,7 +100,7 @@ End IDW test. */
 
 CubeBox& CubeBox::operator=(KCubeBoxWidget& box)
 {
-   qDebug() << "OPERATOR = KCubeBoxWidget, size" << dim(); // IDW test.
+   // qDebug() << "OPERATOR = KCubeBoxWidget, size" << dim(); // IDW test.
    if(dim()!=box.dim())
    {
       setDim(box.dim());
