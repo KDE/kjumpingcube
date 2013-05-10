@@ -154,7 +154,7 @@ bool AI_Main::getMove (int & row, int & column,
 */
    delete [] m_owners;
    delete [] m_values;
-   // delete [] m_maxValues;	// IDW test. Needed in dumpStats().
+   delete [] m_maxValues;
 
    saveStats (move);		// IDW test. Statistics collection.
 
@@ -620,14 +620,6 @@ void AI_Main::saveStats (Move & move)
 void AI_Main::dumpStats()
 {
    // IDW test. For debugging.
-   m_owners    = new int [m_nCubes];
-   m_values    = new int [m_nCubes];
-
-   for (int index = 0; index < m_nCubes; index++) {
-      m_owners[index] = Cube::Nobody;
-      m_values[index] = 1;
-   }
-   // boxPrint (m_side, m_owners, m_values);
    foreach (MoveStats * m, m_moveStats) {
       QList<int> l;
       int nMax = m->searchStats->count();
@@ -636,17 +628,10 @@ void AI_Main::dumpStats()
       }
       // qDebug() << m->player << m->moveNo << "X" << m->x << "Y" << m->y
                // << "value" << m->value << m->n_simulate << m->n_assess << l;
-      bool won = simulateMove ((CubeBox::Player) m->player, m->x, m->y,
-                               m_side, m_owners, m_values, m_maxValues);
-      // boxPrint (m_side, m_owners, m_values);
       qDeleteAll (*(m->searchStats));
       delete m;
    }
    m_moveStats.clear();
-
-   delete [] m_owners;
-   delete [] m_values;
-   delete [] m_maxValues;	// Delete in getMove(), if dumpStats() not used.
 }
 
 void AI_Main::copyCubeBox (CubeBox & box)
