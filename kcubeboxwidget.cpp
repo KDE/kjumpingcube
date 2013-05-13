@@ -179,9 +179,12 @@ KCubeBoxWidget& KCubeBoxWidget::operator=(CubeBox& box)
    return *this;
 }
 
-void KCubeBoxWidget::reset()
+void KCubeBoxWidget::reset()	// Called if a player wins or requests New game.
 {
-   stopActivities();
+   // stopActivities();
+   shutdown();			// Terminate activity immediately, but do not
+   delayedShutdown = false;	// signal shutdownNow() and quit KJumpingCube.
+   emit stoppedMoving();	// Reset Stop button, Hint button and cursor.
 
    int i,j;
    for(i=0;i<dim();i++)
@@ -1089,7 +1092,7 @@ bool KCubeBoxWidget::nextMoveStep()
 
    bool stillMoving = (! saturated.isEmpty());
 
-   if (stillMoving) {
+   if (stillMoving && (! fullSpeed)) {
       index = saturated.last();	// Show next cube to fire.
       startAnimation (index/d, index%d);
    }
