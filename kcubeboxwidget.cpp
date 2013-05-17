@@ -350,14 +350,14 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 {
    int boxSize = qMin(w, h);
    int frameWidth = boxSize / 30;
-   qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth;
+   // qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth;
    boxSize = boxSize - (2 * frameWidth);
    cubeSize = (boxSize / m_side);
    boxSize = (cubeSize * m_side);
    topLeft.setX ((w - boxSize)/2);
    topLeft.setY ((h - boxSize)/2);
 
-   qDebug() << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
+   // qDebug() << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    makeSVGBackground (w, h);
    makeSVGCubes (cubeSize);
    for (int x = 0; x < m_side; x++) {
