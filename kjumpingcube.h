@@ -25,10 +25,11 @@
 #include <QLabel>
 
 #include <kxmlguiwindow.h>
-#include <kurl.h>
+#include <game.h>
 
 class QAction;
 class KCubeBoxWidget;
+class QPushButton;
 
 /**
  * This class serves as the main window for KJumpingCube.  It handles the
@@ -45,34 +46,29 @@ public:
   /** Default Constructor */
   KJumpingCube();
 
+public slots:
+   void setAction (const Action a, const bool onOff);
+
 protected:
   /// To make sure all activity ceases before closing.
   bool queryClose();
 
 private:
-  KCubeBoxWidget *view;
-	QLabel *currentPlayer;
-	QAction *undoAction, *stopAction, *hintAction;
+  Game * m_game;
+  KCubeBoxWidget * m_view;
+  QLabel *currentPlayer;
+  QAction *undoAction, *redoAction, *stopAction, *hintAction;
 
-  KUrl gameURL;
   void initKAction();
 
-private slots:
-  void newGame();
-  void saveGame(bool saveAs=false);
-  inline void saveAs() { saveGame(true); }
-  inline void save() { saveGame(false); }
-  void openGame();
-  void stop();
-  void undo();
-  void changePlayer(int newPlayer);
-  void changePlayerPixmap(int player);
-  void showWinner(int);
-  void disableStop();
-  void enableStop_Moving();
-  void enableStop_Thinking();
+  QPushButton * actionButton;
+  QString       buttonLook;
 
-  void showOptions();
+private slots:
+  void changePlayerColor (int newPlayer);
+  void changeButton (bool enabled, bool stop = false,
+                     const QString & caption = QString());
+  void statusMessage (const QString & message, bool timed);
 };
 
 #endif // KJUMPINGCUBE_H

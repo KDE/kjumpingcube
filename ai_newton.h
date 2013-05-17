@@ -23,9 +23,6 @@
 #define AI_NEWTON_H
 
 #include "ai_base.h"
-#include "cubebox.h"
-
-class CubeBox;
 
 /**
 * Class AI_Newton computes the priority of moving a cube and the value of the
@@ -45,34 +42,25 @@ public:
 
    /**
    * Assess the priority of playing a cube at a particular position.  The
-   * highest priority cubes are used by the Brain class for look-ahead moves
-   * and calculating the values of the positions reached.
+   * highest priority cubes are used by the AI_Main class for look-ahead moves
+   * and calculating the values of the positions reached.  The cube to be
+   * assessed has to be neutral or owned by the player who is to move.
    *
-   * @param row      The row-position of the cube
-   * @param col      The column-position of the cube
-   * @param player   The player who is to move
-   * @param box      The whole grid of cubes in the box
+   * @param index      The index-position of the cube to be assessed
+   * @param player     The player who is to move
+   * @param neighbors  The index-positions of the cube's neighbors (array),
+   *                   where a value of -1 means no neighbor on that side
+   * @param owners     The current owners of the cubes in the box (array)
+   * @param values     The current point values of the cubes in the box (array)
+   * @param maxValues  The maximum point values of the cubes in the box (array)
    *
-   * @return         < 0 - The move is invalid or wasteful
-   *                 > 0 - The priority of a useful move (1 is highest)
+   * @return           The priority of a move (always > 0): moves with priority
+   *                   1 are best and those with priority >= HighValue (999) are
+   *                   worst but may be forced (e.g. when defeat is imminent).
    */
-   int    assessCube (int row, int col, CubeBox::Player, CubeBox& box) const;
-   int    assessCube (int row, int col, CubeBox::Player player, int side,
-                      int * owners, int * values, int * maxValues) const;
-
-   /**
-    * Assess the value of a position reached after trying a move.  The move that
-    * leads to the highest value is chosen by the Brain class or a random choice
-    * is made among moves leading to positions of equal value.
-    *
-    * @param player  The player whose position is to be assessed
-    * @param box     The state of the whole grid of cubes in the box
-    *
-    * @return        The value of the position
-    */
-   double assessField (CubeBox::Player player, CubeBox& box) const;
-   double assessField (CubeBox::Player player,
-                       int side, int * owners, int * values) const;
+   int assessCube (const int index,         const Player player,
+                   const int neighbors [4], const Player owners[],
+                   const int values[],      const int    maxValues[]) const;
 };
 
 #endif // AI_NEWTON_H

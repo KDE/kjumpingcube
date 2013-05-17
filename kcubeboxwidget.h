@@ -23,52 +23,36 @@
 #define KCUBEBOXWIDGET_H
 
 #include <QSvgRenderer>
-#include <QTime> // IDW
 
-#include "cubeboxbase.h"
+#include "ai_globals.h"
 #include "kcubewidget.h"
-// #include "brain.h" // IDW DELETE this.
-#include "ai_main.h"
+
 #include <QWidget>
-//Added by qt3to4:
-#include <QGridLayout>
 #include <QPaintEvent>
 #include <QResizeEvent>
+#include <QList>
 
 class KConfigGroup;
-class QGridLayout;
-class CubeBox;
 class QTimer;
+class QLabel;
 
-class KCubeBoxWidget : public QWidget , public CubeBoxBase<KCubeWidget>
+class KCubeBoxWidget : public QWidget
 {
    Q_OBJECT
 public:
-   enum AnimationType {None, Hint, ComputerMove, Darken, RapidBlink, Scatter};
+   explicit KCubeBoxWidget (const int dim = 1, QWidget * parent = 0);
 
-   explicit KCubeBoxWidget(const int dim=1,QWidget *parent=0);
-
-   explicit KCubeBoxWidget(CubeBox& box, QWidget *parent=0);
-   KCubeBoxWidget(const KCubeBoxWidget& box,QWidget *parent=0);
    virtual ~KCubeBoxWidget();
 
-   KCubeBoxWidget& operator= (CubeBox& box);
-   KCubeBoxWidget& operator= ( const KCubeBoxWidget& box);
-
-   /**
-    * Make sure all move and brain activity is over before destroying widget.
-    *
-    * @return True if we can shut down immediately, false if Brain is active.
-    * */
-   bool shutdown();
+   void displayCube        (int index, Player owner, int value);
+   void highlightCube      (int index, bool highlight);
+   void timedCubeHighlight (int index);
+   int  cubeValue          (int index) { return cubes.at(index)->value(); }
 
    /**
    * reset cubebox for a new game
    */
    void reset();
-
-   /** undo last move */
-   void undo();
 
    /**
    * Set colors that are used to show owners of the cubes.
@@ -76,84 +60,37 @@ public:
    void setColors ();
 
    /**
-   * sets number of Cubes in a row/column to 'size'.
+   * Set the number of cubes in a row or column.  If the number has changed,
+   * delete the existing set of cubes and create a new one.
    */
-   virtual void setDim(int dim);
-
-   /**
-   * sets player 'player' as computer or human
-   *
-   * @param player
-   * @param flag: true for computer, false for human
-   */
-   void setComputerplayer(Player player,bool flag);
-
-   /** returns current skill, according to Prefs::EnumSkill */
-   // IDW delete. int skill() const;
-
-   /** returns true if player 'player' is a computerPlayer */
-   bool isComputer(Player player) const;
-
-   /** returns true if CubeBox is doing a move or getting a hint */
-   bool isActive() const;
-   bool isMoving() const;
-
-   /**
-   * checks if 'player' is a computerplayer an computes next move if TRUE
-   */
-   void checkComputerplayer(Player player);
-
-   inline void saveGame(KConfigGroup&c) { saveProperties(c); }
-   inline void restoreGame(const KConfigGroup&c) { readProperties(c); }
+   virtual void setDim (int dim);
 
    void makeStatusPixmaps (const int width);
    const QPixmap & playerPixmap (const int p);
 
-public slots:
-   /** stops all activities like getting a hint or doing a move */
-   void stopActivities();
-   /**
-    * computes a possibility to move and shows it by highlightning
-    * this cube
-    */
-   void getHint();
-
-   void loadSettings();
-
-signals:
-   void playerChanged(int newPlayer);
-   void colorChanged(int player);
-   void playerWon(int player);
-   void startedMoving();
-   void startedThinking();
-   void stoppedMoving();
-   void stoppedThinking();
-   void dimensionsChanged();
-   void shutdownNow();
-
-protected:
-   virtual QSize sizeHint() const;
-   virtual void deleteCubes();
-   virtual void initCubes();
-   virtual void paintEvent (QPaintEvent * event);
-   virtual void resizeEvent (QResizeEvent * event);
-
-   void saveProperties(KConfigGroup&);
-   void readProperties(const KConfigGroup&);
-
-protected slots:
    /** sets the cursor to an waitcursor */
    void setWaitCursor();
    /** restores the original cursor */
    void setNormalCursor();
 
+   bool loadSettings();
+
+signals:
+   void animationDone (int index);
+   void mouseClick (int x, int y);
+
+protected:
+   virtual QSize sizeHint() const;
+   virtual void initCubes();
+   virtual void paintEvent (QPaintEvent * event);
+   virtual void resizeEvent (QResizeEvent * event);
+
 private:
-   int m_step;	// IDW test: use a KMessageBox to pause between computer moves.
+   enum AnimationType {None, ComputerMove, Darken, RapidBlink, Scatter};
 
    void init();
 
    QSvgRenderer svg;
-   QTime t; // IDW
    void makeSVGBackground (const int w, const int h);
    void makeSVGCubes (const int width);
    void colorImage (QImage & img, const QColor & c, const int w);
@@ -167,65 +104,46 @@ private:
    QColor color1;		// Player 1's color.
    QColor color2;		// Player 2's color.
    QColor color0;		// Color for neutral cubes.
-   bool drawHairlines;		// T = draw hairlines between cubes, F = do not.
 
    QPoint topLeft;
    int cubeSize;
 
-   CubeBox *undoBox;
-
-   int m_cubesToWin[3];		// Number of cubes for each player to capture.
-
-   // Brain brainPrev; // IDW DELETE this.
-   AI_Main brain;
+   int      m_side;
+   QList<KCubeWidget *> cubes;
 
    QTimer *animationTimer;
-   bool delayedShutdown;	// True if the brain is active at Quit time.
 
-   int  m_row;
-   int  m_col;
-   bool fullSpeed;
+   int  m_index;
+   AnimationType cascadeAnimation;
    AnimationType currentAnimation;
    int  animationCount;
    int  animationSteps;
    int  animationTime;
-   int  stepTime;
 
-   QList<int> saturated;	// List of over-full cubes, as in cascade moves.
+   QTimer * m_highlightTimer;	// Timer for highlighted cube.
+   int  m_highlighted;		// Cube that has been highlighted.
 
-   void startCascade (int row, int col);
-   bool nextMoveStep();
+   QLabel * m_popup;
 
-   void stopAnimation();
-
-   Player changePlayer();
-   bool computerPlOne;
-   bool computerPlTwo;
-
+public:
    /**
-   * increases the cube at row 'row' and column 'column' ,
-   * and starts the Loop for checking the playingfield
+   * Starts the animation loop.
    */
-   void doMove(int row,int column);
-   void startAnimation (AnimationType type, int row, int col);
-   void startAnimation (int row, int col);
-   void scatterDots (int step);
+   void startAnimation (bool cascading, int index);
+   int killAnimation();
 
-   void increaseNeighbours(KCubeBoxWidget::Player forWhom,int row,int column);
+   void showPopup (const QString & message);
+   void hidePopup();
+
+private:
+   void setPopup();
+   void scatterDots (int step);
 
 private slots:
    void nextAnimationStep();
-   void continueCascade();
-   /**
-   * checks if cube at ['row','column'] is clickable by the current player.
-   * if true, it increases this cube and checks the playingfield
-   */
-   bool checkClick(int row,int column,bool isClick);
+   void highlightDone();	// Timeout of the highlighted cube.
 
-   /** turns off blinking, if an other cube is clicked */
-   void stopHint (bool shutdown = false);
-
+   bool checkClick (int x, int y);
 };
 
 #endif // KCUBEBOXWIDGET_H
-

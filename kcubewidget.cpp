@@ -22,7 +22,6 @@
 #include "kcubewidget.h"
 
 #include <QPainter>
-#include <QTimer>
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPixmap>
@@ -41,9 +40,8 @@ void KCubeWidget::enableClicks(bool flag)
 **                 public functions                       **
 ** ****************************************************** */
 
-KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
-              : QFrame(parent),
-                Cube(owner,value,max)
+KCubeWidget::KCubeWidget (QWidget* parent)
+              : QFrame(parent)
 {
   setMinimumSize (20,20);
   setFrameStyle(QFrame::Panel | QFrame::Raised);
@@ -57,6 +55,8 @@ KCubeWidget::KCubeWidget(QWidget* parent, Owner owner, int value, int max)
   m_scale = 1.0;
   m_row = 0;
   m_col = 0;
+  m_owner = Nobody;
+  m_value = 1;
 
   pixmaps = 0;
   blinking = None;
@@ -69,48 +69,25 @@ KCubeWidget::~KCubeWidget()
 {
 }
 
-KCubeWidget& KCubeWidget::operator=(const Cube& cube)
-{
-   if(this!=&cube)
-   {
-      setOwner(cube.owner());
-      setValue(cube.value());
-      setMax(cube.max());
-   }
-
-   return *this;
-}
-
-KCubeWidget& KCubeWidget::operator=(const KCubeWidget& cube)
-{
-   if(this!=&cube)
-   {
-      setOwner(cube.owner());
-      setValue(cube.value());
-      setMax(cube.max());
-   }
-
-   return *this;
-}
-
 void KCubeWidget::setPixmaps (QList<QPixmap> * ptr)
 {
    pixmaps = ptr;
 }
 
-KCubeWidget::Owner KCubeWidget::setOwner(Owner newOwner)
+void KCubeWidget::setOwner (Player newOwner)
 {
-   Owner old=Cube::setOwner(newOwner);
-
-   updateColors();
-
-   return old;
+   if (newOwner != m_owner) {
+      m_owner = newOwner;
+      updateColors();
+   }
 }
 
 void KCubeWidget::setValue(int newValue)
 {
-   Cube::setValue(newValue);
-   update();
+   if (newValue != m_value) {
+      m_value = newValue;
+      update();
+   }
 }
 
 void KCubeWidget::shrink (qreal scale)
@@ -128,8 +105,7 @@ void KCubeWidget::expand (qreal scale)
    update();
 }
 
-void KCubeWidget::migrateDot (int rowDiff, int colDiff, int step,
-       	                      Cube::Owner player)
+void KCubeWidget::migrateDot (int rowDiff, int colDiff, int step, Player player)
 {
    migrating = 2;
    qreal scale = (step < 4) ? 1.0 - 0.3 * step : 0.0;
@@ -148,16 +124,6 @@ void KCubeWidget::setCoordinates (int row, int col, int limit)
    m_limit = limit;
 }
 
-int KCubeWidget::row() const
-{
-   return m_row;
-}
-
-int KCubeWidget::column() const
-{
-   return m_col;
-}
-
 /* ****************************************************** **
 **                   public slots                         **
 ** ****************************************************** */
@@ -165,8 +131,9 @@ int KCubeWidget::column() const
 void KCubeWidget::reset()
 {
   blinking = None;
-  setValue(1);
-  setOwner(Nobody);
+  setValue (1);
+  setOwner (Nobody);
+  update();
 }
 
 
@@ -185,10 +152,9 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
   if(e->x()< 0 || e->x() > width() || e->y() < 0 || e->y() > height())
     return;
 
-  if(e->button() == Qt::LeftButton && _clicksAllowed)
-  {
+  if(e->button() == Qt::LeftButton && _clicksAllowed) {
     e->accept();
-    emit clicked (row(),column(),true);
+    emit clicked (m_row, m_col);
   }
 }
 

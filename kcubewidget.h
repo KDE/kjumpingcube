@@ -23,7 +23,10 @@
 #define KCUBEWIDGET_H
 
 #include <QFrame>
-#include "cube.h"
+#include "ai_globals.h"
+
+enum SVGElement {Neutral, Player1, Player2, Pip, BlinkLight, BlinkDark,
+                 FirstElement = Neutral, LastElement = BlinkDark};
 
 class QMouseEvent;
 class QPaintEvent;
@@ -31,34 +34,28 @@ class QPaintEvent;
 /**
 * 
 */
-class KCubeWidget : public QFrame , public Cube 
+class KCubeWidget : public QFrame
 {
    Q_OBJECT
          
 public:
    /** constructs a new KCubeWidget*/
-   explicit KCubeWidget(QWidget* parent=0,
-                           Owner owner=Cube::Nobody, int value=1, int max=0);  
-   virtual ~KCubeWidget();   
-   
+   explicit KCubeWidget (QWidget * parent = 0);
+   virtual ~KCubeWidget();
+
+   Player owner() { return m_owner; }
+   int    value() { return m_value; }
+
+   void setOwner   (Player newOwner); 
+   void setValue   (int newValue);
    void setPixmaps (QList<QPixmap> * ptr);
-   virtual Owner setOwner(Owner newOwner); 
-   virtual void setValue(int newValue);
-   
-   /** takes the information from a Cube */
-   KCubeWidget& operator=(const Cube&);
-   KCubeWidget& operator=(const KCubeWidget&);
 
    /** 
    * sets the coordinates of the Cube in a Cubebox;
    * needed for identification when clicked.
    */ 
    void setCoordinates (int row, int col, int limit);
-   /** returns the row */
-   int row() const;
-   /** returns the column */
-   int column() const;
-   
+
    /** enables or disables possibility to click a cube*/
    static void enableClicks(bool flag);
 
@@ -69,21 +66,21 @@ public:
 
    void shrink (qreal scale);
    void expand (qreal scale);
-   void migrateDot (int rowDiff, int colDiff, int step, Cube::Owner player);
+   void migrateDot (int rowDiff, int colDiff, int step, Player player);
 
 public slots:
    /** resets the Cube to default values */
    virtual void reset();
    /** shows changed colors*/
    virtual void updateColors();
-      
+
 signals:
-   void clicked(int row,int column,bool isClick);
-   
+   void clicked (int row, int column);
+
 protected:
    /** checks, if mouseclick was inside this cube*/
    virtual void mouseReleaseEvent(QMouseEvent*);
-   
+
    /** refreshes the contents of the Cube */
    virtual void paintEvent(QPaintEvent*);
 
@@ -91,6 +88,9 @@ private:
    int m_row;
    int m_col;
    int m_limit;
+   Player m_owner;
+   int m_value;
+
    QList<QPixmap> * pixmaps;
    enum Blink {None, Light, Dark};
    Blink blinking;
@@ -99,7 +99,7 @@ private:
    int   migrating;
    qreal m_rowDiff;
    qreal m_colDiff;
-   Owner m_player;
+   Player m_player;
    qreal m_scale;
    qreal m_opacity;
 };
