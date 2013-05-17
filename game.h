@@ -44,7 +44,7 @@ class Game : public QObject
 {
    Q_OBJECT
 public:
-   explicit Game (const int dim = 1, KCubeBoxWidget * parent = 0);
+   explicit Game (const int dim, KCubeBoxWidget * view, QWidget * parent = 0);
 
    virtual ~Game();
 
@@ -52,15 +52,6 @@ public:
     * Make sure all animation and AI activity is over before closing a game.
     * */
    void shutdown();
-
-   /**
-    * Set a pointer to the Settings widget defined in Qt Designer, when
-    * the Preferences dialog is first requested and so is created by
-    * KJumpingCube::showOptions().
-    *
-    * @param dialog  Pointer to the SettingsWidget object.
-    */
-   void setDialog (SettingsWidget * dialog) { m_dialog = dialog; }
 
 public slots:
 
@@ -73,6 +64,12 @@ public slots:
     */
    void gameActions (const int action);
 
+private slots:
+   /**
+    * Pop up the settings/preferences/configuration dialog window.
+    */
+   void showSettingsDialog();
+
    /**
     * Check changes in the user's preferences or settings.  Some settings can
     * be used immediately, some must wait until the start of the next turn and
@@ -81,7 +78,6 @@ public slots:
     */
    void newSettings();
 
-private slots:
    /**
    * Check if cube at [x, y] is available to the current (human) player.
    * If it is, make a move using doMove() and the cube at [x, y], animating
@@ -239,8 +235,13 @@ private:
    bool             m_interrupting;	// If user has interrupted AI v. AI.
    bool             m_newSettings;	// If new player settings during a move.
 
+   QWidget *        m_parent;		// Game object's parent (main window).
    KCubeBoxWidget * m_view;		// Displayed cubes.
-   SettingsWidget * m_dialog;		// Displayed settings, 0 = not yet used.
+
+   // A pointer to the Settings widget defined in Qt Designer, when the
+   // Preferences dialog is first created by Game::showSettingsDialog().
+   SettingsWidget * m_settingsPage;	// Displayed settings, 0 = not yet used.
+
    AI_Box *         m_box;		// Game engine's cubes.
    int              m_side;		// Cube box size, from Prefs::cubeDim().
    Player           m_currentPlayer;	// Current player: One or Two.

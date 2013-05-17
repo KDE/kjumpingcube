@@ -39,9 +39,10 @@
 
 #define LARGE_NUMBER 999999
 
-Game::Game (const int d, KCubeBoxWidget * view)
+Game::Game (const int d, KCubeBoxWidget * view, QWidget * parent)
    :
-   QObject ((QObject *) view),		// Delete Game when view is deleted.
+   QObject ((QObject *) parent),	// Delete Game when window is deleted.
+   m_parent             (parent),
    m_activity           (Idle),
    m_waitingState       (Nil),
    m_waitingToMove      (false),
@@ -50,7 +51,7 @@ Game::Game (const int d, KCubeBoxWidget * view)
    m_interrupting       (false),
    m_newSettings        (false),
    m_view               (view),
-   m_dialog             (0),
+   m_settingsPage       (0),
    m_side               (d),
    m_currentPlayer      (One),
    m_index              (0),
@@ -115,6 +116,22 @@ void Game::gameActions (const int action)
    default:
       break;
    }
+}
+
+void Game::showSettingsDialog()
+{
+   // Show the Preferences/Settings/Configuration dialog.
+   KConfigDialog * settings = KConfigDialog::exists ("settings");
+   if (! settings) {
+      settings = new KConfigDialog (m_parent, "settings", Prefs::self());
+      settings->setFaceType (KPageDialog::Plain);
+      SettingsWidget * widget = new SettingsWidget (m_parent);
+      settings->addPage (widget, i18n("General"), "games-config-options");
+      connect (settings, SIGNAL(settingsChanged(QString)), SLOT(newSettings()));
+      m_settingsPage = widget;		// Used when reverting/editing settings.
+   }
+   settings->show();
+   settings->raise();			// Force the dialog to be in front.
 }
 
 void Game::newSettings()
@@ -661,8 +678,8 @@ bool Game::newGameOK()
       // Restore the setting: also the dialog-box copy if it has been created.
       qDebug() << "Reset size" << Prefs::cubeDim() << "back to" << m_side;
       Prefs::setCubeDim (m_side);
-      if (m_dialog) {
-          m_dialog->kcfg_CubeDim->setValue (m_side);
+      if (m_settingsPage) {
+          m_settingsPage->kcfg_CubeDim->setValue (m_side);
       }
       Prefs::self()->writeConfig();
    }
@@ -776,7 +793,7 @@ void Game::readProperties (const KConfigGroup& config)
 {
   // IDW TODO - Restore settings for computer player(s), animation, etc.
   //            Prefs::set<name> (xxx); // <name> must a "mutable" kcfg item.
-  //            if (m_dialog) m_dialog->kcfg_<name>->setValue (xxx);
+  //            if (m_settingsPage) m_settingsPage->kcfg_<name>->setValue (xxx);
   //            Prefs::self()->writeConfig();
   // IDW TODO - If a computer player is "on turn", wait for a click or use
   //            a KMessageBox ...

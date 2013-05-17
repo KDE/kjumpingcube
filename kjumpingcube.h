@@ -69,8 +69,6 @@ private slots:
   void changeButton (bool enabled, bool stop = false,
                      const QString & caption = QString());
   void statusMessage (const QString & message, bool timed);
-
-  void showOptions();
 };
 
 #endif // KJUMPINGCUBE_H

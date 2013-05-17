@@ -45,7 +45,7 @@ KJumpingCube::KJumpingCube()
   // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
    qDebug() << "KJumpingCube::KJumpingCube() CONSTRUCTOR";
    m_view = new KCubeBoxWidget (Prefs::cubeDim(), this);
-   m_game = new Game (Prefs::cubeDim(), m_view);
+   m_game = new Game (Prefs::cubeDim(), m_view, this);
    m_view->makeStatusPixmaps (30);
 
    connect(m_game,SIGNAL(playerChanged(int)),SLOT(changePlayerColor(int)));
@@ -137,7 +137,7 @@ void KJumpingCube::initKAction() {
   changeButton (true, true);		// Load the button's style sheet.
   changeButton (false);			// Set the button to be inactive.
 
-  action = KStandardAction::preferences (this, SLOT(showOptions()),
+  action = KStandardAction::preferences (m_game, SLOT(showSettingsDialog()),
                                          actionCollection());
   qDebug() << "PREFERENCES ACTION is" << action->objectName();
   action->setIconText (i18n("Settings"));
@@ -167,22 +167,6 @@ void KJumpingCube::changeButton (bool enabled, bool stop,
 void KJumpingCube::changePlayerColor (int newPlayer)
 {
    currentPlayer->setPixmap (m_view->playerPixmap (newPlayer));
-}
-
-void KJumpingCube::showOptions()
-{
-   // Show the Preferences/Settings/Configuration dialog.
-   if (KConfigDialog::showDialog ("settings")) {
-      return;
-   }
-   KConfigDialog * dialog = new KConfigDialog (this, "settings", Prefs::self());
-   dialog->setFaceType (KPageDialog::Plain);
-   SettingsWidget * settingsWidget = new SettingsWidget (this);
-   dialog->addPage (settingsWidget, i18n("General"), "games-config-options");
-   connect (dialog, SIGNAL(settingsChanged(QString)),
-           m_game,  SLOT(newSettings()));
-   dialog->show();
-   m_game->setDialog (settingsWidget);
 }
 
 void KJumpingCube::setAction (const Action a, const bool onOff)
