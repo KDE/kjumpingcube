@@ -42,7 +42,6 @@
 Game::Game (const int d, KCubeBoxWidget * view, QWidget * parent)
    :
    QObject ((QObject *) parent),	// Delete Game when window is deleted.
-   m_parent             (parent),
    m_activity           (Idle),
    m_waitingState       (Nil),
    m_waitingToMove      (false),
@@ -50,6 +49,7 @@ Game::Game (const int d, KCubeBoxWidget * view, QWidget * parent)
    m_endMoveNo          (LARGE_NUMBER),	// Game not finished.
    m_interrupting       (false),
    m_newSettings        (false),
+   m_parent             (parent),
    m_view               (view),
    m_settingsPage       (0),
    m_side               (d),
