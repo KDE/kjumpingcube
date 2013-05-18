@@ -160,19 +160,27 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
 
 void AI_Box::copyPosition (Player player, bool isAI, int index)
 {
+#if AILog > 0
     qDebug() << "AI_Box::copyPosition (" << player << "," << isAI << ")";
     printBox();
+#endif
     if (m_undoIndex >= m_undoList.count()) {
+#if AILog > 0
 	qDebug() << "Call emptyPosition (" << m_nCubes << ")";
+#endif
         m_undoList.append (emptyPosition (m_nCubes));
     }
+#if AILog > 0
     qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
+#endif
     Position * pos = m_undoList.at (m_undoIndex);
     save (pos, player, isAI);
     pos->index = index; // IDW TODO - Do this in save()?
     m_owners = pos->owners;
     m_values = pos->values;
+#if AILog > 0
     printBox();
+#endif
     m_undoIndex++;
     m_redoLimit = m_undoIndex;
 }
@@ -196,7 +204,9 @@ bool AI_Box::undoPosition (Player & player)
 	restore (pos);
 	player = pos->player;
     }
+#if AILog > 0
     printBox();
+#endif
     return (m_undoIndex > 1);
 }
 
@@ -210,7 +220,9 @@ bool AI_Box::redoPosition (Player & player, bool & isAI, int & index)
 	index  = pos->index;
 	m_undoIndex++;
     }
+#if AILog > 0
     printBox();
+#endif
     return (m_undoIndex < m_redoLimit);
 }
 
@@ -327,6 +339,7 @@ void AI_Box::indexNeighbors()
     }
 }
 
+#if AILog > 0
 void AI_Box::printBox()
 {
     // return;
@@ -348,5 +361,6 @@ void AI_Box::printBox()
     fprintf (stderr, "\n");
 */
 }
+#endif
 
 #include "ai_box.moc"

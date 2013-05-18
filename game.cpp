@@ -339,15 +339,19 @@ void Game::doMove (int index)
    // Make a copy of the position and player to move for the Undo function.
    m_box->copyPosition (m_currentPlayer, computerMove, index);
 
+#if AILog > 0
    if (! computerMove) { // IDW test. Record a human move in the statistics.
       m_ai->postMove (m_currentPlayer, index, m_side); // IDW test.
    }
+#endif
    emit setAction (UNDO, true);	// Update Undo and Redo actions.
    emit setAction (REDO, false);
    m_steps->clear();
    bool won = m_box->doMove (m_currentPlayer, index, m_steps);
+#if AILog > 0
    qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
    m_box->printBox(); // IDW test.
+#endif
    if (m_steps->count() > 1) {
       m_view->setWaitCursor();	//This will be a stoppable animation.
       emit statusMessage (i18n("Performing a move"), false);
@@ -370,7 +374,9 @@ void Game::doStep()
             moveDone();
 	    m_endMoveNo = m_moveNo;
 	    emit buttonChange (false, false, i18n("Game over"));
+#if AILog > 0
 	    m_ai->dumpStats();	// IDW test.
+#endif
             QString s = i18n("The winner is Player %1!", m_currentPlayer);
             KMessageBox::information (m_view, s, i18n("Winner"));
             return;
@@ -699,7 +705,9 @@ void Game::reset()
    m_waitingState   = computerPlOne ? ComputerToMove : Nil;
    qDebug() << "RESET: activity" << m_activity << "wait" << m_waitingState;
 
+#if AILog > 0
    m_ai->startStats();
+#endif
 }
 
 bool Game::undoRedo (int change)

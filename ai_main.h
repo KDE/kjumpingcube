@@ -179,12 +179,14 @@ private:
 
    KRandomSequence m_random;	// Random number generator.
 
+#if AILog > 0
 public:
    // Statistics-gathering procedures.
    // -------------------------------
    void startStats();
    void postMove (Player player, int index, int side);
    void dumpStats();
+#endif
 
 private:
    // Statistical data and methods.
@@ -207,6 +209,7 @@ private:
    };
 
    int m_currentMoveNo;
+#if AILog > 0
    MoveStats * m_currentMove;
    QList<MoveStats *> m_moveStats;
 
@@ -219,6 +222,7 @@ private:
    void initStats (int player);
    void saveStats (Move & move);
    void saveLikelyMoves (int nMoves, Move * moves);
+#endif
 };
 
 #endif //AI_MAIN_H

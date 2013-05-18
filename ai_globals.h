@@ -18,6 +18,8 @@
 #ifndef AI_GLOBALS_H
 #define AI_GLOBALS_H
 
+#define AILog 0
+
 enum Player {Nobody, One, Two};
 
 // Used in AI_Main and the inheritors of AI_Base (e.g. AI_Kepler, AI_Newton).

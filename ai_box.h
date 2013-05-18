@@ -74,7 +74,9 @@ public:
                                 }
 
     bool     doMove  (Player player, int index, QList<int> * steps = 0);
+#if AILog > 0
     void     printBox();
+#endif
 
     void     copyPosition (Player   player, bool   isAI, int index);
     bool     undoPosition (Player & player, bool & isAI, int & index);
