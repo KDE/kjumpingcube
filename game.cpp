@@ -669,7 +669,7 @@ bool Game::newGameOK()
       query = i18n("You have changed the size setting of the game and "
                    "that requires a new game to start.\n\n"
                    "Do you wish to abandon the current game or continue "
-                   "playing and and restore the previous size setting?");
+                   "playing and restore the previous size setting?");
    }
    else {
       query = i18n("You have requested a new game, but "
