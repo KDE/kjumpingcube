@@ -273,8 +273,9 @@ void Game::setUpNextTurn()
 
 void Game::computeMove()
 {
-   qDebug() << "Calling m_ai->getMove() for player" << m_currentPlayer;
-   t.start(); // IDW test.
+#if AILog > 1
+   t.start();			// Start timing the AI calculation.
+#endif
    m_view->setWaitCursor();
    m_activity = Computing;
    setStopAction();
@@ -309,8 +310,10 @@ void Game::moveCalculationDone (int index)
       return;
    }
 
+#if AILog > 1
    qDebug() << "TIME of MOVE" << t.elapsed();
-   qDebug() << "===========================================================";
+   qDebug() << "==============================================================";
+#endif
 
    // Blink the cube to be moved (twice).
    m_view->startAnimation (false, index);
@@ -348,9 +351,9 @@ void Game::doMove (int index)
    emit setAction (REDO, false);
    m_steps->clear();
    bool won = m_box->doMove (m_currentPlayer, index, m_steps);
-#if AILog > 0
+#if AILog > 1
    qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
-   m_box->printBox(); // IDW test.
+   // m_box->printBox(); // IDW test.
 #endif
    if (m_steps->count() > 1) {
       m_view->setWaitCursor();	//This will be a stoppable animation.
@@ -375,6 +378,7 @@ void Game::doStep()
 	    m_endMoveNo = m_moveNo;
 	    emit buttonChange (false, false, i18n("Game over"));
 #if AILog > 0
+	    qDebug() << "\nCALLING dumpStats()";
 	    m_ai->dumpStats();	// IDW test.
 #endif
             QString s = i18n("The winner is Player %1!", m_currentPlayer);
