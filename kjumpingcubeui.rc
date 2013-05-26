@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gui name="kjumpingcube"
-     version="6"
+     version="7"
      xmlns="http://www.kde.org/standards/kxmlgui/1.0"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
 
 <ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+    <Action name="action_button"/>
     <Action name="options_configure"/>
     <Separator/>
     <Action name="game_new"/>
@@ -16,8 +17,6 @@
     <Action name="move_hint"/>
     <Action name="move_undo"/>
     <Action name="move_redo"/>
-    <Separator />
-    <Action name="action_button"/>
 </ToolBar>
 
 </gui>

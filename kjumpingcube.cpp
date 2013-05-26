@@ -124,7 +124,7 @@ void KJumpingCube::initKAction() {
        "QPushButton#ActionButton { color: white; background-color: %1; "
            "border-style: outset; border-width: 2px; border-radius: 10px; "
            "border-color: beige; font: bold 14px; min-width: 10em; "
-           "padding: 6px; } "
+           "padding: 6px; margin: 5px; margin-left: 10px; } "
        "QPushButton#ActionButton:pressed { background-color: %2; "
            "border-style: inset; } "
        "QPushButton#ActionButton:disabled { color: white;"
