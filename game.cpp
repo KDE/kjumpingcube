@@ -205,7 +205,11 @@ void Game::startHumanMove (int x, int y)
    int  index = x * m_side + y;
    bool humanPlayer = (! isComputer (m_currentPlayer));
    qDebug() << "CLICK" << x << y << "index" << index;
-   if (humanPlayer && ((m_currentPlayer == m_box->owner(index)) ||
+   // if ((! humanPlayer) && m_waitingToMove && (m_waitingState == ComputerToMove))
+   if (! humanPlayer) {
+      buttonClick();
+   }
+   else if (humanPlayer && ((m_currentPlayer == m_box->owner(index)) ||
        (m_box->owner(index) == Nobody))) {
       m_waitingToMove = false;
       m_moveNo++;
@@ -227,7 +231,6 @@ void Game::setUpNextTurn()
             << "wait" << m_waitingState << "waiting" << m_waitingToMove;
    if (isComputer (m_currentPlayer)) {
       // A computer player is to move.
-      KCubeWidget::enableClicks (false);
       qDebug() << "(m_pauseForComputer || (m_waitingState == ComputerToMove))"
                << (m_pauseForComputer || (m_waitingState == ComputerToMove));
       if (m_pauseForComputer || (m_waitingState == ComputerToMove) ||
@@ -247,12 +250,14 @@ void Game::setUpNextTurn()
          }
 	 // Wait for a button-click to show that the user is ready.
 	 qDebug() << "COMPUTER MUST WAIT";
+         KCubeWidget::enableClicks (true); // IDW test. false);
          return;
       }
       // Start the computer's move.
       qDebug() << "COMPUTER MUST MOVE";
       m_waitingState = Nil;
       m_waitingToMove = false;
+      KCubeWidget::enableClicks (false);
       computeMove();
    }
    else {
@@ -280,7 +285,10 @@ void Game::computeMove()
    m_activity = Computing;
    setStopAction();
    emit setAction (HINT, false);
-   emit statusMessage (i18n("Computing a move"), false);
+   if (isComputer (m_currentPlayer)) {
+       emit statusMessage (i18n("Computer player %1 is moving")
+                           .arg(m_currentPlayer), false);
+   }
    m_ai->getMove (m_currentPlayer, m_box);
 }
 
@@ -295,13 +303,7 @@ void Game::moveCalculationDone (int index)
       return;
    }
 
-   QString s = QString("");
-   if (m_activity == Stopping) {
-      s = i18n("Interrupted calculation of move");
-   }
    m_activity = Idle;
-   emit statusMessage (s, true);
-
    if ((index < 0) || (index >= (m_side * m_side))) {
       m_view->setNormalCursor();
       KMessageBox::sorry (m_view,
@@ -357,7 +359,6 @@ void Game::doMove (int index)
 #endif
    if (m_steps->count() > 1) {
       m_view->setWaitCursor();	//This will be a stoppable animation.
-      emit statusMessage (i18n("Performing a move"), false);
    }
    m_activity = AnimatingMove;
    doStep();
@@ -437,6 +438,7 @@ void Game::moveDone()
 {
    // Called after non-animated move, animated move, end of game or hint action.
    m_view->setNormalCursor();
+   emit statusMessage (QString(""), false);	// Clear the status bar.
    m_activity = Idle;
    setAction (HINT, true);
    m_fullSpeed = Prefs::animationNone();
@@ -593,8 +595,7 @@ void Game::saveGame (bool saveAs)
    config.sync();
 
    if (KIO::NetAccess::upload (tempFile.fileName(), m_gameURL, m_view)) {
-      QString s = i18n("Game saved as %1", m_gameURL.url());
-      emit statusMessage (s, false);
+      emit statusMessage (i18n("Game saved as %1", m_gameURL.url()), false);
    }
    else {
       KMessageBox::sorry (m_view, i18n("There was an error in saving file\n%1",
