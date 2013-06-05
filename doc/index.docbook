@@ -144,7 +144,7 @@ asked questions</link>, "How do I get started in this game?".</para>
 	<itemizedlist>
 	    <listitem><para>It may help to set up a computer v. computer game and select the check boxes in the settings dialog that let you step through moves and animations at your own pace. See <link linkend="faq">Frequently asked questions</link>, "How do I get started in this game?" and "That was too fast for me, how can I slow it down?".</para></listitem>
 	<listitem><para>If you have a cube which is right next to an opponent's cube, try to stay ahead by increasing before your opponent does.</para></listitem>
-	<listitem><para>If such a cube is weaker or equal to the opponent's, try to avoid increasing: you cannot win that arms race.</para></listitem>
+	<listitem><para>If such a cube's points are less than or equal to the opponent's, try to avoid increasing: you cannot win that arms race.</para></listitem>
 	<listitem><para>Look for opportunities to increase and capture, but beware of your opponent being able to reply by starting a cascade.</para></listitem>
 	<listitem><para>Try to get control of the corner cubes first, then the edge cubes. You need fewer moves to make them reach a maximum and expand.</para></listitem>
 	<listitem><para>Try not to play too close to your opponent, especially during the opening moves.  Drop back a cube or two or pick a cube on the diagonal from your opponent.</para></listitem>
@@ -163,7 +163,7 @@ asked questions</link>, "How do I get started in this game?".</para>
 provide control over animations and computer moves, especially if the computer
 has the first move, is playing against itself or is taking too long to move.
 The button can also be used for stepping through a game or a move, to let
-beginning players view each step at their own pace. The check boxes in the
+beginning players view each step at their own pace. Check boxes in the
 settings dialog turn the step mode on or off (see the
 <link linkend="configuration">Game Configuration</link> section for more details).
 </para>
@@ -186,7 +186,7 @@ settings dialog turn the step mode on or off (see the
 	</variablelist>
 
 <para> In each case, the button contains some text to indicate what action can
-be done or is required, such as "Stop animation" or "Your turn".</para>
+be done or is expected, such as "Stop animation" or "Your turn".</para>
 
 <para> If you stop the calculation of a computer move, the computer will pick
 the best move it has so far. If you interrupt an animation (e.g. a cascade
@@ -354,7 +354,7 @@ of the &kde; Fundamentals.
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<para>To open the configuration dialog use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice> On Apple Mac OS X use option: <menuchoice><guimenu>&kjumpingcube;</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>.</para>
+<para>To open the configuration dialog use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice> On Apple Mac OS X use option: <menuchoice><guimenu>&kjumpingcube;</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>. Or you can use the Settings button in the toolbar.</para>
 
 <screenshot>
     <screeninfo>&kjumpingcube; Settings</screeninfo>
@@ -364,7 +364,7 @@ of the &kde; Fundamentals.
     </mediaobject>
 </screenshot>
 
-<para>The Cascade Move Display and Cascade Move Time panels control the optional animation display when a cube reaches its maximum and spills over into neighboring cubes, possibly starting an extended cascade of moves. It is easiest at first to use the <quote>Scatter dots</quote> animation and a long move time. That is the easiest way to follow the progress of cascade moves. The two Pause check boxes let you step through animations and computer moves at your own pace.</para>
+<para>The Cascade Move Display and Cascade Move Time panels control the optional animation display when a cube reaches its maximum and spills over into neighboring cubes, possibly starting an extended cascade of moves. It is easiest at first to use the <quote>Scatter dots</quote> animation and a long move time. That is the best way to follow the progress of cascade moves. The two Pause check boxes let you step through animations and computer moves at your own pace.</para>
 
 <para>The Computer Player 1 and 2 panels control the style and level of each computer player's play and whether that player should actually play or just provide hints to human player 1 or 2.</para>
 
@@ -372,7 +372,7 @@ of the &kde; Fundamentals.
 <title>Details of Settings</title>
 	<variablelist>
 	<varlistentry><term><guilabel>Playing now</guilabel></term>
-		<listitem><para>Sets Computer Player 1 or 2 to be actively playing or just assisting a human player with hints. Normally you would set the computer to play one player and you would play the other, but you can have two computer players and just watch. Player 1 always starts first.</para></listitem>
+		<listitem><para>Sets Computer Player 1 or 2 to be actively playing or just assisting a human player with hints. Normally you would set the computer to play one player and you would play the other, but you can have two human players or two computer players and just watch. Player 1 always starts first.</para></listitem>
 	</varlistentry>
 	<varlistentry><term><guilabel>Style of Play</guilabel></term>
 		<listitem><para>Sets Computer Player 1 or 2 to play as Kepler or Newton. Kepler chooses moves by the same method as earlier versions of &kjumpingcube;. Newton uses a different method.</para></listitem>
