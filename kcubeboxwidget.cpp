@@ -343,7 +343,7 @@ void KCubeBoxWidget::readProperties(const KConfigGroup& config)
   QStringList list;
   QString     key;
   int         owner, value, maxValue;
-  int         minDim = 5, maxDim = 10;
+  int         minDim = 3, maxDim = 10;
 
   // Dimension must be 5 to 10.
   int cubeDim = config.readEntry ("CubeDim", minDim);
