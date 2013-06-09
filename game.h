@@ -64,6 +64,12 @@ public slots:
     */
    void gameActions (const int action);
 
+private:
+   /**
+    * Show the winner when the game ends, either after a move or a redo.
+    */
+   void showWinner();
+
 private slots:
    /**
     * Pop up the settings/preferences/configuration dialog window.

@@ -118,6 +118,13 @@ void Game::gameActions (const int action)
    }
 }
 
+void Game::showWinner()
+{
+   emit buttonChange (false, false, i18n("Game over"));
+   QString s = i18n("The winner is Player %1!", m_currentPlayer);
+   KMessageBox::information (m_view, s, i18n("Winner"));
+}
+
 void Game::showSettingsDialog()
 {
    // Show the Preferences/Settings/Configuration dialog.
@@ -213,6 +220,7 @@ void Game::startHumanMove (int x, int y)
        (m_box->owner(index) == Nobody))) {
       m_waitingToMove = false;
       m_moveNo++;
+      m_endMoveNo = LARGE_NUMBER;
       qDebug() << "doMove (" << index;
       KCubeWidget::enableClicks (false);
       doMove (index);
@@ -319,7 +327,6 @@ void Game::moveCalculationDone (int index)
 
    // Blink the cube to be moved (twice).
    m_view->startAnimation (false, index);
-   m_moveNo++;
 
    m_activity = ShowingMove;
    setStopAction();
@@ -328,6 +335,9 @@ void Game::moveCalculationDone (int index)
 void Game::showingDone (int index)
 {
    if (isComputer (m_currentPlayer)) {
+      m_moveNo++;
+      m_endMoveNo = LARGE_NUMBER;
+      qDebug() << "m_moveNo" << m_moveNo << "isComputer()" << (isComputer (m_currentPlayer));
       doMove (index);			// Animate computer player's move.
    }
    else {
@@ -377,13 +387,11 @@ void Game::doStep()
          if (index == 0) {
             moveDone();
 	    m_endMoveNo = m_moveNo;
-	    emit buttonChange (false, false, i18n("Game over"));
 #if AILog > 0
 	    qDebug() << "\nCALLING dumpStats()";
 	    m_ai->dumpStats();	// IDW test.
 #endif
-            QString s = i18n("The winner is Player %1!", m_currentPlayer);
-            KMessageBox::information (m_view, s, i18n("Winner"));
+	    showWinner();
             return;
          }
 
@@ -732,14 +740,19 @@ bool Game::undoRedo (int change)
    }
    m_view->timedCubeHighlight (index);		// Show which cube was moved.
 
-   if (oldPlayer != m_currentPlayer) {
-      emit playerChanged (m_currentPlayer);
-   }
    m_moveNo = m_moveNo + change;
-   if (m_moveNo < m_endMoveNo) {		// ... but not if game is over.
+   if (m_moveNo < m_endMoveNo) {
+      if (oldPlayer != m_currentPlayer) {
+         emit playerChanged (m_currentPlayer);
+      }
       m_waitingState = isComputer (m_currentPlayer) ? ComputerToMove
                                                     : m_waitingState;
       setUpNextTurn();
+   }
+   else {					// End of game: show winner.
+      moreToDo = false;
+      m_currentPlayer = oldPlayer;
+      showWinner();
    }
    // IDW TODO - If we re-did the winning move, DON'T allow another move!
    return moreToDo;
