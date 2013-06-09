@@ -208,11 +208,9 @@ void Game::loadPlayerSettings()
 
 void Game::startHumanMove (int x, int y)
 {
-   // IDW TODO - Check all cases of KCubeWidget::enableClicks (true/false).
    int  index = x * m_side + y;
    bool humanPlayer = (! isComputer (m_currentPlayer));
    qDebug() << "CLICK" << x << y << "index" << index;
-   // if ((! humanPlayer) && m_waitingToMove && (m_waitingState == ComputerToMove))
    if (! humanPlayer) {
       buttonClick();
    }
@@ -258,7 +256,7 @@ void Game::setUpNextTurn()
          }
 	 // Wait for a button-click to show that the user is ready.
 	 qDebug() << "COMPUTER MUST WAIT";
-         KCubeWidget::enableClicks (true); // IDW test. false);
+         KCubeWidget::enableClicks (true);
          return;
       }
       // Start the computer's move.
@@ -355,8 +353,8 @@ void Game::doMove (int index)
    m_box->copyPosition (m_currentPlayer, computerMove, index);
 
 #if AILog > 0
-   if (! computerMove) { // IDW test. Record a human move in the statistics.
-      m_ai->postMove (m_currentPlayer, index, m_side); // IDW test.
+   if (! computerMove) { // Record a human move in the statistics.
+      m_ai->postMove (m_currentPlayer, index, m_side);
    }
 #endif
    emit setAction (UNDO, true);	// Update Undo and Redo actions.
@@ -365,7 +363,7 @@ void Game::doMove (int index)
    bool won = m_box->doMove (m_currentPlayer, index, m_steps);
 #if AILog > 1
    qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
-   // m_box->printBox(); // IDW test.
+   // m_box->printBox();
 #endif
    if (m_steps->count() > 1) {
       m_view->setWaitCursor();	//This will be a stoppable animation.
@@ -389,7 +387,7 @@ void Game::doStep()
 	    m_endMoveNo = m_moveNo;
 #if AILog > 0
 	    qDebug() << "\nCALLING dumpStats()";
-	    m_ai->dumpStats();	// IDW test.
+	    m_ai->dumpStats();
 #endif
 	    showWinner();
             return;
@@ -754,7 +752,6 @@ bool Game::undoRedo (int change)
       m_currentPlayer = oldPlayer;
       showWinner();
    }
-   // IDW TODO - If we re-did the winning move, DON'T allow another move!
    return moreToDo;
 }
 
