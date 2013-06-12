@@ -74,7 +74,7 @@ private slots:
    /**
     * Pop up the settings/preferences/configuration dialog window.
     */
-   void showSettingsDialog();
+   void showSettingsDialog (bool show = true);
 
    /**
     * Check changes in the user's preferences or settings.  Some settings can
@@ -225,6 +225,9 @@ signals:
 protected:
    void saveProperties(KConfigGroup&);
    void readProperties(const KConfigGroup&);
+
+private:
+   void loadSavedSettings (const KConfigGroup& config);
 
 private:
    QTime t; // IDW test.

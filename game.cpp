@@ -125,7 +125,7 @@ void Game::showWinner()
    KMessageBox::information (m_view, s, i18n("Winner"));
 }
 
-void Game::showSettingsDialog()
+void Game::showSettingsDialog (bool show)
 {
    // Show the Preferences/Settings/Configuration dialog.
    KConfigDialog * settings = KConfigDialog::exists ("settings");
@@ -137,6 +137,7 @@ void Game::showSettingsDialog()
       connect (settings, SIGNAL(settingsChanged(QString)), SLOT(newSettings()));
       m_settingsPage = widget;		// Used when reverting/editing settings.
    }
+   if (! show) return;
    settings->show();
    settings->raise();			// Force the dialog to be in front.
 }
@@ -785,17 +786,13 @@ void Game::shutdown()
 
 void Game::saveProperties (KConfigGroup & config)
 {
-   // IDW TODO - Save settings for computer player(s), animation, etc.
-   //            Is Undo right for interrupted animation????
-   //            Do we need Undo for interrupted computer move?
-   //            What happens to the signal when the computer move ends?
-
-   // save current player
+   // Save the current player.
    config.writeEntry ("onTurn", (int) m_currentPlayer);
 
    QStringList list;
    QString owner, value, key;
 
+   // Save the position currently on the board.
    for (int x = 0; x < m_side; x++) {
      for (int y = 0; y < m_side; y++) {
 	key.sprintf ("%u,%u", x, y);
@@ -809,18 +806,22 @@ void Game::saveProperties (KConfigGroup & config)
 	list.clear();
      }
    }
-   config.writeEntry ("CubeDim", m_side);
+
+   // Save the game and player settings.
+   config.writeEntry ("CubeDim",          m_side);
+   config.writeEntry ("PauseForComputer", m_pauseForComputer ? 1 : 0);
+   config.writeEntry ("ComputerPlayer1",  computerPlOne);
+   config.writeEntry ("ComputerPlayer2",  computerPlTwo);
+   config.writeEntry ("Kepler1",          Prefs::kepler1());
+   config.writeEntry ("Kepler2",          Prefs::kepler2());
+   config.writeEntry ("Newton1",          Prefs::newton1());
+   config.writeEntry ("Newton2",          Prefs::newton2());
+   config.writeEntry ("Skill1",           Prefs::skill1());
+   config.writeEntry ("Skill2",           Prefs::skill2());
 }
 
 void Game::readProperties (const KConfigGroup& config)
 {
-  // IDW TODO - Restore settings for computer player(s), animation, etc.
-  //            Prefs::set<name> (xxx); // <name> must a "mutable" kcfg item.
-  //            if (m_settingsPage) m_settingsPage->kcfg_<name>->setValue (xxx);
-  //            Prefs::self()->writeConfig();
-  // IDW TODO - If a computer player is "on turn", wait for a click or use
-  //            a KMessageBox ...
-  qDebug() << "Entering Game::readProperties ...";
   QStringList list;
   QString     key;
   int         owner, value, maxValue;
@@ -880,11 +881,71 @@ void Game::readProperties (const KConfigGroup& config)
        KMessageBox::sorry (m_view, i18n("Current player is neither 1 nor 2."));
        onTurn = 1;
    }
-   // IDW TODO - Set appropriate states and button text: NOT "Start Game".
    m_currentPlayer = (Player) onTurn;
    emit playerChanged (m_currentPlayer);
+
+   // Restore the game and player settings.
+   loadSavedSettings (config);
+   Prefs::self()->writeConfig();
    setUpNextTurn();
-   qDebug() << "Leaving Game::readProperties ...";
+}
+
+void Game::loadSavedSettings (const KConfigGroup& config)
+{
+   showSettingsDialog (false);	// Load the settings dialog but do not show it.
+   if (m_side != Prefs::cubeDim()) {
+      // Update the size setting for the loaded game.
+      Prefs::setCubeDim (m_side);
+      m_settingsPage->kcfg_CubeDim->setValue (m_side);
+   }
+
+   int pause = config.readEntry ("PauseForComputer", -1);
+   if (pause < 0) {		// Older files will not contain more settings,
+      return;			// so keep the existing settings.
+   }
+
+   // Load the PauseForComputer and player settings.
+   bool boolValue = pause > 0 ? true : false;
+   Prefs::setPauseForComputer (boolValue);
+   m_settingsPage->kcfg_PauseForComputer->setChecked (boolValue);
+   m_pauseForComputer = boolValue;
+
+   boolValue = config.readEntry ("ComputerPlayer1", false);
+   Prefs::setComputerPlayer1 (boolValue);
+   m_settingsPage->kcfg_ComputerPlayer1->setChecked (boolValue);
+   computerPlOne = boolValue;
+
+   boolValue = config.readEntry ("ComputerPlayer2", true);
+   Prefs::setComputerPlayer2 (boolValue);
+   m_settingsPage->kcfg_ComputerPlayer2->setChecked (boolValue);
+   computerPlTwo = boolValue;
+
+   boolValue = config.readEntry ("Kepler1", true);
+   Prefs::setKepler1 (boolValue);
+   m_settingsPage->kcfg_Kepler1->setChecked (boolValue);
+
+   boolValue = config.readEntry ("Kepler2", true);
+   Prefs::setKepler2 (boolValue);
+   m_settingsPage->kcfg_Kepler2->setChecked (boolValue);
+
+   boolValue = config.readEntry ("Newton1", false);
+   Prefs::setNewton1 (boolValue);
+   m_settingsPage->kcfg_Newton1->setChecked (boolValue);
+
+   boolValue = config.readEntry ("Newton2", false);
+   Prefs::setNewton2 (boolValue);
+   m_settingsPage->kcfg_Newton2->setChecked (boolValue);
+
+   int intValue = config.readEntry ("Skill1", 2);
+   Prefs::setSkill1 (intValue);
+   m_settingsPage->kcfg_Skill1->setValue (intValue);
+
+   intValue = config.readEntry ("Skill2", 2);
+   Prefs::setSkill2 (intValue);
+   m_settingsPage->kcfg_Skill2->setValue (intValue);
+
+   m_ai->setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
+                   Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
 }
 
 bool Game::isComputer (Player player) const
