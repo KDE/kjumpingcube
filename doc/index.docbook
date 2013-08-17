@@ -81,7 +81,7 @@ players and just watch.</para>
 
 <para>That can be a good idea if you have not played &kjumpingcube; before. See
 <link linkend="faq">Frequently asked questions</link>,
-"How do I get started in this game?".</para>
+<quote>How do I get started in this game?</quote>.</para>
 
 <para>The playing area is a box of cubes containing points. When the game
 starts each cube has one point, no owner and a neutral color. If you click
@@ -111,7 +111,7 @@ becomes interesting and challenging.</para>
 
 <para>If you have not played &kjumpingcube; before, try watching a game or two
 where the computer plays against itself. See <link linkend="faq">Frequently
-asked questions</link>, "How do I get started in this game?".</para>
+asked questions</link>, <quote>How do I get started in this game?</quote>.</para>
 
 <para>You move by clicking on a neutral cube or one you already own. If you click on a neutral cube, you gain ownership over it and the cube’s color changes to your playing color. Each time you click on a cube, the value of the cube increases by one. If the cube's value reaches a maximum, some of its points move to the cube’s immediate neighbors (the points <quote>jump</quote> around). If a neighboring cube happens to be owned by the other player, it is captured, together with all of its points, and changes to your playing color.</para>
 
@@ -142,7 +142,7 @@ asked questions</link>, "How do I get started in this game?".</para>
 
 	<sect1 id="strattips"><title>Strategies and Tips</title>
 	<itemizedlist>
-	    <listitem><para>It may help to set up a computer v. computer game and select the check boxes in the settings dialog that let you step through moves and animations at your own pace. See <link linkend="faq">Frequently asked questions</link>, "How do I get started in this game?" and "That was too fast for me, how can I slow it down?".</para></listitem>
+	    <listitem><para>It may help to set up a computer v. computer game and select the check boxes in the settings dialog that let you step through moves and animations at your own pace. See <link linkend="faq">Frequently asked questions</link>, <quote>How do I get started in this game?</quote> and <quote>That was too fast for me, how can I slow it down?</quote>.</para></listitem>
 	<listitem><para>If you have a cube which is right next to an opponent's cube, try to stay ahead by increasing before your opponent does.</para></listitem>
 	<listitem><para>If such a cube's points are less than or equal to the opponent's, try to avoid increasing: you cannot win that arms race.</para></listitem>
 	<listitem><para>Look for opportunities to increase and capture, but beware of your opponent being able to reply by starting a cascade.</para></listitem>
@@ -186,10 +186,10 @@ settings dialog turn the step mode on or off (see the
 	</variablelist>
 
 <para> In each case, the button contains some text to indicate what action can
-be done or is expected, such as "Stop animation" or "Your turn".</para>
+be done or is expected, such as <guibutton>Stop animation</guibutton> or <guibutton>Your turn</guibutton>.</para>
 
 <para> If you stop the calculation of a computer move, the computer will pick
-the best move it has so far. If you interrupt an animation (e.g. a cascade
+the best move it has so far. If you interrupt an animation (&eg; a cascade
 that is taking too long), the move will proceed to its conclusion immediately.
 </para>
 </sect2>
@@ -313,9 +313,9 @@ of the &kde; Fundamentals.
  <answer><para>The moves of &kjumpingcube; can be hard to follow at first. One way
      to learn is to watch games where the computer plays against itself. Use the
      <link linkend="configuration">Game Configuration</link> dialog to set it up.
-     Check both "Playing now" boxes, choose a board size in the range 3x3 to 5x5,
-     set the animation to "Scatter dots" and the move-time to "Long", then
-     click "OK". Now click the big green button in the toolbar to start the game.
+     Check both <guilabel>Playing now</guilabel> boxes, choose a board size in the range 3x3 to 5x5,
+     set the animation to <guilabel>Scatter dots</guilabel> and the move-time to <guilabel>Long</guilabel>, then
+     click <guibutton>OK</guibutton>. Now click the big green button in the toolbar to start the game.
      </para></answer>
 </qandaentry>
 <qandaentry>
