@@ -73,7 +73,18 @@ public:
                                   } 
                                 }
 
-    bool     doMove  (Player player, int index, QList<int> * steps = 0);
+    // This struct is passed to doMove() and is used to store
+    // everything that is needed by undoMove() to actually undo it.
+    struct MoveUndodata {
+        Player oldPlayer;       // The player previously to move in the position
+        int    oldCubesToWin[3];
+        quint16 changedCubes[maxSide * maxSide]; // 8 bits index, 4 bits owner and 4 bits value
+                                                 // end with 0xffff
+    };
+
+    bool     doMove   (Player player, int index,
+                       MoveUndodata * undodata = 0, QList<int> * steps = 0);
+    void     undoMove (MoveUndodata * undodata);
 #if AILog > 0
     void     printBox();
 #endif

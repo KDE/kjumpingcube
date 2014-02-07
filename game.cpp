@@ -361,7 +361,7 @@ void Game::doMove (int index)
    emit setAction (UNDO, true);	// Update Undo and Redo actions.
    emit setAction (REDO, false);
    m_steps->clear();
-   bool won = m_box->doMove (m_currentPlayer, index, m_steps);
+   bool won = m_box->doMove (m_currentPlayer, index, 0, m_steps);
 #if AILog > 1
    qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
    // m_box->printBox();

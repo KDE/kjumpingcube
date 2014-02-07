@@ -71,13 +71,42 @@ void AI_Box::resizeBox (int side)
     createBox (side);
 }
 
-bool AI_Box::doMove (Player player, int index, QList<int> * steps)
+
+// ----------------------------------------------------------------
+//                         Moves
+
+
+bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<int> * steps)
 {
+    // Check for move legality.
     Player oldOwner = m_owners[index];
     if ((oldOwner != player) && (oldOwner != Nobody)) {
-	qDebug() << "ILLEGAL MOVE: player" << player << "old" << oldOwner <<
-                                      "at" << index/m_side << index%m_side;
+	qDebug() << "ILLEGAL MOVE: player" << player << "old" << oldOwner
+                 << "at" << index/m_side << index%m_side;
+
         return false;			// The move is not valid.
+    }
+
+    if (undodata) {
+        undodata->oldCubesToWin[Nobody] = m_cubesToWin[Nobody];
+        undodata->oldCubesToWin[One] = m_cubesToWin[One];
+        undodata->oldCubesToWin[Two] = m_cubesToWin[Two];
+    }
+
+    // Bitfield to mark saved cube indices.
+    quint64 savedCubes[(maxSide * maxSide - 1) / 64 + 1];
+    for (int i = 0; i < (maxSide * maxSide - 1) / 64 + 1; ++i)
+        savedCubes[i] = 0ULL;
+
+    // Save old values of changed cubes (owner + value) into the
+    // MoveUndodata to be restored by undoMove().
+    int saveCubes = 0;
+    if (undodata) {
+        undodata->changedCubes[saveCubes++] = ((index << 8) 
+                                               | (m_owners[index] << 4)
+                                               | (m_values[index] << 0));
+        savedCubes[index / 64] |= 1ULL << (index % 64);
+
     }
 
     m_stackPtr = -1;
@@ -106,6 +135,7 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
     while (m_stackPtr >= 0) {
         // Pop the stack and decrease an overloaded cube.
 	index = m_stack [m_stackPtr--];
+
 	// fprintf (stderr, "  Expand at %d, value %d\n", index, m_values[index]);
         m_values[index] = m_values[index] - m_maxValues[index];
 
@@ -120,6 +150,13 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
         for (int nb = 0; nb < 4; nb++) {
             if ((indexN = m_neighbors [offset + nb]) < 0)
                 continue;		// No neighbor on this side.
+
+            if (undodata && !(savedCubes[indexN / 64] & (1ULL << (indexN % 64)))) {
+                undodata->changedCubes[saveCubes++] = ((indexN << 8) 
+                                                       | (m_owners[indexN] << 4)
+                                                       | (m_values[indexN] << 0));
+                savedCubes[indexN / 64] |= 1ULL << (indexN % 64);
+            }
 
             // Increase the neighbor and take over ownership.
             oldOwner = m_owners[indexN];
@@ -147,6 +184,12 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
             if (steps) {
                 steps->append (0);
             }
+
+            // Mark the end of changed cubes in the undodata.
+            if (undodata) {
+                undodata->changedCubes[saveCubes++] = 0xffff;
+            }
+
             // printBox();
             // fprintf (stderr, "PLAYER WON\n");
             return true;
@@ -154,9 +197,31 @@ bool AI_Box::doMove (Player player, int index, QList<int> * steps)
         // printBox();
     } // End while()
 
+    if (undodata) {
+        undodata->changedCubes[saveCubes++] = 0xffff;
+    }
+
     // printBox();
     return false;
 }
+
+void AI_Box::undoMove (MoveUndodata * undodata)
+{
+    m_cubesToWin[Nobody] = undodata->oldCubesToWin[Nobody];
+    m_cubesToWin[One] = undodata->oldCubesToWin[One];
+    m_cubesToWin[Two] = undodata->oldCubesToWin[Two];
+
+    for (int i = 0; undodata->changedCubes[i] != 0xffff; ++i) {
+        int index = (undodata->changedCubes[i] >> 8) & 0xff;
+        m_owners[index] = Player((undodata->changedCubes[i] >> 4) & 0xf);
+        m_values[index] = (undodata->changedCubes[i] >> 0) & 0xf;
+    }
+}
+
+
+// ----------------------------------------------------------------
+//                         Game history
+
 
 void AI_Box::copyPosition (Player player, bool isAI, int index)
 {

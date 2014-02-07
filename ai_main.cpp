@@ -277,8 +277,9 @@ Move AI_Main::tryMoves (Player player, int level)
                << "val" << cubesToMove[n].val;
 #endif
 
-      copyPosition (player, true, 0);
-      bool won = doMove (player, cubesToMove[n].index);
+      MoveUndodata  undodata;
+      bool won = doMove (player, cubesToMove[n].index, &undodata);
+
 #if AILog > 2
       n_simulate++;
 #endif
@@ -298,7 +299,7 @@ Move AI_Main::tryMoves (Player player, int level)
                   << "move" << cubesToMove[n].index/m_side
                   << cubesToMove[n].index%m_side;
 #endif
-         undoPosition (player);
+         undoMove(&undodata);
          break;
       }
       else if (level >= m_maxLevel) {
@@ -344,7 +345,7 @@ Move AI_Main::tryMoves (Player player, int level)
 #endif
       }
       Player p = player;
-      undoPosition (player);
+      undoMove(&undodata);
       if (p != player) qDebug() << "ERROR: PLAYER CHANGED: from" << p <<
                                                             "to" << player;
       if (m_stopped) {
