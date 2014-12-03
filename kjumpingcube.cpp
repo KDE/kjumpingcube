@@ -31,7 +31,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kstandardgameaction.h>
-#include <kaction.h>
+#include <QAction>
 #include <kactioncollection.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
@@ -132,8 +132,8 @@ void KJumpingCube::initKAction() {
   gameMapper->setMapping (actionButton, BUTTON);
   connect (actionButton, SIGNAL(clicked()), gameMapper, SLOT(map()));
 
-  KAction * b = actionCollection()->addAction (QLatin1String ("action_button"));
-  b->setDefaultWidget (actionButton);	// Show the button on the toolbar.
+  QAction * b = actionCollection()->addAction (QLatin1String ("action_button"));
+  //QT5 b->setDefaultWidget (actionButton);	// Show the button on the toolbar.
   changeButton (true, true);		// Load the button's style sheet.
   changeButton (false);			// Set the button to be inactive.
 
@@ -189,4 +189,4 @@ void KJumpingCube::statusMessage (const QString & message, bool timed)
   }
 }
 
-#include "kjumpingcube.moc"
+

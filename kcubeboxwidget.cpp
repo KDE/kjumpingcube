@@ -513,4 +513,4 @@ void KCubeBoxWidget::hidePopup()
    update();
 }
 
-#include "kcubeboxwidget.moc"
+

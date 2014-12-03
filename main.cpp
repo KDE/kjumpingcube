@@ -23,7 +23,7 @@
 #include "kjumpingcube.h"
 #include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <klocale.h>
 #include <kglobal.h>
 
@@ -33,8 +33,8 @@ static const char description[] =
 
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData( "kjumpingcube", 0, ki18n("KJumpingCube"),
-                          KJC_VERSION, ki18n(description), KAboutData::License_GPL,
+    K4AboutData aboutData( "kjumpingcube", 0, ki18n("KJumpingCube"),
+                          KJC_VERSION, ki18n(description), K4AboutData::License_GPL,
                           ki18n("(c) 1998-2000, Matthias Kiefer"), KLocalizedString(),
                           "http://games.kde.org/kjumpingcube" );
     aboutData.addAuthor(ki18n("Matthias Kiefer"),KLocalizedString(), "matthias.kiefer@gmx.de");

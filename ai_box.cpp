@@ -430,4 +430,4 @@ void AI_Box::printBox()
 }
 #endif
 
-#include "ai_box.moc"
+
