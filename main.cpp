@@ -24,8 +24,6 @@
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 #include <K4AboutData>
-#include <klocale.h>
-#include <kglobal.h>
 
 
 static const char description[] =
@@ -48,7 +46,6 @@ int main(int argc, char *argv[])
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication application;
-    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
     // All session management is handled in the RESTORE macro
     if (application.isSessionRestored()) {

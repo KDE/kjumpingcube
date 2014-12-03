@@ -24,10 +24,8 @@
 #include "ai_newton.h"
 #include "ai_box.h"
 
-#include <QApplication>
 
 #include <QDebug>
-#include <QTime>
 
 #include "prefs.h"
 

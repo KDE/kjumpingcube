@@ -26,17 +26,14 @@
 #include "prefs.h"
 
 #include <QSignalMapper>
-#include <QRegExp>
-
-#include <klocale.h>
+#include <QStatusBar>
+#include <KLocalizedString>
 #include <kmessagebox.h>
 #include <kstandardgameaction.h>
 #include <QAction>
 #include <kactioncollection.h>
-#include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <kconfigdialog.h>
-#include <kicon.h>
 
 #define MESSAGE_TIME 2000
 

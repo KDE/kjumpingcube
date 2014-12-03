@@ -23,8 +23,6 @@
 
 #include <KgTheme>
 #include <KStandardDirs>
-#include <KLocalizedString>
-#include <KMessageBox>
 #include <QTimer>
 #include <QLabel>
 #include <QPainter>

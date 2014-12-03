@@ -33,7 +33,6 @@
 #include <KFileDialog>
 #include <KTemporaryFile>
 #include <kio/netaccess.h>
-#include <QTimer>
 
 #include "prefs.h"
 

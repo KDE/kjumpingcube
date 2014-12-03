@@ -17,8 +17,7 @@
 **************************************************************************** */
 
 #include "ai_box.h"
-// #include <QStack>
-
+// 
 #include <QDebug>
 #include "stdio.h"
 
