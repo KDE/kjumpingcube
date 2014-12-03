@@ -57,7 +57,7 @@ ki18n_wrap_ui(kjumpingcube_SRCS settings.ui )
 
 kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
-kde4_add_app_icon(kjumpingcube_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kjumpingcube.png")
+kde4_add_app_icon(kjumpingcube_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-apps-kjumpingcube.png")
 add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
 target_link_libraries(kjumpingcube  KF5::KIOCore KF5KDEGames KF5::XmlGui KF5::KDELibs4Support Qt5::Svg)
