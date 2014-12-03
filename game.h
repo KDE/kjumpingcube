@@ -33,7 +33,6 @@ class KCubeBoxWidget;
 class SettingsWidget;
 class AI_Main;
 class AI_Box;
-class QTimer;
 
 /**
 * Codes for actions available to users of the Game class.

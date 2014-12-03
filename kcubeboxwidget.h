@@ -32,7 +32,6 @@
 #include <QResizeEvent>
 #include <QList>
 
-class KConfigGroup;
 class QTimer;
 class QLabel;
 
