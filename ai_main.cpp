@@ -121,7 +121,7 @@ AI_Main::AI_Main (QObject * parent, int side) : AI_Box (parent, side)
 
    m_random.setSeed (0);
 
-   connect (m_thread, SIGNAL(done(int)), this, SIGNAL(done(int)));
+   connect(m_thread, &ThreadedAI::done, this, &AI_Main::done);
 }
 
 AI_Main::~AI_Main()

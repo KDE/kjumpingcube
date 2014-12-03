@@ -197,8 +197,8 @@ void KCubeBoxWidget::init()
    m_highlightTimer->setInterval (1500);
    m_highlighted = -1;
 
-   connect (animationTimer, SIGNAL(timeout()), SLOT(nextAnimationStep()));
-   connect (m_highlightTimer, SIGNAL(timeout()), SLOT(highlightDone()));
+   connect(animationTimer, &QTimer::timeout, this, &KCubeBoxWidget::nextAnimationStep);
+   connect(m_highlightTimer, &QTimer::timeout, this, &KCubeBoxWidget::highlightDone);
    setNormalCursor();
    setPopup();
 }
@@ -214,8 +214,7 @@ void KCubeBoxWidget::initCubes()
       cubes.append (cube);
       cube->setCoordinates (n / m_side, n % m_side, m_side - 1);
       cube->setPixmaps (&elements);
-      connect (cube, SIGNAL (clicked(int,int)),
-                     SLOT   (checkClick(int,int)));
+      connect(cube, &KCubeWidget::clicked, this, &KCubeBoxWidget::checkClick);
       cube->show();
    }
 }

@@ -65,9 +65,9 @@ Game::Game (const int d, KCubeBoxWidget * view, QWidget * parent)
    m_ai                 = new AI_Main (this, m_side);
    m_steps              = new QList<int>;
 
-   connect (m_view, SIGNAL(mouseClick(int,int)), SLOT(startHumanMove(int,int)));
-   connect (m_ai,   SIGNAL(done(int)), SLOT(moveCalculationDone(int)));
-   connect (m_view, SIGNAL(animationDone(int)), SLOT(animationDone(int)));
+   connect(m_view, &KCubeBoxWidget::mouseClick, this, &Game::startHumanMove);
+   connect(m_ai, &AI_Main::done, this, &Game::moveCalculationDone);
+   connect(m_view, &KCubeBoxWidget::animationDone, this, &Game::animationDone);
 }
 
 Game::~Game()
@@ -133,7 +133,7 @@ void Game::showSettingsDialog (bool show)
       settings->setFaceType (KPageDialog::Plain);
       SettingsWidget * widget = new SettingsWidget (m_parent);
       settings->addPage (widget, i18n("General"), "games-config-options");
-      connect (settings, SIGNAL(settingsChanged(QString)), SLOT(newSettings()));
+      connect(settings, &KConfigDialog::settingsChanged, this, &Game::newSettings);
       m_settingsPage = widget;		// Used when reverting/editing settings.
    }
    if (! show) return;
