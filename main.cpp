@@ -21,9 +21,12 @@
 **************************************************************************** */
 #include "version.h"
 #include "kjumpingcube.h"
-#include <kapplication.h>
-#include <kcmdlineargs.h>
-#include <K4AboutData>
+
+
+#include <KAboutData>
+#include <QApplication>
+#include <KLocalizedString>
+#include <QCommandLineParser>
 
 
 static const char description[] =
@@ -31,29 +34,35 @@ static const char description[] =
 
 int main(int argc, char *argv[])
 {
-    K4AboutData aboutData( "kjumpingcube", 0, ki18n("KJumpingCube"),
-                          KJC_VERSION, ki18n(description), K4AboutData::License_GPL,
-                          ki18n("(c) 1998-2000, Matthias Kiefer"), KLocalizedString(),
+    KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
+                          KJC_VERSION, i18n(description), KAboutLicense::GPL,
+                          i18n("(c) 1998-2000, Matthias Kiefer"),
                           "http://games.kde.org/kjumpingcube" );
-    aboutData.addAuthor(ki18n("Matthias Kiefer"),KLocalizedString(), "matthias.kiefer@gmx.de");
-    aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
-    aboutData.addCredit(ki18n("Ian Wadham"),
-                      ki18n("Upgrade to KDE4 and SVG artwork support."),
+    aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), "matthias.kiefer@gmx.de");
+    aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
+    aboutData.addCredit(i18n("Ian Wadham"),
+                      i18n("Upgrade to KDE4 and SVG artwork support."),
                       "iandw.au@gmail.com");
-    aboutData.addCredit(ki18n("Eugene Trounev"),
-                      ki18n("Graphics for KDE 4.0 version."),
+    aboutData.addCredit(i18n("Eugene Trounev"),
+                      i18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
-    KCmdLineArgs::init( argc, argv, &aboutData );
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
-    KApplication application;
 
     // All session management is handled in the RESTORE macro
-    if (application.isSessionRestored()) {
+    if (app.isSessionRestored()) {
         RESTORE(KJumpingCube)
     }
     else {
 		KJumpingCube *kjumpingcube = new KJumpingCube;
 		kjumpingcube->show();
 	}
-   return application.exec();
+   return app.exec();
 }

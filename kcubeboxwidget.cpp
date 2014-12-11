@@ -22,13 +22,14 @@
 #include "kcubeboxwidget.h"
 
 #include <KgTheme>
-#include <KStandardDirs>
+
 #include <QTimer>
 #include <QLabel>
 #include <QPainter>
 
 #include <assert.h>
 #include <kcursor.h>
+#include <QStandardPaths>
 
 #include "prefs.h"
 
@@ -184,8 +185,7 @@ void KCubeBoxWidget::init()
    color0 = Prefs::color0();
 
    KgTheme theme((QByteArray()));
-   theme.readFromDesktopFile(KStandardDirs::locate("appdata",
-                                                   "pics/default.desktop"));
+   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::DataLocation, "pics/default.desktop"));
    svg.load (theme.graphicsPath());
 
    initCubes();
