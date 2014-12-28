@@ -698,7 +698,7 @@ bool Game::newGameOK()
       if (m_settingsPage) {
           m_settingsPage->kcfg_CubeDim->setValue (m_side);
       }
-      Prefs::self()->writeConfig();
+      Prefs::self()->save();
    }
    qDebug() << "CONTINUE GAME";
    return false;			// Continue the current game.
@@ -885,7 +885,7 @@ void Game::readProperties (const KConfigGroup& config)
 
    // Restore the game and player settings.
    loadSavedSettings (config);
-   Prefs::self()->writeConfig();
+   Prefs::self()->save();
    setUpNextTurn();
 }
 
