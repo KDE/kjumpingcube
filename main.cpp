@@ -27,6 +27,7 @@
 #include <QApplication>
 #include <KLocalizedString>
 #include <QCommandLineParser>
+#include <kdelibs4configmigrator.h>
 
 
 static const char description[] =
@@ -47,6 +48,11 @@ int main(int argc, char *argv[])
                       i18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
     QApplication app(argc, argv);
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kjumpingcube"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
+    migrate.migrate();
+
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
