@@ -76,4 +76,4 @@ ecm_install_icons( ICONS hi128-apps-kjumpingcube.png  hi16-apps-kjumpingcube.png
 
 
 
-
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
