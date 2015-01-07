@@ -27,11 +27,11 @@
 #include "settingswidget.h"
 
 #include <KConfigDialog> // IDW test.
-
+#include <QDebug>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KFileDialog>
-#include <KTemporaryFile>
+#include <QTemporaryFile>
 #include <kio/netaccess.h>
 
 #include "prefs.h"
@@ -591,7 +591,7 @@ void Game::saveGame (bool saveAs)
       m_gameURL = url;
    }
 
-   KTemporaryFile tempFile;
+   QTemporaryFile tempFile;
    tempFile.open();
    KConfig config (tempFile.fileName(), KConfig::SimpleConfig);
    KConfigGroup main (&config, "KJumpingCube");
