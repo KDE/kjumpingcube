@@ -563,7 +563,7 @@ void Game::saveGame (bool saveAs)
 {
    if (saveAs || m_gameURL.isEmpty()) {
       int result=0;
-      KUrl url;
+      QUrl url;
 
       do {
          url = KFileDialog::getSaveUrl (m_gameURL.url(), "*.kjc", m_view, 0);
@@ -574,7 +574,8 @@ void Game::saveGame (bool saveAs)
          // check filename
          QRegExp pattern ("*.kjc", Qt::CaseSensitive, QRegExp::Wildcard);
          if (! pattern.exactMatch (url.fileName())) {
-            url.setFileName (url.fileName()+".kjc");
+            url = url.adjusted(QUrl::RemoveFilename);
+            url.setPath(url.path() + url.fileName()+".kjc");
          }
 
          if (KIO::NetAccess::exists (url, KIO::NetAccess::DestinationSide,
@@ -612,7 +613,7 @@ void Game::saveGame (bool saveAs)
 void Game::loadGame()
 {
    bool fileOk=true;
-   KUrl url;
+   QUrl url;
 
    do {
       url = KFileDialog::getOpenUrl (m_gameURL.url(), "*.kjc", m_view, 0);

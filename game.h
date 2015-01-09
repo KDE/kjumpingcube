@@ -25,7 +25,7 @@
 
 #include <QTime> // IDW test.
 
-#include <KUrl>
+#include <QUrl>
 #include <QList>
 
 class KConfigGroup;
@@ -266,7 +266,7 @@ private:
    bool             m_pauseForComputer;	// If true, pause before each AI move.
    bool             m_pauseForStep;	// If true, pause before animation step.
 
-   KUrl             m_gameURL;		// Location of load/save file.
+   QUrl             m_gameURL;		// Location of load/save file.
 
 private slots:
    void   newGame();			// Slot needed for queued invocation.
