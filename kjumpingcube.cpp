@@ -46,10 +46,10 @@ KJumpingCube::KJumpingCube()
    m_view->makeStatusPixmaps (30);
 
    connect(m_game,SIGNAL(playerChanged(int)),SLOT(changePlayerColor(int)));
-   connect(m_game,SIGNAL(buttonChange(bool,bool,const QString&)),
-                  SLOT(changeButton(bool,bool,const QString&)));
-   connect(m_game,SIGNAL(statusMessage(const QString&, bool)),
-                  SLOT(statusMessage(const QString&, bool)));
+   connect(m_game,SIGNAL(buttonChange(bool,bool,QString)),
+                  SLOT(changeButton(bool,bool,QString)));
+   connect(m_game,SIGNAL(statusMessage(QString,bool)),
+                  SLOT(statusMessage(QString,bool)));
 
    // Tell the KMainWindow that this is indeed the main widget.
    setCentralWidget (m_view);
@@ -65,8 +65,8 @@ KJumpingCube::KJumpingCube()
 
    initKAction();
 
-   connect (m_game, SIGNAL (setAction(const Action,const bool)),
-                    SLOT   (setAction(const Action,const bool)));
+   connect (m_game, SIGNAL (setAction(Action,bool)),
+                    SLOT   (setAction(Action,bool)));
    m_game->gameActions (NEW);		// Start a new game.
 }
 
