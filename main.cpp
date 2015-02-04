@@ -35,6 +35,12 @@ static const char description[] =
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kjumpingcube"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
+    migrate.migrate();
+
     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"),
@@ -47,11 +53,6 @@ int main(int argc, char *argv[])
     aboutData.addCredit(i18n("Eugene Trounev"),
                       i18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
-    QApplication app(argc, argv);
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("kjumpingcube"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
-    migrate.migrate();
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
