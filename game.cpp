@@ -30,7 +30,7 @@
 #include <QDebug>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KFileDialog>
+#include <QFileDialog>
 #include <QTemporaryFile>
 #include <kio/netaccess.h>
 
@@ -566,7 +566,7 @@ void Game::saveGame (bool saveAs)
       QUrl url;
 
       do {
-         url = KFileDialog::getSaveUrl (m_gameURL.url(), "*.kjc", m_view, 0);
+         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL.url(), "*.kjc");
 
          if (url.isEmpty())
             return;
@@ -616,7 +616,7 @@ void Game::loadGame()
    QUrl url;
 
    do {
-      url = KFileDialog::getOpenUrl (m_gameURL.url(), "*.kjc", m_view, 0);
+      url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL.url(), "*.kjc");
       if (url.isEmpty())
          return;
       if (! KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, m_view)) {
