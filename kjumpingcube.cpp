@@ -34,6 +34,7 @@
 #include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kconfigdialog.h>
+#include <QWidgetAction>
 
 #define MESSAGE_TIME 2000
 
@@ -129,8 +130,10 @@ void KJumpingCube::initKAction() {
   gameMapper->setMapping (actionButton, BUTTON);
   connect (actionButton, SIGNAL(clicked()), gameMapper, SLOT(map()));
 
-  QAction * b = actionCollection()->addAction (QLatin1String ("action_button"));
-  //QT5 b->setDefaultWidget (actionButton);	// Show the button on the toolbar.
+  QWidgetAction *widgetAction = new QWidgetAction(this);
+  widgetAction->setDefaultWidget(actionButton);
+  actionCollection()->addAction (QLatin1String ("action_button"), widgetAction);
+
   changeButton (true, true);		// Load the button's style sheet.
   changeButton (false);			// Set the button to be inactive.
 

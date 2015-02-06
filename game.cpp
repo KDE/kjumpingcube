@@ -292,8 +292,7 @@ void Game::computeMove()
    setStopAction();
    emit setAction (HINT, false);
    if (isComputer (m_currentPlayer)) {
-       emit statusMessage (i18n("Computer player %1 is moving")
-                           .arg(m_currentPlayer), false);
+       emit statusMessage (i18n("Computer player %1 is moving", m_currentPlayer), false);
    }
    m_ai->getMove (m_currentPlayer, m_box);
 }
