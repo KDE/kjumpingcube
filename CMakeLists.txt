@@ -57,7 +57,7 @@ ki18n_wrap_ui(kjumpingcube_SRCS settings.ui )
 
 kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc )
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-apps-kjumpingcube.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kjumpingcube.png")
 ecm_add_app_icon(kjumpingcube_SRCS ICONS ${ICONS_SRCS})
 add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
@@ -72,7 +72,7 @@ install( PROGRAMS org.kde.kjumpingcube.desktop  DESTINATION  ${KDE_INSTALL_APPDI
 install( FILES kjumpingcube.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
 install( FILES kjumpingcubeui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kjumpingcube )
 
-ecm_install_icons( ICONS hi128-apps-kjumpingcube.png  hi16-apps-kjumpingcube.png  hi22-apps-kjumpingcube.png  hi32-apps-kjumpingcube.png  hi48-apps-kjumpingcube.png  hi64-apps-kjumpingcube.png DESTINATION ${KDE_INSTALL_ICONDIR}   )
+ecm_install_icons( ICONS 128-apps-kjumpingcube.png  16-apps-kjumpingcube.png  22-apps-kjumpingcube.png  32-apps-kjumpingcube.png  48-apps-kjumpingcube.png  64-apps-kjumpingcube.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
 
 
 
