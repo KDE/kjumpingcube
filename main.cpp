@@ -35,11 +35,13 @@ static const char description[] =
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kjumpingcube"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
     migrate.migrate();
-    QApplication app(argc, argv);
 
 
     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
