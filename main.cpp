@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
     migrate.migrate();
-
+    KLocalizedString::setApplicationDomain("kjumpingcube");
 
     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
