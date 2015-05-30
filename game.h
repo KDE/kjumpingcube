@@ -23,6 +23,7 @@
 
 #include "ai_globals.h"
 
+#include <QObject>
 #include <QTime> // IDW test.
 
 #include <QUrl>
