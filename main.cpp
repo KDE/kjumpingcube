@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
 
     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
-                          i18n("(c) 1998-2000, Matthias Kiefer"),
-                          "http://games.kde.org/kjumpingcube" );
+                          i18n("(c) 1998-2000, Matthias Kiefer"));
     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), "matthias.kiefer@gmx.de");
     aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     aboutData.addCredit(i18n("Ian Wadham"),
@@ -56,6 +55,7 @@ int main(int argc, char *argv[])
     aboutData.addCredit(i18n("Eugene Trounev"),
                       i18n("Graphics for KDE 4.0 version."),
                       "irs_me@hotmail.com");
+    aboutData.setHomepage("http://games.kde.org/kjumpingcube");
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
