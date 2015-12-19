@@ -829,8 +829,8 @@ void Game::readProperties (const KConfigGroup& config)
   int cubeDim = config.readEntry ("CubeDim", minSide);
   if ((cubeDim < minSide) || (cubeDim > maxSide)) {
      KMessageBox::sorry (m_view, i18n("The file's cube box size is outside "
-                                    "the range %1 to %2. It will be set to %1.")
-                                    .arg(minSide).arg(maxSide));
+                                    "the range %1 to %2. It will be set to %1.",
+                                    minSide, maxSide));
      cubeDim = 3;
   }
 
@@ -844,8 +844,7 @@ void Game::readProperties (const KConfigGroup& config)
 	list = config.readEntry (key, QStringList());
 	// List length must be 2, owner must be 0-2, value >= 1 and <= max().
 	if (list.count() < 2) {
-	    KMessageBox::sorry (m_view, i18n("Missing input line for cube %1.")
-		    .arg(key));
+	    KMessageBox::sorry (m_view, i18n("Missing input line for cube %1.", key));
 	    owner = 0;
 	    value = 1;
 	}
@@ -855,15 +854,14 @@ void Game::readProperties (const KConfigGroup& config)
 	}
 	if ((owner < 0) || (owner > 2)) {
 	    KMessageBox::sorry (m_view, i18n("Owner of cube %1 is outside the "
-                                           "range 0 to 2.").arg(key));
+                                           "range 0 to 2.", key));
 	    owner = 0;
 	}
 	int index = x * m_side + y;
 	maxValue = (owner == 0) ? 1 : m_box->maxValue (index);
 	if ((value < 1) || (value > maxValue)) {
 	    KMessageBox::sorry (m_view, i18n("Value of cube %1 is outside the "
-                                           "range 1 to %2.")
-                                           .arg(key).arg(maxValue));
+                                           "range 1 to %2.", key, maxValue));
 	    value = maxValue;
 	}
 	m_view->displayCube (index, (Player) owner, value);
