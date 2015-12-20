@@ -2,10 +2,12 @@
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
-      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
   <kcfgfile name="kjumpingcuberc"/>
   <group name="Game">
-    <entry name="AnimationSpeed" type="Int" min="1" max="10">
+    <entry name="AnimationSpeed" type="Int">
+      <min>1</min>
+      <max>10</max>
       <label>Animation speed of overflowing dice</label>
       <default>4</default>
     </entry>
@@ -37,7 +39,9 @@
       <label>Color of player 2.</label>
       <default>#6193cf</default>
     </entry>
-    <entry name="CubeDim" type="Int" min="3" max="15">
+    <entry name="CubeDim" type="Int">
+      <min>3</min>
+      <max>15</max>
       <label>Size of the playing field.</label>
       <default>6</default>
     </entry>
