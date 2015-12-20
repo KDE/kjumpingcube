@@ -6,7 +6,7 @@
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
 
-<ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+<ToolBar name="mainToolBar" noMerge="true"><text>Main Toolbar</text>
     <Action name="action_button"/>
     <Action name="options_configure"/>
     <Separator/>
