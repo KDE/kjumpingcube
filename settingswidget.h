@@ -15,6 +15,9 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ********************************************************************** */
 
+#ifndef SETTINGSWIDGET_H
+#define SETTINGSWIDGET_H
+
 // Settings widget.
 #include "ui_settings.h"
 
@@ -27,3 +30,6 @@ public:
             setupUi(this);
         }
 };
+
+#endif
+
