@@ -443,7 +443,7 @@ int AI_Main::findCubesToMove (Move * c2m, const Player player,
 
    int counter = 0;
    // Find all moves with minimum assessment
-   for (n = 0; n < moves; n++) {
+   for (n = 0; n < moves; ++n) {
        if (c2m[n].val == min) {
           c2m[counter].index = c2m[n].index;
           c2m[counter].val = c2m[n].val;
@@ -462,7 +462,7 @@ int AI_Main::findCubesToMove (Move * c2m, const Player player,
    // if ((counter <= 2) || (m_skill == Prefs::EnumSkill1::Average))
    // if ((m_skill == Prefs::EnumSkill1::Average) &&
    if (m_currentMoveNo > (m_nCubes / 3)) {	// If board > 1/3 full.
-      for (n = 0; n < moves; n++) {
+      for (n = 0; n < moves; ++n) {
          if (c2m[n].val == secondMin) {
             c2m[counter].index = c2m[n].index;
             c2m[counter].val = c2m[n].val;
