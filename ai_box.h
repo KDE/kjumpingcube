@@ -40,7 +40,7 @@ public:
     /**
     * The KJumpingCube AI_Box constructor.
     */
-    AI_Box          (QObject * parent = 0, int side = 5);
+    explicit AI_Box          (QObject * parent = 0, int side = 5);
     virtual  ~AI_Box();
 
     int      side() const       { return m_side; }

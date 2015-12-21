@@ -24,7 +24,7 @@
 class SettingsWidget : public QWidget, public Ui::Settings
 {
 public:
-    SettingsWidget(QWidget *parent)
+    explicit SettingsWidget(QWidget *parent)
         : QWidget(parent)
         {
             setupUi(this);
