@@ -46,7 +46,6 @@ int AI_Newton::assessCube (const int index,         const Player player,
    int         oCount = 0;
    int         oRank  = 4;
    int         cRank  = maxValues[index] - values[index];
-   int         nCount = 0;
    int         pos    = 0;
 
    // Get statistics for neighbors: count and best rank for player and other.
