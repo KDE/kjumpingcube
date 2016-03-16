@@ -7,28 +7,20 @@ set (KF5_MIN_VERSION "5.15.0")
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
     Crash
-    ItemModels
     WidgetsAddons
-    WindowSystem
-    Config
     DBusAddons
     I18n
     ConfigWidgets
-    TextWidgets
     XmlGui
-    KIO
-    NotifyConfig
-    NewStuff
     KDELibs4Support
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
-find_package(Phonon4Qt5 CONFIG REQUIRED)
 
 include(FeatureSummary)
 include(ECMAddAppIcon)
@@ -65,7 +57,6 @@ ecm_add_app_icon(kjumpingcube_SRCS ICONS ${ICONS_SRCS})
 add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
 target_link_libraries(kjumpingcube
-    KF5::KIOCore
     KF5KDEGames
     KF5::XmlGui
     KF5::KDELibs4Support
