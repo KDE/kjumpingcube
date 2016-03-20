@@ -27,6 +27,7 @@
 #include <KCrash>
 #include <QApplication>
 #include <KLocalizedString>
+#include <KDBusService>
 #include <QCommandLineParser>
 #include <kdelibs4configmigrator.h>
 
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"));
+    aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), "matthias.kiefer@gmx.de");
     aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
     aboutData.addCredit(i18n("Ian Wadham"),
@@ -66,6 +68,7 @@ int main(int argc, char *argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
+    KDBusService service;
 
     app.setWindowIcon(QIcon::fromTheme(QLatin1String("kjumpingcube")));
 

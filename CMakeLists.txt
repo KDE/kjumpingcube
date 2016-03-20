@@ -59,6 +59,7 @@ add_executable(kjumpingcube ${kjumpingcube_SRCS})
 target_link_libraries(kjumpingcube
     KF5KDEGames
     KF5::XmlGui
+    KF5::DBusAddons
     KF5::KDELibs4Support
     Qt5::Svg
 )
