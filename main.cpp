@@ -77,8 +77,8 @@ int main(int argc, char *argv[])
         RESTORE(KJumpingCube)
     }
     else {
-		KJumpingCube *kjumpingcube = new KJumpingCube;
-		kjumpingcube->show();
-	}
-   return app.exec();
+        KJumpingCube *kjumpingcube = new KJumpingCube;
+        kjumpingcube->show();
+    }
+    return app.exec();
 }
