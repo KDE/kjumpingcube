@@ -74,7 +74,7 @@ bool KCubeBoxWidget::loadSettings()
   animationTime = Prefs::animationSpeed() * 150;
 
   // NOTE: When the box-size (Prefs::cubeDim()) changes, Game::newGame() calls
-  //       KCubeBoxWidget::loadSettings() first, then KCubeBoxWidget::setDim(). 
+  //       KCubeBoxWidget::loadSettings() first, then KCubeBoxWidget::setDim().
 
   if (reColorCubes) {
      makeStatusPixmaps (sWidth);		// Make new status pixmaps.
@@ -185,7 +185,7 @@ void KCubeBoxWidget::init()
    color0 = Prefs::color0();
 
    KgTheme theme((QByteArray()));
-   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::DataLocation, "pics/default.desktop"));
+   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, "pics/default.desktop"));
    svg.load (theme.graphicsPath());
 
    initCubes();
