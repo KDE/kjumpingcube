@@ -573,8 +573,7 @@ void Game::saveGame (bool saveAs)
          // check filename
          QRegExp pattern ("*.kjc", Qt::CaseSensitive, QRegExp::Wildcard);
          if (! pattern.exactMatch (url.fileName())) {
-            url = url.adjusted(QUrl::RemoveFilename);
-            url.setPath(url.path() + url.fileName()+".kjc");
+            url.setPath(url.path() +".kjc");
          }
 
          if (KIO::NetAccess::exists (url, KIO::NetAccess::DestinationSide,
