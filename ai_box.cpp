@@ -19,7 +19,7 @@
 #include "ai_box.h"
 // 
 #include <QDebug>
-#include "stdio.h"
+#include <cstdio>
 
 AI_Box::AI_Box (QObject * parent, int side)
     :

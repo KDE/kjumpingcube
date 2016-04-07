@@ -28,7 +28,7 @@
 #include <QPainter>
 
 #include <assert.h>
-#include <kcursor.h>
+#include <KCursor>
 #include <QStandardPaths>
 
 #include "prefs.h"

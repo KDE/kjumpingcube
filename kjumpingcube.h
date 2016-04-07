@@ -24,7 +24,7 @@
 
 #include <QLabel>
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 #include <game.h>
 
 class QAction;

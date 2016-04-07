@@ -11,12 +11,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
-    Crash
-    WidgetsAddons
-    DBusAddons
-    I18n
     ConfigWidgets
+    Crash
+    DBusAddons
+    DocTools
+    KIO
+    I18n
     XmlGui
+    WidgetsAddons
     KDELibs4Support
 )
 
@@ -58,8 +60,11 @@ add_executable(kjumpingcube ${kjumpingcube_SRCS})
 
 target_link_libraries(kjumpingcube
     KF5KDEGames
-    KF5::XmlGui
+    KF5::CoreAddons
+    KF5::Crash
     KF5::DBusAddons
+    KF5::KIOWidgets
+    KF5::XmlGui
     KF5::KDELibs4Support
     Qt5::Svg
 )

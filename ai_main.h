@@ -25,7 +25,7 @@
 #include <QThread>
 #include <QMutex>
 
-#include <krandomsequence.h>
+#include <KRandomSequence>
 
 #include "ai_base.h"
 #include "ai_box.h"

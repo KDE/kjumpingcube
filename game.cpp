@@ -26,13 +26,16 @@
 #include "kcubeboxwidget.h"
 #include "settingswidget.h"
 
-#include <KConfigDialog> // IDW test.
 #include <QDebug>
-#include <KLocalizedString>
-#include <KMessageBox>
 #include <QFileDialog>
 #include <QTemporaryFile>
-#include <kio/netaccess.h>
+
+#include <KConfigDialog> // IDW test.
+#include <KIO/CopyJob>
+#include <KIO/Job>
+#include <KJobWidgets/KJobWidgets>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include "prefs.h"
 
@@ -576,8 +579,9 @@ void Game::saveGame (bool saveAs)
             url.setPath(url.path() +".kjc");
          }
 
-         if (KIO::NetAccess::exists (url, KIO::NetAccess::DestinationSide,
-                                     m_view)) {
+         KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::DestinationSide, 0);
+         KJobWidgets::setWindow(statJob, m_view);
+         if (statJob->exec()) {
             QString mes=i18n("The file %1 exists.\n"
                "Do you want to overwrite it?", url.url());
             result = KMessageBox::warningContinueCancel
@@ -599,7 +603,10 @@ void Game::saveGame (bool saveAs)
    saveProperties (game);
    config.sync();
 
-   if (KIO::NetAccess::upload (tempFile.fileName(), m_gameURL, m_view)) {
+   KIO::FileCopyJob *job = KIO::file_copy(QUrl::fromLocalFile(tempFile.fileName()), m_gameURL, -1, KIO::Overwrite);
+   KJobWidgets::setWindow(job, m_view);
+   job->exec();
+   if (! job->error() ) {
       emit statusMessage (i18n("Game saved as %1", m_gameURL.url()), false);
    }
    else {
@@ -617,16 +624,22 @@ void Game::loadGame()
       url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL.url(), "*.kjc");
       if (url.isEmpty())
          return;
-      if (! KIO::NetAccess::exists(url, KIO::NetAccess::SourceSide, m_view)) {
+      KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::SourceSide, 0);
+      KJobWidgets::setWindow(statJob, m_view);
+      if (! statJob->exec()) {
          QString mes = i18n("The file %1 does not exist!", url.url());
          KMessageBox::sorry (m_view, mes);
          fileOk = false;
       }
    } while (! fileOk);
 
-   QString tempFile;
-   if (KIO::NetAccess::download (url, tempFile, m_view)) {
-      KConfig config( tempFile, KConfig::SimpleConfig);
+   QTemporaryFile tempFile;
+   tempFile.open();
+   KIO::FileCopyJob *job = KIO::file_copy(url, QUrl::fromLocalFile(tempFile.fileName()), -1, KIO::Overwrite);
+   KJobWidgets::setWindow(job, m_view);
+   job->exec();
+   if (! job->error() ) {
+      KConfig config( tempFile.fileName(), KConfig::SimpleConfig);
       KConfigGroup main (&config, "KJumpingCube");
       if (! main.hasKey ("Version")) {
          QString mes = i18n("The file %1 is not a KJumpingCube gamefile!",
@@ -640,8 +653,6 @@ void Game::loadGame()
       readProperties (game);
 
       emit setAction (UNDO, false);
-
-      KIO::NetAccess::removeTempFile (tempFile);
    }
    else
       KMessageBox::sorry (m_view, i18n("There was an error loading file\n%1",
@@ -797,8 +808,8 @@ void Game::saveProperties (KConfigGroup & config)
 	int index = x * m_side + y;
 	owner.sprintf ("%u", m_box->owner (index));
 	value.sprintf ("%u", m_box->value (index));
-	list.append (owner.toAscii());
-	list.append (value.toAscii());
+	list.append (owner.toLatin1());
+	list.append (value.toLatin1());
 	config.writeEntry (key, list);
 
 	list.clear();

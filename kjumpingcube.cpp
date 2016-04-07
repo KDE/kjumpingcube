@@ -28,12 +28,12 @@
 #include <QSignalMapper>
 #include <QStatusBar>
 #include <KLocalizedString>
-#include <kmessagebox.h>
-#include <kstandardgameaction.h>
+#include <KMessageBox>
+#include <KStandardGameAction>
 #include <QAction>
-#include <kactioncollection.h>
-#include <kstandardaction.h>
-#include <kconfigdialog.h>
+#include <KActionCollection>
+#include <KStandardAction>
+#include <KConfigDialog>
 #include <QWidgetAction>
 
 #define MESSAGE_TIME 2000
