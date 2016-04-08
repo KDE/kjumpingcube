@@ -486,7 +486,7 @@ void AI_Main::checkWorkspace (int side)
 {
    if (m_side != side) {
        qDebug() << "NEW AI_Box SIZE NEEDED: was" << m_side << "now" << side;
-       delete m_randomSeq;
+       delete[] m_randomSeq;
        resizeBox (side);
        m_randomSeq = new int [side * side];
    }
@@ -631,7 +631,7 @@ void AI_Main::dumpStats()
       bool won = statsBox->doMove (m->player, m->x * m_side + m->y);
       statsBox->printBox();
       qDeleteAll (*(m->searchStats));
-      delete m;
+      delete[] m;
    }
    m_moveStats.clear();
    delete statsBox;
