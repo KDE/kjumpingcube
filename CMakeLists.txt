@@ -19,7 +19,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     XmlGui
     WidgetsAddons
-    KDELibs4Support
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
@@ -65,7 +64,6 @@ target_link_libraries(kjumpingcube
     KF5::DBusAddons
     KF5::KIOWidgets
     KF5::XmlGui
-    KF5::KDELibs4Support
     Qt5::Svg
 )
 
