@@ -568,7 +568,7 @@ void Game::saveGame (bool saveAs)
       QUrl url;
 
       do {
-         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL.url(), "*.kjc");
+         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, "*.kjc");
 
          if (url.isEmpty())
             return;
@@ -621,7 +621,7 @@ void Game::loadGame()
    QUrl url;
 
    do {
-      url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL.url(), "*.kjc");
+      url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL, "*.kjc");
       if (url.isEmpty())
          return;
       KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::SourceSide, 0);
