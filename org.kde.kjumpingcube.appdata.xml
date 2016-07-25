@@ -5,17 +5,25 @@
   <project_license>GPL-2.0+ and GFDL-1.3</project_license>
   <name>=KJumpingCube</name>
   <name xml:lang="ca">KJumpingCube</name>
+  <name xml:lang="ca-valencia">KJumpingCube</name>
+  <name xml:lang="en-GB">=KJumpingCube</name>
   <name xml:lang="es">KJumpingCube</name>
+  <name xml:lang="nl">=KJumpingCube</name>
   <name xml:lang="pl">KSkacząceSześciany</name>
   <name xml:lang="pt">=KJumpingCube</name>
+  <name xml:lang="sk">KJumpingCube</name>
   <name xml:lang="sl">KJumpingCube</name>
   <name xml:lang="sv">Hoppande kuben</name>
   <name xml:lang="x-test">xx=KJumpingCubexx</name>
   <summary>Territory Capture Game</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
+  <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
+  <summary xml:lang="en-GB">Territory Capture Game</summary>
   <summary xml:lang="es">Juego de captura de territorio</summary>
+  <summary xml:lang="nl">Landverovertjespel</summary>
   <summary xml:lang="pl">Gra w zajmowanie terytorium</summary>
   <summary xml:lang="pt">Jogo de Captura de Territórios</summary>
+  <summary xml:lang="sk">Hra na obsadzovanie území</summary>
   <summary xml:lang="sl">Igra osvajanja ozemlja</summary>
   <summary xml:lang="sv">Territorium-erövringsspel</summary>
   <summary xml:lang="x-test">xxTerritory Capture Gamexx</summary>
@@ -26,7 +34,10 @@
    Players move by clicking on either a vacant square, or on own square.
   </p>
     <p xml:lang="ca">El KJumpingCube és un joc senzill de tàctica per daus. L'àrea de joc consisteix de quadrats que contenen punts. Els jugadors mouen clicant en quadrats disponibles o en els quadrats propis.</p>
+    <p xml:lang="ca-valencia">El KJumpingCube és un joc senzill de tàctica per daus. L'àrea de joc consisteix de quadrats que contenen punts. Els jugadors mouen clicant en quadrats disponibles o en els quadrats propis.</p>
+    <p xml:lang="en-GB">KJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.</p>
     <p xml:lang="es">KJumpingCube es un sencillo juego táctico de dados. El área de juego consiste en cuadros que contienen puntos. Los jugadores mueven haciendo clic en un cuadro vacío o en uno propio.</p>
+    <p xml:lang="nl">KJumpingCube is een eenvoudig tactisch spel met een dobbelsteen. Het speelveld bestaat uit vierkanten met punten. Spelers verplaatsen zich door ofwel te klikken op een leeg vierkant of op een eigen vierkant.</p>
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
     <p xml:lang="pt">O KJumpingCube é um jogo táctico simples com dados. A área de jogo consiste em quadrados que contêm pontos. Os jogadores movem-se ao carregar num quadrado vazio ou num quadrado seu.</p>
     <p xml:lang="sl">KJumpingCube je preprosta taktična igra s kockami. Igralna površina sestoji iz kvadratkov, ki vsebujejo točke. Igralci napredujejo tako, da kliknejo bodisi prazni bodisi lastni kvadratek.</p>
