@@ -13,6 +13,10 @@
   <name xml:lang="pt">=KJumpingCube</name>
   <name xml:lang="sk">KJumpingCube</name>
   <name xml:lang="sl">KJumpingCube</name>
+  <name xml:lang="sr">К‑скочикоцка</name>
+  <name xml:lang="sr-Latn">K‑skočikocka</name>
+  <name xml:lang="sr-ijekavian">К‑скочикоцка</name>
+  <name xml:lang="sr-ijekavianlatin">K‑skočikocka</name>
   <name xml:lang="sv">Hoppande kuben</name>
   <name xml:lang="x-test">xx=KJumpingCubexx</name>
   <summary>Territory Capture Game</summary>
@@ -25,6 +29,10 @@
   <summary xml:lang="pt">Jogo de Captura de Territórios</summary>
   <summary xml:lang="sk">Hra na obsadzovanie území</summary>
   <summary xml:lang="sl">Igra osvajanja ozemlja</summary>
+  <summary xml:lang="sr">Игра заузимања територије</summary>
+  <summary xml:lang="sr-Latn">Igra zauzimanja teritorije</summary>
+  <summary xml:lang="sr-ijekavian">Игра заузимања територије</summary>
+  <summary xml:lang="sr-ijekavianlatin">Igra zauzimanja teritorije</summary>
   <summary xml:lang="sv">Territorium-erövringsspel</summary>
   <summary xml:lang="x-test">xxTerritory Capture Gamexx</summary>
   <description>
@@ -41,6 +49,10 @@
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
     <p xml:lang="pt">O KJumpingCube é um jogo táctico simples com dados. A área de jogo consiste em quadrados que contêm pontos. Os jogadores movem-se ao carregar num quadrado vazio ou num quadrado seu.</p>
     <p xml:lang="sl">KJumpingCube je preprosta taktična igra s kockami. Igralna površina sestoji iz kvadratkov, ki vsebujejo točke. Igralci napredujejo tako, da kliknejo bodisi prazni bodisi lastni kvadratek.</p>
+    <p xml:lang="sr">К‑скочикоцка је једноставна тактичка игра са коцкицама. Игра се на квадратима који садрже поене. Потези се повлаче тако што се или кликне на празан квадрат или на свој квадрат.</p>
+    <p xml:lang="sr-Latn">K‑skočikocka je jednostavna taktička igra sa kockicama. Igra se na kvadratima koji sadrže poene. Potezi se povlače tako što se ili klikne na prazan kvadrat ili na svoj kvadrat.</p>
+    <p xml:lang="sr-ijekavian">К‑скочикоцка је једноставна тактичка игра са коцкицама. Игра се на квадратима који садрже поене. Потези се повлаче тако што се или кликне на празан квадрат или на свој квадрат.</p>
+    <p xml:lang="sr-ijekavianlatin">K‑skočikocka je jednostavna taktička igra sa kockicama. Igra se na kvadratima koji sadrže poene. Potezi se povlače tako što se ili klikne na prazan kvadrat ili na svoj kvadrat.</p>
     <p xml:lang="sv">Hoppande kuben är ett enkelt tärningsstyrt taktikspel. Spelbrädet består av fyrkanter som innehåller punkter. Spelarna gör sina drag genom att antingen klicka på en ledig fyrkant, eller på en egen fyrkant.</p>
     <p xml:lang="x-test">xxKJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.xx</p>
   </description>
