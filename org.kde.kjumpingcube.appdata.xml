@@ -4,21 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.3</project_license>
   <name>KJumpingCube</name>
-  <name xml:lang="ca">KJumpingCube</name>
-  <name xml:lang="ca-valencia">KJumpingCube</name>
-  <name xml:lang="en-GB">=KJumpingCube</name>
-  <name xml:lang="es">KJumpingCube</name>
-  <name xml:lang="nl">=KJumpingCube</name>
-  <name xml:lang="pl">KSkacząceSześciany</name>
-  <name xml:lang="pt">=KJumpingCube</name>
-  <name xml:lang="sk">KJumpingCube</name>
-  <name xml:lang="sl">KJumpingCube</name>
-  <name xml:lang="sr">К‑скочикоцка</name>
-  <name xml:lang="sr-Latn">K‑skočikocka</name>
-  <name xml:lang="sr-ijekavian">К‑скочикоцка</name>
-  <name xml:lang="sr-ijekavianlatin">K‑skočikocka</name>
-  <name xml:lang="sv">Hoppande kuben</name>
-  <name xml:lang="x-test">xx=KJumpingCubexx</name>
+  <name xml:lang="uk">KJumpingCube</name>
   <summary>Territory Capture Game</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
@@ -34,6 +20,7 @@
   <summary xml:lang="sr-ijekavian">Игра заузимања територије</summary>
   <summary xml:lang="sr-ijekavianlatin">Igra zauzimanja teritorije</summary>
   <summary xml:lang="sv">Territorium-erövringsspel</summary>
+  <summary xml:lang="uk">Гра в захоплювання території</summary>
   <summary xml:lang="x-test">xxTerritory Capture Gamexx</summary>
   <description>
     <p>
@@ -54,6 +41,7 @@
     <p xml:lang="sr-ijekavian">К‑скочикоцка је једноставна тактичка игра са коцкицама. Игра се на квадратима који садрже поене. Потези се повлаче тако што се или кликне на празан квадрат или на свој квадрат.</p>
     <p xml:lang="sr-ijekavianlatin">K‑skočikocka je jednostavna taktička igra sa kockicama. Igra se na kvadratima koji sadrže poene. Potezi se povlače tako što se ili klikne na prazan kvadrat ili na svoj kvadrat.</p>
     <p xml:lang="sv">Hoppande kuben är ett enkelt tärningsstyrt taktikspel. Spelbrädet består av fyrkanter som innehåller punkter. Spelarna gör sina drag genom att antingen klicka på en ledig fyrkant, eller på en egen fyrkant.</p>
+    <p xml:lang="uk">KJumpingCube — проста тактична гра із визначенням очок за допомогою кидання кубиків. Ігрове поле складається із квадратиків, у яких записано очки. Хід можна виконувати або у вільні, або у власні квадратики.</p>
     <p xml:lang="x-test">xxKJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.xx</p>
   </description>
   <screenshots>
