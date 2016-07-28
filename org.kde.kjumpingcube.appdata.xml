@@ -4,7 +4,13 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.3</project_license>
   <name>KJumpingCube</name>
+  <name xml:lang="ca">KJumpingCube</name>
+  <name xml:lang="nl">KJumpingCube</name>
+  <name xml:lang="pt">KJumpingCube</name>
+  <name xml:lang="sl">KJumpingCube</name>
+  <name xml:lang="sv">Hoppande kuben</name>
   <name xml:lang="uk">KJumpingCube</name>
+  <name xml:lang="x-test">xxKJumpingCubexx</name>
   <summary>Territory Capture Game</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
