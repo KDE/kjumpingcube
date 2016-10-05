@@ -24,6 +24,7 @@
   <name xml:lang="sv">Hoppande kuben</name>
   <name xml:lang="uk">KJumpingCube</name>
   <name xml:lang="x-test">xxKJumpingCubexx</name>
+  <name xml:lang="zh-CN">KJumpingCube</name>
   <summary>Territory Capture Game</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
@@ -44,6 +45,7 @@
   <summary xml:lang="sv">Territorium-erövringsspel</summary>
   <summary xml:lang="uk">Гра в захоплювання території</summary>
   <summary xml:lang="x-test">xxTerritory Capture Gamexx</summary>
+  <summary xml:lang="zh-CN">版块占领游戏</summary>
   <description>
     <p>
    KJumpingCube is a simple dice driven tactical game.
