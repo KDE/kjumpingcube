@@ -12,6 +12,7 @@
   <name xml:lang="es">KJumpingCube</name>
   <name xml:lang="et">KJumpingCube</name>
   <name xml:lang="nl">KJumpingCube</name>
+  <name xml:lang="nn">Terningsprett</name>
   <name xml:lang="pl">KSkaczącySześcian</name>
   <name xml:lang="pt">KJumpingCube</name>
   <name xml:lang="pt-BR">KJumpingCube</name>
@@ -33,6 +34,7 @@
   <summary xml:lang="es">Juego de captura de territorio</summary>
   <summary xml:lang="et">Mänguala vallutamise mäng</summary>
   <summary xml:lang="nl">Landverovertjespel</summary>
+  <summary xml:lang="nn">Spel basert på områdekapring</summary>
   <summary xml:lang="pl">Gra w zajmowanie terytorium</summary>
   <summary xml:lang="pt">Jogo de Captura de Territórios</summary>
   <summary xml:lang="pt-BR">Jogo de captura de território</summary>
@@ -58,6 +60,7 @@
     <p xml:lang="es">KJumpingCube es un sencillo juego táctico de dados. El área de juego consiste en cuadros que contienen puntos. Los jugadores mueven haciendo clic en un cuadro vacío o en uno propio.</p>
     <p xml:lang="et">KJumpingCube on lihtne täringupõhine taktikaline mäng. Mänguala koosneb punkte sisaldavatest ruutudest. Mängija käik seisneb klõpsamises kas tühjale või enda ruudule.</p>
     <p xml:lang="nl">KJumpingCube is een eenvoudig tactisch spel met een dobbelsteen. Het speelveld bestaat uit vierkanten met punten. Spelers verplaatsen zich door ofwel te klikken op een leeg vierkant of op een eigen vierkant.</p>
+    <p xml:lang="nn">Terningsprett (KJumpingCube) er eit enkelt taktisk terningspel. Spelområdet viser felt/terningar med ulikepoeng. Spelar kan flytta til eit ledig felt eller til sitt eiga felt.</p>
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
     <p xml:lang="pt">O KJumpingCube é um jogo táctico simples com dados. A área de jogo consiste em quadrados que contêm pontos. Os jogadores movem-se ao carregar num quadrado vazio ou num quadrado seu.</p>
     <p xml:lang="sk">KJumpingCube je jednoduchá kockami riadená taktická hra. Hracia plochasa skladá zo štvorcov, ktoré obsahujú body. Hráči sa pohybujú po kliknutí na buďprázdny štvorec, alebo na vlastný štvorec.</p>
