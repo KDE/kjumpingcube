@@ -26,6 +26,7 @@
   <name xml:lang="uk">KJumpingCube</name>
   <name xml:lang="x-test">xxKJumpingCubexx</name>
   <name xml:lang="zh-CN">KJumpingCube</name>
+  <name xml:lang="zh-TW">KJumpingCube 跳躍立方體</name>
   <summary>Territory Capture Game</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
@@ -48,6 +49,7 @@
   <summary xml:lang="uk">Гра в захоплювання території</summary>
   <summary xml:lang="x-test">xxTerritory Capture Gamexx</summary>
   <summary xml:lang="zh-CN">版块占领游戏</summary>
+  <summary xml:lang="zh-TW">領土爭奪戰</summary>
   <description>
     <p>
    KJumpingCube is a simple dice driven tactical game.
@@ -72,6 +74,7 @@
     <p xml:lang="sv">Hoppande kuben är ett enkelt tärningsstyrt taktikspel. Spelbrädet består av fyrkanter som innehåller punkter. Spelarna gör sina drag genom att antingen klicka på en ledig fyrkant, eller på en egen fyrkant.</p>
     <p xml:lang="uk">KJumpingCube — проста тактична гра із визначенням очок за допомогою кидання кубиків. Ігрове поле складається із квадратиків, у яких записано очки. Хід можна виконувати або у вільні, або у власні квадратики.</p>
     <p xml:lang="x-test">xxKJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.xx</p>
+    <p xml:lang="zh-TW">KJumpingCube 是一個簡易的骰子驅動的戰術遊戲。遊戲區域由包含了點的正方形所組成。玩家透過滑鼠點擊在空的正方形或是自己的正方形間移動。</p>
   </description>
   <screenshots>
     <screenshot type="default">
