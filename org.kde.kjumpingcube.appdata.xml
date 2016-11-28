@@ -11,6 +11,7 @@
   <name xml:lang="en-GB">KJumpingCube</name>
   <name xml:lang="es">KJumpingCube</name>
   <name xml:lang="et">KJumpingCube</name>
+  <name xml:lang="fi">KJumpingCube</name>
   <name xml:lang="nl">KJumpingCube</name>
   <name xml:lang="nn">Terningsprett</name>
   <name xml:lang="pl">KSkaczącySześcian</name>
@@ -34,6 +35,7 @@
   <summary xml:lang="en-GB">Territory Capture Game</summary>
   <summary xml:lang="es">Juego de captura de territorio</summary>
   <summary xml:lang="et">Mänguala vallutamise mäng</summary>
+  <summary xml:lang="fi">Alueenvaltauspeli</summary>
   <summary xml:lang="nl">Landverovertjespel</summary>
   <summary xml:lang="nn">Spel basert på områdekapring</summary>
   <summary xml:lang="pl">Gra w zajmowanie terytorium</summary>
@@ -61,6 +63,7 @@
     <p xml:lang="en-GB">KJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.</p>
     <p xml:lang="es">KJumpingCube es un sencillo juego táctico de dados. El área de juego consiste en cuadros que contienen puntos. Los jugadores mueven haciendo clic en un cuadro vacío o en uno propio.</p>
     <p xml:lang="et">KJumpingCube on lihtne täringupõhine taktikaline mäng. Mänguala koosneb punkte sisaldavatest ruutudest. Mängija käik seisneb klõpsamises kas tühjale või enda ruudule.</p>
+    <p xml:lang="fi">KJumpingCube on yksinkertainen nopalla pelattava taktiikkapeli. Pelialue koostuu neliöistä, joissa on pisteitä. Pelaajat liikkuvat napsauttamalla joko vapaata tai omaa neliötä.</p>
     <p xml:lang="nl">KJumpingCube is een eenvoudig tactisch spel met een dobbelsteen. Het speelveld bestaat uit vierkanten met punten. Spelers verplaatsen zich door ofwel te klikken op een leeg vierkant of op een eigen vierkant.</p>
     <p xml:lang="nn">Terningsprett (KJumpingCube) er eit enkelt taktisk terningspel. Spelområdet viser felt/terningar med ulikepoeng. Spelar kan flytta til eit ledig felt eller til sitt eiga felt.</p>
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
