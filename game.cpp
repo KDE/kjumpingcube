@@ -585,7 +585,7 @@ void Game::saveGame (bool saveAs)
             QString mes=i18n("The file %1 exists.\n"
                "Do you want to overwrite it?", url.url());
             result = KMessageBox::warningContinueCancel
-               (m_view, mes, QString(), KGuiItem(i18n("Overwrite")));
+               (m_view, mes, QString(), KStandardGuiItem::overwrite());
             if (result == KMessageBox::Cancel)
                return;
          }
