@@ -393,11 +393,7 @@
               </widget>
              </item>
              <item>
-              <widget class="KColorButton" name="kcfg_Color1">
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
+              <widget class="KColorButton" name="kcfg_Color1"/>
              </item>
             </layout>
            </item>
@@ -411,11 +407,7 @@
               </widget>
              </item>
              <item>
-              <widget class="KColorButton" name="kcfg_Color2">
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
+              <widget class="KColorButton" name="kcfg_Color2"/>
              </item>
             </layout>
            </item>
@@ -429,11 +421,7 @@
               </widget>
              </item>
              <item>
-              <widget class="KColorButton" name="kcfg_Color0">
-               <property name="text">
-                <string>PushButton</string>
-               </property>
-              </widget>
+              <widget class="KColorButton" name="kcfg_Color0"/>
              </item>
             </layout>
            </item>
