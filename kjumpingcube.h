@@ -51,7 +51,7 @@ public slots:
 
 protected:
   /// To make sure all activity ceases before closing.
-  bool queryClose();
+  bool queryClose() Q_DECL_OVERRIDE;
 
 private:
   Game * m_game;

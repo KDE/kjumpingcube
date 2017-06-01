@@ -79,10 +79,10 @@ signals:
 
 protected:
    /** checks, if mouseclick was inside this cube*/
-   virtual void mouseReleaseEvent(QMouseEvent*);
+   void mouseReleaseEvent(QMouseEvent*) Q_DECL_OVERRIDE;
 
    /** refreshes the contents of the Cube */
-   virtual void paintEvent(QPaintEvent*);
+   void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
 
 private:
    int m_row;

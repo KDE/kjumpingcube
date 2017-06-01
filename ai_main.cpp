@@ -38,7 +38,7 @@ public:
       : m_ai (ai)
    { }
 
-   virtual void run() {
+   void run() Q_DECL_OVERRIDE {
       int index = m_ai->computeMove();
       emit done (index);
    }
