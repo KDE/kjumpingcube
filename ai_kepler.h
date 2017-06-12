@@ -33,7 +33,7 @@
 class AI_Kepler : public AI_Base
 {
 public:
-   QString whoami() Q_DECL_OVERRIDE { return QString ("Kepler"); } // IDW test.
+   QString whoami() override { return QString ("Kepler"); } // IDW test.
 
    /**
    * The Kepler AI constructor.
@@ -60,7 +60,7 @@ public:
    */
    int assessCube (const int index,         const Player player,
                    const int neighbors [4], const Player owners[],
-                   const int values[],      const int    maxValues[]) const Q_DECL_OVERRIDE;
+                   const int values[],      const int    maxValues[]) const override;
 };
 
 #endif // AI_KEPLER_H

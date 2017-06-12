@@ -79,10 +79,10 @@ signals:
    void mouseClick (int x, int y);
 
 protected:
-   QSize sizeHint() const Q_DECL_OVERRIDE;
+   QSize sizeHint() const override;
    virtual void initCubes();
-   void paintEvent (QPaintEvent * event) Q_DECL_OVERRIDE;
-   void resizeEvent (QResizeEvent * event) Q_DECL_OVERRIDE;
+   void paintEvent (QPaintEvent * event) override;
+   void resizeEvent (QResizeEvent * event) override;
 
 private:
    enum AnimationType {None, ComputerMove, Darken, RapidBlink, Scatter};
