@@ -86,7 +86,7 @@ bool KCubeBoxWidget::loadSettings()
 
 void KCubeBoxWidget::reset()	// Called if a player wins or requests New game.
 {
-   foreach (KCubeWidget * cube, cubes) {
+   for (KCubeWidget * cube : qAsConst(cubes)) {
       cube->reset();
    }
 
@@ -129,7 +129,7 @@ void KCubeBoxWidget::highlightDone()
 
 void KCubeBoxWidget::setColors ()
 {
-   foreach (KCubeWidget * cube, cubes) {
+   for (KCubeWidget * cube : qAsConst(cubes)) {
       cube->updateColors();
    }
 }

@@ -606,7 +606,7 @@ void AI_Main::dumpStats()
    qDebug() << m_moveStats.count() << "MOVES IN THIS GAME";
    AI_Box * statsBox = new AI_Box (0, m_side);
    statsBox->printBox();
-   foreach (MoveStats * m, m_moveStats) {
+   for (MoveStats * m : qAsConst(m_moveStats)) {
       QList<int> l;
       int nMax = m->searchStats->count();
       for (int n = 0; n < nMax; n++) {
