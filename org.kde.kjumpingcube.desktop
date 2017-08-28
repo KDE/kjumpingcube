@@ -118,6 +118,7 @@ GenericName[uk]=Гра на захоплення територій
 GenericName[x-test]=xxTerritory Capture Gamexx
 GenericName[zh_CN]=版块占领游戏
 GenericName[zh_TW]=領土爭奪戰
+Comment=Territory Capture Game
 Terminal=false
 StartupNotify=true
 X-DBUS-StartupType=Multi
