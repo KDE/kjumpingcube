@@ -50,6 +50,7 @@ set(kjumpingcube_SRCS
    ai_box.cpp
 )
 
+qt5_add_resources(kjumpingcube_SRCS kjumpingcube.qrc)
 ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc)
@@ -75,7 +76,6 @@ install(TARGETS kjumpingcube  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(PROGRAMS org.kde.kjumpingcube.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 install(FILES kjumpingcube.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
-install(FILES kjumpingcubeui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kjumpingcube)
 
 ecm_install_icons(ICONS
     128-apps-kjumpingcube.png
