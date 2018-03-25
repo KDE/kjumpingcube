@@ -146,6 +146,7 @@ Comment[tr]=Bölge Ele Geçirme Oyunu
 Comment[uk]=Гра на захоплення територій
 Comment[x-test]=xxTerritory Capture Gamexx
 Comment[zh_CN]=版块占领游戏
+Comment[zh_TW]=領土爭奪戰
 Terminal=false
 StartupNotify=true
 X-DBUS-StartupType=Multi
