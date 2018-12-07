@@ -18,7 +18,7 @@
 
 #include "ai_box.h"
 // 
-#include <QDebug>
+#include "kjumpingcube_debug.h"
 #include <cstdio>
 
 AI_Box::AI_Box (QObject * parent, int side)
@@ -80,7 +80,7 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
     // Check for move legality.
     Player oldOwner = m_owners[index];
     if ((oldOwner != player) && (oldOwner != Nobody)) {
-	qDebug() << "ILLEGAL MOVE: player" << player << "old" << oldOwner
+	qCDebug(KJUMPINGCUBE_LOG) << "ILLEGAL MOVE: player" << player << "old" << oldOwner
                  << "at" << index/m_side << index%m_side;
 
         return false;			// The move is not valid.
@@ -225,17 +225,17 @@ void AI_Box::undoMove (MoveUndodata * undodata)
 void AI_Box::copyPosition (Player player, bool isAI, int index)
 {
 #if AILog > 4
-    qDebug() << "AI_Box::copyPosition (" << player << "," << isAI << ")";
+    qCDebug(KJUMPINGCUBE_LOG) << "AI_Box::copyPosition (" << player << "," << isAI << ")";
     printBox();
 #endif
     if (m_undoIndex >= m_undoList.count()) {
 #if AILog > 4
-	qDebug() << "Call emptyPosition (" << m_nCubes << ")";
+	qCDebug(KJUMPINGCUBE_LOG) << "Call emptyPosition (" << m_nCubes << ")";
 #endif
         m_undoList.append (emptyPosition (m_nCubes));
     }
 #if AILog > 4
-    qDebug() << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
+    qCDebug(KJUMPINGCUBE_LOG) << "m_undoIndex" << m_undoIndex << "m_undoList.count()" << m_undoList.count();
 #endif
     Position * pos = m_undoList.at (m_undoIndex);
     save (pos, player, isAI);
@@ -269,7 +269,7 @@ bool AI_Box::undoPosition (Player & player)
 	player = pos->player;
     }
 #if AILog > 4
-    qDebug() << "AI_Box::undoPosition (player =" << player << "), m_undoIndex" << m_undoIndex << "UNDONE POSITION";
+    qCDebug(KJUMPINGCUBE_LOG) << "AI_Box::undoPosition (player =" << player << "), m_undoIndex" << m_undoIndex << "UNDONE POSITION";
     printBox();
 #endif
     return (m_undoIndex > 1);
@@ -286,7 +286,7 @@ bool AI_Box::redoPosition (Player & player, bool & isAI, int & index)
 	m_undoIndex++;
     }
 #if AILog > 4
-    qDebug() << "AI_Box::redoPosition (player =" << player << "), m_undoIndex" << m_undoIndex << "REDONE POSITION";
+    qCDebug(KJUMPINGCUBE_LOG) << "AI_Box::redoPosition (player =" << player << "), m_undoIndex" << m_undoIndex << "REDONE POSITION";
     printBox();
 #endif
     return (m_undoIndex < m_redoLimit);

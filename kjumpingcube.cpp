@@ -41,7 +41,7 @@
 KJumpingCube::KJumpingCube()
 {
   // Make a KCubeBoxWidget with the user's currently preferred number of cubes.
-   qDebug() << "KJumpingCube::KJumpingCube() CONSTRUCTOR";
+   qCDebug(KJUMPINGCUBE_LOG) << "KJumpingCube::KJumpingCube() CONSTRUCTOR";
    m_view = new KCubeBoxWidget (Prefs::cubeDim(), this);
    m_game = new Game (Prefs::cubeDim(), m_view, this);
    m_view->makeStatusPixmaps (30);
@@ -139,7 +139,7 @@ void KJumpingCube::initKAction() {
 
   action = KStandardAction::preferences (m_game, SLOT(showSettingsDialog()),
                                          actionCollection());
-  qDebug() << "PREFERENCES ACTION is" << action->objectName();
+  qCDebug(KJUMPINGCUBE_LOG) << "PREFERENCES ACTION is" << action->objectName();
   action->setIconText (i18n("Settings"));
 
   action = KStandardGameAction::quit (this, SLOT (close()), this);
@@ -151,7 +151,7 @@ void KJumpingCube::initKAction() {
 void KJumpingCube::changeButton (bool enabled, bool stop,
                                  const QString & caption)
 {
-    qDebug() << "KJumpingCube::changeButton (" << enabled << stop << caption;
+    qCDebug(KJUMPINGCUBE_LOG) << "KJumpingCube::changeButton (" << enabled << stop << caption;
     if (enabled && stop) {		// Red look (stop something).
         actionButton->setStyleSheet (buttonLook.arg("rgb(210, 0, 0)")
                                                .arg("rgb(180, 0, 0)"));

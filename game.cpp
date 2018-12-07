@@ -26,7 +26,7 @@
 #include "kcubeboxwidget.h"
 #include "settingswidget.h"
 
-#include <QDebug>
+#include "kjumpingcube_debug.h"
 #include <QFileDialog>
 #include <QTemporaryFile>
 
@@ -63,7 +63,7 @@ Game::Game (const int d, KCubeBoxWidget * view, QWidget * parent)
    m_pauseForComputer   (false),
    m_pauseForStep       (false)
 {
-   qDebug() << "CONSTRUCT Game: side" << m_side;
+   qCDebug(KJUMPINGCUBE_LOG) << "CONSTRUCT Game: side" << m_side;
    m_box                = new AI_Box  (this, m_side);
    m_ai                 = new AI_Main (this, m_side);
    m_steps              = new QList<int>;
@@ -83,7 +83,7 @@ Game::~Game()
 
 void Game::gameActions (const int action)
 {
-   qDebug() << "GAME ACTION IS" << action;
+   qCDebug(KJUMPINGCUBE_LOG) << "GAME ACTION IS" << action;
    if ((m_activity != Idle) && (action != BUTTON) && (action != NEW)) {
       m_view->showPopup (i18n("Sorry, doing a move..."));
       return;
@@ -146,7 +146,7 @@ void Game::showSettingsDialog (bool show)
 
 void Game::newSettings()
 {
-   qDebug() << "NEW SETTINGS" << m_newSettings << "m_activity" << m_activity
+   qCDebug(KJUMPINGCUBE_LOG) << "NEW SETTINGS" << m_newSettings << "m_activity" << m_activity
             << "size:" << Prefs::cubeDim() << "m_side" << m_side;
    loadImmediateSettings();
 
@@ -167,7 +167,7 @@ void Game::newSettings()
 
 void Game::loadImmediateSettings()
 {
-   qDebug() << "GAME LOAD IMMEDIATE SETTINGS entered";
+   qCDebug(KJUMPINGCUBE_LOG) << "GAME LOAD IMMEDIATE SETTINGS entered";
 
    // Color changes can take place as soon as control returns to the event loop.
    // Changes of animation type or speed will take effect next time there is an
@@ -184,27 +184,27 @@ void Game::loadImmediateSettings()
    m_ai->setSkill (Prefs::skill1(), Prefs::kepler1(), Prefs::newton1(),
                    Prefs::skill2(), Prefs::kepler2(), Prefs::newton2());
 
-   qDebug() << "m_pauseForStep" << m_pauseForStep;
-   qDebug() << "PLAYER 1 settings: skill" << Prefs::skill1()
+   qCDebug(KJUMPINGCUBE_LOG) << "m_pauseForStep" << m_pauseForStep;
+   qCDebug(KJUMPINGCUBE_LOG) << "PLAYER 1 settings: skill" << Prefs::skill1()
             << "Kepler" << Prefs::kepler1() << "Newton" << Prefs::newton1();
-   qDebug() << "PLAYER 2 settings: skill" << Prefs::skill2()
+   qCDebug(KJUMPINGCUBE_LOG) << "PLAYER 2 settings: skill" << Prefs::skill2()
             << "Kepler" << Prefs::kepler2() << "Newton" << Prefs::newton2();
 }
 
 void Game::loadPlayerSettings()
 {
-   qDebug() << "GAME LOAD PLAYER SETTINGS entered";
+   qCDebug(KJUMPINGCUBE_LOG) << "GAME LOAD PLAYER SETTINGS entered";
    bool oldComputerPlayer   = isComputer (m_currentPlayer);
 
    m_pauseForComputer       = Prefs::pauseForComputer();
    computerPlOne            = Prefs::computerPlayer1();
    computerPlTwo            = Prefs::computerPlayer2();
 
-   qDebug() << "AI 1" << computerPlOne << "AI 2" << computerPlTwo
+   qCDebug(KJUMPINGCUBE_LOG) << "AI 1" << computerPlOne << "AI 2" << computerPlTwo
             << "m_pauseForComputer" << m_pauseForComputer;
 
    if (isComputer (m_currentPlayer) && (! oldComputerPlayer)) {
-      qDebug() << "New computer player set: must wait.";
+      qCDebug(KJUMPINGCUBE_LOG) << "New computer player set: must wait.";
       m_waitingState = ComputerToMove;	// New player: don't start playing yet.
    }
 }
@@ -213,7 +213,7 @@ void Game::startHumanMove (int x, int y)
 {
    int  index = x * m_side + y;
    bool humanPlayer = (! isComputer (m_currentPlayer));
-   qDebug() << "CLICK" << x << y << "index" << index;
+   qCDebug(KJUMPINGCUBE_LOG) << "CLICK" << x << y << "index" << index;
    if (! humanPlayer) {
       buttonClick();
    }
@@ -222,7 +222,7 @@ void Game::startHumanMove (int x, int y)
       m_waitingToMove = false;
       m_moveNo++;
       m_endMoveNo = LARGE_NUMBER;
-      qDebug() << "doMove (" << index;
+      qCDebug(KJUMPINGCUBE_LOG) << "doMove (" << index;
       KCubeWidget::enableClicks (false);
       doMove (index);
    }
@@ -235,12 +235,12 @@ void Game::setUpNextTurn()
       m_newSettings = false;
       loadPlayerSettings();
    }
-   qDebug() << "setUpNextTurn" << m_currentPlayer
+   qCDebug(KJUMPINGCUBE_LOG) << "setUpNextTurn" << m_currentPlayer
             << computerPlOne << computerPlTwo << "pause" << m_pauseForComputer
             << "wait" << m_waitingState << "waiting" << m_waitingToMove;
    if (isComputer (m_currentPlayer)) {
       // A computer player is to move.
-      qDebug() << "(m_pauseForComputer || (m_waitingState == ComputerToMove))"
+      qCDebug(KJUMPINGCUBE_LOG) << "(m_pauseForComputer || (m_waitingState == ComputerToMove))"
                << (m_pauseForComputer || (m_waitingState == ComputerToMove));
       if (m_pauseForComputer || (m_waitingState == ComputerToMove) ||
           (m_moveNo == 0)) {
@@ -258,12 +258,12 @@ void Game::setUpNextTurn()
              emit buttonChange (true, false, i18n("Start computer move"));
          }
 	 // Wait for a button-click to show that the user is ready.
-	 qDebug() << "COMPUTER MUST WAIT";
+	 qCDebug(KJUMPINGCUBE_LOG) << "COMPUTER MUST WAIT";
          KCubeWidget::enableClicks (true);
          return;
       }
       // Start the computer's move.
-      qDebug() << "COMPUTER MUST MOVE";
+      qCDebug(KJUMPINGCUBE_LOG) << "COMPUTER MUST MOVE";
       m_waitingState = Nil;
       m_waitingToMove = false;
       KCubeWidget::enableClicks (false);
@@ -271,7 +271,7 @@ void Game::setUpNextTurn()
    }
    else {
       // A human player is to move.
-      qDebug() << "HUMAN TO MOVE";
+      qCDebug(KJUMPINGCUBE_LOG) << "HUMAN TO MOVE";
       KCubeWidget::enableClicks (true);
       m_waitingState = Nil;
       m_waitingToMove = true;
@@ -321,8 +321,8 @@ void Game::moveCalculationDone (int index)
    }
 
 #if AILog > 1
-   qDebug() << "TIME of MOVE" << t.elapsed();
-   qDebug() << "==============================================================";
+   qCDebug(KJUMPINGCUBE_LOG) << "TIME of MOVE" << t.elapsed();
+   qCDebug(KJUMPINGCUBE_LOG) << "==============================================================";
 #endif
 
    // Blink the cube to be moved (twice).
@@ -337,7 +337,7 @@ void Game::showingDone (int index)
    if (isComputer (m_currentPlayer)) {
       m_moveNo++;
       m_endMoveNo = LARGE_NUMBER;
-      qDebug() << "m_moveNo" << m_moveNo << "isComputer()" << (isComputer (m_currentPlayer));
+      qCDebug(KJUMPINGCUBE_LOG) << "m_moveNo" << m_moveNo << "isComputer()" << (isComputer (m_currentPlayer));
       doMove (index);			// Animate computer player's move.
    }
    else {
@@ -364,7 +364,7 @@ void Game::doMove (int index)
    m_steps->clear();
    bool won = m_box->doMove (m_currentPlayer, index, 0, m_steps);
 #if AILog > 1
-   qDebug() << "GAME WON?" << won << "STEPS" << (* m_steps);
+   qCDebug(KJUMPINGCUBE_LOG) << "GAME WON?" << won << "STEPS" << (* m_steps);
    // m_box->printBox();
 #endif
    if (m_steps->count() > 1) {
@@ -388,7 +388,7 @@ void Game::doStep()
             moveDone();
 	    m_endMoveNo = m_moveNo;
 #if AILog > 0
-	    qDebug() << "\nCALLING dumpStats()";
+	    qCDebug(KJUMPINGCUBE_LOG) << "\nCALLING dumpStats()";
 	    m_ai->dumpStats();
 #endif
 	    showWinner();
@@ -467,7 +467,7 @@ Player Game::changePlayer()
 
 void Game::buttonClick()
 {
-   qDebug() << "BUTTON CLICK seen: waiting" << m_waitingToMove
+   qCDebug(KJUMPINGCUBE_LOG) << "BUTTON CLICK seen: waiting" << m_waitingToMove
             << "m_activity" << m_activity << "m_waitingState" << m_waitingState;
    if (m_waitingState == Nil) {		// Button is red: stop an activity.
       if ((! m_pauseForComputer) && (! m_interrupting) &&
@@ -534,22 +534,22 @@ void Game::setStopAction()
 
 void Game::newGame()
 {
-   qDebug() << "NEW GAME entered: waiting" << m_waitingToMove
+   qCDebug(KJUMPINGCUBE_LOG) << "NEW GAME entered: waiting" << m_waitingToMove
             << "won?" << (m_moveNo >= m_endMoveNo);
    if (newGameOK()) {
-      qDebug() << "QDEBUG: newGameOK() =" << true;
+      qCDebug(KJUMPINGCUBE_LOG) << "QDEBUG: newGameOK() =" << true;
       shutdown();			// Stop the current move (if any).
       m_view->setNormalCursor();
       m_view->hidePopup();
       loadImmediateSettings();
       loadPlayerSettings();
       m_newSettings = false;
-      qDebug() << "newGame() loadSettings DONE: waiting" << m_waitingToMove
+      qCDebug(KJUMPINGCUBE_LOG) << "newGame() loadSettings DONE: waiting" << m_waitingToMove
                << "won?" << (m_moveNo >= m_endMoveNo)
                << "move" << m_moveNo << m_endMoveNo;
-      qDebug() << "setDim (" << Prefs::cubeDim() << ") m_side" << m_side;
+      qCDebug(KJUMPINGCUBE_LOG) << "setDim (" << Prefs::cubeDim() << ") m_side" << m_side;
       setDim (Prefs::cubeDim());
-      qDebug() << "Entering reset();";
+      qCDebug(KJUMPINGCUBE_LOG) << "Entering reset();";
       reset();				// Clear cubebox, initialise states.
       emit setAction (UNDO, false);
       emit setAction (REDO, false);
@@ -558,7 +558,7 @@ void Game::newGame()
       m_endMoveNo = LARGE_NUMBER;
       setUpNextTurn();
    }
-   else qDebug() << "QDEBUG: newGameOK() =" << false;
+   else qCDebug(KJUMPINGCUBE_LOG) << "QDEBUG: newGameOK() =" << false;
 }
 
 void Game::saveGame (bool saveAs)
@@ -693,24 +693,24 @@ bool Game::newGameOK()
                    "there is already a game in progress.\n\n"
                    "Do you wish to abandon the current game?");
    }
-   qDebug() << "QUERY:" << query;
+   qCDebug(KJUMPINGCUBE_LOG) << "QUERY:" << query;
    int reply = KMessageBox::questionYesNo (m_view, query, i18n("New Game?"),
                                            KGuiItem (i18n("Abandon Game")),
                                            KGuiItem (i18n("Continue Game")));
    if (reply == KMessageBox::Yes) {
-      qDebug() << "ABANDON GAME";
+      qCDebug(KJUMPINGCUBE_LOG) << "ABANDON GAME";
       return true;			// Start a new game.
    }
    if (m_side != Prefs::cubeDim()) {
       // Restore the setting: also the dialog-box copy if it has been created.
-      qDebug() << "Reset size" << Prefs::cubeDim() << "back to" << m_side;
+      qCDebug(KJUMPINGCUBE_LOG) << "Reset size" << Prefs::cubeDim() << "back to" << m_side;
       Prefs::setCubeDim (m_side);
       if (m_settingsPage) {
           m_settingsPage->kcfg_CubeDim->setValue (m_side);
       }
       Prefs::self()->save();
    }
-   qDebug() << "CONTINUE GAME";
+   qCDebug(KJUMPINGCUBE_LOG) << "CONTINUE GAME";
    return false;			// Continue the current game.
 }
 
@@ -724,7 +724,7 @@ void Game::reset()
    m_currentPlayer = One;
 
    m_waitingState   = computerPlOne ? ComputerToMove : Nil;
-   qDebug() << "RESET: activity" << m_activity << "wait" << m_waitingState;
+   qCDebug(KJUMPINGCUBE_LOG) << "RESET: activity" << m_activity << "wait" << m_waitingState;
 
 #if AILog > 0
    m_ai->startStats();
@@ -771,7 +771,7 @@ void Game::setDim (int d)
       shutdown();
       delete m_box;
       m_box   = new AI_Box (this, d);
-      qDebug() << "AI_Box CONSTRUCTED by Game::setDim()";
+      qCDebug(KJUMPINGCUBE_LOG) << "AI_Box CONSTRUCTED by Game::setDim()";
       m_side  = d;
       m_view->setDim (d);
    }

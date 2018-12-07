@@ -29,6 +29,7 @@ include(ECMInstallIcons)
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(ECMQtDeclareLoggingCategory)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
@@ -49,6 +50,8 @@ set(kjumpingcube_SRCS
    ai_newton.cpp
    ai_box.cpp
 )
+
+ecm_qt_declare_logging_category(kjumpingcube_SRCS HEADER kjumpingcube_debug.h IDENTIFIER KJUMPINGCUBE_LOG CATEGORY_NAME org.kde.kjumpingcube)
 
 qt5_add_resources(kjumpingcube_SRCS kjumpingcube.qrc)
 ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
@@ -86,5 +89,7 @@ ecm_install_icons(ICONS
     64-apps-kjumpingcube.png
     DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor
 )
+
+install( FILES kjumpingcube.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

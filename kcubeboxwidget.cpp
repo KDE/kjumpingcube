@@ -38,7 +38,7 @@ KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
 	  m_side          (d),
 	  m_popup         (new QLabel (this))
 {
-   qDebug() << "CONSTRUCT KCubeBoxWidget: side" << m_side;
+   qCDebug(KJUMPINGCUBE_LOG) << "CONSTRUCT KCubeBoxWidget: side" << m_side;
    cubes.clear();
    init();
 }
@@ -49,7 +49,7 @@ KCubeBoxWidget::~KCubeBoxWidget()
 
 bool KCubeBoxWidget::loadSettings()
 {
-  qDebug() << "LOAD VIEW SETTINGS";
+  qCDebug(KJUMPINGCUBE_LOG) << "LOAD VIEW SETTINGS";
   bool reColorCubes = ((color1 != Prefs::color1()) ||
                        (color2 != Prefs::color2()) ||
                        (color0 != Prefs::color0()));
@@ -165,7 +165,7 @@ bool KCubeBoxWidget::checkClick (int x, int y)
    // IDW TODO - Write a new mouse-click event for KCubeBoxWidget? Remove the
    //            one that KCubeWidget has?
    */
-   qDebug() << "Emit mouseClick (" << x << y << ")";
+   qCDebug(KJUMPINGCUBE_LOG) << "Emit mouseClick (" << x << y << ")";
    emit mouseClick (x, y);
    return false;
 }
@@ -347,14 +347,14 @@ void KCubeBoxWidget::reCalculateGraphics (const int w, const int h)
 {
    int boxSize = qMin(w, h);
    int frameWidth = boxSize / 30;
-   // qDebug() << "boxSize" << boxSize << "frameWidth" << frameWidth;
+   // qCDebug(KJUMPINGCUBE_LOG) << "boxSize" << boxSize << "frameWidth" << frameWidth;
    boxSize = boxSize - (2 * frameWidth);
    cubeSize = (boxSize / m_side);
    boxSize = (cubeSize * m_side);
    topLeft.setX ((w - boxSize)/2);
    topLeft.setY ((h - boxSize)/2);
 
-   // qDebug() << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
+   // qCDebug(KJUMPINGCUBE_LOG) << "Dimension:" << m_side << "cubeSize:" << cubeSize << "topLeft:" << topLeft;
    makeSVGBackground (w, h);
    makeSVGCubes (cubeSize);
    for (int x = 0; x < m_side; x++) {
