@@ -33,6 +33,8 @@
 
 #include "prefs.h"
 
+#include "kjumpingcube_debug.h"
+
 KCubeBoxWidget::KCubeBoxWidget (const int d, QWidget *parent)
         : QWidget (parent),
 	  m_side          (d),

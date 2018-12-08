@@ -36,6 +36,8 @@
 #include <KConfigDialog>
 #include <QWidgetAction>
 
+#include "kjumpingcube_debug.h"
+
 #define MESSAGE_TIME 2000
 
 KJumpingCube::KJumpingCube()
