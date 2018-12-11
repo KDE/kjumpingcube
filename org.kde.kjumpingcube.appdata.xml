@@ -98,6 +98,12 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KJumpingCube</caption>
+      <caption xml:lang="ca">Jugant al KJumpingCube</caption>
+      <caption xml:lang="gl">Xogando a KJumpingCube</caption>
+      <caption xml:lang="nl">KJumpingCube wordt gespeeld</caption>
+      <caption xml:lang="pt">A jogar ao KJumpingCube</caption>
+      <caption xml:lang="uk">Гра у KJumpingCube</caption>
+      <caption xml:lang="x-test">xxPlaying KJumpingCubexx</caption>
       <image>https://www.kde.org/images/screenshots/kjumpingcube.png</image>
     </screenshot>
   </screenshots>
