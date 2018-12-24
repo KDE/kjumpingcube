@@ -14,6 +14,7 @@
   <name xml:lang="fi">KJumpingCube</name>
   <name xml:lang="fr">KJumpingCube</name>
   <name xml:lang="gl">KJumpingCube</name>
+  <name xml:lang="id">KJumpingCube</name>
   <name xml:lang="it">KJumpingCube</name>
   <name xml:lang="nl">KJumpingCube</name>
   <name xml:lang="nn">Terningsprett</name>
@@ -43,6 +44,7 @@
   <summary xml:lang="fi">Alueenvaltauspeli</summary>
   <summary xml:lang="fr">Jeu de capture de territoires</summary>
   <summary xml:lang="gl">Xogo de captura de territorios</summary>
+  <summary xml:lang="id">Permainan Menguasai Wilayah</summary>
   <summary xml:lang="it">Gioco di conquista del territorio</summary>
   <summary xml:lang="nl">Landverovertjespel</summary>
   <summary xml:lang="nn">Spel basert på områdekapring</summary>
@@ -77,6 +79,7 @@
     <p xml:lang="fi">KJumpingCube on yksinkertainen nopalla pelattava taktiikkapeli. Pelialue koostuu neliöistä, joissa on pisteitä. Pelaajat liikkuvat napsauttamalla joko vapaata tai omaa neliötä.</p>
     <p xml:lang="fr">KJumpingTube est un jeu de tactique simple utilisant des lancers de dés. Le plateau de jeu est constitué de carrés contenant des points. Les joueurs se déplacent en cliquant soit sur un carré vacant, soit sur leur propre carré.</p>
     <p xml:lang="gl">KJumpingCube é un xogo de estratexia sinxelo baseado en dados. A zona de xogo consiste en cadrados que conteñen puntos. Os xogadores premen un cadrado baleiro ou o seu propio cadrado para moverse.</p>
+    <p xml:lang="id">KJumpingCube adalah permainan taktik dadu yang sederhana. Area bermain terdiri dari kotak berisi titik-titik. Pemain bergerak dengan mengeklik salahsatu persegi yang kosong, atau di persegi sendiri.</p>
     <p xml:lang="it">KJumpingCube è un semplice gioco di mosse tattiche di cubi. L'area di gioco consiste di quadrati che contengono punti. I giocatori si spostano o su un quadrato libero o sul proprio quadrato.</p>
     <p xml:lang="nl">KJumpingCube is een eenvoudig tactisch spel met een dobbelsteen. Het speelveld bestaat uit vierkanten met punten. Spelers verplaatsen zich door ofwel te klikken op een leeg vierkant of op een eigen vierkant.</p>
     <p xml:lang="nn">Terningsprett (KJumpingCube) er eit enkelt taktisk terningspel. Spelområdet viser felt/terningar med ulikepoeng. Spelar kan flytta til eit ledig felt eller til sitt eiga felt.</p>
@@ -104,6 +107,7 @@
       <caption xml:lang="es">Jugando a KJumpingCube</caption>
       <caption xml:lang="fr">Partie de KJumpingCube en cours</caption>
       <caption xml:lang="gl">Xogando a KJumpingCube</caption>
+      <caption xml:lang="id">Memainkan KJumpingCube</caption>
       <caption xml:lang="nl">KJumpingCube wordt gespeeld</caption>
       <caption xml:lang="pt">A jogar ao KJumpingCube</caption>
       <caption xml:lang="pt-BR">Jogando KJumpingCube</caption>
