@@ -46,19 +46,19 @@ int main(int argc, char *argv[])
     migrate.migrate();
     KLocalizedString::setApplicationDomain("kjumpingcube");
 
-    KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
+    KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"));
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
-    aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), "matthias.kiefer@gmx.de");
-    aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
+    aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), QStringLiteral("matthias.kiefer@gmx.de"));
+    aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), QStringLiteral("ben+kjumpingcube@meyerhome.net"));
     aboutData.addCredit(i18n("Ian Wadham"),
                       i18n("Upgrade to KDE4 and SVG artwork support."),
-                      "iandw.au@gmail.com");
+                      QStringLiteral("iandw.au@gmail.com"));
     aboutData.addCredit(i18n("Eugene Trounev"),
                       i18n("Graphics for KDE 4.0 version."),
-                      "irs_me@hotmail.com");
-    aboutData.setHomepage("http://games.kde.org/kjumpingcube");
+                      QStringLiteral("irs_me@hotmail.com"));
+    aboutData.setHomepage(QStringLiteral("http://games.kde.org/kjumpingcube"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     aboutData.processCommandLine(&parser);
     KDBusService service;
 
-    app.setWindowIcon(QIcon::fromTheme(QLatin1String("kjumpingcube")));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kjumpingcube")));
 
     // All session management is handled in the RESTORE macro
     if (app.isSessionRestored()) {

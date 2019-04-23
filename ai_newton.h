@@ -33,7 +33,7 @@
 class AI_Newton : public AI_Base
 {
 public:
-   QString whoami() override { return QString ("Newton"); } // IDW test.
+   QString whoami() override { return QStringLiteral ("Newton"); } // IDW test.
 
    /**
    * The Newton AI constructor.

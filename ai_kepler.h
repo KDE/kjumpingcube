@@ -33,7 +33,7 @@
 class AI_Kepler : public AI_Base
 {
 public:
-   QString whoami() override { return QString ("Kepler"); } // IDW test.
+   QString whoami() override { return QStringLiteral ("Kepler"); } // IDW test.
 
    /**
    * The Kepler AI constructor.

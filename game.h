@@ -204,7 +204,7 @@ signals:
     * @param caption  Translated text to appear on the button.
     */
    void buttonChange  (bool enabled, bool stop = false,
-                       const QString & caption = QString(""));
+                       const QString & caption = QLatin1String(""));
 
    /**
     * Request enabling or disabling of an action by KJumpingCube main window.

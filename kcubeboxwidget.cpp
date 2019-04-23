@@ -187,7 +187,7 @@ void KCubeBoxWidget::init()
    color0 = Prefs::color0();
 
    KgTheme theme((QByteArray()));
-   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, "pics/default.desktop"));
+   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default.desktop")));
    svg.load (theme.graphicsPath());
 
    initCubes();
@@ -231,20 +231,20 @@ void KCubeBoxWidget::makeStatusPixmaps (const int width)
    d = width/4.0;
    p = width/2.0;
    status.fill (0);
-   svg.render (&s, "player_1");
+   svg.render (&s, QStringLiteral("player_1"));
    colorImage (status, color1, width);
-   svg.render (&s, "lighting");
-   svg.render (&s, "pip", QRectF (p - d/2.0, p - d/2.0, d, d));
+   svg.render (&s, QStringLiteral("lighting"));
+   svg.render (&s, QStringLiteral("pip"), QRectF (p - d/2.0, p - d/2.0, d, d));
    status1 = QPixmap::fromImage (status);
 
    d = width/5.0;
    p = width/3.0;
    status.fill (0);
-   svg.render (&s, "player_2");
+   svg.render (&s, QStringLiteral("player_2"));
    colorImage (status, color2, width);
-   svg.render (&s, "lighting");
-   svg.render (&s, "pip", QRectF (p - d/2.0, p - d/2.0, d, d));
-   svg.render (&s, "pip", QRectF (p + p - d/2.0, p + p - d/2.0, d, d));
+   svg.render (&s, QStringLiteral("lighting"));
+   svg.render (&s, QStringLiteral("pip"), QRectF (p - d/2.0, p - d/2.0, d, d));
+   svg.render (&s, QStringLiteral("pip"), QRectF (p + p - d/2.0, p + p - d/2.0, d, d));
    s.end();
    status2 = QPixmap::fromImage (status);
 }
@@ -254,7 +254,7 @@ void KCubeBoxWidget::makeSVGBackground (const int w, const int h)
    QImage img (w, h, QImage::Format_ARGB32_Premultiplied);
    QPainter p (&img);
    img.fill (0);
-   svg.render (&p, "background");
+   svg.render (&p, QStringLiteral("background"));
    p.end();
    background = QPixmap::fromImage (img);
 }
@@ -288,30 +288,30 @@ void KCubeBoxWidget::makeSVGCubes (const int width)
        // svg.render (&q, "neutral");
        q.setBrush (color0);
        q.drawRoundedRect (rect, pc, pc, Qt::RelativeSize);
-       svg.render (&q, "lighting");
+       svg.render (&q, QStringLiteral("lighting"));
        break;
      case Player1:
        // svg.render (&q, "player_1");
        q.setBrush (color1);
        q.drawRoundedRect (rect, pc, pc, Qt::RelativeSize);
-       svg.render (&q, "lighting");
+       svg.render (&q, QStringLiteral("lighting"));
        break;
      case Player2:
        // svg.render (&q, "player_2");
        q.setBrush (color2);
        q.drawRoundedRect (rect, pc, pc, Qt::RelativeSize);
-       svg.render (&q, "lighting");
+       svg.render (&q, QStringLiteral("lighting"));
        break;
      case Pip:
        r.begin(&pip);
-       svg.render (&r, "pip");
+       svg.render (&r, QStringLiteral("pip"));
        r.end();
        break;
      case BlinkLight:
-       svg.render (&q, "blink_light");
+       svg.render (&q, QStringLiteral("blink_light"));
        break;
      case BlinkDark:
-       svg.render (&q, "blink_dark");
+       svg.render (&q, QStringLiteral("blink_dark"));
        break;
      default:
        break;
@@ -489,7 +489,7 @@ void KCubeBoxWidget::setPopup()
    f.setPixelSize ((int) (height() * 0.04 + 0.5));
    f.setWeight (QFont::Bold);
    f.setStretch (QFont::Expanded);
-   m_popup->setStyleSheet("QLabel { color : rgba(255, 255, 255, 75%); }");
+   m_popup->setStyleSheet(QStringLiteral("QLabel { color : rgba(255, 255, 255, 75%); }"));
    m_popup->setFont (f);
    m_popup->resize (width(), (int) (height() * 0.08 + 0.5));
    m_popup->setAlignment (Qt::AlignCenter);

@@ -130,12 +130,12 @@ void Game::showWinner()
 void Game::showSettingsDialog (bool show)
 {
    // Show the Preferences/Settings/Configuration dialog.
-   KConfigDialog * settings = KConfigDialog::exists ("settings");
+   KConfigDialog * settings = KConfigDialog::exists (QStringLiteral("settings"));
    if (! settings) {
-      settings = new KConfigDialog (m_parent, "settings", Prefs::self());
+      settings = new KConfigDialog (m_parent, QStringLiteral("settings"), Prefs::self());
       settings->setFaceType (KPageDialog::Plain);
       SettingsWidget * widget = new SettingsWidget (m_parent);
-      settings->addPage (widget, i18n("General"), "games-config-options");
+      settings->addPage (widget, i18n("General"), QStringLiteral("games-config-options"));
       connect(settings, &KConfigDialog::settingsChanged, this, &Game::newSettings);
       m_settingsPage = widget;		// Used when reverting/editing settings.
    }
@@ -446,7 +446,7 @@ void Game::moveDone()
 {
    // Called after non-animated move, animated move, end of game or hint action.
    m_view->setNormalCursor();
-   emit statusMessage (QString(""), false);	// Clear the status bar.
+   emit statusMessage (QLatin1String(""), false);	// Clear the status bar.
    m_activity = Idle;
    setAction (HINT, true);
    m_fullSpeed = Prefs::animationNone();
@@ -568,7 +568,7 @@ void Game::saveGame (bool saveAs)
       QUrl url;
 
       do {
-         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, "*.kjc");
+         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
 
          if (url.isEmpty())
             return;
@@ -621,7 +621,7 @@ void Game::loadGame()
    QUrl url;
 
    do {
-      url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL, "*.kjc");
+      url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
       if (url.isEmpty())
          return;
       KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::SourceSide, 0);

@@ -48,11 +48,11 @@ KJumpingCube::KJumpingCube()
    m_game = new Game (Prefs::cubeDim(), m_view, this);
    m_view->makeStatusPixmaps (30);
 
-   connect(m_game,SIGNAL(playerChanged(int)),SLOT(changePlayerColor(int)));
-   connect(m_game,SIGNAL(buttonChange(bool,bool,QString)),
-                  SLOT(changeButton(bool,bool,QString)));
-   connect(m_game,SIGNAL(statusMessage(QString,bool)),
-                  SLOT(statusMessage(QString,bool)));
+   connect(m_game,&Game::playerChanged,this, &KJumpingCube::changePlayerColor);
+   connect(m_game,&Game::buttonChange,
+                  this, &KJumpingCube::changeButton);
+   connect(m_game,&Game::statusMessage,
+                  this, &KJumpingCube::statusMessage);
 
    // Tell the KMainWindow that this is indeed the main widget.
    setCentralWidget (m_view);
@@ -68,8 +68,8 @@ KJumpingCube::KJumpingCube()
 
    initKAction();
 
-   connect (m_game, SIGNAL (setAction(Action,bool)),
-                    SLOT   (setAction(Action,bool)));
+   connect (m_game, &Game::setAction,
+                    this, &KJumpingCube::setAction);
    m_game->gameActions (NEW);		// Start a new game.
 }
 
@@ -118,7 +118,7 @@ void KJumpingCube::initKAction() {
   action->setEnabled (false);
 
   actionButton = new QPushButton (this);
-  actionButton->setObjectName ("ActionButton");
+  actionButton->setObjectName (QStringLiteral("ActionButton"));
   // Action button's style sheet: parameters for red, green and clicked colors.
   buttonLook =
        "QPushButton#ActionButton { color: white; background-color: %1; "
@@ -134,7 +134,7 @@ void KJumpingCube::initKAction() {
 
   QWidgetAction *widgetAction = new QWidgetAction(this);
   widgetAction->setDefaultWidget(actionButton);
-  actionCollection()->addAction (QLatin1String ("action_button"), widgetAction);
+  actionCollection()->addAction (QStringLiteral ("action_button"), widgetAction);
 
   changeButton (true, true);		// Load the button's style sheet.
   changeButton (false);			// Set the button to be inactive.
@@ -155,12 +155,12 @@ void KJumpingCube::changeButton (bool enabled, bool stop,
 {
     qCDebug(KJUMPINGCUBE_LOG) << "KJumpingCube::changeButton (" << enabled << stop << caption;
     if (enabled && stop) {		// Red look (stop something).
-        actionButton->setStyleSheet (buttonLook.arg("rgb(210, 0, 0)")
-                                               .arg("rgb(180, 0, 0)"));
+        actionButton->setStyleSheet (buttonLook.arg(QStringLiteral("rgb(210, 0, 0)"))
+                                               .arg(QStringLiteral("rgb(180, 0, 0)")));
     }
     else if (enabled) {			// Green look (continue something).
-        actionButton->setStyleSheet (buttonLook.arg("rgb(0, 170, 0)")
-                                               .arg("rgb(0, 150, 0)"));
+        actionButton->setStyleSheet (buttonLook.arg(QStringLiteral("rgb(0, 170, 0)"))
+                                               .arg(QStringLiteral("rgb(0, 150, 0)")));
     }
     actionButton->setText (caption);
     actionButton->setEnabled (enabled);
