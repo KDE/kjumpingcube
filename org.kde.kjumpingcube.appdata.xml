@@ -16,6 +16,7 @@
   <name xml:lang="gl">KJumpingCube</name>
   <name xml:lang="id">KJumpingCube</name>
   <name xml:lang="it">KJumpingCube</name>
+  <name xml:lang="ko">KJumpingCube</name>
   <name xml:lang="nl">KJumpingCube</name>
   <name xml:lang="nn">Terningsprett</name>
   <name xml:lang="pl">KSkaczącySześcian</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="gl">Xogo de captura de territorios</summary>
   <summary xml:lang="id">Permainan Menguasai Wilayah</summary>
   <summary xml:lang="it">Gioco di conquista del territorio</summary>
+  <summary xml:lang="ko">땅따먹기 게임</summary>
   <summary xml:lang="nl">Landverovertjespel</summary>
   <summary xml:lang="nn">Spel basert på områdekapring</summary>
   <summary xml:lang="pl">Gra w zajmowanie terytorium</summary>
@@ -81,6 +83,7 @@
     <p xml:lang="gl">KJumpingCube é un xogo de estratexia sinxelo baseado en dados. A zona de xogo consiste en cadrados que conteñen puntos. Os xogadores premen un cadrado baleiro ou o seu propio cadrado para moverse.</p>
     <p xml:lang="id">KJumpingCube adalah permainan taktik dadu yang sederhana. Area bermain terdiri dari kotak berisi titik-titik. Pemain bergerak dengan mengeklik salahsatu persegi yang kosong, atau di persegi sendiri.</p>
     <p xml:lang="it">KJumpingCube è un semplice gioco di mosse tattiche di cubi. L'area di gioco consiste di quadrati che contengono punti. I giocatori si spostano o su un quadrato libero o sul proprio quadrato.</p>
+    <p xml:lang="ko">KJumpingCube는 주사위를 사용하는 전략 게임입니다. 주사위의 각각 눈은 점수를 뜻하며, 플레이어는 빈 주사위를 점령하거나 가지고 있는 주사위의 숫자를 늘려서 상대방의 주사위를 뺏을 수 있습니다.</p>
     <p xml:lang="nl">KJumpingCube is een eenvoudig tactisch spel met een dobbelsteen. Het speelveld bestaat uit vierkanten met punten. Spelers verplaatsen zich door ofwel te klikken op een leeg vierkant of op een eigen vierkant.</p>
     <p xml:lang="nn">Terningsprett (KJumpingCube) er eit enkelt taktisk terningspel. Spelområdet viser felt/terningar med ulikepoeng. Spelar kan flytta til eit ledig felt eller til sitt eiga felt.</p>
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
@@ -110,6 +113,7 @@
       <caption xml:lang="gl">Xogando a KJumpingCube</caption>
       <caption xml:lang="id">Memainkan KJumpingCube</caption>
       <caption xml:lang="it">Giocare con KJumpingCube</caption>
+      <caption xml:lang="ko">KJumpingCube 플레이</caption>
       <caption xml:lang="nl">KJumpingCube wordt gespeeld</caption>
       <caption xml:lang="nn">Spelar KJumpingCube</caption>
       <caption xml:lang="pl">Granie w KSkaczącySześcian</caption>
