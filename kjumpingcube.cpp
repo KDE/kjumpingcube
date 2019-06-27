@@ -28,12 +28,10 @@
 #include <QSignalMapper>
 #include <QStatusBar>
 #include <KLocalizedString>
-#include <KMessageBox>
 #include <KStandardGameAction>
 #include <QAction>
 #include <KActionCollection>
 #include <KStandardAction>
-#include <KConfigDialog>
 #include <QWidgetAction>
 
 #include "kjumpingcube_debug.h"
