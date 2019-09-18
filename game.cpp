@@ -804,10 +804,10 @@ void Game::saveProperties (KConfigGroup & config)
    // Save the position currently on the board.
    for (int x = 0; x < m_side; x++) {
      for (int y = 0; y < m_side; y++) {
-	key.sprintf ("%u,%u", x, y);
+    	key = QString::asprintf ("%u,%u", x, y);
 	int index = x * m_side + y;
-	owner.sprintf ("%u", m_box->owner (index));
-	value.sprintf ("%u", m_box->value (index));
+	owner = QString::asprintf ("%u", m_box->owner (index));
+	value = QString::asprintf ("%u", m_box->value (index));
 	list.append (owner.toLatin1());
 	list.append (value.toLatin1());
 	config.writeEntry (key, list);
@@ -850,7 +850,7 @@ void Game::readProperties (const KConfigGroup& config)
 
   for (int x = 0; x < m_side; x++) {
     for (int y = 0; y < m_side; y++) {
-	key.sprintf ("%u,%u", x, y);
+	key = QString::asprintf ("%u,%u", x, y);
 	list = config.readEntry (key, QStringList());
 	// List length must be 2, owner must be 0-2, value >= 1 and <= max().
 	if (list.count() < 2) {

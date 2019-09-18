@@ -262,8 +262,7 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
       break;
 
   default:
-      QString s;
-      s.sprintf("%d",points);
+      QString s = QString::asprintf("%d",points);
       p.setPen(Qt::black);
       p.drawText(tlx + w/2,tly + h/2,s);
       break;
