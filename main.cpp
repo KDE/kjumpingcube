@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 
     // All session management is handled in the RESTORE macro
     if (app.isSessionRestored()) {
-        RESTORE(KJumpingCube)
+        kRestoreMainWindows<KJumpingCube>();
     }
     else {
         KJumpingCube *kjumpingcube = new KJumpingCube;
