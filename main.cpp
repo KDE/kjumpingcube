@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     aboutData.addCredit(i18n("Eugene Trounev"),
                       i18n("Graphics for KDE 4.0 version."),
                       QStringLiteral("irs_me@hotmail.com"));
-    aboutData.setHomepage(QStringLiteral("http://games.kde.org/kjumpingcube"));
+    aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kjumpingcube"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
