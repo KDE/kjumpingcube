@@ -37,6 +37,8 @@ static const char description[] =
 
 int main(int argc, char *argv[])
 {
+    // Fixes blurry icons with fractional scaling
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
 
 
