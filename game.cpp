@@ -33,7 +33,7 @@
 #include <KConfigDialog> // IDW test.
 #include <KIO/CopyJob>
 #include <KIO/Job>
-#include <KJobWidgets/KJobWidgets>
+#include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <kio_version.h>
