@@ -1,6 +1,7 @@
+cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+
 project(kjumpingcube)
 
-cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 set (QT_MIN_VERSION "5.12.0")
 set (KF5_MIN_VERSION "5.59.0")
 
