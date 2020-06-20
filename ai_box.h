@@ -40,7 +40,7 @@ public:
     /**
     * The KJumpingCube AI_Box constructor.
     */
-    explicit AI_Box          (QObject * parent = 0, int side = 5);
+    explicit AI_Box          (QObject * parent = nullptr, int side = 5);
     virtual  ~AI_Box();
 
     int      side() const       { return m_side; }
@@ -83,7 +83,7 @@ public:
     };
 
     bool     doMove   (Player player, int index,
-                       MoveUndodata * undodata = 0, QList<int> * steps = 0);
+                       MoveUndodata * undodata = nullptr, QList<int> * steps = nullptr);
     void     undoMove (MoveUndodata * undodata);
 #if AILog > 0
     void     printBox();

@@ -44,7 +44,7 @@ class Game : public QObject
 {
    Q_OBJECT
 public:
-   explicit Game (const int dim, KCubeBoxWidget * view, QWidget * parent = 0);
+   explicit Game (const int dim, KCubeBoxWidget * view, QWidget * parent = nullptr);
 
    virtual ~Game();
 

@@ -58,7 +58,7 @@ KCubeWidget::KCubeWidget (QWidget* parent)
   m_owner = Nobody;
   m_value = 1;
 
-  pixmaps = 0;
+  pixmaps = nullptr;
   blinking = None;
 
   // show values
@@ -160,7 +160,7 @@ void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 
 void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 {
-  if ((pixmaps == 0) || (pixmaps->isEmpty()))
+  if ((pixmaps == nullptr) || (pixmaps->isEmpty()))
       return;
 
   int width  = this->width();

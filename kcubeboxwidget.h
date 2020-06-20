@@ -39,7 +39,7 @@ class KCubeBoxWidget : public QWidget
 {
    Q_OBJECT
 public:
-   explicit KCubeBoxWidget (const int dim = 1, QWidget * parent = 0);
+   explicit KCubeBoxWidget (const int dim = 1, QWidget * parent = nullptr);
 
    virtual ~KCubeBoxWidget();
 
