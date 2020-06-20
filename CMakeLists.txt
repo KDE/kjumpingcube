@@ -31,11 +31,12 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
 
-add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054400)
-endif()
+add_definitions(
+    -DQT_USE_FAST_OPERATOR_PLUS
+    -DQT_NO_URL_CAST_FROM_STRING
+    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054400
+    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+)
 
 add_subdirectory(pics)
 add_subdirectory(doc)
