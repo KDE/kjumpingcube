@@ -1,8 +1,8 @@
 project(kjumpingcube)
 
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
-set (QT_MIN_VERSION "5.7.0")
-set (KF5_MIN_VERSION "5.30.0")
+set (QT_MIN_VERSION "5.12.0")
+set (KF5_MIN_VERSION "5.59.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -95,10 +95,6 @@ ecm_install_icons(ICONS
     DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor
 )
 
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES kjumpingcube.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES kjumpingcube.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+install(FILES kjumpingcube.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
