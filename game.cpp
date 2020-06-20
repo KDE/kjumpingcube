@@ -36,6 +36,7 @@
 #include <KJobWidgets/KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <kio_version.h>
 
 #include "prefs.h"
 
@@ -579,7 +580,11 @@ void Game::saveGame (bool saveAs)
             url.setPath(url.path() +".kjc");
          }
 
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 69, 0)
+         KIO::StatJob* statJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
+#else
          KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::DestinationSide, 0);
+#endif
          KJobWidgets::setWindow(statJob, m_view);
          if (statJob->exec()) {
             QString mes=i18n("The file %1 exists.\n"
@@ -624,7 +629,11 @@ void Game::loadGame()
       url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
       if (url.isEmpty())
          return;
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 69, 0)
+      KIO::StatJob* statJob = KIO::statDetails(url, KIO::StatJob::SourceSide, KIO::StatNoDetails);
+#else
       KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::SourceSide, 0);
+#endif
       KJobWidgets::setWindow(statJob, m_view);
       if (! statJob->exec()) {
          QString mes = i18n("The file %1 does not exist!", url.url());
