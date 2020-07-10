@@ -29,7 +29,7 @@
 #include <KLocalizedString>
 #include <KDBusService>
 #include <QCommandLineParser>
-#include <kdelibs4configmigrator.h>
+#include <Kdelibs4ConfigMigrator>
 
 
 static const char description[] =
