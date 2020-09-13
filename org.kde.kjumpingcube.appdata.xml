@@ -9,6 +9,7 @@
   <name xml:lang="cs">KJumpingCube</name>
   <name xml:lang="da">KJumpingCube</name>
   <name xml:lang="de">KJumpingCube</name>
+  <name xml:lang="el">KJumpingCube</name>
   <name xml:lang="en-GB">KJumpingCube</name>
   <name xml:lang="es">KJumpingCube</name>
   <name xml:lang="et">KJumpingCube</name>
@@ -40,6 +41,7 @@
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
   <summary xml:lang="de">Eroberungsspiel</summary>
+  <summary xml:lang="el">Παιχνίδι κατάληψης περιοχών</summary>
   <summary xml:lang="en-GB">Territory Capture Game</summary>
   <summary xml:lang="es">Juego de captura de territorio</summary>
   <summary xml:lang="et">Mänguala vallutamise mäng</summary>
@@ -76,6 +78,7 @@
     <p xml:lang="ca">El KJumpingCube és un joc senzill de tàctica amb daus. L'àrea de joc consisteix de quadrats que contenen punts. Els jugadors mouen clicant en els quadrats vacants o en els quadrats propis.</p>
     <p xml:lang="ca-valencia">El KJumpingCube és un joc senzill de tàctica amb daus. L'àrea de joc consisteix de quadrats que contenen punts. Els jugadors mouen clicant en els quadrats vacants o en els quadrats propis.</p>
     <p xml:lang="de">KJumpingCube ist ein einfaches taktisches Würfelspiel. Der Spielbereich besteht aus Würfeln, die Punkte enthalten. Die Spieler ziehen sich, indem sie entweder auf einen neutralen Würfel oder auf einen eigenem Würfel klicken.</p>
+    <p xml:lang="el">Το KJumpingCube είναι ένα απλό παιχνίδι τακτικής με ζάρια. Το πεδίο του παιχνιδιού αποτελείται από τετράγωνα που περιέχουν πόντους. Οι παίκτες κινούνται με κλικ ή σε ένα κενό τετράγωνο ή σε δικό τους τετράγωνο.</p>
     <p xml:lang="en-GB">KJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.</p>
     <p xml:lang="es">KJumpingCube es un sencillo juego táctico de dados. El área de juego consiste en cuadros que contienen puntos. Los jugadores mueven haciendo clic en un cuadro vacío o en uno propio.</p>
     <p xml:lang="et">KJumpingCube on lihtne täringupõhine taktikaline mäng. Mänguala koosneb punkte sisaldavatest ruutudest. Mängija käik seisneb klõpsamises kas tühjale või enda ruudule.</p>
@@ -109,6 +112,7 @@
       <caption xml:lang="ca-valencia">Jugant al KJumpingCube</caption>
       <caption xml:lang="cs">Hraní KJumpingCube</caption>
       <caption xml:lang="de">KJumpingCube spielen</caption>
+      <caption xml:lang="el">Παίζω KJumpingCube</caption>
       <caption xml:lang="en-GB">Playing KJumpingCube</caption>
       <caption xml:lang="es">Jugando a KJumpingCube</caption>
       <caption xml:lang="et">KJumpingCube mängimine</caption>
