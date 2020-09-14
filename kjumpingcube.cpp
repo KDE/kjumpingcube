@@ -118,7 +118,7 @@ void KJumpingCube::initKAction() {
   actionButton = new QPushButton (this);
   actionButton->setObjectName (QStringLiteral("ActionButton"));
   // Action button's style sheet: parameters for red, green and clicked colors.
-  buttonLook =
+  buttonLook = QStringLiteral(
        "QPushButton#ActionButton { color: white; background-color: %1; "
            "border-style: outset; border-width: 2px; border-radius: 10px; "
            "border-color: beige; font: bold 14px; min-width: 10em; "
@@ -126,7 +126,7 @@ void KJumpingCube::initKAction() {
        "QPushButton#ActionButton:pressed { background-color: %2; "
            "border-style: inset; } "
        "QPushButton#ActionButton:disabled { color: white;"
-            "border-color: beige; background-color: steelblue; }";
+            "border-color: beige; background-color: steelblue; }");
   gameMapper->setMapping (actionButton, BUTTON);
   connect (actionButton, SIGNAL(clicked()), gameMapper, SLOT(map()));
 
@@ -172,9 +172,15 @@ void KJumpingCube::changePlayerColor (int newPlayer)
 void KJumpingCube::setAction (const Action a, const bool onOff)
 {
     // These must match enum Action (see file game.h) and be in the same order.
-    const char * name [] = {"game_new",  "move_hint",   "action_button",
-                            "move_undo", "move_redo",
-                            "game_save", "game_saveAs", "game_load"};
+    static const QString name [] = {
+        QStringLiteral("game_new"),
+        QStringLiteral("move_hint"),
+        QStringLiteral("action_button"),
+        QStringLiteral("move_undo"),
+        QStringLiteral("move_redo"),
+        QStringLiteral("game_save"),
+        QStringLiteral("game_saveAs"),
+        QStringLiteral("game_load")};
 
     ((QAction *) actionCollection()->action (name [a]))->setEnabled (onOff);
 }

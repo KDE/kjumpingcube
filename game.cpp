@@ -575,9 +575,9 @@ void Game::saveGame (bool saveAs)
             return;
 
          // check filename
-         QRegExp pattern ("*.kjc", Qt::CaseSensitive, QRegExp::Wildcard);
+         QRegExp pattern (QStringLiteral("*.kjc"), Qt::CaseSensitive, QRegExp::Wildcard);
          if (! pattern.exactMatch (url.fileName())) {
-            url.setPath(url.path() +".kjc");
+            url.setPath(url.path() + QLatin1String(".kjc"));
          }
 
 #if KIO_VERSION >= QT_VERSION_CHECK(5, 69, 0)
@@ -817,8 +817,8 @@ void Game::saveProperties (KConfigGroup & config)
 	int index = x * m_side + y;
 	owner = QString::asprintf ("%u", m_box->owner (index));
 	value = QString::asprintf ("%u", m_box->value (index));
-	list.append (owner.toLatin1());
-	list.append (value.toLatin1());
+	list.append (owner);
+	list.append (value);
 	config.writeEntry (key, list);
 
 	list.clear();

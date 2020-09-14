@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kjumpingcube");
 
     KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
-                          KJC_VERSION, i18n(description), KAboutLicense::GPL,
+                          QStringLiteral(KJC_VERSION), i18n(description), KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"));
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), QStringLiteral("matthias.kiefer@gmx.de"));
