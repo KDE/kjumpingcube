@@ -167,7 +167,7 @@ bool KCubeBoxWidget::checkClick (int x, int y)
    //            one that KCubeWidget has?
    */
    qCDebug(KJUMPINGCUBE_LOG) << "Emit mouseClick (" << x << y << ")";
-   emit mouseClick (x, y);
+   Q_EMIT mouseClick (x, y);
    return false;
 }
 
@@ -420,7 +420,7 @@ void KCubeBoxWidget::nextAnimationStep()
       animationTimer->stop();		// Finish normally.
       cubes.at (m_index)->setNeutral();
       currentAnimation = None;
-      emit animationDone (m_index);
+      Q_EMIT animationDone (m_index);
       return;
    }
    switch (currentAnimation) {

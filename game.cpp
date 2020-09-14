@@ -123,7 +123,7 @@ void Game::gameActions (const int action)
 
 void Game::showWinner()
 {
-   emit buttonChange (false, false, i18n("Game over"));
+   Q_EMIT buttonChange (false, false, i18n("Game over"));
    QString s = i18n("The winner is Player %1!", m_currentPlayer);
    KMessageBox::information (m_view, s, i18n("Winner"));
 }
@@ -177,7 +177,7 @@ void Game::loadImmediateSettings()
    m_fullSpeed = Prefs::animationNone();
    m_pauseForStep = Prefs::pauseForStep();
    if (reColorCubes) {
-      emit playerChanged (m_currentPlayer);	// Re-display status bar icon.
+      Q_EMIT playerChanged (m_currentPlayer);	// Re-display status bar icon.
    }
 
    // Choices of computer AIs and skills will take effect next time there is a
@@ -249,14 +249,14 @@ void Game::setUpNextTurn()
 	 m_waitingToMove = true;
          if (computerPlOne && computerPlTwo) {
             if (m_moveNo == 0) {
-               emit buttonChange (true, false, i18n("Start game"));
+               Q_EMIT buttonChange (true, false, i18n("Start game"));
             }
             else {
-               emit buttonChange (true, false, i18n("Continue game"));
+               Q_EMIT buttonChange (true, false, i18n("Continue game"));
             }
          }
          else {
-             emit buttonChange (true, false, i18n("Start computer move"));
+             Q_EMIT buttonChange (true, false, i18n("Start computer move"));
          }
 	 // Wait for a button-click to show that the user is ready.
 	 qCDebug(KJUMPINGCUBE_LOG) << "COMPUTER MUST WAIT";
@@ -277,10 +277,10 @@ void Game::setUpNextTurn()
       m_waitingState = Nil;
       m_waitingToMove = true;
       if (computerPlOne || computerPlTwo) {
-         emit buttonChange (false, false, i18n("Your turn"));
+         Q_EMIT buttonChange (false, false, i18n("Your turn"));
       }
       else {
-         emit buttonChange (false, false, i18n("Player %1", m_currentPlayer));
+         Q_EMIT buttonChange (false, false, i18n("Player %1", m_currentPlayer));
       }
       // Wait for a click on the cube to be moved.
    }
@@ -294,9 +294,9 @@ void Game::computeMove()
    m_view->setWaitCursor();
    m_activity = Computing;
    setStopAction();
-   emit setAction (HINT, false);
+   Q_EMIT setAction (HINT, false);
    if (isComputer (m_currentPlayer)) {
-       emit statusMessage (i18n("Computer player %1 is moving", m_currentPlayer), false);
+       Q_EMIT statusMessage (i18n("Computer player %1 is moving", m_currentPlayer), false);
    }
    m_ai->getMove (m_currentPlayer, m_box);
 }
@@ -360,8 +360,8 @@ void Game::doMove (int index)
       m_ai->postMove (m_currentPlayer, index, m_side);
    }
 #endif
-   emit setAction (UNDO, true);	// Update Undo and Redo actions.
-   emit setAction (REDO, false);
+   Q_EMIT setAction (UNDO, true);	// Update Undo and Redo actions.
+   Q_EMIT setAction (REDO, false);
    m_steps->clear();
    bool won = m_box->doMove (m_currentPlayer, index, nullptr, m_steps);
 #if AILog > 1
@@ -416,7 +416,7 @@ void Game::doStep()
                // Pause: return the step to the list and wait for a buttonClick.
                m_steps->prepend (-index - 1);
                m_waitingState = WaitingToStep;
-               emit buttonChange (true, false, i18n("Show next step"));
+               Q_EMIT buttonChange (true, false, i18n("Show next step"));
                return;
             }
 	    // Now set the button up and start the animation.
@@ -447,7 +447,7 @@ void Game::moveDone()
 {
    // Called after non-animated move, animated move, end of game or hint action.
    m_view->setNormalCursor();
-   emit statusMessage (QLatin1String(""), false);	// Clear the status bar.
+   Q_EMIT statusMessage (QLatin1String(""), false);	// Clear the status bar.
    m_activity = Idle;
    setAction (HINT, true);
    m_fullSpeed = Prefs::animationNone();
@@ -461,7 +461,7 @@ void Game::moveDone()
 Player Game::changePlayer()
 {
    m_currentPlayer = (m_currentPlayer == One) ? Two : One;
-   emit playerChanged (m_currentPlayer);
+   Q_EMIT playerChanged (m_currentPlayer);
    setUpNextTurn();
    return m_currentPlayer;
 }
@@ -513,19 +513,19 @@ void Game::setStopAction()
    if ((! m_pauseForComputer) && (! m_interrupting) &&
        (computerPlOne && computerPlTwo)) {
       if (m_activity == Computing) {		// Starting AI v. AI move.
-         emit buttonChange (true, true, i18n("Interrupt game"));
+         Q_EMIT buttonChange (true, true, i18n("Interrupt game"));
       }
       return;					// Continuing AI v. AI move.
    }
    // Red button settings for AI v. human, two human players or pausing game.
    if (m_activity == Computing) {		// Calculating hint or AI move.
-      emit buttonChange (true, true, i18n("Stop computing"));
+      Q_EMIT buttonChange (true, true, i18n("Stop computing"));
    }
    else if (m_activity == ShowingMove) {	// Showing hint or AI move.
-      emit buttonChange (true, true, i18n("Stop showing move"));
+      Q_EMIT buttonChange (true, true, i18n("Stop showing move"));
    }
    else if (m_activity == AnimatingMove) {	// Animating AI or human move.
-      emit buttonChange (true, true, i18n("Stop animation"));
+      Q_EMIT buttonChange (true, true, i18n("Stop animation"));
    }
 }
 
@@ -552,9 +552,9 @@ void Game::newGame()
       setDim (Prefs::cubeDim());
       qCDebug(KJUMPINGCUBE_LOG) << "Entering reset();";
       reset();				// Clear cubebox, initialise states.
-      emit setAction (UNDO, false);
-      emit setAction (REDO, false);
-      emit statusMessage (i18n("New Game"), false);
+      Q_EMIT setAction (UNDO, false);
+      Q_EMIT setAction (REDO, false);
+      Q_EMIT statusMessage (i18n("New Game"), false);
       m_moveNo = 0;
       m_endMoveNo = LARGE_NUMBER;
       setUpNextTurn();
@@ -612,7 +612,7 @@ void Game::saveGame (bool saveAs)
    KJobWidgets::setWindow(job, m_view);
    job->exec();
    if (! job->error() ) {
-      emit statusMessage (i18n("Game saved as %1", m_gameURL.url()), false);
+      Q_EMIT statusMessage (i18n("Game saved as %1", m_gameURL.url()), false);
    }
    else {
       KMessageBox::sorry (m_view, i18n("There was an error in saving file\n%1",
@@ -661,7 +661,7 @@ void Game::loadGame()
       KConfigGroup game (&config, "Game");
       readProperties (game);
 
-      emit setAction (UNDO, false);
+      Q_EMIT setAction (UNDO, false);
    }
    else
       KMessageBox::sorry (m_view, i18n("There was an error loading file\n%1",
@@ -671,15 +671,15 @@ void Game::loadGame()
 void Game::undo()
 {
    bool moreToUndo = undoRedo (-1);
-   emit setAction (UNDO, moreToUndo);
-   emit setAction (REDO, true);
+   Q_EMIT setAction (UNDO, moreToUndo);
+   Q_EMIT setAction (REDO, true);
 }
 
 void Game::redo()
 {
    bool moreToRedo = undoRedo (+1);
-   emit setAction (REDO, moreToRedo);
-   emit setAction (UNDO, true);
+   Q_EMIT setAction (REDO, moreToRedo);
+   Q_EMIT setAction (UNDO, true);
 }
 
 bool Game::newGameOK()
@@ -760,7 +760,7 @@ bool Game::undoRedo (int change)
    m_moveNo = m_moveNo + change;
    if (m_moveNo < m_endMoveNo) {
       if (oldPlayer != m_currentPlayer) {
-         emit playerChanged (m_currentPlayer);
+         Q_EMIT playerChanged (m_currentPlayer);
       }
       m_waitingState = isComputer (m_currentPlayer) ? ComputerToMove
                                                     : m_waitingState;
@@ -898,7 +898,7 @@ void Game::readProperties (const KConfigGroup& config)
        onTurn = 1;
    }
    m_currentPlayer = (Player) onTurn;
-   emit playerChanged (m_currentPlayer);
+   Q_EMIT playerChanged (m_currentPlayer);
 
    // Restore the game and player settings.
    loadSavedSettings (config);

@@ -40,7 +40,7 @@ public:
 
    void run() override {
       int index = m_ai->computeMove();
-      emit done (index);
+      Q_EMIT done (index);
    }
 /* IDW test. TODO - This is not actually used. Is it needed?
  *                  I think AI_Main::stop() sets m_stopped atomically and even
@@ -59,7 +59,7 @@ public:
       qCDebug(KJUMPINGCUBE_LOG) << "STOP THREAD DONE";
    }
 */
-signals:
+Q_SIGNALS:
    void done (int index);
 
 private:

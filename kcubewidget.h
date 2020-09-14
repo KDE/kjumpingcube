@@ -68,13 +68,13 @@ public:
    void expand (qreal scale);
    void migrateDot (int rowDiff, int colDiff, int step, Player player);
 
-public slots:
+public Q_SLOTS:
    /** resets the Cube to default values */
    virtual void reset();
    /** shows changed colors*/
    virtual void updateColors();
 
-signals:
+Q_SIGNALS:
    void clicked (int row, int column);
 
 protected:

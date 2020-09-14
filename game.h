@@ -53,7 +53,7 @@ public:
     * */
    void shutdown();
 
-public slots:
+public Q_SLOTS:
 
    /**
     * Perform one of the game-actions listed in enum type Action.
@@ -70,7 +70,7 @@ private:
     */
    void showWinner();
 
-private slots:
+private Q_SLOTS:
    /**
     * Pop up the settings/preferences/configuration dialog window.
     */
@@ -104,7 +104,7 @@ private:
     */
    void computeMove();
 
-private slots:
+private Q_SLOTS:
    /**
     * Deliver a computer-move or hint calculated by the AI thread and start an
     * animation to show which cube is to move.
@@ -178,7 +178,7 @@ private:
     */
    void loadPlayerSettings();
 
-private slots:
+private Q_SLOTS:
    /**
     * Indicate that showing a move or animating a move-step has finished.
     *
@@ -187,7 +187,7 @@ private slots:
     */
    void animationDone (int index);
 
-signals:
+Q_SIGNALS:
    /**
     * Request that the current player be shown in the KJumpingCube main window.
     *
@@ -269,7 +269,7 @@ private:
 
    QUrl             m_gameURL;		// Location of load/save file.
 
-private slots:
+private Q_SLOTS:
    void   newGame();			// Slot needed for queued invocation.
 
 private:

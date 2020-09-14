@@ -74,7 +74,7 @@ public:
 
    bool loadSettings();
 
-signals:
+Q_SIGNALS:
    void animationDone (int index);
    void mouseClick (int x, int y);
 
@@ -138,7 +138,7 @@ private:
    void setPopup();
    void scatterDots (int step);
 
-private slots:
+private Q_SLOTS:
    void nextAnimationStep();
    void highlightDone();	// Timeout of the highlighted cube.
 

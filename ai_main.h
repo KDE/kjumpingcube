@@ -111,7 +111,7 @@ public:
    void setSkill (int skill1, bool kepler1, bool newton1,
                   int skill2, bool kepler2, bool newton2);
 
-signals:
+Q_SIGNALS:
    /**
     * Signal the best move found after the AI search finishes or is stopped.
     *

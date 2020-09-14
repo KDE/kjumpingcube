@@ -46,7 +46,7 @@ public:
   /** Default Constructor */
   KJumpingCube();
 
-public slots:
+public Q_SLOTS:
    void setAction (const Action a, const bool onOff);
 
 protected:
@@ -64,7 +64,7 @@ private:
   QPushButton * actionButton;
   QString       buttonLook;
 
-private slots:
+private Q_SLOTS:
   void changePlayerColor (int newPlayer);
   void changeButton (bool enabled, bool stop = false,
                      const QString & caption = QString());
