@@ -78,7 +78,7 @@ void test (int array[4]) {
    printf ("\n");
 }
 
-void makeRandomSequence (int nMax, int * seq, KRandomSequence & random)
+void makeRandomSequence (int nMax, int * seq, QRandomGenerator & random)
 {
    // Helper routine.  Sets up a random sequence of integers 0 to (nMax - 1).
    for (int n = 0; n < nMax; n++) {
@@ -88,7 +88,7 @@ void makeRandomSequence (int nMax, int * seq, KRandomSequence & random)
    int last = nMax;
    int z, temp;
    for (int n = 0; n < nMax; n++) {
-      z = random.getLong (last);
+      z = random.bounded(last);
       last--;
       temp = seq[z];
       seq[z] = seq[last];
@@ -101,7 +101,9 @@ void makeRandomSequence (int nMax, int * seq, KRandomSequence & random)
    fprintf (stderr, "\n");
 }
 
-AI_Main::AI_Main (QObject * parent, int side) : AI_Box (parent, side)
+AI_Main::AI_Main (QObject * parent, int side)
+    : AI_Box (parent, side)
+    , m_random(QRandomGenerator::global()->generate())
 {
    qCDebug(KJUMPINGCUBE_LOG) << "AI_Main CONSTRUCTOR";
    m_thread = new ThreadedAI (this);
@@ -118,8 +120,6 @@ AI_Main::AI_Main (QObject * parent, int side) : AI_Box (parent, side)
 
    m_stopped = false;
    m_currentLevel = 0;
-
-   m_random.setSeed (0);
 
    connect(m_thread, &ThreadedAI::done, this, &AI_Main::done);
 }

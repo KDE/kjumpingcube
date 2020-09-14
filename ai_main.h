@@ -24,8 +24,7 @@
 #include <QList>
 #include <QThread>
 #include <QMutex>
-
-#include <KRandomSequence>
+#include <QRandomGenerator>
 
 #include "ai_base.h"
 #include "ai_box.h"
@@ -177,7 +176,7 @@ private:
 
    bool m_stopped;		// True if the AI has to be stopped.
 
-   KRandomSequence m_random;	// Random number generator.
+   QRandomGenerator m_random;	// Random number generator.
 
 #if AILog > 0
 public:
