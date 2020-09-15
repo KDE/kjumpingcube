@@ -32,9 +32,6 @@
 #include <Kdelibs4ConfigMigrator>
 
 
-static const char description[] =
-	I18N_NOOP("Tactical one or two player game");
-
 int main(int argc, char *argv[])
 {
     // Fixes blurry icons with fractional scaling
@@ -49,7 +46,9 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kjumpingcube");
 
     KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
-                          QStringLiteral(KJC_VERSION), i18n(description), KAboutLicense::GPL,
+                          QStringLiteral(KJC_VERSION),
+                          i18n("Tactical one or two player game"),
+                          KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"));
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), QStringLiteral("matthias.kiefer@gmx.de"));
