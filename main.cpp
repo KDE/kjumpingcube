@@ -19,9 +19,9 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 **************************************************************************** */
-#include "version.h"
-#include "kjumpingcube.h"
 
+#include "kjumpingcube_version.h"
+#include "kjumpingcube.h"
 
 #include <KAboutData>
 #include <KCrash>
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kjumpingcube");
 
     KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
-                          QStringLiteral(KJC_VERSION),
+                          QStringLiteral(KJUMPINGCUBE_VERSION_STRING),
                           i18n("Tactical one or two player game"),
                           KAboutLicense::GPL,
                           i18n("(c) 1998-2000, Matthias Kiefer"));

@@ -20,7 +20,7 @@
 **************************************************************************** */
 
 #include "game.h"
-#include "version.h"
+#include "kjumpingcube_version.h"
 #include "ai_main.h"
 #include "ai_box.h"
 #include "kcubeboxwidget.h"
@@ -603,7 +603,7 @@ void Game::saveGame (bool saveAs)
    tempFile.open();
    KConfig config (tempFile.fileName(), KConfig::SimpleConfig);
    KConfigGroup main (&config, "KJumpingCube");
-   main.writeEntry ("Version", KJC_VERSION);
+   main.writeEntry ("Version", KJUMPINGCUBE_VERSION_STRING);
    KConfigGroup game (&config, "Game");
    saveProperties (game);
    config.sync();

@@ -1,6 +1,16 @@
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 
-project(kjumpingcube)
+# Release Service version, managed by release script
+set (RELEASE_SERVICE_VERSION_MAJOR "20")
+set (RELEASE_SERVICE_VERSION_MINOR "11")
+set (RELEASE_SERVICE_VERSION_MICRO "70")
+set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_SERVICE_VERSION_MINOR}${RELEASE_SERVICE_VERSION_MICRO}")
+
+# Bump KJUMPINGCUBE_BASE_VERSION once new features are added
+set(KJUMPINGCUBE_BASE_VERSION "2.1")
+set(KJUMPINGCUBE_VERSION "${KJUMPINGCUBE_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}")
+
+project(kjumpingcube VERSION ${KJUMPINGCUBE_VERSION})
 
 set (QT_MIN_VERSION "5.12.0")
 set (KF5_MIN_VERSION "5.59.0")
@@ -31,6 +41,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
+include(ECMSetupVersion)
 
 add_definitions(
     -DQT_USE_QSTRINGBUILDER
@@ -63,6 +74,11 @@ set(kjumpingcube_SRCS
    ai_kepler.cpp
    ai_newton.cpp
    ai_box.cpp
+)
+
+ecm_setup_version(${KJUMPINGCUBE_VERSION}
+    VARIABLE_PREFIX KJUMPINGCUBE
+    VERSION_HEADER kjumpingcube_version.h
 )
 
 ecm_qt_declare_logging_category(kjumpingcube_SRCS HEADER kjumpingcube_debug.h IDENTIFIER KJUMPINGCUBE_LOG CATEGORY_NAME org.kde.kjumpingcube)
