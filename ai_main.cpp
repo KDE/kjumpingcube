@@ -22,7 +22,6 @@
 #include "ai_main.h"
 #include "ai_kepler.h"
 #include "ai_newton.h"
-#include "ai_box.h"
 
 
 #include "kjumpingcube_debug.h"
