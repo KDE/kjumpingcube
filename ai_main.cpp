@@ -94,10 +94,6 @@ void makeRandomSequence (int nMax, int * seq, QRandomGenerator & random)
       seq[last] = temp;
    }
    return;
-   for (int n = 0; n < nMax; n++) {
-      fprintf (stderr, " %d", seq[n]);
-   }
-   fprintf (stderr, "\n");
 }
 
 AI_Main::AI_Main (QObject * parent, int side)

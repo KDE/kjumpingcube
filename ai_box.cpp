@@ -26,7 +26,6 @@ AI_Box::AI_Box (QObject * parent, int side)
     QObject      (parent)
 {
     m_parent = parent; // IDW test.
-    fprintf (stderr, "\nAI_Box CONSTRUCTOR, side = %d\n", side);
     createBox (side);
 }
 
@@ -112,7 +111,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
     m_owners[index] = player;		// Take ownership if not already owned.
     if (m_maxValues [index] == m_values [index]++) {	// Increase the cube.
 	m_stack [++m_stackPtr] = index;	// Stack an expansion step.
-	// fprintf (stderr, "Overload at %d, value %d\n", index, m_values[index]);
     }
     if (steps) {
         steps->append (index + 1);	// Record the beginning of the move.
@@ -126,7 +124,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
                 steps->append (0);
             }
             // printBox();
-            // fprintf (stderr, "PLAYER WON\n");
             return true;;
         }
     }
@@ -135,7 +132,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
         // Pop the stack and decrease an overloaded cube.
 	index = m_stack [m_stackPtr--];
 
-	// fprintf (stderr, "  Expand at %d, value %d\n", index, m_values[index]);
         m_values[index] = m_values[index] - m_maxValues[index];
 
         // Append -index-1 to move list, if not still overloaded.
@@ -163,7 +159,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
             if (m_maxValues [indexN] == m_values [indexN]++) {
                 // Continue a cascade by pushing a new step onto the stack.
                 m_stack [++m_stackPtr] = indexN;
-		// fprintf (stderr, "Overload at %d, value %d\n", indexN, m_values[indexN]);
             }
             if (steps) {
                 steps->append (indexN + 1); // Record beginning of move-step.
@@ -176,7 +171,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
         if (m_values[index] > m_maxValues[index]) {
             // The cube is still overloaded, so push it back onto the stack.
             m_stack [++m_stackPtr] = index;
-	    // fprintf (stderr, "  RE-Overload at %d, value %d\n", index, m_values[index]);
         }
         if (m_cubesToWin [player] <= 0) {
             // Append 0 to the move-step list and return player-won.
@@ -190,7 +184,6 @@ bool AI_Box::doMove (Player player, int index, MoveUndodata * undodata, QList<in
             }
 
             // printBox();
-            // fprintf (stderr, "PLAYER WON\n");
             return true;
         }
         // printBox();
@@ -420,12 +413,6 @@ void AI_Box::printBox()
         }
         fprintf (stderr, "\n");
     }
-/* IDW test.
-    fprintf (stderr, "    %2d %2d %2d to win, pointers %lu %lu\n",
-             m_cubesToWin [Nobody], m_cubesToWin [One], m_cubesToWin [Two],
-	     (long) m_owners, (long) m_values);
-    fprintf (stderr, "\n");
-*/
 }
 #endif
 
