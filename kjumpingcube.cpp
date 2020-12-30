@@ -85,32 +85,32 @@ void KJumpingCube::initKAction() {
   QSignalMapper * gameMapper = new QSignalMapper (this);
   connect (gameMapper, SIGNAL (mapped(int)), m_game, SLOT (gameActions(int)));
 
-  action = KStandardGameAction::gameNew (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::gameNew (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, NEW);
 
-  action = KStandardGameAction::load    (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::load    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, LOAD);
 
-  action = KStandardGameAction::save    (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::save    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE);
 
-  action = KStandardGameAction::saveAs  (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::saveAs  (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE_AS);
 
-  action = KStandardGameAction::hint    (gameMapper, SLOT(map()), this);
+  action = KStandardGameAction::hint    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, HINT);
 
-  action = KStandardGameAction::undo    (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::undo    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, UNDO);
   action->setEnabled (false);
 
-  action = KStandardGameAction::redo    (gameMapper, SLOT (map()), this);
+  action = KStandardGameAction::redo    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, REDO);
   action->setEnabled (false);
@@ -137,12 +137,12 @@ void KJumpingCube::initKAction() {
   changeButton (true, true);		// Load the button's style sheet.
   changeButton (false);			// Set the button to be inactive.
 
-  action = KStandardAction::preferences (m_game, SLOT(showSettingsDialog()),
+  action = KStandardAction::preferences (m_game, [this]() { m_game->showSettingsDialog(true); },
                                          actionCollection());
   qCDebug(KJUMPINGCUBE_LOG) << "PREFERENCES ACTION is" << action->objectName();
   action->setIconText (i18n("Settings"));
 
-  action = KStandardGameAction::quit (this, SLOT (close()), this);
+  action = KStandardGameAction::quit (this, &KJumpingCube::close, this);
   actionCollection()->addAction (action->objectName(), action);
 
   setupGUI();

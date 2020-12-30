@@ -43,6 +43,8 @@ enum Action {NEW, HINT, BUTTON, UNDO, REDO, SAVE, SAVE_AS, LOAD};
 class Game : public QObject
 {
    Q_OBJECT
+   friend class KJumpingCube;
+
 public:
    explicit Game (const int dim, KCubeBoxWidget * view, QWidget * parent = nullptr);
 
