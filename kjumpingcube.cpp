@@ -83,7 +83,11 @@ void KJumpingCube::initKAction() {
   QAction * action;
 
   QSignalMapper * gameMapper = new QSignalMapper (this);
-  connect (gameMapper, SIGNAL (mapped(int)), m_game, SLOT (gameActions(int)));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+  connect (gameMapper, &QSignalMapper::mappedInt, m_game, &Game::gameActions);
+#else
+  connect (gameMapper, QOverload<int>::of(&QSignalMapper::mapped), m_game, &Game::gameActions);
+#endif
 
   action = KStandardGameAction::gameNew (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
@@ -128,7 +132,7 @@ void KJumpingCube::initKAction() {
        "QPushButton#ActionButton:disabled { color: white;"
             "border-color: beige; background-color: steelblue; }");
   gameMapper->setMapping (actionButton, BUTTON);
-  connect (actionButton, SIGNAL(clicked()), gameMapper, SLOT(map()));
+  connect (actionButton, &QAbstractButton::clicked, gameMapper, QOverload<>::of(&QSignalMapper::map));
 
   QWidgetAction *widgetAction = new QWidgetAction(this);
   widgetAction->setDefaultWidget(actionButton);
