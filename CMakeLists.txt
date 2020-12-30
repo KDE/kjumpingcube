@@ -13,7 +13,7 @@ set(KJUMPINGCUBE_VERSION "${KJUMPINGCUBE_BASE_VERSION}.${RELEASE_SERVICE_COMPACT
 project(kjumpingcube VERSION ${KJUMPINGCUBE_VERSION})
 
 set (QT_MIN_VERSION "5.12.0")
-set (KF5_MIN_VERSION "5.59.0")
+set (KF5_MIN_VERSION "5.68.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -81,7 +81,13 @@ ecm_setup_version(${KJUMPINGCUBE_VERSION}
     VERSION_HEADER kjumpingcube_version.h
 )
 
-ecm_qt_declare_logging_category(kjumpingcube_SRCS HEADER kjumpingcube_debug.h IDENTIFIER KJUMPINGCUBE_LOG CATEGORY_NAME org.kde.kjumpingcube)
+ecm_qt_declare_logging_category(kjumpingcube_SRCS
+    HEADER kjumpingcube_debug.h
+    IDENTIFIER KJUMPINGCUBE_LOG
+    CATEGORY_NAME org.kde.kjumpingcube
+    DESCRIPTION "KJumpingCube"
+    EXPORT KJUMPINGCUBE
+)
 
 qt5_add_resources(kjumpingcube_SRCS kjumpingcube.qrc)
 ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
@@ -121,7 +127,11 @@ ecm_install_icons(ICONS
     DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor
 )
 
-install(FILES kjumpingcube.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
+ecm_qt_install_logging_categories(
+    EXPORT KJUMPINGCUBE
+    FILE kjumpingcube.categories
+    DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
+)
 
 ki18n_install(po)
 kdoctools_install(po)
