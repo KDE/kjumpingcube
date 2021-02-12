@@ -74,6 +74,7 @@ set(kjumpingcube_SRCS
    ai_kepler.cpp
    ai_newton.cpp
    ai_box.cpp
+   kjumpingcube.qrc
 )
 
 ecm_setup_version(${KJUMPINGCUBE_VERSION}
@@ -89,7 +90,6 @@ ecm_qt_declare_logging_category(kjumpingcube_SRCS
     EXPORT KJUMPINGCUBE
 )
 
-qt5_add_resources(kjumpingcube_SRCS kjumpingcube.qrc)
 ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
 
 kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc)
