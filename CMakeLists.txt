@@ -34,14 +34,14 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 7.3.0 REQUIRED)
 
-include(FeatureSummary)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMAddAppIcon)
 include(ECMInstallIcons)
-include(KDEInstallDirs)
-include(KDECompilerSettings NO_POLICY_SCOPE)
-include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
+include(FeatureSummary)
 
 add_definitions(
     -DQT_USE_QSTRINGBUILDER
@@ -61,77 +61,8 @@ add_definitions(
 
 add_subdirectory(pics)
 add_subdirectory(doc)
-
-########### next target ###############
-
-set(kjumpingcube_SRCS 
-   kjumpingcube.cpp 
-   kcubeboxwidget.cpp 
-   main.cpp 
-   kcubewidget.cpp 
-   game.cpp
-   ai_main.cpp
-   ai_kepler.cpp
-   ai_newton.cpp
-   ai_box.cpp
-   kjumpingcube.qrc
-)
-
-ecm_setup_version(${KJUMPINGCUBE_VERSION}
-    VARIABLE_PREFIX KJUMPINGCUBE
-    VERSION_HEADER kjumpingcube_version.h
-)
-
-ecm_qt_declare_logging_category(kjumpingcube_SRCS
-    HEADER kjumpingcube_debug.h
-    IDENTIFIER KJUMPINGCUBE_LOG
-    CATEGORY_NAME org.kde.kjumpingcube
-    DESCRIPTION "KJumpingCube"
-    EXPORT KJUMPINGCUBE
-)
-
-ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
-
-kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc)
-
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kjumpingcube.png")
-ecm_add_app_icon(kjumpingcube_SRCS ICONS ${ICONS_SRCS})
-add_executable(kjumpingcube ${kjumpingcube_SRCS})
-
-target_link_libraries(kjumpingcube
-    KF5KDEGames
-    KF5::CoreAddons
-    KF5::Crash
-    KF5::DBusAddons
-    KF5::KIOWidgets
-    KF5::XmlGui
-    Qt5::Svg
-)
-
-install(TARGETS kjumpingcube  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
-
-
-########### install files ###############
-
-install(PROGRAMS org.kde.kjumpingcube.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.kjumpingcube.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
-install(FILES kjumpingcube.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
-
-ecm_install_icons(ICONS
-    128-apps-kjumpingcube.png
-    16-apps-kjumpingcube.png
-    22-apps-kjumpingcube.png
-    32-apps-kjumpingcube.png
-    48-apps-kjumpingcube.png
-    64-apps-kjumpingcube.png
-    DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor
-)
-
-ecm_qt_install_logging_categories(
-    EXPORT KJUMPINGCUBE
-    FILE kjumpingcube.categories
-    DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
-)
+add_subdirectory(icons)
+add_subdirectory(src)
 
 ki18n_install(po)
 kdoctools_install(po)
