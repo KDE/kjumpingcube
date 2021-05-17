@@ -69,11 +69,7 @@ void KJumpingCube::initKAction() {
   QAction * action;
 
   QSignalMapper * gameMapper = new QSignalMapper (this);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
   connect (gameMapper, &QSignalMapper::mappedInt, m_game, &Game::gameActions);
-#else
-  connect (gameMapper, QOverload<int>::of(&QSignalMapper::mapped), m_game, &Game::gameActions);
-#endif
 
   action = KStandardGameAction::gameNew (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
