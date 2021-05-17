@@ -3,7 +3,9 @@ ecm_setup_version(${KJUMPINGCUBE_VERSION}
     VERSION_HEADER kjumpingcube_version.h
 )
 
-set(kjumpingcube_SRCS 
+add_executable(kjumpingcube)
+
+target_sources(kjumpingcube PRIVATE
     kjumpingcube.cpp 
     kcubeboxwidget.cpp 
     main.cpp 
@@ -13,10 +15,11 @@ set(kjumpingcube_SRCS
     ai_kepler.cpp
     ai_newton.cpp
     ai_box.cpp
+
     kjumpingcube.qrc
 )
 
-ecm_qt_declare_logging_category(kjumpingcube_SRCS
+ecm_qt_declare_logging_category(kjumpingcube
     HEADER kjumpingcube_debug.h
     IDENTIFIER KJUMPINGCUBE_LOG
     CATEGORY_NAME org.kde.kjumpingcube
@@ -24,13 +27,12 @@ ecm_qt_declare_logging_category(kjumpingcube_SRCS
     EXPORT KJUMPINGCUBE
 )
 
-ki18n_wrap_ui(kjumpingcube_SRCS settings.ui)
+ki18n_wrap_ui(kjumpingcube settings.ui)
 
-kconfig_add_kcfg_files(kjumpingcube_SRCS prefs.kcfgc)
+kconfig_add_kcfg_files(kjumpingcube prefs.kcfgc)
 
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-kjumpingcube.png")
-ecm_add_app_icon(kjumpingcube_SRCS ICONS ${ICONS_SRCS})
-add_executable(kjumpingcube ${kjumpingcube_SRCS})
+ecm_add_app_icon(kjumpingcube ICONS ${ICONS_SRCS})
 
 target_link_libraries(kjumpingcube
     KF5KDEGames
