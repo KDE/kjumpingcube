@@ -4,7 +4,7 @@
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
- 
+
 <book id="kjumpingcube" lang="&language;"> <!-- do not change this! -->
 <bookinfo>
 	<title>The &kjumpingcube; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
@@ -38,15 +38,15 @@
 </copyright>
 
 <legalnotice>&FDLNotice;</legalnotice>
- 
-<date>2016-06-09</date>
-<releaseinfo>2.1 (Applications 16.04)</releaseinfo>
- 
+
+<date>2021-07-07</date>
+<releaseinfo>2.1 (KDE Gear 21.04)</releaseinfo>
+
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para>This documentation describes the game of &kjumpingcube; version 2.1</para>
 </abstract>
- 
+
 <!--List of relevant keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
@@ -70,7 +70,7 @@
 <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
 	<note><title>Gametype:</title><para>Strategy, Dice</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
- 
+
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 <para>&kjumpingcube; is a simple tactical game.  You can play it against
 the computer or a friend - or you can set up a game between two computer
@@ -86,7 +86,7 @@ on a neutral cube it becomes yours, changes to your color and increases by
 one point. Your objective is to capture all the cubes, but now it is your
 opponent's turn.</para>
 
-<para>Players move and add points by clicking on neutral cubes or 
+<para>Players move and add points by clicking on neutral cubes or
 their own cubes.</para>
 
 <para>The only way to capture your opponent's cubes is to increase a cube's
@@ -118,7 +118,7 @@ asked questions</link>, <quote>How do I get started in this game?</quote>.</para
 
 <para>The winner is the player who ends up owning all the cubes on the board.</para>
 </chapter>
- 
+
 <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
 	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
 	<sect1 id="rules"><title>Rules</title>
@@ -149,7 +149,7 @@ asked questions</link>, <quote>How do I get started in this game?</quote>.</para
 	</itemizedlist>
 	</sect1>
 </chapter>
- 
+
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 <sect1 id="toolbars">
 <title>The Toolbar</title>
@@ -183,7 +183,8 @@ settings dialog turn the step mode on or off (see the
 	</variablelist>
 
 <para> In each case, the button contains some text to indicate what action can
-be done or is expected, such as <guibutton>Stop animation</guibutton> or <guibutton>Your turn</guibutton>.</para>
+be done or is expected, such as &nbsp;<guibutton>Stop animation</guibutton> or
+<guibutton>Your turn</guibutton>.</para>
 
 <para> If you stop the calculation of a computer move, the computer will pick
 the best move it has so far. If you interrupt an animation (&eg; a cascade
@@ -200,7 +201,7 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<varlistentry><term><guiicon>New</guiicon></term>
 	<listitem><para><action>Start a new game.</action></para></listitem>
 	</varlistentry>
-	<varlistentry><term><guiicon>Load</guiicon></term>
+	<varlistentry><term><guiicon>Load...</guiicon></term>
 	<listitem><para><action>Load a previously saved game.</action></para></listitem>
 	</varlistentry>
 	<varlistentry><term><guiicon>Save</guiicon></term>
@@ -296,7 +297,7 @@ of the &kde; Fundamentals.
 </sect1>
 
 </chapter>
-  
+
 <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
 <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
@@ -344,14 +345,14 @@ of the &kde; Fundamentals.
  <answer><para>&kjumpingcube; does not have such a feature.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
- 
+
 </qandaset>
 </chapter>
- 
+
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<para>To open the configuration dialog use the menubar option: <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice> On Apple Mac OS X use option: <menuchoice><guimenu>&kjumpingcube;</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice>. Or you can use the Settings button in the toolbar.</para>
+<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice> menu item, on Apple Mac OS X use the <menuchoice><guimenu>&kjumpingcube;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
 
 <screenshot>
     <screeninfo>&kjumpingcube; Settings</screeninfo>
@@ -387,10 +388,10 @@ of the &kde; Fundamentals.
 	</varlistentry>
 	<varlistentry><term><guilabel>Cascade Move Display</guilabel></term>
 		<listitem><para>Choose an animation style for when a cube reaches its maximum and expands into neighboring cubes, possibly starting a cascade of such moves and covering a large area of the board.</para>
-		    <para>Use the radio buttons to select from <quote>None (no pauses)</quote>, where the whole move is displayed instantaneously; <quote>Darken and pause</quote>, where each overloaded cube darkens until it is time for it to expand; <quote>Blink rapidly</quote>, where each overloaded cube darkens at first and then blinks rapidly when it is time for it to expand and <quote>Scatter dots</quote>, where each overloaded cube darkens at first and then fires dots into neighboring cubes when it is time for it to expand.</para></listitem>
+		    <para>Use the radio buttons to select from <guilabel>None (no pauses)</guilabel>, where the whole move is displayed instantaneously; <guilabel>Darken and pause</guilabel>, where each overloaded cube darkens until it is time for it to expand; <guilabel>Blink rapidly</guilabel>, where each overloaded cube darkens at first and then blinks rapidly when it is time for it to expand and <guilabel>Scatter dots</guilabel>, where each overloaded cube darkens at first and then fires dots into neighboring cubes when it is time for it to expand.</para></listitem>
 	</varlistentry>
 	<varlistentry><term><guilabel>Cascade Move Time</guilabel></term>
-		<listitem><para>Use the slider to select from a range of times (Short to Long) to be spent on animations. The times depend a little on the type of animation, but can range from 0.15 seconds to 1.5 seconds for each stage of a cascade move.</para></listitem>
+		<listitem><para>Use the slider to select from a range of times (<guilabel>Short</guilabel> to <guilabel>Long</guilabel>) to be spent on animations. The times depend a little on the type of animation, but can range from 0.15 seconds to 1.5 seconds for each stage of a cascade move.</para></listitem>
 	</varlistentry>
 	<varlistentry><term><guilabel>Pause before each computer move</guilabel></term>
 	    <listitem><para>If this check box is selected, computer players will pause before they start a move, until you click to resume. This is to help you follow the action, especially if you are a new player or studying a computer versus computer game.</para></listitem>
@@ -402,10 +403,10 @@ of the &kde; Fundamentals.
 </sect1>
 
 </chapter>
- 
+
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
- 
+
 <para>&kjumpingcube; is Copyright 2012, 2013 Ian Wadham and Copyright 1998, 1999
     &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
 
@@ -414,7 +415,7 @@ Commodore 64 and other early home computers. Unfortunately the original
 author's name is unknown.</para>
 
 <para>In 2007, Ian Wadham took over maintenance of &kjumpingcube; for &kde; 4
-and Eugene Trounev painted the first SVG theme.</para>
+and Eugene Trounev painted the first &SVG; theme.</para>
 
 <para>In 2012 and 2013, Ian developed versions 2.0 and 2.1 of &kjumpingcube;, adding the animation styles, allowing board sizes down to 3x3 or up to 15x15 and writing completely new artificial intelligence modules that offer more of a challenge to a human player. These versions calculate moves faster, add multi-level undo/redo (previously only one move), add a choice of two AI opponents and provide options for beginning players to step through animations and computer moves.</para>
 
@@ -427,10 +428,10 @@ and Eugene Trounev painted the first SVG theme.</para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
 &underGPL;
- 
+
 </chapter>
-  
-&documentation.index; 
+
+&documentation.index;
 </book>
 <!--
 Local Variables:
