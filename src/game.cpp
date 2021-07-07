@@ -571,7 +571,7 @@ void Game::saveGame (bool saveAs)
          KIO::StatJob* statJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
          KJobWidgets::setWindow(statJob, m_view);
          if (statJob->exec()) {
-            QString mes=i18n("The file %1 exists.\n"
+            QString mes=i18n("The file %1 already exists.\n"
                "Do you want to overwrite it?", url.url());
             result = KMessageBox::warningContinueCancel
                (m_view, mes, QString(), KStandardGuiItem::overwrite());
