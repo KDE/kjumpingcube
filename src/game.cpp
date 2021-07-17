@@ -24,7 +24,6 @@
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <kio_version.h>
 
 #include "prefs.h"
 
