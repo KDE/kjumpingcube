@@ -71,32 +71,39 @@ void KJumpingCube::initKAction() {
   QSignalMapper * gameMapper = new QSignalMapper (this);
   connect (gameMapper, &QSignalMapper::mappedInt, m_game, &Game::gameActions);
 
-  action = KStandardGameAction::gameNew (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::gameNew(gameMapper,
+                                        qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, NEW);
 
-  action = KStandardGameAction::load    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::load(gameMapper,
+                                     qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, LOAD);
 
-  action = KStandardGameAction::save    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::save(gameMapper,
+                                     qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE);
 
-  action = KStandardGameAction::saveAs  (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::saveAs(gameMapper,
+                                       qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, SAVE_AS);
 
-  action = KStandardGameAction::hint    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::hint(gameMapper,
+                                     qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, HINT);
 
-  action = KStandardGameAction::undo    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::undo(gameMapper,
+                                     qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, UNDO);
   action->setEnabled (false);
 
-  action = KStandardGameAction::redo    (gameMapper, QOverload<>::of(&QSignalMapper::map), this);
+  action = KStandardGameAction::redo(gameMapper,
+                                     qOverload<>(&QSignalMapper::map), this);
   actionCollection()->addAction (action->objectName(), action);
   gameMapper->setMapping (action, REDO);
   action->setEnabled (false);
@@ -114,7 +121,8 @@ void KJumpingCube::initKAction() {
        "QPushButton#ActionButton:disabled { color: white;"
             "border-color: beige; background-color: steelblue; }");
   gameMapper->setMapping (actionButton, BUTTON);
-  connect (actionButton, &QAbstractButton::clicked, gameMapper, QOverload<>::of(&QSignalMapper::map));
+  connect(actionButton, &QAbstractButton::clicked, gameMapper,
+          qOverload<>(&QSignalMapper::map));
 
   QWidgetAction *widgetAction = new QWidgetAction(this);
   widgetAction->setDefaultWidget(actionButton);
