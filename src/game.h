@@ -37,7 +37,7 @@ class Game : public QObject
 public:
    explicit Game (const int dim, KCubeBoxWidget * view, QWidget * parent = nullptr);
 
-   virtual ~Game();
+   ~Game() override;
 
    /**
     * Make sure all animation and AI activity is over before closing a game.

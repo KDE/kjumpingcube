@@ -30,7 +30,7 @@ public:
     * The KJumpingCube AI_Box constructor.
     */
     explicit AI_Box          (QObject * parent = nullptr, int side = 5);
-    virtual  ~AI_Box();
+    ~AI_Box() override;
 
     int      side() const       { return m_side; }
     Player   owner    (int index) const

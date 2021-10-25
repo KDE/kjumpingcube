@@ -28,7 +28,7 @@ class KCubeWidget : public QFrame
 public:
    /** constructs a new KCubeWidget*/
    explicit KCubeWidget (QWidget * parent = nullptr);
-   virtual ~KCubeWidget();
+   ~KCubeWidget() override;
 
    Player owner() { return m_owner; }
    int    value() { return m_value; }

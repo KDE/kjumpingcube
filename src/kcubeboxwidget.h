@@ -28,7 +28,7 @@ class KCubeBoxWidget : public QWidget
 public:
    explicit KCubeBoxWidget (const int dim = 1, QWidget * parent = nullptr);
 
-   virtual ~KCubeBoxWidget();
+   ~KCubeBoxWidget() override;
 
    void displayCube        (int index, Player owner, int value);
    void highlightCube      (int index, bool highlight);

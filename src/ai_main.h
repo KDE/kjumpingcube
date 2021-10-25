@@ -70,7 +70,7 @@ public:
    * The constructor for the KJumpingCube AI (or "computer player").
    */
    explicit AI_Main (QObject * parent, int side);
-   virtual ~AI_Main();
+   ~AI_Main() override;
 
    /**
    * Compute a good move for a player from a given position, providing either
