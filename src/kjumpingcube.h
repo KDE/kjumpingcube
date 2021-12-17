@@ -42,13 +42,16 @@ protected:
 
 private:
   Game * m_game;
-  KCubeBoxWidget * m_view;
-  QLabel *currentPlayer;
-  QAction *undoAction, *redoAction, *stopAction, *hintAction;
+  KCubeBoxWidget * m_view = nullptr;
+  QLabel *currentPlayer = nullptr;
+  QAction *undoAction = nullptr;
+  QAction *redoAction = nullptr;
+  QAction *stopAction = nullptr;
+  QAction *hintAction = nullptr;
 
   void initKAction();
 
-  QPushButton * actionButton;
+  QPushButton * actionButton = nullptr;
   QString       buttonLook;
 
 private Q_SLOTS:

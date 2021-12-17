@@ -30,8 +30,8 @@ public:
    explicit KCubeWidget (QWidget * parent = nullptr);
    ~KCubeWidget() override;
 
-   Player owner() { return m_owner; }
-   int    value() { return m_value; }
+   Player owner() const { return m_owner; }
+   int    value() const { return m_value; }
 
    void setOwner   (Player newOwner); 
    void setValue   (int newValue);
