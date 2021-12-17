@@ -6,15 +6,26 @@ ecm_setup_version(${KJUMPINGCUBE_VERSION}
 add_executable(kjumpingcube)
 
 target_sources(kjumpingcube PRIVATE
-    kjumpingcube.cpp 
-    kcubeboxwidget.cpp 
-    main.cpp 
-    kcubewidget.cpp 
-    game.cpp
-    ai_main.cpp
-    ai_kepler.cpp
-    ai_newton.cpp
+    ai_base.h
     ai_box.cpp
+    ai_box.h
+    ai_globals.h
+    ai_kepler.cpp
+    ai_kepler.h
+    ai_main.cpp
+    ai_main.h
+    ai_newton.cpp
+    ai_newton.h
+    game.cpp
+    game.h
+    kcubeboxwidget.cpp
+    kcubeboxwidget.h
+    kcubewidget.cpp
+    kcubewidget.h
+    kjumpingcube.cpp
+    kjumpingcube.h
+    main.cpp
+    settingswidget.h
 
     kjumpingcube.qrc
 )
