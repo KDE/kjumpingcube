@@ -17,6 +17,7 @@
 #include "kjumpingcube_debug.h"
 #include <QFileDialog>
 #include <QTemporaryFile>
+#include <QRegExp>
 
 #include <KConfigDialog> // IDW test.
 #include <KIO/CopyJob>

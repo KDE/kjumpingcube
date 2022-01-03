@@ -52,7 +52,7 @@ target_link_libraries(kjumpingcube
     KF5::DBusAddons
     KF5::KIOWidgets
     KF5::XmlGui
-    Qt::Svg
+    Qt${QT_MAJOR_VERSION}::Svg
 )
 
 install(TARGETS kjumpingcube ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
