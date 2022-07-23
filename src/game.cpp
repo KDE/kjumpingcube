@@ -303,7 +303,7 @@ void Game::moveCalculationDone (int index)
    m_activity = Idle;
    if ((index < 0) || (index >= (m_side * m_side))) {
       m_view->setNormalCursor();
-      KMessageBox::sorry (m_view,
+      KMessageBox::error (m_view,
                           i18n ("The computer could not find a valid move."));
       // IDW TODO - What to do about state values and BUTTON ???
       return;
@@ -599,7 +599,7 @@ void Game::saveGame (bool saveAs)
       Q_EMIT statusMessage (i18n("Game saved as %1", m_gameURL.url()), false);
    }
    else {
-      KMessageBox::sorry (m_view, i18n("There was an error in saving file\n%1",
+      KMessageBox::error (m_view, i18n("There was an error in saving file\n%1",
                                        m_gameURL.url()));
    }
 }
@@ -617,7 +617,7 @@ void Game::loadGame()
       KJobWidgets::setWindow(statJob, m_view);
       if (! statJob->exec()) {
          QString mes = i18n("The file %1 does not exist!", url.url());
-         KMessageBox::sorry (m_view, mes);
+         KMessageBox::error (m_view, mes);
          fileOk = false;
       }
    } while (! fileOk);
@@ -633,7 +633,7 @@ void Game::loadGame()
       if (! main.hasKey ("Version")) {
          QString mes = i18n("The file %1 is not a KJumpingCube gamefile!",
                             url.url());
-         KMessageBox::sorry (m_view, mes);
+         KMessageBox::error (m_view, mes);
          return;
       }
 
@@ -644,7 +644,7 @@ void Game::loadGame()
       Q_EMIT setAction (UNDO, false);
    }
    else
-      KMessageBox::sorry (m_view, i18n("There was an error loading file\n%1",
+      KMessageBox::error (m_view, i18n("There was an error loading file\n%1",
                                        url.url()));
 }
 
@@ -827,7 +827,7 @@ void Game::readProperties (const KConfigGroup& config)
   // Dimension must be 3 to 15 (see definition in ai_box.h).
   int cubeDim = config.readEntry ("CubeDim", minSide);
   if ((cubeDim < minSide) || (cubeDim > maxSide)) {
-     KMessageBox::sorry (m_view, i18n("The file's cube box size is outside "
+     KMessageBox::error (m_view, i18n("The file's cube box size is outside "
                                     "the range %1 to %2. It will be set to %1.",
                                     minSide, maxSide));
      cubeDim = 3;
@@ -843,7 +843,7 @@ void Game::readProperties (const KConfigGroup& config)
 	list = config.readEntry (key, QStringList());
 	// List length must be 2, owner must be 0-2, value >= 1 and <= max().
 	if (list.count() < 2) {
-	    KMessageBox::sorry (m_view, i18n("Missing input line for cube %1.", key));
+	    KMessageBox::error (m_view, i18n("Missing input line for cube %1.", key));
 	    owner = 0;
 	    value = 1;
 	}
@@ -852,14 +852,14 @@ void Game::readProperties (const KConfigGroup& config)
 	    value = list.at(1).toInt();
 	}
 	if ((owner < 0) || (owner > 2)) {
-	    KMessageBox::sorry (m_view, i18n("Owner of cube %1 is outside the "
+	    KMessageBox::error (m_view, i18n("Owner of cube %1 is outside the "
                                            "range 0 to 2.", key));
 	    owner = 0;
 	}
 	int index = x * m_side + y;
 	maxValue = (owner == 0) ? 1 : m_box->maxValue (index);
 	if ((value < 1) || (value > maxValue)) {
-	    KMessageBox::sorry (m_view, i18n("Value of cube %1 is outside the "
+	    KMessageBox::error (m_view, i18n("Value of cube %1 is outside the "
                                            "range 1 to %2.", key, maxValue));
 	    value = maxValue;
 	}
@@ -874,7 +874,7 @@ void Game::readProperties (const KConfigGroup& config)
    // Set current player - must be 1 or 2.
    int onTurn = config.readEntry ("onTurn", 1);
    if ((onTurn < 1) || (onTurn > 2)) {
-       KMessageBox::sorry (m_view, i18n("Current player is neither 1 nor 2."));
+       KMessageBox::error (m_view, i18n("Current player is neither 1 nor 2."));
        onTurn = 1;
    }
    m_currentPlayer = (Player) onTurn;
