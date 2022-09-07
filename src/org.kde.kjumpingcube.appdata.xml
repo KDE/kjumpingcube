@@ -95,6 +95,7 @@
     <p xml:lang="pl">KSkacząceSześciany jest prostą grą taktyczną wykorzystującą kości do gry. Obszar gry składa się z kwadratów zawierających punkty. Gracz przesuwa się klikając albo na niezajęty kwadrat albo na własny kwadrawt.</p>
     <p xml:lang="pt">O KJumpingCube é um jogo táctico simples com dados. A área de jogo consiste em quadrados que contêm pontos. Os jogadores movem-se ao carregar num quadrado vazio ou num quadrado seu.</p>
     <p xml:lang="pt-BR">O KJumpingCube é um jogo de tática simples com dados. A área do jogo consiste em quadrados contendo pontos. Os jogadores se movem clicando ou num quadrado vazio ou no próprio quadrado.</p>
+    <p xml:lang="ru">KJumpingCube — простая тактическая игра. Игровая область состоит из квадратов, содержащих точки. Игроки перемещаются, нажимая либо на свободный квадрат, либо на свой квадрат.</p>
     <p xml:lang="sk">KJumpingCube je jednoduchá kockami riadená taktická hra. Hracia plochasa skladá zo štvorcov, ktoré obsahujú body. Hráči sa pohybujú po kliknutí na buďprázdny štvorec, alebo na vlastný štvorec.</p>
     <p xml:lang="sl">KJumpingCube je preprosta taktična igra s kockami. Igralna površina sestoji iz kvadratkov, ki vsebujejo točke. Igralci napredujejo tako, da kliknejo bodisi prazni bodisi lastni kvadratek.</p>
     <p xml:lang="sr">К‑скочикоцка је једноставна тактичка игра са коцкицама. Игра се на квадратима који садрже поене. Потези се повлаче тако што се или кликне на празан квадрат или на свој квадрат.</p>
@@ -130,6 +131,7 @@
       <caption xml:lang="pl">Granie w KSkaczącySześcian</caption>
       <caption xml:lang="pt">A jogar ao KJumpingCube</caption>
       <caption xml:lang="pt-BR">Jogando KJumpingCube</caption>
+      <caption xml:lang="ru">Игра в KJumpingCube</caption>
       <caption xml:lang="sk">Hranie KJumpingCube</caption>
       <caption xml:lang="sl">Igra KJumpingCube</caption>
       <caption xml:lang="sv">Spela Hoppande kuben</caption>
