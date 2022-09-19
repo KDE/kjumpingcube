@@ -144,6 +144,7 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://apps.kde.org/kjumpingcube</url>
+  <url type="help">https://docs.kde.org/?application=kjumpingcube</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjumpingcube</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kjumpingcube&amp;source=appdata</url>
   <project_group>KDE</project_group>
