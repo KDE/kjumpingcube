@@ -40,7 +40,9 @@ int main(int argc, char *argv[])
                           QStringLiteral(KJUMPINGCUBE_VERSION_STRING),
                           i18n("Tactical one or two player game"),
                           KAboutLicense::GPL,
-                          i18n("(c) 1998-2000, Matthias Kiefer"));
+                          i18n("(c) 1998-2000, Matthias Kiefer"),
+                          QString(),
+                          QStringLiteral("https://apps.kde.org/kjumpingcube"));
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), QStringLiteral("matthias.kiefer@gmx.de"));
     aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), QStringLiteral("ben+kjumpingcube@meyerhome.net"));
@@ -50,7 +52,6 @@ int main(int argc, char *argv[])
     aboutData.addCredit(i18n("Eugene Trounev"),
                       i18n("Graphics for KDE 4.0 version."),
                       QStringLiteral("irs_me@hotmail.com"));
-    aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kjumpingcube"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
