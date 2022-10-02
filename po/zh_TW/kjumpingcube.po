@@ -1,0 +1,579 @@
+# translation of kjumpingcube.po to Chinese Traditional
+# Copyright (C) 2003, 2007 Free Software Foundation, Inc.
+#
+# Hydonsingore Sie <hydonsingore@mail.educities.edu.tw>, 2003.
+# Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007.
+# Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kjumpingcube\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2013-06-11 09:37+0800\n"
+"Last-Translator: Franklin Weng <franklin at goodhorse dot idv dot tw>\n"
+"Language-Team: Chinese Traditional <kde-tw@googlegroups.com>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"dot tw>\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Michelle H.Y. Yu,Hydonsingore Sie"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Michelle_H.Y._Yu@wistron.com.tw,hydonsingore@mail.educities.edu.tw"
+
+#: game.cpp:77
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr "抱歉，移動中..."
+
+#: game.cpp:114
+#, kde-format
+msgid "Game over"
+msgstr "遊戲結束"
+
+#: game.cpp:115
+#, kde-format
+msgid "The winner is Player %1!"
+msgstr "嬴家是玩家 %1！"
+
+#: game.cpp:116
+#, kde-format
+msgid "Winner"
+msgstr "贏家"
+
+#: game.cpp:127
+#, kde-format
+msgid "General"
+msgstr "一般"
+
+#: game.cpp:240
+#, kde-format
+msgid "Start game"
+msgstr "開始遊戲"
+
+#: game.cpp:243
+#, kde-format
+msgid "Continue game"
+msgstr "繼續此局"
+
+#: game.cpp:247
+#, kde-format
+msgid "Start computer move"
+msgstr "開始電腦移動"
+
+#: game.cpp:268
+#, kde-format
+msgid "Your turn"
+msgstr "該您了"
+
+#: game.cpp:271
+#, kde-format
+msgid "Player %1"
+msgstr "玩家 %1"
+
+#: game.cpp:287
+#, kde-format
+msgid "Computer player %1 is moving"
+msgstr "電腦玩家 %1 移動中"
+
+#: game.cpp:307
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr "電腦找不到合法的移動。"
+
+#: game.cpp:407
+#, kde-format
+msgid "Show next step"
+msgstr "顯示下一步驟"
+
+#: game.cpp:465
+#, kde-format
+msgid "Finishing move..."
+msgstr "結束移動中..."
+
+#: game.cpp:504
+#, kde-format
+msgid "Interrupt game"
+msgstr "中斷遊戲"
+
+#: game.cpp:510
+#, kde-format
+msgid "Stop computing"
+msgstr "停止計算"
+
+#: game.cpp:513
+#, kde-format
+msgid "Stop showing move"
+msgstr "停止顯示移動"
+
+#: game.cpp:516
+#, kde-format
+msgid "Stop animation"
+msgstr "停止動畫"
+
+#: game.cpp:545
+#, kde-format
+msgid "New Game"
+msgstr "開始新遊戲"
+
+#: game.cpp:574
+#, fuzzy, kde-format
+#| msgid ""
+#| "The file %1 exists.\n"
+#| "Do you want to overwrite it?"
+msgid ""
+"The file %1 already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"檔案 %1 已存在\n"
+"您要覆寫它嗎？"
+
+#: game.cpp:599
+#, kde-format
+msgid "Game saved as %1"
+msgstr "遊戲存檔成 %1"
+
+#: game.cpp:602
+#, kde-format
+msgid ""
+"There was an error in saving file\n"
+"%1"
+msgstr ""
+"存檔時發生了錯誤\n"
+"%1"
+
+#: game.cpp:619
+#, kde-format
+msgid "The file %1 does not exist!"
+msgstr "檔案 %1 不存在!"
+
+#: game.cpp:634
+#, kde-format
+msgid "The file %1 is not a KJumpingCube gamefile!"
+msgstr "檔案 %1 不是 KJumpingCube 的遊戲檔！"
+
+#: game.cpp:647
+#, kde-format
+msgid ""
+"There was an error loading file\n"
+"%1"
+msgstr ""
+"載入檔案發生了一個錯誤\n"
+"%1"
+
+#: game.cpp:675
+#, kde-format
+msgid ""
+"You have changed the size setting of the game and that requires a new game "
+"to start.\n"
+"\n"
+"Do you wish to abandon the current game or continue playing and restore the "
+"previous size setting?"
+msgstr ""
+"您已變更遊戲的大小設定，需要重新啟動遊戲。\n"
+"\n"
+"您希望中止目前的遊戲，還是回復原本的大小設定繼續玩？"
+
+#: game.cpp:681
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+"您要求開始新遊戲，但是目前有一局正在進行中。\n"
+"\n"
+"您要中止現在的遊戲嗎？"
+
+#: game.cpp:686
+#, kde-format
+msgid "New Game?"
+msgstr "開始新遊戲嗎？"
+
+#: game.cpp:687
+#, kde-format
+msgid "Abandon Game"
+msgstr "中止遊戲"
+
+#: game.cpp:688
+#, kde-format
+msgid "Continue Game"
+msgstr "繼續此局"
+
+#: game.cpp:830
+#, kde-format
+msgid ""
+"The file's cube box size is outside the range %1 to %2. It will be set to %1."
+msgstr "檔案中的骰子大小在範圍 %1 到 %2 之外。將會被設定為 %1。"
+
+#: game.cpp:846
+#, kde-format
+msgid "Missing input line for cube %1."
+msgstr "骰子 %1 沒有輸入行。"
+
+#: game.cpp:855
+#, kde-format
+msgid "Owner of cube %1 is outside the range 0 to 2."
+msgstr "骰子 %1 的擁有者在範圍 0 到 2 之外。"
+
+#: game.cpp:862
+#, kde-format
+msgid "Value of cube %1 is outside the range 1 to %2."
+msgstr "骰子 %1 的值在範圍 1 到 %2 之外。"
+
+#: game.cpp:877
+#, kde-format
+msgid "Current player is neither 1 nor 2."
+msgstr "目前的玩家不是 1 也不是 2。"
+
+#: kjumpingcube.cpp:45
+#, kde-format
+msgid "Current player:"
+msgstr "目前的玩家："
+
+#: kjumpingcube.cpp:137
+#, kde-format
+msgid "Settings"
+msgstr "設定"
+
+#. i18n: ectx: label, entry (AnimationSpeed), group (Game)
+#: kjumpingcube.kcfg:11
+#, kde-format
+msgid "Animation speed of overflowing dice"
+msgstr "骰子向外攻佔領地時的動畫速度"
+
+#. i18n: ectx: label, entry (AnimationNone), group (Game)
+#: kjumpingcube.kcfg:15
+#, kde-format
+msgid "Animation type None (no pauses)."
+msgstr "動畫型態：無（不暫停）。"
+
+#. i18n: ectx: label, entry (AnimationDelay), group (Game)
+#: kjumpingcube.kcfg:19
+#, kde-format
+msgid "Animation type Darken and pause."
+msgstr "動畫型態：變黑並暫停。"
+
+#. i18n: ectx: label, entry (AnimationBlink), group (Game)
+#: kjumpingcube.kcfg:23
+#, kde-format
+msgid "Animation type Blink rapidly."
+msgstr "動畫型態：快速閃爍。"
+
+#. i18n: ectx: label, entry (AnimationSpread), group (Game)
+#: kjumpingcube.kcfg:27
+#, kde-format
+msgid "Animation type Scatter dots."
+msgstr "動畫型態：分散點。"
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kjumpingcube.kcfg:31
+#, kde-format
+msgid "Color of neutral cubes."
+msgstr "中立骰子的顏色"
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kjumpingcube.kcfg:35
+#, kde-format
+msgid "Color of player 1."
+msgstr "玩家 1 的顏色"
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kjumpingcube.kcfg:39
+#, kde-format
+msgid "Color of player 2."
+msgstr "玩家 2 的顏色"
+
+#. i18n: ectx: label, entry (CubeDim), group (Game)
+#: kjumpingcube.kcfg:45
+#, kde-format
+msgid "Size of the playing field."
+msgstr "遊戲區的大小"
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kjumpingcube.kcfg:49
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "玩家 1 是否由電腦扮演。"
+
+#. i18n: ectx: label, entry (Kepler1), group (Game)
+#: kjumpingcube.kcfg:53
+#, kde-format
+msgid "Whether computer player 1 uses Kepler AI."
+msgstr "電腦玩家 1 是否使用 Kepler AI。"
+
+#. i18n: ectx: label, entry (Newton1), group (Game)
+#: kjumpingcube.kcfg:57
+#, kde-format
+msgid "Whether computer player 1 uses Newton AI."
+msgstr "電腦玩家 1 是否使用 Newton AI。"
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kjumpingcube.kcfg:68
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "電腦玩家 1 的技術等級。"
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kjumpingcube.kcfg:72
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "玩家 2 是否由電腦扮演。"
+
+#. i18n: ectx: label, entry (Kepler2), group (Game)
+#: kjumpingcube.kcfg:76
+#, kde-format
+msgid "Whether computer player 2 uses Kepler AI."
+msgstr "電腦玩家 2 是否使用 Kepler AI。"
+
+#. i18n: ectx: label, entry (Newton2), group (Game)
+#: kjumpingcube.kcfg:80
+#, kde-format
+msgid "Whether computer player 2 uses Newton AI."
+msgstr "電腦玩家 2 是否使用 Newton AI。"
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kjumpingcube.kcfg:91
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "電腦玩家 2 的技術等級。"
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kjumpingcube.kcfg:95
+#, kde-format
+msgid "Pause before each computer move."
+msgstr "在每次電腦移動前暫停。"
+
+#. i18n: ectx: label, entry (PauseForStep), group (Game)
+#: kjumpingcube.kcfg:99
+#, kde-format
+msgid "Pause before each cascade step."
+msgstr "在每個串連步驟前暫停。"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kjumpingcubeui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "主工具列"
+
+#: main.cpp:39
+#, kde-format
+msgid "KJumpingCube"
+msgstr "KJumpingCube"
+
+#: main.cpp:41
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "一人或二人的策略遊戲"
+
+#: main.cpp:43
+#, kde-format
+msgid "(c) 1998-2000, Matthias Kiefer"
+msgstr "(c) 1998-2000, Matthias Kiefer"
+
+#: main.cpp:47
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Various improvements"
+msgstr "諸多改進"
+
+#: main.cpp:49
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:50
+#, kde-format
+msgid "Upgrade to KDE4 and SVG artwork support."
+msgstr "升級到 KDE4 與 SVG 美工支援。"
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:53
+#, kde-format
+msgid "Graphics for KDE 4.0 version."
+msgstr "KDE 4.0 的圖形。"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "電腦玩家 1"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:181
+#, kde-format
+msgid "Playing now"
+msgstr "正在玩"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:59 settings.ui:194
+#, kde-format
+msgid "Style of Play"
+msgstr "遊戲樣式"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
+#: settings.ui:65 settings.ui:203
+#, kde-format
+msgid "Kepler"
+msgstr "Kepler"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
+#: settings.ui:75 settings.ui:213
+#, kde-format
+msgid "Newton"
+msgstr "Newton"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:120 settings.ui:255
+#, kde-format
+msgid "Beginner"
+msgstr "生手"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:130 settings.ui:265
+#, kde-format
+msgid "Average"
+msgstr "一般"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:146 settings.ui:281
+#, kde-format
+msgid "Expert"
+msgstr "專家"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:163
+#, kde-format
+msgid "Computer Player 2"
+msgstr "電腦玩家 2"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:298
+#, kde-format
+msgid "Pause before each computer move"
+msgstr "在每次電腦移動前暫停。"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: settings.ui:309
+#, kde-format
+msgid "Board Size"
+msgstr "版面大小"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: settings.ui:345
+#, kde-format
+msgid "3x3"
+msgstr "3x3"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: settings.ui:368
+#, kde-format
+msgid "15x15"
+msgstr "15x15"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:383
+#, kde-format
+msgid "Players' Colors"
+msgstr "玩家顏色"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:391
+#, kde-format
+msgid "Player 1:"
+msgstr "玩家 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:405
+#, kde-format
+msgid "Player 2:"
+msgstr "玩家 2:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:419
+#, kde-format
+msgid "Neutral:"
+msgstr "中立："
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#: settings.ui:434
+#, kde-format
+msgid "Cascade Move Display"
+msgstr "串接移動顯示"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
+#: settings.ui:446
+#, kde-format
+msgid "None (no pauses)"
+msgstr "無（不暫停）"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
+#: settings.ui:459
+#, kde-format
+msgid "Darken and pause"
+msgstr "變黑並暫停"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
+#: settings.ui:472
+#, kde-format
+msgid "Blink rapidly"
+msgstr "快速閃爍"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
+#: settings.ui:485
+#, kde-format
+msgid "Scatter dots"
+msgstr "分散點"
+
+#. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
+#: settings.ui:498
+#, kde-format
+msgid "Cascade Move Time"
+msgstr "串接移動時間"
+
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+#: settings.ui:543
+#, kde-format
+msgid "Short"
+msgstr "短"
+
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+#: settings.ui:566
+#, kde-format
+msgid "Long"
+msgstr "長"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
+#: settings.ui:581
+#, kde-format
+msgid "Pause before each cascade step"
+msgstr "在每個串連步驟前暫停"

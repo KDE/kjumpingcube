@@ -1,0 +1,630 @@
+# Irish translation of kjumpingcube
+# Copyright (C) 2009 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kjumpingcube package.
+# Kevin Scannell <kscanne@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdegames/kjumpingcube.po\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2004-12-03 14:52-0500\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "seoc@iolfree.ie,kscanne@gmail.com"
+
+#: game.cpp:77
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr ""
+
+#: game.cpp:114
+#, kde-format
+msgid "Game over"
+msgstr ""
+
+#: game.cpp:115
+#, fuzzy, kde-format
+#| msgid "Winner is Player %1!"
+msgid "The winner is Player %1!"
+msgstr "Ba é Imreoir %1 an Buaiteoir!"
+
+#: game.cpp:116
+#, kde-format
+msgid "Winner"
+msgstr "Buaiteoir"
+
+#: game.cpp:127
+#, kde-format
+msgid "General"
+msgstr "Ginearálta"
+
+#: game.cpp:240
+#, kde-format
+msgid "Start game"
+msgstr ""
+
+#: game.cpp:243
+#, kde-format
+msgid "Continue game"
+msgstr ""
+
+#: game.cpp:247
+#, kde-format
+msgid "Start computer move"
+msgstr ""
+
+#: game.cpp:268
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgid "Your turn"
+msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
+
+#: game.cpp:271
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player %1"
+msgstr "Imreoir 1"
+
+#: game.cpp:287
+#, fuzzy, kde-format
+#| msgid "Computer Player 1"
+msgid "Computer player %1 is moving"
+msgstr "Imreoir Ríomhaire 1"
+
+#: game.cpp:307
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr ""
+
+#: game.cpp:407
+#, kde-format
+msgid "Show next step"
+msgstr ""
+
+#: game.cpp:465
+#, kde-format
+msgid "Finishing move..."
+msgstr ""
+
+#: game.cpp:504
+#, kde-format
+msgid "Interrupt game"
+msgstr ""
+
+#: game.cpp:510
+#, kde-format
+msgid "Stop computing"
+msgstr ""
+
+#: game.cpp:513
+#, kde-format
+msgid "Stop showing move"
+msgstr ""
+
+#: game.cpp:516
+#, kde-format
+msgid "Stop animation"
+msgstr ""
+
+#: game.cpp:545
+#, kde-format
+msgid "New Game"
+msgstr "Cluiche Nua"
+
+#: game.cpp:574
+#, fuzzy, kde-format
+#| msgid ""
+#| "The file %1 exists.\n"
+#| "Do you want to overwrite it?"
+msgid ""
+"The file %1 already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"Tá comhad %1 ann cheana.\n"
+"An bhfuil fonn ort scríobh air?"
+
+#: game.cpp:599
+#, fuzzy, kde-format
+#| msgid "game saved as %1"
+msgid "Game saved as %1"
+msgstr "sábháladh an cluiche mar %1"
+
+#: game.cpp:602
+#, kde-format
+msgid ""
+"There was an error in saving file\n"
+"%1"
+msgstr ""
+"Tharla earráid agus an comhad á shábháil\n"
+"%1"
+
+#: game.cpp:619
+#, kde-format
+msgid "The file %1 does not exist!"
+msgstr "Níl comhad %1 ann!"
+
+#: game.cpp:634
+#, kde-format
+msgid "The file %1 is not a KJumpingCube gamefile!"
+msgstr "Níl comhad %1 ina chomhad cluiche le haghaidh KJumpingCube!"
+
+#: game.cpp:647
+#, kde-format
+msgid ""
+"There was an error loading file\n"
+"%1"
+msgstr ""
+"Tharla earráid agus an comhad á luchtú\n"
+"%1"
+
+#: game.cpp:675
+#, kde-format
+msgid ""
+"You have changed the size setting of the game and that requires a new game "
+"to start.\n"
+"\n"
+"Do you wish to abandon the current game or continue playing and restore the "
+"previous size setting?"
+msgstr ""
+
+#: game.cpp:681
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+
+#: game.cpp:686
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgid "New Game?"
+msgstr "Cluiche Nua"
+
+#: game.cpp:687
+#, kde-format
+msgid "Abandon Game"
+msgstr ""
+
+#: game.cpp:688
+#, kde-format
+msgid "Continue Game"
+msgstr ""
+
+#: game.cpp:830
+#, kde-format
+msgid ""
+"The file's cube box size is outside the range %1 to %2. It will be set to %1."
+msgstr ""
+
+#: game.cpp:846
+#, kde-format
+msgid "Missing input line for cube %1."
+msgstr ""
+
+#: game.cpp:855
+#, kde-format
+msgid "Owner of cube %1 is outside the range 0 to 2."
+msgstr ""
+
+#: game.cpp:862
+#, kde-format
+msgid "Value of cube %1 is outside the range 1 to %2."
+msgstr ""
+
+#: game.cpp:877
+#, kde-format
+msgid "Current player is neither 1 nor 2."
+msgstr ""
+
+#: kjumpingcube.cpp:45
+#, kde-format
+msgid "Current player:"
+msgstr "Imreoir reatha:"
+
+#: kjumpingcube.cpp:137
+#, kde-format
+msgid "Settings"
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationSpeed), group (Game)
+#: kjumpingcube.kcfg:11
+#, kde-format
+msgid "Animation speed of overflowing dice"
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationNone), group (Game)
+#: kjumpingcube.kcfg:15
+#, kde-format
+msgid "Animation type None (no pauses)."
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationDelay), group (Game)
+#: kjumpingcube.kcfg:19
+#, kde-format
+msgid "Animation type Darken and pause."
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationBlink), group (Game)
+#: kjumpingcube.kcfg:23
+#, kde-format
+msgid "Animation type Blink rapidly."
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationSpread), group (Game)
+#: kjumpingcube.kcfg:27
+#, kde-format
+msgid "Animation type Scatter dots."
+msgstr ""
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kjumpingcube.kcfg:31
+#, kde-format
+msgid "Color of neutral cubes."
+msgstr "Dath na gciúbanna neodrach."
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kjumpingcube.kcfg:35
+#, kde-format
+msgid "Color of player 1."
+msgstr "Dath imreora a haon."
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kjumpingcube.kcfg:39
+#, kde-format
+msgid "Color of player 2."
+msgstr "Dath imreora a dó."
+
+#. i18n: ectx: label, entry (CubeDim), group (Game)
+#: kjumpingcube.kcfg:45
+#, kde-format
+msgid "Size of the playing field."
+msgstr "Méid na páirce imeartha."
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kjumpingcube.kcfg:49
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "Cé acu imreoir ríomhaire é imreoir 1 nó nach ea."
+
+#. i18n: ectx: label, entry (Kepler1), group (Game)
+#: kjumpingcube.kcfg:53
+#, kde-format
+msgid "Whether computer player 1 uses Kepler AI."
+msgstr ""
+
+#. i18n: ectx: label, entry (Newton1), group (Game)
+#: kjumpingcube.kcfg:57
+#, kde-format
+msgid "Whether computer player 1 uses Newton AI."
+msgstr ""
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kjumpingcube.kcfg:68
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "Leibhéal imreora ríomhaire 1."
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kjumpingcube.kcfg:72
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "Cé acu imreoir ríomhaire é imreoir 2 nó nach ea."
+
+#. i18n: ectx: label, entry (Kepler2), group (Game)
+#: kjumpingcube.kcfg:76
+#, kde-format
+msgid "Whether computer player 2 uses Kepler AI."
+msgstr ""
+
+#. i18n: ectx: label, entry (Newton2), group (Game)
+#: kjumpingcube.kcfg:80
+#, kde-format
+msgid "Whether computer player 2 uses Newton AI."
+msgstr ""
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kjumpingcube.kcfg:91
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "Leibhéal imreora ríomhaire 2."
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kjumpingcube.kcfg:95
+#, kde-format
+msgid "Pause before each computer move."
+msgstr ""
+
+#. i18n: ectx: label, entry (PauseForStep), group (Game)
+#: kjumpingcube.kcfg:99
+#, kde-format
+msgid "Pause before each cascade step."
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kjumpingcubeui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Príomhbharra Uirlisí"
+
+#: main.cpp:39
+#, kde-format
+msgid "KJumpingCube"
+msgstr "KJumpingCube"
+
+#: main.cpp:41
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "Cluiche taicticiúil d'imreoir amháin nó beirt"
+
+#: main.cpp:43
+#, kde-format
+msgid "(c) 1998-2000, Matthias Kiefer"
+msgstr "© 1998-2000, Matthias Kiefer"
+
+#: main.cpp:47
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Various improvements"
+msgstr "Feabhsúcháin éagsúla"
+
+#: main.cpp:49
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:50
+#, kde-format
+msgid "Upgrade to KDE4 and SVG artwork support."
+msgstr "Leagan KDE4 agus tacaíocht do mhaisiúchán SVG."
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:53
+#, kde-format
+msgid "Graphics for KDE 4.0 version."
+msgstr "Grafaic sa leagan KDE 4.0."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "Imreoir Ríomhaire 1"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:181
+#, kde-format
+msgid "Playing now"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:59 settings.ui:194
+#, kde-format
+msgid "Style of Play"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
+#: settings.ui:65 settings.ui:203
+#, kde-format
+msgid "Kepler"
+msgstr "Kepler"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
+#: settings.ui:75 settings.ui:213
+#, kde-format
+msgid "Newton"
+msgstr "Newton"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:120 settings.ui:255
+#, kde-format
+msgid "Beginner"
+msgstr "Tosaitheoir"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:130 settings.ui:265
+#, kde-format
+msgid "Average"
+msgstr "Meán"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:146 settings.ui:281
+#, kde-format
+msgid "Expert"
+msgstr "Saineolaí"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:163
+#, kde-format
+msgid "Computer Player 2"
+msgstr "Imreoir Ríomhaire 2"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:298
+#, kde-format
+msgid "Pause before each computer move"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: settings.ui:309
+#, kde-format
+msgid "Board Size"
+msgstr "Méid an Chláir"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: settings.ui:345
+#, kde-format
+msgid "3x3"
+msgstr "3×3"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: settings.ui:368
+#, kde-format
+msgid "15x15"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:383
+#, kde-format
+msgid "Players' Colors"
+msgstr "Dathanna Imreoirí"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:391
+#, kde-format
+msgid "Player 1:"
+msgstr "Imreoir 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:405
+#, kde-format
+msgid "Player 2:"
+msgstr "Imreoir 2:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:419
+#, kde-format
+msgid "Neutral:"
+msgstr "Neodrach:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#: settings.ui:434
+#, kde-format
+msgid "Cascade Move Display"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
+#: settings.ui:446
+#, kde-format
+msgid "None (no pauses)"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
+#: settings.ui:459
+#, kde-format
+msgid "Darken and pause"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
+#: settings.ui:472
+#, kde-format
+msgid "Blink rapidly"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
+#: settings.ui:485
+#, kde-format
+msgid "Scatter dots"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
+#: settings.ui:498
+#, kde-format
+msgid "Cascade Move Time"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+#: settings.ui:543
+#, kde-format
+msgid "Short"
+msgstr "Gearr"
+
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+#: settings.ui:566
+#, kde-format
+msgid "Long"
+msgstr "Fada"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
+#: settings.ui:581
+#, kde-format
+msgid "Pause before each cascade step"
+msgstr ""
+
+#~ msgid "PushButton"
+#~ msgstr "Brúchnaipe"
+
+#~ msgid "Overwrite"
+#~ msgstr "Forscríobh"
+
+#, fuzzy
+#~| msgid "Computing next move."
+#~ msgid "Computing a move"
+#~ msgstr "An chéad bheart eile á áireamh."
+
+#, fuzzy
+#~| msgid "Performing move."
+#~ msgid "Performing a move"
+#~ msgstr "Beart á dhéanamh."
+
+#~ msgid "Stop"
+#~ msgstr "Stad"
+
+#~ msgid "Force the computer to move immediately"
+#~ msgstr "Éiligh beart ón ríomhaire láithreach"
+
+#~ msgid ""
+#~ "Stop the computer's calculation of its current move and force it to move "
+#~ "immediately"
+#~ msgstr ""
+#~ "Stad an ríomhaire agus a bheart á áireamh; éiligh an beart láithreach"
+
+#~ msgid "stopped activity"
+#~ msgstr "gníomhaíocht stadta"
+
+#~ msgid "&Game"
+#~ msgstr "&Cluiche"
+
+#~ msgid "10x10"
+#~ msgstr "10×10"
+
+#~ msgid "Computer Skill"
+#~ msgstr "Leibhéal an Ríomhaire"
+
+#~ msgid "Player 2"
+#~ msgstr "Imreoir 2"
+
+#~ msgid "5x5"
+#~ msgstr "5×5"
+
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&Bog"
+
+#~ msgid "Form"
+#~ msgstr "Foirm"

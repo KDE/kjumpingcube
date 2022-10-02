@@ -1,0 +1,1008 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Handbok Hoppande kuben</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-07-07</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Denna dokumentation beskriver spelet Hoppande kuben, version 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Hoppande kuben</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>strategi</keyword>
+	<keyword
+>tärningar</keyword>
+	<keyword
+>tärningsspel</keyword>
+	<keyword
+>spela tärning</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>två spelare</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>kub</keyword>
+	<keyword
+>hoppa</keyword>
+	<keyword
+>hoppande kuben</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inledning</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltyp:</title
+><para
+>Strategi, tärningsspel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Antal möjliga spelare:</title
+><para
+>Två</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>Hoppande kuben är ett enkelt taktikspel. Du kan spela mot datorn eller en vän, eller så kan du starta ett spel mellan två datorspelare och bara titta på.</para>
+
+<para
+>Det kan vara en god idé om du inte har spelat Hoppande kuben tidigare. Se <link linkend="faq"
+>Vanliga frågor</link
+>, <quote
+>Hur kommer man igång och spelar?</quote
+>.</para>
+
+<para
+>Spelplanen är en låda med kuber som innehåller punkter. När spelet börjar har varje kub en punkt, ingen ägare och en neutral färg. Om du klickar på en neutral kub blir den din, byter till din färg och ökar med en punkt. Ditt mål är att äga alla kuber, men nu är det motspelarens tur.</para>
+
+<para
+>Spelare gör sina drag och lägger till poäng genom att klicka på neutrala kuber eller sina egna kuber.</para>
+
+<para
+>Det enda sättet att ta motståndarens kuber är att öka en kubs värde till den når ett maximum och expanderar till grannkuber. Då blir dessa kuber dina även om de tidigare hörde till motståndaren.</para>
+
+<para
+>Ibland når också en granne ett maximalt värde och expanderar så en kaskad av drag sprider sig över spelplanen. Ett stort antal kuber kan plötsligt byta ägare och det är här som Hoppande kuben blir intressant och utmanande.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Hur man spelar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Syfte:</title
+><para
+>Ta över alla kuber på spelplanen.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>Hoppande kuben laddas direkt i spelläge. Du kan alltså börja spela direkt. Om första spelaren är en datorspelare, måste du klicka för att komma igång.</para>
+
+<para
+>Om du inte har spelat Hoppande kuben tidigare, försök att titta på ett eller flera spel när datorn spelar mot sig själv. Se <link linkend="faq"
+>Vanliga frågor</link
+>, <quote
+>Hur kommer man igång och spelar?</quote
+>.</para>
+
+<para
+>Du gör ett drag genom att klicka på en ledig kub eller en som du redan äger. Om du klicka på en ledig kub, blir du ägare till den och kubens färg ändras till din spelarfärg. Varje gång du klicka på en kub, ökar kubens värde med ett. Om kubens värde når maximum, fördelas dess punkter bland kubens närmaste grannar (punkterna <quote
+>hoppar omkring</quote
+>). Om en grannkub råkar ägas av den andra spelaren, tas den över tillsammans med alla dess punkter, och byter färg till din spelarfärg.</para>
+
+<note
+><title
+>Exempel:</title
+><para
+>Om en kub i mitten når fem punkter, går fyra av dess punkter över till fyra grannar, vilket lämnar den med en enda punkt. Det är möjligt att en kaskad av automatiska drag sker om grannarna också når maximum på grund av hur punkterna är fördelade.</para
+></note>
+
+<note
+><title
+>Observera:</title
+><para
+>Stora delar av spelplanen kan byta ägare mycket snabbt. Du kan använda animeringsinställningarna för att hjälpa dig följa vad som då händer. Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer information.</para
+></note>
+
+<para
+>Vinnaren är spelaren som slutligen äger alla kuber på spelplanen.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelets regler, strategi och tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Regler</title>
+	<orderedlist>
+	<listitem
+><para
+>Ett drag består i att klicka på en kub som inte hör till motspelaren.</para
+></listitem>
+	<listitem
+><para
+>Draget ökar antal punkter i kuben med ett.</para
+></listitem>
+	<listitem
+><para
+>När spelet börjar har varje kub en punkt, ritas med neutral färg och har ingen ägare.</para
+></listitem>
+	<listitem
+><para
+>Varje spelare har en färg för att markera kubernas ägare.</para
+></listitem>
+	<listitem
+><para
+>Genom att klicka på en kub som inte har någon ägare, blir spelaren ägare till kuben och den ändras till spelarens färg. Dessutom ökas kubens värde med ett.</para
+></listitem>
+	<listitem
+><para
+>Om en kub har fler punkter än den har grannar, hoppar en punkt över till var och en av grannarna.</para
+></listitem>
+	<listitem
+><para
+>Vid ett sådant drag, blir spelaren som gjorde draget ägare av alla grannkuber och alla deras punkter, även om grannarna tidigare var neutrala eller ägdes av den andra spelaren.</para
+></listitem>
+	<listitem
+><para
+>Grannar är kuberna ovanför, under, till vänster och till höger, men inte kuber längs diagonaler. Kuber i hörnen har bara två grannar, medan kuber längs sidorna har tre, och kuber i mitten har fyra grannar.</para
+></listitem>
+	<listitem
+><para
+>Om ett drag leder till att en granne har maximalt antal punkter, fortsätter det automatiskt till grannens granne, och så vidare i en kaskad. Ett stort antal kuber kan byta ägare vid ett sådant drag.</para
+></listitem>
+	<listitem
+><para
+>Vinnaren är spelaren som slutligen äger alla kuber.</para
+></listitem>
+	<listitem
+><para
+>Du kan använda inställningarna för att välja spelplanens storlek, datorspelare, animering av drag och spelarnas färger. Varje datorspelare kan ha sin egen stil och skicklighetsnivå. Om den inte spelar, kan den tillhandahålla tips för motsvarande mänskliga spelare. Du kan också låta en datorspelare utmana den andra och titta på resultatet. Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer information.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Strategi och tips</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Det kan hjälpa att starta ett spel med dator mot dator och markera kryssrutorna i inställningsdialogrutan som låter dig stega igenom dragen och animeringarna i din egen takt. Se <link linkend="faq"
+>Vanliga frågor</link
+>, <quote
+>Hur kommer man igång och spelar?</quote
+> och <quote
+>Det var för snabbt för mig, hur kan man få det långsammare?</quote
+>.</para
+></listitem>
+	<listitem
+><para
+>Om du har en kub som är precis intill en motspelares kub, försök att hålla dig före genom att öka innan motspelaren gör det.</para
+></listitem>
+	<listitem
+><para
+>Om en sådan kub har poäng som är mindre än eller lika med motspelarens, försök att undvika att öka: Du kan inte vinna kapprustningen.</para
+></listitem>
+	<listitem
+><para
+>Sök efter möjligheter att öka och ta över, men se upp för att motspelaren kan svara med att starta en kaskad.</para
+></listitem>
+	<listitem
+><para
+>Försök att ta kontroll över kuberna i hörnen först, och därefter de längs sidorna. Det krävs färre drag för att de ska nå maximalt antal punkter.</para
+></listitem>
+	<listitem
+><para
+>Försök att inte spela för nära motspelaren, särskilt under de inledande dragen. Dra dig tillbaka en eller två kuber, eller välj en kub diagonalt från motspelaren.</para
+></listitem>
+	<listitem
+><para
+>Håll ett öga på långa kedjor av kuber som nästan har nått maximum. Om du äger dem, måste du skydda dem från kaskaddrag. Om de hör till motspelaren, kan de vara mogna för att fångas av ett kaskaddrag, så fort deras utsträckning är nära nog till ditt territorium.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Översikt av gränssnittet</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>Verktygsraden</title>
+<sect2 id="stop_start_button">
+<title
+>Stopp- och startknappen</title>
+
+<para
+>Denna stora knapp visas längst upp till vänster i verktygsraden och används för att styra animeringar och datordrag, särskilt om datorn har första draget, spelar mot sig själv eller tar för lång tid på sig för att dra. Knappen kan också användas för att stega igenom spelet eller ett drag, för att låta nybörjare se varje steg i sin egen takt. Kryssrutor i inställningsdialogrutan sätter på eller stänger av stegningsläget (se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer detaljer). </para>
+
+<para
+>Knappen har tre tillstånd:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Röd</term>
+	<listitem
+><para
+>Det är möjligt att stoppa eller avbryta en datorberäkning, en animering eller ett spel med dator mot dator.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Grön</term>
+	<listitem
+><para
+>Det är möjligt att starta eller fortsätta ett datordrag, en animering eller ett spel dator mot dator.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Blå</term>
+	<listitem
+><para
+>Knappen är inaktiverad och en åtgärd från en människa förväntas, såsom att göra nästa drag.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>I varje fall innehåller knappen någon text för att ange vilken åtgärd som kan utföras eller förväntas, såsom &nbsp;<guibutton
+>Stoppa animering</guibutton
+> eller <guibutton
+>Din tur</guibutton
+>.</para>
+
+<para
+>Om du stoppar beräkningen av ett datordrag, tar datorn det bästa draget den har så långt. Om du avbryter en animering (t.ex. en kaskad som tar för lång tid), går draget vidare till slutet omedelbart. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Standardknappar i verktygsraden</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Inställningar</guiicon
+></term>
+	<listitem
+><para
+><action
+>En genväg för att gå till inställningsdialogrutan och ändra spelvillkor. Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer information.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Nytt</guiicon
+></term>
+	<listitem
+><para
+><action
+>Starta ett nytt spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Ladda...</guiicon
+></term>
+	<listitem
+><para
+><action
+>Ladda ett tidigare sparat spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Spara</guiicon
+></term>
+	<listitem
+><para
+><action
+>Spara det nuvarande spelet.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Tips</guiicon
+></term>
+	<listitem
+><para
+><action
+>Få tips om det bästa draget att göra härnäst. Tipset räknas ut av första eller andra datorspelaren, beroende på om du är första eller andra mänskliga spelaren. Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer information.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Ångra</guiicon
+></term>
+	<listitem
+><para
+><action
+>Ångra ett tidigare drag, upprepade gånger om nödvändigt.</action
+> Observera: Det är möjligt att ångra de avslutande dragen i ett färdigt spel och undersöka alternativa slutspel.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Gör om</guiicon
+></term>
+	<listitem
+><para
+><action
+>Gör om ett drag som ångrades, upprepade gånger om det behövs.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+<sect2 id="game_menu">
+<title
+>Menyn Spel</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Nytt</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Starta ett nytt spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Ladda...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Ladda ett tidigare sparat spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Spara</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Spara det nuvarande spelet.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Spara Som...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Spara det nuvarande spelet med ett annat namn.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Avsluta</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Avsluta</action
+> Hoppande kuben.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Menyn Flytta</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+><guimenuitem
+>Ångra</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Ångra ett tidigare drag, upprepade gånger om nödvändigt.</action
+> Observera: Det är möjligt att ångra de avslutande dragen i ett färdigt spel och undersöka alternativa slutspel.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Gör om ett drag som ångrades, upprepade gånger om det behövs.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Flytta</guimenu
+><guimenuitem
+>Tips</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Få tips om det bästa draget att göra härnäst. Tipset räknas ut av första eller andra datorspelaren, beroende på om du är första eller andra mänskliga spelaren. Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för mer information.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Övriga menyer</title>
+<para
+>Dessutom har Hoppande kuben de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Vanliga frågor</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Jag vill ändra hur spelet ser ut. Kan man göra det? </para
+></question>
+ <answer
+><para
+>För närvarande kan du bara ändra spelarnas färger, men inte spelets tema. Använd dialogrutan för <link linkend="configuration"
+>spelinställningar</link
+> för att ändra spelarnas färger.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Hur kommer man igång och spelar? </para
+></question>
+ <answer
+><para
+>Dragen i Hoppande kuben kan vara svåra att följa i början. Ett sätt att lära sig är att titta på spel där datorn spelar mot sig själv. Använd dialogrutan <link linkend="configuration"
+>Spelanpassning</link
+> för att ställa in det. Markera båda rutorna vid <guilabel
+>Spelar nu</guilabel
+>, välj spelplanens storlek i intervallet 3x3 till 5x5, ställ in animeringen till <guilabel
+>Sprid punkter</guilabel
+> och dragtiden till <guilabel
+>Lång</guilabel
+>. Klicka därefter på <guibutton
+>Ok</guibutton
+>. Klicka nu på den stora gröna knappen i verktygsraden för att starta spelet. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Det var för snabbt för mig, hur kan man få det långsammare? </para
+></question>
+ <answer
+><para
+>Använd dialogrutan <link linkend="configuration"
+>Spelanpassning</link
+> igen. Längst ner finns två kryssrutor. Markera den ena för att pausa spelet mellan drag. Markera den andra för att pausa mellan steg i kaskaddrag som sprids ut över spelplanen, särskilt nära spelets slut. Tillbaka i spelet kan du nu använda den stora knappen i verktygsraden (så snart den blir grön), för att utföra varje drag eller gå vidare steg för steg i ett drag, med vilken takt du än väljer.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Vad gör den stora knappen i verktygsraden? </para
+></question>
+ <answer
+><para
+>Knappen används för att stoppa någonting som datorn gör (röd färg), starta eller fortsätta en datoråtgärd när du är klar (grön färg) eller tala om för dig att göra någonting, som ett drag (blå färg, knappen inaktiverad). Se <link linkend="stop_start_button"
+>Stopp- och startknappen</link
+> för en fullständig beskrivning. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan man använda tangentbordet för att spela? </para
+></question>
+ <answer
+><para
+>Nej, Hoppande kuben kan inte spelas med tangentbordet. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Var finns bästa resultat?</para
+></question>
+ <answer
+><para
+>Hoppande kuben har inte någon sådan funktion.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Spelanpassning</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Använd alternativet i menyraden för att öppna inställningsdialogrutan: <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Hoppande kuben...</guimenuitem
+></menuchoice
+>, på Apple Mac OS X använd alternativet: <menuchoice
+><guimenu
+>Hoppande kuben</guimenu
+><guimenuitem
+>Inställningar</guimenuitem
+></menuchoice
+>. Eller använd knappen <guibutton
+>Inställningar</guibutton
+> i verktygsraden.</para>
+
+<screenshot>
+    <screeninfo
+>Hoppande kubens inställningar</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Hoppande kubens inställningar</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Rutorna Visning av kaskaddrag och Tid för kaskaddrag styr den valfria visningen av animering när en kub når sitt maximum och hoppar över till grannkuber, vilket möjligen startar en utökad kaskad av drag. Det är enklast att först använda animeringen <quote
+>Sprid punkter</quote
+> och långa dragtider. Det är det enklaste sättet att följa förloppet hos kaskaddrag. De två pauskryssrutorna låter dig stega igenom animeringarna så att datorn flyttar i din egen takt.</para>
+
+<para
+>Rutorna Datorspelare 1 och Datorspelare 2 styr stilen och nivån hos varje datorspelares sätt att spela och om spelaren verkligen ska spela eller bara tillhandahålla tips för den första eller andra mänskliga spelaren.</para>
+
+<sect1 id="setting_details">
+<title
+>Detaljinformation om inställningar</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Spelar nu</guilabel
+></term>
+		<listitem
+><para
+>Låter första eller andra datorspelaren spela aktivt eller bara hjälpa en mänsklig spelare med tips. Normalt låter du datorn spela som en spelare, och du spelar som den andra, men du kan ha två mänskliga spelare eller två datorspelare och bara titta på. Den första spelaren börjar alltid.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Spelstil</guilabel
+></term>
+		<listitem
+><para
+>Ställer in första eller andra datorspelaren att spela som Kepler eller Newton. Kepler väljer drag med samma metod som tidigare versioner av Hoppande kuben. Newton använder en annan metod.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Datorns spelstyrka</guilabel
+></term>
+		<listitem
+><para
+><action
+>Låter dig välja en datorspelares spelskicklighet med ett skjutreglage.</action
+> Det bestämmer hur smart datormotspelaren är.</para>
+		<para
+>Du kan välja någon av fem nivåer, från <guilabel
+>Nybörjare</guilabel
+>, via <guilabel
+>Normal</guilabel
+> till <guilabel
+>Expert</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Spelplanens storlek</guilabel
+></term>
+		<listitem
+><para
+><action
+>Låter dig välja spelplanens storlek.</action
+></para>
+		<para
+>Använd skjutreglaget för att välja ett värde mellan <guilabel
+>3x3</guilabel
+> kuber och <guilabel
+>15x15</guilabel
+> kuber. Intervallet 5x5 till 9x9 är bekvämast. Under 5x5 är det mycket svårt att slå datorn. Över 9x9 kan spelet bli ganska långvarigt.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Spelarnas färger</guilabel
+></term>
+		<listitem
+><para
+>Välj en färg för varje spelare och för de neutrala kuberna.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Visning av kaskaddrag</guilabel
+></term>
+		<listitem
+><para
+>Använd en animeringsstil för tillfället då en kub når sitt maximum och expanderar till grannkuber, vilket möjligen startar en kaskad av sådana drag och täcker ett stort område av spelplanen.</para>
+		    <para
+>Använd alternativknapparna för att välja <guilabel
+>Ingen (inga pauser)</guilabel
+>, där hela draget visas omedelbart, <guilabel
+>Gör mörkare och vänta</guilabel
+>, där varje överlastade kub blir mörkare tills det är tid för den att expandera, <guilabel
+>Blinka snabbt</guilabel
+>, där varje överlastade kub först mörknar och sedan blinkar snabbt när det är tid för den att expandera, och <guilabel
+>Sprid punkter</guilabel
+>, där varje överlastad kub först mörknar och därefter skjuter punkter till grannkuberna när det är tid för den att expandera.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Tid för kaskaddrag</guilabel
+></term>
+		<listitem
+><para
+>Använd skjutreglaget för att välja bland olika tidsintervall (<guilabel
+>Kort</guilabel
+> till <guilabel
+>Lång</guilabel
+>), som ska användas för animering. Tiderna beror till viss del på typen av animering, men kan gå från 0,15 sekunder till 1,5 sekunder för varje steg i ett kaskaddrag.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Paus före varje datordrag</guilabel
+></term>
+	    <listitem
+><para
+>Om kryssrutan är markerad, pausar datorspelare innan de börjar ett drag, tills du klickar återuppta. Det är till för att hjälpa dig att följa händelserna, särskilt om du är en ny spelare eller studerar ett spel med dator mot dator.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Paus före varje kaskadsteg</guilabel
+></term>
+		<listitem
+><para
+>Om kryssrutan är markerad, pausar animeringen av kaskaddrag mellan steg tills du klickar återuppta. Det är till för att hjälpa dig observera sådana drag när de sprids över spelplanen.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Tack till och licens</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kjumpingcube; är Copyright 2012, 2013 Ian Wadham och Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Hoppande kuben är inspirerat av ett spel som gavs ut för Commodore 64 och andra tidiga hemdatorer. Tyvärr är originalförfattarens namn okänt.</para>
+
+<para
+>Under 2007 tog Ian Wadham över underhåll av Hoppande kuben för &kde; 4 och Eugene Trounev ritade det första &SVG;-temat.</para>
+
+<para
+>Under 2012 och 2013 utvecklade Ian version 2.0 och 2.1, med tillägg av animeringsstilar, möjlighet att använda storlekar ner till 3x3 eller upp till 15x15 för spelplanen. samt helt nyskrivna moduler för artificiell intelligens som erbjuder mer utmaning för en mänsklig spelare. Versionerna beräknar drag snabbare, lägger till flera nivåer av ångra och gör om (tidigare fanns bara ett drag), och ett val av två olika artificiella intelligenstyper för motspelare, samt tillhandahåller alternativ för nybörjare att stega sig igenom animeringar och datordrag.</para>
+
+<para
+>Dokumentation Copyright 2012, 2013 Ian Wadham och Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Dokumentation uppdaterad för &kde; 2 och 3 av &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

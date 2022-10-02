@@ -1,0 +1,1010 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuale di &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Andrea</firstname
+><surname
+>Celli</surname
+><affiliation
+><address
+><email
+>andrea.celli@libero.it</email
+></address
+></affiliation
+><contrib
+>Traduzione della documentazione</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-07-07</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Questo documento descrive il gioco &kjumpingcube;, versione 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>gioco</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>strategia</keyword>
+	<keyword
+>cubi</keyword>
+	<keyword
+>gioco con i cubi</keyword>
+	<keyword
+>giocare con i cubi</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>due giocatori</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>cubo</keyword>
+	<keyword
+>salto</keyword>
+	<keyword
+>jumping cube</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduzione</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo di gioco:</title
+><para
+>Strategia, cubi</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Numero di giocatori ammessi:</title
+><para
+>Due</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; è un semplice gioco di strategia. Si può giocare con un amico o contro il computer. Puoi anche far giocare il computer contro se stesso e limitarti a osservare.</para>
+
+<para
+>Questa può essere una buona idea se non hai mai giocato a &kjumpingcube; prima d'ora. Vedi <quote
+>Come posso imparare a giocare?</quote
+> tra le <link linkend="faq"
+>Domande frequenti</link
+>.</para>
+
+<para
+>L'area di gioco è una scatola che contiene dei cubi, ognuno dei quali ha un punteggio. All'inizio tutti i cubi valgono un punto, non hanno né proprietario né colore. Se fai clic su un cubo, diventa tuo, assume il tuo colore e aumenta di un punto. Il tuo obiettivo è di impadronirti di tutti i cubi, ma ora tocca al tuo avversario.</para>
+
+<para
+>Le mosse dei giocatori consistono nel fare clic sui cubi neutrali o sui propri, aggiungendovi un punto.</para>
+
+<para
+>Il solo modo per catturare un cubo nemico è di aumentare il valore di un cubo finché questo non diventa un massimo e si espande sui cubi vicini. Tutti questi cubi diventano tuoi, anche se prima appartenevano all'avversario.</para>
+
+<para
+>A volte anche un cubo vicino raggiunge un valore massimo e si espande, avviando una cascata di mosse che può invadere il piano di gioco. Un gran numero di cubi può cambiare improvvisamente di mano e questo è quello che rende &kjumpingcube; interessante e difficile.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Come si gioca</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Obiettivo:</title
+><para
+>Conquistare tutti i cubi in gioco.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>&kjumpingcube; parte direttamente in modalità di gioco. Quindi puoi incominciare subito a giocare. Se il Giocatore-1 è il computer, devi dare un clic per farlo iniziare.</para>
+
+<para
+>Se non hai mai giocato prima d'ora, prova ad osservare un paio di partite in cui il computer gioca contro se stesso. Vedi <quote
+>Come posso imparare a giocare?</quote
+> tra le <link linkend="faq"
+>Domande frequenti</link
+>,</para>
+
+<para
+>Le tue mosse consistono in un clic su un cubo libero o già tuo. Se fai clic su un cubo libero, ne guadagni il possesso e questo assumerà il tuo colore di gioco. Ogni volta che fai clic su un cubo il punteggio ad esso associato aumenta di uno. Se questo punteggio diventa «massimo» i punti del cubo vengono distribuiti sui cubi più vicini (i punti <quote
+>saltano</quote
+> tutto attorno). Se uno di questi cubi circostanti appartiene all'avversario, lo conquisti con tutti i suoi punti e gli dai il tuo colore.</para>
+
+<note
+><title
+>Esempio:</title
+><para
+>Se un cubo centrale arriva a cinque punti, quattro dei suoi punti salteranno sui suoi vicini, lasciandolo con un punto solo. È possibile che si verifichi una serie di mosse automatiche se anche qualcuno di questi cubi raggiunge il punteggio massimo.</para
+></note>
+
+<note
+><title
+>Attenzione:</title
+><para
+>Una gran parte del piano di gioco può cambiare rapidissimamente di mano. Puoi modificare le impostazioni per la velocità di animazione in modo da poter seguire l'evoluzione del gioco. Vedi la sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli.</para
+></note>
+
+<para
+>Il vincitore è colui che riesce a conquistare tutti i cubi mettendo fine al gioco.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regole di gioco, strategie e astuzie</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Regole</title>
+	<orderedlist>
+	<listitem
+><para
+>Si effettua una mossa con un clic su un cubo che non appartiene al tuo avversario.</para
+></listitem>
+	<listitem
+><para
+>Ogni mossa aumenta di uno il punteggio del cubo.</para
+></listitem>
+	<listitem
+><para
+>All'inizio del gioco ogni cubo ha un punto, è colorato in modo neutro e non ha proprietari.</para
+></listitem>
+	<listitem
+><para
+>Ogni giocatore ha un proprio colore per contrassegnare la proprietà dei cubi.</para
+></listitem>
+	<listitem
+><para
+>Facendo clic su un cubo che non appartiene a nessuno, il giocatore se ne impadronisce e gli dà il proprio colore. Contemporaneamente il punteggio del cubo aumenta di uno.</para
+></listitem>
+	<listitem
+><para
+>Se un cubo ha più punti di quanti ne abbiano i suoi vicini, un punto salta su ognuno di questi.</para
+></listitem>
+	<listitem
+><para
+>Con questa mossa tutti i cubi circostanti e tutti i loro punti diventano proprietà del giocatore che ha mosso. Non importa se questi cubi fossero neutrali o di proprietà dell'altro giocatore.</para
+></listitem>
+	<listitem
+><para
+>I cubi circostanti sono quelli sopra, sotto a destra e a sinistra, non quelli in diagonale. I cubi negli angoli hanno solo due vicini, quelli lungo i lati ne hanno tre e quelli in mezzo ne hanno quattro.</para
+></listitem>
+	<listitem
+><para
+>Se una mossa rende di punteggio massimo uno dei cubi vicini, la mossa si propaga automaticamente ai vicini di questo e così via, in cascata. Un gran numero di cubi può cambiare proprietà con una mossa ben riuscita.</para
+></listitem>
+	<listitem
+><para
+>Il vincitore è colui che si impadronisce di tutti i cubi mettendo fine al gioco.</para
+></listitem>
+	<listitem
+><para
+>Puoi usare le impostazioni per scegliere le dimensioni del piano, i giocatori-computer, le animazioni per le mosse e i colori dei giocatori. Ogni giocatore-computer può avere un proprio stile di gioco e livello di abilità. Se non gioca, può fornire consigli ad un giocatore umano. Puoi anche far combattere tra loro due giocatori-computer e vedere come va a finire. Vai alla sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Trucchi strategici</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Può esserti di aiuto avviare una partita tra due computer e spuntare le caselle della finestra di dialogo che ti permettono di seguire passo a passo, al tuo ritmo, le mosse e le animazioni. Vedi <quote
+>Come posso imparare a giocare?</quote
+> e <quote
+>È troppo veloce per me, come posso rallentarlo?</quote
+> tra le <link linkend="faq"
+>Domande frequenti</link
+>.</para
+></listitem>
+	<listitem
+><para
+>Se hai un cubo affiancato ad uno avversario, stai attento nell'aumentarne il punteggio prima che lo faccia l'avversario.</para
+></listitem>
+	<listitem
+><para
+>Se questo cubo ha un valore uguale o inferiore a quello dell'avversario, evita di potenziarlo: non puoi vincere questa corsa agli armamenti.</para
+></listitem>
+	<listitem
+><para
+>Cerca le opportunità per potenziare i tuoi cubi e catturare gli altri, ma stai attento che l'avversario potrebbe replicare con un attacco a cascata.</para
+></listitem>
+	<listitem
+><para
+>Cerca di conquistare prima gli angoli e poi i lati. Ti serviranno meno mosse per farli diventare un massimo e farli espandere.</para
+></listitem>
+	<listitem
+><para
+>Non cercare di giocare troppo vicino al tuo avversario, specialmente durante le mosse iniziali. Resta indietro di un cubo o due oppure avvicinati in diagonale.</para
+></listitem>
+	<listitem
+><para
+>Fai attenzione alle lunghe catene di cubi quasi al massimo. Se sono tuoi, devi proteggerli dalle prese a cascata. Se sono del tuo avversario, possono diventare adatte per una cattura a cascata, purché siano abbastanza vicine al tuo territorio.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>L'interfaccia grafica</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>La barra degli strumenti</title>
+<sect2 id="stop_start_button">
+<title
+>Il Pulsante Ferma/Avvia</title>
+
+<para
+>Questo grosso pulsante appare in alto a sinistra nella barra degli strumenti. Puoi usarlo per avere un controllo sulle animazioni e sulle mosse del computer. Serve soprattutto se il computer ha la prima mossa, sta giocando contro se stesso o sta prendendo troppo tempo per pensare. Il pulsante può servire anche per far procedere passo a passo una partita o una mossa e permettere a un principiante di esaminare ogni passo con i propri tempi. Spunta le caselle nel modulo di impostazione per attivare o disattivare la modalità passo a passo. Vedi la sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli. </para>
+
+<para
+>Il pulsante ha tre stati:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Rosso</term>
+	<listitem
+><para
+>È possibile fermare o interrompere un calcolo del computer, una animazione o una partita tra computer.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Verde</term>
+	<listitem
+><para
+>È possibile avviare o far riprendere un calcolo del computer, una animazione o una partita tra computer.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Blu</term>
+	<listitem
+><para
+>Il pulsante è disabilitato e si attende un'azione umana, per esempio l'esecuzione della prossima mossa.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>Il pulsante contiene sempre una scritta che indica l'azione possibile o attesa, per esempio &nbsp;<guibutton
+>Ferma l'animazione</guibutton
+> o <guibutton
+>Tocca a te</guibutton
+>.</para>
+
+<para
+>Se blocchi il computer mentre calcola una mossa, questi utilizzerà la miglior mossa che ha calcolato finora. Se interrompi un'animazione (&eg; una successione di mosse troppo lunga), si salterà direttamente alla conclusione delle mosse in corso. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Pulsanti abituali della barra degli strumenti</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Impostazioni</guiicon
+></term>
+	<listitem
+><para
+><action
+>È un modo rapido per aprire il modulo di configurazione e cambiare le modalità di gioco. Vedi la sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Nuova</guiicon
+></term>
+	<listitem
+><para
+><action
+>Avvia una nuova partita.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Carica...</guiicon
+></term>
+	<listitem
+><para
+><action
+>Riapre una partita salvata in precedenza.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Salva</guiicon
+></term>
+	<listitem
+><para
+><action
+>Salva la partita in corso.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Suggerimento</guiicon
+></term>
+	<listitem
+><para
+><action
+>Ti suggerisce la miglior mossa da fare. Il suggerimento sarà calcolato dal giocatore-computer 1 o 2, a seconda se tu sei il giocatore umano 1 o 2. Vedi la sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Annulla</guiicon
+></term>
+	<listitem
+><para
+><action
+>Annulla una o più mosse precedenti.</action
+> Nota: è possibile annullare le mosse finali di una partita conclusa e esaminare finali alternativi.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Rifai</guiicon
+></term>
+	<listitem
+><para
+><action
+>Rifa una mossa precedentemente annullata (più mosse se necessario).</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Le voci del menu</title>
+<sect2 id="game_menu">
+<title
+>Il menu Partita</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Game</guimenu
+><guimenuitem
+>Nuova</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Avvia una nuova partita.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Carica...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Riapre una partita salvata in precedenza.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Salva la partita in corso.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Salva come...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Salva la partita in corso con un altro nome.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+><guimenuitem
+>Esci</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Si esce</action
+> da &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Il menu Mosse</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mosse</guimenu
+><guimenuitem
+>Annulla</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Annulla una o più mosse precedenti.</action
+> Nota: è possibile annullare le mosse finali di una partita conclusa e esaminare finali alternativi.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mosse</guimenu
+><guimenuitem
+>Rifai</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Rifa una mossa precedentemente annullata (più mosse se necessario).</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mosse</guimenu
+><guimenuitem
+>Suggerimento</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Ti suggerisce la miglior mossa da fare. Il suggerimento sarà calcolato dal giocatore-computer 1 o 2, a seconda se tu sei il giocatore umano 1 o 2. Vedi la sezione <link linkend="configuration"
+>Configurazione del gioco</link
+> per maggiori dettagli.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Altri menu</title>
+<para
+>Inoltre, il menu di &kjumpingcube; ha le voci <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+> comuni a tutto &kde;. Per ulteriori informazioni leggere le sezioni relative <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Impostazioni</ulink
+> e <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Aiuto</ulink
+> dei Fondamentali di &kde;. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Domande frequenti</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Vorrei cambiare l'aspetto del gioco. Posso? </para
+></question>
+ <answer
+><para
+>Per il momento puoi solo cambiare i colori, ma non il tema del gioco. Per cambiare il colore dei giocatori usa la finestra di dialogo <link linkend="configuration"
+>Configurazione del gioco</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Come posso imparare a giocare? </para
+></question>
+ <answer
+><para
+>All'inizio può sembrare ostico seguire le mosse di &kjumpingcube;. Un modo per imparare è quello di osservare il computer mentre gioca contro se stesso. Usa il modulo di <link linkend="configuration"
+>Configurazione del gioco</link
+> per impostarlo. Spunta entrambe le caselle <guilabel
+>Gioca adesso</guilabel
+>, scegli una dimensione del piano di gioco compresa tra 3x3 e 5x5, imposta l'animazione su <guilabel
+>Spargi i punti</guilabel
+> e la temporizzazione su <guilabel
+>Lunga</guilabel
+>, in fine premi <guilabel
+>OK</guilabel
+>. Ora puoi azionare il grosso pulsante verde nella barra dei menu per avviare la partita. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>È troppo veloce per me, come posso rallentarlo? </para
+></question>
+ <answer
+><para
+>Usa ancora il modulo di <link linkend="configuration"
+>Configurazione del gioco</link
+>. In basso, sul fondo ci sono due caselle. Se spunti la prima, ottieni una pausa tra due mosse. Spuntando la seconda, hai una pausa tra i passi di una cascata di mosse. Questa può invadere l'intero piano di gioco, specie nelle fasi finali del gioco. Tornando alla partita, ora puoi usare il grande pulsante della barra degli strumenti (quando diventa verde), per avviare ogni mossa o per procedere passo a passo nelle fasi di una mossa, con il ritmo che scegli tu.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>A cosa serve il grosso pulsante nella barra degli strumenti? </para
+></question>
+ <answer
+><para
+>Quando è rosso, questo pulsante serve per fermare qualche azione del computer; quando è verde, per avviare o continuare un'azione del computer quando sei pronto ad osservarla; quando è blu, il pulsante è disabilitato e ti ricorda di fare qualcosa, ad esempio una mossa. Per una descrizione più completa vedi <link linkend="stop_start_button"
+>Il pulsante Ferma/Avvia</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usare la tastiera per giocare? </para
+></question>
+ <answer
+><para
+>No. &kjumpingcube; non può essere giocato con la sola tastiera. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Dove trovo le classifiche?</para
+></question>
+ <answer
+><para
+>&kjumpingcube; non prevede questa funzionalità.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configurazione del gioco</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Per aprire il modulo di configurazione usa l'elemento del menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guimenuitem
+>Configura &kjumpingcube;...</guimenuitem
+></menuchoice
+>, in Apple Mac OS X usa l'elemento del menu <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+> <guimenuitem
+>Preferenze</guimenuitem
+></menuchoice
+>. Puoi anche usare il pulsante <guibutton
+>Impostazioni</guibutton
+> nella barra degli strumenti.</para>
+
+<screenshot>
+    <screeninfo
+>&kjumpingcube; Impostazioni</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>&kjumpingcube; Impostazioni</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Gli ultimi due pannelli (Visualizzazione e tempi delle mosse in cascata) controllano la visualizzazione di cosa succede quando un cubo raggiunge il valore massimo e trabocca sui cubi vicini, magari innestando un'estesa successione di mosse. È meglio, all'inizio, usare l'animazione <quote
+>Spargi i punti</quote
+> un tempo lungo. Permette di seguire più facilmente il procedere delle mosse in cascata. Le sue caselle «Pausa» ti permettono di far procedere passo a passo le animazioni e le mosse del computer con la velocità che vuoi.</para>
+
+<para
+>I pannelli dei giocatori-computer 1 e 2 controllano il loro stile e livello di gioco e se deve giocare o dare solamente consigli al giocatore umano 1 o 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Dettagli di impostazione</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Ora si gioca</guilabel
+></term>
+		<listitem
+><para
+>Decidi per ogni giocatore-computer se deve effettivamente giocare o solo assistere con i suoi consigli un giocatore umano. Normalmente tu assumerai il ruolo di un giocatore contro il computer. Però puoi giocare con un amico o opporre l'uno all'altro due giocatori computer e restare a guardare. Il Giocatore-1 inizia sempre per primo.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Stile di gioco</guilabel
+></term>
+		<listitem
+><para
+>Imposta per ogni Giocatore-Computer lo stile Keplero o Newton. Keplero decide le mosse con la stessa strategia usata nelle prime versioni di &kjumpingcube;. Newton utilizza un metodo differente.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Abilità del Computer</guilabel
+></term>
+		<listitem
+><para
+><action
+>Ti permette di graduare l'abilità di gioco di un giocatore-computer usando un cursore.</action
+> Serve a stabilire quanto sia bravo il computer.</para>
+		<para
+>Puoi scegliere fra cinque livelli che vanno da <guilabel
+>Principiante</guilabel
+>, a <guilabel
+>Medio</guilabel
+>, fino a <guilabel
+>Esperto</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Dimensioni del piano</guilabel
+></term>
+		<listitem
+><para
+><action
+>Permette di scegliere le dimensioni del campo di gioco.</action
+></para>
+		<para
+>Utilizza il cursore per scegliere una dimensione compresa tra <guilabel
+>3x3</guilabel
+> e <guilabel
+>15x15</guilabel
+> cubi. Le dimensioni tra 5x5 e 9x9 sono preferibili. Sotto al 5x5 è molto difficile battere il computer. Sopra a 9x9 il gioco rischia di prolungarsi troppo.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Colore dei giocatori</guilabel
+></term>
+		<listitem
+><para
+>Assegna un colore ad ogni giocatore e ai cubi neutrali.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Animazione delle mosse</guilabel
+></term>
+		<listitem
+><para
+>Sceglie uno stile di animazione per quando un cubo raggiunge il massimo e si espande su quelli vicini. Magari avviando una successione di mosse analoghe che copriranno un'ampia zona del piano di gioco.</para>
+		    <para
+>Usa un pulsante per scegliere tra <guilabel
+>Nessuna(senza pause)</guilabel
+>, in cui il risultato finale della mossa appare istantaneamente; <guilabel
+>Oscuramento con pausa</guilabel
+> in cui ogni cubo sovraccarico si scurisce finché non viene il suo turno per espandersi; <guilabel
+>Lampeggio rapido</guilabel
+> in cui ogni cubo sovraccarico prima si scurisce e poi emette una breve luce quando viene il suo turno per espandersi e <guilabel
+>Spargi i punti</guilabel
+>, in cui ogni cubo sovraccarico prima si scurisce e poi, quando viene il suo turno per espandersi, accende dei punti sui cubi vicini.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Tempo tra mosse successive</guilabel
+></term>
+		<listitem
+><para
+>Utilizza il cursore per scegliere, nell'intervallo tra <guilabel
+>Corto</guilabel
+> e <guilabel
+>Lungo</guilabel
+>, il tempo da utilizzare per le animazioni. Il tempo dipenderà un po' dal tipo di animazione e può variare da 0,15 a 1,5 secondi per ogni passo delle mosse in cascata.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pausa prima di ogni mossa del computer</guilabel
+></term>
+	    <listitem
+><para
+>Se questa casella ha la spunta, i giocatori computer si fermano prima di fare una mossa, finché tu non li riavvii con un clic. Questo aiuta nel seguire l'azione, soprattutto se sei un principiante o se stai studiando una partita tra computer.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pausa prima di ogni passo di una cascata</guilabel
+></term>
+		<listitem
+><para
+>Se questa casella ha la spunta, l'animazione di una cascata di mosse si interrompe ad ogni passo, finché tu non la riavvii con ub clic. Questo ti aiuta nell'osservare come questo tipo di mosse si espande sul piano di gioco.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Riconoscimenti e licenza</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kjumpingcube; è Copyright 2012, 2013 di Ian Wadham e Copyright 1998, 1999 di &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; si è ispirato ad un gioco rilasciato per il Commodore64 e alcuni dei primi home computer. Purtroppo, non si conosce il nome dell'autore originale.</para>
+
+<para
+>Nel 2007, Ian Wadham ha preso in mano lo sviluppo di &kjumpingcube; per &kde; 4 e Eugene Trounev ha disegnato il primo tema &SVG;.</para>
+
+<para
+>Nel 2012 e 2013, Ian ha sviluppato la versione 2.0 e 2.1 di &kjumpingcube;. Ha aggiunto gli stili di animazione, ha reso possibile variare da 3x3 fino a 15x15 le dimensioni del piano e ha scritto dei moduli di intelligenza artificiale completamente nuovi che mettono ancor più in difficoltà il giocatore umano. Queste versioni calcolano più velocemente le mosse, permettono di annullare/rifare più mosse (prima era consentita una sola mossa), aggiungono la possibilità di avere due IA rivali e forniscono ai principianti delle opzioni per seguire passo a passo le animazioni e le mosse del computer.</para>
+
+<para
+>Copyright sulla documentazione: 2012, 2013 di Ian Wadham e 1999 di &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Documentazione aggiornata per &kde; 2 e 3 da &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Traduzione della documentazione: Andrea Celli <email
+>a.celli@tiscali.it</email
+></para
+><para
+>Traduzione dell'interfaccia grafica: Andrea Celli e Andrea Rizzi</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

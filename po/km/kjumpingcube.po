@@ -1,0 +1,650 @@
+# translation of kjumpingcube.po to Khmer
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2005, 2007, 2008, 2009.
+# Auk Piseth <piseth_dv@khmeros.info>, 2006, 2007, 2008.
+# Morn Met, 2009.
+# sutha <sutha@khmeros.info>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kjumpingcube\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2013-01-02 11:41+0700\n"
+"Last-Translator: sutha <sutha@khmeros.info>\n"
+"Language-Team: Khmer <support@khmeros>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WordForge 0.8 RC1\n"
+"X-Language: km-KH\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម,សេង សុត្ថា,សុខ សុភា"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sokhem@open.org.kh,​​sutha@open.org.kh,sophea@open.org.kh"
+
+#: game.cpp:77
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr ""
+
+#: game.cpp:114
+#, kde-format
+msgid "Game over"
+msgstr ""
+
+#: game.cpp:115
+#, fuzzy, kde-format
+#| msgid "Winner is Player %1!"
+msgid "The winner is Player %1!"
+msgstr "អ្នក​ឈ្នះ គឺ​អ្នក​លេង​ល្បែង %1 !"
+
+#: game.cpp:116
+#, kde-format
+msgid "Winner"
+msgstr "អ្នក​ឈ្នះ"
+
+#: game.cpp:127
+#, kde-format
+msgid "General"
+msgstr "ទូទៅ"
+
+#: game.cpp:240
+#, kde-format
+msgid "Start game"
+msgstr ""
+
+#: game.cpp:243
+#, kde-format
+msgid "Continue game"
+msgstr ""
+
+#: game.cpp:247
+#, kde-format
+msgid "Start computer move"
+msgstr ""
+
+#: game.cpp:268
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgid "Your turn"
+msgstr "ខឹម សុខែម,សេង សុត្ថា,សុខ សុភា"
+
+#  i18n: file settings.ui line 244
+#: game.cpp:271
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player %1"
+msgstr "អ្នក​លេង ១"
+
+#  i18n: file settings.ui line 233
+#: game.cpp:287
+#, fuzzy, kde-format
+#| msgid "Computer Player 1"
+msgid "Computer player %1 is moving"
+msgstr "អ្នក​លេង​ល្បែង​កុំព្យូទ័រ​ ១"
+
+#: game.cpp:307
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr ""
+
+#: game.cpp:407
+#, kde-format
+msgid "Show next step"
+msgstr ""
+
+#: game.cpp:465
+#, kde-format
+msgid "Finishing move..."
+msgstr ""
+
+#: game.cpp:504
+#, kde-format
+msgid "Interrupt game"
+msgstr ""
+
+#: game.cpp:510
+#, kde-format
+msgid "Stop computing"
+msgstr ""
+
+#: game.cpp:513
+#, kde-format
+msgid "Stop showing move"
+msgstr ""
+
+#: game.cpp:516
+#, kde-format
+msgid "Stop animation"
+msgstr ""
+
+#: game.cpp:545
+#, kde-format
+msgid "New Game"
+msgstr "ល្បែង​ថ្មី"
+
+#: game.cpp:574
+#, fuzzy, kde-format
+#| msgid ""
+#| "The file %1 exists.\n"
+#| "Do you want to overwrite it?"
+msgid ""
+"The file %1 already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"មាន​ឯកសារ %1 រួច​ហើយ ។\n"
+"តើ​អ្នក​ចង់​សរសេរ​ជាន់​លើ​វា​ឬ ?"
+
+#: game.cpp:599
+#, fuzzy, kde-format
+#| msgid "game saved as %1"
+msgid "Game saved as %1"
+msgstr "បាន​រក្សាទុក​ល្បែង​ជា %1"
+
+#: game.cpp:602
+#, kde-format
+msgid ""
+"There was an error in saving file\n"
+"%1"
+msgstr ""
+"មាន​កំហុស​ក្នុង​ការ​រក្សា​ទុក​ឯកសារ\n"
+"%1"
+
+#: game.cpp:619
+#, kde-format
+msgid "The file %1 does not exist!"
+msgstr "ឯកសារ %1 មិន​មាន​ឡើយ !"
+
+#: game.cpp:634
+#, kde-format
+msgid "The file %1 is not a KJumpingCube gamefile!"
+msgstr "ឯកសារ %1 មិន​មែន​ជា​ឯកសារ​ល្បែង​របស់ KJumpingCube ឡើយ !"
+
+#: game.cpp:647
+#, kde-format
+msgid ""
+"There was an error loading file\n"
+"%1"
+msgstr ""
+"មាន​កំហុស​ក្នុង​ការ​ផ្ទុក​ឯកសារ\n"
+"%1"
+
+#: game.cpp:675
+#, kde-format
+msgid ""
+"You have changed the size setting of the game and that requires a new game "
+"to start.\n"
+"\n"
+"Do you wish to abandon the current game or continue playing and restore the "
+"previous size setting?"
+msgstr ""
+
+#: game.cpp:681
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+
+#: game.cpp:686
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgid "New Game?"
+msgstr "ល្បែង​ថ្មី"
+
+#: game.cpp:687
+#, kde-format
+msgid "Abandon Game"
+msgstr ""
+
+#: game.cpp:688
+#, kde-format
+msgid "Continue Game"
+msgstr ""
+
+#: game.cpp:830
+#, kde-format
+msgid ""
+"The file's cube box size is outside the range %1 to %2. It will be set to %1."
+msgstr "ទំហំ​ប្រអប់ cube របស់​ឯកសារ​គឺ​នៅ​ខាង​ក្រៅ​ជួរ %1 ទៅ %2 ។ វា​នឹង​ត្រូវ​បាន​កំណត់​ទៅ​កាន់ %1 ។"
+
+#: game.cpp:846
+#, kde-format
+msgid "Missing input line for cube %1."
+msgstr "បាត់​ជួរ​​ខាង​ក្នុង​ផល​សម្រាប់ cube %1 ។"
+
+#: game.cpp:855
+#, kde-format
+msgid "Owner of cube %1 is outside the range 0 to 2."
+msgstr "cube ផ្ទាល់ %1 នៅ​ខាង​ក្រៅ​ជួរ ០ ទៅ ២ ។"
+
+#: game.cpp:862
+#, kde-format
+msgid "Value of cube %1 is outside the range 1 to %2."
+msgstr "តម្លៃ cube %1 គឺ​នៅ​ខាង​ក្រៅ​ជួរ ១ ទៅ %2 ។"
+
+#: game.cpp:877
+#, kde-format
+msgid "Current player is neither 1 nor 2."
+msgstr "អ្នក​លេង​ល្បែង​​បច្ចុប្បន្ន​មិន​មែន ១ ក៏​មិន​មែន​ ២ ។"
+
+#: kjumpingcube.cpp:45
+#, kde-format
+msgid "Current player:"
+msgstr "អ្នក​លេង​​ល្បែង​បច្ចុប្បន្ន ៖"
+
+#: kjumpingcube.cpp:137
+#, kde-format
+msgid "Settings"
+msgstr ""
+
+#. i18n: ectx: label, entry (AnimationSpeed), group (Game)
+#: kjumpingcube.kcfg:11
+#, kde-format
+msgid "Animation speed of overflowing dice"
+msgstr "ល្បឿន​ចលនា​នៃ dice"
+
+#. i18n: ectx: label, entry (AnimationNone), group (Game)
+#: kjumpingcube.kcfg:15
+#, kde-format
+msgid "Animation type None (no pauses)."
+msgstr "គ្មាន​ប្រភេទ​ចលនា (គ្មាន​ការ​ផ្អាក) ។"
+
+#. i18n: ectx: label, entry (AnimationDelay), group (Game)
+#: kjumpingcube.kcfg:19
+#, kde-format
+msgid "Animation type Darken and pause."
+msgstr "ប្រភេទ​ចលនា Darken និង pause ។"
+
+#. i18n: ectx: label, entry (AnimationBlink), group (Game)
+#: kjumpingcube.kcfg:23
+#, kde-format
+msgid "Animation type Blink rapidly."
+msgstr "ប្រភេទ​ចលនា​ភ្លឹបភ្លែតៗ"
+
+#. i18n: ectx: label, entry (AnimationSpread), group (Game)
+#: kjumpingcube.kcfg:27
+#, kde-format
+msgid "Animation type Scatter dots."
+msgstr "ប្រភេទ​ឯកសារ​​ជា​ចំណុចៗ ។"
+
+#  i18n: file kjumpingcube.kcfg line 9
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kjumpingcube.kcfg:31
+#, kde-format
+msgid "Color of neutral cubes."
+msgstr "ពណ៌​របស់​គូប​ស្មើ ។"
+
+#  i18n: file kjumpingcube.kcfg line 9
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kjumpingcube.kcfg:35
+#, kde-format
+msgid "Color of player 1."
+msgstr "ពណ៌​របស់​អ្នក​លេង ១ ។"
+
+#  i18n: file kjumpingcube.kcfg line 13
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kjumpingcube.kcfg:39
+#, kde-format
+msgid "Color of player 2."
+msgstr "ពណ៌​របស់​អ្នក​លេង ២ ។"
+
+#  i18n: file kjumpingcube.kcfg line 17
+#. i18n: ectx: label, entry (CubeDim), group (Game)
+#: kjumpingcube.kcfg:45
+#, kde-format
+msgid "Size of the playing field."
+msgstr "ទំហំ​របស់​វាល​លេង ។"
+
+#  i18n: file kjumpingcube.kcfg line 30
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kjumpingcube.kcfg:49
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "ថា​តើ​អ្នក​លេង ១ ត្រូវ​បាន​លេង​ដោយ​កុំព្យូទ័រ​ឬអត់ ។​"
+
+#. i18n: ectx: label, entry (Kepler1), group (Game)
+#: kjumpingcube.kcfg:53
+#, kde-format
+msgid "Whether computer player 1 uses Kepler AI."
+msgstr "ថា​តើ​អ្នក​លេង​ល្បែង​កុំព្យូទ័រ​ ១ ប្រើ Kepler AI ដែរ​ឬ​ទេ ។"
+
+#. i18n: ectx: label, entry (Newton1), group (Game)
+#: kjumpingcube.kcfg:57
+#, kde-format
+msgid "Whether computer player 1 uses Newton AI."
+msgstr "ថា​តើ​អ្នក​លេង​ល្បែង​កុំព្យូទ័រ ១ ប្រើ Newton AI ដែរ​ឬ​ទេ ។"
+
+#  i18n: file kjumpingcube.kcfg line 26
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kjumpingcube.kcfg:68
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "ជំនាញ​របស់​អ្នក​លែង​ល្បែង​កុំព្យូទ័រ ១ ។"
+
+#  i18n: file kjumpingcube.kcfg line 34
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kjumpingcube.kcfg:72
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "ថា​តើ​អ្នក​លេង​ល្បែង​ ២ ត្រូវ​បាន​លេង​ដោយ​កុំព្យូទ័រ​ឬ​​អត់ ។​"
+
+#. i18n: ectx: label, entry (Kepler2), group (Game)
+#: kjumpingcube.kcfg:76
+#, kde-format
+msgid "Whether computer player 2 uses Kepler AI."
+msgstr "ថា​តើ​អ្នក​លេង​ល្បែង​កុំព្យូទ័រ​ ២ ប្រើ Kepler AI ដែរ​ឬ​ទេ ។"
+
+#. i18n: ectx: label, entry (Newton2), group (Game)
+#: kjumpingcube.kcfg:80
+#, kde-format
+msgid "Whether computer player 2 uses Newton AI."
+msgstr "ថា​តើ​អ្នក​លេង​ល្បែង​កុំព្យូទ័រ ២ ប្រើ Newton AI ដែរ​ឬ​ទេ ។"
+
+#  i18n: file kjumpingcube.kcfg line 26
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kjumpingcube.kcfg:91
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "ជំនាញ​អ្នក​លេង​​ល្បែង​កុំព្យូទ័រ​ ២ ។"
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kjumpingcube.kcfg:95
+#, kde-format
+msgid "Pause before each computer move."
+msgstr ""
+
+#. i18n: ectx: label, entry (PauseForStep), group (Game)
+#: kjumpingcube.kcfg:99
+#, kde-format
+msgid "Pause before each cascade step."
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kjumpingcubeui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "របារ​ឧបករណ៍​មេ"
+
+#: main.cpp:39
+#, kde-format
+msgid "KJumpingCube"
+msgstr "KJumpingCube"
+
+#: main.cpp:41
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "ល្បែង​ក្បួន​យុទ្ធសាស្ត្រ ដែល​អាច​លេង​ម្នាក់​ឯង ឬ ពីរ​នាក់"
+
+#: main.cpp:43
+#, kde-format
+msgid "(c) 1998-2000, Matthias Kiefer"
+msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ១​៩​​​​៩​៨-២​០​០​០ ដោយ Matthias Kiefer"
+
+#: main.cpp:47
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Various improvements"
+msgstr "ភាព​ធ្វើ​ឲ្យ​ប្រសើរ​ផ្សេង​ៗ"
+
+#: main.cpp:49
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:50
+#, kde-format
+msgid "Upgrade to KDE4 and SVG artwork support."
+msgstr "ធ្វើ​ឲ្យ​ប្រសើរ​ដល់​​ KDE4 និង​ការ​​គាំទ្រការងារ​​សិល្បៈ SVG ។"
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:53
+#, kde-format
+msgid "Graphics for KDE 4.0 version."
+msgstr "ក្រាហ្វិក​សម្រាប់​កំណែ KDE 4.0 ។"
+
+#  i18n: file settings.ui line 233
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "អ្នក​លេង​ល្បែង​កុំព្យូទ័រ​ ១"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:181
+#, kde-format
+msgid "Playing now"
+msgstr "ឥឡូវ​នេះ​កំពុង​​លេង"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:59 settings.ui:194
+#, kde-format
+msgid "Style of Play"
+msgstr "រចនាប័ទ្ម​ក្នុង​ការ​លេង"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
+#: settings.ui:65 settings.ui:203
+#, kde-format
+msgid "Kepler"
+msgstr "Kepler"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
+#: settings.ui:75 settings.ui:213
+#, kde-format
+msgid "Newton"
+msgstr "Newton"
+
+#  i18n: file settings.ui line 192
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:120 settings.ui:255
+#, kde-format
+msgid "Beginner"
+msgstr "ដំបូង"
+
+#  i18n: file settings.ui line 181
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:130 settings.ui:265
+#, kde-format
+msgid "Average"
+msgstr "មធ្យម"
+
+#  i18n: file settings.ui line 200
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:146 settings.ui:281
+#, kde-format
+msgid "Expert"
+msgstr "ជំនាញ"
+
+#  i18n: file settings.ui line 233
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:163
+#, kde-format
+msgid "Computer Player 2"
+msgstr "អ្នក​លេង​ល្បែង​កុំព្យូទ័រ ២"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:298
+#, kde-format
+msgid "Pause before each computer move"
+msgstr ""
+
+#  i18n: file settings.ui line 53
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: settings.ui:309
+#, kde-format
+msgid "Board Size"
+msgstr "ទំហំ​ក្ដារ"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: settings.ui:345
+#, kde-format
+msgid "3x3"
+msgstr "3x3"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: settings.ui:368
+#, kde-format
+msgid "15x15"
+msgstr ""
+
+#  i18n: file settings.ui line 125
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:383
+#, kde-format
+msgid "Players' Colors"
+msgstr "ពណ៌​របស់​អ្នក​​លេង"
+
+#  i18n: file settings.ui line 144
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:391
+#, kde-format
+msgid "Player 1:"
+msgstr "អ្នក​លេង ១ ៖"
+
+#  i18n: file settings.ui line 152
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:405
+#, kde-format
+msgid "Player 2:"
+msgstr "អ្នក​លេង ២ ៖"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:419
+#, kde-format
+msgid "Neutral:"
+msgstr "ស្មើ​ ​​​​​​​​​​៖"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#: settings.ui:434
+#, kde-format
+msgid "Cascade Move Display"
+msgstr "បង្ហាញ​ការ​ផ្លាស់ទី​ល្បាក់"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
+#: settings.ui:446
+#, kde-format
+msgid "None (no pauses)"
+msgstr "គ្មាន (គ្មាន​ការ​ផ្អាក)"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
+#: settings.ui:459
+#, kde-format
+msgid "Darken and pause"
+msgstr "Darken និង pause"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
+#: settings.ui:472
+#, kde-format
+msgid "Blink rapidly"
+msgstr "ភ្លឹបភ្លែតៗ"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
+#: settings.ui:485
+#, kde-format
+msgid "Scatter dots"
+msgstr "ជា​ចំណុច​ៗ"
+
+#. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
+#: settings.ui:498
+#, kde-format
+msgid "Cascade Move Time"
+msgstr "ពេលវេលា​ផ្លាស់​ទី​ល្បាក់"
+
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+#: settings.ui:543
+#, kde-format
+msgid "Short"
+msgstr "ខ្លី"
+
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+#: settings.ui:566
+#, kde-format
+msgid "Long"
+msgstr "វែង"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
+#: settings.ui:581
+#, kde-format
+msgid "Pause before each cascade step"
+msgstr ""
+
+#~ msgid "PushButton"
+#~ msgstr "ប៊ូតុង​រុញ"
+
+#~ msgid "Overwrite"
+#~ msgstr "សរ​សេរ​ជាន់​លើ"
+
+#, fuzzy
+#~| msgid "Computing next move."
+#~ msgid "Computing a move"
+#~ msgstr "កំពុង​គណនា​ការ​ផ្លាស់​ទី​បន្ទាប់ ។"
+
+#, fuzzy
+#~| msgid "Performing move."
+#~ msgid "Performing a move"
+#~ msgstr "កំពុង​ធ្វើ​ការ​ផ្លាស់ទី ។"
+
+#~ msgid "Stop"
+#~ msgstr "បញ្ឈប់"
+
+#~ msgid "Force the computer to move immediately"
+#~ msgstr "បង្ខំ​កុំព្យូទ័រ​ឲ្យ​ផ្លាស់ទី​ភ្លាម​ៗ"
+
+#~ msgid ""
+#~ "Stop the computer's calculation of its current move and force it to move "
+#~ "immediately"
+#~ msgstr "បញ្ឈប់​ការ​គណនា​ការ​ផ្លាស់​ទី​បច្ចុប្បន្ន​របស់​កុំព្យូទ័រ​ រួច​បង្ខំ​ឲ្យ​វា​ផ្លាស់​ទី​ភ្លាម​ៗ"
+
+#~ msgid "stopped activity"
+#~ msgstr "សកម្ម​ភាព​ដែល​បាន​បញ្ឈប់"
+
+#~ msgid "Type of animation of overflowing dice"
+#~ msgstr "ប្រភេទ​ចលនា overflowing dice"
+
+#~ msgid "&Game"
+#~ msgstr "ល្បែង"
+
+#  i18n: file settings.ui line 95
+#~ msgid "10x10"
+#~ msgstr "១​​​​០​x​១​០"
+
+#  i18n: file settings.ui line 170
+#~ msgid "Computer Skill"
+#~ msgstr "ជំនាញ​កុំព្យូទ័រ"
+
+#  i18n: file settings.ui line 252
+#~ msgid "Player 2"
+#~ msgstr "អ្នក​លេង ២"
+
+#  i18n: file settings.ui line 87
+#~ msgid "5x5"
+#~ msgstr "៥​x​៥"

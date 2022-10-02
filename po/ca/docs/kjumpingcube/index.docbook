@@ -1,0 +1,998 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>El manual del &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>7 de juliol de 2021</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Aquesta documentació descriu el joc &kjumpingcube; versió 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>joc</keyword
+> <!-- do not change this! -->
+	<keyword
+>KJumpingCube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>estratègia</keyword>
+	<keyword
+>dau</keyword>
+	<keyword
+>joc de daus</keyword>
+	<keyword
+>jugant a daus</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dos jugadors</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>cub</keyword>
+	<keyword
+>salt</keyword>
+	<keyword
+>cub saltador</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introducció</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipus de joc:</title
+><para
+>Estratègia, daus</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Dos</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>El &kjumpingcube; és un joc tàctic senzill. Podeu jugar-lo contra l'ordinador o amb un amic, o podeu configurar una partida entre dos jugadors d'ordinador i senzillament mirar.</para>
+
+<para
+>Pot ser una bona idea si no heu jugat abans al &nbsp;&kjumpingcube;. Vegeu les <link linkend="faq"
+>Preguntes més freqüents</link
+>, <quote
+>Com començo en aquest joc?</quote
+>.</para>
+
+<para
+>L'àrea de joc és un quadre de cubs que contenen punts. Quan es comença la partida, cada cub té un punt, sense propietari i un color neutre. Si feu clic sobre un cub neutre, aquest es convertirà en vostre, canviarà de color i augmentarà en un punt. El vostre objectiu és capturar tots els cubs, però ara és el torn del vostre oponent.</para>
+
+<para
+>Els jugadors mouen i sumen punts fent clic sobre els cubs neutrals o en els seus propis cubs.</para>
+
+<para
+>L'única manera de capturar els cubs de l'oponent és fer augmentar el valor d'un cub fins que s'arribi a un màxim i s'expandeixi als cubs veïns. Després, aquests cubs es tornaran vostres, fins i tot si abans pertanyien al vostre oponent.</para>
+
+<para
+>De vegades, un veí també arribarà a un valor màxim i s'expandirà, i s'estendrà per tot el tauler en una cascada de moviments. Un gran nombre de cubs pot canviar sobtadament de mans i aquí és on el &kjumpingcube; es torna interessant i desafiant.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Com jugar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectiu:</title
+><para
+>Prendre el control de tots els cubs en el tauler de joc.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>El &kjumpingcube; es carrega directament en el mode de joc, de manera que podreu començar a jugar immediatament. Si el jugador 1 és un jugador d'ordinador, haureu de fer clic per a començar.</para>
+
+<para
+>Si no heu jugat abans al &kjumpingcube;, proveu veient una o dues partides on l'ordinador jugui contra si mateix. Vegeu les <link linkend="faq"
+>Preguntes més freqüents</link
+>, <quote
+>Com començo en aquest joc?</quote
+>.</para>
+
+<para
+>Moveu fent clic sobre un cub neutral o sobre un que ja teniu. Si feu clic sobre un cub neutral, us n'apropiareu i el seu color canviarà al vostre color de joc. Cada vegada que feu clic sobre un cub, el seu valor augmentarà en un. Si el valor del cub arriba a un màxim, alguns dels seus punts es mouran als seus veïns immediats (els punts <quote
+>salten</quote
+>). Si un cub veí és propietat de l'altre jugador, es capturarà, juntament amb tots els seus punts, i canviarà al vostre color de joc.</para>
+
+<note
+><title
+>Exemple:</title
+><para
+>Si un cub en el centre arriba a cinc punts, quatre dels seus punts aniran als seus quatre veïns, deixant el cub d'origen amb un punt. És possible que s'iniciï una cascada de moviments automàtics si algun dels cubs veïns també arriba a un màxim.</para
+></note>
+
+<note
+><title
+>Nota:</title
+><para
+>Grans parts de l'àrea de joc poden canviar de mans molt ràpidament. Podeu utilitzar les opcions de configuració de l'animació per a seguir el que està succeint en aquest moment. Per a més detalls, vegeu &nbsp;<link linkend="configuration"
+>Configuració del joc</link
+>.</para
+></note>
+
+<para
+>El guanyador serà el jugador que acabi sent el propietari de tots els cubs en el tauler.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Les regles del joc, estratègies i consells</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Regles</title>
+	<orderedlist>
+	<listitem
+><para
+>Un moviment consisteix a fer clic sobre un cub que no pertany a l'oponent.</para
+></listitem>
+	<listitem
+><para
+>El moviment fa augmentar en un els punts en el cub.</para
+></listitem>
+	<listitem
+><para
+>Al començament de la partida, cada cub té un punt, està pintat d'un color neutre i no té propietari.</para
+></listitem>
+	<listitem
+><para
+>Cada jugador té un color per a marcar la propietat dels cubs.</para
+></listitem>
+	<listitem
+><para
+>En fer clic sobre un cub que no té propietari, el jugador es convertirà en el propietari d'aquest i canviarà el seu color al color del jugador. Simultàniament, el seu valor augmentarà en un.</para
+></listitem>
+	<listitem
+><para
+>Si un cub té més punts que veïns, saltarà un punt a cadascun dels veïns.</para
+></listitem>
+	<listitem
+><para
+>Durant aquest moviment, tots els cubs veïns passaran a ser propietat del jugador que ha mogut, així com tots els seus punts, fins i tot si els veïns eren neutrals o eren propietat de l'altre jugador.</para
+></listitem>
+	<listitem
+><para
+>Els veïns són els cubs situats a dalt, a baix, a l'esquerra o a la dreta, però no en diagonal. Els cubs de les cantonades només tenen dos veïns, els de la vora en tenen tres i els de centre en tenen quatre.</para
+></listitem>
+	<listitem
+><para
+>Si un moviment deixa a un veí amb un nombre màxim de punts, el moviment continuarà automàticament cap als veïns del veí i així successivament, en cascada. Durant un moviment d'aquest tipus, poden canviar de propietari una gran quantitat de cubs.</para
+></listitem>
+	<listitem
+><para
+>El guanyador serà el jugador que acabi sent el propietari de tots els cubs.</para
+></listitem>
+	<listitem
+><para
+>Utilitzeu les opcions de configuració per a seleccionar la mida del tauler, els jugadors d'ordinador, les animacions dels moviments i els colors dels jugadors. Cada jugador d'ordinador pot tenir el seu propi estil i nivell de destresa. Si no està jugant, pot proporcionar pistes al jugador humà corresponent. També podreu enfrontar un jugador d'ordinador contra un altre i veure el resultat. Per a més detalls, vegeu la secció <link linkend="configuration"
+>Configuració del joc</link
+>.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Les estratègies i consells</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Pot ser útil configurar una partida d'ordinador contra ordinador i seleccionar les caselles de selecció en el diàleg de configuració que permeten fer anar els moviments i les animacions al vostre propi ritme. Vegeu les <link linkend="faq"
+>Preguntes freqüents</link
+>, <quote
+>Com començo en aquest joc?</quote
+> i <quote
+>És massa ràpid per a mi, com puc frenar-lo?</quote
+>.</para
+></listitem>
+	<listitem
+><para
+>Si teniu un cub que està just al costat del cub d'un oponent, intenteu mantenir-lo per davant fent-lo augmentar abans que el vostre oponent.</para
+></listitem>
+	<listitem
+><para
+>Si els punts en aquest cub són menors o iguals que els de l'oponent, intenteu evitar fer-los augmentar: no podreu guanyar aquesta carrera armamentista.</para
+></listitem>
+	<listitem
+><para
+>Cerqueu oportunitats per a fer augmentar i capturar, però aneu amb compte que l'oponent pugui respondre iniciant una cascada.</para
+></listitem>
+	<listitem
+><para
+>Primer, intenteu controlar els cubs de les cantonades i després els de les vores. Necessitareu menys moviments perquè arribin a un màxim i s'expandeixin.</para
+></listitem>
+	<listitem
+><para
+>Intenteu no jugar massa a prop del vostre oponent, especialment durant els moviments d'obertura. Deixeu caure un cub o dos, o trieu un cub a la diagonal del vostre oponent.</para
+></listitem>
+	<listitem
+><para
+>Esteu atent a les llargues cadenes de cubs que estan gairebé al màxim. Si són vostres, haureu de protegir-los dels moviments en cascada. Si són del vostre oponent, es poden fer madurar per a capturar-los mitjançant un moviment en cascada, tan aviat com estiguin prou a prop del vostre territori.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Resum de la interfície</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>La barra d'eines</title>
+<sect2 id="stop_start_button">
+<title
+>El botó Inicia/Atura</title>
+
+<para
+>Aquest botó gran apareix a la part superior esquerra de la barra d'eines i s'utilitza per a proporcionar el control sobre les animacions i els moviments de l'ordinador, especialment si l'ordinador té el primer moviment, juga contra si mateix o triga massa a moure. El botó també es pot utilitzar per a fer anar una partida o un moviment, per a permetre que els jugadors principiants vegin cada pas al seu propi ritme. Les caselles de selecció que hi ha en el diàleg de configuració activen o desactiven el mode per passos (per a més detalls, vegeu <link linkend="configuration"
+>Configuració del joc</link
+>). </para>
+
+<para
+>El botó té tres estats:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Vermell</term>
+	<listitem
+><para
+>És possible aturar o interrompre un càlcul de l'ordinador, una animació o una partida d'ordinador contra ordinador.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Verd</term>
+	<listitem
+><para
+>És possible iniciar o continuar un moviment de l'ordinador, una animació o una partida d'ordinador contra ordinador.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Blau</term>
+	<listitem
+><para
+>El botó està inhabilitat i s'espera una acció humana, com fer el moviment següent.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>En cada cas, el botó conté una mica de text per a indicar quina acció es pot realitzar o s'espera, com &nbsp;&nbsp;<guibutton
+>Atura l'animació</guibutton
+> o <guibutton
+>El teu torn</guibutton
+>.</para>
+
+<para
+>Si atureu el càlcul d'un moviment de l'ordinador, l'ordinador triarà el millor moviment que tingui fins al moment. Si interrompeu una animació (&pex;, una cascada que està trigant massa), el moviment procedirà immediatament amb la seva conclusió. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Botons de la barra d'eines estàndard</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Arranjament</guiicon
+></term>
+	<listitem
+><para
+><action
+>Una drecera per a entrar en el diàleg de configuració i canviar les condicions de joc. Per a més detalls, vegeu &nbsp;&nbsp;<link linkend="configuration"
+>Configuració del joc</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Nova</guiicon
+></term>
+	<listitem
+><para
+><action
+>Inicia una partida nova.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Carrega...</guiicon
+></term>
+	<listitem
+><para
+><action
+>Carrega una partida desada anteriorment.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Desa</guiicon
+></term>
+	<listitem
+><para
+><action
+>Desa la partida actual.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Consell</guiicon
+></term>
+	<listitem
+><para
+><action
+>S'obté una pista sobre el millor moviment següent. La pista la calcula el jugador d'ordinador 1 o 2, depenent de si sou el jugador humà 1 o 2. Per a més detalls, vegeu la secció &nbsp;<link linkend="configuration"
+>Configuració del joc</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Desfés</guiicon
+></term>
+	<listitem
+><para
+><action
+>Desfà un moviment anterior, repetidament si cal.</action
+> Nota: és possible desfer els moviments finals de tota una partida i d'aquesta manera investigar els finals alternatius.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Refés</guiicon
+></term>
+	<listitem
+><para
+><action
+>Torna a fer una jugada que s'ha desfet, repetidament si cal.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Elements de menú</title>
+<sect2 id="game_menu">
+<title
+>El menú Joc</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Inicia una partida nova.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Carrega...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Carrega una partida desada anteriorment.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Desa la partida actual.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa com a...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Desa la partida actual amb un nom diferent.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Surt</action
+> del &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>El menú Mou</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Desfà un moviment anterior, repetidament si cal.</action
+> Nota: és possible desfer els moviments finals de tota una partida i d'aquesta manera investigar els finals alternatius.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Torna a fer una jugada que s'ha desfet, repetidament si cal.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Consell</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>S'obté una pista sobre el millor moviment següent. La pista la calcula el jugador d'ordinador 1 o 2, depenent de si sou el jugador humà 1 o 2. Per a més detalls, vegeu la secció &nbsp;<link linkend="configuration"
+>Configuració del joc</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Altres menús</title>
+<para
+>De manera addicional, el &kjumpingcube; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Preguntes més freqüents</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Vull canviar l'aparença d'aquest joc. Puc fer-ho? </para
+></question>
+ <answer
+><para
+>Actualment només podreu canviar els colors del jugador, però no el tema del joc. Per a canviar els colors del jugador, utilitzeu el diàleg <link linkend="configuration"
+>Configuració del joc</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Com començo en aquest joc? </para
+></question>
+ <answer
+><para
+>Els moviments del &kjumpingcube; poden ser difícils de seguir al començament. Una manera d'aprendre és mirar partides on l'ordinador juga contra si mateix. Utilitzeu el diàleg <link linkend="configuration"
+>Configuració del joc</link
+> per a configurar-ho. Marqueu ambdues caselles de selecció <guilabel
+>Juga ara</guilabel
+>, trieu una mida del tauler en l'interval de 3x3 fins a 5x5, establiu l'animació a <guilabel
+>Dispersió dels punts</guilabel
+> i el temps dels moviments a <guilabel
+>Llarg</guilabel
+>, després feu clic a <guibutton
+>D'acord</guibutton
+>. Ara feu clic en el gran botó verd de la barra d'eines per a iniciar la partida. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>És massa ràpid per a mi, com puc frenar-lo? </para
+></question>
+ <answer
+><para
+>Torneu a utilitzar el diàleg <link linkend="configuration"
+>Configuració del joc</link
+>. A la part inferior hi ha dues caselles de selecció. Marqueu-ne una per a aturar la partida entre moviments. Marqueu l'altra per a fer una pausa entre els passos dels moviments en cascada que s'estenen pel tauler, especialment a prop del final de la partida. De tornada a la partida, ara podreu utilitzar el botó gran de la barra d'eines (sempre que es posi verd) per a activar cada moviment o avançar pas a pas dins un moviment, al ritme que trieu.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Què fa el botó gran en la barra d'eines? </para
+></question>
+ <answer
+><para
+>Aquest botó s'utilitza per a aturar quelcom que està fent l'ordinador (color vermell), iniciar o continuar una acció de l'ordinador quan esteu llest (color verd) o demanar-vos que feu quelcom, com fer un moviment (color blau, botó inhabilitat). Per a obtenir una descripció completa, vegeu <link linkend="stop_start_button"
+>El botó Inicia/Atura</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puc utilitzar el teclat per a jugar a aquest joc? </para
+></question>
+ <answer
+><para
+>No. El &kjumpingcube; no es pot jugar amb el teclat. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>On es troben les puntuacions més altes?</para
+></question>
+ <answer
+><para
+>El &kjumpingcube; no té aquesta característica.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configuració del joc</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Per a obrir el diàleg de configuració utilitzeu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura el &kjumpingcube;...</guimenuitem
+></menuchoice
+>, en el Mac OS X d'Apple empreu l'element de menú <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+><guimenuitem
+>Preferències</guimenuitem
+></menuchoice
+> o podeu utilitzar el botó <guibutton
+>Arranjament</guibutton
+> a la barra d'eines.</para>
+
+<screenshot>
+    <screeninfo
+>Opcions de configuració del &kjumpingcube;</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Opcions de configuració del &kjumpingcube;</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Els plafons <guilabel
+>Visualització dels moviments en cascada</guilabel
+> i <guilabel
+>Temps dels moviments en cascada</guilabel
+> controlen la visualització de les animacions opcionals quan un cub aconsegueix el seu màxim i es desborda en els cubs veïns, possiblement iniciant una cascada estesa de moviments. Al començament, és més fàcil utilitzar l'animació <guilabel
+>Dispersió dels punts</guilabel
+> i un temps llarg de moviment. Aquesta és la millor manera de seguir el progrés dels moviments en cascada. Les dues caselles de selecció &nbsp;<guilabel
+>Pausa</guilabel
+> permeten fer anar les animacions i els moviments de l'ordinador al vostre propi ritme.</para>
+
+<para
+>Els plafons Jugador d'ordinador 1 i 2 controlen l'estil i el nivell de joc de cada jugador d'ordinador i si aquest jugador realment hauria de jugar o senzillament proporcionar consells al jugador humà 1 o 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Detalls de la configuració</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Juga ara</guilabel
+></term>
+		<listitem
+><para
+>Estableix al Jugador d'ordinador 1 o 2 perquè jugui activament o senzillament ajudi a un jugador humà amb consells. Normalment, configuraríeu l'ordinador perquè jugués amb un jugador i jugaríeu amb l'altre, però podeu tenir dos jugadors humans o dos jugadors d'ordinador i senzillament mirar. El jugador 1 sempre començarà primer.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Estil de joc</guilabel
+></term>
+		<listitem
+><para
+>Configura el Jugador d'ordinador 1 o 2 perquè jugui com Kepler o Newton. Kepler tria els moviments pel mateix mètode que les versions anteriors del &kjumpingcube;. Newton empra un mètode diferent.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Destresa de l'ordinador</guilabel
+></term>
+		<listitem
+><para
+><action
+>Permet escollir la destresa en el joc d'un jugador d'ordinador des d'un control lliscant.</action
+> Això decidirà com serà d'intel·ligent l'oponent d'ordinador.</para>
+		<para
+>Podreu triar qualsevol dels cinc nivells de dificultat, que van des de <guilabel
+>Principiant</guilabel
+>, passant per <guilabel
+>Mitjana</guilabel
+> fins a <guilabel
+>Expert</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Mida del tauler</guilabel
+></term>
+		<listitem
+><para
+><action
+>Permet triar la mida de l'àrea de joc.</action
+></para>
+		<para
+>Utilitzeu el control lliscant per a seleccionar un valor entre cubs de <guilabel
+>3x3</guilabel
+> i cubs de <guilabel
+>15x15</guilabel
+>. L'interval de 5x5 a 9x9 és el més adequat. Per sota de 5x5 és molt difícil superar a l'ordinador. Els jocs per sobre de 9x9 poden ser força llargs.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Colors dels jugadors</guilabel
+></term>
+		<listitem
+><para
+>Tria un color per a cada jugador i per als cubs neutrals.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Visualització dels moviments en cascada</guilabel
+></term>
+		<listitem
+><para
+>Tria un estil d'animació per a quan un cub aconsegueix el seu màxim i s'expandeix en els cubs veïns, possiblement iniciant una cascada de moviments i cobrint una gran àrea de tauler.</para>
+		    <para
+>Utilitzeu els botons d'opció per a seleccionar <guilabel
+>Cap (sense pauses)</guilabel
+>, on es mostrarà tot el moviment instantàniament, <guilabel
+>Enfosquiment i pausa</guilabel
+>, on cada cub sobrecarregat s'enfosquirà fins que arribi el moment d'expandir, <guilabel
+>Parpelleig ràpid</guilabel
+>, on cada cub sobrecarregat s'enfosquirà al començament i després parpellejarà ràpidament quan arribi el moment d'expandir i <guilabel
+>Dispersió dels punts</guilabel
+>, on cada cub sobrecarregat s'enfosquirà al començament i després dispararà els punts cap als cubs veïns quan sigui el moment d'expandir.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Temps dels moviments en cascada</guilabel
+></term>
+		<listitem
+><para
+>Utilitzeu el control lliscant per a seleccionar un interval de temps (des de <guilabel
+>Curt</guilabel
+> a <guilabel
+>Llarg</guilabel
+>) per a gastar en les animacions. El temps dependrà una mica del tipus d'animació, però pot oscil·lar entre 0,15 segons i 1,5 segons per a cada etapa d'un moviment en cascada.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Fa una pausa abans de cada moviment de l'ordinador</guilabel
+></term>
+	    <listitem
+><para
+>Si està seleccionada, els jugadors d'ordinador faran una pausa abans de començar un moviment, fins que feu clic per a reprendre. Això és per a ajudar-vos a seguir l'acció, especialment si sou un jugador novell o esteu estudiant una partida d'ordinador contra ordinador.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Fa una pausa abans de cada pas en cascada</guilabel
+></term>
+		<listitem
+><para
+>Si està seleccionada, l'animació dels moviments en cascada s'aturarà entre els passos, fins que feu clic per a reprendre. Això és per a ajudar-vos a observar aquests moviments a mesura que s'estenen pel tauler.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Crèdits i llicència</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kjumpingcube; és Copyright 2012, 2013 Ian Wadham i Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>El &kjumpingcube; es va inspirar en un joc que va sortir per al Commodore 64 i d'altres primers ordinadors personals. Malauradament, es desconeix el nom de l'autor original.</para>
+
+<para
+>El 2007, en Ian Wadham es va fer càrrec del manteniment del &kjumpingcube; per al &kde; 4 i n'Eugene Trounev va pintar el primer tema &SVG;.</para>
+
+<para
+>El 2012 i 2013, en Ian va desenvolupar les versions 2.0 i 2.1 del &kjumpingcube;, afegint els estils d'animació, permetent mides de tauler de fins a 3x3 o fins a 15x15 i escrivint mòduls d'intel·ligència artificial completament nous que ofereixen més desafiaments per a un jugador humà. Aquestes versions calculen més de pressa els moviments, afegeixen desfer/refer multinivell (anteriorment només un moviment), afegeixen una opció de dos oponents d'IA i proporcionen opcions perquè els jugadors principiants passin per les animacions i els moviments d'ordinador.</para>
+
+<para
+>Copyright de la documentació 2012, 2013 Ian Wadham i Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Documentació actualitzada per al &kde; 2 i 3 per en &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

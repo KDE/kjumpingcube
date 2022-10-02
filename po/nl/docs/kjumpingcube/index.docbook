@@ -1,0 +1,994 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Het handboek van &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+&Niels.Reedijk;&Rinse.Devries;&Sander.Koning;&Ronald.Stroethoff; 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-07-07</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Deze documentatie beschrijft het spel &kjumpingcube; versie 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>strategie</keyword>
+	<keyword
+>dobbelsteen</keyword>
+	<keyword
+>dobbelspel</keyword>
+	<keyword
+>dobbelsteen werpen</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>twee spelers</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>kubus</keyword>
+	<keyword
+>springen</keyword>
+	<keyword
+>springende kubus</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inleiding</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltype:</title
+><para
+>strategie, dobbelsteen</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Twee</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; is een eenvoudig tactisch spel dat u tegen een vriend of de computer kunt spelen - of u kunt een spel opzetten tussen twee computerspelers en gewoon kijken.</para>
+
+<para
+>Dat kan een goed idee zijn als u niet eerder met &kjumpingcube; hebt gespeeld. Zie <link linkend="faq"
+>Veel gestelde vragen</link
+>, <quote
+>Hoe begin ik met dit spel?</quote
+>.</para>
+
+<para
+>Het speelveld is een vak met kubussen die punten bevatten. Bij het starten van het spel heeft elke kubus een punt, geen eigenaar en een neutrale kleur. U wordt de eigenaar als u op een neutrale kubus klikt, deze krijgt uw kleur en krijgt een punt meer. Uw doel is om alle kubussen te verkrijgen, maar op dit moment is het de beurt van uw tegenstander.</para>
+
+<para
+>Spelers verplaatsen zich en voegen punten toe door op neutrale kubussen of hun eigen kubussen te klikken.</para>
+
+<para
+>De enige manier om de kubussen van uw tegenstander te veroveren is door de waarde van een kubus te verhogen totdat deze een maximum bereikt en expandeert naar de aangrenzende kubussen. Hierna kunt u ze de uwe noemen, zelfs als ze aan uw tegenstander toebehoorden.</para>
+
+<para
+>Soms bereikt een aangrenzende kubus ook een maximum en expandeert daardoor ook zodat een cascade van verplaatsingen over het speelveld optreedt. Grote aantallen kubussen kunnen plotseling in andere handen overgaan en dit is wat &kjumpingcube; interessant en uitdagend maakt.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Hoe te spelen</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Doel:</title
+><para
+>Alle kubussen op het speelveld veroveren</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>&kjumpingcube; wordt direct in spelmodus geladen, zodat u meteen kunt gaan spelen. Als speler 1 een computerspeler is, moet u klikken om te starten.</para>
+
+<para
+>Als u &kjumpingcube; nog nooit eerder hebt gespeeld, probeer dan eerst een of twee speelrondes te bekijken waarbij de computer tegen zichzelf speelt. Lees <link linkend="faq"
+>Veel gestelde vragen</link
+>, <quote
+>Hoe begin ik met dit spel?</quote
+>.</para>
+
+<para
+>U doet een zet door op een neutrale kubus te klikken of een waarvan u al eigenaar bent. Als u op een neutrale kubus klikt, dan verwerft u het eigendom erover en de kleur wijzigt naar uw speelkleur. Elke keer dat u op een kubus klikt, wordt de waarde van de kubus met één verhoogd. Als de waarde van de kubus een maximum bereikt, dan worden sommige van zijn punten verplaats naar de kubussen die er direct aan grenzen (de punten <quote
+>springen</quote
+> rond). Als een naburige kubus eigendom is van de andere speler, dan wordt deze overgenomen, samen met al zijn punten en wijzigt de kleur zich naar uw speelkleur.</para>
+
+<note
+><title
+>Voorbeeld:</title
+><para
+>Als een kubus in het centrum vijf punten bereikt, gaan vier punten naar zijn vier buren en blijft er één punt over voor de bronkubus. Er kan zich een cascade van automatische zetten voordoen als de naburige kubussen ook een maximum bereiken.</para
+></note>
+
+<note
+><title
+>Notitie:</title
+><para
+>Grote delen van het speelveld kunnen heel snel van speler wisselen. U kunt animatie instellen om u te helpen te volgen wat er gebeurt. Zie de sectie <link linkend="configuration"
+>Configuratie van het spel</link
+> voor meer details.</para
+></note>
+
+<para
+>Degene die alle kubussen bezit heeft gewonnen.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelregels, strategieën en tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Regels</title>
+	<orderedlist>
+	<listitem
+><para
+>Een zet bestaat uit het klikken op een kubus dat niet behoort bij uw tegenstander.</para
+></listitem>
+	<listitem
+><para
+>De zet verhoogt het aantal punten in de kubus met één.</para
+></listitem>
+	<listitem
+><para
+>Bij het begin van het spel, heeft elke kubus één punt, heeft het een neutrale kleur en geen eigenaar.</para
+></listitem>
+	<listitem
+><para
+>Elke speler heeft een kleur om het eigendom van kubussen aan te geven.</para
+></listitem>
+	<listitem
+><para
+>Door op een kubus te klikken die geen eigenaar heeft, wordt de speler de eigenaar van die kubus en wijzigt zijn kleur naar de kleur van de speler. Tegelijk wordt de waarde van de kubus met één opgehoogd.</para
+></listitem>
+	<listitem
+><para
+>Als een kubus meer punten bevat dan het buren heeft, dan springt één punt naar elke buur.</para
+></listitem>
+	<listitem
+><para
+>Bij zo'n zet, worden alle naburige kubussen eigendom van de speler die de zet deed en zo ook al hun punten, zelfs als de buren neutraal waren of eigendom van de andere speler.</para
+></listitem>
+	<listitem
+><para
+>Buren zijn de kubussen boven, onder, links en rechts, echter niet diagonaal. Hoekkubussen hebben slechts twee buren, terwijl kubussen aan de rand drie en kubussen in het centrum vier buren hebben.</para
+></listitem>
+	<listitem
+><para
+>Als een zet een buur achterlaat met een maximum aantal punten, gaat de zet automatisch verder naar de buren van de buren en zo verder, in een cascade. Een groot aantal kubussen kan in zo'n zet van eigenaar veranderen.</para
+></listitem>
+	<listitem
+><para
+>Degene die alle kubussen bezit heeft gewonnen.</para
+></listitem>
+	<listitem
+><para
+>U kunt het formaat van het speelveld, de computerspelers, de animaties van de zetten en de kleuren van de spelers instellen. Elke computerspeler kan zijn eigen stijl en spelniveau hebben. Als het niet speelt dan kan het adviezen geven aan de bijbehorende menselijke speler. U kunt ook de ene computerspeler tegen de andere computerspeler laten spelen en het resultaat bekijken. Lees de sectie over <link linkend="configuration"
+>Configuratie van het spel</link
+> voor meer details.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Strategieën en tips</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Misschien helpt het als u een computerspeler tegen een computerspeler laat spelen en in het instellingendialoog het spel zodanig instelt dat u door de zetten en bewegingen in uw eigen snelheid gaat. Lees <link linkend="faq"
+>Veel voorkomende vragen</link
+>, <quote
+>Hoe begin ik met dit spel?</quote
+> en <quote
+>Dat ging te snel voor mij, hoe kan ik het langzamer laten gaan?</quote
+>.</para
+></listitem>
+	<listitem
+><para
+>Als u een kubus heeft naast dat van een tegenstander, probeer dan om sneller dan uw tegenstander de punten te verhogen.</para
+></listitem>
+	<listitem
+><para
+>Als een dergelijke kubus gelijk of minder punten dan uw tegenstander heeft, probeer dan het verhogen van punten te vermijden: in dat geval kan u die race toch niet winnen.</para
+></listitem>
+	<listitem
+><para
+>Probeer mogelijkheden voor het vermeerderen van punten en het overnemen van kubussen te vinden, maar let op dat uw tegenstander niet een cascade kan starten.</para
+></listitem>
+	<listitem
+><para
+>Probeer eerst de controle over de kussen in de hoeken te krijgen, daarna die aan de randen. U heeft minder zetten nodig om ze een maximum te laten bereiken en zich uit te breiden.</para
+></listitem>
+	<listitem
+><para
+>Probeer om niet te dicht bij uw tegenstander te spelen, speciaal tijdens de openingszetten. Ga een of twee kubussen terug of pak een kubus op de diagonaal van uw tegenstander.</para
+></listitem>
+	<listitem
+><para
+>Kijk uit naar een lange ketting van kubussen die bijna op hun maximum zijn. Als ze van u zijn, dan moet u ze bewaken tegen cascade zetten. Als ze van uw tegenstander zijn, dan worden ze rijp voor pakken met een cascade zet, zodra ze dicht genoeg bij uw territorium zijn.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Overzicht van het interface</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>De werkbalk</title>
+<sect2 id="stop_start_button">
+<title
+>De Stop/Start knop</title>
+
+<para
+>De grootte knop is in de linkerbovenhoek van de werkbalk te vinden waar u het kunt gebruiken voor controle van de animaties en de zetten die de computer maakt, speciaal in het geval als de computer de eerste zet doet, tegen zichzelf speelt of er erg lang over een zet doet. U kunt de knop ook gebruiken om door een spel of een zet heen te stappen, zodat spelers elke stap in hun eigen snelheid kunnen bestuderen. met keuzevakjes in het instellingendialoog schakelt u de stapmode in of uit (lees de <link linkend="configuration"
+>Instellingen van het spel</link
+> sectie voor meer details). </para>
+
+<para
+>De knop kan in drie standen staan:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Rood</term>
+	<listitem
+><para
+>Het is mogelijk om een computerberekening, een animatie of een computer versus computer spel te stoppen of te onderbreken.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Groen</term>
+	<listitem
+><para
+>Het is mogelijk om een computerberekening, een animatie of een computer versus computer spel te starten of weer in te schakelen.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Blauw</term>
+	<listitem
+><para
+>de knop is uitgeschakeld en er wordt gewacht op een menselijke actie zoals het doen van de volgende zet.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>De knop toont in alle gevallen enige tekst voor een indicatie welke actie u kunt uitvoeren of wordt verwacht, zoals &nbsp;<guibutton
+>Stop animatie</guibutton
+> of <guibutton
+>Uw beurt</guibutton
+>.</para>
+
+<para
+>Als u de berekening van een computer zet onderbreekt dan zal de computer de beste op dat moment beschikbare zet nemen. Als u een animatie onderbreekt (&eg; een cascade dat te lang duurt), dan zal de zet onmiddellijk zijn eind bereiken. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Standaard werkbalk knoppen</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Instellingen</guiicon
+></term>
+	<listitem
+><para
+><action
+>Een sneltoets om de instellingendialoog te openen en speelcondities te wijzigen. Zie de sectie <link linkend="configuration"
+>Instellingen van het spel</link
+> voor meer details.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Nieuw</guiicon
+></term>
+	<listitem
+><para
+><action
+>Start een nieuw spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Laden...</guiicon
+></term>
+	<listitem
+><para
+><action
+>Laad een eerder opgeslagen spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Opslaan</guiicon
+></term>
+	<listitem
+><para
+><action
+>Bewaart het huidige spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Tip</guiicon
+></term>
+	<listitem
+><para
+><action
+>Ontvang een aanwijzing over wat de beste volgende zet is. De aanwijzing wordt berekend voor computerspeler 1 of 2, afhankelijk van of u de menselijke speler 1 of 2 bent. Zie de sectie <link linkend="configuration"
+>Instellingen van het spel</link
+> voor meer details.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Ongedaan maken</guiicon
+></term>
+	<listitem
+><para
+><action
+>Een eerdere zet ongedaan maken, indien nodig herhaaldelijk. </action
+> Opmerking: het is mogelijk om de eindzet van een voltooid spel ongedaan te maken en alternatieve einden te bestuderen.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Opnieuw</guiicon
+></term>
+	<listitem
+><para
+><action
+><action
+>Opnieuw</action
+> een zet uitvoeren die ongedaan was gemaakt, herhaaldelijk indien gewenst.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Menu-items</title>
+<sect2 id="game_menu">
+<title
+>Het menu Spel</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Start een nieuw spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Laden...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Laad een eerder opgeslagen spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Opslaan</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Bewaart het huidige spel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Opslaan als...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Bewaart het huidige spel onder een nieuwe naam.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+><guimenuitem
+>Afsluiten</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Beëindig</action
+> &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Het menu Zet</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+><guimenuitem
+>Ongedaan maken</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Een eerdere zet ongedaan maken, indien nodig herhaaldelijk. </action
+> Opmerking: het is mogelijk om de eindzet van een voltooid spel ongedaan te maken en alternatieve einden te bestuderen.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Opnieuw</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+><action
+>Opnieuw</action
+> een zet uitvoeren die ongedaan was gemaakt, herhaaldelijk indien gewenst.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Tip</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Ontvang een aanwijzing over wat de beste volgende zet is. De aanwijzing wordt berekend voor computerspeler 1 of 2, afhankelijk van of u de menselijke speler 1 of 2 bent. Zie de sectie <link linkend="configuration"
+>Instellingen van het spel</link
+> voor meer details.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Overige menu's</title>
+<para
+>Bovendien heeft &kjumpingcube; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu-instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Veel voorkomende vragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ik wil het uiterlijk van dit spel wijzigen. Kan dat? </para
+></question>
+ <answer
+><para
+>Op dit moment kunt u alleen de kleuren van de spelers wijzigingen, maar niet het spelthema. Om de kleuren van de spelers te wijzigen gebruikt u de dialoog <link linkend="configuration"
+>Configuratie van het spel</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Hoe begin ik met dit spel? </para
+></question>
+ <answer
+><para
+>De zetten in &kjumpingcube; kunnen in het begin moeilijk te volgen zijn. Een manier om het leren is het bekijken van spelrondes waarbij de computer tegen zichzelf speelt. Gebruik het dialoogvenster <link linkend="configuration"
+>Instellingen van het spel</link
+> om dit in te stellen. Schakel beide <guilabel
+>Nu spelen</guilabel
+> vakjes in, kies een formaat speelveld tussen 3x3 en 5x5, schakel de animatie naar <guilabel
+>Punten verspreiden</guilabel
+> en de verplaatsingstijd naar <guilabel
+>Lang</guilabel
+>, klik vervolgens op <guibutton
+>OK</guibutton
+>. klik tenslotte op de grote groene knop in de werkbalk om het spel te starten. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Dat ging te snel voor mij, hoe kan ik het langzamer laten gaan? </para
+></question>
+ <answer
+><para
+>Gebruik het dialoogvenster <link linkend="configuration"
+>Instellingen van het spel</link
+> nog een keer. Onderaan zijn er twee keuzevakjes. Schakel het ene vakje in waarmee u het spel tussen de zetten pauzeert. Schakel het andere vakje in waarmee u het spel tussen de stappen van een cascade waarmee het over het speelveld verspreidt pauzeert, speciaal bij het eind van het spel. Terug in het spel, kunt u nu de grote groene drukknop in de werkbalk (iedere keer als het groen is) gebruiken voor de start van een zet of om stap voor stap door een zet te gaan, in iedere gewenste snelheid.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Wat is de functie van de grote knop in de werkbalk? </para
+></question>
+ <answer
+><para
+>Deze knop gebruikt u om de computer te laten stoppen met hetgeen aan het doen is (rode kleur), een actie van de computer te starten of te laten doorgaan als u daarvoor klaar bent (groene kleur) of om aan u te vragen om iets te doen (blauwe kleur, knop uitgeschakeld), zoals een het maken van een zet. Lees voor een volledige beschrijving <link linkend="stop_start_button"
+>De Stop/Start knop</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan ik het toetsenbord gebruiken om het spel te spelen? </para
+></question>
+ <answer
+><para
+>Nee, &kjumpingcube; kan niet met het toetsenbord worden gespeeld. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Waar zijn de topscores?</para
+></question>
+ <answer
+><para
+>&kjumpingcube; heeft geen dergelijke functie.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Spelconfiguratie</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Om de configuratiedialoog van de menubalk te openen gebruikt u het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&kjumpingcube; configureren...</guimenuitem
+></menuchoice
+>, op Apple Mac OS X gebruik het menu-item <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+> <guimenuitem
+>Voorkeuren</guimenuitem
+></menuchoice
+> of u kunt de knop <guibutton
+>Instellingen</guibutton
+> in de werkbalk gebruiken.</para>
+
+<screenshot>
+    <screeninfo
+>Instellingen van &kjumpingcube;</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Instellingen van &kjumpingcube;</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>In het Cascade verplaatsing Display en Cascade verplaatsingstijd paneel stelt u de optionele animatie in voor het geval dat een kubus zijn maximum bereikt en overloopt naar de naastliggende kubussen, zodat daarna misschien een cascade start. Het makkelijkst is om te beginnen met de <quote
+>Punten verspreiden</quote
+> animatie en een lange beweging tijd. Hierdoor kunt u het makkelijkst de voortgang van een cascade volgen. Als u de twee keuzevakjes voor pauze inschakelt dan kunt door de animaties en computer-zetten in uw eigen tempo heen stappen.</para>
+
+<para
+>Met de panelen voor computerspeler 1 en speler 2 kunt u de speelstijl en de speelsterkte van elke computerspeler mee instellen, maar ook of de computer echt speelt of alleen maar advies geeft aan de menselijke speler 1 of aan speler 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Onderdelen van het instellingenpaneel</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Nu spelen</guilabel
+></term>
+		<listitem
+><para
+>Bepaalt welke speler 1 of 2 de computer is of assisteert een menselijke speler met aanwijzingen. Normaliter laat u de computer een speler zijn en dan bent u de andere speler, maar u kunt twee menselijke of twee computerspelers hebben en kijken. Speler 1 begint altijd als eerste.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Speelstijl</guilabel
+></term>
+		<listitem
+><para
+>Stelt computerspeler 1 of 2 om te spelen als Kepler of als Newton. Kepler gebruikt dezelfde methode als in eerdere versies van &kjumpingcube;. Newton gebruikt een andere methode.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Speelsterkte van computer</guilabel
+></term>
+		<listitem
+><para
+><action
+>Hier kunt u de spelsterkte van de computerspeler instellen met een schuifregelaar.</action
+> Dit bepaalt hoe sterk de computertegenstander is.</para>
+		<para
+>U kunt kiezen uit vijf niveaus, lopend van <guilabel
+>Beginner</guilabel
+>, via <guilabel
+>Gemiddeld</guilabel
+> tot <guilabel
+>Expert</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Bordgrootte</guilabel
+></term>
+		<listitem
+><para
+><action
+>Hier kunt u de grootte van het speelveld bepalen.</action
+></para>
+		<para
+>Gebruik de schuifregelaar om een waarde tussen <guilabel
+>3x3</guilabel
+> kubussen en <guilabel
+>15x15</guilabel
+> kubussen te selecteren. De reeksen 5x5 en 9x9 zijn het plezierigst. Onder 5x5 is het moeilijk om de computer te verslaan. Boven 9x9 worden de spellen tamelijk lang.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Kleuren van spelers</guilabel
+></term>
+		<listitem
+><para
+>Kies een kleur voor elke speler en voor de neutrale kubussen.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Weergave van cascade-zet</guilabel
+></term>
+		<listitem
+><para
+>Kies een animatie stijl voor het moment dat een kubus zijn maximum bereikt en expandeert naar de aangrenzende kubussen, wat misschien een cascade van zulke bewegingen en het vervolgens bedekken van een groot gedeelte van het board start.</para>
+		    <para
+>Gebruik de radio knoppen om een keuze te maken uit <guilabel
+>Geen (geen pauzes)</guilabel
+>, waar de hele zet onmiddellijk getoond wordt; <guilabel
+>Donkerder maken en pauzeren</guilabel
+>, waar elke kubus met teveel punten donkerder is totdat het tijd is om de punten aan de buren door te geven; <guilabel
+>Snel laten knipperen</guilabel
+>, waar elke kubus met teveel punten eerst donkerder is en snel begint te knipperen als het tijd is om de punten aan de buren door te geven en <guilabel
+>Punten verspreiden</guilabel
+>, waar elke kubus met teveel punten donkerder is en punten naar de buren stuurt als het tijd is om de punten aan de buren door te geven.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Tijd van cascade-zet</guilabel
+></term>
+		<listitem
+><para
+>Gebruik de schuifknop om de animatietijd in te stellen (<guilabel
+>Kort</guilabel
+> naar <guilabel
+>Lang</guilabel
+>). De tijd is een beetje afhankelijk van het soort animatie, maar kan variëren van 0,15 seconde tot 1,5 seconde voor elke fase van een cascade zet.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pauzeer voor elke zet van de computer</guilabel
+></term>
+	    <listitem
+><para
+>Als dit is ingeschakeld dan zal de computerspeler wachten met het doen van de volgende zet totdat u op doorgaan heeft geklikt. Dit helpt u met het kunnen volgen van de actie, met name als u een beginner bent of een computer versus computer spel bestudeert.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pauzeer voor elke cascade-stap</guilabel
+></term>
+		<listitem
+><para
+>Als dit is ingeschakeld dan zal de animatie van een cascade tussen de stappen pauzeren totdat u op doorgaan heeft geklikt. Dit helpt u met het kunnen volgen van de cascade als het zich over het bord verspreidt.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Dankbetuigingen en licentie</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kjumpingcube; is Copyright 2012, 2013 Ian Wadham en Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; is geïnspireerd door een spel dat uitkwam voor de Commodore 64en enkele andere home-computers uit die tijd. Helaas is de oorspronkelijke auteur niet bij ons bekend.</para>
+
+<para
+>In 2007 nam Ian Wadham het onderhoud van &kjumpingcube; voor &kde; 4 over en Eugene Trounev heeft het eerste &SVG;-thema gemaakt.</para>
+
+<para
+>In 2012 en 2013, ontwikkelde Ian de versies 2.0 en 2.1 van &kjumpingcube;, voegde de animatie styles toe, waarmee het formaat van het speelveld kan variëren van 3x3 tot 15x15 en schreef compleet nieuwe kunstmatige intelligentie modules die uitdagender voor een menselijke speler zijn. Deze versies berekenen een zet sneller, geven meerdere zet ongedaan maken/opnieuw uitvoeren (voorheen maar een zet), geven een keuze uit twee AI tegenstanders en geeft voor beginners de mogelijkheid om stap voor stap door de animaties en computer-zetten te gaan.</para>
+
+<para
+>Documentatie Copyright 2012, 2013 Ian Wadham en Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Documentatie bijgewerkt voor &kde; 2 en 3 door &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+&meld.fouten;&vertaling.niels;&vertaling.rinse;&vertaling.sander;&vertaling.ronald; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

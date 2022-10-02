@@ -1,0 +1,625 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2013-07-11 03:38+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Сайран Киккарин"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sairan@computer.org"
+
+#: game.cpp:77
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr "Кешіріңіз, жүріс жасалып жатыр..."
+
+#: game.cpp:114
+#, kde-format
+msgid "Game over"
+msgstr "Ойын бітті"
+
+#: game.cpp:115
+#, kde-format
+msgid "The winner is Player %1!"
+msgstr "%1 ойыншысы - жеңімпаз!"
+
+#: game.cpp:116
+#, kde-format
+msgid "Winner"
+msgstr "Жеңімпаз"
+
+#: game.cpp:127
+#, kde-format
+msgid "General"
+msgstr "Жалпы"
+
+#: game.cpp:240
+#, kde-format
+msgid "Start game"
+msgstr "Ойынды бастау"
+
+#: game.cpp:243
+#, kde-format
+msgid "Continue game"
+msgstr "Ойынды жалғастыру"
+
+#: game.cpp:247
+#, kde-format
+msgid "Start computer move"
+msgstr "Компьютердің жүрісін бастау"
+
+#: game.cpp:268
+#, kde-format
+msgid "Your turn"
+msgstr "Сіздің кезегіңіз"
+
+#: game.cpp:271
+#, kde-format
+msgid "Player %1"
+msgstr "%1 ойыншы"
+
+#: game.cpp:287
+#, kde-format
+msgid "Computer player %1 is moving"
+msgstr "%1 компьютер - ойыншы жүреді"
+
+#: game.cpp:307
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr "Компьютер дұрыс жүрісті табалмады."
+
+#: game.cpp:407
+#, kde-format
+msgid "Show next step"
+msgstr "Келісіні қадамын көрсету"
+
+#: game.cpp:465
+#, kde-format
+msgid "Finishing move..."
+msgstr "Жүрісті аяқтау..."
+
+#: game.cpp:504
+#, kde-format
+msgid "Interrupt game"
+msgstr "Ойынды үзу"
+
+#: game.cpp:510
+#, kde-format
+msgid "Stop computing"
+msgstr "Компьютер ойлауын тоқтату"
+
+#: game.cpp:513
+#, kde-format
+msgid "Stop showing move"
+msgstr "Жүрісті көрсетуін тоқтату"
+
+#: game.cpp:516
+#, kde-format
+msgid "Stop animation"
+msgstr "Анимацияны тоқтату"
+
+#: game.cpp:545
+#, kde-format
+msgid "New Game"
+msgstr "Жаңа ойын"
+
+#: game.cpp:574
+#, fuzzy, kde-format
+#| msgid ""
+#| "The file %1 exists.\n"
+#| "Do you want to overwrite it?"
+msgid ""
+"The file %1 already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"%1 деген файл бар екен.\n"
+"Үстінен жаза берейік пе?"
+
+#: game.cpp:599
+#, kde-format
+msgid "Game saved as %1"
+msgstr "Ойын %1 деп сақталған"
+
+#: game.cpp:602
+#, kde-format
+msgid ""
+"There was an error in saving file\n"
+"%1"
+msgstr ""
+"Файлды сақтағанда қате пайда болды\n"
+"%1"
+
+#: game.cpp:619
+#, kde-format
+msgid "The file %1 does not exist!"
+msgstr "%1 деген файл жоқ!"
+
+#: game.cpp:634
+#, kde-format
+msgid "The file %1 is not a KJumpingCube gamefile!"
+msgstr "%1 дегені KJumpingCube ойын файлы емес!"
+
+#: game.cpp:647
+#, kde-format
+msgid ""
+"There was an error loading file\n"
+"%1"
+msgstr ""
+"Файлды жүктегенде қате пайда болды\n"
+"%1"
+
+#: game.cpp:675
+#, kde-format
+msgid ""
+"You have changed the size setting of the game and that requires a new game "
+"to start.\n"
+"\n"
+"Do you wish to abandon the current game or continue playing and restore the "
+"previous size setting?"
+msgstr ""
+"Жаңа ойынды бастауын талап ететін ойын өлшемін өзгерттіңіз.\n"
+"\n"
+"Бар ойынды тастамақсыз ба, әлде бұрынғы өлшемге қайтып, оны жалғастырмақсыз "
+"ба?"
+
+#: game.cpp:681
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+"Бітпеген ойын барда, жаңа ойын талап етілді.\n"
+"\n"
+"Бар ойынды тастамақсыз ба?"
+
+#: game.cpp:686
+#, kde-format
+msgid "New Game?"
+msgstr "Жаңа ойын?"
+
+#: game.cpp:687
+#, kde-format
+msgid "Abandon Game"
+msgstr "Ойынды тастау"
+
+#: game.cpp:688
+#, kde-format
+msgid "Continue Game"
+msgstr "Ойынды жалғастыру"
+
+#: game.cpp:830
+#, kde-format
+msgid ""
+"The file's cube box size is outside the range %1 to %2. It will be set to %1."
+msgstr "Файлдағы текшесінің өлшемі %1 - %2 арасынан тыс. Ол %1 болады."
+
+#: game.cpp:846
+#, kde-format
+msgid "Missing input line for cube %1."
+msgstr "%1 текшенің кіріс жол жазуы жоқ."
+
+#: game.cpp:855
+#, kde-format
+msgid "Owner of cube %1 is outside the range 0 to 2."
+msgstr "%1 деген шаршы иесі 0 - 2 аумағынан тыс ."
+
+#: game.cpp:862
+#, kde-format
+msgid "Value of cube %1 is outside the range 1 to %2."
+msgstr "%1 деген шаршы мәні 1 - %2 аумағынан тыс."
+
+#: game.cpp:877
+#, kde-format
+msgid "Current player is neither 1 nor 2."
+msgstr "Ойнап жатқаны не 1 не 2 емес."
+
+#: kjumpingcube.cpp:45
+#, kde-format
+msgid "Current player:"
+msgstr "Қазіргі ойыншы:"
+
+#: kjumpingcube.cpp:137
+#, kde-format
+msgid "Settings"
+msgstr "Баптау"
+
+#. i18n: ectx: label, entry (AnimationSpeed), group (Game)
+#: kjumpingcube.kcfg:11
+#, kde-format
+msgid "Animation speed of overflowing dice"
+msgstr "Үлгере алмай жатқан шаршы анимация жылдамдығы"
+
+#. i18n: ectx: label, entry (AnimationNone), group (Game)
+#: kjumpingcube.kcfg:15
+#, kde-format
+msgid "Animation type None (no pauses)."
+msgstr "Анимациясының түрі 'Жоқ (аялдаусыз)'."
+
+#. i18n: ectx: label, entry (AnimationDelay), group (Game)
+#: kjumpingcube.kcfg:19
+#, kde-format
+msgid "Animation type Darken and pause."
+msgstr "'Қараңғы және аялдау' анимациясының түрі."
+
+#. i18n: ectx: label, entry (AnimationBlink), group (Game)
+#: kjumpingcube.kcfg:23
+#, kde-format
+msgid "Animation type Blink rapidly."
+msgstr "'Жыпылықтау' анимациясының түрі."
+
+#. i18n: ectx: label, entry (AnimationSpread), group (Game)
+#: kjumpingcube.kcfg:27
+#, kde-format
+msgid "Animation type Scatter dots."
+msgstr "'Шашылған нүктелер' анимациясының түрі."
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kjumpingcube.kcfg:31
+#, kde-format
+msgid "Color of neutral cubes."
+msgstr "Бейтарап текшелер түсі."
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kjumpingcube.kcfg:35
+#, kde-format
+msgid "Color of player 1."
+msgstr "1-ойыншының түсі."
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kjumpingcube.kcfg:39
+#, kde-format
+msgid "Color of player 2."
+msgstr "2-ойыншының түсі."
+
+#. i18n: ectx: label, entry (CubeDim), group (Game)
+#: kjumpingcube.kcfg:45
+#, kde-format
+msgid "Size of the playing field."
+msgstr "Ойын алаң өлшемі."
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kjumpingcube.kcfg:49
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "1-болып ойнайтын компьютер бола ма."
+
+#. i18n: ectx: label, entry (Kepler1), group (Game)
+#: kjumpingcube.kcfg:53
+#, kde-format
+msgid "Whether computer player 1 uses Kepler AI."
+msgstr "1-компьютер - ойыншы Кеплер стилді."
+
+#. i18n: ectx: label, entry (Newton1), group (Game)
+#: kjumpingcube.kcfg:57
+#, kde-format
+msgid "Whether computer player 1 uses Newton AI."
+msgstr "1-компьютер - ойыншы Ньютон стилді."
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kjumpingcube.kcfg:68
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "1-компьютер - ойыншының шеберлігі."
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kjumpingcube.kcfg:72
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "2-болып ойнайтын компьютер бола ма."
+
+#. i18n: ectx: label, entry (Kepler2), group (Game)
+#: kjumpingcube.kcfg:76
+#, kde-format
+msgid "Whether computer player 2 uses Kepler AI."
+msgstr "2-компьютер - ойыншы Кеплер стилді."
+
+#. i18n: ectx: label, entry (Newton2), group (Game)
+#: kjumpingcube.kcfg:80
+#, kde-format
+msgid "Whether computer player 2 uses Newton AI."
+msgstr "2-компьютер - ойыншы Ньютон стилді."
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kjumpingcube.kcfg:91
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "2-компьютер - ойыншының шеберлігі."
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kjumpingcube.kcfg:95
+#, kde-format
+msgid "Pause before each computer move."
+msgstr "Әр компьютердің жүрісін алдында аялдау."
+
+#. i18n: ectx: label, entry (PauseForStep), group (Game)
+#: kjumpingcube.kcfg:99
+#, kde-format
+msgid "Pause before each cascade step."
+msgstr "Әр бірнешелік жүрісін алдында аялдау."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kjumpingcubeui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Негізгі құралдар"
+
+#: main.cpp:39
+#, kde-format
+msgid "KJumpingCube"
+msgstr "KJumpingCube"
+
+#: main.cpp:41
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "Біреу не екеуі ойнайтын тактикалық ойын"
+
+#: main.cpp:43
+#, kde-format
+msgid "(c) 1998-2000, Matthias Kiefer"
+msgstr "(c) 1998-2000, Matthias Kiefer"
+
+#: main.cpp:47
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Various improvements"
+msgstr "Түрлі жақсартулар"
+
+#: main.cpp:49
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:50
+#, kde-format
+msgid "Upgrade to KDE4 and SVG artwork support."
+msgstr "KDE4-ге жаңарту және SVG көркемділік жұмысы."
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:53
+#, kde-format
+msgid "Graphics for KDE 4.0 version."
+msgstr "KDE4  нұсқасының графикасы."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "1-компьютер - ойыншы"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:181
+#, kde-format
+msgid "Playing now"
+msgstr "Қазір ойнау"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:59 settings.ui:194
+#, kde-format
+msgid "Style of Play"
+msgstr "Ойын стилі"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
+#: settings.ui:65 settings.ui:203
+#, kde-format
+msgid "Kepler"
+msgstr "Кеплер"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
+#: settings.ui:75 settings.ui:213
+#, kde-format
+msgid "Newton"
+msgstr "Ньютон"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:120 settings.ui:255
+#, kde-format
+msgid "Beginner"
+msgstr "Балаң"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:130 settings.ui:265
+#, kde-format
+msgid "Average"
+msgstr "Орташа"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:146 settings.ui:281
+#, kde-format
+msgid "Expert"
+msgstr "Шебер"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:163
+#, kde-format
+msgid "Computer Player 2"
+msgstr "2-компьютер - ойыншы"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:298
+#, kde-format
+msgid "Pause before each computer move"
+msgstr "Әр компьютердің жүрісін алдында аялдау"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: settings.ui:309
+#, kde-format
+msgid "Board Size"
+msgstr "Тақта өлшемі"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: settings.ui:345
+#, kde-format
+msgid "3x3"
+msgstr "3x3"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: settings.ui:368
+#, kde-format
+msgid "15x15"
+msgstr "15x15"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:383
+#, kde-format
+msgid "Players' Colors"
+msgstr "Ойыншылар түстері"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:391
+#, kde-format
+msgid "Player 1:"
+msgstr "1-ойыншы:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:405
+#, kde-format
+msgid "Player 2:"
+msgstr "2-ойыншы:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:419
+#, kde-format
+msgid "Neutral:"
+msgstr "Бейтарап:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#: settings.ui:434
+#, kde-format
+msgid "Cascade Move Display"
+msgstr "Жүріс каскадын көрсету"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
+#: settings.ui:446
+#, kde-format
+msgid "None (no pauses)"
+msgstr "Жоқ (аялдаусыз)"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
+#: settings.ui:459
+#, kde-format
+msgid "Darken and pause"
+msgstr "Қараңғы және аялдау"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
+#: settings.ui:472
+#, kde-format
+msgid "Blink rapidly"
+msgstr "Жыпылықтау"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
+#: settings.ui:485
+#, kde-format
+msgid "Scatter dots"
+msgstr "Шашылған нүктелер"
+
+#. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
+#: settings.ui:498
+#, kde-format
+msgid "Cascade Move Time"
+msgstr "Жүріс каскадын уақыты"
+
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+#: settings.ui:543
+#, kde-format
+msgid "Short"
+msgstr "Қысқа"
+
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+#: settings.ui:566
+#, kde-format
+msgid "Long"
+msgstr "Ұзын"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
+#: settings.ui:581
+#, kde-format
+msgid "Pause before each cascade step"
+msgstr "Әр бірнешелік жүрісін алдында аялдау"
+
+#~ msgid "PushButton"
+#~ msgstr "Батырма"
+
+#~ msgid "Overwrite"
+#~ msgstr "Үстінен"
+
+#, fuzzy
+#~| msgid "Computing next move."
+#~ msgid "Computing a move"
+#~ msgstr "Жүріс ойланып жатыр."
+
+#, fuzzy
+#~| msgid "Performing move."
+#~ msgid "Performing a move"
+#~ msgstr "Жүріс етіліп жатыр."
+
+#~ msgid "Stop"
+#~ msgstr "Тоқтату"
+
+#~ msgid "Force the computer to move immediately"
+#~ msgstr "Компьютерді бірден жүруге мәжбүрлеу"
+
+#~ msgid ""
+#~ "Stop the computer's calculation of its current move and force it to move "
+#~ "immediately"
+#~ msgstr "Компьютердің ойлауын үзіп бірден жүруге мәжбүрлеу"
+
+#~ msgid "stopped activity"
+#~ msgstr "тоқтатылған"
+
+#~ msgid "Type of animation of overflowing dice"
+#~ msgstr "Үлгере алмай жатқан шаршы анимация түрі"
+
+#~ msgid "&Game"
+#~ msgstr "&Ойын"
+
+#~ msgid "10x10"
+#~ msgstr "10x10"
+
+#~ msgid "Computer Skill"
+#~ msgstr "Компьютер шеберлігі"
+
+#~ msgid "Player 2"
+#~ msgstr "2-ойыншы болсын"
+
+#~ msgid "5x5"
+#~ msgstr "5x5"

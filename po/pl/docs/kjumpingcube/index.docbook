@@ -1,0 +1,809 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kjumpingcube;">
+  <!ENTITY kappversion "1.2"
+><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Polish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Podręcznik &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Matthias</firstname
+> <surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Michał</firstname
+><surname
+>Klich</surname
+><affiliation
+><address
+><email
+>majkimajki@wp.pl</email
+></address
+></affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2007-11-16</date
+><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
+<releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Ta dokumentacja dotyczy gry &kjumpingcube; w wersji &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>gra</keyword
+> <!-- do not change this! -->
+	<keyword
+>KJumpingCube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>strategia</keyword>
+	<keyword
+>kość do gry</keyword>
+	<keyword
+>gra w kości</keyword>
+	<keyword
+>granie w kości</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dwóch graczy</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>kostka</keyword>
+	<keyword
+>skok</keyword>
+	<keyword
+>skaczący sześcian</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Wprowadzenie</title
+> <!-- do not change this! -->
+	<note
+><title
+>Rodzaj gry:</title
+><para
+>Strategia, gra w kości.</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Liczba graczy:</title
+><para
+>Dwoje</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kjumpingcube; jest prostą, taktyczną grą. Możesz w nią grać z drugą osobą lub z komputerem. Plansza do gry składa się z pól zawierających punkty. Klikając w pole zwiększa się liczba punktów, jeśli punkty osiągną punkt maksymalny przeskakują na sąsiednie pola i je przejmują. Zwycięzcą zostaje ten, kto zdobędzie wszystkie pola.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Jak grać</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Cel gry:</title
+><para
+>Zajmij wszystkie pola na planszy.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>&kjumpingcube; uruchamia się w trybie grania, możesz rozpocząć grę tuż po uruchomieniu.</para>
+	<para
+>Ruch polega na klikaniu w wolne pola lub te należące do ciebie. Jeśli klikniesz na wolne pole przejmujesz nad nim kontrolę i jego kolor zmienia się na twój kolor.Za każdym razem gdy klikniesz pole ilość punktów w polu zmienia się o jeden. Jeśli osiąga maksimum, punkty są przekazywane na najbliższych sąsiadów (punkty <quote
+>przeskakują</quote
+>). Jeśli właścicielem sąsiedniego pola jest przeciwnik, pole zostaje przejęte wraz ze wszystkimi punktami oraz zmienia ono swój kolor.</para>
+<note
+><title
+>Przykład:</title
+><para
+>Jeśli środkowe pole osiągnie pięć punktów, cztery punkty zostaną podzielone pomiędzy sąsiadujące z nim pola pozostawiając na polu jeden punkt. W wypadku jeśli sąsiadujące pola osiągną poziom pięciu punktów uzyskamy efekt fali.</para
+></note>
+<note
+><title
+>Notatka:</title
+><para
+>Duże obszary pola gry mogę bardzo szybko zmieniać właściciela.</para
+></note>
+<para
+>Zwycięża osoba kontrolująca wszystkie pola na planszy.</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Zasady gry, strategia i porady:</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Reguły</title>
+		<orderedlist>
+			<listitem
+><para
+>Ruch polega na kliknięciu w pole nie należące do twojego przeciwnika.</para
+></listitem>
+			<listitem
+><para
+>Kliknięcie zwiększa o jeden ilość punktów na polu.</para
+></listitem>
+			<listitem
+><para
+>Na początku gry każde pole posiada jeden punkt oraz jest koloru neutralnego</para
+></listitem>
+			<listitem
+><para
+>Każdy z graczy ma przypisany własny kolor którym oznacza swoje pola.</para
+></listitem>
+			<listitem
+><para
+>Kliknięcie pola nie posiadającego właściciela, przejmuje to pole i zmienia kolor na kolor posiadacza. Jednocześnie liczba punktów zwiększa się o jeden.</para
+></listitem>
+			<listitem
+><para
+>Jeśli pole ma więcej punktów niż jego sąsiedzi, punkty przeskakują na sąsiednie pola i zajmują je.</para
+></listitem>
+			<listitem
+><para
+>Podczas takiego ruchu wszystkie sąsiadujące pola oraz ich punkty zostają przydzielone do puli gracza który wykonał ruch, nawet jeśli były koloru neutralnego bądź przeciwnika.</para
+></listitem>
+			<listitem
+><para
+>Pola sąsiadujące to pola poniżej, powyżej, na lewo lub na prawo, do nich nie zalicza się pól położonych po przekątnej. Pola narożne posiadają tylko dwa pola sąsiadujące, pola boczne posiadają trzy, a pola centralne cztery.</para
+></listitem>
+			<listitem
+><para
+>Jeśli podczas ruchu pole sąsiadujące zmienia ilość punktów na maksymalną ruch przenosi się na to pole a potem na następne i tak dalej, tworzy się fala. Duże ilości pól mogą zmienić swoją przynależność podczas takego ruchu.</para
+></listitem>
+			<listitem
+><para
+>Zwycięzcą jest osoba kontrolująca wszystkie pola.</para
+></listitem>
+			<listitem
+><para
+>Może użyć <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kjumpingcube;...</guimenuitem
+></menuchoice
+> aby wybrać kolor pól, komputerowego gracza, poziom gry i rozmiar planszy.</para
+></listitem>
+		</orderedlist>
+	</sect1>
+	<sect1 id="strattips">
+		<title
+>Strategia oraz podpowiedzi.</title>
+		<itemizedlist>
+			<listitem
+><para
+>Staraj się unikać zwiększania punktów na polu, kiedy twój przeciwnik posiada sąsiadujące pole które osiągnie maksimum wcześniej niż twoje.</para
+></listitem>
+			<listitem
+><para
+>Spróbuj najpierw przejąć pola narożne, potem boczne. Potrzeba mniej ruchów aby osiągnęły maksimum.</para
+></listitem>
+			<listitem
+><para
+>Staraj się nie grać zbyt blisko swojego przeciwnika, zwłaszcza na początku rozgrywki. Cofnij się o pole lub dwa albo wybieraj pola po przekątnej od pól przeciwnika.</para
+></listitem>
+			<listitem
+><para
+>Pilnuj długich łańcuchów pól które mają prawie maksymalną ilość punktów. Jeśli są twoje strzeż je przed reakcją łańcuchową. Jeśli są przeciwnika mogą być przejęte przez ruch rozpoczynający reakcję łańcuchową gdy będą wystarczająco blisko twoich pól.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Ogólne informacje o interfejsie</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+	<sect1 id="game-menu">
+		<title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+		<variablelist id="menu-game-new">
+			<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+><guimenuitem
+>Nowa</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Rozpoczyna nową grę.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-load">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+><guimenuitem
+>Otwórz...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Otwiera poprzednio zapisaną grę.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-save">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+><guimenuitem
+>Zapisz</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Zapisuje bieżącą grę.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Gra</guimenu
+><guimenuitem
+>Zapisz jako...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Zapisuje bieżącą grę pod inną nazwą. </action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><shortcut
+>&Esc;</shortcut
+> <guimenu
+>Gra</guimenu
+><guimenuitem
+>Zatrzymaj</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Zatrzymuje planowanie kolejnego ruchu przez komputerowego przeciwnika.</action
+> Komputer wykona najlepszy z możliwych ruchów jaki odnalazł do rozkazu zaprzestania planowania.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Gra</guimenu
+><guimenuitem
+>Zakończ</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Kończy</action
+> grę w &kjumpingcube;.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="move-menu">
+	<title
+>Menu <guimenu
+>Ruch</guimenu
+></title>
+	<variablelist>
+		<varlistentry id="move-menu-undo">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Ruch</guimenu
+><guimenuitem
+>Cofnij</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Cofnij ostatni wykonany ruch</action
+> Tylko jeden ostatni ruch, może być cofnięty w tej grze.</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="move-menu-hint">
+			<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Ruch</guimenu
+><guimenuitem
+>Podpowiedź</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Pokaż podpowiedź jaki jest najlepszy następny ruch.</action
+></para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+	<title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+	<variablelist>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Pokaż pasek narzędzi</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Włącza/wyłącza pasek narzędzi.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Pokaż pasek stanu</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Włącza/wyłącza pasek stanu.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Otwiera okno, w którym możesz skonfigurować skróty klawiszowe </action
+> dla &kjumpingcube;</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-toolbar">
+			<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Otwiera okno w którym możesz skonfigurować paski narzędzi</action
+> w &kjumpingcube;</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-configure">
+			<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kjumpingcube;...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+>Otwórz okno konfiguracji gry. Przejdź do <link linkend="configuration"
+>Konfiguracja gry</link
+> by zobaczyć więcej szczegółów.</para>
+			</listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+<sect1 id="toolbars">
+	<title
+>Pasek narzędzi &kjumpingcube;</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guiicon
+>Nowy</guiicon
+></term
+><listitem
+><para
+><action
+>Rozpoczyna nową grę.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Zapisz</guiicon
+></term
+><listitem
+><para
+><action
+>Zapisuje bieżącą grę.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Stop</guiicon
+></term
+><listitem
+><para
+><action
+>Zatrzymuje planowanie kolejnego ruchu przez komputerowego przeciwnika.</action
+> Komputer wykona najlepszy z możliwych ruchów jaki odnalazł do rozkazu zaprzestania planowania.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Podpowiedź</guiicon
+></term>
+			<listitem
+><para
+><action
+>Pokaż podpowiedź jaki jest najlepszy następny ruch.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Cofnij</guiicon
+></term>
+			<listitem
+><para
+><action
+>Cofa ostatni wykonany ruch.</action
+></para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Najczęściej zadawane pytania</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Chcę zmienić wygląd gry. Czy da się to zrobić? </para
+></question>
+ <answer
+><para
+>Obecnie możliwa jest tylko zmiana koloru gracza, zmiana wyglądu gry nie jest możliwa. Aby zmienić kolor gracza użyj okna <link linkend="configuration"
+>Konfiguracja gry</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Czy mogę używać klawiatury do grania w tą grę? </para
+></question>
+ <answer
+><para
+>Nie. W &kjumpingcube; nie można grać używając klawiatury.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Gdzie jest lista najlepszych wyników?</para
+></question>
+ <answer
+><para
+>&kjumpingcube; nie posiada takiej funkcji.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Konfiguracja gry</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>Okno konfiguracji.</para>
+<para
+>Aby otworzyć okno konfiguracji użyj opcji w menu: <menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja &kjumpingcube;...</guimenuitem
+></menuchoice
+></para>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Poziom gry komputera</guilabel
+></term>
+			<listitem
+><para
+><action
+>Pozwala ustalić za pomocą suwaka poziom twojej gry.</action
+> To pozwala dobrać poziom gry komputerowego przeciwnika.</para>
+			<para
+>Możesz wybrać pomiędzy <guilabel
+>Początkujący</guilabel
+>, <guilabel
+>Zaawansowany</guilabel
+> lub <guilabel
+>Ekspert</guilabel
+>.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Rozmiar planszy</guilabel
+></term
+><listitem
+><para
+><action
+>Pozwala wybrać rozmiar planszy do gry.</action
+></para>
+			<para
+>Użyj suwaka aby wybrać wartość od <guilabel
+>5x5</guilabel
+> pól do <guilabel
+>10x10</guilabel
+> pól.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Komputer gra jako</guilabel
+></term
+><listitem
+><para
+>Pozwala wybrać czy komputer gra jako <guilabel
+>Gracz 1</guilabel
+>, <guilabel
+>Gracz 2</guilabel
+> lub jako obaj. Zwykle komputer gra jednym graczem, a Ty przeciwko niemu. Gracz 1 zawsze zaczyna.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Kolory graczy</guilabel
+></term
+><listitem
+><para
+>Wybierz kolor dla każdego z graczy oraz dla pół neutralnych.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Zasługi i licencja</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>Prawa autorskie do &kjumpingcube;: copyright 1998,1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; powstało pod wpływem inspiracji grą dostępną na Commodore64 i inne domowe komputery. Przepraszam, ale imię autora oryginału jest nieznane.</para>
+
+<para
+>W 2007, Ian Wadham przejął rozwój &kjumpingcube; dla &kde; 4 a Eugene Trounev stworzył pierwszą skórę SVG.</para>
+
+<para
+>Prawa autorskie do dokumentacji: copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Aktualizacja dokumentacji dla &kde; 2 i 3 zrobiona przez &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Polskie tłumaczenie dokumentacji: Michał Klich <email
+>majkimajki@wp.pl</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Instalacja</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

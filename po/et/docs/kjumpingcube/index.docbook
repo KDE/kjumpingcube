@@ -1,0 +1,1023 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kjumpingcube;">
+  <!ENTITY kappversion "2.1"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&kjumpingcube; käsiraamat</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2013-06-05</date
+><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
+<releaseinfo
+>&kappversion; (&kde; 4.11)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>See käsiraamat kirjeldab mängu &kjumpingcube; versiooni &kappversion;.</para>
+</abstract>
+ 
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>mäng</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>strateegia</keyword>
+	<keyword
+>täring</keyword>
+	<keyword
+>täringumäng</keyword>
+	<keyword
+>täringumäng</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>kaks mängijat</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>kuubik</keyword>
+	<keyword
+>hüppamine</keyword>
+	<keyword
+>hüppav kuubik</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Sissejuhatus</title
+> <!-- do not change this! -->
+	<note
+><title
+>Mängu tüüp:</title
+><para
+>strateegia, täringumäng</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Mängijate arv:</title
+><para
+>Kaks</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; on lihtne taktikamäng, mida võid mängida sõbra või arvuti vastu. Samuti võib käima panna mängu kahe arvutimängija vahel ja ise mõnusalt pealt vaadata.</para>
+
+<para
+>See võib olla õige lahe, kui sa pole &kjumpingcube;'i varem mänginud. Uuri lähemalt <link linkend="faq"
+>korduma kippuvate küsimuste</link
+> osa <quote
+>Kuidas seda mängu alustada?</quote
+></para>
+
+<para
+>Mängualaks on punkte sisaldavate ruutude ehk kuubikute kogum. Mängu alguses on igal kuubikul üks punkt, ei ole omanikku ja on neutraalne värv. Neutraalsel kuubikul klõpsates saab see sinu omaks, võtab sinu värvi ja selle väärtus suureneb ühe punkti võrra. Eesmärk on hõivata kõik kuubikud - aga paraku on nüüd vastase kord käia.</para>
+
+<para
+>Mängijad käivad ja lisavad punkte neutraalsetele või oma kuubikutele klõpsates.</para>
+
+<para
+>Ainuke viis vastase kuubikuid hõivata on suurendada kuubiku väärtust, kuni see jõuab maksimumi ja kandub üle naaberkuubikutele. Sellega muutuvad need sinu omaks, isegi kui kuulusid varem vastasele.</para>
+
+<para
+>Mõnikord saavutab ka naaberkuubik seeläbi maksimumi ja kandub edasi, nii et üle mänguala rullub terve käigulaine. Nii võivad paljud kuubikud korraga vahetada omanikku, mis muudabki &kjumpingcube;'i nii põnevaks ja kaasakiskuvaks.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Kuidas mängida</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Eesmärk:</title
+><para
+>hõivata kõik mänguvälja kuubikud.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>&kjumpingcube; alustab kohe mängimisrežiimis, nii et peale võib hakata aega pikemalt viitmata. Kui mängija 1 on arvutimängija, tuleb alustamiseks klõpsata.</para>
+
+<para
+>Kui sa ei ole &kjumpingcube;'i varem mänginud, tasuks jälgida mängu või paari, kus arvuti mängib iseenda vastu. Uuri lähemalt <link linkend="faq"
+>korduma kippuvate küsimuste</link
+> osa <quote
+>Kuidas seda mängu alustada?</quote
+></para>
+
+<para
+>Käigu sooritamiseks tuleb klõpsata vabal või juba endale kuuluval kuubikul. Vabal kuubikul klõpsates muutub kuubik sinu omaks ning selle värv muutub vastavalt. Igal kuubikule klõpsamisel suureneb selle väärtus ühe punkti võrra. Kui väärtus jõuab maksimumini, jagatakse selle punktid kuubiku vahetute naabrite vahel (punktid <quote
+>hüppavad</quote
+> neile üle). Kui naaberkuubik kuulus vastasele, võetakse see üle koos selle punktidega ning kuubik muudab värvi.</para>
+
+<note
+><title
+>Näide:</title
+><para
+>Kui tsentrikuubikul on juba viis punkti, läheb neli punkti üle kuubiku naabritele, nii et kuubikule jääb alles ainult üks punkt. Sel juhul on võimalik ka ahelreaktsiooni teke, kui mõnel naaberkuubikul on punkte juba nii palju, et sinu lisandus sunnib selle oma punkte jagama.</para
+></note>
+
+<note
+><title
+>Märkus:</title
+><para
+>Ka suured mänguvälja osad võivad kiiresti omanikku vahetada. Soovi korral võib lasta animatsioonil paremini näidata, mis toimub. Täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>.</para
+></note>
+
+<para
+>Võitja on see, kes omastab kõik kuubikud.</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Mängureeglid, strateegia ja nõuanded</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Reeglid</title>
+	<orderedlist>
+	<listitem
+><para
+>Käik tähendab klõpsamist kuubikule, mis ei kuulu sinu vastasele.</para
+></listitem>
+	<listitem
+><para
+>Käik suurendab kuubiku punktide arvu ühe võrra.</para
+></listitem>
+	<listitem
+><para
+>Mängu alguses on igal kuubikul üks punkt ning kuubikud on neutraalset värvi ja omanikuta.</para
+></listitem>
+	<listitem
+><para
+>Mõlemal mängijal on oma värv, mis tähistab nende kuubikuid.</para
+></listitem>
+	<listitem
+><para
+>Omanikuta kuubikule klõpsates saab klõpsaja selle omanikuks ning kuubiku värv muutub vastavalt. Samal ajal suureneb kuubiku punktide arv ühe võrra.</para
+></listitem>
+	<listitem
+><para
+>Kui kuubikul on rohkem punkte kui tema naaberruutudel, hüppavad punktid üle naaberkuubikutele ning omastavad need.</para
+></listitem>
+	<listitem
+><para
+>Ühes sellega muutuvad kõik naaberkuubikud käigu teinud mängija omaks, nagu ka nende kuubikute senised punktid, sõltumata sellest, kas kuubikud olid varem neutraalsed või kuulusid vastasmängijale.</para
+></listitem>
+	<listitem
+><para
+>Naaberkuubikud on kuubikud ülal, all, vasakul ja paremal, aga mitte kuubikud, mis puutuvad kokku nurkapidi. Nurgakuubikutel on ainult kaks naabrit, servakuubikutel kolm ja tsentrikuubikutel neli.</para
+></listitem>
+	<listitem
+><para
+>Kui käigu tulemusel saavutab naaberkuubik maksimumpunktid, liigub käik automaatselt edasi naabri naabritele ja nii edasi. Sel moel võivad üheainsa käiguga omanikku vahetada paljud kuubikud.</para
+></listitem>
+	<listitem
+><para
+>Võitja on see, kes omastab kõik kuubikud.</para
+></listitem>
+	<listitem
+><para
+>Sul on võimalik määrata mängulaua suurust, arvutimängijaid, käigu animatsioone ja mängijate värve. Igal arvutimängijal võib olla erinev stiil ja oskuste tase. Mittemängimise korral võib see anda vihjeid vastavale inimmängijale. Samuti võib panna arvutimängijad teineteise vastu mängima ja ise nende heitlust jälgida. Täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Strateegia ja nõuanded</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Võib abiks olla panna arvuti iseendaga mängima ning märkida seadistustedialoogis kastikesed, mis võimaldavad sul liikuda läbi käikude ja animatsioonide just sulle sobiva kiirusega. Uuri <link linkend="faq"
+>korduma kippuvate küsimuste</link
+> osasid <quote
+>Kuidas seda mängu alustada?</quote
+> ja <quote
+>See on minu jaoks liiga kiire, kuidas ma selle aeglasemaks saan?</quote
+></para
+></listitem>
+	<listitem
+><para
+>Kui sinu kuubik asub otse vastase kuubiku kõrval, püüa temast ette jõuda ja suurendada kuubiku väärtust enne vastast.</para
+></listitem>
+	<listitem
+><para
+>Kui sinu kuubiku väärtus on vastase omaga võrdne või väiksem, ära hakka selle väärtust suurendama: seda võidurelvastumist sa ei võida.</para
+></listitem>
+	<listitem
+><para
+>Otsi võimalusi väärtusi suurendada ja naaberkuubikuid hõivata, aga jälgi hoolega, et vastane ei saaks niimoodi käia, et see tooks kaasa ahelreaktsiooni.</para
+></listitem>
+	<listitem
+><para
+>Püüa kõigepealt hõivata nurgakuubikud ja seejärel servakuubikud. Nende puhul on maksimumi saavutamiseks vaja vähem käike.</para
+></listitem>
+	<listitem
+><para
+>Püüa eriti avakäikude ajal mängida vastasest võimalikult kaugel. Jäta enda ja tema vahele kuubik või paar või omanda tema omaga diagonaalselt paiknev kuubik.</para
+></listitem>
+	<listitem
+><para
+>Hoia silm peal kuubikuahelatel, mis on kohe maksimumi jõudmas. Kui need on sinu kuubikud, tuleb sul neid kaitsta ahelreaktsiooni eest. Kui need on vastase omad, võivad nad langeda sinu algatatud ahelreaktsiooni ohvriks, kui sa jõuad territooriumi laiendamisega neile piisavalt lähedale.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Liidese tutvustus</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>Tööriistariba</title>
+<sect2 id="stop_start_button">
+<title
+>Peatamise/käivitamise nupp</title>
+
+<para
+>Suurt nuppu tööriistaribal ülal vasakul saab kasutada animatsioonide ja arvutikäikude juhtimiseks, eriti kui arvuti teeb esimese käigu, mängib iseenda vastu või võtab liiga palju mõtlemisaega. Samuti saab selle nupuga liikuda läbi mängu või käigu, andes algajale võimaluse näha iga sammu just talle sobiva kiirusega. Viimase võimaluse saab vastavate märkekastidega seadistustedialoogis sisse või välja lülitada (täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>). </para>
+
+<para
+>Nupul on kolm olekut:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Punane</term>
+	<listitem
+><para
+>Arvuti arvutamist, animatsiooni või arvuti mängu iseenda vastu saab peatada.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Roheline</term>
+	<listitem
+><para
+>Arvutikäiku, animatsiooni või arvuti mängu iseenda vastu saab alustada või jätkata.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Sinine</term>
+	<listitem
+><para
+>Nupp ei ole aktiivne ning oodatakse inimmängija sekkumist, näiteks käigu sooritamist.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>Kõigil juhtudel on nupul tekst, mis annab märku, millist tegevust oodatakse, näiteks <guibutton
+>Peata animatsioon</guibutton
+> või <guibutton
+>Sinu käik</guibutton
+>.</para>
+
+<para
+>Kui arvutikäigu arvutamine peatada, valib arvuti seni parimana leitud käigu. Kui katkestada animatsioon (kui &eg; ahelreaktsioon võtab liiga palju aega), lõpetatakse käik aega viitmata. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Standardsed tööriistariba nupud</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Seadistused</guiicon
+></term>
+	<listitem
+><para
+><action
+>Kiirklahv seadistustedialoogi avamiseks ja mängutingimuste muutmiseks. Täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Uus</guiicon
+></term>
+	<listitem
+><para
+><action
+>Alustab uut mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Laadi</guiicon
+></term>
+	<listitem
+><para
+><action
+>Avab varem salvestatud mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Salvesta</guiicon
+></term>
+	<listitem
+><para
+><action
+>Salvestab käesoleva mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Vihje</guiicon
+></term>
+	<listitem
+><para
+><action
+>Pakub vihje, milline võiks olla järgmine parim käik. Vihje arvutab välja arvutimängija 1 või 2 sõltuvalt sellest, kas sina oled inimmängija 1 või 2. Täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Võta tagasi</guiicon
+></term>
+	<listitem
+><para
+><action
+>Võtab eelmise käigu tagasi (soovi korral korduvalt).</action
+> Märkus: võimalik on tagasi võtta ka läbi saanud mängu viimaseid käike ning mängida sel moel läbi alternatiive.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Tee uuesti</guiicon
+></term>
+	<listitem
+><para
+><action
+>Sooritab uuesti tagasi võetud käigu, vajaduse korral korduvalt.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Menüükirjed</title>
+<sect2 id="game_menu">
+<title
+>Menüü Mäng</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mäng</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Alustab uut mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Ava...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Avab varem salvestatud mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Salvesta</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Salvestab käesoleva mängu.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Salvesta kui...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Salvestab käesoleva mängu teise nime all.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Välju</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Lõpetab</action
+> &kjumpingcube;'i töö.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Menüü Liikumine</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Võta tagasi</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Võtab eelmise käigu tagasi (soovi korral korduvalt).</action
+> Märkus: võimalik on tagasi võtta ka läbi saanud mängu viimaseid käike ning mängida sel moel läbi alternatiive.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Tee uuesti</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Sooritab uuesti tagasi võetud käigu, vajaduse korral korduvalt.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Vihje</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Pakub vihje, milline võiks olla järgmine parim käik. Vihje arvutab välja arvutimängija 1 või 2 sõltuvalt sellest, kas sina oled inimmängija 1 või 2. Täpsemalt kõneleb sellest osa <link linkend="configuration"
+>Mängu seadistamine</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Muud menüüd</title>
+<para
+>Lisaks on &kjumpingcube;'il tavapärased &kde; <guimenu
+>seadistuste</guimenu
+> ja <guimenu
+>abi</guimenu
+>menüü elemendid, mille kohta leiab rohkem teavet &kde; põhialuste käsiraamatu osadest <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Menüü Seadistused</ulink
+> ja <ulink url="help:/fundamentals/ui.html#menus-help"
+>Menüü Abi</ulink
+>. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+  
+<chapter id="faq"
+><title
+>Korduma kippuvad küsimused</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ma soovin muuta mängu välimust. On see võimalik? </para
+></question>
+ <answer
+><para
+>Praegu saab muuta ainult mängija värve, aga mitte mängu teemat. Mängija värvi muutmiseks kasuta <link linkend="configuration"
+>seadistustedialoogi</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kuidas seda mängu alustada? </para
+></question>
+ <answer
+><para
+>&kjumpingcube;'i käikude jälgimine võib olla esialgu raske. Üks võimalus on vaadata mänge, milles arvuti mängib iseenda vastu. Kasuta sellise mängu alustamiseks <link linkend="configuration"
+>seadistustedialoogi</link
+>. Märgi mõlemad kastid <guilabel
+>Mängib</guilabel
+>, vali mängulaua suurus vahemikus 3x3 kuni 5x5, määra animatsiooni tüübiks <guilabel
+>Liikuvad täpid</guilabel
+> ja ajaks <guilabel
+>Pikk</guilabel
+> ning klõpsa nupule <guibutton
+>OK</guibutton
+>. Nüüd klõpsa mängu alustamiseks tööriistaribal suurele rohelisele nupule. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>See on minu jaoks liiga kiire, kuidas ma selle aeglasemaks saan? </para
+></question>
+ <answer
+><para
+>Kasuta taas <link linkend="configuration"
+>seadistustedialoogi</link
+>. Päris all on kaks märkekasti. Ühe märkimisel tehakse mängus käikude vahel paus. Teise märkimisel tehakse üle mängulaua leviva ahelreaktsiooni sammude vahel paus. Nüüd saad taas mängulaual viibides tööriistariba suure nupuga niipea, kui see muutub roheliseks, jälgida iga käiku või ahelreaktsiooni sammu eraldi just sellise kiirusega, nagu sulle sobib.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Mida teeb too suur nupp tööriistaribal? </para
+></question>
+ <answer
+><para
+>Seda nuppu kasutatakse millegi peatamiseks, mida arvuti teeb (punane värv), arvuti tegevuse alustamiseks või jätkamiseks, kui oled oma asjadega valmis saanud (roheline värv), või sinu õhutamiseks midagi tegema, näiteks käiku sooritama (sinine värv, nuppu ei saa kasutada). Täpsemalt kirjeldab seda osa <link linkend="stop_start_button"
+>Peatamise/käivitamise nupp</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kas mängida saab ka klaviatuuri abil? </para
+></question>
+ <answer
+><para
+>Ei, &kjumpingcube;'i ei saa klaviatuuri abil mängida. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kus näeb edetabelit?</para
+></question>
+ <answer
+><para
+>&kjumpingcube; sellist võimalust ei paku.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Mängu seadistamine</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Seadistustedialoogi saab avada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>&kjumpingcube;'i seadistamine...</guimenuitem
+></menuchoice
+> Apple'i Mac OS C korral kasuta valikut: <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+><guimenuitem
+>Eelistused</guimenuitem
+></menuchoice
+>. Võib kasutada ka tööriistariba seadistustenuppu.</para>
+
+<screenshot>
+    <screeninfo
+>&kjumpingcube;'i seadistused</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>&kjumpingcube;'i seadistused</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Kaks viimast paneeli määravad võimaliku animatsiooni kuvamise, kui kuubik saavutab maksimaalse väärtuse ja see kandub üle naaberkuubikutele, mis võib käivitada ulatusliku ahelreaktsiooni. Kõige lihtsam on esialgu kasutada <quote
+>liikuvate täppide</quote
+> animatsiooni ja pikka käiguaega, mis annab parema ülevaate ahelreaktsiooni kulust. Kaks pauside märkekastikest võimaldavad liikuda läbi animatsioonide ja arvutikäikude just sellise kiirusega, mis sulle sobib.</para>
+
+<para
+>Arvutimängijate 1 ja 2 paneelid määravad mõlema arvutimängija stiili ja taseme ning selle, kas arvutimängija ka tegelikult mängib või annab lihtsalt vihjeid inimmängijale 1 või 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Seadistuste üksikasjad</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Mängib</guilabel
+></term>
+		<listitem
+><para
+>Määrab arvutimängija 1 või arvutimängija 2 aktiivseks mängijaks või lihtsalt inimmängija vihjetega abistajaks. Tavaliselt on huvitavam määrata arvuti mängima üht osapoolt ning endale võtta tema vastase roll, kuid samahästi võib lasta omavahel mängida ka kahel inim- või arvutimängijal ja ise pealt vaadata. Esimesena käib alati mängija 1.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Mängu stiil</guilabel
+></term>
+		<listitem
+><para
+>Määrab arvutimängija 1 või 2 mängima Kepleri või Newtonina. Kepler kasutab käimisel sama meetodit nagu &kjumpingcube; varasemates versioonides. Newton kasutab teistsugust meetodit.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Arvuti võimed</guilabel
+></term>
+		<listitem
+><para
+><action
+>Võimaldab liuguriga valida arvutimängija oskuste taseme.</action
+> See määrab, kui nutikas on sinu arvutist vastane.</para>
+		<para
+>Valikuid on viis, alates <guilabel
+>algajast</guilabel
+> kuni <guilabel
+>keskmise</guilabel
+> ja <guilabel
+>eksperdini</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Mängulaua suurus</guilabel
+></term>
+		<listitem
+><para
+><action
+>Võimaldab valida mänguvälja suuruse.</action
+></para>
+		<para
+>Liuguriga saab valida meelepärase väärtuse suuruste <guilabel
+>3x3</guilabel
+> ja <guilabel
+>10x10</guilabel
+> kuubiku vahel. Vahest mugavaimad suurused jäävad 5x5 ja 9x9 vahele. Alla 5x5 on arvutit väga raske võita. Üle 9x9 läheb mäng liiga pikaks.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Mängijate värv</guilabel
+></term>
+		<listitem
+><para
+>Võimalus valida mõlema mängija ja neutraalsete kuubikute värvi.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Ahelreaktsiooni näitamine</guilabel
+></term>
+		<listitem
+><para
+>Võimaldab valida animatsioonistiili, mida kasutatakse, kui kuubik saavutab maksimaalse väärtuse ja laieneb naaberkuubikutele, võimaluse korral käivitades ahelreaktsiooni, mis puudutab suurt osa või kogu mänguvälja.</para>
+		    <para
+>Raadionuppudega saab valida <quote
+>Puudub (pause pole)</quote
+>, mille korral käiku näidatakse viivitamata, <quote
+>Tumendamine ja paus</quote
+>, mille korral iga liigväärtusega kuubik tumeneb, kuni on selle kord edasi laieneda, <quote
+>Kiire vilkumine</quote
+>, mille korral iga liigväärtusega kuubik vilgub kiiresti, kuni on selle kord edasi laieneda, ning <quote
+>Liikuvad täpid</quote
+>, mille korral iga üleväärtusega kuubik kõigepealt tumeneb ja siis saadab täpid naaberkuubikutele, kui jõuab kätte kord laieneda.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Ahelreaktsiooni aeg</guilabel
+></term>
+		<listitem
+><para
+>Liuguriga saab valida vahemikus lühikesest pikani aja, mille jooksul animatsioone näidatakse. Aeg sõltub veidi animatsiooni tüübist, aga jääb iga ahelreaktsiooni etapi korral vahemikku 0.15 kuni 1,5 sekundit.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Paus enne iga arvutikäiku</guilabel
+></term>
+	    <listitem
+><para
+>Märkimise korral teevad arvutimängijad enne käigu alustamist pausi, kuni klõpsad jätkamiseks. See aitab mõista nende tegutsemist, eriti kui oled alles algaja mängija või soovid paremini mõista, kuidas arvuti iseenda vastu mängib.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Paus enne iga ahelkäiku</guilabel
+></term>
+		<listitem
+><para
+>Märkimise korral tehakse ahelreaktsiooni iga sammu järel paus, kuni klõpsad animatsiooni jätkamiseks. See aitab täpsemalt vaadelda ahelreaktsiooni kulgu.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Autorid ja litsents</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kjumpingcube;'i autoriõigus 2012, 2013: Ian Wadham ja autoriõigus 1998, 1999: &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; sai inspiratsiooni mängust, mis oli mõeldud Commodore 64 ja teistegi varaste koduarvutite jaoks. Kahjuks ei ole originaali autori nimi teada.</para>
+
+<para
+>2007. aastal asus &kjumpingcube;'i hooldajaks &kde; 4 raames Ian Wadham ning Eugene Trounev kujundas esimese SVG teema.</para>
+
+<para
+>2012. ja 2013. aastal töötas Ian välja &kjumpingcube;'i versioonid 2.0 ja 2.1, millega lisandusid animatsioonistiilid, said võimalikuks mänguväljad suurusega 3x3 või kuni 15x15 ning tekkisid täiesti uued tehismõistuse moodulid, mis pakuvad inimmängijale suuremat pinget. Need versioonid arvutavad käike kiiremini, võimaldavad mitmeastmelist tagasivõtmist ja uuestitegemist (varem ainult üks käik), lubavad valida kahe arvutivastase vahel ning annavad algajatele võimaluse liikuda läbi animatsioonide ja arvutikäikude neile sobiva kiirusega.</para>
+
+<para
+>Dokumentatsiooni autoriõigus 2012, 2013: Ian Wadham ja autoriõigus 1999: &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Dokumentatsiooni uuendas &kde; 2 ja 3 tarbeks: &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

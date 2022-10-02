@@ -1,0 +1,1003 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manual do &kappname;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2016-06-09</date>
+<releaseinfo
+>2.1 (Aplicações 16.04)</releaseinfo>
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Esta documentação descreve o jogo &kjumpingcube; na versão 2.1</para>
+</abstract>
+ 
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>estratégia</keyword>
+	<keyword
+>dados</keyword>
+	<keyword
+>jogo de dados</keyword>
+	<keyword
+>jogo de dados</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dois jogadores</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>cubo</keyword>
+	<keyword
+>salto</keyword>
+	<keyword
+>cubo saltitão</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introdução</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo de jogo:</title
+><para
+>Estratégia, Dados</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Número de jogadores possíveis:</title
+><para
+>Dois</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>O &kjumpingcube; é um jogo táctico simples. Poderá jogá-lo contra o computador ou com um amigo - poderá ainda configurar um jogo entre dois jogadores por computador e simplesmente ficar a ver.</para>
+
+<para
+>Pode ser uma boa ideia se não tiver jogado ao &kjumpingcube; anteriormente. Veja as <link linkend="faq"
+>Perguntas mais frequentes</link
+>, <quote
+>Como é que me introduzo a este jogo?</quote
+>.</para>
+
+<para
+>A área de jogo é uma caixa com cubos que contêm pontos. Quando o jogo começa, cada cubo tem um ponto, não tem dono e a cor é neutra. Se carregar num cubo neutro, este torna-se seu, muda para a sua cor e aumenta em um ponto. O seu objectivo é capturar todos os cubos, mas agora é a vez do seu adversário.</para>
+
+<para
+>Os jogadores movem-se e adicionam pontos se carregarem em cubos neutros ou nos seus próprios.</para>
+
+<para
+>A única forma de capturar os cubos do seu adversário é aumentar o valor de um cubo até que este atinja o valor máximo e se expanda para os cubos vizinhos. Aí, esses cubos tornam-se seus, mesmo que pertencessem anteriormente ao seu adversário.</para>
+
+<para
+>Em alguns casos, um vizinho também poderá atingir um valor máximo, expandir-se e gerar uma sequência em cascata de jogadas por todo o tabuleiro. Poderão mudar grande quantidades de cubos de dono e é aqui que o &kjumpingcube; se torna um desafio interessante.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Como Jogar</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectivo:</title
+><para
+>Conquiste todos os cubos do tabuleiro de jogo.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>O &kjumpingcube; carrega directamente o modo de jogo, pelo que poderá começar logo a jogar. Se o jogador 1 for o computador, terá de carregar num botão do rato para começar.</para>
+
+<para
+>Se não tiver jogado ao &kjumpingcube; antes, tente ver um jogo ou dois em que o computador jogue contra si próprio. Veja nas <link linkend="faq"
+>Perguntas mais frequentes</link
+>, <quote
+>Como é que me introduzo a este jogo?</quote
+>.</para>
+
+<para
+>O jogador move-se ao carregar num cubo neutro ou num que já lhe pertença. Se carregar num cubo neutro, ganha a pertença deste e o mesmo muda para a sua cor de jogo. De cada vez que carregar num cubo, o número de pontos aumenta uma unidade. Se a pontuação do cubo atingir um máximo, um destes pontos irá saltar para cada um dos vizinhos dos cubos (os pontos vão <quote
+>saltando</quote
+>). Se um dos cubos vizinhos pertencer a outro jogador, é capturado em conjunto com todos os seus pontos e muda para a sua cor de jogo.</para>
+
+<note
+><title
+>Exemplo:</title
+><para
+>Se um cubo no centro atingir cinco pontos, quatro dos seus pontos passam para os seus quatro vizinhos, deixando-o com um ponto. É possível ocorrer uma cascata de jogadas automáticas se os vizinhos também atingirem um máximo na distribuição de pontos.</para
+></note>
+
+<note
+><title
+>Nota:</title
+><para
+>Grande parte da área de jogo poderá mudar de jogador com grande rapidez. Poderá usar as definições de animação para o ajudar a saber o que se passa então. Veja a secção da <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</para
+></note>
+
+<para
+>O vencedor será aquele que acabar por possuir todos os cubos no tabuleiro.</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Regras do Jogo, Estratégias e Sugestões</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Regras</title>
+	<orderedlist>
+	<listitem
+><para
+>Uma jogada consiste em carregar num cubo que não pertença ao seu adversário.</para
+></listitem>
+	<listitem
+><para
+>A jogada aumenta um ponto na pontuação do cubo.</para
+></listitem>
+	<listitem
+><para
+>No início do jogo, cada cubo tem um ponto, é pintado com uma cor neutra e não tem dono.</para
+></listitem>
+	<listitem
+><para
+>Cada jogador tem uma cor para marcar a pertença dos cubos.</para
+></listitem>
+	<listitem
+><para
+>Se carregar num cubo sem dono, você fica o dono e este muda para a sua cor, assim como adiciona um ponto.</para
+></listitem>
+	<listitem
+><para
+>Se um cubo tiver mais pontos que os seus vizinhos, os pontos saltam para os seus vizinhos e ocupam-nos, deixando um ponto no cubo original.</para
+></listitem>
+	<listitem
+><para
+>Durante uma destas jogadas, todos os cubos vizinhos ficam a pertencer ao jogador que se moveu e assim acontece com todos os seus pontos, mesmo que os vizinhos fossem neutros ou pertencessem a outro jogador anteriormente.</para
+></listitem>
+	<listitem
+><para
+>Os vizinhos são os cubos acima, abaixo, à esquerda e à direita; não inclui os cubos na diagonal. Os cubos dos cantos têm dois vizinhos, os laterais têm três e os centrais têm quatro.</para
+></listitem>
+	<listitem
+><para
+>Se uma jogada deixar um vizinho com um número máximo de pontos, a jogada continua automaticamente para os vizinhos do vizinho e assim por diante, em cascata. Poderá mudar a pertença de um grande conjunto de cubos durante uma jogada destas.</para
+></listitem>
+	<listitem
+><para
+>O vencedor será aquele que acabar por possuir todos os cubos.</para
+></listitem>
+	<listitem
+><para
+>Poderá usar a configuração para seleccionar as cores, os jogadores por computador, as animações das jogadas e o tamanho do tabuleiro. Cada jogador por computador poderá ter o seu próprio estilo e nível de aptidão. Se não estiver a jogar, poderá dar sugestões ao utilizador humano correspondente. Também poderá colocar um jogador por computador contra outro e ver o resultado. Veja mais detalhes na secção sobre a <link linkend="configuration"
+>Configuração do jogo</link
+>.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Estratégias e Dicas</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Poderá ajudar se configurar um jogo do computador vs. computador e seleccionar as opções da janela de configuração que lhe permitem seguir as jogadas passo-a-passo, ao seu ritmo. Veja as <link linkend="faq"
+>Perguntas mais frequentes</link
+>, <quote
+>Como é que me introduzo a este jogo?</quote
+> e <quote
+>Isto foi muito rápido, como ir mais devagar?</quote
+>.</para
+></listitem>
+	<listitem
+><para
+>Se tiver um cubo que esteja logo ao lado do cubo de um adversário, tente manter-se à frente, aumentando antes que o seu adversário o faça.</para
+></listitem>
+	<listitem
+><para
+>Se um desses cubos tiver menos ou iguais pontos aos do adversário, tente evitar aumentá-lo: não poderá ganhar essa guerra.</para
+></listitem>
+	<listitem
+><para
+>Procure por oportunidades para aumentar e capturar, mas cuidado e evite que o seu adversário seja capaz de responder com um ataque em cascata.</para
+></listitem>
+	<listitem
+><para
+>Tente controlar os cubos dos cantos primeiro, e depois os laterais a seguir. Irá necessitar de menos jogadas para que estes atinjam o máximo.</para
+></listitem>
+	<listitem
+><para
+>Tente não jogar muito próximo do seu adversário, especialmente durante as jogadas de abertura. Largue um cubo ou dois ou escolha um cubo na diagonal do seu adversário.</para
+></listitem>
+	<listitem
+><para
+>Tenha em atenção as sequências grandes de cubos que estejam já quase no seu máximo. Se estas forem suas, devê-las-á guardar das jogadas em cascata. Se forem dos seus adversários, poderão ser alvo de captura por uma jogada em cascata, desde que se aproximem o suficiente do seu território.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Apresentação à Interface</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>A Barra de Ferramentas</title>
+<sect2 id="stop_start_button">
+<title
+>O Botão para Parar/Iniciar</title>
+
+<para
+>Este grande botão aparece no extremo superior-esquerdo da barra de ferramentas e é usado para dar algum controlo sobre as animações e as jogadas por computador, especialmente se o computador fizer a primeira jogada, estiver a jogar contra ele próprio ou se estiver a levar muito tempo para jogar. O botão também pode ser usado para se deslocar passo-a-passo num jogo ou jogada, para que os jogadores principiantes vejam cada passo ao seu ritmo. As opções da janela de configuração activam ou desactivam o modo passo-a-passo (veja a secção da <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes). </para>
+
+<para
+>O botão tem três estados:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Vermelho</term>
+	<listitem
+><para
+>É possível parar ou interromper um cálculo do computador, uma animação ou um jogo do computador contra ele próprio.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Verde</term>
+	<listitem
+><para
+>É possível iniciar ou prosseguir um cálculo do computador, uma animação ou um jogo do computador contra ele próprio.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Azul</term>
+	<listitem
+><para
+>O botão está desactivado e espera-se uma acção humana, como a jogada seguinte.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>Em cada um dos casos, o botão contém algum texto que indica as acções que podem ser feitas ou são esperadas, como <guibutton
+>Parar a animação</guibutton
+> ou <guibutton
+>É a sua vez</guibutton
+>.</para>
+
+<para
+>Se parar o cálculo de uma jogada pelo computador, este irá escolher a melhor jogada que tem até à altura. Se interromper uma animação (&eg;, uma jogada em cascata que demora demasiado tempo), a jogada irá prosseguir imediatamente até à sua conclusão. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Botões da Barra de Ferramentas</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Configuração</guiicon
+></term>
+	<listitem
+><para
+><action
+>Um atalho para entrar na janela de configuração e mudar as condições do jogo. Veja a secção de <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Novo</guiicon
+></term>
+	<listitem
+><para
+><action
+>Começar um novo jogo.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Carregar</guiicon
+></term>
+	<listitem
+><para
+><action
+>Carrega um jogo gravado previamente.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Gravar</guiicon
+></term>
+	<listitem
+><para
+><action
+>Grava o jogo actual.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Sugestão</guiicon
+></term>
+	<listitem
+><para
+><action
+>Obtém uma sugestão sobre a melhor jogada a fazer a seguir. A sugestão é calculada pelo jogador 1 ou 2, dependendo se você é o jogador 1 ou o 2. Abre uma janela de configuração do jogo. Veja a secção da <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Desfazer</guiicon
+></term>
+	<listitem
+><para
+><action
+>Anula uma jogada anterior, de forma repetida se necessário. </action
+> Nota: É possível anular as jogadas finais de um jogo completo e investigar fins alternativos.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Refazer</guiicon
+></term>
+	<listitem
+><para
+><action
+>Repete uma jogada anulada, repetindo o procedimento se necessário.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Opções do Menu</title>
+<sect2 id="game_menu">
+<title
+>O Menu Jogo</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Começar um novo jogo.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Carregar...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Carrega um jogo gravado previamente.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Gravar</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Grava o jogo actual.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Gravar Como...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Grava o jogo actual com um nome diferente.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Sair</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Sai</action
+> do &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>O Menu Movimento</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+><guimenuitem
+>Desfazer</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Anula uma jogada anterior, de forma repetida se necessário. </action
+> Nota: É possível anular as jogadas finais de um jogo completo e investigar fins alternativos.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Movimento</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Repete uma jogada anulada, repetindo o procedimento se necessário.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mover</guimenu
+><guimenuitem
+>Dica</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Obtém uma sugestão sobre a melhor jogada a fazer a seguir. A sugestão é calculada pelo jogador 1 ou 2, dependendo se você é o jogador 1 ou o 2. Abre uma janela de configuração do jogo. Veja a secção da <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Outros Menus</title>
+<para
+>Para além disso, o &kjumpingcube; tem os itens de menu <guimenu
+>Configuração</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> normais do &kde;; para mais informações, leia as secções sobre o menu <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Configuração</ulink
+> e <ulink url="help:/fundamentals/ui.html#menus-help"
+>Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+  
+<chapter id="faq"
+><title
+>Perguntas mais frequentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Quero alterar a forma como este jogo aparece. Posso fazê-lo? </para
+></question>
+ <answer
+><para
+>De momento, só pode mudar as cores do jogo, mas não o tema do mesmo. Para mudar as cores dos jogadores, use a janela de <link linkend="configuration"
+>Configuração do Jogo</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Como é que me introduzo a este jogo? </para
+></question>
+ <answer
+><para
+>As jogadas do &kjumpingcube; podem ser difíceis de seguir à primeira vista. Uma forma de aprender é ver jogos em que o computador joga contra ele próprio. Use a janela de <link linkend="configuration"
+>Configuração do Jogo</link
+> para o configurar. Assinale ambas as opções <guilabel
+>A jogar agora</guilabel
+>, escolha um tamanho de tabuleiro entre 3x3 e 5x5, configure a animação como <guilabel
+>Pontos dispersos</guilabel
+> e o tempo de jogada para <guilabel
+>Longo</guilabel
+>, carregando finalmente em <guibutton
+>OK</guibutton
+>. Agora, carregue no grande botão verde da barra de ferramentas para iniciar o jogo. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Isto foi demasiado rápido para mim, como posso ir mais devagar? </para
+></question>
+ <answer
+><para
+>Use a janela de <link linkend="configuration"
+>Configuração do Jogo</link
+> uma vez mais. No fundo, existem duas opções para assinalar. Assinale uma para colocar o jogo em pausa entre jogadas. Assinale a outra para colocar o jogo em pausa entre passos das jogadas em cascata que se espalham pelo tabuleiro, especialmente perto do fim do jogo. Ao regressar ao jogo, poderá agora usar o botão grande da barra de ferramentas (sempre que ficar a verde), para desactivar cada jogada ou para prosseguir passo-a-passo dentro de uma jogada, ao ritmo que desejar.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>O que é que faz o botão grande da barra de ferramentas? </para
+></question>
+ <answer
+><para
+>Este botão é usado para parar algo que o computador esteja a fazer (vermelho), iniciar ou prosseguir uma acção do computador quando estiver pronto (verde) ou para lhe pedir para fazer algo, como por exemplo uma jogada (cor azul, botão desactivado). Para uma descrição completa, veja o <link linkend="stop_start_button"
+>Botão para Parar/Iniciar</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usar o teclado para jogar este jogo? </para
+></question>
+ <answer
+><para
+>Não. O &kappname; não pode ser jogado com o teclado. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Onde aparecem os recordes?</para
+></question>
+ <answer
+><para
+>O &kappname; não tem essa funcionalidade.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Configuração do Jogo</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Para abrir a janela de configuração, use a opção do menu: <menuchoice
+><guimenu
+>Configuração</guimenu
+><guimenuitem
+>Configurar o &kjumpingcube;...</guimenuitem
+></menuchoice
+>. No Mac OS X da Apple, use a opção: <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+><guimenuitem
+>Preferências</guimenuitem
+></menuchoice
+> ou então o botão de Configuração da barra de ferramentas.</para>
+
+<screenshot>
+    <screeninfo
+>Configuração do &kjumpingcube;</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Configuração do &kjumpingcube;</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Os painéis de Apresentação das Jogadas em Cascata e do Tempo de Jogada em Cascata controlam a animação óptima quando um cubo atinge o seu valor máximo e se espalha pelos cubos vizinhos, iniciando provavelmente uma jogada em cascata. É mais simples usar primeiro a animação de <quote
+>Pontos dispersos</quote
+> e um tempo de jogada longo ao tentar seguir a evolução das jogadas em cascata. Esta é a melhor forma de seguir a evolução das jogadas em cascata. As duas opções para Pausa permitem-lhe seguir passo-a-passo as animações e as jogadas do computador ao seu ritmo.</para>
+
+<para
+>Os dois primeiros painéis controlam o estilo e o nível de cada jogada do computador e se esse jogador realmente joga ou apenas dá sugestões para o jogador humano 1 e 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Detalhes da Configuração</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>A jogar agora</guilabel
+></term>
+		<listitem
+><para
+>Indica ao Jogador por Computador 1 ou 2 se joga activamente ou se apenas assiste um jogador humano com sugestões. Normalmente você indicará ao computador para jogar com um jogador, enquanto joga com o outro. O Jogador 1 começa sempre primeiro.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Estilo de Jogo</guilabel
+></term>
+		<listitem
+><para
+>Configura o Jogador por Computador 1 ou 2 para jogar como Kepler ou como Newton. O Kepler escolhe as jogadas como fazia nas versões anteriores do &kjumpingcube;. O Newton usa um método diferente.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Perícia do Computador</guilabel
+></term>
+		<listitem
+><para
+><action
+>Permite-lhe escolher a sua perícia a partir de uma barra deslizante.</action
+> Isto decidirá quão inteligente o seu adversário computorizado será.</para>
+		<para
+>Poderá optar entre cinco níveis, que vão desde o <guilabel
+>Principiante</guilabel
+>, através do <guilabel
+>Médio</guilabel
+> até ao <guilabel
+>Experiente</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Tamanho do Tabuleiro</guilabel
+></term>
+		<listitem
+><para
+><action
+>Permite-lhe escolher o tamanho da área de jogo.</action
+></para>
+		<para
+>Use a barra para seleccionar um valor entre cubos de <guilabel
+>3x3</guilabel
+> e de <guilabel
+>15x15</guilabel
+> de tamanho. O intervalo de 5x5 a 9x9 é o mais conveniente. Abaixo de 5x5 é muito difícil ganhar ao computador. Acima de 9x9, os jogos podem-se tornar demasiado demorados.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Cores dos Jogadores</guilabel
+></term>
+		<listitem
+><para
+>Escolhe uma cor para cada jogador e para os cubos neutros.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Apresentação da Jogada em Cascata</guilabel
+></term>
+		<listitem
+><para
+>Escolhe um estilo de animação para quando um cubo atinge o seu máximo e se expande para os cubos vizinhos, iniciando provavelmente uma cascata de jogadas deste tipo e cobrindo uma grande área do tabuleiro.</para>
+		    <para
+>Use as opções exclusivas para seleccionar entre <quote
+>Nenhum (sem pausas)</quote
+>, onde a jogada em si é apresentada de forma instantânea; <quote
+>Escurecer e pausar</quote
+>, onde cada cubo sobrecarregado escurece até que chegue a altura de se expandir; <quote
+>Piscar rapidamente</quote
+>, onde cada cubo sobrecarregado escurece primeiro e depois pisca rapidamente quando for a altura de se expandir e <quote
+>Pontos dispersos</quote
+>, onde cada cubo sobrecarregado escurece primeiro e depois dispara pontos para os cubos vizinhos quando for a altura de se expandir.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Tempo da Jogada em Cascata</guilabel
+></term>
+		<listitem
+><para
+>Use uma barra para seleccionar uma gama de tempos, desde o Curto ao Longo, a gastar nas animações. Os tempos dependem de certa forma do tipo de animação, mas poderão ir de 0,15 a 1,5 segundos por cada etapa de uma jogada em cascata.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pausa antes de cada jogada do computador</guilabel
+></term>
+	    <listitem
+><para
+>Se esta opção estiver seleccionada, os jogadores por computador irão ficar em pausa antes de iniciar uma jogada, até que carregue para prosseguir. Isto ajuda-o a seguir a acção, especialmente se for um jogador novo ou estiver a estudar um jogo do computador contra ele mesmo.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Pausa antes de cada jogada em sequência</guilabel
+></term>
+		<listitem
+><para
+>Se esta opção estiver seleccionada, a animação das jogadas em cascata irá parar entre passos, até que carregue para prosseguir. Isto ajuda-o a observar uma destas jogadas, à medida que se espalha pelo tabuleiro.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Créditos e Licença</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kjumpingcube; com 'copyright' 2012, 2013 de Ian Wadham e com 'copyright' 1998, 1999 de &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>O &kappname; foi inspirado por um jogo que veio do Commodore 64 e dos computadores pessoais também. Infelizmente, não se sabe qual é o nome do autor original.</para>
+
+<para
+>Em 2007, Ian Wadham ficou com a manutenção do &kappname; para o KDE 4 e o Eugene Trounev desenhou o primeiro tema em SVG.</para>
+
+<para
+>Em 2012 e 2013, o Ian desenvolveu a versão 2.0 e 2.1 do &kjumpingcube;, adicionando os estilos de animações, permitindo tabuleiros com tamanhos até 3x3 e remodelando do zero os módulos de inteligência artificial, traduzindo-se em maiores desafios para um jogador humano. Estas versões calculam as jogadas mais depressa, permitem desfazer/refazer jogadas a vários níveis (anteriormente só era permitida uma), adicionar a escolha entre dois adversários de IA e oferecem opções para os jogadores principiantes avançarem passo-a-passo nas animações e jogadas do computador.</para>
+
+<para
+>Documentação com 'copyright' 2012, 2013 de Ian Wadham e com 'copyright' 1999 de &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Documentação actualizada para o &kde; 2 e 3 por &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Tradução de José Nuno Pires <email
+>zepires@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

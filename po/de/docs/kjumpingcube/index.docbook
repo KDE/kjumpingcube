@@ -1,0 +1,1008 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Das Handbuch zu &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Maren</firstname
+><surname
+>Pakura</surname
+><affiliation
+><address
+><email
+>maren@kde.org</email
+></address
+></affiliation
+><contrib
+>Deutsche Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-07-07</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Dieses Handbuch beschreibt das Spiel &kjumpingcube; in der Version 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>Spiel</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>Strategie</keyword>
+	<keyword
+>Würfel</keyword>
+	<keyword
+>Würfelspiel</keyword>
+	<keyword
+>würfeln</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>zwei Spieler</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>Würfel</keyword>
+	<keyword
+>Sprung</keyword>
+	<keyword
+>springender Würfel</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Einführung</title
+> <!-- do not change this! -->
+	<note
+><title
+>Spieltyp:</title
+><para
+>Strategiespiel, Würfelspiel</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Zwei</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; ist ein einfaches Taktikspiel, das Sie gegen einen Freund oder den Rechner spielen können. Außerdem können Sie zwei Computerspieler gegeneinander spielen lassen und das Spiel einfach nur beobachten.</para>
+
+<para
+>Das ist sinnvoll, wenn Sie &kjumpingcube; vorher noch nicht gespielt haben. Siehe auch <quote
+>Wie erlerne ich dieses Spiel?</quote
+> im Kapitel <link linkend="faq"
+>Häufig gestellte Fragen</link
+>.</para>
+
+<para
+>Der Spielbereich besteht aus Würfeln mit Punkten. Beim Spielbeginn hat jeder Würfel einen Punkt, keinen Besitzer und eine neutrale Farbe. Durch Klicken auf einen neutralen Würfel werden Sie dessen Besitzer, ändern den Würfel zu Ihrer Farbe und erhöhen die Anzahl der Punkte um 1. Ihr Ziel ist es, alle Würfel zu besitzen, aber jetzt ist Ihr Gegner am Zug.</para>
+
+<para
+>Spieler ziehen und erhalten Punkte, indem Sie auf neutrale oder eigene Würfel klicken.</para>
+
+<para
+>Die einzige Möglichkeit zur Übernahme der Würfel des Gegners besteht darin, den Wert eines Würfels bis zum Maximum zu erhöhen und Punkte auf benachbarte Würfel zu verteilen. Dann übernehmen Sie diese Würfel, auch wenn Sie vorher Ihrem Gegner gehörten.</para>
+
+<para
+>Manchmal erreicht ein angrenzender Würfel ebenfalls das Maximum, verteilt Punkte auf benachbarte Würfel und eine Kaskade von Zügen verbreitet sich über das Spielfeld. Viele Würfel können plötzlich den Besitzer wechseln, dadurch wir &kjumpingcube; interessant und aufregend.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Spielanleitung</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Ziel des Spiels:</title
+><para
+>Besetzen Sie alle Würfel auf dem Spielfeld.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>Nach dem Start von &kjumpingcube; können Sie direkt mit dem Spiel beginnen. Wenn Spieler 1 vom Rechner gespielt wird, müssen Sie klicken, um das Spiel zu starten.</para>
+
+<para
+>Wenn Sie &kjumpingcube; noch nicht gespielt haben, sollten Sie zuerst einige Spiele Computer gegen Computer beobachten. Siehe auch <quote
+>Wie erlerne ich dieses Spiel?</quote
+> im Kapitel <link linkend="faq"
+>Häufig gestellte Fragen</link
+>.</para>
+
+<para
+>Sie ziehen durch Klicken auf einen unbesetzten oder bereits von Ihnen gewonnenen Würfel. Wenn Sie auf einen unbesetzten Würfel klicken, geht er in Ihren Besitz über und wechselt zu Ihrer Spielfarbe. Jedesmal, wenn Sie auf einen Würfel klicken, steigt die Punktzahl des Würfel um eins. Wenn diese ein Maximum überschreitet, werden die Punkte auf die angrenzenden Würfel übertragen (die Punkte <quote
+>springen</quote
+> herum). Wenn ein angrenzender Würfel dem Gegner gehört, wird er mit all seinen Punkten übernommen und ändert die Farbe zu Ihrer.</para>
+
+<note
+><title
+>Beispiel:</title
+><para
+>Wenn ein Würfel im Zentrum fünf Punkte erreicht, gehen vier der Punkte auf die benachbarten vier Würfeln über, ein Punkt bleibt im Würfel. Wenn die benachbarten Würfel dadurch ebenfalls ein Maximum erreichen, kann es zu einer Folge automatischer Züge kommen. </para
+></note>
+
+<note
+><title
+>Hinweis:</title
+><para
+>Die Besitzer von großen Teiles des Spielbereich können sehr schnell wechseln. Verwenden Sie die Animationseinstellungen, die in diesen Fällen helfen, die Übersicht zu behalten. Weitere Informationen finden Sie Im Kapitel <link linkend="configuration"
+>Einstellungen für das Spiel</link
+>.</para
+></note>
+
+<para
+>Gewinner ist der Spieler, dem am Ende alle Felder auf dem Spielfeld gehören.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spielregeln, Spielstrategien und Tipps</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Spielregeln</title>
+	<orderedlist>
+	<listitem
+><para
+>Ein Zug besteht aus einem Klick auf einen Würfel, der nicht Ihrem Gegner gehört.</para
+></listitem>
+	<listitem
+><para
+>Ein Zug erhöht die Punktzahl des Würfels um eins.</para
+></listitem>
+	<listitem
+><para
+>Zu Beginn des Spiels hat jeder Würfel einen Punkt, eine neutrale Farbe und keinen Besitzer.</para
+></listitem>
+	<listitem
+><para
+>Die Würfel jedes Spielers werden in seiner eigenen Farbe angezeigt.</para
+></listitem>
+	<listitem
+><para
+>Indem Sie auf einen unbesetzten Würfel klicken, geht er in Ihren Besitz über und ändert die Farbe zu Ihrer Spielfarbe. Gleichzeitig steigt die Punktzahl des Würfels um eins.</para
+></listitem>
+	<listitem
+><para
+>Wenn ein Würfel mehr Punkte als benachbarte Würfel hat, springt ein Punkt auf jeden angrenzenden Würfel über.</para
+></listitem>
+	<listitem
+><para
+>Bei einem solchen Zug gehen alle benachbarten Würfel mit all ihren Punkten in den Besitz des ziehenden Spielers über, auch wenn die Würfel unbesetzt waren oder dem Gegner gehörten.</para
+></listitem>
+	<listitem
+><para
+>Nachbarn sind die Würfel oberhalb, unterhalb, rechts oder links eines Würfels, aber nicht die diagonal angeordneten. Eckwürfel haben nur zwei Nachbarn, Seitenwürfel drei, und zentrale Würfel haben vier Nachbarn.</para
+></listitem>
+	<listitem
+><para
+>Wenn ein Nachbar durch einen Zug ein Maximum an Punkten erhält, setzt sich der Zug automatisch kaskadenartig auch auf die Nachbarn der Nachbarn und so weiter fort. Eine große Anzahl an Würfeln kann während eines solchen Zuges den Besitzer wechseln.</para
+></listitem>
+	<listitem
+><para
+>Gewinner ist der Spieler, dem am Ende alle Würfel gehören.</para
+></listitem>
+	<listitem
+><para
+>Im Einrichtungsdialog können Sie die Größe des Spielfelds, Computerspieler, Animationen der Züge und  Farben für die Spieler auswählen. Jeder Computerspieler kann auf seine eigene Art spielen und eine bestimmte Spielstärke haben. Sie können auch zwei Computer gegeneinander spielen lassen und den Ablauf verfolgen. Im Abschnitt <link linkend="configuration"
+>Spieleinstellungen</link
+> finden Sie weitere Informationen.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Spielstrategien und Tipps</title>
+	<itemizedlist>
+	    <listitem
+><para
+>Es ist hilfreich, ein Spiel Computer gegen Computer einzustellen und im Einrichtungsdialog die Ankreuzfelder für die schrittweise Ausführung von Zügen und Animationen zu aktivieren. Siehe auch <quote
+>Wie erlerne ich dieses Spiel?</quote
+> und <quote
+>Das war zu schnell für mich, kann das auch langsamer gezeigt werden?</quote
+> im Kapitel <link linkend="faq"
+>Häufig gestellte Fragen</link
+>.</para
+></listitem>
+	<listitem
+><para
+>Haben Sie einen Würfel direkt neben dem Würfel des Gegners, versuchen Sie durch Erhöhung der Punkte immer mehr Punkte auf Ihrem Würfel als der Gegner zu haben.</para
+></listitem>
+	<listitem
+><para
+>Hat einer Ihrer Würfel neben dem Würfel eines Gegners weniger oder gleich viele Punkte, vermeiden Sie die Erhöhung der Punktzahl: Sie können dieses Wettrüsten nicht gewinnen.</para
+></listitem>
+	<listitem
+><para
+>Suchen Sie nach Möglichkeiten, die Punktzahl Ihres Würfels zu erhöhen und andere Würfel zu übernehmen, vermeiden Sie aber, dass der Gegner durch den Start einer Kaskade antworten kann.</para
+></listitem>
+	<listitem
+><para
+>Besetzen Sie zuerst die Eckfelder, dann die Randfelder. Für diese Felder brauchen Sie weniger Züge, um die maximale Punktzahl zu erreichen und um Punkte auf benachbarte Würfel zu verteilen.</para
+></listitem>
+	<listitem
+><para
+>Versuchen Sie, nicht zu nah an Ihrem Gegner zu spielen, vor allem nicht während der Anfangs-Züge. Lassen Sie ein oder zwei Würfel Abstand oder wählen Sie einen zu Ihrem Gegner diagonal liegenden Würfel.</para
+></listitem>
+	<listitem
+><para
+>Behalten Sie lange Ketten von Würfeln mit nahezu maximaler Punktzahl im Auge. Wenn es Ihre sind, müssen Sie sie vor Kaskaden beschützen. Wenn sie Ihrem Gegner gehören, können Sie sie, sobald die Würfel nah genug an Ihr Territorium grenzen, in Ihre eigenen Kaskaden einbeziehen.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Die Benutzeroberfläche</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>Die Werkzeugleiste</title>
+<sect2 id="stop_start_button">
+<title
+>Der Knopf zum Anhalten/Fortsetzen</title>
+
+<para
+>Dieser große Knopf wird oben links in der Werkzeugleiste angezeigt. Damit können Animationen und Computerzüge gesteuert werden, insbesondere wenn der Computer den ersten Zug hat, Computer gegen einander spielen oder ein Zug zu lange dauert. Mit diesem Knopf können Sie ein Spiel oder einen Zug auch schrittweise ausführen, damit Anfänger jeden Schritt genau verfolgen können. Im Einrichtungsdialog können Sie diese Funktion ein- oder ausschalten. Im Kapitel <link linkend="configuration"
+>Spieleinstellungen</link
+> finden Sie weitere Informationen. </para>
+
+<para
+>Der Knopf hat drei Zustände:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Rot</term>
+	<listitem
+><para
+>Eine Computerberechnung, eine Animation oder ein Spiel Computer gegen Computer kann angehalten oder abgebrochen werden.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Grün</term>
+	<listitem
+><para
+>Ein Computerzug, eine Animation oder ein Spiel Computer gegen Computer kann angehalten oder fortgesetzt werden.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Blau</term>
+	<listitem
+><para
+>Der Knopf ist deaktiviert und eine Aktion des menschlichen Spieler ist erforderlich, wie zum Beispiel den nächsten Spielzug auszuführen.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>In jedem Zustand wird auch Text auf dem Knopf angezeigt, der eine mögliche oder erwartete Aktion angibt, wie zum Beispiel &nbsp;<guibutton
+>Animation anhalten</guibutton
+> oder <guibutton
+>Ihr Zug</guibutton
+>.</para>
+
+<para
+>Wenn Sie die Berechnung eines Computerzugs abbrechen, wird der beste bis dahin ermittelte Zug ausgeführt. Wenn Sie eine Animation wie zum Beispiel eine zu lang dauernde Kaskade unterbrechen, wird sofort das Ende des Zuges angezeigt. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Standardknöpfe in der Werkzeugleiste</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Einstellungen</guiicon
+></term>
+	<listitem
+><para
+><action
+>Öffnet einen Dialog zur Einrichtung des Spiels. Weitere Informationen finden Sie im Kapitel <link linkend="configuration"
+>Einstellungen für das Spiel</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Neu</guiicon
+></term>
+	<listitem
+><para
+><action
+>Startet ein neues Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Laden ...</guiicon
+></term>
+	<listitem
+><para
+><action
+>Lädt ein zuvor gespeichertes Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Speichern</guiicon
+></term>
+	<listitem
+><para
+><action
+>Speichert das aktuelle Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Tipp</guiicon
+></term>
+	<listitem
+><para
+><action
+>Gibt einen Tipp für den besten nächsten Zug, Der Tipp wird durch Computerspieler 1 oder 2 berechnet, abhängig davon, ob Sie der menschliche Spieler 1 oder 2 sind. Weitere Informationen finden Sie Im Kapitel <link linkend="configuration"
+>Einstellungen für das Spiel</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Zurücknehmen</guiicon
+></term>
+	<listitem
+><para
+><action
+>Nimmt einen vorher ausgeführten Zug zurück, das kann auch mehrfach ausgeführt werden.</action
+> Es ist auch möglich, die letzten Züge eines beendeten Spiels wieder zurückzunehmen und alternative Endzüge zu untersuchen.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Wiederherstellen</guiicon
+></term>
+	<listitem
+><para
+><action
+>Hiermit wird der zuletzt zurückgenommene Zug wiederhergestellt, das ist auch mehrmals möglich.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Menüeinträge</title>
+<sect2 id="game_menu">
+<title
+>Das Menü Spiel</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spiel</guimenu
+><guimenuitem
+>Neu</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Startet ein neues Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Laden ...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Lädt ein zuvor gespeichertes Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Speichern</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Speichert das aktuelle Spiel.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Speichern unter ...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Speichert das aktuelle Spiel unter einem anderen Namen.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Beendet</action
+> &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Das Menü Zug</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Zug</guimenu
+><guimenuitem
+>Zurücknehmen</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Nimmt einen vorher ausgeführten Zug zurück, das kann auch mehrfach ausgeführt werden.</action
+> Es ist auch möglich, die letzten Züge eines beendeten Spiels wieder zurückzunehmen und alternative Endzüge zu untersuchen.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zug</guimenu
+><guimenuitem
+>Wiederherstellen</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Hiermit wird der zuletzt zurückgenommene Zug wiederhergestellt, das ist auch mehrmals möglich.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Zug</guimenu
+> <guimenuitem
+>Tipp</guimenuitem
+> </menuchoice
+></term>
+	<listitem
+><para
+><action
+>Gibt einen Tipp für den besten nächsten Zug, Der Tipp wird durch Computerspieler 1 oder 2 berechnet, abhängig davon, ob Sie der menschliche Spieler 1 oder 2 sind. Weitere Informationen finden Sie Im Kapitel <link linkend="configuration"
+>Einstellungen für das Spiel</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Weitere Menüs</title>
+<para
+>Zusätzlich hat &kjumpingcube; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Häufig gestellte Fragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para
+></question>
+ <answer
+><para
+>In dieser Version können Sie nur die Farben für die Spieler im Dialog <link linkend="configuration"
+>Einstellungen für das Spiel</link
+> ändern, aber nicht das Design des Spiels.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Wie erlerne ich dieses Spiel? </para
+></question>
+ <answer
+><para
+>Es ist anfangs schwierig, die Spielzüge in &kjumpingcube; zu verfolgen. Eine Möglichkeit zum Kennenlernen von &kjumpingcube; besteht darin, den Computer gegen sich selbst spielen zu lassen. Benutzen Sie dazu die Optionen im Dialog <link linkend="configuration"
+>Spieleinstellungen</link
+>. Kreuzen Sie die Felder <guilabel
+>Spielt jetzt</guilabel
+> an, wählen Sie eine Spielfeldgröße im Bereich von 3x3 bis 5x5, wählen Sie <guilabel
+>Punkte streuen</guilabel
+> für die Anzeige des Kaskadenzugs, setzen Sie die Kaskadenzeit auf  <guilabel
+>Lang</guilabel
+> und klicken Sie auf <guibutton
+>OK</guibutton
+>. Klicken Sie dann auf den großen grünen Knopf in der Werkzeugleiste, um das Spiel zu starten. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Das war zu schnell für mich, kann das auch langsamer gezeigt werden? </para
+></question>
+ <answer
+><para
+>Öffnen Sie wieder den <link linkend="configuration"
+>Einrichtungsdialog</link
+>. Darin finden Sie unten zwei Ankreuzfelder. Kreuzen Sie links unten an, dass vor jedem Zug des Computers eine Pause eingelegt wird. Aktivieren Sie dann rechts unten die Einstellung, dass bei Kaskadenzügen, die sich besonders gegen Ende eines Spiels über das ganze Feld ausbreiten, nach jedem Schritt ebenfalls angehalten wird. Zurück im Spiel können Sie jetzt den großen Knopf in der Werkzeugleiste immer dann benutzen, wenn er grüne wird, um jeden Zug schrittweise ausführen zu lassen.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Welche Funktion hat der große Knopf in der Werkzeugleiste? </para
+></question>
+ <answer
+><para
+>Dieser Knopf wird benutzt, um den Computerspieler anzuhalten (rote Farbe), eine Aktion des Computers zu starten oder fortzusetzen, wenn Sie bereits sind (grüne Farbe) oder es wird eine Aufforderung wie zum Beispiel zur Ausführung des nächsten Zugs (blaue Farbe, der Knopf ist deaktiviert) angezeigt. Eine vollständige Beschreibung finden Sie im Abschnitt <link linkend="stop_start_button"
+>Der Knopf zum Anhalten/Fortsetzen</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kann ich mit der Tastatur spielen? </para
+></question>
+ <answer
+><para
+>Nein, &kjumpingcube; kann nicht mit der Tastatur gespielt werden. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Wo finde ich die Bestenliste?</para
+></question>
+ <answer
+><para
+>In &kjumpingcube; gibt es keine Bestenliste.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Einstellungen für das Spiel</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Um den Einrichtungsdialog zu öffnen, wählen Sie <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>&kjumpingcube; einrichten ...</guimenuitem
+></menuchoice
+> in der Menüleiste. Auf Apple Mac OS X benutzen Sie die Option: <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+><guimenuitem
+>Einstellungen</guimenuitem
+></menuchoice
+>. Oder Sie benutzen den Knopf <guibutton
+>Einstellungen</guibutton
+> in der Werkzeugleiste.</para>
+
+<screenshot>
+    <screeninfo
+>&kjumpingcube;-Einstellungen</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>&kjumpingcube;-Einstellungen</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>In den letzten Bereichen zum Kaskadenzug kann die optionale Anzeige einer Animation eingestellt werden, die angezeigt wird, wenn ein Würfel die maximale Punktzahl erreicht, die Punkte auf angrenzende Würfel verschiebt und damit manchmal eine Kaskade von Verschiebungen auslöst. Am einfachsten ist es, zuerst die Animation <quote
+>Punkte streuen</quote
+> und eine lange Verschiebungszeit einzustellen. Das erleichtert es, den Fortschritt der Kaskade zu verfolgen. Mit den beiden Ankreuzfeldern zum Pausieren können Sie Animationen und Computerzüge schrittweise in Ihren eigenen Tempo verfolgen.</para>
+
+<para
+>In den Bereichen Computerspieler 1 und 2 kann die Art und Spielstärke für jeden Computerspieler eingestellt sowie gewählt werden, ob dieser Spieler tatsächlich spielt oder die menschlichen Spieler 1 oder 2 mit Tipps unterstützt. </para>
+
+<sect1 id="setting_details">
+<title
+>Einstellungsmöglichkeiten</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Spielt jetzt</guilabel
+></term>
+		<listitem
+><para
+>Legt fest, ob die Computerspieler 1 oder 2 aktiv spielen oder eine menschlichen Spieler mit Tipps unterstützten. Normalerweise spielen Sie gegen einen Computerspieler. Sie können aber auch menschliche Spieler oder zwei Computerspieler gegeneinander spielen lassen und das Spiel beobachten.  Spieler 1 beginnt immer das Spiel.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Art des Spiels</guilabel
+></term>
+		<listitem
+><para
+>Lässt die Computerspieler als Kepler- oder Newton-AI spielen. Die Kepler-AI wählt Züge mit der gleichen Methode wie frühere Versionen von &kjumpingcube;. Die Newton-AI verwendet eine andere Methode.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Spielstärke des Rechners</guilabel
+></term>
+		<listitem
+><para
+><action
+>Hier können Sie die Spielstärke des Computers mit einem Schieberegler wählen.</action
+> Die Spielstärke gibt an, wie stark der Computergegner ist.</para>
+		<para
+>Sie können zwischen fünf Spielstärken wählen, von <guilabel
+>Anfänger</guilabel
+> über <guilabel
+>Durchschnittlich</guilabel
+> bis <guilabel
+>Experte</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Spielfeldgröße</guilabel
+></term>
+		<listitem
+><para
+><action
+>Hier können Sie die Größe des Spielfeldes einstellen.</action
+></para>
+		<para
+>Mit Hilfe des Schiebereglers kann eine Feldgröße zwischen <guilabel
+>3x3</guilabel
+> und <guilabel
+>15x15</guilabel
+> Würfeln eingestellt werden. Der Bereich von 5x5 bis 9x9 ist am bequemsten zu spielen. Unter 5x5 ist es sehr schwer, den Computer zu schlagen. Mit mehr als 9x9 Würfeln dauern die Spiele sehr lange.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Farben der Spieler</guilabel
+></term>
+		<listitem
+><para
+>Wählen Sie für jeden Spieler und die neutralen Würfel eine Spielfarbe</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Anzeige des Kaskadenzugs</guilabel
+></term>
+		<listitem
+><para
+>Wählen Sie hier eine Animationsart aus, die verwendet wird, wenn ein Würfel seine maximale Punktzahl erreicht und Punkte auf benachbarte Würfel verteilt. Damit wird möglicherweise eine Kasḱade solcher Züge ausgelöst, die sich über einen großen Teil des Spielbrett verbreiten.</para>
+		    <para
+>Mit den Auswahlköpfen können Sie folgende Animationen für Würfel wählen, die die maximale Punktzahl erreichen: <guilabel
+>Keine (keine Pause)</guilabel
+>, damit wird der ganze Zug sofort durchgeführt, <guilabel
+>Verdunklung und Pause</guilabel
+>, damit wird jeder überladene Würfel abgedunkelt, <guilabel
+>Schnelles Blinken</guilabel
+>. damit wird jeder überladene Würfel zuerst abgedunkelt und fängt dann an zu Blinken und <guilabel
+>Punkte streuen</guilabel
+>, damit wird jeder überladene Würfel zuerst abgedunkelt und streut dann Punkte in angrenzende Würfel.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Zeit des Kaskadenzugs</guilabel
+></term>
+		<listitem
+><para
+>Benutzen Sie den Schieberegler, um aus einem Bereich für die Zeit von <guilabel
+>Kurz</guilabel
+> bis <guilabel
+>Lang</guilabel
+> auszuwählen, wie lange Animationen dauern. Die Zeit hängt zum Teil vom Animationstyp ab und liegt in einem Bereich von 0,15 bis 1,5 Sekunden für jeden Schritt eines Kaskadenzugs.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Vor jedem Zug des Computers pausieren</guilabel
+></term>
+	    <listitem
+><para
+>Ist diese Einstellung aktiviert, werden Computerspieler vor jedem Zug anhalten, bis Sie zum weiter spielen klicken. Dies erleichtern es, solche Aktionen zu verfolgen, insbesondere wenn das Spiel für Sie neu ist oder Sie ein Spiel Computer gegen Computer beobachten möchten.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Vor jedem Kaskadenschritt pausieren</guilabel
+></term>
+		<listitem
+><para
+>Ist diese Einstellung aktiviert, wird die Animation von Kaskadenzügen nach jeden Schritt anhalten, bis Sie zum weiter spielen klicken. Dies erleichtert es, solche Züge bei der Ausbreitung über das Spielfeld zu beobachten.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Danksagungen und Lizenz</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&kjumpingcube; Copyright 2012, 2013 Ian Wadham und Copyright 2012, 2013 Ian Wadham and Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; wurde von einem Spiel angeregt, das es vor längerer Zeit für den Commodore 64 und wohl auch für andere Heimcomputer gab. Leider ist der Name des damaligen Autors nicht bekannt.</para>
+
+<para
+>Seit 2007 ist Ian Wadham der Betreuer von &kjumpingcube; für &kde; und Eugene Trounev entwarf das erste &SVG;-Design.</para>
+
+<para
+>Im Jahr 2012 und 2013 entwickelte Ian Wadham die Versionen 2.0 und 2.1 von &kjumpingcube;, fügte Animationstypen hinzu, ermöglichte die Verringerung des Spielfelds auf 3x3 Felder und die Vergrößerung auf 15x15 Felder und schrieb ein vollständig neues KI-Modul, das mehr Herausforderungen für menschliche Spieler bietet. Die neuen Versionen berechnen Züge erheblich schneller, erlauben mehrfaches Zurücknehmen und Wiederherstellen eines Zugs (vorher nur einmal möglich) und bieten Optionen für Anfänger, um Animationen und Computerzüge schrittweise auszuführen.</para>
+
+<para
+>Copyright der Dokumentation 2012, 2013 Ian Wadham und 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Dokumentation für &kde; 2 und 3 von &Lauri.Watts; &Lauri.Watts.mail; überarbeitet.</para>
+
+<para
+>Deutsche Übersetzung von Maren Pakura <email
+>maren@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

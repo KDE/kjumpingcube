@@ -1,0 +1,998 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Підручник з &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>7 липня 2021 року</date>
+<releaseinfo
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>У цій документації описано гру &kjumpingcube; версії 2.1.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>гра</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>стратегія</keyword>
+	<keyword
+>кістки</keyword>
+	<keyword
+>гра у кістки</keyword>
+	<keyword
+>гра з кістками</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>два гравці</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>кубик</keyword>
+	<keyword
+>стрибати</keyword>
+	<keyword
+>кубик, що стрибає</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Вступ</title
+> <!-- do not change this! -->
+	<note
+><title
+>Тип гри:</title
+><para
+>Стратегія, гра в кістки</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Можлива кількість гравців:</title
+><para
+>Два</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; — проста тактична гра. Ви можете грати з комп’ютером або іншою людиною, можна також просто налаштувати гру між двома комп’ютерними гравцями і спостерігати за нею.</para>
+
+<para
+>Спостереження за грою може бути корисним, якщо ви ще ніколи не грали у &kjumpingcube;. Докладніший опис гри можна знайти у розділі <link linkend="faq"
+>поширених питань та відповідей на них</link
+>, питання «Як навчитися грати?».</para>
+
+<para
+>Ігрова дошка складається із клітинок з крапками. На початку гри на кожній з клітинок буде лише одна крапка, у клітинок не буде власника. Клацання на незайнятій клітинці зробить цю клітинку власністю гравця і збільшить кількість крапок на клітинці на одну. Переможцем буде той гравець, який завершить гру власником всіх клітинок. Гравці роблять ходи послідовно.</para>
+
+<para
+>Гравці можуть робити ходи з додаванням крапок на нейтральні або власні клітинки. Для додавання крапки слід навести вказівник миші на відповідну клітинку і клацнути лівою кнопкою миші.</para>
+
+<para
+>Єдиним способом захоплення клітинок суперника є збільшення кількості крапок у клітинці до значення, що перевищує гранично можливе. Таке перевищення призводить до розсіювання крапок з клітинки на сусідні клітинки, які після цього переходять у власність гравця, навіть якщо до цього належали його супернику.</para>
+
+<para
+>Іноді кількість крапок на сусідній клітинці також перевищує максимальну можливу, що призводить до каскаду ходів, які поширюються на всю дошку.Значна кількість клітинок змінюють свого власника, що робить гру &kjumpingcube; складною і цікавою.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Як грати</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Мета:</title
+><para
+>Захопити всі клітинки на ігровій дошці.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>Одразу після запуску &kjumpingcube; переходить до режиму гри, отже, ви можете одразу розпочати гру. Якщо першим гравцем є комп’ютерний гравець, вам слід клацнути кнопкою миші, щоб розпочати гру.</para>
+
+<para
+>Якщо ви ще ніколи не грали у &kjumpingcube;, спробуйте поспостерігати за декількома іграми між двома комп’ютерними гравцями. Докладніший опис гри можна знайти у розділі <link linkend="faq"
+>поширених питань та відповідей на них</link
+>, питання «Як навчитися грати?».</para>
+
+<para
+>Ваш хід полягає у наведенні вказівника на вільну клітинку або клітинку, якою ви вже володієте, з наступним клацанням лівою кнопкою миші. Якщо ви виберете вільну клітинку, ви станете його власником, а колір клітинки буде змінено на ваш ігровий колір. Кожне наступне клацання на клітинці збільшуватиме кількість крапок на ньому на одну. Після досягнення максимального значення кількості крапок на клітинці ці крапки буде розподілено між безпосередніми сусідами цієї клітинки (крапки «вистрибнуть» назовні). Якщо власником такого сусідньої клітинки є інший гравець, ця клітинка стане вашою разом з усіма своїми крапками, її колір буде змінено на ваш ігровий колір.</para>
+
+<note
+><title
+>Приклад:</title
+><para
+>Якщо на клітинці у центрі ігрового поля стане п’ять крапок, чотири з цих крапок перейдуть на чотири сусідні клітинки, а на початковій клітинці залишиться одна крапка. Може статися, що такі переходи призведуть до серії автоматичних змін власників клітинок, якщо на сусідніх клітинках також буде досягнуто максимальної кількості точок через перерозподіл.</para
+></note>
+
+<note
+><title
+>Примітка:</title
+><para
+>Значні частини ігрової області можуть змінювати власника дуже швидко. Для сповільнення показу того, що відбувається, ви можете скористатися анімацією. Докладніший опис відповідних налаштувань можна знайти у розділі <link linkend="configuration"
+>Налаштування гри</link
+>.</para
+></note>
+
+<para
+>Переможцем гри є гравець, який завершив гру власником всіх клітинок ігрового поля.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Правила гри, стратегія та поради</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>Правила</title>
+	<orderedlist>
+	<listitem
+><para
+>Хід полягає у наведенні вказівника миші на клітинку, який не належить вашому супернику, з наступним клацанням лівою кнопкою миші.</para
+></listitem>
+	<listitem
+><para
+>Такий хід збільшує кількість крапок на клітинці на одну.</para
+></listitem>
+	<listitem
+><para
+>На початку гри на кожній клітинці буде лише одна крапка, клітинку буде розфарбовано у нейтральний колір, вона не належатиме нікому.</para
+></listitem>
+	<listitem
+><para
+>У кожного гравця буде свій колір для позначення належності клітинок.</para
+></listitem>
+	<listitem
+><para
+>Клацання лівою кнопкою миші, коли вказівник перебуває на клітинці без власника, робить гравця власником цієї клітинки і змінює колір клітинки на колір гравця. Одночасно з цим, кількість крапок на клітинці збільшується на одну.</para
+></listitem>
+	<listitem
+><para
+>Якщо на клітинці стане на одну крапку більше, ніж кількість сусідніх з цією клітинкою клітинок, на кожну з цих сусідніх клітинок перестрибне по одній з крапок.</para
+></listitem>
+	<listitem
+><para
+>Під час такого ходу всі сусідні клітинки змінюють власника: їх власником стає гравець, який робив хід. Те саме стосується і крапок на цих клітинках, навіть якщо сусідні клітинки були нейтральними або належали іншому гравцеві.</para
+></listitem>
+	<listitem
+><para
+>Сусідніми вважаються клітинки, які знаходяться над, під, ліворуч і праворуч від початкової клітинки, але не клітинки, розташовані діагонально відносно початкової клітинки. Клітинки у кутах поля мають двох сусідів, клітинки на краях — трьох, а клітинка всередині поля — чотирьох.</para
+></listitem>
+	<listitem
+><para
+>Якщо під час ходу на сусідній клітинці також було досягнуто максимальної кількості крапок, хід буде автоматично продовжено на клітинках, які є сусідніми для цієї сусідньої клітинки тощо. Під час таких ходів велика кількість клітинок може змінити своїх власників.</para
+></listitem>
+	<listitem
+><para
+>Переможцем у грі буде той гравець, який заволодіє всіма клітинками.</para
+></listitem>
+	<listitem
+><para
+>Ви можете скористатися налаштуваннями програми для вибору розміру дошки, комп’ютерних гравців, анімації ходів та кольорів гравців. У кожного комп’ютерного гравця може бути власник стиль і рівень гри. Якщо комп’ютерний гравець не бере участі у грі, він може надавати підказки гравцеві-людині. Ви також можете наказати одному комп’ютерному гравцеві грати проти іншого, а самі спостерігати за грою. Докладніше про це можна дізнатися з розділу <link linkend="configuration"
+>Налаштування гри</link
+>.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>Стратегія та поради</title>
+	<itemizedlist>
+	    <listitem
+><para
+>У вивченні ігрових прийомів може допомогти спостереження за грою між двома комп’ютерними гравцями з використанням параметрів гри, які надають змогу спостерігати за ходами та анімацією у покроковому режимі. Питання відповідного налаштовування висвітлено у розділі <link linkend="faq"
+>поширених питань та відповідей на них</link
+>, зокрема у відповідях на питання «Як навчитися грати?» та «Все відбувається надто швидко, як можна уповільнити гру?».</para
+></listitem>
+	<listitem
+><para
+>Якщо вашу клітинку розташовано безпосередньо поруч з клітинкою суперника, намагайтеся робити так, щоб на вашій клітинці було більше крапок.</para
+></listitem>
+	<listitem
+><para
+>Якщо на такому сусідній клітинці менше крапок, ніж на клітинці суперника або кількість крапок, рівна кількості крапок на клітинці суперника, намагайтеся не збільшувати кількість крапок на вашій клітинці: ви не зможете перегнати суперника на цій клітинці.</para
+></listitem>
+	<listitem
+><para
+>Намагайтеся скористатися можливостями збільшити кількість ваших клітинок і захопити клітинки суперника, але остерігайтеся ходів у відповідь, які можуть призвести до ланцюгової втрати ваших клітинок.</para
+></listitem>
+	<listitem
+><para
+>Спочатку отримайте контроль над клітинками у кутках поля. Для досягнення максимальної кількості крапок у цих клітинках не потрібно багато ходів.</para
+></listitem>
+	<listitem
+><para
+>Намагайтеся не вести гру занадто близько від вашого суперника, особливо на початку гри. Пропустіть клітинку або два і займіть клітинку по діагоналі від клітинок суперника.</para
+></listitem>
+	<listitem
+><para
+>Слідкуйте за ланцюжками клітинок, які майже досягли максимальної кількості крапок. Якщо це ваші клітинки, вам слід оберігати їх від лавиноподібної зміни власника. Якщо це клітинки вашого суперника, ви можете захопити їх одним лавиноподібним ходом, достатньо лише зачекати, коли ваша територія наблизиться до таких клітинок.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Огляд інтерфейсу</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>Панель інструментів</title>
+<sect2 id="stop_start_button">
+<title
+>Кнопка «Почати/Зупинити»</title>
+
+<para
+>Цю велику кнопку, розташовану у верхній лівій частині панелі інструментів, призначено для керування анімацією та ходами комп’ютерного гравця, особливо якщо комп’ютер ходить першим, грає з іншим комп’ютерним гравцем або дуже довго обчислює хід. Кнопкою також можуть скористатися гравці-початківці для вивчення гри або ходу у покроковому режимі. Покроковий режим можна увімкнути або вимкнути за допомогою діалогового вікна параметрів гри (див. розділ <link linkend="configuration"
+>Налаштовування гри</link
+>, щоб дізнатися більше). </para>
+
+<para
+>Кнопка може перебувати у одному з трьох станів:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Червоний</term>
+	<listitem
+><para
+>У такому стані за допомогою кнопки можна зупинити або перервати обчислення комп’ютером ходу, анімацію або гру комп’ютерного гравця проти іншого комп’ютерного гравця.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Зелений</term>
+	<listitem
+><para
+>У такому стані за допомогою кнопки можна розпочати або поновити хід комп’ютерного гравця, анімацію або гру комп’ютерного гравця проти іншого комп’ютерного гравця.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Синій</term>
+	<listitem
+><para
+>Кнопки вимкнено, очікується дія від гравця-людини, наприклад наступний хід.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>У всіх описаних вище випадках на кнопці буде показано якесь текстове повідомлення для позначення дії, яку може бути виконано або виконання якої очікується, наприклад <guibutton
+>Зупинити анімацію</guibutton
+> або <guibutton
+>Ваш хід</guibutton
+>.</para>
+
+<para
+>Якщо ви зупините обчислення комп’ютерним гравцем ходу, буде використано найкращий зі знайдених до цього моменту ходів. Якщо ви перервете анімацію (наприклад анімацію каскадного ходу, який триває надто довго), буде одразу показано завершальний результат ходу. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Стандартні кнопки панелі інструментів</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Параметри</guiicon
+></term>
+	<listitem
+><para
+><action
+>Кнопка відкриття діалогового вікна параметрів програми. Докладніший опис цього вікна можна знайти у розділі <link linkend="configuration"
+>Налаштовування гри</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Створити</guiicon
+></term>
+	<listitem
+><para
+><action
+>Почати нову гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Завантажити…</guiicon
+></term>
+	<listitem
+><para
+><action
+>Завантажити збережену раніше гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Зберегти</guiicon
+></term>
+	<listitem
+><para
+><action
+>Зберігає поточну гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Підказка</guiicon
+></term>
+	<listitem
+><para
+><action
+>Отримати підказку щодо найкращого наступного ходу. Підказку буде визначено за допомогою рушія комп’ютерного гравця 1 або 2, залежно від того, граєте ви гравцем 1 чи 2. Докладніше про це можна дізнатися з розділу <link linkend="configuration"
+>Налаштування гри</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Вернути</guiicon
+></term>
+	<listitem
+><para
+><action
+>Скасувати попередній хід, рекурсивно, якщо потрібно.</action
+> Зауваження: можна скасувати завершальні ходи гри і вивчити можливості альтернативних завершень.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Повторити</guiicon
+></term>
+	<listitem
+><para
+><action
+>Повторити хід, який раніше було скасовано (можна, якщо потрібно, здійснити декілька повторень).</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+<sect2 id="game_menu">
+<title
+>Меню «Гра»</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+><guimenuitem
+>Нова</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Почати нову гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+><guimenuitem
+>Завантажити...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Завантажити збережену раніше гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+><guimenuitem
+>Зберегти</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Зберігає поточну гру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>Гра</guimenu
+><guimenuitem
+>Зберегти як...</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Зберігає поточну гру у файл з новою назвою.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+><guimenuitem
+>Вийти</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>Завершити роботу</action
+> &kjumpingcube;.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>Меню «Хід»</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Хід</guimenu
+><guimenuitem
+>Вернути</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Скасувати попередній хід, рекурсивно, якщо потрібно.</action
+> Зауваження: можна скасувати завершальні ходи гри і вивчити можливості альтернативних завершень.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Повторити</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Повторити хід, який раніше було скасовано (можна, якщо потрібно, здійснити декілька повторень).</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Підказка</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Отримати підказку щодо найкращого наступного ходу. Підказку буде визначено за допомогою рушія комп’ютерного гравця 1 або 2, залежно від того, граєте ви гравцем 1 чи 2. Докладніше про це можна дізнатися з розділу <link linkend="configuration"
+>Налаштування гри</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>Інші меню</title>
+<para
+>Крім того, у &kjumpingcube; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Часті запитання</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Я хочу змінити вигляд цієї гри. Як це зробити? </para
+></question>
+ <answer
+><para
+>У поточній версії ви можете змінювати лише кольори гравців, але не теми гри. Щоб змінити кольори гравців, скористайтеся діалоговим вікном <link linkend="configuration"
+>налаштування гри</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Як навчитися грати? </para
+></question>
+ <answer
+><para
+>Початківцям важко стежити за ходами у &kjumpingcube;. Одним зі способів навчання є спостереження за грою між комп’ютерними гравцями. Для налаштовування такої гри скористайтеся діалоговим вікном <link linkend="configuration"
+>Налаштування гри</link
+>. Позначте обидва пункти <guilabel
+>Грає зараз</guilabel
+>, виберіть розмір дошки у діапазоні від 3⨯3 до 15⨯15, встановіть для анімації варіант <guilabel
+>Розсіювання крапок</guilabel
+>, для тривалості ходу значення <guilabel
+>Довга</guilabel
+> і натисніть кнопку <guibutton
+>Гаразд</guibutton
+>. Натисніть велику зелену кнопку на панелі інструментів, щоб розпочати гру. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Все відбувається надто швидко, як можна уповільнити гру? </para
+></question>
+ <answer
+><para
+>Знову скористайтеся діалоговим вікном <link linkend="configuration"
+>Налаштування гри</link
+>. У нижній частині цього вікна ви побачите два пункти. Позначте один з них для призупинення гри між ходами. Інший пункт можна позначити для призупинення анімації на кожному з кроків каскадного ходу, що буде особливо корисним на завершальному етапі гри. Поверніться до головного вікна гри і скористайтеся великою зеленою кнопкою на панелі інструментів (коли вона матиме зелений колір) для перемикання ходів та покрокового дослідження кожного з ходів з бажаною для вас швидкістю.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Яким є призначення великої кнопки на панелі інструментів? </para
+></question>
+ <answer
+><para
+>Цією кнопкою можна скористатися для призупинення дій комп’ютера (коли вона матиме червоний колір), початку або продовження дій комп’ютерного гравця у бажаний для вас момент (зелений колір) або використано для сповіщення про те, що слід виконати певну дію (синій колір, кнопку вимкнено). Опис роботи кнопки можна знайти у розділі <link linkend="stop_start_button"
+>Кнопка «Почати/Зупинити»</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Чи можна використовувати для гри клавіатуру? </para
+></question>
+ <answer
+><para
+>Ні. У &kjumpingcube; не можна грати за допомогою клавіатури. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Де список найкращих результатів?</para
+></question>
+ <answer
+><para
+>У &kjumpingcube; такої можливості немає.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Налаштування гри</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Щоб відкрити діалогове вікно налаштування, скористайтеся пунктом меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати &kjumpingcube;...</guimenuitem
+></menuchoice
+> У Apple Mac OS X скористайтеся пунктом: <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+><guimenuitem
+>Налаштування</guimenuitem
+></menuchoice
+>. Крім того, ви можете скористатися кнопкою <guibutton
+>Параметри</guibutton
+> на панелі інструментів.</para>
+
+<screenshot>
+    <screeninfo
+>Параметри &kjumpingcube;</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Параметри гри &kjumpingcube;</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>За допомогою панелей <guilabel
+>Показ каскадних ходів</guilabel
+> та <guilabel
+>Тривалість каскадного ходу</guilabel
+> можна керувати параметрами додаткової анімації, коли кількість крапок на клітинці досягає максимальної і крапки розкидаються на сусідні клітинки, можливо починаючи каскад (лавину) ходів. Для стеження за поступом ходів на початковому етапі варто скористатися варіантом анімації <guilabel
+>Розсіювання крапок</guilabel
+> і встановити довгу тривалість ходу. Так вам буде простіше стежити за поступом каскадного ходу. Двома пунктами пауз можна скористатися для покрокового стеження за анімацією та ходами комп’ютера.</para>
+
+<para
+>За допомогою панелей Комп’ютерного гравця 1 і 2 можна керувати стилем та рівнем гри кожного з комп’ютерних гравців та тим, братиме відповідний комп’ютерний гравець активну участь у грі чи просто надаватиме підказки гравцеві-людині.</para>
+
+<sect1 id="setting_details">
+<title
+>Докладніший опис параметрів</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Грає зараз</guilabel
+></term>
+		<listitem
+><para
+>Визначає, будуть комп’ютерні гравці 1 і 2 брати активну участь у грі, чи просто допомагатимуть гравцеві підказками. Зазвичай, вам потрібно налаштувати на гру з вами одного з комп’ютерних гравців, але ви можете погратися з іншим гравцем-людиною або задіяти обох комп’ютерних гравців і просто спостерігати за грою. Гру завжди розпочинає Гравець 1.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Стиль гри</guilabel
+></term>
+		<listitem
+><para
+>Для комп’ютерних гравців 1 і 2 можна вибрати один зі стилів гри: Кеплер або Ньютон. Кеплер вибирає ходи у той самий спосіб, у який їх вибирали ранні версії &kjumpingcube;. Ньютон використовує інший спосіб.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Майстерність комп'ютера</guilabel
+></term>
+		<listitem
+><para
+><action
+>Надає вам змогу вибрати рівень комп’ютерного гравця за допомогою повзунка.</action
+> За допомогою цього пункту можна визначити наскільки розумним буде комп’ютерний суперник.</para>
+		<para
+>Ви можете вибрати будь-який з п’яти рівнів: від <guilabel
+>Новака</guilabel
+> з проміжним рівнем <guilabel
+>Звичайний</guilabel
+> до рівня <guilabel
+>Експерт</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Розмір поля</guilabel
+></term>
+		<listitem
+><para
+><action
+>Надає вам змогу вибрати розміри ігрової області.</action
+></para>
+		<para
+>Скористайтеся повзунком, щоб обрати значення між <guilabel
+>3⨯3</guilabel
+> клітинок і <guilabel
+>15⨯15</guilabel
+> клітинок. Найзручнішими для гри є дошки розмірами від 5⨯5 до 9⨯9. На дошках розміром, меншим за 5⨯5, майже неможливо виграти у комп’ютера. Ігри же на дошках з розмірами, більшими за 9⨯9, тривають надто довго.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Кольори гравців</guilabel
+></term>
+		<listitem
+><para
+>Тут можна обрати колір для кожного з гравців та для нейтральних клітинок.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Показ каскадних ходів</guilabel
+></term>
+		<listitem
+><para
+>Тут можна вибрати стиль анімування ходу, коли кількість крапок на клітинці досягає максимальної і крапки розсіюються сусідніми клітинками, можливо розпочинаючи лавину подібних ходів і зміну власника для значної області дошки.</para>
+		    <para
+>Позначте один з пунктів варіантів. Якщо буде вибрано <guilabel
+>Немає (без пауз)</guilabel
+>, весь результат ходу буде показано негайно. <guilabel
+>Затемнення і затримка</guilabel
+> — всі переповнені клітинки затемнюються перед розсіюванням. <guilabel
+>Миттєве блимання</guilabel
+> — всі переповнені клітинки спочатку затемнюються, а потім блимають, коли надходить час розсіювати крапки. <guilabel
+>Розсіювання крапок</guilabel
+> — кожен з переповнених клітинок спочатку затемнюється, а потім вистрілює крапками у сусідні клітинки, коли надходить час розсіювання.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Тривалість каскадного ходу</guilabel
+></term>
+		<listitem
+><para
+>Скористайтеся повзунком для визначення тривалості часу, від значення «Коротка» до значення «Довга», який витрачатиметься на анімацію. Ця тривалість залежить від типу анімації і може мати значення у діапазоні від 0,15 секунд до 1,5 секунд для кожного з кроків каскадного ходу.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Пауза перед кожним ходом комп’ютера</guilabel
+></term>
+	    <listitem
+><para
+>Якщо буде позначено цей пункт, комп’ютерний гравець призупинятиме гру перед своїм ходом, аж доки ви не натиснете кнопку переходу до наступної дії. У такому режимі буде простіше стежити за діями, особливо якщо ви гравець-початківець або вивчаєте гру між двома комп’ютерними гравцями.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Пауза перед кожним кроком у серії</guilabel
+></term>
+		<listitem
+><para
+>Якщо буде позначено цей пункт, програма призупинятиме анімацію між у межах каскадного ходу, аж доки не буде натиснуто кнопку поновлення. У такому режимі простіше спостерігати за тим, як наслідки певного ходу поширюються на всю дошку.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Подяки і ліцензія</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>Авторські права на програму &kjumpingcube; належать Ian Wadham, 2012, 2013 та &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1998, 1999</para>
+
+<para
+>На написання &kjumpingcube; авторів надихнула гра, яку було написано для Commodore 64 та інших ранніх версій домашніх комп’ютерів. На жаль, імена перших авторів цієї гри залишається невідомими.</para>
+
+<para
+>У 2007 році Ian Wadham взяв на себе супровід &kjumpingcube; для &kde; 4, а Eugene Trounev намалював першу тему у SVG.</para>
+
+<para
+>У 2012 і 2013 роках Яном було розроблено гру версій 2.0 та 2.1, додано стилі анімації, уможливлено розміри дошки від 3⨯3 до 15⨯15 і написано повністю нові модулі комп’ютерного гравця, які набагато складніше обіграти людині. Нові версії гри швидше обчислюють ходи, мають можливість багаторівневого скасовування та поновлення ходів (у початкових версіях гри скасувати або поновити можна було лише останній хід), вибір з двох комп’ютерних суперників, а також додано можливості кращого покрокового спостереження за ходами комп’ютерного гравця та анімаціями для гравців-початківців.</para>
+
+<para
+>Авторські права на документацію до програми належать Ian Wadham, 2012, 2013 та &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1999</para>
+
+<para
+>Автором оновлення документації для &kde; 2 і 3 є &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

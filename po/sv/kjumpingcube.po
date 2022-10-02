@@ -1,0 +1,630 @@
+# translation of kjumpingcube.po to Swedish
+# Copyright (C).
+#
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2004, 2005, 2007, 2009, 2012, 2013, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: kjumpingcube\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2021-07-08 10:09+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.08.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Anders Widell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "awl@hem.passagen.se"
+
+#: game.cpp:77
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr "Tyvärr, ett drag utförs..."
+
+#: game.cpp:114
+#, kde-format
+msgid "Game over"
+msgstr "Spelet slut"
+
+#: game.cpp:115
+#, kde-format
+msgid "The winner is Player %1!"
+msgstr "Vinnaren är spelare %1!"
+
+#: game.cpp:116
+#, kde-format
+msgid "Winner"
+msgstr "Vinnare"
+
+#: game.cpp:127
+#, kde-format
+msgid "General"
+msgstr "Allmänt"
+
+#: game.cpp:240
+#, kde-format
+msgid "Start game"
+msgstr "Starta spel"
+
+#: game.cpp:243
+#, kde-format
+msgid "Continue game"
+msgstr "Fortsätt spelet"
+
+#: game.cpp:247
+#, kde-format
+msgid "Start computer move"
+msgstr "Starta datordrag"
+
+#: game.cpp:268
+#, kde-format
+msgid "Your turn"
+msgstr "Din tur"
+
+#: game.cpp:271
+#, kde-format
+msgid "Player %1"
+msgstr "Spelare %1"
+
+#: game.cpp:287
+#, kde-format
+msgid "Computer player %1 is moving"
+msgstr "Datorspelare %1 drar"
+
+#: game.cpp:307
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr "Datorn kunde inte hitta ett giltigt drag."
+
+#: game.cpp:407
+#, kde-format
+msgid "Show next step"
+msgstr "Visa nästa steg"
+
+#: game.cpp:465
+#, kde-format
+msgid "Finishing move..."
+msgstr "Avslutar drag..."
+
+#: game.cpp:504
+#, kde-format
+msgid "Interrupt game"
+msgstr "Avbryt spel"
+
+#: game.cpp:510
+#, kde-format
+msgid "Stop computing"
+msgstr "Sluta beräkna"
+
+#: game.cpp:513
+#, kde-format
+msgid "Stop showing move"
+msgstr "Sluta visa drag"
+
+#: game.cpp:516
+#, kde-format
+msgid "Stop animation"
+msgstr "Stoppa animering"
+
+#: game.cpp:545
+#, kde-format
+msgid "New Game"
+msgstr "Nytt spel"
+
+#: game.cpp:574
+#, kde-format
+msgid ""
+"The file %1 already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+"Filen %1 finns redan.\n"
+"Vill du skriva över den?"
+
+#: game.cpp:599
+#, kde-format
+msgid "Game saved as %1"
+msgstr "Spelet sparat som %1"
+
+#: game.cpp:602
+#, kde-format
+msgid ""
+"There was an error in saving file\n"
+"%1"
+msgstr ""
+"Det uppstod ett fel då filen sparades:\n"
+"%1"
+
+#: game.cpp:619
+#, kde-format
+msgid "The file %1 does not exist!"
+msgstr "Filen %1 finns inte."
+
+#: game.cpp:634
+#, kde-format
+msgid "The file %1 is not a KJumpingCube gamefile!"
+msgstr "Filen %1 är inte någon spelfil för Hoppande kuben."
+
+#: game.cpp:647
+#, kde-format
+msgid ""
+"There was an error loading file\n"
+"%1"
+msgstr ""
+"Det uppstod ett fel då filen laddades:\n"
+"%1"
+
+#: game.cpp:675
+#, kde-format
+msgid ""
+"You have changed the size setting of the game and that requires a new game "
+"to start.\n"
+"\n"
+"Do you wish to abandon the current game or continue playing and restore the "
+"previous size setting?"
+msgstr ""
+"Du har ändrat spelets storleksinställning och det kräver att ett nytt spel "
+"startas.\n"
+"\n"
+"Vill du överge det pågående spelet eller fortsätta spela och återställa "
+"tidigare storleksinställning?"
+
+#: game.cpp:681
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+"Du har begärt ett nytt spel, men ett spel pågår redan.\n"
+"\n"
+"Vill du överge det pågående spelet?"
+
+#: game.cpp:686
+#, kde-format
+msgid "New Game?"
+msgstr "Nytt spel?"
+
+#: game.cpp:687
+#, kde-format
+msgid "Abandon Game"
+msgstr "Överge spelet"
+
+#: game.cpp:688
+#, kde-format
+msgid "Continue Game"
+msgstr "Fortsätt spelet"
+
+#: game.cpp:830
+#, kde-format
+msgid ""
+"The file's cube box size is outside the range %1 to %2. It will be set to %1."
+msgstr ""
+"Filens lådstorlek för kuben är utanför intervallet %1 till %2. Den kommer "
+"att tilldelas %1."
+
+#: game.cpp:846
+#, kde-format
+msgid "Missing input line for cube %1."
+msgstr "Saknar indatarad för kuben %1."
+
+#: game.cpp:855
+#, kde-format
+msgid "Owner of cube %1 is outside the range 0 to 2."
+msgstr "Ägare av kuben %1 är utanför intervallet 0 till 2."
+
+#: game.cpp:862
+#, kde-format
+msgid "Value of cube %1 is outside the range 1 to %2."
+msgstr "Värdet för kuben %1 är utanför intervallet 1 till %2"
+
+#: game.cpp:877
+#, kde-format
+msgid "Current player is neither 1 nor 2."
+msgstr "Nuvarande spelare är varken 1 eller 2."
+
+#: kjumpingcube.cpp:45
+#, kde-format
+msgid "Current player:"
+msgstr "Nuvarande spelare:"
+
+#: kjumpingcube.cpp:137
+#, kde-format
+msgid "Settings"
+msgstr "Inställningar"
+
+#. i18n: ectx: label, entry (AnimationSpeed), group (Game)
+#: kjumpingcube.kcfg:11
+#, kde-format
+msgid "Animation speed of overflowing dice"
+msgstr "Animeringshastighet för överflödiga tärningar"
+
+#. i18n: ectx: label, entry (AnimationNone), group (Game)
+#: kjumpingcube.kcfg:15
+#, kde-format
+msgid "Animation type None (no pauses)."
+msgstr "Animeringstyp Ingen (inga pauser)."
+
+#. i18n: ectx: label, entry (AnimationDelay), group (Game)
+#: kjumpingcube.kcfg:19
+#, kde-format
+msgid "Animation type Darken and pause."
+msgstr "Animeringstyp Gör mörkare och vänta."
+
+#. i18n: ectx: label, entry (AnimationBlink), group (Game)
+#: kjumpingcube.kcfg:23
+#, kde-format
+msgid "Animation type Blink rapidly."
+msgstr "Animeringstyp Blinka snabbt."
+
+#. i18n: ectx: label, entry (AnimationSpread), group (Game)
+#: kjumpingcube.kcfg:27
+#, kde-format
+msgid "Animation type Scatter dots."
+msgstr "Animeringstyp Sprid punkter."
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kjumpingcube.kcfg:31
+#, kde-format
+msgid "Color of neutral cubes."
+msgstr "Färg för neutrala kuber."
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kjumpingcube.kcfg:35
+#, kde-format
+msgid "Color of player 1."
+msgstr "Färg för första spelaren."
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kjumpingcube.kcfg:39
+#, kde-format
+msgid "Color of player 2."
+msgstr "Färg för andra spelaren."
+
+#. i18n: ectx: label, entry (CubeDim), group (Game)
+#: kjumpingcube.kcfg:45
+#, kde-format
+msgid "Size of the playing field."
+msgstr "Spelbrädets storlek."
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kjumpingcube.kcfg:49
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "Om första spelaren spelas av datorn."
+
+#. i18n: ectx: label, entry (Kepler1), group (Game)
+#: kjumpingcube.kcfg:53
+#, kde-format
+msgid "Whether computer player 1 uses Kepler AI."
+msgstr "Om första datorspelaren använder Kepler artificiell intelligens."
+
+#. i18n: ectx: label, entry (Newton1), group (Game)
+#: kjumpingcube.kcfg:57
+#, kde-format
+msgid "Whether computer player 1 uses Newton AI."
+msgstr "Om första datorspelaren använder Newton artificiell intelligens."
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kjumpingcube.kcfg:68
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "Första datorspelarens spelstyrka."
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kjumpingcube.kcfg:72
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "Om andra spelaren spelas av datorn."
+
+#. i18n: ectx: label, entry (Kepler2), group (Game)
+#: kjumpingcube.kcfg:76
+#, kde-format
+msgid "Whether computer player 2 uses Kepler AI."
+msgstr "Om andra datorspelaren använder Kepler artificiell intelligens."
+
+#. i18n: ectx: label, entry (Newton2), group (Game)
+#: kjumpingcube.kcfg:80
+#, kde-format
+msgid "Whether computer player 2 uses Newton AI."
+msgstr "Om andra datorspelaren använder Newton artificiell intelligens."
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kjumpingcube.kcfg:91
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "Andra datorspelarens spelstyrka."
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kjumpingcube.kcfg:95
+#, kde-format
+msgid "Pause before each computer move."
+msgstr "Paus före varje datordrag."
+
+#. i18n: ectx: label, entry (PauseForStep), group (Game)
+#: kjumpingcube.kcfg:99
+#, kde-format
+msgid "Pause before each cascade step."
+msgstr "Paus före varje kaskadsteg."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kjumpingcubeui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Huvudverktygsrad"
+
+#: main.cpp:39
+#, kde-format
+msgid "KJumpingCube"
+msgstr "Hoppande kuben"
+
+#: main.cpp:41
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "Taktiskt spel för en eller två spelare"
+
+#: main.cpp:43
+#, kde-format
+msgid "(c) 1998-2000, Matthias Kiefer"
+msgstr "© 1998-2000, Matthias Kiefer"
+
+#: main.cpp:47
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:48
+#, kde-format
+msgid "Various improvements"
+msgstr "Diverse förbättringar"
+
+#: main.cpp:49
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:50
+#, kde-format
+msgid "Upgrade to KDE4 and SVG artwork support."
+msgstr "Uppgradering till KDE4 och stöd för SVG-grafik."
+
+#: main.cpp:52
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:53
+#, kde-format
+msgid "Graphics for KDE 4.0 version."
+msgstr "Grafik för KDE 4.0-versionen."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "Första datorspelaren"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:181
+#, kde-format
+msgid "Playing now"
+msgstr "Spelar nu"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:59 settings.ui:194
+#, kde-format
+msgid "Style of Play"
+msgstr "Spelstil"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
+#: settings.ui:65 settings.ui:203
+#, kde-format
+msgid "Kepler"
+msgstr "Kepler"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
+#: settings.ui:75 settings.ui:213
+#, kde-format
+msgid "Newton"
+msgstr "Newton"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:120 settings.ui:255
+#, kde-format
+msgid "Beginner"
+msgstr "Nybörjare"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:130 settings.ui:265
+#, kde-format
+msgid "Average"
+msgstr "Normal"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:146 settings.ui:281
+#, kde-format
+msgid "Expert"
+msgstr "Expert"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:163
+#, kde-format
+msgid "Computer Player 2"
+msgstr "Andra datorspelaren"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:298
+#, kde-format
+msgid "Pause before each computer move"
+msgstr "Paus före varje datordrag"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: settings.ui:309
+#, kde-format
+msgid "Board Size"
+msgstr "Spelplanens storlek"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: settings.ui:345
+#, kde-format
+msgid "3x3"
+msgstr "3x3"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: settings.ui:368
+#, kde-format
+msgid "15x15"
+msgstr "15x15"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:383
+#, kde-format
+msgid "Players' Colors"
+msgstr "Spelarnas färger"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:391
+#, kde-format
+msgid "Player 1:"
+msgstr "Första spelaren:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:405
+#, kde-format
+msgid "Player 2:"
+msgstr "Andra spelaren:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:419
+#, kde-format
+msgid "Neutral:"
+msgstr "Neutral:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#: settings.ui:434
+#, kde-format
+msgid "Cascade Move Display"
+msgstr "Visning av kaskaddrag"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
+#: settings.ui:446
+#, kde-format
+msgid "None (no pauses)"
+msgstr "Ingen (inga pauser)"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
+#: settings.ui:459
+#, kde-format
+msgid "Darken and pause"
+msgstr "Gör mörkare och vänta"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
+#: settings.ui:472
+#, kde-format
+msgid "Blink rapidly"
+msgstr "Blinka snabbt"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
+#: settings.ui:485
+#, kde-format
+msgid "Scatter dots"
+msgstr "Sprid punkter"
+
+#. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
+#: settings.ui:498
+#, kde-format
+msgid "Cascade Move Time"
+msgstr "Tid för kaskaddrag"
+
+#. i18n: ectx: property (text), widget (QLabel, label_14)
+#: settings.ui:543
+#, kde-format
+msgid "Short"
+msgstr "Kort"
+
+#. i18n: ectx: property (text), widget (QLabel, label_13)
+#: settings.ui:566
+#, kde-format
+msgid "Long"
+msgstr "Lång"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
+#: settings.ui:581
+#, kde-format
+msgid "Pause before each cascade step"
+msgstr "Paus före varje kaskadsteg"
+
+#~ msgid "PushButton"
+#~ msgstr "Tryckknapp"
+
+#~ msgid "Overwrite"
+#~ msgstr "Skriv över"
+
+#~ msgid "Computing a move"
+#~ msgstr "Beräknar ett drag"
+
+#~ msgid "Interrupted calculation of move"
+#~ msgstr "Avbröt beräkning av drag"
+
+#~ msgid "Performing a move"
+#~ msgstr "Utför ett drag"
+
+#~ msgid "Stop"
+#~ msgstr "Stoppa"
+
+#~ msgid "Force the computer to move immediately"
+#~ msgstr "Tvinga datorn att flytta omedelbart"
+
+#~ msgid ""
+#~ "Stop the computer's calculation of its current move and force it to move "
+#~ "immediately"
+#~ msgstr ""
+#~ "Stoppa datorns beräkning av nuvarande drag, och tvinga den att flytta "
+#~ "omedelbart"
+
+#~ msgid "stopped activity"
+#~ msgstr "aktivitet stoppad"
+
+#~ msgid "Type of animation of overflowing dice"
+#~ msgstr "Typ av animering för överflödiga tärningar"
+
+#~ msgid "&Game"
+#~ msgstr "S&pel"
+
+#~ msgid "10x10"
+#~ msgstr "10x10"
+
+#~ msgid "Computer Skill"
+#~ msgstr "Datorns spelstyrka"
+
+#~ msgid "Player 2"
+#~ msgstr "Andra spelaren"
+
+#~ msgid "5x5"
+#~ msgstr "5x5"
+
+#~ msgctxt "Menu title"
+#~ msgid "&Move"
+#~ msgstr "&Flytta"

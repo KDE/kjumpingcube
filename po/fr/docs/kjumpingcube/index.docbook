@@ -1,0 +1,793 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kjumpingcube;">
+  <!ENTITY kappversion "1.2"
+><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuel de &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+&traducteurEricBischoff;&traducteurGerardDelafond;&traducteurStanislasZeller;&relecteurLudovicGrossard; 
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>16/11/2007</date
+><!-- Date of (re)writing, or update. Use the variable definitions within header to change this value.-->
+<releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Cette documentation décrit le jeu &kjumpingcube; version &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jeu</keyword
+> <!-- do not change this! -->
+	<keyword
+>KJumpingCube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>stratégie</keyword>
+	<keyword
+>dé</keyword>
+	<keyword
+>jeu de dé</keyword>
+	<keyword
+>jouer au dé</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>deux joueurs</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>cube</keyword>
+	<keyword
+>jump</keyword>
+	<keyword
+>jumping cube</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduction</title
+> <!-- do not change this! -->
+	<note
+><title
+>Type de jeu : </title
+><para
+>Stratégie, dé</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Deux</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&kjumpingcube; est un jeu de tactique simple. Vous pouvez y jouer contre l'ordinateur ou un ami. La zone de jeu consiste en cases contenant des points. Quand le jeu démarre, chaque case a seulement un point, et aucun propriétaire. Les joueurs les déplacent en cliquant soit sur une case libre ou sur une de leurs propres cases, ce qui augmente cette case d'un point. Quand la valeur d'une case atteint son maximum, les points en trop sont redistribués vers les cases voisines, prenant ainsi leur contrôle. Le gagnant est celui qui détient toutes les cases.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>Comment jouer</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectif : </title
+><para
+>Prendre toutes les cases sur le plateau de jeu.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>&kjumpingcube; se charge directement, vous pouvez donc démarrer la partie de suite.</para>
+	<para
+>Vous déplacez une case en cliquant sur une case libre ou une des vôtres. Si vous cliquez sur une case libre, vous êtes le propriétaire de cette case et la couleur de la case est modifiée pour votre couleur. Chaque fois que vous cliquez sur une case, la valeur de la case augmente d'un point. Si la valeur de la case atteint son maximum, les points sont redistribués vers les cases voisines immédiates (les points <quote
+>sautent</quote
+> dessus). Si une case voisine est la propriété d'un autre joueur, elle est prise, avec tous ses points, et modifiée pour votre couleur.</para>
+<note
+><title
+>Exemple : </title
+><para
+>Si une case au centre d'autres cases atteint cinq points, quatre de ces points vont vers les quatre cases voisines laissant la case source avec un point. Il est possible pour des déplacements automatiques en cascade de trouver si les cases voisines ont atteint aussi le maximum après la distribution des points.</para
+></note>
+<note
+><title
+>Remarque : </title
+><para
+>Une grande partie de la zone de jeu peut changer de main très rapidement.</para
+></note>
+<para
+>Le gagnant est celui qui prend toutes les cases sur le plateau de jeu.</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Règles du jeu, stratégies et astuces</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Règles</title>
+		<orderedlist>
+			<listitem
+><para
+>Un déplacement consiste à cliquer sur une case qui n'appartient pas à un adversaire.</para
+></listitem>
+			<listitem
+><para
+>Le déplacement augmente la case de un point.</para
+></listitem>
+			<listitem
+><para
+>Au démarrage de la partie, chaque case a un point, est affiché dans une couleur neutre et n'a pas de propriétaire.</para
+></listitem>
+			<listitem
+><para
+>Chaque joueur a une couleur qui indique sa propriété sur les cases.</para
+></listitem>
+			<listitem
+><para
+>En cliquant sur une case qui n'a pas de propriétaire, le joueur devient le propriétaire de cette case et change sa couleur pour la sienne. En même temps, la valeur de la case est augmentée d'un point.</para
+></listitem>
+			<listitem
+><para
+>Si une case a plus de points qu'elle n'a de cases voisines, un point va à chaque case voisine, en laissant seulement un point à la case originale.</para
+></listitem>
+			<listitem
+><para
+>Pendant chaque déplacement, toutes les cases avoisinantes deviennent la propriété du joueur qui se déplace et donc augmentent leurs points, même si les cases voisines étaient neutres ou la propriété d'un autre joueur avant.</para
+></listitem>
+			<listitem
+><para
+>Les cases voisines sont celles au-dessus, en dessous, à gauche et à droite, mais pas celles en diagonal. Les cases en coin ont juste deux cases voisines, les cases de cotés en ont trois, et les cases du centre en ont quatre.</para
+></listitem>
+			<listitem
+><para
+>Si un déplacement se fait vers une case voisine qui a le maximum de points, le déplacement continue automatiquement vers la case voisine de la voisine et ainsi de suite, en cascade. Un grand nombre de cases peuvent changer de propriétaire pendant ce type de déplacement.</para
+></listitem>
+			<listitem
+><para
+>Le gagnant est celui qui possède toutes les cases.</para
+></listitem>
+			<listitem
+><para
+>Vous pouvez utiliser <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer &kjumpingcube;...</guimenuitem
+></menuchoice
+> pour sélectionner les couleurs, l'ordinateur, le joueur, le niveau de difficulté et la taille du plateau de jeu.</para
+></listitem>
+		</orderedlist>
+	</sect1>
+	<sect1 id="strattips">
+		<title
+>Stratégies et astuces</title>
+		<itemizedlist>
+			<listitem
+><para
+>Essayez d'éviter d'augmenter une case quand votre adversaire possède une case voisine qui peut atteindre son maximum avant que la vôtre ne l'atteigne.</para
+></listitem>
+			<listitem
+><para
+>Essayez de contrôler les cases en coin en premier, ensuite les cases de coté. Vous n'avez besoin que de quelques déplacements pour les augmenter à leur maximum.</para
+></listitem>
+			<listitem
+><para
+>N'essayez pas de jouer trop près de votre adversaire, spécialement pendant les déplacements d'ouverture. Emparez vous d'une case ou deux sur la diagonale par rapport à votre adversaire.</para
+></listitem>
+			<listitem
+><para
+>Gardez un œil sur les longues chaînes de cases qui sont à leurs maximums. Si elles vous appartiennent, vous devez vous méfier des déplacements en cascade. Si ce sont celles de votre adversaire, elles peuvent devenir bonnes pour la capture avec le déplacement en cascade, dès qu'elles prolongent suffisament votre territoire.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+ 
+<chapter id="interface"
+><title
+>Vue d'ensemble de l'interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+	<sect1 id="game-menu">
+		<title
+>Le menu <guimenu
+>Jeu</guimenu
+></title>
+		<variablelist id="menu-game-new">
+			<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Démarre une nouvelle partie.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-load">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Ouvrir...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Ouvre un jeu précédemment enregistré.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry id="menu-game-save">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Enregistrer</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Enregistre la partie en cours.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Enregistrer sous...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Enregistre la partie en cours sous un autre nom.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><shortcut
+>&Echap;</shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Arrêter</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Arrêter la recherche du prochain déplacement de l'adversaire.</action
+> L'ordinateur va effectuer le meilleur déplacement qu'il trouve, jusqu'au moment où vous arrêtez manuellement son action.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+><guimenuitem
+>Quitter</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Quitte</action
+> &kjumpingcube;.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="move-menu">
+	<title
+>Le menu <guimenu
+>Déplacer</guimenu
+></title>
+	<variablelist>
+		<varlistentry id="move-menu-undo">
+			<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+><guimenuitem
+>Annuler</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Annuler le dernier déplacement que vous avez fait</action
+> Le dernier seulement peut être annulé dans cette partie.</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="move-menu-hint">
+			<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+><guimenuitem
+>Conseil</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Demander une astuce pour le meilleur coup pour le prochain tour.</action
+></para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+	<title
+>Le menu <guimenu
+>Configuration</guimenu
+></title>
+	<variablelist>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'outils</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Cache ou affiche la barre d'outils à l'écran.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Afficher la barre d'état</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Cache ou affiche la barre d'état.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Ouvre une boîte de dialogue où vous pouvez configurer les raccourcis clavier</action
+> pour &kjumpingcube;</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-toolbar">
+			<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les barres d'outils...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+><action
+>Ouvre une boîte de dialogue où vous pouvez configurer les barres d'outils</action
+> pour &kjumpingcube;</para
+></listitem>
+		</varlistentry>
+		<varlistentry id="settings-menu-configure">
+			<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer &kjumpingcube;...</guimenuitem
+></menuchoice
+></term>
+			<listitem
+><para
+>Ouvrir une boîte de dialogue de configuration du jeu. Voir la section <link linkend="configuration"
+>Configuration du jeu</link
+> pour plus de détails.</para>
+			</listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Le menu <guimenu
+>Aide</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+<sect1 id="toolbars">
+	<title
+>La barre d'outils de &kjumpingcube;</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guiicon
+>Nouveau</guiicon
+></term
+><listitem
+><para
+><action
+>Démarre une nouvelle partie</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Enregistrer</guiicon
+></term
+><listitem
+><para
+><action
+>Enregistre la partie en cours.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Arrêter</guiicon
+></term
+><listitem
+><para
+><action
+>Arrêter la recherche du prochain déplacement de l'adversaire.</action
+> L'ordinateur va effectuer le meilleur déplacement qu'il trouve, jusqu'au moment où vous arrêtez manuellement son action.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Conseil</guiicon
+></term>
+			<listitem
+><para
+><action
+>Demander une astuce pour le meilleur coup pour le prochain tour.</action
+></para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guiicon
+>Annuler</guiicon
+></term>
+			<listitem
+><para
+><action
+>Annule le dernier coup que vous ayez joué.</action
+></para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Questions fréquemment posées</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Je veux modifier la façon dont le jeux s'affiche. Est-ce possible ? </para
+></question>
+ <answer
+><para
+>Pour le moment, vous ne pouvez modifier que les couleurs des joueurs, mais pas le thème du jeu. Pour modifier les couleurs des joueurs, utilisez la boîte de dialogue <link linkend="configuration"
+>Configuration du jeu</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puis-je utiliser le clavier pour jouer à ce jeu ? </para
+></question>
+ <answer
+><para
+>Non. Ce jeu ne se joue pas en utilisant le clavier.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Où se trouvent les meilleurs scores ?</para
+></question>
+ <answer
+><para
+>&kjumpingcube; n'inclut pas cette fonctionnalité.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Configuration du jeu</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<para
+>Boîte de dialogue de configuration.</para>
+<para
+>Pour ouvrir la boîte de dialogue de configuration, utilisez l'option de la barre de menus <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer &kjumpingcube;...</guimenuitem
+></menuchoice
+></para>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Niveau de l'ordinateur</guilabel
+></term>
+			<listitem
+><para
+><action
+>Vous permet de choisir votre niveau de jeu à l'aide d'une glissière.</action
+> Cela détermine l'intelligence de l'ordinateur lorsque vous jouez contre lui.</para>
+			<para
+>Vous pouvez choisir <guilabel
+>Débutant</guilabel
+>, <guilabel
+>Moyen</guilabel
+> ou <guilabel
+>Expert</guilabel
+>.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Taille du plateau</guilabel
+></term
+><listitem
+><para
+><action
+>Vous permet de choisir la taille du terrain de jeu.</action
+></para>
+			<para
+>Utilisez la glissière pour sélectionner une valeur entre <guilabel
+>5x5</guilabel
+> et <guilabel
+>10x10</guilabel
+> cases.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>L'ordinateur joue</guilabel
+></term
+><listitem
+><para
+>Détermine l'opposant de l'ordinateur comme, <guilabel
+>Joueur 1</guilabel
+>, <guilabel
+>Joueur 2</guilabel
+> ou les deux. Normalement, vous réglerez l'ordinateur comme joueur 1, et vous comme l'autre joueur. Le Joueur 1 commence toujours la partie.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Couleurs des joueurs</guilabel
+></term
+><listitem
+><para
+>Choisissez une couleur pour chaque joueur et pour les cases neutres</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Remerciements et licence</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kjumpingcube; est sous copyright 1998,1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>&kjumpingcube; s'inspire d'un jeu qui est sorti pour le Commodore64 et d'autres ordinateurs domestiques. Malheureusement, le nom de l'auteur original est inconnu.</para>
+
+<para
+>En 2007, Ian Wadham reprend la maintenance de &kjumpingcube; pour &kde; 4 et Eugene Trounev créa le premier thème SVG.</para>
+
+<para
+>Copyright de la documentation 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>Documentation mise à jour pour &kde; 2 et 3 par &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>Traduction française par &EricBischoff; &GerardDelafond; et &StanislasZeller;. Relecture par &LudovicGrossard;</para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Installation</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Compilation et installation</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

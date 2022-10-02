@@ -1,0 +1,667 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kjumpingcube;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+]>
+<book lang="&language;">
+
+<bookinfo>
+<title
+>Справочное руководство по &kjumpingcube;</title>
+
+<authorgroup>
+<author
+><firstname
+>Matthias</firstname
+> <surname
+>Kiefer</surname
+> <affiliation
+> <address
+><email
+>matthias.kiefer@gmx.de</email
+></address>
+</affiliation>
+</author>
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>Матиас Кифер (Matthias Kiefer)</holder>
+</copyright>
+
+<othercredit role="translator"
+><firstname
+>Валя</firstname
+><surname
+>Ванеева</surname
+><affiliation
+><address
+><email
+>fattie@altlinux.ru</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> 
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2003-11-06</date>
+<releaseinfo
+>1.1</releaseinfo>
+
+<abstract
+><para
+>&kjumpingcube; &mdash; простая тактическая игра, в которую вы можете играть против друга или компьютера.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KJumpingCube</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>игра</keyword>
+<keyword
+>стратегия</keyword>
+</keywordset>
+
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>&kjumpingcube; &mdash; простая тактическая игра. Вы можете играть в неё против другого человека или против компьютера. Игровое поле состоит из квадратов с точками. Щёлкнув по квадрату, вы можете увеличить количество точек, а если количество точек достигло наибольшего, они <quote
+>перепрыгивают</quote
+> на соседние квадраты и захватывают их. Победителем считается тот, у кого больше квадратов.</para>
+
+</chapter>
+
+
+<chapter id="playing-kjumpingcube">
+<title
+>Игра в &kjumpingcube;</title>
+
+<sect1 id="rules">
+<title
+>Правила</title>
+
+<orderedlist>
+<listitem
+><para
+>Ход состоит из увеличения точек в квадрате по щелчку. Вы можете увеличивать количество точек только на тех квадратах, которые не принадлежат вашему противнику. Если вы щёлкнете по нейтральному квадрату, он станет вашим. </para
+></listitem>
+<listitem
+><para
+>Если у квадрата больше точек, чем соседей, точки будут перенесены на эти соседние квадраты. Квадраты будут захвачены. </para
+></listitem>
+<listitem
+><para
+>Соседними считаются только квадраты по вертикали и горизонтали, но не по диагонали.</para
+></listitem>
+<listitem
+><para
+>Победителем считается тот, кто звахватит все квадраты.</para
+></listitem>
+</orderedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="menu-reference">
+<title
+>Управление</title>
+
+<sect1 id="menus">
+<title
+>Меню</title>
+
+<sect2 id="game-menu">
+<title
+>Меню <guimenu
+>Игра</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Новая игра</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Начать новую игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Загрузить</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Загрузить сохраненную игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Сохранить</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>Сохранить текущую игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Сохранить как...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>Сохранить текущую игру под другим именем.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+>&Esc;</shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Хватит думать</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Остановить размышления компьютера о своем следующем ходе</action
+>. Компьютер сделает лучший ход, который он нашел на момент нажатия клавиши.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+><guimenuitem
+>Выход</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Закрыть</action
+> &kjumpingcube;.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="move-menu">
+<title
+>Меню <guimenu
+>Перемещение</guimenu
+></title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+></shortcut
+> <guimenu
+>Перемещение</guimenu
+><guimenuitem
+>Отменить</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Отменить последний сделанный ход.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+> <keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Перемещение</guimenu
+><guimenuitem
+>Получить подсказку</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Получить подсказку о том, куда делать следующий ход.</action
+></para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="settings-menu">
+<title
+>Меню <guimenu
+>Настройка</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Показать панель инструментов</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Показать или скрыть панель инструментов.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Показать строку состояния</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Показать или скрыть строку состояния.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить комбинации клавиш...</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>Открыть окно редактирования привязок клавиш</action
+> для &kjumpingcube;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить KJumpingCube</guimenuitem
+></menuchoice>
+</term>
+<listitem>
+<para
+>Открыть диалог настроек, где вы можете изменить:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Уровень сложности</guilabel
+></term>
+<listitem
+><para
+><action
+>Выбор уровня сложности игры</action
+>. Он определяет, насколько <quote
+>умным</quote
+> будет игрок-компьютер.</para>
+<para
+>Доступные уровни:</para>
+<simplelist>
+<member
+><guimenuitem
+>Начинающий</guimenuitem
+></member>
+<member
+><guimenuitem
+>Продвинутый</guimenuitem
+></member>
+<member
+><guimenuitem
+>Эксперт</guimenuitem
+></member>
+</simplelist
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Размер доски</guilabel
+></term>
+<listitem
+><para
+><action
+>Выбор размера поля.</action
+></para>
+<para
+>Используйте ползунок чтобы выбрать значение между <guilabel
+>5x5</guilabel
+> и<guilabel
+>10x10</guilabel
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Игрок компьютера</guilabel
+></term>
+<listitem
+><para
+>Устанавливает компьютерного игрока <guilabel
+>игроком 1</guilabel
+> и/или<guilabel
+>игроком 2</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Цвет поля</guilabel
+></term>
+<listitem
+><para
+>Выберите цвет для каждого игрока</para
+></listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>Меню <guimenu
+>Справка</guimenu
+></title>
+&help.menu.documentation; </sect2>
+</sect1>
+
+<sect1 id="toolbars">
+<title
+>Панель инструментов</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guiicon
+>Новая игра</guiicon
+></term>
+<listitem
+><para
+><action
+>Начать новую игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guiicon
+>Загрузить</guiicon
+></term>
+<listitem
+><para
+><action
+>Загрузить сохраненную игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guiicon
+>Сохранить</guiicon
+></term>
+<listitem
+><para
+><action
+>Сохранить текущую игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guiicon
+>Хватит думать</guiicon
+></term>
+<listitem
+><para
+><action
+>Остановить размышления компьютера о своем следующем ходе</action
+>. Компьютер сделает лучший ход, который он нашёл на момент нажатия клавиши.</para
+></listitem>
+</varlistentry>
+
+
+<varlistentry>
+<term
+><guiicon
+>Отменить действие</guiicon
+></term>
+<listitem
+><para
+><action
+>Отменить последний сделанный ход.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guiicon
+>Справка</guiicon
+></term>
+<listitem
+><para
+><action
+>Открыть руководство</action
+> по &kjumpingcube; (этот документ).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="questions-answers-tips">
+<title
+>Вопросы, ответы и советы</title>
+
+<sect1 id="strategy-tips">
+<title
+>Советы по игре</title>
+
+<itemizedlist>
+<listitem
+><para
+>Пытайтесь избежать увеличения точек на квадрате, владелец которого &mdash; ваш противник. Всё равно он быстрее наберёт максимум точек, чем вы.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Авторские права и лицензирование</title>
+
+<para
+>Авторские права на &kjumpingcube; принадлежат Матиасу Киферу (Matthias Kiefer) <email
+>matthias.kiefer@gmx.de</email
+>, 1998, 1999.</para>
+
+<para
+>Игра &kjumpingcube; была создана под вдохновением от игры для Commodore64 и других домашних компьютеров. К сожалению, я не помню имени ее автора.</para>
+
+<para
+>Авторские права на документацию принадлежат Матиасу Киферу (Matthias Kiefer) <email
+>matthias.kiefer@gmx.de</email
+>, 1999.</para>
+
+<para
+>Документация обновлена для &kde; 2 и 3 Лори Уоттсом (Lauri Watts) <email
+>lauri@kde.org</email
+>.</para>
+
+<para
+>Перевод на русский - Валя Ванеева <email
+>fattie@altlinux.ru</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Установка</title>
+
+<sect1 id="getting-kjumpingcube">
+<title
+>Как получить &kjumpingcube;</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="requirements">
+<title
+>Системные требования</title>
+
+<para
+>Чтобы скомпилировать &kjumpingcube;, вам необходимо установить &kde; 2.0. Все библиотеки, необходимые для &kjumpingcube; и саму программу можно скачать с сайта <ulink url="ftp://ftp.kde.org/pub/kde/"
+>ftp://ftp.kde.org/pub/kde/</ulink
+>. </para>
+
+</sect1>
+
+<sect1 id="compilation">
+<title
+>Компиляция и установка</title>
+&install.compile.documentation; <para
+>Вот и всё! Если у вас возникли какие-то проблемы, обратитесь к автору программы: <email
+>matthias.kiefer@gmx.de</email
+>.</para>
+
+</sect1>
+</appendix>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+
