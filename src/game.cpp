@@ -557,7 +557,7 @@ void Game::saveGame (bool saveAs)
       QUrl url;
 
       do {
-         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
+         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"), nullptr, QFileDialog::DontConfirmOverwrite);
 
          if (url.isEmpty())
             return;
