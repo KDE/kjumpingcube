@@ -553,11 +553,11 @@ void Game::newGame()
 void Game::saveGame (bool saveAs)
 {
    if (saveAs || m_gameURL.isEmpty()) {
-      int result=0;
+      bool isOtherUrlWanted = false;
       QUrl url;
 
       do {
-         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
+         url = QFileDialog::getSaveFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"), nullptr, QFileDialog::DontConfirmOverwrite);
 
          if (url.isEmpty())
             return;
@@ -573,12 +573,12 @@ void Game::saveGame (bool saveAs)
          if (statJob->exec()) {
             QString mes=i18n("The file %1 already exists.\n"
                "Do you want to overwrite it?", url.url());
-            result = KMessageBox::warningContinueCancel
+            const int result = KMessageBox::warningContinueCancel
                (m_view, mes, QString(), KStandardGuiItem::overwrite());
-            if (result == KMessageBox::Cancel)
-               return;
+            // TODO: instead of default "Cancel" use "Select Another URL" or similar
+            isOtherUrlWanted = (result == KMessageBox::Cancel);
          }
-      } while (result == KMessageBox::No);
+      } while (isOtherUrlWanted);
 
       m_gameURL = url;
    }
