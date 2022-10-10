@@ -22,6 +22,7 @@
 #include <KConfigDialog> // IDW test.
 #include <KIO/CopyJob>
 #include <KIO/Job>
+#include <kwidgetsaddons_version.h>
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -683,10 +684,19 @@ bool Game::newGameOK()
                    "Do you wish to abandon the current game?");
    }
    qCDebug(KJUMPINGCUBE_LOG) << "QUERY:" << query;
-   int reply = KMessageBox::questionYesNo (m_view, query, i18n("New Game?"),
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+   int reply = KMessageBox::questionTwoActions (m_view,
+#else
+   int reply = KMessageBox::questionYesNo (m_view,
+#endif
+                                           query, i18n("New Game?"),
                                            KGuiItem (i18n("Abandon Game")),
                                            KGuiItem (i18n("Continue Game")));
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+   if (reply == KMessageBox::PrimaryAction) {
+#else
    if (reply == KMessageBox::Yes) {
+#endif
       qCDebug(KJUMPINGCUBE_LOG) << "ABANDON GAME";
       return true;			// Start a new game.
    }
