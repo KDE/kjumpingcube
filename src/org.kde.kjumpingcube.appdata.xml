@@ -146,6 +146,7 @@
       <image>https://www.kde.org/images/screenshots/kjumpingcube.png</image>
     </screenshot>
   </screenshots>
+  <content_rating type="oars-1.1" />
   <url type="homepage">https://apps.kde.org/kjumpingcube</url>
   <url type="help">https://docs.kde.org/?application=kjumpingcube</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjumpingcube</url>
