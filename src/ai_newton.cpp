@@ -68,11 +68,4 @@ int AI_Newton::assessCube (const int index,         const Player player,
    if (vacant && nVacant && (cMax == 4)) return OccupyCenter;	// Value 6.
    // Sun 2 Dec 2012 - This seems to play well on sizes 3, 5 and 7.
    return PlayHereAnyway; // IDW test. Ignore val > 6. Try ALL REASONABLE MOVES.
-   if ((cRank <= 0)  && (pCount == 0))   return CanExpand;	// Value 9.
-   if ((cRank <= 0)  && (pCount > 0))    return CanConsolidate;	// Value 7.
-   if (cRank == 1)                       return CanReachMaximum;// Value 8.
-   if (cMax == 3)                        return IncreaseEdge;	// Value 10.
-   if (cMax == 4)                        return IncreaseCenter;	// Value 11.
-
-   return PlayHereAnyway;					// Value 12.
 }
