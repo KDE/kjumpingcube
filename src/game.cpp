@@ -206,8 +206,8 @@ void Game::startHumanMove (int x, int y)
    if (! humanPlayer) {
       buttonClick();
    }
-   else if (humanPlayer && ((m_currentPlayer == m_box->owner(index)) ||
-       (m_box->owner(index) == Nobody))) {
+   else if ((m_currentPlayer == m_box->owner(index)) ||
+       (m_box->owner(index) == Nobody)) {
       m_waitingToMove = false;
       m_moveNo++;
       m_endMoveNo = LARGE_NUMBER;
