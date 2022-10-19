@@ -18,6 +18,7 @@
   <name xml:lang="gl">KJumpingCube</name>
   <name xml:lang="id">KJumpingCube</name>
   <name xml:lang="it">KJumpingCube</name>
+  <name xml:lang="ka">KJumpingCube</name>
   <name xml:lang="ko">KJumpingCube</name>
   <name xml:lang="nl">KJumpingCube</name>
   <name xml:lang="nn">Terningsprett</name>
@@ -51,6 +52,7 @@
   <summary xml:lang="gl">Xogo de captura de territorios</summary>
   <summary xml:lang="id">Permainan Menguasai Wilayah</summary>
   <summary xml:lang="it">Gioco di conquista del territorio</summary>
+  <summary xml:lang="ka">ტერიტორიების დაპყრობის თამაში</summary>
   <summary xml:lang="ko">땅따먹기 게임</summary>
   <summary xml:lang="nl">Landverovertjespel</summary>
   <summary xml:lang="nn">Spel basert på områdekapring</summary>
@@ -125,6 +127,7 @@
       <caption xml:lang="gl">Xogando a KJumpingCube</caption>
       <caption xml:lang="id">Memainkan KJumpingCube</caption>
       <caption xml:lang="it">Giocare con KJumpingCube</caption>
+      <caption xml:lang="ka">KJumpingCube-ის თამაში</caption>
       <caption xml:lang="ko">KJumpingCube 플레이</caption>
       <caption xml:lang="nl">KJumpingCube wordt gespeeld</caption>
       <caption xml:lang="nn">Spelar KJumpingCube</caption>
