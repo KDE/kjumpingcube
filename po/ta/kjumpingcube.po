@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2022-10-20 00:44+0000\n"
 "PO-Revision-Date: 2021-01-18 19:16+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -28,106 +28,106 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "augustin_raj@hotmail.com"
 
-#: game.cpp:77
+#: game.cpp:78
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr ""
 
-#: game.cpp:114
+#: game.cpp:115
 #, kde-format
 msgid "Game over"
 msgstr ""
 
-#: game.cpp:115
+#: game.cpp:116
 #, fuzzy, kde-format
 #| msgid "Winner is Player %1!"
 msgid "The winner is Player %1!"
 msgstr "வெற்றிபெற்ற விளையாட்டாளர் %1!"
 
-#: game.cpp:116
+#: game.cpp:117
 #, kde-format
 msgid "Winner"
 msgstr "வெற்றிபெற்றவர்"
 
-#: game.cpp:127
+#: game.cpp:128
 #, kde-format
 msgid "General"
 msgstr "பொது"
 
-#: game.cpp:240
+#: game.cpp:241
 #, kde-format
 msgid "Start game"
 msgstr ""
 
-#: game.cpp:243
+#: game.cpp:244
 #, kde-format
 msgid "Continue game"
 msgstr ""
 
-#: game.cpp:247
+#: game.cpp:248
 #, kde-format
 msgid "Start computer move"
 msgstr ""
 
-#: game.cpp:268
+#: game.cpp:269
 #, fuzzy, kde-format
 #| msgctxt "NAME OF TRANSLATORS"
 #| msgid "Your names"
 msgid "Your turn"
 msgstr "அ.அகஸ்டின் ராஜ்"
 
-#: game.cpp:271
+#: game.cpp:272
 #, fuzzy, kde-format
 #| msgid "Player 1"
 msgid "Player %1"
 msgstr "முதல் விளையாட்டாளர்"
 
-#: game.cpp:287
+#: game.cpp:288
 #, fuzzy, kde-format
 msgid "Computer player %1 is moving"
 msgstr "கணினி விளையாடுகிறது"
 
-#: game.cpp:307
+#: game.cpp:308
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr ""
 
-#: game.cpp:407
+#: game.cpp:408
 #, kde-format
 msgid "Show next step"
 msgstr ""
 
-#: game.cpp:465
+#: game.cpp:466
 #, kde-format
 msgid "Finishing move..."
 msgstr ""
 
-#: game.cpp:504
+#: game.cpp:505
 #, kde-format
 msgid "Interrupt game"
 msgstr ""
 
-#: game.cpp:510
+#: game.cpp:511
 #, kde-format
 msgid "Stop computing"
 msgstr ""
 
-#: game.cpp:513
+#: game.cpp:514
 #, kde-format
 msgid "Stop showing move"
 msgstr ""
 
-#: game.cpp:516
+#: game.cpp:517
 #, kde-format
 msgid "Stop animation"
 msgstr ""
 
-#: game.cpp:545
+#: game.cpp:546
 #, kde-format
 msgid "New Game"
 msgstr ""
 
-#: game.cpp:574
+#: game.cpp:575
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -139,13 +139,13 @@ msgstr ""
 "கோப்பு %1 ஏற்கனவே உள்ளது.\n"
 "மேல் எழுத வேண்டுமா?"
 
-#: game.cpp:599
+#: game.cpp:600
 #, fuzzy, kde-format
 #| msgid "game saved as %1"
 msgid "Game saved as %1"
 msgstr "விளையாட்டு %1 ஆக சேமிக்கப்பட்டுள்ளது"
 
-#: game.cpp:602
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -154,17 +154,17 @@ msgstr ""
 "கோப்பு சேமிப்பில் பிழை ஏற்பட்டுள்ளது\n"
 "%1"
 
-#: game.cpp:619
+#: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "கோப்பு %1 இல்லை!"
 
-#: game.cpp:634
+#: game.cpp:635
 #, fuzzy, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "கோப்பு %1 கேஜம்ப்பிங் க்யூப் விளையாட்டு கோப்பு அல்ல!"
 
-#: game.cpp:647
+#: game.cpp:648
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -173,7 +173,7 @@ msgstr ""
 "கோப்பினை உள்வாங்குவதில் பிழை ஏற்பட்டுள்ளது\n"
 "%1"
 
-#: game.cpp:675
+#: game.cpp:676
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -183,7 +183,7 @@ msgid ""
 "previous size setting?"
 msgstr ""
 
-#: game.cpp:681
+#: game.cpp:682
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -191,43 +191,43 @@ msgid ""
 "Do you wish to abandon the current game?"
 msgstr ""
 
-#: game.cpp:686
+#: game.cpp:692
 #, kde-format
 msgid "New Game?"
 msgstr ""
 
-#: game.cpp:687
+#: game.cpp:693
 #, kde-format
 msgid "Abandon Game"
 msgstr ""
 
-#: game.cpp:688
+#: game.cpp:694
 #, kde-format
 msgid "Continue Game"
 msgstr ""
 
-#: game.cpp:830
+#: game.cpp:840
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
 
-#: game.cpp:846
+#: game.cpp:856
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr ""
 
-#: game.cpp:855
+#: game.cpp:865
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr ""
 
-#: game.cpp:862
+#: game.cpp:872
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr ""
 
-#: game.cpp:877
+#: game.cpp:887
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr ""

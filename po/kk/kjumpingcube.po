@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2022-10-20 00:44+0000\n"
 "PO-Revision-Date: 2013-07-11 03:38+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -27,102 +27,102 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sairan@computer.org"
 
-#: game.cpp:77
+#: game.cpp:78
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Кешіріңіз, жүріс жасалып жатыр..."
 
-#: game.cpp:114
+#: game.cpp:115
 #, kde-format
 msgid "Game over"
 msgstr "Ойын бітті"
 
-#: game.cpp:115
+#: game.cpp:116
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "%1 ойыншысы - жеңімпаз!"
 
-#: game.cpp:116
+#: game.cpp:117
 #, kde-format
 msgid "Winner"
 msgstr "Жеңімпаз"
 
-#: game.cpp:127
+#: game.cpp:128
 #, kde-format
 msgid "General"
 msgstr "Жалпы"
 
-#: game.cpp:240
+#: game.cpp:241
 #, kde-format
 msgid "Start game"
 msgstr "Ойынды бастау"
 
-#: game.cpp:243
+#: game.cpp:244
 #, kde-format
 msgid "Continue game"
 msgstr "Ойынды жалғастыру"
 
-#: game.cpp:247
+#: game.cpp:248
 #, kde-format
 msgid "Start computer move"
 msgstr "Компьютердің жүрісін бастау"
 
-#: game.cpp:268
+#: game.cpp:269
 #, kde-format
 msgid "Your turn"
 msgstr "Сіздің кезегіңіз"
 
-#: game.cpp:271
+#: game.cpp:272
 #, kde-format
 msgid "Player %1"
 msgstr "%1 ойыншы"
 
-#: game.cpp:287
+#: game.cpp:288
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "%1 компьютер - ойыншы жүреді"
 
-#: game.cpp:307
+#: game.cpp:308
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Компьютер дұрыс жүрісті табалмады."
 
-#: game.cpp:407
+#: game.cpp:408
 #, kde-format
 msgid "Show next step"
 msgstr "Келісіні қадамын көрсету"
 
-#: game.cpp:465
+#: game.cpp:466
 #, kde-format
 msgid "Finishing move..."
 msgstr "Жүрісті аяқтау..."
 
-#: game.cpp:504
+#: game.cpp:505
 #, kde-format
 msgid "Interrupt game"
 msgstr "Ойынды үзу"
 
-#: game.cpp:510
+#: game.cpp:511
 #, kde-format
 msgid "Stop computing"
 msgstr "Компьютер ойлауын тоқтату"
 
-#: game.cpp:513
+#: game.cpp:514
 #, kde-format
 msgid "Stop showing move"
 msgstr "Жүрісті көрсетуін тоқтату"
 
-#: game.cpp:516
+#: game.cpp:517
 #, kde-format
 msgid "Stop animation"
 msgstr "Анимацияны тоқтату"
 
-#: game.cpp:545
+#: game.cpp:546
 #, kde-format
 msgid "New Game"
 msgstr "Жаңа ойын"
 
-#: game.cpp:574
+#: game.cpp:575
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -134,12 +134,12 @@ msgstr ""
 "%1 деген файл бар екен.\n"
 "Үстінен жаза берейік пе?"
 
-#: game.cpp:599
+#: game.cpp:600
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Ойын %1 деп сақталған"
 
-#: game.cpp:602
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -148,17 +148,17 @@ msgstr ""
 "Файлды сақтағанда қате пайда болды\n"
 "%1"
 
-#: game.cpp:619
+#: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "%1 деген файл жоқ!"
 
-#: game.cpp:634
+#: game.cpp:635
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "%1 дегені KJumpingCube ойын файлы емес!"
 
-#: game.cpp:647
+#: game.cpp:648
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -167,7 +167,7 @@ msgstr ""
 "Файлды жүктегенде қате пайда болды\n"
 "%1"
 
-#: game.cpp:675
+#: game.cpp:676
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -181,7 +181,7 @@ msgstr ""
 "Бар ойынды тастамақсыз ба, әлде бұрынғы өлшемге қайтып, оны жалғастырмақсыз "
 "ба?"
 
-#: game.cpp:681
+#: game.cpp:682
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -192,43 +192,43 @@ msgstr ""
 "\n"
 "Бар ойынды тастамақсыз ба?"
 
-#: game.cpp:686
+#: game.cpp:692
 #, kde-format
 msgid "New Game?"
 msgstr "Жаңа ойын?"
 
-#: game.cpp:687
+#: game.cpp:693
 #, kde-format
 msgid "Abandon Game"
 msgstr "Ойынды тастау"
 
-#: game.cpp:688
+#: game.cpp:694
 #, kde-format
 msgid "Continue Game"
 msgstr "Ойынды жалғастыру"
 
-#: game.cpp:830
+#: game.cpp:840
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr "Файлдағы текшесінің өлшемі %1 - %2 арасынан тыс. Ол %1 болады."
 
-#: game.cpp:846
+#: game.cpp:856
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "%1 текшенің кіріс жол жазуы жоқ."
 
-#: game.cpp:855
+#: game.cpp:865
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "%1 деген шаршы иесі 0 - 2 аумағынан тыс ."
 
-#: game.cpp:862
+#: game.cpp:872
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "%1 деген шаршы мәні 1 - %2 аумағынан тыс."
 
-#: game.cpp:877
+#: game.cpp:887
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Ойнап жатқаны не 1 не 2 емес."
