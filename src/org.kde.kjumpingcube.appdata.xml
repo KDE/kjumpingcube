@@ -13,6 +13,7 @@
   <name xml:lang="en-GB">KJumpingCube</name>
   <name xml:lang="es">KJumpingCube</name>
   <name xml:lang="et">KJumpingCube</name>
+  <name xml:lang="eu">KJumpingCube</name>
   <name xml:lang="fi">KJumpingCube</name>
   <name xml:lang="fr">KJumpingCube</name>
   <name xml:lang="gl">KJumpingCube</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="en-GB">Territory Capture Game</summary>
   <summary xml:lang="es">Juego de captura de territorio</summary>
   <summary xml:lang="et">Mänguala vallutamise mäng</summary>
+  <summary xml:lang="eu">Lurraldeak atzemateko jokoa</summary>
   <summary xml:lang="fi">Alueenvaltauspeli</summary>
   <summary xml:lang="fr">Jeu de capture de territoires</summary>
   <summary xml:lang="gl">Xogo de captura de territorios</summary>
@@ -86,6 +88,7 @@
     <p xml:lang="en-GB">KJumpingCube is a simple dice driven tactical game. The playing area consists of squares containing points. Players move by clicking on either a vacant square, or on own square.</p>
     <p xml:lang="es">KJumpingCube es un sencillo juego táctico de dados. El área de juego consiste en cuadros que contienen puntos. Los jugadores mueven haciendo clic en un cuadro vacío o en uno propio.</p>
     <p xml:lang="et">KJumpingCube on lihtne täringupõhine taktikaline mäng. Mänguala koosneb punkte sisaldavatest ruutudest. Mängija käik seisneb klõpsamises kas tühjale või enda ruudule.</p>
+    <p xml:lang="eu">KJumpingCube dadoak gidatutako taktika-joko bat da. Joko eremua, puntuak dituzten karratuz osatuta dago. Jokalariek hutsik dagoen karratu batean edo karratu propio batean klik eginez mugitzen dute.</p>
     <p xml:lang="fi">KJumpingCube on yksinkertainen nopalla pelattava taktiikkapeli. Pelialue koostuu neliöistä, joissa on pisteitä. Pelaajat liikkuvat napsauttamalla joko vapaata tai omaa neliötä.</p>
     <p xml:lang="fr">KJumpingCube est un jeu de tactique simple utilisant des lancers de dés. Le plateau de jeu est constitué de carrés contenant des points. Les joueurs se déplacent en cliquant soit sur un carré vacant, soit sur leur propre carré.</p>
     <p xml:lang="gl">KJumpingCube é un xogo de estratexia sinxelo baseado en dados. A zona de xogo consiste en cadrados que conteñen puntos. Os xogadores premen un cadrado baleiro ou o seu propio cadrado para moverse.</p>
@@ -124,6 +127,7 @@
       <caption xml:lang="en-GB">Playing KJumpingCube</caption>
       <caption xml:lang="es">Jugando a KJumpingCube</caption>
       <caption xml:lang="et">KJumpingCube mängimine</caption>
+      <caption xml:lang="eu">KJumpingCube-rekin jolasean</caption>
       <caption xml:lang="fi">KJumpingCuben pelaaminen</caption>
       <caption xml:lang="fr">Partie de KJumpingCube en cours</caption>
       <caption xml:lang="gl">Xogando a KJumpingCube</caption>
