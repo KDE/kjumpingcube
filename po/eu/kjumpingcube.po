@@ -1,7 +1,6 @@
 # Translation for kjumpingcube.po to Euskara/Basque (eu).
-# Copyright (C) 2003-2023 Thi file is copyright:
+# Copyright (C) 2003-2023 This file is copyright:
 # This file is distributed under the same license as the original file.
-# KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>.
 #
 # Marcos  <marcos@euskalgnu.org>, 2003.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005, 2006.
@@ -12,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:44+0000\n"
-"PO-Revision-Date: 2023-01-11 22:54+0100\n"
+"PO-Revision-Date: 2023-01-12 21:19+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -115,7 +114,7 @@ msgstr "Gelditu kalkulatzea"
 #: game.cpp:514
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "Utzi mugimendua erakusteari"
 
 #: game.cpp:517
 #, kde-format
@@ -178,6 +177,11 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
+"Jokoaren neurri-ezarpena aldatu duzu eta horrek joko berria hastea eskatzen "
+"du.\n"
+"\n"
+"Jarduneko jokoa utzi edo jokatzen jarraitu eta aurreko neurri-ezarpena "
+"berrezarri nahi duzu?"
 
 #: game.cpp:682
 #, kde-format
@@ -186,6 +190,9 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
+"Joko berri bat eskatu duzu, baina dagoeneko joko bat martxan da.\n"
+"\n"
+"Jarduneko jokoa utzi nahi duzu?"
 
 #: game.cpp:692
 #, kde-format
@@ -207,26 +214,28 @@ msgstr "Jarraitu jokoarekin"
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
+"Fitxategiko kubo-kutxa neurria %1(e)tik %2(e)ra arteko barrutitik kanpo "
+"dago. %1(e)ra ezarriko da."
 
 #: game.cpp:856
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr ""
+msgstr "%1 kuborako sarrerako lerroa falta da."
 
 #: game.cpp:865
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr ""
+msgstr "%1 kuboaren jabea 0tik 2ra arteko barrutitik kanpo dago."
 
 #: game.cpp:872
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr ""
+msgstr "%1 kuboaren balioa 1etik %2ra arteko barrutitik kanpo dago."
 
 #: game.cpp:887
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr ""
+msgstr "Uneko jokalaria ez da 1 ez eta 2 ere."
 
 #: kjumpingcube.cpp:45
 #, kde-format
@@ -242,31 +251,31 @@ msgstr "Ezarpenak"
 #: kjumpingcube.kcfg:11
 #, kde-format
 msgid "Animation speed of overflowing dice"
-msgstr ""
+msgstr "Dado gainezkatuen animazio-abiadura"
 
 #. i18n: ectx: label, entry (AnimationNone), group (Game)
 #: kjumpingcube.kcfg:15
 #, kde-format
 msgid "Animation type None (no pauses)."
-msgstr ""
+msgstr "Animazio mota «Bat ere ez» (etenik gabe)."
 
 #. i18n: ectx: label, entry (AnimationDelay), group (Game)
 #: kjumpingcube.kcfg:19
 #, kde-format
 msgid "Animation type Darken and pause."
-msgstr ""
+msgstr "Animazio mota «Ilundu eta eten»."
 
 #. i18n: ectx: label, entry (AnimationBlink), group (Game)
 #: kjumpingcube.kcfg:23
 #, kde-format
 msgid "Animation type Blink rapidly."
-msgstr ""
+msgstr "Animazio mota «Kliskatu agudo»."
 
 #. i18n: ectx: label, entry (AnimationSpread), group (Game)
 #: kjumpingcube.kcfg:27
 #, kde-format
 msgid "Animation type Scatter dots."
-msgstr ""
+msgstr "Animazio mota «Puntu sakabanatuak»."
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
@@ -278,7 +287,7 @@ msgstr "Kubo neutralen kolorea."
 #: kjumpingcube.kcfg:35
 #, kde-format
 msgid "Color of player 1."
-msgstr "1. jokalariaren kolorea."
+msgstr "1 jokalariaren kolorea."
 
 #. i18n: ectx: label, entry (Color2), group (Game)
 #: kjumpingcube.kcfg:39
@@ -296,26 +305,25 @@ msgstr "Jokatzeko eremuaren tamaina."
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "1. jokalaria ordenagailua izango den ala ez."
+msgstr "1 jokalaria ordenagailuak jokatuko duen edo ez."
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr ""
+msgstr "Ordenagailuaren 1 jokalariak Kepler IA erabiltzen duen edo ez."
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr ""
+msgstr "Ordenagailuaren 1 jokalariak Newton IA erabiltzen duen edo ez."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
-#, fuzzy, kde-format
-#| msgid "Skill of the computer player."
+#, kde-format
 msgid "Skill of computer player 1."
-msgstr "Ordenagailuak jokatzeko duen trebezia."
+msgstr "Ordenagailuaren 1 jokalariaren iaiotasuna"
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kjumpingcube.kcfg:72
@@ -327,32 +335,31 @@ msgstr "2. jokalaria ordenagailua izango den ala ez."
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr ""
+msgstr "Ordenagailuaren 2 jokalariak Kepler IA erabiltzen duen edo ez."
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr ""
+msgstr "Ordenagailuaren 2 jokalariak Newton IA erabiltzen duen edo ez."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Skill of the computer player."
+#, kde-format
 msgid "Skill of computer player 2."
-msgstr "Ordenagailuak jokatzeko duen trebezia."
+msgstr "Ordenagailuaren 2 jokalariaren iaiotasuna."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "Etenaldia ordenagailuaren mugimendu bakoitzaren aurretik."
 
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr ""
+msgstr "Etenaldia urrats-sekuentzia bakoitzaren aurretik."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
@@ -412,38 +419,37 @@ msgstr "KDE 4.0 bertsiorako grafikoak."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, fuzzy, kde-format
-#| msgid "Computer Plays"
+#, kde-format
 msgid "Computer Player 1"
-msgstr "Ordenagailuaren jokatzen du"
+msgstr "Ordenagailuaren 1 jokalaria"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:181
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "Orain jolasten"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:59 settings.ui:194
 #, kde-format
 msgid "Style of Play"
-msgstr ""
+msgstr "Joko estiloa"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
 #: settings.ui:65 settings.ui:203
 #, kde-format
 msgid "Kepler"
-msgstr ""
+msgstr "Kepler"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
 #: settings.ui:75 settings.ui:213
 #, kde-format
 msgid "Newton"
-msgstr ""
+msgstr "Newton"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -468,34 +474,33 @@ msgstr "Aditua"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:163
-#, fuzzy, kde-format
-#| msgid "Computer Plays"
+#, kde-format
 msgid "Computer Player 2"
-msgstr "Ordenagailuak jokatzen du"
+msgstr "Ordenagailuaren 2 jokalaria"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
 #, kde-format
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "Etenaldia ordenagailuaren mugimendu bakoitzaren aurretik"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: settings.ui:309
 #, kde-format
 msgid "Board Size"
-msgstr "Taularen tamaina"
+msgstr "Taularen neurria"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: settings.ui:345
 #, kde-format
 msgid "3x3"
-msgstr ""
+msgstr "3x3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr ""
+msgstr "15x15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
@@ -507,7 +512,7 @@ msgstr "Jokalarien koloreak"
 #: settings.ui:391
 #, kde-format
 msgid "Player 1:"
-msgstr "1. jokalaria:"
+msgstr "1 jokalaria:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:405
@@ -525,55 +530,55 @@ msgstr "Neutrala:"
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
-msgstr ""
+msgstr "Mugimendu-sekuentzia azaltzea"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
 #: settings.ui:446
 #, kde-format
 msgid "None (no pauses)"
-msgstr ""
+msgstr "Bat ere ez (etenaldirik gabe)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
 #: settings.ui:459
 #, kde-format
 msgid "Darken and pause"
-msgstr ""
+msgstr "Ilundu eta eten"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
 #: settings.ui:472
 #, kde-format
 msgid "Blink rapidly"
-msgstr ""
+msgstr "Kliskatu agudo"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
 #: settings.ui:485
 #, kde-format
 msgid "Scatter dots"
-msgstr ""
+msgstr "Puntu sakabanatuak"
 
 #. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr ""
+msgstr "Mugimendu-sekuentziaren denbora"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
 #, kde-format
 msgid "Short"
-msgstr ""
+msgstr "Laburra"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: settings.ui:566
 #, kde-format
 msgid "Long"
-msgstr ""
+msgstr "Luzea"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr ""
+msgstr "Etenaldia urrats-sekuentzia bakoitzaren aurretik"
 
 #~ msgid "PushButton"
 #~ msgstr "Sakatzeko botoia"
