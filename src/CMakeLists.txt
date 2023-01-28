@@ -55,6 +55,10 @@ target_link_libraries(kjumpingcube
     Qt${QT_MAJOR_VERSION}::Svg
 )
 
+if (TARGET Qt::Core5Compat)
+    target_link_libraries(kjumpingcube Qt::Core5Compat)
+endif()
+
 install(TARGETS kjumpingcube ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(PROGRAMS org.kde.kjumpingcube.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
