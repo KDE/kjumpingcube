@@ -6,7 +6,7 @@
   <!ENTITY % addindex "IGNORE"
 > <!-- do not change this! -->
 ]>
- 
+
 <book id="kjumpingcube" lang="&language;"
 > <!-- do not change this! -->
 <bookinfo>
@@ -100,18 +100,18 @@
 
 <legalnotice
 >&FDLNotice;</legalnotice>
- 
+
 <date
->09/06/2016</date>
+>07/07/2021</date>
 <releaseinfo
->2.1 (Applications 16.04)</releaseinfo>
- 
+>2.1 (KDE Gear 21.04)</releaseinfo>
+
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para
 >Esta documentação descreve o jogo &kjumpingcube; versão 2.1</para>
 </abstract>
- 
+
 <!--List of relevant keywords-->
 <keywordset>
 	<keyword
@@ -166,7 +166,7 @@
 >Dois</para
 ></note
 ><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
- 
+
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 <para
 >O &kjumpingcube; é um jogo tático simples. Você pode jogá-lo contra o computador ou um amigo - ou ainda configurar um jogo entre dois jogadores controlados por computador e simplesmente ficar assistindo.</para>
@@ -239,7 +239,7 @@
 <para
 >O vencedor será o jogador que terminar o jogo com mais cubos no tabuleiro.</para>
 </chapter>
- 
+
 <chapter id="rules_and_tips"
 ><title
 >Regras do jogo, estratégias e dicas</title
@@ -339,7 +339,7 @@
 	</itemizedlist>
 	</sect1>
 </chapter>
- 
+
 <chapter id="interface"
 ><title
 >Resumo da interface</title
@@ -387,7 +387,7 @@
 	</variablelist>
 
 <para
->Em cada caso, o botão contém algum texto que indica as ações que podem ser feitas ou são esperadas, como <guibutton
+>Em cada caso, o botão contém algum texto que indica as ações que podem ser feitas ou são esperadas, como &nbsp;<guibutton
 >Parar animação</guibutton
 > ou <guibutton
 >É a sua vez</guibutton
@@ -430,7 +430,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Carregar</guiicon
+>Carregar...</guiicon
 ></term>
 	<listitem
 ><para
@@ -705,7 +705,7 @@
 </sect1>
 
 </chapter>
-  
+
 <chapter id="faq"
 ><title
 >Perguntas frequentes</title
@@ -792,10 +792,10 @@
 ></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
- 
+
 </qandaset>
 </chapter>
- 
+
 <chapter id="configuration"
 ><title
 >Configuração do jogo</title
@@ -803,19 +803,21 @@
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
 <para
->Para abrir a caixa de diálogo de configuração, use a opção do menu <menuchoice
+>Para abrir a caixa de diálogo de configuração, use o item do menu <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
 >Configurar o &kjumpingcube;...</guimenuitem
 ></menuchoice
-> No Apple Mac OS X use a opção: <menuchoice
+>, no Apple Mac OS X use o item do menu <menuchoice
 ><guimenu
 >&kjumpingcube;</guimenu
-><guimenuitem
+> <guimenuitem
 >Preferências</guimenuitem
 ></menuchoice
-> ou então o botão Configurações da barra de ferramentas.</para>
+> ou então o botão <guibutton
+>Configurações</guibutton
+> na barra de ferramentas.</para>
 
 <screenshot>
     <screeninfo
@@ -919,14 +921,14 @@
 ><para
 >Escolhe um estilo de animação para quando um cubo atinge o seu valor máximo e se expande para os cubos vizinhos, possibilitando o início de uma cascata de jogadas deste tipo e cobrindo uma grande área do tabuleiro.</para>
 		    <para
->Use as opções exclusivas para selecionar entre <quote
->Nenhum (sem pausas)</quote
->, onde a jogada é apresentada de forma instantânea; <quote
->Escurecimento e pausa</quote
->, onde cada cubo sobrecarregado escurece quando for a hora de se expandir; <quote
->Intermitência rápida</quote
->, onde cada cubo sobrecarregado escurece primeiro e depois pisca rapidamente quando for a hora de se expandir e <quote
->Pontos separados</quote
+>Use as opções exclusivas para selecionar entre <guilabel
+>Nenhum (sem pausas)</guilabel
+>, onde a jogada é apresentada de forma instantânea; <guilabel
+>Escurecimento e pausa</guilabel
+>, onde cada cubo sobrecarregado escurece quando for a hora de se expandir; <guilabel
+>Intermitência rápida</guilabel
+>, onde cada cubo sobrecarregado escurece primeiro e depois pisca rapidamente quando for a hora de se expandir e <guilabel
+>Pontos separados</guilabel
 >, onde cada cubo sobrecarregado escurece primeiro e depois dispara pontos para os cubos vizinhos quando for a hora de se expandir.</para
 ></listitem>
 	</varlistentry>
@@ -937,7 +939,11 @@
 ></term>
 		<listitem
 ><para
->Use a barra deslizante para selecionar um intervalo de tempo (Curto a Longo) a ser gasto nas animações. Os tempos dependes, de certa forma, do tipo de animação, mas podem ser de 0,15 a 1,5 segundo para cada etapa de uma jogada em cascata.</para
+>Use a barra deslizante para selecionar um intervalo de tempo (<guilabel
+>Curto</guilabel
+> a <guilabel
+>Longo</guilabel
+>) a ser gasto nas animações. Os tempos dependes, de certa forma, do tipo de animação, mas podem ser de 0,15 a 1,5 segundo para cada etapa de uma jogada em cascata.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -964,13 +970,13 @@
 </sect1>
 
 </chapter>
- 
+
 <chapter id="credits"
 ><title
 >Créditos e licença</title
 > <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
- 
+
 <para
 >Direitos autorais do &kjumpingcube; 2012, 2013, de Ian Wadham e 1998, 1999, de &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
 
@@ -978,7 +984,7 @@
 >O &kjumpingcube; foi inspirado por um jogo que veio do Commodore 64 e dos computadores pessoais também. Infelizmente, não se sabe qual é o nome do autor original.</para>
 
 <para
->Em 2007, Ian Wadham ficou com a manutenção do &kjumpingcube; para o &kde; 4 e o Eugene Trounev desenhou o primeiro tema em SVG.</para>
+>Em 2007, Ian Wadham ficou com a manutenção do &kjumpingcube; para o &kde; 4 e o Eugene Trounev desenhou o primeiro tema em &SVG;.</para>
 
 <para
 >Em 2012 e 2013, Ian desenvolveu a versão 2.0 e 2.1 do &kjumpingcube;, adicionando os estilos de animação, permitindo tabuleiros com tamanhos de no mínimo 3x3 e no máximo 15x15 e remodelando totalmente os módulos de inteligência artificial, traduzindo-se em maiores desafios para um jogador humano. Estas versões calculam as jogadas mais rápido, permitem desfazer/refazer jogadas em vários níveis (anteriormente só era permitida uma), adicionar a escolha entre dois adversários de IA e oferecem opções para os jogadores iniciantes avançarem passo-a-passo nas animações e jogadas do computador.</para>
@@ -996,8 +1002,8 @@
 >alvarenga@kde.org</email
 ></para
 > &underFDL; &underGPL; </chapter>
-  
-&documentation.index; 
+
+&documentation.index;
 </book>
 <!--
 Local Variables:
