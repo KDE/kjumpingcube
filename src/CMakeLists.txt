@@ -45,8 +45,13 @@ kconfig_add_kcfg_files(kjumpingcube prefs.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-kjumpingcube.png")
 ecm_add_app_icon(kjumpingcube ICONS ${ICONS_SRCS})
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(kjumpingcube KDEGames6)
+else()
+    target_link_libraries(kjumpingcube KF5KDEGames)
+endif()
+
 target_link_libraries(kjumpingcube
-    KF5KDEGames
     KF${KF_MAJOR_VERSION}::CoreAddons
     KF${KF_MAJOR_VERSION}::Crash
     KF${KF_MAJOR_VERSION}::DBusAddons
