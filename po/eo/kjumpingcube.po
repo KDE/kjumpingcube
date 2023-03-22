@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# translation of kjumpingcube.pot to esperanto
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Wolfram Diestel <wolfram@steloj.de>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:44+0000\n"
-"PO-Revision-Date: 2002-03-07 22:25GMT\n"
-"Last-Translator: Wolfram Diestel <wolfram@steloj.de>\n"
+"PO-Revision-Date: 2023-03-20 22:43+01\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -38,10 +38,9 @@ msgid "Game over"
 msgstr ""
 
 #: game.cpp:116
-#, fuzzy, kde-format
-#| msgid "Winner is Player %1!"
+#, kde-format
 msgid "The winner is Player %1!"
-msgstr "Gajnis ludanto %1!"
+msgstr ""
 
 #: game.cpp:117
 #, kde-format
@@ -69,21 +68,19 @@ msgid "Start computer move"
 msgstr ""
 
 #: game.cpp:269
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your turn"
-msgstr "Wolfram Diestel"
+msgstr ""
 
 #: game.cpp:272
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player %1"
-msgstr "Koloro de ludanto &1"
+msgstr ""
 
 #: game.cpp:288
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer player %1 is moving"
-msgstr "Komputilo ludas ludanton &2"
+msgstr ""
 
 #: game.cpp:308
 #, kde-format
@@ -126,16 +123,11 @@ msgid "New Game"
 msgstr "Nova ludo"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"La dosiero %1 ekzistas.\n"
-"Ĉu vi volas anstataŭigi ĝin?"
 
 #: game.cpp:600
 #, kde-format
@@ -152,14 +144,14 @@ msgstr ""
 "%1"
 
 #: game.cpp:620
-#, fuzzy, kde-format
+#, kde-format
 msgid "The file %1 does not exist!"
-msgstr "La dosiero %1 ne ekzistas!"
+msgstr ""
 
 #: game.cpp:635
-#, fuzzy, kde-format
+#, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
-msgstr "La dosiero %1 ne estas luddosiero de Saltkubo!"
+msgstr ""
 
 #: game.cpp:648
 #, kde-format
@@ -189,10 +181,9 @@ msgid ""
 msgstr ""
 
 #: game.cpp:692
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgid "New Game?"
-msgstr "Nova ludo"
+msgstr "Ĉu Nova Ludo?"
 
 #: game.cpp:693
 #, kde-format
@@ -231,9 +222,9 @@ msgid "Current player is neither 1 nor 2."
 msgstr ""
 
 #: kjumpingcube.cpp:45
-#, fuzzy, kde-format
+#, kde-format
 msgid "Current player:"
-msgstr "Komputilo ludas ludanton &1"
+msgstr ""
 
 #: kjumpingcube.cpp:137
 #, kde-format
@@ -272,21 +263,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color of neutral cubes."
-msgstr "kolorŝanĝo por ludanto %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kjumpingcube.kcfg:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color of player 1."
-msgstr "kolorŝanĝo por ludanto %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (Color2), group (Game)
 #: kjumpingcube.kcfg:39
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color of player 2."
-msgstr "kolorŝanĝo por ludanto %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (CubeDim), group (Game)
 #: kjumpingcube.kcfg:45
@@ -296,9 +287,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
 #: kjumpingcube.kcfg:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "Ludanto %1 estas nun ludata de la komputilo."
+msgstr ""
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
@@ -314,15 +305,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
-#, fuzzy, kde-format
+#, kde-format
 msgid "Skill of computer player 1."
-msgstr "kolorŝanĝo por ludanto %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kjumpingcube.kcfg:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr "Ludanto %1 estas nun ludata de la komputilo."
+msgstr ""
 
 #. i18n: ectx: label, entry (Kepler2), group (Game)
 #: kjumpingcube.kcfg:76
@@ -338,9 +329,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
-#, fuzzy, kde-format
+#, kde-format
 msgid "Skill of computer player 2."
-msgstr "kolorŝanĝo por ludanto %1"
+msgstr ""
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kjumpingcube.kcfg:95
@@ -366,9 +357,9 @@ msgid "KJumpingCube"
 msgstr "Saltkubo"
 
 #: main.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Tactical one or two player game"
-msgstr "Taktika ludo por unu aŭ du ludantoj"
+msgstr ""
 
 #: main.cpp:43
 #, kde-format
@@ -412,9 +403,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer Player 1"
-msgstr "Komputilo ludas ludanton &2"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
@@ -467,9 +458,9 @@ msgstr "Spertulo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:163
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer Player 2"
-msgstr "Komputilo ludas ludanton &2"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
@@ -497,21 +488,21 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
-#, fuzzy, kde-format
+#, kde-format
 msgid "Players' Colors"
-msgstr "Koloro de ludanto &1"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:391
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 1:"
-msgstr "Koloro de ludanto &1"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:405
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 2:"
-msgstr "Koloro de ludanto &2"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:419
@@ -572,40 +563,3 @@ msgstr ""
 #, kde-format
 msgid "Pause before each cascade step"
 msgstr ""
-
-#~ msgid "Overwrite"
-#~ msgstr "Anstataŭigu"
-
-#, fuzzy
-#~ msgid "Computing a move"
-#~ msgstr "elkalkulante movon"
-
-#, fuzzy
-#~ msgid "Performing a move"
-#~ msgstr "farante movon"
-
-#~ msgid "Stop"
-#~ msgstr "Halti"
-
-#~ msgid "stopped activity"
-#~ msgstr "aktiveco haltigita"
-
-#~ msgid "&Game"
-#~ msgstr "&Ludo"
-
-#~ msgid "10x10"
-#~ msgstr "10x10"
-
-#, fuzzy
-#~ msgid "Computer Skill"
-#~ msgstr "(komputilo)"
-
-#, fuzzy
-#~ msgid "Player 2"
-#~ msgstr "Koloro de ludanto &2"
-
-#~ msgid "5x5"
-#~ msgstr "5x5"
-
-#~ msgid "Stop &Thinking"
-#~ msgstr "Ĉesu &pensi"
