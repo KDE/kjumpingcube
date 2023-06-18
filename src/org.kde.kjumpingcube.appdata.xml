@@ -11,6 +11,7 @@
   <name xml:lang="de">KJumpingCube</name>
   <name xml:lang="el">KJumpingCube</name>
   <name xml:lang="en-GB">KJumpingCube</name>
+  <name xml:lang="eo">KJumpingCube</name>
   <name xml:lang="es">KJumpingCube</name>
   <name xml:lang="et">KJumpingCube</name>
   <name xml:lang="eu">KJumpingCube</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="de">Eroberungsspiel</summary>
   <summary xml:lang="el">Παιχνίδι κατάληψης περιοχών</summary>
   <summary xml:lang="en-GB">Territory Capture Game</summary>
+  <summary xml:lang="eo">Teritoriokapta ludo</summary>
   <summary xml:lang="es">Juego de captura de territorio</summary>
   <summary xml:lang="et">Mänguala vallutamise mäng</summary>
   <summary xml:lang="eu">Lurraldeak atzemateko jokoa</summary>
@@ -125,6 +127,7 @@
       <caption xml:lang="de">KJumpingCube spielen</caption>
       <caption xml:lang="el">Παίζω KJumpingCube</caption>
       <caption xml:lang="en-GB">Playing KJumpingCube</caption>
+      <caption xml:lang="eo">Ludante KJumpingCube</caption>
       <caption xml:lang="es">Jugando a KJumpingCube</caption>
       <caption xml:lang="et">KJumpingCube mängimine</caption>
       <caption xml:lang="eu">KJumpingCube-rekin jolasean</caption>
