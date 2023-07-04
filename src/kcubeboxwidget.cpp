@@ -499,4 +499,4 @@ void KCubeBoxWidget::hidePopup()
    update();
 }
 
-
+#include "moc_kcubeboxwidget.cpp"

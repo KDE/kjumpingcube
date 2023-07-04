@@ -272,4 +272,4 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
   p.end();
 }
 
-
+#include "moc_kcubewidget.cpp"

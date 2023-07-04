@@ -404,4 +404,4 @@ void AI_Box::printBox()
 }
 #endif
 
-
+#include "moc_ai_box.cpp"

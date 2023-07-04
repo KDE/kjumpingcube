@@ -972,4 +972,4 @@ void Game::animationDone (int index)
    }
 }
 
-
+#include "moc_game.cpp"

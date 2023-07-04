@@ -189,4 +189,4 @@ void KJumpingCube::statusMessage (const QString & message, bool timed)
   }
 }
 
-
+#include "moc_kjumpingcube.cpp"
