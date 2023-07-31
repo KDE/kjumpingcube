@@ -20,6 +20,7 @@
 #include <QRegExp>
 
 #include <KConfigDialog> // IDW test.
+#include <kio_version.h>
 #include <KIO/CopyJob>
 #include <KIO/Job>
 #include <kwidgetsaddons_version.h>
@@ -569,7 +570,11 @@ void Game::saveGame (bool saveAs)
             url.setPath(url.path() + QLatin1String(".kjc"));
          }
 
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 240, 0)
+         KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
+#else
          KIO::StatJob* statJob = KIO::statDetails(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails);
+#endif
          KJobWidgets::setWindow(statJob, m_view);
          if (statJob->exec()) {
             QString mes=i18n("The file %1 already exists.\n"
@@ -614,7 +619,12 @@ void Game::loadGame()
       url = QFileDialog::getOpenFileUrl (m_view, QString(), m_gameURL, QStringLiteral("*.kjc"));
       if (url.isEmpty())
          return;
+#if KIO_VERSION >= QT_VERSION_CHECK(5, 240, 0)
+      KIO::StatJob* statJob = KIO::stat(url, KIO::StatJob::SourceSide, KIO::StatNoDetails);
+#else
       KIO::StatJob* statJob = KIO::statDetails(url, KIO::StatJob::SourceSide, KIO::StatNoDetails);
+#endif
+
       KJobWidgets::setWindow(statJob, m_view);
       if (! statJob->exec()) {
          QString mes = i18n("The file %1 does not exist!", url.url());
