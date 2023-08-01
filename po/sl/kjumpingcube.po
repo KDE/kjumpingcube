@@ -2,7 +2,7 @@
 # Translation of kjumpingcube.po to Slovenian
 # SLOVENIAN TRANSLATION OF KDEGAMES.
 # Copyright © 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kjumpingcube.po 1636410 2022-10-20 01:43:51Z scripty $
+# $Id: kjumpingcube.po 1657240 2023-08-01 01:27:39Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:44+0000\n"
+"POT-Creation-Date: 2023-08-01 00:42+0000\n"
 "PO-Revision-Date: 2021-07-09 06:56+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -40,102 +40,102 @@ msgstr ""
 "roman.maurer@amis.net,primoz.peterlin@biofiz.mf.uni-lj.si,gregor.rakar@kiss."
 "si,mrepinc@gmail.com,andrejm@ubuntu.si"
 
-#: game.cpp:78
+#: game.cpp:79
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Žal, izvaja se premik ..."
 
-#: game.cpp:115
+#: game.cpp:116
 #, kde-format
 msgid "Game over"
 msgstr "Konec igre"
 
-#: game.cpp:116
+#: game.cpp:117
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "Zmagal je igralec %1!"
 
-#: game.cpp:117
+#: game.cpp:118
 #, kde-format
 msgid "Winner"
 msgstr "Zmagovalec"
 
-#: game.cpp:128
+#: game.cpp:129
 #, kde-format
 msgid "General"
 msgstr "Splošno"
 
-#: game.cpp:241
+#: game.cpp:242
 #, kde-format
 msgid "Start game"
 msgstr "Začni igro"
 
-#: game.cpp:244
+#: game.cpp:245
 #, kde-format
 msgid "Continue game"
 msgstr "Nadaljuj igro"
 
-#: game.cpp:248
+#: game.cpp:249
 #, kde-format
 msgid "Start computer move"
 msgstr "Računalnik naj izvede premik"
 
-#: game.cpp:269
+#: game.cpp:270
 #, kde-format
 msgid "Your turn"
 msgstr "Vaša poteza"
 
-#: game.cpp:272
+#: game.cpp:273
 #, kde-format
 msgid "Player %1"
 msgstr "Igralec %1"
 
-#: game.cpp:288
+#: game.cpp:289
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Računalniški igralec %1 izvaja potezo"
 
-#: game.cpp:308
+#: game.cpp:309
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Računalnik ni našel veljavne poteze."
 
-#: game.cpp:408
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "Prikaži naslednji korak"
 
-#: game.cpp:466
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "Zaključevanje poteze ..."
 
-#: game.cpp:505
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "Prekini igro"
 
-#: game.cpp:511
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "Zaustavi računanje"
 
-#: game.cpp:514
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "Zaustavi prikazovanje premikov"
 
-#: game.cpp:517
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "Zaustavi animacijo"
 
-#: game.cpp:546
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "Nova igra"
 
-#: game.cpp:575
+#: game.cpp:580
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -144,12 +144,12 @@ msgstr ""
 "Datoteka %1 že obstaja.\n"
 "Ali jo želite prepisati?"
 
-#: game.cpp:600
+#: game.cpp:605
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Igra shranjena kot %1"
 
-#: game.cpp:603
+#: game.cpp:608
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -158,17 +158,17 @@ msgstr ""
 "Prišlo je do napake med shranjevanjem datoteke\n"
 "%1"
 
-#: game.cpp:620
+#: game.cpp:630
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Datoteka %1 ne obstaja!"
 
-#: game.cpp:635
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Datoteka %1 ni datoteka z igro KJumpingCube!"
 
-#: game.cpp:648
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -177,7 +177,7 @@ msgstr ""
 "Prišlo je do napake med nalaganjem datoteke\n"
 "%1"
 
-#: game.cpp:676
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -191,7 +191,7 @@ msgstr ""
 "Ali želite zapustiti trenutno igro ali obnoviti nastavitev velikosti in "
 "nadaljevati z igro?"
 
-#: game.cpp:682
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -202,44 +202,44 @@ msgstr ""
 "\n"
 "Ali želite zapustiti trenutno igro?"
 
-#: game.cpp:692
+#: game.cpp:702
 #, kde-format
 msgid "New Game?"
 msgstr "Nova igra?"
 
-#: game.cpp:693
+#: game.cpp:703
 #, kde-format
 msgid "Abandon Game"
 msgstr "Zapusti igro"
 
-#: game.cpp:694
+#: game.cpp:704
 #, kde-format
 msgid "Continue Game"
 msgstr "Nadaljuj igro"
 
-#: game.cpp:840
+#: game.cpp:850
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
 "Velikost škatle v datoteki je zunaj obsega %1 do %2. Nastavljena bo na %1."
 
-#: game.cpp:856
+#: game.cpp:866
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Manjka vhodna vrstica za kocko %1."
 
-#: game.cpp:865
+#: game.cpp:875
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Lastnik kocke %1 je zunaj obsega 0 do 2."
 
-#: game.cpp:872
+#: game.cpp:882
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Vrednost kocke %1 je zunaj obsega 1 do %2."
 
-#: game.cpp:887
+#: game.cpp:897
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Trenutni igralec ni niti 1 niti 2."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:44+0000\n"
+"POT-Creation-Date: 2023-08-01 00:42+0000\n"
 "PO-Revision-Date: 2022-08-19 20:36+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -27,102 +27,102 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wantoyek@gmail.com"
 
-#: game.cpp:78
+#: game.cpp:79
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Maaf, sedang melangkah..."
 
-#: game.cpp:115
+#: game.cpp:116
 #, kde-format
 msgid "Game over"
 msgstr "Permainan berakhir"
 
-#: game.cpp:116
+#: game.cpp:117
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "Pemenangnya adalah Pemain %1!"
 
-#: game.cpp:117
+#: game.cpp:118
 #, kde-format
 msgid "Winner"
 msgstr "Pemenang"
 
-#: game.cpp:128
+#: game.cpp:129
 #, kde-format
 msgid "General"
 msgstr "Umum"
 
-#: game.cpp:241
+#: game.cpp:242
 #, kde-format
 msgid "Start game"
 msgstr "Mulai permainan"
 
-#: game.cpp:244
+#: game.cpp:245
 #, kde-format
 msgid "Continue game"
 msgstr "Teruskan permainan"
 
-#: game.cpp:248
+#: game.cpp:249
 #, kde-format
 msgid "Start computer move"
 msgstr "Mulaikan langkah komputer"
 
-#: game.cpp:269
+#: game.cpp:270
 #, kde-format
 msgid "Your turn"
 msgstr "Giliranmu"
 
-#: game.cpp:272
+#: game.cpp:273
 #, kde-format
 msgid "Player %1"
 msgstr "Pemain %1"
 
-#: game.cpp:288
+#: game.cpp:289
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Pemain komputer %1 telah melangkah"
 
-#: game.cpp:308
+#: game.cpp:309
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Si komputer tidak bisa menemukan langkah yang absah."
 
-#: game.cpp:408
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "Tampilkan langkah selanjutnya"
 
-#: game.cpp:466
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "Menyelesaikan langkah..."
 
-#: game.cpp:505
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "Permainan terganggu"
 
-#: game.cpp:511
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "Hentikan komputer"
 
-#: game.cpp:514
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "Hentikan menampilkan langkah"
 
-#: game.cpp:517
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "Hentikan animasi"
 
-#: game.cpp:546
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "Permainan Baru"
 
-#: game.cpp:575
+#: game.cpp:580
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -134,12 +134,12 @@ msgstr ""
 "File %1 ada.\n"
 "Apakah kamu ingin menimpanya?"
 
-#: game.cpp:600
+#: game.cpp:605
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Permainan disimpan sebagai %1"
 
-#: game.cpp:603
+#: game.cpp:608
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -148,17 +148,17 @@ msgstr ""
 "Ada sebuah error saat penyimpanan sile\n"
 "%1"
 
-#: game.cpp:620
+#: game.cpp:630
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "File %1 tidak ada!"
 
-#: game.cpp:635
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "File %1 bukanlah sebuah file-permainan KJumpingCube!"
 
-#: game.cpp:648
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -167,7 +167,7 @@ msgstr ""
 "Ada sebuah error pemuatan file\n"
 "%1"
 
-#: game.cpp:676
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -182,7 +182,7 @@ msgstr ""
 "Apakah kamu ingin meninggalkan permainan saat ini atau trus bermain dan "
 "memulihkan pengaturan ukuran sebelumnya?"
 
-#: game.cpp:682
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -194,22 +194,22 @@ msgstr ""
 "\n"
 "Apakah kamu ingin meninggalkan permainan saat ini?"
 
-#: game.cpp:692
+#: game.cpp:702
 #, kde-format
 msgid "New Game?"
 msgstr "Permainan Baru?"
 
-#: game.cpp:693
+#: game.cpp:703
 #, kde-format
 msgid "Abandon Game"
 msgstr "Tinggalkan Permainan"
 
-#: game.cpp:694
+#: game.cpp:704
 #, kde-format
 msgid "Continue Game"
 msgstr "Teruskan Permainan"
 
-#: game.cpp:840
+#: game.cpp:850
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -217,22 +217,22 @@ msgstr ""
 "Ukuran kotak kubus si file berada di luar kisaran %1 hingga %2. Itu akan "
 "diset ke %1."
 
-#: game.cpp:856
+#: game.cpp:866
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Garis input hilang untuk kubus %1."
 
-#: game.cpp:865
+#: game.cpp:875
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Pemilik kubus %1 berada di luar kisaran 0 hingga 2."
 
-#: game.cpp:872
+#: game.cpp:882
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Nilai kubus %1 berada di luar kisaran 1 hingga %2."
 
-#: game.cpp:887
+#: game.cpp:897
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Pemain saat ini bukan 1 maupun 2."
