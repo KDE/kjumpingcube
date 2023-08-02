@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:44+0000\n"
+"POT-Creation-Date: 2023-08-01 00:42+0000\n"
 "PO-Revision-Date: 2014-01-07 15:27+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -33,114 +33,114 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "number1@realityx.net,slx@nilsk.net"
 
-#: game.cpp:78
+#: game.cpp:79
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Beklager, jeg gjør et trekk …"
 
-#: game.cpp:115
+#: game.cpp:116
 #, kde-format
 msgid "Game over"
 msgstr "Spillet er slutt"
 
-#: game.cpp:116
+#: game.cpp:117
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "Vinner er spiller %1!"
 
-#: game.cpp:117
+#: game.cpp:118
 #, kde-format
 msgid "Winner"
 msgstr "Vinner"
 
-#: game.cpp:128
+#: game.cpp:129
 #, kde-format
 msgid "General"
 msgstr "Generelt"
 
-#: game.cpp:241
+#: game.cpp:242
 #, kde-format
 msgid "Start game"
 msgstr "Start spillet"
 
-#: game.cpp:244
+#: game.cpp:245
 #, kde-format
 msgid "Continue game"
 msgstr "Fortsett spillet"
 
-#: game.cpp:248
+#: game.cpp:249
 #, kde-format
 msgid "Start computer move"
 msgstr "Start maskinens trekk"
 
-#: game.cpp:269
+#: game.cpp:270
 #, kde-format
 msgid "Your turn"
 msgstr "Det er din tur"
 
-#: game.cpp:272
+#: game.cpp:273
 #, kde-format
 msgid "Player %1"
 msgstr "Spiller %1"
 
-#: game.cpp:288
+#: game.cpp:289
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Datamaskinspiller %1 gjør et trekk"
 
-#: game.cpp:308
+#: game.cpp:309
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Datamaskinen klarte ikke å finne et gyldig trekk."
 
-#: game.cpp:408
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "Vis neste steg"
 
-#: game.cpp:466
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "Fullfører trekket …"
 
-#: game.cpp:505
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "Avbryt spillet"
 
-#: game.cpp:511
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "Stopp beregning"
 
-#: game.cpp:514
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "Slutt å vise trekk"
 
-#: game.cpp:517
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "Stopp animasjon"
 
-#: game.cpp:546
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "Nytt spill"
 
-#: game.cpp:575
+#: game.cpp:580
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
 
-#: game.cpp:600
+#: game.cpp:605
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Spillet lagret som %1"
 
-#: game.cpp:603
+#: game.cpp:608
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -149,17 +149,17 @@ msgstr ""
 "Det oppsto en feil ved lagring av fila\n"
 "%1"
 
-#: game.cpp:620
+#: game.cpp:630
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Fila %1 finnes ikke!"
 
-#: game.cpp:635
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Fila %1 er ikke en spillefil for KJumpingCube."
 
-#: game.cpp:648
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -168,7 +168,7 @@ msgstr ""
 "Det oppsto en feil ved lasting av fila\n"
 "%1"
 
-#: game.cpp:676
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -183,7 +183,7 @@ msgstr ""
 "Vil du avbryte det gjeldende spillet, eller fortsette å spille og "
 "tilbakestille forrige størrelse?"
 
-#: game.cpp:682
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -194,22 +194,22 @@ msgstr ""
 "\n"
 "Vil du forlate det gjeldende spillet?"
 
-#: game.cpp:692
+#: game.cpp:702
 #, kde-format
 msgid "New Game?"
 msgstr "Nytt spill?"
 
-#: game.cpp:693
+#: game.cpp:703
 #, kde-format
 msgid "Abandon Game"
 msgstr "Forlat spillet"
 
-#: game.cpp:694
+#: game.cpp:704
 #, kde-format
 msgid "Continue Game"
 msgstr "Fortsett spillet"
 
-#: game.cpp:840
+#: game.cpp:850
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -217,22 +217,22 @@ msgstr ""
 "Størrelsen på terningboksen i fila er utenfor området %1 til %2.  Den blir "
 "satt til %1."
 
-#: game.cpp:856
+#: game.cpp:866
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Manglende inndatalinje for terning %1."
 
-#: game.cpp:865
+#: game.cpp:875
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Eier for terning %1 er utenfor området 0 til 2."
 
-#: game.cpp:872
+#: game.cpp:882
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Verdien for terning %1 er utenfor området 1 til %2."
 
-#: game.cpp:887
+#: game.cpp:897
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Nåværende spiller er verken 1 eller 2."
