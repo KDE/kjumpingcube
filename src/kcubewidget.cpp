@@ -136,7 +136,12 @@ void KCubeWidget::updateColors()
 void KCubeWidget::mouseReleaseEvent(QMouseEvent *e)
 {
   // only accept click if it was inside this cube
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  const QPoint mousePos = e->position().toPoint();
+  if (mousePos.x() < 0 || mousePos.x() > width() || mousePos.y() < 0 || mousePos.y() > height())
+#else
   if(e->x()< 0 || e->x() > width() || e->y() < 0 || e->y() > height())
+#endif
     return;
 
   if(e->button() == Qt::LeftButton && _clicksAllowed) {
