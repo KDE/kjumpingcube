@@ -809,9 +809,7 @@
 >Visualització dels moviments en cascada</guilabel
 > i <guilabel
 >Temps dels moviments en cascada</guilabel
-> controlen la visualització de les animacions opcionals quan un cub aconsegueix el seu màxim i es desborda en els cubs veïns, possiblement iniciant una cascada estesa de moviments. Al començament, és més fàcil utilitzar l'animació <guilabel
->Dispersió dels punts</guilabel
-> i un temps llarg de moviment. Aquesta és la millor manera de seguir el progrés dels moviments en cascada. Les dues caselles de selecció &nbsp;<guilabel
+> controlen la visualització de les animacions opcionals quan un cub aconsegueix el seu màxim i es desborda en els cubs veïns, possiblement iniciant una cascada estesa de moviments. Al començament, és més fàcil utilitzar l'animació «Dispersió dels punts» i un temps llarg de moviment. Aquesta és la millor manera de seguir el progrés dels moviments en cascada. Les dues caselles de selecció &nbsp;<guilabel
 >Pausa</guilabel
 > permeten fer anar les animacions i els moviments de l'ordinador al vostre propi ritme.</para>
 
