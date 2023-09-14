@@ -50,6 +50,7 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     DocTools
     KIO
     I18n
+    JobWidgets
     XmlGui
     WidgetsAddons
 )
