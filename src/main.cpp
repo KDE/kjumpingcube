@@ -11,29 +11,17 @@
 
 #include <KAboutData>
 #include <KCrash>
-#include <QApplication>
 #include <KLocalizedString>
 #include <KDBusService>
+
+#include <QApplication>
 #include <QCommandLineParser>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
 
 
 int main(int argc, char *argv[])
 {
-    // Fixes blurry icons with fractional scaling
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("kjumpingcube"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("kjumpingcuberc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("kjumpingcubeui.rc"));
-    migrate.migrate();
-#endif
     KLocalizedString::setApplicationDomain("kjumpingcube");
 
     KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
