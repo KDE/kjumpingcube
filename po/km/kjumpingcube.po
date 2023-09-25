@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:42+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2013-01-02 11:41+0700\n"
 "Last-Translator: sutha <sutha@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros>\n"
@@ -29,48 +29,48 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sokhem@open.org.kh,​​sutha@open.org.kh,sophea@open.org.kh"
 
-#: game.cpp:79
+#: game.cpp:77
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr ""
 
-#: game.cpp:116
+#: game.cpp:114
 #, kde-format
 msgid "Game over"
 msgstr ""
 
-#: game.cpp:117
+#: game.cpp:115
 #, fuzzy, kde-format
 #| msgid "Winner is Player %1!"
 msgid "The winner is Player %1!"
 msgstr "អ្នក​ឈ្នះ គឺ​អ្នក​លេង​ល្បែង %1 !"
 
-#: game.cpp:118
+#: game.cpp:116
 #, kde-format
 msgid "Winner"
 msgstr "អ្នក​ឈ្នះ"
 
-#: game.cpp:129
+#: game.cpp:127
 #, kde-format
 msgid "General"
 msgstr "ទូទៅ"
 
-#: game.cpp:242
+#: game.cpp:240
 #, kde-format
 msgid "Start game"
 msgstr ""
 
-#: game.cpp:245
+#: game.cpp:243
 #, kde-format
 msgid "Continue game"
 msgstr ""
 
-#: game.cpp:249
+#: game.cpp:247
 #, kde-format
 msgid "Start computer move"
 msgstr ""
 
-#: game.cpp:270
+#: game.cpp:268
 #, fuzzy, kde-format
 #| msgctxt "NAME OF TRANSLATORS"
 #| msgid "Your names"
@@ -78,60 +78,60 @@ msgid "Your turn"
 msgstr "ខឹម សុខែម,សេង សុត្ថា,សុខ សុភា"
 
 #  i18n: file settings.ui line 244
-#: game.cpp:273
+#: game.cpp:271
 #, fuzzy, kde-format
 #| msgid "Player 1"
 msgid "Player %1"
 msgstr "អ្នក​លេង ១"
 
 #  i18n: file settings.ui line 233
-#: game.cpp:289
+#: game.cpp:287
 #, fuzzy, kde-format
 #| msgid "Computer Player 1"
 msgid "Computer player %1 is moving"
 msgstr "អ្នក​លេង​ល្បែង​កុំព្យូទ័រ​ ១"
 
-#: game.cpp:309
+#: game.cpp:307
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr ""
 
-#: game.cpp:409
+#: game.cpp:407
 #, kde-format
 msgid "Show next step"
 msgstr ""
 
-#: game.cpp:467
+#: game.cpp:465
 #, kde-format
 msgid "Finishing move..."
 msgstr ""
 
-#: game.cpp:506
+#: game.cpp:504
 #, kde-format
 msgid "Interrupt game"
 msgstr ""
 
-#: game.cpp:512
+#: game.cpp:510
 #, kde-format
 msgid "Stop computing"
 msgstr ""
 
-#: game.cpp:515
+#: game.cpp:513
 #, kde-format
 msgid "Stop showing move"
 msgstr ""
 
-#: game.cpp:518
+#: game.cpp:516
 #, kde-format
 msgid "Stop animation"
 msgstr ""
 
-#: game.cpp:547
+#: game.cpp:545
 #, kde-format
 msgid "New Game"
 msgstr "ល្បែង​ថ្មី"
 
-#: game.cpp:580
+#: game.cpp:574
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -143,13 +143,13 @@ msgstr ""
 "មាន​ឯកសារ %1 រួច​ហើយ ។\n"
 "តើ​អ្នក​ចង់​សរសេរ​ជាន់​លើ​វា​ឬ ?"
 
-#: game.cpp:605
+#: game.cpp:599
 #, fuzzy, kde-format
 #| msgid "game saved as %1"
 msgid "Game saved as %1"
 msgstr "បាន​រក្សាទុក​ល្បែង​ជា %1"
 
-#: game.cpp:608
+#: game.cpp:602
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -158,17 +158,17 @@ msgstr ""
 "មាន​កំហុស​ក្នុង​ការ​រក្សា​ទុក​ឯកសារ\n"
 "%1"
 
-#: game.cpp:630
+#: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "ឯកសារ %1 មិន​មាន​ឡើយ !"
 
-#: game.cpp:645
+#: game.cpp:635
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "ឯកសារ %1 មិន​មែន​ជា​ឯកសារ​ល្បែង​របស់ KJumpingCube ឡើយ !"
 
-#: game.cpp:658
+#: game.cpp:648
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -177,7 +177,7 @@ msgstr ""
 "មាន​កំហុស​ក្នុង​ការ​ផ្ទុក​ឯកសារ\n"
 "%1"
 
-#: game.cpp:686
+#: game.cpp:676
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -187,7 +187,7 @@ msgid ""
 "previous size setting?"
 msgstr ""
 
-#: game.cpp:692
+#: game.cpp:682
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -195,44 +195,44 @@ msgid ""
 "Do you wish to abandon the current game?"
 msgstr ""
 
-#: game.cpp:702
+#: game.cpp:688
 #, fuzzy, kde-format
 #| msgid "New Game"
 msgid "New Game?"
 msgstr "ល្បែង​ថ្មី"
 
-#: game.cpp:703
+#: game.cpp:689
 #, kde-format
 msgid "Abandon Game"
 msgstr ""
 
-#: game.cpp:704
+#: game.cpp:690
 #, kde-format
 msgid "Continue Game"
 msgstr ""
 
-#: game.cpp:850
+#: game.cpp:832
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr "ទំហំ​ប្រអប់ cube របស់​ឯកសារ​គឺ​នៅ​ខាង​ក្រៅ​ជួរ %1 ទៅ %2 ។ វា​នឹង​ត្រូវ​បាន​កំណត់​ទៅ​កាន់ %1 ។"
 
-#: game.cpp:866
+#: game.cpp:848
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "បាត់​ជួរ​​ខាង​ក្នុង​ផល​សម្រាប់ cube %1 ។"
 
-#: game.cpp:875
+#: game.cpp:857
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "cube ផ្ទាល់ %1 នៅ​ខាង​ក្រៅ​ជួរ ០ ទៅ ២ ។"
 
-#: game.cpp:882
+#: game.cpp:864
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "តម្លៃ cube %1 គឺ​នៅ​ខាង​ក្រៅ​ជួរ ១ ទៅ %2 ។"
 
-#: game.cpp:897
+#: game.cpp:879
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "អ្នក​លេង​ល្បែង​​បច្ចុប្បន្ន​មិន​មែន ១ ក៏​មិន​មែន​ ២ ។"
@@ -375,52 +375,52 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr "របារ​ឧបករណ៍​មេ"
 
-#: main.cpp:39
+#: main.cpp:27
 #, kde-format
 msgid "KJumpingCube"
 msgstr "KJumpingCube"
 
-#: main.cpp:41
+#: main.cpp:29
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "ល្បែង​ក្បួន​យុទ្ធសាស្ត្រ ដែល​អាច​លេង​ម្នាក់​ឯង ឬ ពីរ​នាក់"
 
-#: main.cpp:43
+#: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ១​៩​​​​៩​៨-២​០​០​០ ដោយ Matthias Kiefer"
 
-#: main.cpp:47
+#: main.cpp:35
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:48
+#: main.cpp:36
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:48
+#: main.cpp:36
 #, kde-format
 msgid "Various improvements"
 msgstr "ភាព​ធ្វើ​ឲ្យ​ប្រសើរ​ផ្សេង​ៗ"
 
-#: main.cpp:49
+#: main.cpp:37
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "ធ្វើ​ឲ្យ​ប្រសើរ​ដល់​​ KDE4 និង​ការ​​គាំទ្រការងារ​​សិល្បៈ SVG ។"
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "ក្រាហ្វិក​សម្រាប់​កំណែ KDE 4.0 ។"

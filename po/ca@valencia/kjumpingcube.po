@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:42+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2021-09-12 21:30+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -36,102 +36,102 @@ msgid "Your emails"
 msgstr ""
 "frandeve@hotmail.com,aacid@kde.org,aleixpol@gmail.com,manutortosa@gmail.com"
 
-#: game.cpp:79
+#: game.cpp:77
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Ho sentim, s'està fent un moviment..."
 
-#: game.cpp:116
+#: game.cpp:114
 #, kde-format
 msgid "Game over"
 msgstr "Final de la partida"
 
-#: game.cpp:117
+#: game.cpp:115
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "El guanyador és el jugador %1!"
 
-#: game.cpp:118
+#: game.cpp:116
 #, kde-format
 msgid "Winner"
 msgstr "Guanyador"
 
-#: game.cpp:129
+#: game.cpp:127
 #, kde-format
 msgid "General"
 msgstr "General"
 
-#: game.cpp:242
+#: game.cpp:240
 #, kde-format
 msgid "Start game"
 msgstr "Comença la partida"
 
-#: game.cpp:245
+#: game.cpp:243
 #, kde-format
 msgid "Continue game"
 msgstr "Continua la partida"
 
-#: game.cpp:249
+#: game.cpp:247
 #, kde-format
 msgid "Start computer move"
 msgstr "Comença el moviment de l'ordinador"
 
-#: game.cpp:270
+#: game.cpp:268
 #, kde-format
 msgid "Your turn"
 msgstr "El teu torn"
 
-#: game.cpp:273
+#: game.cpp:271
 #, kde-format
 msgid "Player %1"
 msgstr "Jugador %1"
 
-#: game.cpp:289
+#: game.cpp:287
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "El jugador d'ordinador %1 està movent"
 
-#: game.cpp:309
+#: game.cpp:307
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "L'ordinador no ha pogut trobar cap moviment vàlid."
 
-#: game.cpp:409
+#: game.cpp:407
 #, kde-format
 msgid "Show next step"
 msgstr "Mostra el pas següent"
 
-#: game.cpp:467
+#: game.cpp:465
 #, kde-format
 msgid "Finishing move..."
 msgstr "S'està finalitzant el moviment..."
 
-#: game.cpp:506
+#: game.cpp:504
 #, kde-format
 msgid "Interrupt game"
 msgstr "Interromp la partida"
 
-#: game.cpp:512
+#: game.cpp:510
 #, kde-format
 msgid "Stop computing"
 msgstr "Para el càlcul"
 
-#: game.cpp:515
+#: game.cpp:513
 #, kde-format
 msgid "Stop showing move"
 msgstr "Para la visualització del moviment"
 
-#: game.cpp:518
+#: game.cpp:516
 #, kde-format
 msgid "Stop animation"
 msgstr "Para l'animació"
 
-#: game.cpp:547
+#: game.cpp:545
 #, kde-format
 msgid "New Game"
 msgstr "Partida nova"
 
-#: game.cpp:580
+#: game.cpp:574
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -140,12 +140,12 @@ msgstr ""
 "El fitxer %1 ja existix.\n"
 "Voleu sobreescriure'l?"
 
-#: game.cpp:605
+#: game.cpp:599
 #, kde-format
 msgid "Game saved as %1"
 msgstr "La partida s'ha guardat com a %1"
 
-#: game.cpp:608
+#: game.cpp:602
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -154,17 +154,17 @@ msgstr ""
 "S'ha produït un error en guardar el fitxer\n"
 "%1"
 
-#: game.cpp:630
+#: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "El fitxer %1 no existix."
 
-#: game.cpp:645
+#: game.cpp:635
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "El fitxer %1 no és un fitxer de partida de KJumpingCube!"
 
-#: game.cpp:658
+#: game.cpp:648
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -173,7 +173,7 @@ msgstr ""
 "S'ha produït un error en carregar el fitxer\n"
 "%1"
 
-#: game.cpp:686
+#: game.cpp:676
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -188,7 +188,7 @@ msgstr ""
 "Vols abandonar la partida actual o continuar jugant i restaurar la "
 "configuració anterior de la mida?"
 
-#: game.cpp:692
+#: game.cpp:682
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -199,22 +199,22 @@ msgstr ""
 "\n"
 "Vols abandonar la partida actual?"
 
-#: game.cpp:702
+#: game.cpp:688
 #, kde-format
 msgid "New Game?"
 msgstr "Una partida nova?"
 
-#: game.cpp:703
+#: game.cpp:689
 #, kde-format
 msgid "Abandon Game"
 msgstr "Abandona la partida"
 
-#: game.cpp:704
+#: game.cpp:690
 #, kde-format
 msgid "Continue Game"
 msgstr "Continua la partida"
 
-#: game.cpp:850
+#: game.cpp:832
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -222,22 +222,22 @@ msgstr ""
 "La mida del quadro del cub del fitxer està fora de l'interval entre %1 i %2. "
 "S'establirà a %1."
 
-#: game.cpp:866
+#: game.cpp:848
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Falta la línia interior del cub %1."
 
-#: game.cpp:875
+#: game.cpp:857
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "El propietari del cub %1 està fora de l'interval 0 a 2."
 
-#: game.cpp:882
+#: game.cpp:864
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "El valor del cub %1 està fora de l'interval d'1 a %2."
 
-#: game.cpp:897
+#: game.cpp:879
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "El jugador actual no és 1 ni 2."
@@ -372,52 +372,52 @@ msgstr "Fa una pausa abans de cada pas en cascada."
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
-#: main.cpp:39
+#: main.cpp:27
 #, kde-format
 msgid "KJumpingCube"
 msgstr "KJumpingCube"
 
-#: main.cpp:41
+#: main.cpp:29
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "Joc tàctic d'un o dos jugadors"
 
-#: main.cpp:43
+#: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "(c) 1998-2000, Matthias Kiefer"
 
-#: main.cpp:47
+#: main.cpp:35
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:48
+#: main.cpp:36
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:48
+#: main.cpp:36
 #, kde-format
 msgid "Various improvements"
 msgstr "Diverses millores"
 
-#: main.cpp:49
+#: main.cpp:37
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: main.cpp:50
+#: main.cpp:38
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "Adaptació a KDE 4 i implementació de grafismes en SVG."
 
-#: main.cpp:52
+#: main.cpp:40
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:53
+#: main.cpp:41
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "Gràfics per a la versió KDE 4.0."

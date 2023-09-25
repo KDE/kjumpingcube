@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-11 03:21+0200\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2013-06-03 18:02+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -32,126 +32,129 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
 
-#: game.cpp:88
+#: game.cpp:77
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Извините, повлачим потез..."
 
-#: game.cpp:125
+#: game.cpp:114
 #, kde-format
 msgid "Game over"
 msgstr "Крај игре"
 
-#: game.cpp:126
+#: game.cpp:115
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "Победник је играч %1!"
 
-#: game.cpp:127
+#: game.cpp:116
 #, kde-format
 msgid "Winner"
 msgstr "Победник"
 
-#: game.cpp:138
+#: game.cpp:127
 #, kde-format
 msgid "General"
 msgstr "Опште"
 
 # >> @action:button
-#: game.cpp:251
+#: game.cpp:240
 #, kde-format
 msgid "Start game"
 msgstr "Започни партију"
 
 # >> @action:button
-#: game.cpp:254
+#: game.cpp:243
 #, kde-format
 msgid "Continue game"
 msgstr "Настави партију"
 
 # >> @action:button
-#: game.cpp:258
+#: game.cpp:247
 #, kde-format
 msgid "Start computer move"
 msgstr "Започни рачунарев потез"
 
 # >> @action:button
-#: game.cpp:279
+#: game.cpp:268
 #, kde-format
 msgid "Your turn"
 msgstr "Ваш потез"
 
 # >> @action:button
-#: game.cpp:282
+#: game.cpp:271
 #, kde-format
 msgid "Player %1"
 msgstr "Играч %1"
 
-#: game.cpp:298
+#: game.cpp:287
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Потез рачунарског играча %1."
 
-#: game.cpp:318
+#: game.cpp:307
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Рачунар не може да нађе правилан потез."
 
 # >> @action:button
-#: game.cpp:418
+#: game.cpp:407
 #, kde-format
 msgid "Show next step"
 msgstr "Покажи следећи потез"
 
-#: game.cpp:476
+#: game.cpp:465
 #, kde-format
 msgid "Finishing move..."
 msgstr "Довршавам потез..."
 
 # >> @action:button
-#: game.cpp:515
+#: game.cpp:504
 #, kde-format
 msgid "Interrupt game"
 msgstr "Прекини партију"
 
 # >> @action:button
-#: game.cpp:521
+#: game.cpp:510
 #, kde-format
 msgid "Stop computing"
 msgstr "Заустави рачунање"
 
 # >> @action:button
-#: game.cpp:524
+#: game.cpp:513
 #, kde-format
 msgid "Stop showing move"
 msgstr "Престани са показивањем потеза"
 
 # >> @action:button
-#: game.cpp:527
+#: game.cpp:516
 #, kde-format
 msgid "Stop animation"
 msgstr "Заустави анимацију"
 
-#: game.cpp:556
+#: game.cpp:545
 #, kde-format
 msgid "New Game"
 msgstr "Нова партија"
 
-#: game.cpp:585
-#, kde-format
+#: game.cpp:574
+#, fuzzy, kde-format
+#| msgid ""
+#| "The file %1 exists.\n"
+#| "Do you want to overwrite it?"
 msgid ""
-"The file %1 exists.\n"
+"The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
 "Фајл %1 већ постоји.\n"
 "Желите ли да га пребришете?"
 
-#: game.cpp:610
+#: game.cpp:599
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Позиција је сачувана као %1"
 
-#: game.cpp:613
+#: game.cpp:602
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -160,17 +163,17 @@ msgstr ""
 "Грешка при уписивању фајла\n"
 "%1"
 
-#: game.cpp:630
+#: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Фајл %1 не постоји."
 
-#: game.cpp:645
+#: game.cpp:635
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Фајл %1 није партија К‑скочикоцке."
 
-#: game.cpp:658
+#: game.cpp:648
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -179,7 +182,7 @@ msgstr ""
 "Грешка при учитавању фајла\n"
 "%1"
 
-#: game.cpp:686
+#: game.cpp:676
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -194,7 +197,7 @@ msgstr ""
 "Желите ли да обуставите тренутну партију, или да наставите са играњем "
 "вративши претходну поставку величине?"
 
-#: game.cpp:692
+#: game.cpp:682
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -205,22 +208,22 @@ msgstr ""
 "\n"
 "Желите ли да обуставите тренутну партију?"
 
-#: game.cpp:697
+#: game.cpp:688
 #, kde-format
 msgid "New Game?"
 msgstr "Нова партија?"
 
-#: game.cpp:698
+#: game.cpp:689
 #, kde-format
 msgid "Abandon Game"
 msgstr "Обустави партију"
 
-#: game.cpp:699
+#: game.cpp:690
 #, kde-format
 msgid "Continue Game"
 msgstr "Настави партију"
 
-#: game.cpp:841
+#: game.cpp:832
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -228,32 +231,32 @@ msgstr ""
 "Величина кутије коцкица у фајлу лежи изван опсега %1 до %2. Поставиће се на "
 "%1."
 
-#: game.cpp:857
+#: game.cpp:848
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Недостаје улазни ред за коцкицу %1."
 
-#: game.cpp:866
+#: game.cpp:857
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Власник коцкице %1 лежи изван опсега 0 до 2."
 
-#: game.cpp:873
+#: game.cpp:864
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Вредност коцкице %1 лежи изван опсега 1 до %2."
 
-#: game.cpp:888
+#: game.cpp:879
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Тренутни играч није ни 1 ни 2."
 
-#: kjumpingcube.cpp:59
+#: kjumpingcube.cpp:45
 #, kde-format
 msgid "Current player:"
 msgstr "Тренутни играч:"
 
-#: kjumpingcube.cpp:143
+#: kjumpingcube.cpp:137
 #, kde-format
 msgid "Settings"
 msgstr "Поставке"
@@ -379,52 +382,52 @@ msgstr "Паузирај пре надовезаног потеза"
 msgid "Main Toolbar"
 msgstr "Главна трака"
 
-#: main.cpp:36
-#, kde-format
-msgid "Tactical one or two player game"
-msgstr "Тактичка игра за једног или два играча"
-
-#: main.cpp:51
+#: main.cpp:27
 #, kde-format
 msgid "KJumpingCube"
 msgstr "К‑скочикоцка"
 
-#: main.cpp:53
+#: main.cpp:29
+#, kde-format
+msgid "Tactical one or two player game"
+msgstr "Тактичка игра за једног или два играча"
+
+#: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "© 1998–2000, Матијас Кифер"
 
-#: main.cpp:55
+#: main.cpp:35
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Матијас Кифер"
 
-#: main.cpp:56
+#: main.cpp:36
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Бенџамин К. Мејер"
 
-#: main.cpp:56
+#: main.cpp:36
 #, kde-format
 msgid "Various improvements"
 msgstr "разна побољшања"
 
-#: main.cpp:57
+#: main.cpp:37
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ијан Вадам"
 
-#: main.cpp:58
+#: main.cpp:38
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "надградња за КДЕ‑4 и подршка за СВГ графику"
 
-#: main.cpp:60
+#: main.cpp:40
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Јевгениј Труњов"
 
-#: main.cpp:61
+#: main.cpp:41
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "графика за КДЕ‑4 верзију"
