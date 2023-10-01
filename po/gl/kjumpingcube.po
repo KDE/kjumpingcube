@@ -101,7 +101,7 @@ msgstr "Amosar o paso seguinte"
 #: game.cpp:466
 #, kde-format
 msgid "Finishing move..."
-msgstr "Estase a rematar o movemento…"
+msgstr "Rematando o movemento…"
 
 #: game.cpp:505
 #, kde-format
