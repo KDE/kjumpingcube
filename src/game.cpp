@@ -17,7 +17,6 @@
 #include "kjumpingcube_debug.h"
 #include <QFileDialog>
 #include <QTemporaryFile>
-#include <QRegExp>
 
 #include <KConfigDialog> // IDW test.
 #include <KIO/CopyJob>
@@ -563,8 +562,7 @@ void Game::saveGame (bool saveAs)
             return;
 
          // check filename
-         QRegExp pattern (QStringLiteral("*.kjc"), Qt::CaseSensitive, QRegExp::Wildcard);
-         if (! pattern.exactMatch (url.fileName())) {
+         if (! url.fileName().endsWith(QStringLiteral(".kjc"))) {
             url.setPath(url.path() + QLatin1String(".kjc"));
          }
 
