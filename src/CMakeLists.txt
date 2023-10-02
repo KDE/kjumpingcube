@@ -53,7 +53,6 @@ target_link_libraries(kjumpingcube
     KF6::KIOWidgets
     KF6::XmlGui
     Qt6::Svg
-    Qt6::Core5Compat
 )
 
 install(TARGETS kjumpingcube ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
