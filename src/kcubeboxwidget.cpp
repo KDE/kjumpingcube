@@ -9,7 +9,7 @@
 
 #include "kcubeboxwidget.h"
 
-#include <KgTheme>
+#include <KGameTheme>
 
 #include <QTimer>
 #include <QLabel>
@@ -173,7 +173,7 @@ void KCubeBoxWidget::init()
    color2 = Prefs::color2();
    color0 = Prefs::color0();
 
-   KgTheme theme((QByteArray()));
+   KGameTheme theme((QByteArray()));
    theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default.desktop")));
    svg.load (theme.graphicsPath());
 
