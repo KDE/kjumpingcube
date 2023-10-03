@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2023-10-03 01:37+0000\n"
 "PO-Revision-Date: 2021-07-09 09:59+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -31,102 +31,102 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "manolis@koppermind.homelinux.org"
 
-#: game.cpp:77
+#: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Συγγνώμη, κάνω μια κίνηση..."
 
-#: game.cpp:114
+#: game.cpp:113
 #, kde-format
 msgid "Game over"
 msgstr "Τέλος παιχνιδιού"
 
-#: game.cpp:115
+#: game.cpp:114
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "Ο νικητής είναι ο παίκτης %1!"
 
-#: game.cpp:116
+#: game.cpp:115
 #, kde-format
 msgid "Winner"
 msgstr "Νικητής"
 
-#: game.cpp:127
+#: game.cpp:126
 #, kde-format
 msgid "General"
 msgstr "Γενικά"
 
-#: game.cpp:240
+#: game.cpp:239
 #, kde-format
 msgid "Start game"
 msgstr "Έναρξη παιχνιδιού"
 
-#: game.cpp:243
+#: game.cpp:242
 #, kde-format
 msgid "Continue game"
 msgstr "Συνέχεια παιχνιδιού"
 
-#: game.cpp:247
+#: game.cpp:246
 #, kde-format
 msgid "Start computer move"
 msgstr "Έναρξη κίνησης υπολογιστή"
 
-#: game.cpp:268
+#: game.cpp:267
 #, kde-format
 msgid "Your turn"
 msgstr "Η σειρά σου"
 
-#: game.cpp:271
+#: game.cpp:270
 #, kde-format
 msgid "Player %1"
 msgstr "Παίκτης %1"
 
-#: game.cpp:287
+#: game.cpp:286
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Ο υπολογιστής %1 κάνει κίνηση"
 
-#: game.cpp:307
+#: game.cpp:306
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "Ο υπολογιστής δεν κατάφερε να βρει μια έγκυρη κίνηση."
 
-#: game.cpp:407
+#: game.cpp:406
 #, kde-format
 msgid "Show next step"
 msgstr "Εμφάνιση επόμενου βήματος"
 
-#: game.cpp:465
+#: game.cpp:464
 #, kde-format
 msgid "Finishing move..."
 msgstr "Τελείωμα κίνησης..."
 
-#: game.cpp:504
+#: game.cpp:503
 #, kde-format
 msgid "Interrupt game"
 msgstr "Διακοπή παιχνιδιού"
 
-#: game.cpp:510
+#: game.cpp:509
 #, kde-format
 msgid "Stop computing"
 msgstr "Διακοπή υπολογισμού"
 
-#: game.cpp:513
+#: game.cpp:512
 #, kde-format
 msgid "Stop showing move"
 msgstr "Διακοπή εμφάνισης κίνησης"
 
-#: game.cpp:516
+#: game.cpp:515
 #, kde-format
 msgid "Stop animation"
 msgstr "Διακοπή εφέ κίνησης"
 
-#: game.cpp:545
+#: game.cpp:544
 #, kde-format
 msgid "New Game"
 msgstr "Νέο παιχνίδι"
 
-#: game.cpp:574
+#: game.cpp:572
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -135,12 +135,12 @@ msgstr ""
 "Το αρχείο %1 ήδη υπάρχει.\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: game.cpp:599
+#: game.cpp:597
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Το παιχνίδι αποθηκεύτηκε ως %1"
 
-#: game.cpp:602
+#: game.cpp:600
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -149,17 +149,17 @@ msgstr ""
 "Υπήρξε ένα σφάλμα κατά την αποθήκευση του αρχείου\n"
 "%1"
 
-#: game.cpp:620
+#: game.cpp:618
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Το αρχείο %1 δεν υπάρχει!"
 
-#: game.cpp:635
+#: game.cpp:633
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Το αρχείο %1 δεν είναι ένα αρχείο παιχνιδιού KJumpingCube!"
 
-#: game.cpp:648
+#: game.cpp:646
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -168,7 +168,7 @@ msgstr ""
 "Υπήρξε ένα σφάλμα κατά τη φόρτωση του αρχείου\n"
 "%1"
 
-#: game.cpp:676
+#: game.cpp:674
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -182,7 +182,7 @@ msgstr ""
 "Θέλετε να εγκαταλείψετε το τρέχον παιχνίδι ή να το συνεχίσετε με επαναφορά "
 "της προηγούμενης ρύθμισης μεγέθους;"
 
-#: game.cpp:682
+#: game.cpp:680
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -192,22 +192,22 @@ msgstr ""
 "Έχετε ζητήσει ένα νέο παιχνίδι, αλλά ήδη υπάρχει παιχνίδι σε εξέλιξη.\n"
 "Θέλετε να εγκαταλείψετε το τρέχον παιχνίδι;"
 
-#: game.cpp:688
+#: game.cpp:686
 #, kde-format
 msgid "New Game?"
 msgstr "Νέο παιχνίδι;"
 
-#: game.cpp:689
+#: game.cpp:687
 #, kde-format
 msgid "Abandon Game"
 msgstr "Εγκατάλειψη παιχνιδιού"
 
-#: game.cpp:690
+#: game.cpp:688
 #, kde-format
 msgid "Continue Game"
 msgstr "Συνέχεια παιχνιδιού"
 
-#: game.cpp:832
+#: game.cpp:830
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -215,22 +215,22 @@ msgstr ""
 "Το μέγεθος του κύβου στο αρχείο είναι εκτός των ορίων %1 έως %2. Θα οριστεί "
 "σε %1."
 
-#: game.cpp:848
+#: game.cpp:846
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Λείπει η γραμμή εισόδου στοιχείων για τον κύβο %1."
 
-#: game.cpp:857
+#: game.cpp:855
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Ο κάτοχος του κύβου %1 βρίσκεται εκτός των ορίων 0 έως 2."
 
-#: game.cpp:864
+#: game.cpp:862
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Η αξία του κύβου %1 βρίσκεται εκτός των ορίων 1 έως %2."
 
-#: game.cpp:879
+#: game.cpp:877
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Ο τρέχων παίκτης δεν είναι ούτε 1 ούτε 2."

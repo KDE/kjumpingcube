@@ -5,138 +5,140 @@
 # Santiago Fernandez Sancho <santi@kde-es.org>, 2004.
 # santi <santi@kde-es.org>, 2005.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2021.
+# SPDX-FileCopyrightText: 2009, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Rocio Gallego <traducciones@rociogallego.com>, 2012, 2013.
 # Sofia Priego <spriego@darksylvania.net>, %Y.
+# Sofía Priego <spriego@darksylvania.net>, %Y.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2021-07-10 20:07+0100\n"
-"Last-Translator: Sofia Priego <spriego@darksylvania.net>\n"
+"POT-Creation-Date: 2023-10-03 01:37+0000\n"
+"PO-Revision-Date: 2023-10-02 21:20+0100\n"
+"Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Valux (Rafael Iglesias) <r.iglesias@lalegion.com>\n"
-"X-Generator: Lokalize 21.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-"Rocío Gallego,Rafael Osuna,Rafael Iglesias,Pablo J. Barneo González,Pablo de "
-"Vicente,Lucas García,Miguel Revilla Rodríguez,Kira J. Fernández"
+"Sofía Priego,Rocío Gallego,Rafael Osuna,Rafael Iglesias,Pablo J. Barneo "
+"González,Pablo de Vicente,Lucas García,Miguel Revilla Rodríguez,Kira J. "
+"Fernández"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"traducciones@rociogallego.com,rafa@ecotelco.com,r.iglesias@lalegion.com,"
-"pablob@nikhef.nl,vicente@oan.es,tanke@escomposlinux.org,yo@miguelrevilla.com,"
-"kirajfdez@gmail.com"
+"spriego@darksylvania.net,traducciones@rociogallego.com,rafa@ecotelco.com,r."
+"iglesias@lalegion.com,pablob@nikhef.nl,vicente@oan.es,tanke@escomposlinux."
+"org,yo@miguelrevilla.com,kirajfdez@gmail.com"
 
-#: game.cpp:77
+#: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Lo siento, estoy realizando un movimiento..."
 
-#: game.cpp:114
+#: game.cpp:113
 #, kde-format
 msgid "Game over"
 msgstr "Fin de la partida"
 
-#: game.cpp:115
+#: game.cpp:114
 #, kde-format
 msgid "The winner is Player %1!"
 msgstr "¡El ganador es el jugador %1!"
 
-#: game.cpp:116
+#: game.cpp:115
 #, kde-format
 msgid "Winner"
 msgstr "Ganador"
 
-#: game.cpp:127
+#: game.cpp:126
 #, kde-format
 msgid "General"
 msgstr "General"
 
-#: game.cpp:240
+#: game.cpp:239
 #, kde-format
 msgid "Start game"
 msgstr "Comenzar la partida"
 
-#: game.cpp:243
+#: game.cpp:242
 #, kde-format
 msgid "Continue game"
 msgstr "Continuar la partida"
 
-#: game.cpp:247
+#: game.cpp:246
 #, kde-format
 msgid "Start computer move"
 msgstr "Comenzar jugada de la máquina"
 
-#: game.cpp:268
+#: game.cpp:267
 #, kde-format
 msgid "Your turn"
 msgstr "Te toca"
 
-#: game.cpp:271
+#: game.cpp:270
 #, kde-format
 msgid "Player %1"
 msgstr "Jugador %1"
 
-#: game.cpp:287
+#: game.cpp:286
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "La máquina juega (jugador %1)"
 
-#: game.cpp:307
+#: game.cpp:306
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "La máquina no ha podido encontrar un movimiento válido."
 
-#: game.cpp:407
+#: game.cpp:406
 #, kde-format
 msgid "Show next step"
 msgstr "Mostrar el siguiente paso"
 
-#: game.cpp:465
+#: game.cpp:464
 #, kde-format
 msgid "Finishing move..."
 msgstr "Finalizando el movimiento..."
 
-#: game.cpp:504
+#: game.cpp:503
 #, kde-format
 msgid "Interrupt game"
 msgstr "Interrumpir la partida"
 
-#: game.cpp:510
+#: game.cpp:509
 #, kde-format
 msgid "Stop computing"
 msgstr "Detener el cálculo"
 
-#: game.cpp:513
+#: game.cpp:512
 #, kde-format
 msgid "Stop showing move"
 msgstr "Dejar de mostrar el movimiento"
 
-#: game.cpp:516
+#: game.cpp:515
 #, kde-format
 msgid "Stop animation"
 msgstr "Detener la animación"
 
-#: game.cpp:545
+#: game.cpp:544
 #, kde-format
 msgid "New Game"
 msgstr "Partida nueva"
 
-#: game.cpp:574
+#: game.cpp:572
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -145,12 +147,12 @@ msgstr ""
 "El archivo %1 ya existe.\n"
 "¿Desea sobrescribirlo?"
 
-#: game.cpp:599
+#: game.cpp:597
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Partida guardada como %1"
 
-#: game.cpp:602
+#: game.cpp:600
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -159,18 +161,18 @@ msgstr ""
 "Hubo un error al guardar el archivo\n"
 "%1"
 
-#: game.cpp:620
+#: game.cpp:618
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "¡El archivo %1 no existe!"
 
-#: game.cpp:635
+#: game.cpp:633
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr ""
 "¡El archivo %1 no es un archivo que contenga una partida de KJumpingCube!"
 
-#: game.cpp:648
+#: game.cpp:646
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -179,7 +181,7 @@ msgstr ""
 "Hubo un error cargando el archivo\n"
 "%1"
 
-#: game.cpp:676
+#: game.cpp:674
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -194,7 +196,7 @@ msgstr ""
 "¿Desea abandonar la partida actual o continuar jugando y restablecer la "
 "preferencia de tamaño anterior?"
 
-#: game.cpp:682
+#: game.cpp:680
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -205,22 +207,22 @@ msgstr ""
 "\n"
 "¿Desea abandonar la partida actual?"
 
-#: game.cpp:688
+#: game.cpp:686
 #, kde-format
 msgid "New Game?"
 msgstr "¿Nueva partida?"
 
-#: game.cpp:689
+#: game.cpp:687
 #, kde-format
 msgid "Abandon Game"
 msgstr "Abandonar la partida"
 
-#: game.cpp:690
+#: game.cpp:688
 #, kde-format
 msgid "Continue Game"
 msgstr "Continuar la partida"
 
-#: game.cpp:832
+#: game.cpp:830
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -228,22 +230,22 @@ msgstr ""
 "El tamaño de la caja del cubo del archivo está fuera del intervalo de %1 al "
 "%2. Se le asignará el valor %1."
 
-#: game.cpp:848
+#: game.cpp:846
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Falta la línea de entrada del cubo %1."
 
-#: game.cpp:857
+#: game.cpp:855
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "El propietario del cubo %1 está fuera del rango de 0 a 2."
 
-#: game.cpp:864
+#: game.cpp:862
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "El valor del cubo %1 está fuera del intervalo de 1 a %2."
 
-#: game.cpp:879
+#: game.cpp:877
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "El jugador actual no es 1 ni 2."
@@ -391,7 +393,7 @@ msgstr "Juego táctico para uno o dos jugadores"
 #: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
-msgstr "(c) 1998-2000, Matthias Kiefer"
+msgstr "© 1998-2000, Matthias Kiefer"
 
 #: main.cpp:35
 #, kde-format
