@@ -645,7 +645,6 @@ long AI_Base::assessPosition (const Player player,   const int nCubes,
    int    cubesTwo       = 0;
    int    pointsOne      = 0;
    int    pointsTwo      = 0;
-   Player otherPlayer = (player == One) ? Two : One;
    int index, points;
 
    for (index = 0; index < nCubes; index++) {
