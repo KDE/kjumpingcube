@@ -116,6 +116,10 @@ AI_Main::~AI_Main()
 void AI_Main::setSkill (int skill1, bool kepler1, bool newton1,
                         int skill2, bool kepler2, bool newton2)
 {
+   // TODO: turn exclusive ai type flags into one selection enum
+   Q_UNUSED(newton1);
+   Q_UNUSED(newton2);
+
    m_ai[0] = nullptr;
    m_ai[1] = kepler1 ? m_AI_Kepler : m_AI_Newton;
    m_ai[2] = kepler2 ? m_AI_Kepler : m_AI_Newton;
