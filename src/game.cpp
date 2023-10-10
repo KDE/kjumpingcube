@@ -350,7 +350,10 @@ void Game::doMove (int index)
    Q_EMIT setAction (UNDO, true);	// Update Undo and Redo actions.
    Q_EMIT setAction (REDO, false);
    m_steps->clear();
-   bool won = m_box->doMove (m_currentPlayer, index, nullptr, m_steps);
+#if AILog > 1
+   bool won =
+#endif
+   m_box->doMove (m_currentPlayer, index, nullptr, m_steps);
 #if AILog > 1
    qCDebug(KJUMPINGCUBE_LOG) << "GAME WON?" << won << "STEPS" << (* m_steps);
    // m_box->printBox();
