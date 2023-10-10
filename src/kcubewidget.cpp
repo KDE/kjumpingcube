@@ -222,6 +222,7 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 
   case 3:
       p.drawPixmap (tlx + (w - dia)/2, tly + (h - dia)/2, pip);
+      [[fallthrough]];
   case 2:
       p.drawPixmap (tlx + (w/2 - dia)/2, tly + (h/2 - dia)/2, pip);
       p.drawPixmap (tlx + (3*w/2 - dia)/2, tly + (3*h/2 - dia)/2, pip);
@@ -229,6 +230,7 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 
   case 5:
       p.drawPixmap (tlx + (w - dia)/2, tly + (h - dia)/2, pip);
+      [[fallthrough]];
   case 4:
       p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h/2 - dia)/2, pip);
       p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (3*h/2 - dia)/2, pip);
@@ -238,8 +240,10 @@ void KCubeWidget::paintEvent(QPaintEvent * /* ev unused */)
 
   case 8:
       p.drawPixmap (tlx + (w - dia)/2,     tly + 2*h/3 - dia/2, pip);
+      [[fallthrough]];
   case 7:
       p.drawPixmap (tlx + (w - dia)/2,     tly + h/3 - dia/2, pip);
+      [[fallthrough]];
   case 6:
       p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h/2 - dia)/2, pip);
       p.drawPixmap (tlx + (w/2 - dia)/2,   tly + (h - dia)/2, pip);
