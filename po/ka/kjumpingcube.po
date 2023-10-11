@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:37+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2022-12-11 08:48+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -88,42 +88,42 @@ msgstr "კომპიუტერის მოთამაშე %1 სვლ�
 msgid "The computer could not find a valid move."
 msgstr "კომპიუტერმა სწორი სვლა ვერ იპოვა."
 
-#: game.cpp:406
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "შემდეგი სვლის ჩვენება"
 
-#: game.cpp:464
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "სვლის დასრულება..."
 
-#: game.cpp:503
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "თამაშის შეწყვეტა"
 
-#: game.cpp:509
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "გამოთვლის შეწყვეტა"
 
-#: game.cpp:512
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "სვლის ჩვენების შეწყვეტა"
 
-#: game.cpp:515
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "ანიმაციის შეჩერება"
 
-#: game.cpp:544
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "დაიწყეთ ახალი თამაში"
 
-#: game.cpp:572
+#: game.cpp:575
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -132,12 +132,12 @@ msgstr ""
 "%1 უკვე არსებობს.\n"
 "გნებავთ გადააწეროთ?"
 
-#: game.cpp:597
+#: game.cpp:600
 #, kde-format
 msgid "Game saved as %1"
 msgstr "თამაში შენახულია, როგორც %1"
 
-#: game.cpp:600
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -146,17 +146,17 @@ msgstr ""
 "შეცდომა ფაილში ჩაწერისას\n"
 "%1"
 
-#: game.cpp:618
+#: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "ფაილი %1 არ არსებობს!"
 
-#: game.cpp:633
+#: game.cpp:636
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "ფაილი %1 KJumpingCube -ის ფაილი არაა!"
 
-#: game.cpp:646
+#: game.cpp:649
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -165,7 +165,7 @@ msgstr ""
 "შეცდომა ფაილის ჩატვირთვისას\n"
 "%1"
 
-#: game.cpp:674
+#: game.cpp:677
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -180,7 +180,7 @@ msgstr ""
 "გნებავთ მიატოვოთ მიმდინარე თამაში, თუ გააგრძელებთ მას? (ზომა წინა "
 "მნიშვნელობაზე აღდგება)"
 
-#: game.cpp:680
+#: game.cpp:683
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -191,22 +191,22 @@ msgstr ""
 "\n"
 "გნებავთ მიმდინარე თამაშის მიტოვება?"
 
-#: game.cpp:686
+#: game.cpp:689
 #, kde-format
 msgid "New Game?"
 msgstr "ახალი თამაში?"
 
-#: game.cpp:687
+#: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
 msgstr "თამაშის მიტოვება"
 
-#: game.cpp:688
+#: game.cpp:691
 #, kde-format
 msgid "Continue Game"
 msgstr "თამაშის გაგრძელება"
 
-#: game.cpp:830
+#: game.cpp:833
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -214,22 +214,22 @@ msgstr ""
 "ფაილიდან ჩატვირთული კუბის ზომა %1-%2 დიაპაზონს ცდება. გამოყენებული იქნება "
 "მნიშვნელობა %1."
 
-#: game.cpp:846
+#: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "აკლია შეყვანის ხაზი კუბისთვის %1."
 
-#: game.cpp:855
+#: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "კუბის (%1) მფლობელი 0-2 დიაპაზონს გარეთაა."
 
-#: game.cpp:862
+#: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "კუბის (%1) მნიშვნელობა 1-%2 დიაპაზონს გარეთაა."
 
-#: game.cpp:877
+#: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "მიმდინარე მოთამაშე არც 1-ია და არც 2."

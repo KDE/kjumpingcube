@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:37+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2013-06-03 18:02+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -98,46 +98,46 @@ msgid "The computer could not find a valid move."
 msgstr "Рачунар не може да нађе правилан потез."
 
 # >> @action:button
-#: game.cpp:406
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "Покажи следећи потез"
 
-#: game.cpp:464
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "Довршавам потез..."
 
 # >> @action:button
-#: game.cpp:503
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "Прекини партију"
 
 # >> @action:button
-#: game.cpp:509
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "Заустави рачунање"
 
 # >> @action:button
-#: game.cpp:512
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "Престани са показивањем потеза"
 
 # >> @action:button
-#: game.cpp:515
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "Заустави анимацију"
 
-#: game.cpp:544
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "Нова партија"
 
-#: game.cpp:572
+#: game.cpp:575
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -149,12 +149,12 @@ msgstr ""
 "Фајл %1 већ постоји.\n"
 "Желите ли да га пребришете?"
 
-#: game.cpp:597
+#: game.cpp:600
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Позиција је сачувана као %1"
 
-#: game.cpp:600
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -163,17 +163,17 @@ msgstr ""
 "Грешка при уписивању фајла\n"
 "%1"
 
-#: game.cpp:618
+#: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Фајл %1 не постоји."
 
-#: game.cpp:633
+#: game.cpp:636
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Фајл %1 није партија К‑скочикоцке."
 
-#: game.cpp:646
+#: game.cpp:649
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -182,7 +182,7 @@ msgstr ""
 "Грешка при учитавању фајла\n"
 "%1"
 
-#: game.cpp:674
+#: game.cpp:677
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -197,7 +197,7 @@ msgstr ""
 "Желите ли да обуставите тренутну партију, или да наставите са играњем "
 "вративши претходну поставку величине?"
 
-#: game.cpp:680
+#: game.cpp:683
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -208,22 +208,22 @@ msgstr ""
 "\n"
 "Желите ли да обуставите тренутну партију?"
 
-#: game.cpp:686
+#: game.cpp:689
 #, kde-format
 msgid "New Game?"
 msgstr "Нова партија?"
 
-#: game.cpp:687
+#: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
 msgstr "Обустави партију"
 
-#: game.cpp:688
+#: game.cpp:691
 #, kde-format
 msgid "Continue Game"
 msgstr "Настави партију"
 
-#: game.cpp:830
+#: game.cpp:833
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -231,22 +231,22 @@ msgstr ""
 "Величина кутије коцкица у фајлу лежи изван опсега %1 до %2. Поставиће се на "
 "%1."
 
-#: game.cpp:846
+#: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Недостаје улазни ред за коцкицу %1."
 
-#: game.cpp:855
+#: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "Власник коцкице %1 лежи изван опсега 0 до 2."
 
-#: game.cpp:862
+#: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "Вредност коцкице %1 лежи изван опсега 1 до %2."
 
-#: game.cpp:877
+#: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Тренутни играч није ни 1 ни 2."

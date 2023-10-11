@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:37+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2005-10-22 15:57+0500\n"
 "Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
 "Language-Team: Tajik\n"
@@ -99,42 +99,42 @@ msgstr "Компютер Бозӣ мекунад ҳамчун"
 msgid "The computer could not find a valid move."
 msgstr ""
 
-#: game.cpp:406
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr ""
 
-#: game.cpp:464
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr ""
 
-#: game.cpp:503
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr ""
 
-#: game.cpp:509
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr ""
 
-#: game.cpp:512
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr ""
 
-#: game.cpp:515
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr ""
 
-#: game.cpp:544
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr ""
 
-#: game.cpp:572
+#: game.cpp:575
 #, fuzzy, kde-format
 #| msgid ""
 #| "The file %1 exists.\n"
@@ -146,13 +146,13 @@ msgstr ""
 "Файли %1 мавҷуд аст.\n"
 "Оё онро рӯиҳам навиштан мехоҳед?"
 
-#: game.cpp:597
+#: game.cpp:600
 #, fuzzy, kde-format
 #| msgid "game saved as %1"
 msgid "Game saved as %1"
 msgstr "бозӣ ҳамчун %1 захира шудааст"
 
-#: game.cpp:600
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -161,17 +161,17 @@ msgstr ""
 "Хатогӣ ҳангоми захиракунии файл рух дод\n"
 "%1"
 
-#: game.cpp:618
+#: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "Файли %1 мавҷуд нест!"
 
-#: game.cpp:633
+#: game.cpp:636
 #, fuzzy, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "Файли %1 файли бозии KКубҳои Ҷаҳанда нест!"
 
-#: game.cpp:646
+#: game.cpp:649
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -180,7 +180,7 @@ msgstr ""
 "Хатогӣ ҳангоми боркунии файл рух дод\n"
 "%1"
 
-#: game.cpp:674
+#: game.cpp:677
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -190,7 +190,7 @@ msgid ""
 "previous size setting?"
 msgstr ""
 
-#: game.cpp:680
+#: game.cpp:683
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -198,43 +198,43 @@ msgid ""
 "Do you wish to abandon the current game?"
 msgstr ""
 
-#: game.cpp:686
+#: game.cpp:689
 #, kde-format
 msgid "New Game?"
 msgstr ""
 
-#: game.cpp:687
+#: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
 msgstr ""
 
-#: game.cpp:688
+#: game.cpp:691
 #, kde-format
 msgid "Continue Game"
 msgstr ""
 
-#: game.cpp:830
+#: game.cpp:833
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
 
-#: game.cpp:846
+#: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr ""
 
-#: game.cpp:855
+#: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr ""
 
-#: game.cpp:862
+#: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr ""
 
-#: game.cpp:877
+#: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr ""

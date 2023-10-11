@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-03 01:37+0000\n"
+"POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2021-07-18 13:26+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -87,42 +87,42 @@ msgstr "컴퓨터 플레이어 %1이(가) 이동 중"
 msgid "The computer could not find a valid move."
 msgstr "컴퓨터가 올바른 이동 방법을 찾을 수 없습니다."
 
-#: game.cpp:406
+#: game.cpp:409
 #, kde-format
 msgid "Show next step"
 msgstr "다음 단계 표시"
 
-#: game.cpp:464
+#: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
 msgstr "이동 완료 중..."
 
-#: game.cpp:503
+#: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
 msgstr "게임 일시 중단"
 
-#: game.cpp:509
+#: game.cpp:512
 #, kde-format
 msgid "Stop computing"
 msgstr "계산 정지"
 
-#: game.cpp:512
+#: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
 msgstr "이동 표시 정지"
 
-#: game.cpp:515
+#: game.cpp:518
 #, kde-format
 msgid "Stop animation"
 msgstr "애니메이션 정지"
 
-#: game.cpp:544
+#: game.cpp:547
 #, kde-format
 msgid "New Game"
 msgstr "새 게임"
 
-#: game.cpp:572
+#: game.cpp:575
 #, kde-format
 msgid ""
 "The file %1 already exists.\n"
@@ -131,12 +131,12 @@ msgstr ""
 "파일 %1이(가) 이미 존재합니다.\n"
 "덮어쓰시겠습니까?"
 
-#: game.cpp:597
+#: game.cpp:600
 #, kde-format
 msgid "Game saved as %1"
 msgstr "게임이 %1(으)로 저장됨"
 
-#: game.cpp:600
+#: game.cpp:603
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -145,17 +145,17 @@ msgstr ""
 "파일을 저장하는 중 오류가 발생했습니다:\n"
 "%1"
 
-#: game.cpp:618
+#: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "파일 %1이(가) 없습니다!"
 
-#: game.cpp:633
+#: game.cpp:636
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "파일 '%1'은(는) 올바른 KJumpingCube 게임 파일이 아닙니다!"
 
-#: game.cpp:646
+#: game.cpp:649
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -164,7 +164,7 @@ msgstr ""
 "파일을 불러오는 중 오류가 발생했습니다:\n"
 "%1"
 
-#: game.cpp:674
+#: game.cpp:677
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -178,7 +178,7 @@ msgstr ""
 "현재 게임을 끝내시겠습니까? 아니면 기존 설정으로 계속 게임을 진행하시겠습니"
 "까?"
 
-#: game.cpp:680
+#: game.cpp:683
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -189,22 +189,22 @@ msgstr ""
 "\n"
 "현재 게임을 끝내시겠습니까?"
 
-#: game.cpp:686
+#: game.cpp:689
 #, kde-format
 msgid "New Game?"
 msgstr "새 게임?"
 
-#: game.cpp:687
+#: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
 msgstr "게임 끝내기"
 
-#: game.cpp:688
+#: game.cpp:691
 #, kde-format
 msgid "Continue Game"
 msgstr "게임 계속하기"
 
-#: game.cpp:830
+#: game.cpp:833
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -212,22 +212,22 @@ msgstr ""
 "파일의 큐브 상자 크기가 %1에서 %2 사이 범위를 벗어납니다. %1(으)로 설정합니"
 "다."
 
-#: game.cpp:846
+#: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "입력 파일에서 큐브 %1에 대한 줄이 빠졌습니다."
 
-#: game.cpp:855
+#: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "큐브 %1의 소유자가 0에서 2 범위를 벗어납니다."
 
-#: game.cpp:862
+#: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "큐브 %1의 값이 1에서 %2 범위를 벗어납니다."
 
-#: game.cpp:877
+#: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "현재 플레이어가 1이나 2가 아닙니다."
