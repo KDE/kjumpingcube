@@ -2,7 +2,7 @@
 # Translation of kjumpingcube.po to Slovenian
 # SLOVENIAN TRANSLATION OF KDEGAMES.
 # Copyright © 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kjumpingcube.po 1662109 2023-10-11 02:29:49Z scripty $
+# $Id: kjumpingcube.po 1662170 2023-10-12 02:05:01Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
@@ -17,16 +17,16 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2021-07-09 06:56+0200\n"
+"PO-Revision-Date: 2023-10-11 09:51+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.12.2\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -300,7 +300,7 @@ msgstr "Barva igralca 1."
 #: kjumpingcube.kcfg:39
 #, kde-format
 msgid "Color of player 2."
-msgstr "Barva igralca 2"
+msgstr "Barva igralca 2."
 
 #. i18n: ectx: label, entry (CubeDim), group (Game)
 #: kjumpingcube.kcfg:45

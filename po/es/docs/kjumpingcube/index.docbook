@@ -449,7 +449,7 @@
 	<listitem
 ><para
 ><action
->Acceso rápido para abrir el diálogo de configuración del juego y modificar las condiciones del juego. Consulte la sección <link linkend="configuration"
+>Atajo de teclado para abrir el diálogo de configuración del juego y modificar las condiciones del juego. Consulte la sección <link linkend="configuration"
 >Configuración del juego</link
 > para obtener más información.</action
 ></para
@@ -499,7 +499,7 @@
 	<listitem
 ><para
 ><action
->Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o 2. Consulte la sección <link linkend="configuration"
+>Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o el 2. Consulte la sección <link linkend="configuration"
 >Configuración del juego</link
 > para obtener más información.</action
 ></para
@@ -718,7 +718,7 @@
 	<listitem
 ><para
 ><action
->Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o 2. Consulte la sección <link linkend="configuration"
+>Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o el 2. Consulte la sección <link linkend="configuration"
 >Configuración del juego</link
 > para obtener más información.</action
 ></para
