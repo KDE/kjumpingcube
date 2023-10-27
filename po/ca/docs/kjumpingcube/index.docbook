@@ -146,9 +146,7 @@
 <para
 >Pot ser una bona idea si no heu jugat abans al &nbsp;&kjumpingcube;. Vegeu les <link linkend="faq"
 >Preguntes més freqüents</link
->, <quote
->Com començo en aquest joc?</quote
->.</para>
+>, «Com començo en aquest joc?».</para>
 
 <para
 >L'àrea de joc és un quadre de cubs que contenen punts. Quan es comença la partida, cada cub té un punt, sense propietari i un color neutre. Si feu clic sobre un cub neutre, aquest es convertirà en vostre, canviarà de color i augmentarà en un punt. El vostre objectiu és capturar tots els cubs, però ara és el torn del vostre oponent.</para>
@@ -183,14 +181,10 @@
 <para
 >Si no heu jugat abans al &kjumpingcube;, proveu veient una o dues partides on l'ordinador jugui contra si mateix. Vegeu les <link linkend="faq"
 >Preguntes més freqüents</link
->, <quote
->Com començo en aquest joc?</quote
->.</para>
+>, «Com començo en aquest joc?».</para>
 
 <para
->Moveu fent clic sobre un cub neutral o sobre un que ja teniu. Si feu clic sobre un cub neutral, us n'apropiareu i el seu color canviarà al vostre color de joc. Cada vegada que feu clic sobre un cub, el seu valor augmentarà en un. Si el valor del cub arriba a un màxim, alguns dels seus punts es mouran als seus veïns immediats (els punts <quote
->salten</quote
->). Si un cub veí és propietat de l'altre jugador, es capturarà, juntament amb tots els seus punts, i canviarà al vostre color de joc.</para>
+>Moveu fent clic sobre un cub neutral o sobre un que ja teniu. Si feu clic sobre un cub neutral, us n'apropiareu i el seu color canviarà al vostre color de joc. Cada vegada que feu clic sobre un cub, el seu valor augmentarà en un. Si el valor del cub arriba a un màxim, alguns dels seus punts es mouran als seus veïns immediats (els punts «salten»). Si un cub veí és propietat de l'altre jugador, es capturarà, juntament amb tots els seus punts, i canviarà al vostre color de joc.</para>
 
 <note
 ><title
@@ -278,11 +272,7 @@
 ><para
 >Pot ser útil configurar una partida d'ordinador contra ordinador i seleccionar les caselles de selecció en el diàleg de configuració que permeten fer anar els moviments i les animacions al vostre propi ritme. Vegeu les <link linkend="faq"
 >Preguntes freqüents</link
->, <quote
->Com començo en aquest joc?</quote
-> i <quote
->És massa ràpid per a mi, com puc frenar-lo?</quote
->.</para
+>, «Com començo en aquest joc?» i «És massa ràpid per a mi, com puc frenar-lo?».</para
 ></listitem>
 	<listitem
 ><para
