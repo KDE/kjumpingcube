@@ -587,9 +587,9 @@ void Game::saveGame (bool saveAs)
    QTemporaryFile tempFile;
    tempFile.open();
    KConfig config (tempFile.fileName(), KConfig::SimpleConfig);
-   KConfigGroup main (&config, "KJumpingCube");
+   KConfigGroup main (&config, QStringLiteral("KJumpingCube"));
    main.writeEntry ("Version", KJUMPINGCUBE_VERSION_STRING);
-   KConfigGroup game (&config, "Game");
+   KConfigGroup game (&config, QStringLiteral("Game"));
    saveProperties (game);
    config.sync();
 
@@ -631,7 +631,7 @@ void Game::loadGame()
    job->exec();
    if (! job->error() ) {
       KConfig config( tempFile.fileName(), KConfig::SimpleConfig);
-      KConfigGroup main (&config, "KJumpingCube");
+      KConfigGroup main (&config, QStringLiteral("KJumpingCube"));
       if (! main.hasKey ("Version")) {
          QString mes = i18n("The file %1 is not a KJumpingCube gamefile!",
                             url.url());
@@ -640,7 +640,7 @@ void Game::loadGame()
       }
 
       m_gameURL = url;
-      KConfigGroup game (&config, "Game");
+      KConfigGroup game (&config, QStringLiteral("Game"));
       readProperties (game);
 
       Q_EMIT setAction (UNDO, false);
