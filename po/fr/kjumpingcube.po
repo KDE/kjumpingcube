@@ -7,8 +7,8 @@
 # Cedric Pasteur <cedric.pasteur@free.fr>, 2003.
 # Matthieu Robin <matthieu@macolu.org>, 2005.
 # Angot Julien <angot.julien@gmail.com>, 2007.
-# xavier <ktranslator31@yahoo.fr>, 2012, 2013.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2021.
+# Xavier Besnard <xavier.besnard@kde.org>, 2012, 2013.
+# Xavier Besnard <xavier.besnard@kde.org>, 2021.
 # First-Translator : 2000-02-06
 # Update : 2000-02-06
 #
