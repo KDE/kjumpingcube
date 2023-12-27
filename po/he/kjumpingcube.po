@@ -14,19 +14,20 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2012.
 # Israel Berger <Israelb@gmail.com>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2017-05-16 07:01-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-i18n-he@kde.org>\n"
+"PO-Revision-Date: 2023-12-25 23:59+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -43,15 +44,15 @@ msgstr "kde-l10n-he@kde.org,Israelb@gmail.com"
 #: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move..."
-msgstr ""
+msgstr "מתבצע מהלך, סליחה…"
 
 #: game.cpp:113
 #, kde-format
 msgid "Game over"
-msgstr ""
+msgstr "המשחק הסתיים"
 
 #: game.cpp:114
-#, fuzzy, kde-format
+#, kde-format
 msgid "The winner is Player %1!"
 msgstr "המנצח הוא שחקן %1!"
 
@@ -68,87 +69,84 @@ msgstr "כללי"
 #: game.cpp:239
 #, kde-format
 msgid "Start game"
-msgstr ""
+msgstr "התחלת משחק"
 
 #: game.cpp:242
 #, kde-format
 msgid "Continue game"
-msgstr ""
+msgstr "המשך במשחק"
 
 #: game.cpp:246
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "התחלת מהלך מחשב"
 
 #: game.cpp:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Your turn"
-msgstr "צוות התרגום של KDE ישראל, Israel Berger"
+msgstr "תורך"
 
 #: game.cpp:270
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player %1"
-msgstr "שחקן 1"
+msgstr "שחקן %1"
 
 #: game.cpp:286
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer player %1 is moving"
-msgstr "המחשב משחק בתור"
+msgstr "שחקן המחשב %1 זז"
 
 #: game.cpp:306
 #, kde-format
 msgid "The computer could not find a valid move."
-msgstr ""
+msgstr "המחשב לא מצא מהלך תקף."
 
 #: game.cpp:409
 #, kde-format
 msgid "Show next step"
-msgstr ""
+msgstr "הצגת השלב הבא"
 
 #: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
-msgstr ""
+msgstr "המהלך מסתיים…"
 
 #: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
-msgstr ""
+msgstr "הפרעה למשחק"
 
 #: game.cpp:512
 #, kde-format
 msgid "Stop computing"
-msgstr ""
+msgstr "עצירת החישוב"
 
 #: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "עצירת הצגת המהלך"
 
 #: game.cpp:518
 #, kde-format
 msgid "Stop animation"
-msgstr ""
+msgstr "עצירת הנפשה"
 
 #: game.cpp:547
 #, kde-format
 msgid "New Game"
-msgstr ""
+msgstr "משחק חדש"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
 "הקובץ %1 כבר קיים.\n"
-"האם ברצונך לכתוב עליו?"
+"לכתוב עליו?"
 
 #: game.cpp:600
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game saved as %1"
 msgstr "המשחק נשמר בשם %1"
 
@@ -167,7 +165,7 @@ msgid "The file %1 does not exist!"
 msgstr "הקובץ %1 לא קיים!"
 
 #: game.cpp:636
-#, fuzzy, kde-format
+#, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "הקובץ %1 אינו קובץ משחק של KJumpingCube!"
 
@@ -201,17 +199,17 @@ msgstr ""
 #: game.cpp:689
 #, kde-format
 msgid "New Game?"
-msgstr ""
+msgstr "משחק חדש?"
 
 #: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
-msgstr ""
+msgstr "נטישת המשחק"
 
 #: game.cpp:691
 #, kde-format
 msgid "Continue Game"
-msgstr ""
+msgstr "המשך במשחק"
 
 #: game.cpp:833
 #, kde-format
@@ -222,7 +220,7 @@ msgstr ""
 #: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr ""
+msgstr "שורת קלט חסרה לקוביה %1."
 
 #: game.cpp:858
 #, kde-format
@@ -232,12 +230,12 @@ msgstr ""
 #: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr ""
+msgstr "ערך קוביה %1 מחוץ לטווח מ־1 עד %2."
 
 #: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr ""
+msgstr "השחקן הנוכחי הוא לא 1 או 2."
 
 #: kjumpingcube.cpp:45
 #, kde-format
@@ -247,7 +245,7 @@ msgstr "השחקן הנוכחי:"
 #: kjumpingcube.cpp:137
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות"
 
 #. i18n: ectx: label, entry (AnimationSpeed), group (Game)
 #: kjumpingcube.kcfg:11
@@ -281,9 +279,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
-#, fuzzy, kde-format
+#, kde-format
 msgid "Color of neutral cubes."
-msgstr "הצבע של שחקן 1."
+msgstr "צבע הקוביות הנייטרליות."
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kjumpingcube.kcfg:35
@@ -301,13 +299,13 @@ msgstr "הצבע של שחקן 2."
 #: kjumpingcube.kcfg:45
 #, kde-format
 msgid "Size of the playing field."
-msgstr "גדול של שדה המשחק."
+msgstr "גודל שטח המשחק."
 
 #. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "האם שחקן 1 משוחק בידי המחשב."
+msgstr "האם שחקן 1 זה שחקן מחשב."
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
@@ -323,15 +321,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
-#, fuzzy, kde-format
+#, kde-format
 msgid "Skill of computer player 1."
-msgstr "רמת הכישרון של המחשב."
+msgstr "מיומנות שחקן מחשב 1."
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kjumpingcube.kcfg:72
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr "האם שחקן 2 משוחק על ידי המחשב."
+msgstr "האם שחקן 2 זה שחקן מחשב."
 
 #. i18n: ectx: label, entry (Kepler2), group (Game)
 #: kjumpingcube.kcfg:76
@@ -347,15 +345,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
-#, fuzzy, kde-format
+#, kde-format
 msgid "Skill of computer player 2."
-msgstr "רמת הכישרון של המחשב."
+msgstr "מיומנות שחקן מחשב 2."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "להשהות לפני כל מהלך של המחשב."
 
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
@@ -367,7 +365,7 @@ msgstr ""
 #: kjumpingcubeui.rc:9
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "סרגל כלים ראשי"
 
 #: main.cpp:27
 #, kde-format
@@ -377,22 +375,22 @@ msgstr "KJumpingCube"
 #: main.cpp:29
 #, kde-format
 msgid "Tactical one or two player game"
-msgstr "משחק טקטי לאחד או שני משתתפים"
+msgstr "משחק טקטי למשתתף אחד או שניים"
 
 #: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
-msgstr ""
+msgstr "(c) 1998‏-2000, מתיאס קיפר"
 
 #: main.cpp:35
 #, kde-format
 msgid "Matthias Kiefer"
-msgstr ""
+msgstr "מתיאס קיפר"
 
 #: main.cpp:36
 #, kde-format
 msgid "Benjamin Meyer"
-msgstr ""
+msgstr "בנג׳מין מייר"
 
 #: main.cpp:36
 #, kde-format
@@ -407,23 +405,23 @@ msgstr ""
 #: main.cpp:38
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
-msgstr ""
+msgstr "שדרוג ל־KDE4 ותמיכה באומנות ב־SVG."
 
 #: main.cpp:40
 #, kde-format
 msgid "Eugene Trounev"
-msgstr ""
+msgstr "יוג׳ין טרונב"
 
 #: main.cpp:41
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
-msgstr ""
+msgstr "גרפיקה לגרסת KDE 4.0."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer Player 1"
-msgstr "המחשב משחק בתור"
+msgstr "שחקן מחשב 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
@@ -437,21 +435,21 @@ msgstr ""
 #: settings.ui:59 settings.ui:194
 #, kde-format
 msgid "Style of Play"
-msgstr ""
+msgstr "סגנון משחק"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
 #: settings.ui:65 settings.ui:203
 #, kde-format
 msgid "Kepler"
-msgstr ""
+msgstr "קפלר"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
 #: settings.ui:75 settings.ui:213
 #, kde-format
 msgid "Newton"
-msgstr ""
+msgstr "ניוטון"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -476,9 +474,9 @@ msgstr "מומחה"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:163
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer Player 2"
-msgstr "המחשב משחק בתור"
+msgstr "שחקן מחשב 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
@@ -506,9 +504,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
-#, fuzzy, kde-format
+#, kde-format
 msgid "Players' Colors"
-msgstr "צבע הלוח"
+msgstr "צבעי השחקנים"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:391
@@ -526,7 +524,7 @@ msgstr "שחקן 2:"
 #: settings.ui:419
 #, kde-format
 msgid "Neutral:"
-msgstr ""
+msgstr "נייטרלי:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
 #: settings.ui:434
@@ -544,19 +542,19 @@ msgstr ""
 #: settings.ui:459
 #, kde-format
 msgid "Darken and pause"
-msgstr ""
+msgstr "החשכה והשהיה"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
 #: settings.ui:472
 #, kde-format
 msgid "Blink rapidly"
-msgstr ""
+msgstr "הבהוב מהיר"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
 #: settings.ui:485
 #, kde-format
 msgid "Scatter dots"
-msgstr ""
+msgstr "נקודות פזורות"
 
 #. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
 #: settings.ui:498
@@ -568,13 +566,13 @@ msgstr ""
 #: settings.ui:543
 #, kde-format
 msgid "Short"
-msgstr ""
+msgstr "קצר"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: settings.ui:566
 #, kde-format
 msgid "Long"
-msgstr ""
+msgstr "ארוך"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
 #: settings.ui:581
