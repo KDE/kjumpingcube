@@ -19,8 +19,8 @@
 #include <QTemporaryFile>
 
 #include <KConfigDialog> // IDW test.
-#include <KIO/CopyJob>
-#include <KIO/Job>
+#include <KIO/FileCopyJob>
+#include <KIO/StatJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
