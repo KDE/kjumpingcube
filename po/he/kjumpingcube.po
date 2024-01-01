@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-12-27 08:47+0200\n"
+"PO-Revision-Date: 2023-12-28 15:09+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -258,31 +258,31 @@ msgstr "הגדרות"
 #: kjumpingcube.kcfg:11
 #, kde-format
 msgid "Animation speed of overflowing dice"
-msgstr ""
+msgstr "מהירות הנפשת הצפת קוביות"
 
 #. i18n: ectx: label, entry (AnimationNone), group (Game)
 #: kjumpingcube.kcfg:15
 #, kde-format
 msgid "Animation type None (no pauses)."
-msgstr ""
+msgstr "סוג הנפשה אין (בלי השהיות)."
 
 #. i18n: ectx: label, entry (AnimationDelay), group (Game)
 #: kjumpingcube.kcfg:19
 #, kde-format
 msgid "Animation type Darken and pause."
-msgstr ""
+msgstr "סוג הנפשה החשכה והשהיה."
 
 #. i18n: ectx: label, entry (AnimationBlink), group (Game)
 #: kjumpingcube.kcfg:23
 #, kde-format
 msgid "Animation type Blink rapidly."
-msgstr ""
+msgstr "סוג הנפשה הבהוב מהיר."
 
 #. i18n: ectx: label, entry (AnimationSpread), group (Game)
 #: kjumpingcube.kcfg:27
 #, kde-format
 msgid "Animation type Scatter dots."
-msgstr ""
+msgstr "סוג הנפשה נקודות מפוזרות."
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
@@ -366,7 +366,7 @@ msgstr "להשהות לפני כל מהלך של המחשב."
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr ""
+msgstr "להשהות לפני כל צעד בהשתפכות."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
@@ -407,7 +407,7 @@ msgstr "שיפורים שונים"
 #: main.cpp:37
 #, kde-format
 msgid "Ian Wadham"
-msgstr ""
+msgstr "איאן ודהאם"
 
 #: main.cpp:38
 #, kde-format
@@ -501,13 +501,13 @@ msgstr "גודל הלוח"
 #: settings.ui:345
 #, kde-format
 msgid "3x3"
-msgstr ""
+msgstr "3×3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr ""
+msgstr "15×15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
@@ -537,13 +537,13 @@ msgstr "נייטרלי:"
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
-msgstr ""
+msgstr "תצוגת תנועת השתפכות"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
 #: settings.ui:446
 #, kde-format
 msgid "None (no pauses)"
-msgstr ""
+msgstr "בלי (אין השהיות)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
 #: settings.ui:459
@@ -567,7 +567,7 @@ msgstr "נקודות פזורות"
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr ""
+msgstr "זמן תנועת השתפכות"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
@@ -585,4 +585,4 @@ msgstr "ארוך"
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr ""
+msgstr "להשהות לפני כל צעד השתפכות"
