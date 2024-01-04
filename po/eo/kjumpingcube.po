@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-12-23 07:12+0100\n"
+"PO-Revision-Date: 2024-01-03 14:17+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -51,7 +51,7 @@ msgstr "Gajninto"
 #: game.cpp:126
 #, kde-format
 msgid "General"
-msgstr "Ĝeneralo"
+msgstr "Ĝenerala"
 
 #: game.cpp:239
 #, kde-format
