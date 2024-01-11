@@ -174,7 +174,7 @@ void KCubeBoxWidget::init()
    color0 = Prefs::color0();
 
    KGameTheme theme((QByteArray()));
-   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("pics/default.desktop")));
+   theme.readFromDesktopFile(QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("themes/default.desktop")));
    svg.load (theme.graphicsPath());
 
    initCubes();
