@@ -1,46 +1,47 @@
 # translation of kjumpingcube.pot to esperanto
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Wolfram Diestel <wolfram@steloj.de>, 2002.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:44+0000\n"
-"PO-Revision-Date: 2023-03-21 22:43+01\n"
+"PO-Revision-Date: 2024-01-03 14:17+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9beta4\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wolfram Diestel"
+msgstr "Wolfram Diestel,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de"
+msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
 
 #: game.cpp:78
 #, kde-format
 msgid "Sorry, doing a move..."
-msgstr ""
+msgstr "Pardonu, farante movon..."
 
 #: game.cpp:115
 #, kde-format
 msgid "Game over"
-msgstr ""
+msgstr "Ludo finiĝis"
 
 #: game.cpp:116
 #, kde-format
 msgid "The winner is Player %1!"
-msgstr ""
+msgstr "La gajninto estas Ludanto %1!"
 
 #: game.cpp:117
 #, kde-format
@@ -50,72 +51,72 @@ msgstr "Gajninto"
 #: game.cpp:128
 #, kde-format
 msgid "General"
-msgstr "Ĝeneralo"
+msgstr "Ĝenerala"
 
 #: game.cpp:241
 #, kde-format
 msgid "Start game"
-msgstr ""
+msgstr "Komenci ludon"
 
 #: game.cpp:244
 #, kde-format
 msgid "Continue game"
-msgstr ""
+msgstr "Daŭrigi ludon"
 
 #: game.cpp:248
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "Komenci komputilan movon"
 
 #: game.cpp:269
 #, kde-format
 msgid "Your turn"
-msgstr ""
+msgstr "Via vico"
 
 #: game.cpp:272
 #, kde-format
 msgid "Player %1"
-msgstr ""
+msgstr "Ludanto %1"
 
 #: game.cpp:288
 #, kde-format
 msgid "Computer player %1 is moving"
-msgstr ""
+msgstr "Komputila ludanto %1 moviĝas"
 
 #: game.cpp:308
 #, kde-format
 msgid "The computer could not find a valid move."
-msgstr ""
+msgstr "La komputilo ne povis trovi validan movon."
 
 #: game.cpp:408
 #, kde-format
 msgid "Show next step"
-msgstr ""
+msgstr "Montri sekvantan paŝon"
 
 #: game.cpp:466
 #, kde-format
 msgid "Finishing move..."
-msgstr ""
+msgstr "Finante movon..."
 
 #: game.cpp:505
 #, kde-format
 msgid "Interrupt game"
-msgstr ""
+msgstr "Interrompi ludon"
 
 #: game.cpp:511
 #, kde-format
 msgid "Stop computing"
-msgstr ""
+msgstr "Ĉesigi komputadon"
 
 #: game.cpp:514
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "Ĉesigi montri movon"
 
 #: game.cpp:517
 #, kde-format
 msgid "Stop animation"
-msgstr ""
+msgstr "Ĉesigi animacion"
 
 #: game.cpp:546
 #, kde-format
@@ -128,6 +129,8 @@ msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"La dosiero %1 jam ekzistas.\n"
+"Ĉu vi volas anstataŭigi ĝin?"
 
 #: game.cpp:600
 #, kde-format
@@ -146,12 +149,12 @@ msgstr ""
 #: game.cpp:620
 #, kde-format
 msgid "The file %1 does not exist!"
-msgstr ""
+msgstr "La dosiero %1 ne ekzistas!"
 
 #: game.cpp:635
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
-msgstr ""
+msgstr "La dosiero %1 ne estas luddosiero de KJumpingCube!"
 
 #: game.cpp:648
 #, kde-format
@@ -171,6 +174,10 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
+"Vi ŝanĝis la grandecon de la ludo kaj tio postulas novan ludon por komenci.\n"
+"\n"
+"Ĉu vi volas forlasi la nunan ludon aŭ daŭrigi ludi kaj restarigi la antaŭan "
+"grandecon?"
 
 #: game.cpp:682
 #, kde-format
@@ -179,6 +186,9 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
+"Vi petis novan ludon, sed jam estas ludo en progreso.\n"
+"\n"
+"Ĉu vi volas forlasi la nunan ludon?"
 
 #: game.cpp:692
 #, kde-format
@@ -188,162 +198,164 @@ msgstr "Ĉu Nova Ludo?"
 #: game.cpp:693
 #, kde-format
 msgid "Abandon Game"
-msgstr ""
+msgstr "Forlasi Ludon"
 
 #: game.cpp:694
 #, kde-format
 msgid "Continue Game"
-msgstr ""
+msgstr "Daŭrigi Ludon"
 
 #: game.cpp:840
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
+"La kubkesta grandeco de la dosiero estas ekster la intervalo %1 ĝis %2. Ĝi "
+"estos agordita al %1."
 
 #: game.cpp:856
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr ""
+msgstr "Mankas eniglinio por kubo %1."
 
 #: game.cpp:865
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr ""
+msgstr "Posedanto de kubo %1 estas ekster la intervalo 0 ĝis 2."
 
 #: game.cpp:872
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr ""
+msgstr "Valoro de kubo %1 estas ekster la intervalo 1 ĝis %2."
 
 #: game.cpp:887
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr ""
+msgstr "Nuna ludanto estas nek 1 nek 2."
 
 #: kjumpingcube.cpp:45
 #, kde-format
 msgid "Current player:"
-msgstr ""
+msgstr "Nuna ludanto:"
 
 #: kjumpingcube.cpp:137
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Agordoj"
 
 #. i18n: ectx: label, entry (AnimationSpeed), group (Game)
 #: kjumpingcube.kcfg:11
 #, kde-format
 msgid "Animation speed of overflowing dice"
-msgstr ""
+msgstr "Animacia rapideco de superfluantaj ĵetkuboj"
 
 #. i18n: ectx: label, entry (AnimationNone), group (Game)
 #: kjumpingcube.kcfg:15
 #, kde-format
 msgid "Animation type None (no pauses)."
-msgstr ""
+msgstr "Animaciotipo Neniu (neniu paŭzoj)."
 
 #. i18n: ectx: label, entry (AnimationDelay), group (Game)
 #: kjumpingcube.kcfg:19
 #, kde-format
 msgid "Animation type Darken and pause."
-msgstr ""
+msgstr "Animaciotipo Mallumigi kaj paŭzi."
 
 #. i18n: ectx: label, entry (AnimationBlink), group (Game)
 #: kjumpingcube.kcfg:23
 #, kde-format
 msgid "Animation type Blink rapidly."
-msgstr ""
+msgstr "Animaciotipo Palpebrumi rapide."
 
 #. i18n: ectx: label, entry (AnimationSpread), group (Game)
 #: kjumpingcube.kcfg:27
 #, kde-format
 msgid "Animation type Scatter dots."
-msgstr ""
+msgstr "Animaciotipo Disĵetaj punktoj."
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
 #, kde-format
 msgid "Color of neutral cubes."
-msgstr ""
+msgstr "Koloro de neŭtralaj kuboj."
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kjumpingcube.kcfg:35
 #, kde-format
 msgid "Color of player 1."
-msgstr ""
+msgstr "Koloro de ludanto 1."
 
 #. i18n: ectx: label, entry (Color2), group (Game)
 #: kjumpingcube.kcfg:39
 #, kde-format
 msgid "Color of player 2."
-msgstr ""
+msgstr "Koloro de ludanto 2."
 
 #. i18n: ectx: label, entry (CubeDim), group (Game)
 #: kjumpingcube.kcfg:45
 #, kde-format
 msgid "Size of the playing field."
-msgstr ""
+msgstr "Grandeco de la ludkampo."
 
 #. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr ""
+msgstr "Ĉu la ludanto 1 estas ludata fare de la komputilo."
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr ""
+msgstr "Ĉu komputilludanto 1 uzas Kepler AI."
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr ""
+msgstr "Ĉu komputilludanto 1 uzas Newton AI."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
 #, kde-format
 msgid "Skill of computer player 1."
-msgstr ""
+msgstr "Kapablo de komputilludanto 1."
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kjumpingcube.kcfg:72
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr ""
+msgstr "Ĉu la ludanto 2 estas ludata de la komputilo."
 
 #. i18n: ectx: label, entry (Kepler2), group (Game)
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr ""
+msgstr "Ĉu komputilludanto 2 uzas Kepler AI."
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr ""
+msgstr "Ĉu komputilludanto 2 uzas Newton AI."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
 #, kde-format
 msgid "Skill of computer player 2."
-msgstr ""
+msgstr "Kapablo de komputilludanto 2."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "Paŭzi antaŭ ĉiu movo de komputilo."
 
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr ""
+msgstr "Paŭzi antaŭ ĉiu kaskada paŝo."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
@@ -359,12 +371,12 @@ msgstr "Saltkubo"
 #: main.cpp:41
 #, kde-format
 msgid "Tactical one or two player game"
-msgstr ""
+msgstr "Taktika unu- aŭ du-ludanta ludo"
 
 #: main.cpp:43
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
-msgstr ""
+msgstr "(c) 1998-2000, Matthias Kiefer"
 
 #: main.cpp:47
 #, kde-format
@@ -389,7 +401,7 @@ msgstr "Ian Wadham"
 #: main.cpp:50
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
-msgstr ""
+msgstr "Ĝisdatigo al KDE4 kaj SVG-arta subteno."
 
 #: main.cpp:52
 #, kde-format
@@ -399,41 +411,41 @@ msgstr "Eugene Trounev"
 #: main.cpp:53
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
-msgstr ""
+msgstr "Grafikoj por KDE 4.0-versio."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
 #, kde-format
 msgid "Computer Player 1"
-msgstr ""
+msgstr "Komputila Ludanto 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:181
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "Ludante nun"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:59 settings.ui:194
 #, kde-format
 msgid "Style of Play"
-msgstr ""
+msgstr "Stilo de Ludado"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
 #: settings.ui:65 settings.ui:203
 #, kde-format
 msgid "Kepler"
-msgstr ""
+msgstr "Kepler"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
 #: settings.ui:75 settings.ui:213
 #, kde-format
 msgid "Newton"
-msgstr ""
+msgstr "Newton"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -460,106 +472,106 @@ msgstr "Spertulo"
 #: settings.ui:163
 #, kde-format
 msgid "Computer Player 2"
-msgstr ""
+msgstr "Komputila Ludanto 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
 #, kde-format
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "Paŭzi antaŭ ĉiu movo de komputilo"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: settings.ui:309
 #, kde-format
 msgid "Board Size"
-msgstr ""
+msgstr "Tabula Grandeco"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: settings.ui:345
 #, kde-format
 msgid "3x3"
-msgstr ""
+msgstr "3x3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr ""
+msgstr "15x15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
 #, kde-format
 msgid "Players' Colors"
-msgstr ""
+msgstr "Koloroj de ludantoj"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:391
 #, kde-format
 msgid "Player 1:"
-msgstr ""
+msgstr "Ludanto 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:405
 #, kde-format
 msgid "Player 2:"
-msgstr ""
+msgstr "Ludanto 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:419
 #, kde-format
 msgid "Neutral:"
-msgstr ""
+msgstr "Neŭtrala:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
-msgstr ""
+msgstr "Cascade Move Display"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
 #: settings.ui:446
 #, kde-format
 msgid "None (no pauses)"
-msgstr ""
+msgstr "Neniu (neniu paŭzoj)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
 #: settings.ui:459
 #, kde-format
 msgid "Darken and pause"
-msgstr ""
+msgstr "Mallumigi kaj paŭzi"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
 #: settings.ui:472
 #, kde-format
 msgid "Blink rapidly"
-msgstr ""
+msgstr "Palpebrumi rapide"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
 #: settings.ui:485
 #, kde-format
 msgid "Scatter dots"
-msgstr ""
+msgstr "Disĵeti punktojn"
 
 #. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr ""
+msgstr "Tempdaŭro de Kaskada Movo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
 #, kde-format
 msgid "Short"
-msgstr ""
+msgstr "Mallonga"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: settings.ui:566
 #, kde-format
 msgid "Long"
-msgstr ""
+msgstr "Longa"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr ""
+msgstr "Paŭzi antaŭ ĉiu kaskada paŝo"
