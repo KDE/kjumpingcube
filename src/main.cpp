@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("kjumpingcube");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kjumpingcube"));
 
     KAboutData aboutData( QStringLiteral("kjumpingcube"), i18n("KJumpingCube"),
                           QStringLiteral(KJUMPINGCUBE_VERSION_STRING),
