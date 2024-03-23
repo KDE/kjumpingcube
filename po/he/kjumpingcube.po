@@ -14,20 +14,20 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2012.
 # Israel Berger <Israelb@gmail.com>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2023-12-28 15:09+0200\n"
+"PO-Revision-Date: 2024-03-22 08:19+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -222,22 +222,22 @@ msgstr "המשך במשחק"
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
-"גודל תיבת הקוביה של הקובץ חורגת מהגבול שבין %1 עד %2. היא תוגדר לגודל %!."
+"גודל תיבת הקובייה של הקובץ חורגת מהגבול שבין %1 עד %2. היא תוגדר לגודל %!."
 
 #: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr "שורת קלט חסרה לקוביה %1."
+msgstr "שורת קלט חסרה לקובייה %1."
 
 #: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr "בעלי הקוביה %1 הם מחוץ לטווח 0 עד 2."
+msgstr "בעלי הקובייה %1 הם מחוץ לטווח 0 עד 2."
 
 #: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr "ערך קוביה %1 מחוץ לטווח מ־1 עד %2."
+msgstr "ערך הקובייה %1 מחוץ לטווח מ־1 עד %2."
 
 #: game.cpp:880
 #, kde-format
