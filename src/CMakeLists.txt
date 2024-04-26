@@ -33,8 +33,9 @@ target_sources(kjumpingcube PRIVATE
 ecm_qt_declare_logging_category(kjumpingcube
     HEADER kjumpingcube_debug.h
     IDENTIFIER KJUMPINGCUBE_LOG
-    CATEGORY_NAME org.kde.kjumpingcube
-    DESCRIPTION "KJumpingCube"
+    CATEGORY_NAME kjumpingcube
+    OLD_CATEGORY_NAMES org.kde.kjumpingcube
+    DESCRIPTION "KJumpingCube game"
     EXPORT KJUMPINGCUBE
 )
 
