@@ -201,7 +201,7 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<varlistentry><term><guiicon>New</guiicon></term>
 	<listitem><para><action>Start a new game.</action></para></listitem>
 	</varlistentry>
-	<varlistentry><term><guiicon>Load...</guiicon></term>
+	<varlistentry><term><guiicon>Load…</guiicon></term>
 	<listitem><para><action>Load a previously saved game.</action></para></listitem>
 	</varlistentry>
 	<varlistentry><term><guiicon>Save</guiicon></term>
@@ -236,7 +236,7 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<listitem><para><action>Start a new game.</action></para></listitem>
 	</varlistentry>
 	<varlistentry id="menu-game-load"><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
-		<guimenu>Game</guimenu><guimenuitem>Load...</guimenuitem></menuchoice></term>
+		<guimenu>Game</guimenu><guimenuitem>Load…</guimenuitem></menuchoice></term>
 		<listitem><para><action>Load a previously saved game.</action></para></listitem>
 	</varlistentry>
 	<varlistentry id="menu-game-save"><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
@@ -244,7 +244,7 @@ that is taking too long), the move will proceed to its conclusion immediately.
 		<listitem><para><action>Save the current game.</action></para></listitem>
 	</varlistentry>
 	<varlistentry><term><menuchoice>
-		<guimenu>Game</guimenu><guimenuitem>Save As...</guimenuitem></menuchoice></term>
+		<guimenu>Game</guimenu><guimenuitem>Save As…</guimenuitem></menuchoice></term>
 		<listitem><para><action>Save the current game with a different name.</action></para></listitem>
 	</varlistentry>
 	<varlistentry><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
@@ -352,7 +352,7 @@ of the &kde; Fundamentals.
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kjumpingcube;...</guimenuitem></menuchoice> menu item, on Apple Mac OS X use the <menuchoice><guimenu>&kjumpingcube;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
+<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kjumpingcube;…</guimenuitem></menuchoice> menu item, on Apple Mac OS X use the <menuchoice><guimenu>&kjumpingcube;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
 
 <screenshot>
     <screeninfo>&kjumpingcube; Settings</screeninfo>
