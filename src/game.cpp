@@ -73,7 +73,7 @@ void Game::gameActions (const int action)
 {
    qCDebug(KJUMPINGCUBE_LOG) << "GAME ACTION IS" << action;
    if ((m_activity != Idle) && (action != BUTTON) && (action != NEW)) {
-      m_view->showPopup (i18n("Sorry, doing a move..."));
+      m_view->showPopup (i18n("Sorry, doing a move…"));
       return;
    }
 
@@ -464,7 +464,7 @@ void Game::buttonClick()
       if ((! m_pauseForComputer) && (! m_interrupting) &&
           (computerPlOne && computerPlTwo)) {
          m_interrupting = true;		// Interrupt a non-stop AI v AI game.
-	 m_view->showPopup (i18n("Finishing move..."));
+	 m_view->showPopup (i18n("Finishing move…"));
 	 setStopAction();		// Change to text for current activity.
       }
       else if (m_activity == Computing) {
