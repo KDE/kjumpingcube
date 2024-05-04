@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2008-04-16 22:23+0330\n"
 "Last-Translator: Emil Sedgh <emilsedgh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
@@ -31,9 +31,10 @@ msgid "Your emails"
 msgstr "daniarzadeh@itland.ir"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "در حال اجرای حرکت."
 
 #: game.cpp:113
 #, kde-format
@@ -102,7 +103,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -594,11 +595,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "در حال محاسبه حرکت بعدی."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "در حال اجرای حرکت."
 
 #~ msgid "Stop"
 #~ msgstr "توقف"

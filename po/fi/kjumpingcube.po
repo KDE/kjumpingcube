@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2022-10-28 22:34+0300\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -33,8 +33,9 @@ msgid "Your emails"
 msgstr "kim.enkovaara@iki.fi, mikko.piippo@helsinki.fi, lasse.liehu@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Anteeksi, siirto on kesken…"
 
 #: game.cpp:113
@@ -98,8 +99,9 @@ msgid "Show next step"
 msgstr "Näytä seuraava vaihe"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Viimeistellään siirtoa…"
 
 #: game.cpp:506

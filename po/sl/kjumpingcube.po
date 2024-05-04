@@ -2,7 +2,7 @@
 # Translation of kjumpingcube.po to Slovenian
 # SLOVENIAN TRANSLATION OF KDEGAMES.
 # Copyright © 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kjumpingcube.po 1662170 2023-10-12 02:05:01Z scripty $
+# $Id: kjumpingcube.po 1679202 2024-05-04 01:13:01Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2023-10-11 09:51+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -41,8 +41,9 @@ msgstr ""
 "si,mrepinc@gmail.com,andrejm@ubuntu.si"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Žal, izvaja se premik ..."
 
 #: game.cpp:113
@@ -106,8 +107,9 @@ msgid "Show next step"
 msgstr "Prikaži naslednji korak"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Zaključevanje poteze ..."
 
 #: game.cpp:506

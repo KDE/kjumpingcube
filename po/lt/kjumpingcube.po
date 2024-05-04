@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2011-08-09 23:15+0300\n"
 "Last-Translator: Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -29,9 +29,10 @@ msgid "Your emails"
 msgstr "andrius@stikonas.eu"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "Atliekamas ėjimas."
 
 #: game.cpp:113
 #, kde-format
@@ -100,7 +101,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -591,11 +592,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "Skaičiuojamas kitas ėjimas."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "Atliekamas ėjimas."
 
 #~ msgid "Stop"
 #~ msgstr "Stabdyti"

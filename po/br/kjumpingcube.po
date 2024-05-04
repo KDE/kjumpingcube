@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames/kjumpingcube.pot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: br <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "tvignaud@mandriva.com, jdrapier@club-internet.fr"
 
 #: game.cpp:76
 #, kde-format
-msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr ""
 
 #: game.cpp:113
@@ -96,7 +96,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506

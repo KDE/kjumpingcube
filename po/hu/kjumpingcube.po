@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2024-02-13 11:32+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -28,9 +28,10 @@ msgid "Your emails"
 msgstr "ulysses@fsf.hu"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "Lépés végrehajtása."
 
 #: game.cpp:113
 #, kde-format
@@ -93,8 +94,9 @@ msgid "Show next step"
 msgstr "Következő lépés megjelenítése"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Lépés befejezése…"
 
 #: game.cpp:506
@@ -576,11 +578,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "A következő lépés kiszámítása."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "Lépés végrehajtása."
 
 #~ msgid "Stop"
 #~ msgstr "Állj"

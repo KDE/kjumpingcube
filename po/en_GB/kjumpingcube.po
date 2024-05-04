@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2021-07-11 11:17+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -30,8 +30,9 @@ msgid "Your emails"
 msgstr "malcolm.hunter@gmx.co.uk, steve.allewell@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Sorry, doing a move..."
 
 #: game.cpp:113
@@ -95,8 +96,9 @@ msgid "Show next step"
 msgstr "Show next step"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Finishing move..."
 
 #: game.cpp:506

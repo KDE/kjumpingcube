@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2002-11-07 11:32+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -27,9 +27,9 @@ msgid "Your emails"
 msgstr "frix@expertron.co.za"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+msgid "Sorry, doing a move…"
+msgstr "doen beweeg"
 
 #: game.cpp:113
 #, kde-format
@@ -96,7 +96,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -575,10 +575,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Computing a move"
 #~ msgstr "rekenaars beweeg"
-
-#, fuzzy
-#~ msgid "Performing a move"
-#~ msgstr "doen beweeg"
 
 #~ msgid "stopped activity"
 #~ msgstr "op gehou aktiwiteit"

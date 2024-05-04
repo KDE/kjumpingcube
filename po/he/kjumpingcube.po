@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2024-03-22 08:19+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -42,8 +42,9 @@ msgid "Your emails"
 msgstr "kde-l10n-he@kde.org,Israelb@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "מתבצע מהלך, סליחה…"
 
 #: game.cpp:113
@@ -107,8 +108,9 @@ msgid "Show next step"
 msgstr "הצגת השלב הבא"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "המהלך מסתיים…"
 
 #: game.cpp:506

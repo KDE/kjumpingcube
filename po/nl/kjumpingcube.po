@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2021-07-08 10:55+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -36,8 +36,9 @@ msgid "Your emails"
 msgstr "rinse@kde.nl,,freekdekruijf@kde.nl"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Helaas, bezig met een zet..."
 
 #: game.cpp:113
@@ -101,8 +102,9 @@ msgid "Show next step"
 msgstr "Volgende stap tonen"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Zet afronden..."
 
 #: game.cpp:506

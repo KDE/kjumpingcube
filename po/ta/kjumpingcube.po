@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2021-01-18 19:16+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -29,9 +29,10 @@ msgid "Your emails"
 msgstr "augustin_raj@hotmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "நகர்வு செயல்படுத்தப்படுகிறது."
 
 #: game.cpp:113
 #, kde-format
@@ -99,7 +100,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -583,11 +584,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "அடுத்த நகர்வை செயல்படுத்துங்கள்."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "நகர்வு செயல்படுத்தப்படுகிறது."
 
 #~ msgid "stopped activity"
 #~ msgstr "செயல் நிறுத்தப்பட்டுள்ளது"

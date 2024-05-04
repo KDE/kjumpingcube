@@ -1,4 +1,4 @@
-# Version: $Revision: 1662109 $
+# Version: $Revision: 1679202 $
 # translation of kjumpingcube.po to Polish
 # translation of kjumpingcube.po to
 # translation of kjumpingcube.po to
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2021-07-11 08:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -38,8 +38,9 @@ msgid "Your emails"
 msgstr "mrudolf@kdewebdev.org, lukasz.wojnilowicz@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Przepraszam, robię ruch..."
 
 #: game.cpp:113
@@ -103,8 +104,9 @@ msgid "Show next step"
 msgstr "Pokaż następny ruch"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Ruch kończący..."
 
 #: game.cpp:506

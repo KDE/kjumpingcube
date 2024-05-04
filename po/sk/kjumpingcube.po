@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2022-04-09 19:26+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -31,8 +31,9 @@ msgid "Your emails"
 msgstr "uzak@ba.telecom.sk,visnovsky@kde.org,misurel@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Prepáčte, vykonávam ťah..."
 
 #: game.cpp:113
@@ -96,8 +97,9 @@ msgid "Show next step"
 msgstr "Zobraziť ďalší ťah"
 
 #: game.cpp:467
-#, kde-format
-msgid "Finishing move..."
+#, fuzzy, kde-format
+#| msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr "Ukončujem ťah..."
 
 #: game.cpp:506

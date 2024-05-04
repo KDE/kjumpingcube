@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2005-10-22 15:57+0500\n"
 "Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
 "Language-Team: Tajik\n"
@@ -36,9 +36,10 @@ msgstr ""
 "rkovacs@khujand.org, youth_opportunities@tajikngo.org,MarinaKL@tajikngo.org"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "Иҷрои ҳаракат."
 
 #: game.cpp:113
 #, kde-format
@@ -106,7 +107,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -593,11 +594,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "Ҳисобкунии ҳаракати оянда."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "Иҷрои ҳаракат."
 
 #~ msgid "stopped activity"
 #~ msgstr "фаъолияти боздошташуда"

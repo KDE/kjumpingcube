@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2013-01-02 11:41+0700\n"
 "Last-Translator: sutha <sutha@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros>\n"
@@ -30,9 +30,10 @@ msgid "Your emails"
 msgstr "sokhem@open.org.kh,​​sutha@open.org.kh,sophea@open.org.kh"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "កំពុង​ធ្វើ​ការ​ផ្លាស់ទី ។"
 
 #: game.cpp:113
 #, kde-format
@@ -103,7 +104,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -607,11 +608,6 @@ msgstr ""
 #~| msgid "Computing next move."
 #~ msgid "Computing a move"
 #~ msgstr "កំពុង​គណនា​ការ​ផ្លាស់​ទី​បន្ទាប់ ។"
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
-#~ msgstr "កំពុង​ធ្វើ​ការ​ផ្លាស់ទី ។"
 
 #~ msgid "Stop"
 #~ msgstr "បញ្ឈប់"

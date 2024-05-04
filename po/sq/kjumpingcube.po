@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2009-05-30 14:37+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -30,9 +30,10 @@ msgid "Your emails"
 msgstr "kde-shqip@yahoogroups.com,vilsongjeci@gmail.com"
 
 #: game.cpp:76
-#, kde-format
-msgid "Sorry, doing a move..."
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Performing move."
+msgid "Sorry, doing a move…"
+msgstr "Duke kryer lëvizjen."
 
 #: game.cpp:113
 #, kde-format
@@ -100,7 +101,7 @@ msgstr ""
 
 #: game.cpp:467
 #, kde-format
-msgid "Finishing move..."
+msgid "Finishing move…"
 msgstr ""
 
 #: game.cpp:506
@@ -589,11 +590,6 @@ msgstr ""
 #, fuzzy
 #~| msgid "Performing move."
 #~ msgid "Computing a move"
-#~ msgstr "Duke kryer lëvizjen."
-
-#, fuzzy
-#~| msgid "Performing move."
-#~ msgid "Performing a move"
 #~ msgstr "Duke kryer lëvizjen."
 
 #~ msgid "Stop"
