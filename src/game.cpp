@@ -437,7 +437,7 @@ void Game::moveDone()
 {
    // Called after non-animated move, animated move, end of game or hint action.
    m_view->setNormalCursor();
-   Q_EMIT statusMessage (QLatin1String(""), false);	// Clear the status bar.
+   Q_EMIT statusMessage (QString(), false);	// Clear the status bar.
    m_activity = Idle;
    setAction (HINT, true);
    m_fullSpeed = Prefs::animationNone();
