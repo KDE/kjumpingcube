@@ -2,13 +2,13 @@
 # Copyright (C) 2002, 2007 Free Software Foundation, Inc.
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
-"PO-Revision-Date: 2022-01-19 22:32+0400\n"
+"PO-Revision-Date: 2024-05-04 12:13+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -431,9 +431,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
 #: settings.ui:65 settings.ui:203
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kepler"
-msgstr "كيبلر 56"
+msgstr "كيبلر"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
@@ -483,15 +483,15 @@ msgstr "حجم اللوح"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: settings.ui:345
-#, fuzzy, kde-format
+#, kde-format
 msgid "3x3"
-msgstr "س"
+msgstr "3x3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
-#, fuzzy, kde-format
+#, kde-format
 msgid "15x15"
-msgstr "س"
+msgstr "15x15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
