@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-01-03 14:17+0100\n"
+"PO-Revision-Date: 2024-05-04 07:47+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -29,10 +29,9 @@ msgid "Your emails"
 msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Pardonu, farante movon..."
+msgstr "Pardonu, farante movon…"
 
 #: game.cpp:113
 #, kde-format
@@ -95,10 +94,9 @@ msgid "Show next step"
 msgstr "Montri sekvantan paŝon"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Finante movon..."
+msgstr "Finante movon…"
 
 #: game.cpp:506
 #, kde-format

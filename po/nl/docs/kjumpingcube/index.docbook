@@ -402,7 +402,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Laden...</guiicon
+>Laden…</guiicon
 ></term>
 	<listitem
 ><para
@@ -513,7 +513,7 @@
 > <guimenu
 >Spel</guimenu
 ><guimenuitem
->Laden...</guimenuitem
+>Laden…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -551,7 +551,7 @@
 ><guimenu
 >Spel</guimenu
 ><guimenuitem
->Opslaan als...</guimenuitem
+>Opslaan als…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -783,7 +783,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&kjumpingcube; configureren...</guimenuitem
+>&kjumpingcube; configureren…</guimenuitem
 ></menuchoice
 >, op Apple Mac OS X gebruik het menu-item <menuchoice
 ><guimenu

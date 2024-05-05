@@ -514,8 +514,8 @@
 ></shortcut
 > <guimenu
 >Гра</guimenu
-><guimenuitem
->Завантажити...</guimenuitem
+> <guimenuitem
+>Завантажити…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -553,7 +553,7 @@
 ><guimenu
 >Гра</guimenu
 ><guimenuitem
->Зберегти як...</guimenuitem
+>Зберегти як…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -783,7 +783,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &kjumpingcube;...</guimenuitem
+>Налаштувати &kjumpingcube;…</guimenuitem
 ></menuchoice
 > У Apple Mac OS X скористайтеся пунктом: <menuchoice
 ><guimenu

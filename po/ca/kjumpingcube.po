@@ -1,9 +1,9 @@
 # Translation of kjumpingcube.po to Catalan
-# Copyright (C) 2000-2021 This_file_is_part_of_KDE
+# Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Francesc J Devesa i Berenguer <frandeve@hotmail.com>, 2000, 2001.
 # Albert Astals Cid <aacid@kde.org>, 2003, 2004.
-# Josep M. Ferrer <txemaq@gmail.com>, 2005, 2007, 2010, 2013, 2014, 2015, 2017, 2020, 2021.
+# Josep M. Ferrer <txemaq@gmail.com>, 2005, 2007, 2010, 2013, 2014, 2015, 2017, 2020, 2021, 2024.
 # Aleix Pol <aleixpol@gmail.com>, 2007.
 # Manuel Tortosa <manutortosa@gmail.com>, 2009.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2016, 2020, 2021.
@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2021-09-12 21:30+0200\n"
+"PO-Revision-Date: 2024-05-04 10:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -37,10 +37,9 @@ msgstr ""
 "frandeve@hotmail.com,aacid@kde.org,aleixpol@gmail.com,manutortosa@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Ho sento, s'està fent un moviment..."
+msgstr "Ho sento, s'està fent un moviment…"
 
 #: game.cpp:113
 #, kde-format
@@ -103,10 +102,9 @@ msgid "Show next step"
 msgstr "Mostra el pas següent"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "S'està finalitzant el moviment..."
+msgstr "S'està finalitzant el moviment…"
 
 #: game.cpp:506
 #, kde-format

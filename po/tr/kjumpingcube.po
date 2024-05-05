@@ -8,13 +8,13 @@
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2015.
 # Yıldız Kardeşler <turkishprogram@xposta.com>, 2004.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2022-12-11 20:14+0300\n"
+"PO-Revision-Date: 2024-05-04 14:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -35,10 +35,9 @@ msgid "Your emails"
 msgstr "omer_fad@hotmail.com, volkangezer@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Üzgünüm, bir hareket yapılıyor..."
+msgstr "Üzgünüm, bir hamle yapılıyor…"
 
 #: game.cpp:113
 #, kde-format
@@ -48,7 +47,7 @@ msgstr "Oyun bitti"
 #: game.cpp:114
 #, kde-format
 msgid "The winner is Player %1!"
-msgstr "Kazanan Oyuncu %1!"
+msgstr "Kazanan: Oyuncu %1!"
 
 #: game.cpp:115
 #, kde-format
@@ -101,10 +100,9 @@ msgid "Show next step"
 msgstr "Sonraki adımı göster"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Hamle tamamlanıyor..."
+msgstr "Hamle tamamlanıyor…"
 
 #: game.cpp:506
 #, kde-format
@@ -384,7 +382,7 @@ msgstr "Taktiksel bir veya iki kişilik oyun"
 #: main.cpp:31
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
-msgstr "(c) 1998-2000, Matthias Kiefer"
+msgstr "(c) 1998–2000, Matthias Kiefer"
 
 #: main.cpp:35
 #, kde-format
@@ -498,13 +496,13 @@ msgstr "Tahta Boyutu"
 #: settings.ui:345
 #, kde-format
 msgid "3x3"
-msgstr "3x3"
+msgstr "3 × 3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr "15x15"
+msgstr "15 × 15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
