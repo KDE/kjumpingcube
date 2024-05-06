@@ -1,8 +1,8 @@
 # translation of kjumpingcube.po to Italian
 #
+# SPDX-FileCopyrightText: 2021, 2024 Valter Mura <valtermura@gmail.com>
 # Andrea Celli <a.celli@tiscali.it>, 2003, 2004, 2005, 2007, 2009, 2013.
 # Andrea Celli <a.celli.casa@gmail.com>, 2013.
-# Valter Mura <valtermura@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.03.80\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
