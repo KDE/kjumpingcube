@@ -5,7 +5,7 @@
 # Santiago Fernandez Sancho <santi@kde-es.org>, 2004.
 # santi <santi@kde-es.org>, 2005.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007.
-# SPDX-FileCopyrightText: 2009, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Rocio Gallego <traducciones@rociogallego.com>, 2012, 2013.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2023-10-02 21:20+0100\n"
+"PO-Revision-Date: 2024-05-05 03:43+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Valux (Rafael Iglesias) <r.iglesias@lalegion.com>\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -44,10 +44,9 @@ msgstr ""
 "org,yo@miguelrevilla.com,kirajfdez@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Lo siento, estoy realizando un movimiento..."
+msgstr "Lo siento, estoy haciendo un movimiento..."
 
 #: game.cpp:113
 #, kde-format
@@ -72,7 +71,7 @@ msgstr "General"
 #: game.cpp:239
 #, kde-format
 msgid "Start game"
-msgstr "Comenzar la partida"
+msgstr "Empezar partida"
 
 #: game.cpp:242
 #, kde-format
@@ -110,8 +109,7 @@ msgid "Show next step"
 msgstr "Mostrar el siguiente paso"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
 msgstr "Finalizando el movimiento..."
 
@@ -147,7 +145,7 @@ msgid ""
 "Do you want to overwrite it?"
 msgstr ""
 "El archivo %1 ya existe.\n"
-"¿Desea sobrescribirlo?"
+"¿Quieres sobrescribirlo?"
 
 #: game.cpp:600
 #, kde-format
@@ -160,19 +158,18 @@ msgid ""
 "There was an error in saving file\n"
 "%1"
 msgstr ""
-"Hubo un error al guardar el archivo\n"
+"Ha ocurrido un error al guardar el archivo\n"
 "%1"
 
 #: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
-msgstr "¡El archivo %1 no existe!"
+msgstr "El archivo %1 no existe."
 
 #: game.cpp:636
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
-msgstr ""
-"¡El archivo %1 no es un archivo que contenga una partida de KJumpingCube!"
+msgstr "El archivo %1 no contiene una partida de KJumpingCube."
 
 #: game.cpp:649
 #, kde-format
@@ -180,7 +177,7 @@ msgid ""
 "There was an error loading file\n"
 "%1"
 msgstr ""
-"Hubo un error cargando el archivo\n"
+"Ha ocurrido un error al cargar el archivo\n"
 "%1"
 
 #: game.cpp:677
@@ -192,11 +189,11 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
-"Ha cambiado la preferencia de tamaño del juego, así que es necesario que "
-"comience una nueva partida.\n"
+"Has cambiado el ajuste del tamaño del juego y esto necesita que empieces una "
+"nueva partida.\n"
 "\n"
-"¿Desea abandonar la partida actual o continuar jugando y restablecer la "
-"preferencia de tamaño anterior?"
+"¿Quieres abandonar la partida actual o continuar jugando y restablecer el "
+"ajuste de tamaño anterior?"
 
 #: game.cpp:683
 #, kde-format
@@ -205,9 +202,9 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
-"Ha solicitado una nueva partida, pero ya hay una partida en curso.\n"
+"Has solicitado una nueva partida, pero ya hay una partida en curso.\n"
 "\n"
-"¿Desea abandonar la partida actual?"
+"¿Quieres abandonar la partida actual?"
 
 #: game.cpp:689
 #, kde-format
@@ -229,7 +226,7 @@ msgstr "Continuar la partida"
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
-"El tamaño de la caja del cubo del archivo está fuera del intervalo de %1 al "
+"El tamaño de la caja del cubo del archivo está fuera del intervalo de %1 a "
 "%2. Se le asignará el valor %1."
 
 #: game.cpp:849
@@ -240,7 +237,7 @@ msgstr "Falta la línea de entrada del cubo %1."
 #: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr "El propietario del cubo %1 está fuera del rango de 0 a 2."
+msgstr "El propietario del cubo %1 está fuera del intervalo de 0 a 2."
 
 #: game.cpp:865
 #, kde-format
@@ -250,7 +247,7 @@ msgstr "El valor del cubo %1 está fuera del intervalo de 1 a %2."
 #: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr "El jugador actual no es 1 ni 2."
+msgstr "El jugador actual no es el 1 ni el 2."
 
 #: kjumpingcube.cpp:45
 #, kde-format
@@ -320,19 +317,19 @@ msgstr "Tamaño del terreno de juego."
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "La máquina será el jugador 1"
+msgstr "Indica si la máquina será el jugador 1"
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr "Si la máquina (jugador 1) utiliza IA Kepler."
+msgstr "Indica si la máquina (jugador 1) usa la IA Kepler."
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr "Si la máquina (jugador 1) utiliza IA Newton."
+msgstr "Indica si la máquina (jugador 1) usa la IA Newton."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
@@ -344,19 +341,19 @@ msgstr "Habilidad de la máquina (jugador 1)."
 #: kjumpingcube.kcfg:72
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr "La máquina será el jugador 2"
+msgstr "Indica si la máquina será el jugador 2"
 
 #. i18n: ectx: label, entry (Kepler2), group (Game)
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr "Si la máquina (jugador 2) utiliza IA Kepler."
+msgstr "Indica si la máquina (jugador 2) usa la IA Kepler."
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr "Si la máquina (jugador 2) utiliza IA Newton."
+msgstr "Indica si la máquina (jugador 2) usa la IA Newton."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
@@ -410,7 +407,7 @@ msgstr "Benjamin Meyer"
 #: main.cpp:36
 #, kde-format
 msgid "Various improvements"
-msgstr "Varias mejoras"
+msgstr "Varias mejoras."
 
 #: main.cpp:37
 #, kde-format
@@ -420,7 +417,7 @@ msgstr "Ian Wadham"
 #: main.cpp:38
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
-msgstr "Portabilidad a KDE4 y soporte para el material gráfico SVG."
+msgstr "Actualización a KDE4 y uso de material gráfico SVG."
 
 #: main.cpp:40
 #, kde-format
@@ -430,20 +427,20 @@ msgstr "Eugene Trounev"
 #: main.cpp:41
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
-msgstr "Gráficos para la versión KDE 4.0."
+msgstr "Gráficos para la versión de KDE 4.0."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
 #, kde-format
 msgid "Computer Player 1"
-msgstr "La máquina juega (jugador 1)"
+msgstr "Jugador de la máquina 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:181
 #, kde-format
 msgid "Playing now"
-msgstr "Jugar ahora"
+msgstr "Está jugando ahora"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
@@ -491,7 +488,7 @@ msgstr "Experto"
 #: settings.ui:163
 #, kde-format
 msgid "Computer Player 2"
-msgstr "La máquina juega (jugador 2)"
+msgstr "Jugador de la máquina 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
@@ -581,7 +578,7 @@ msgstr "Tiempo del movimiento en cascada"
 #: settings.ui:543
 #, kde-format
 msgid "Short"
-msgstr "Pequeña"
+msgstr "Corto"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: settings.ui:566
