@@ -28,10 +28,9 @@ msgid "Your emails"
 msgstr "kde-china@kde.org"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "对不起，正在移动..."
+msgstr ""
 
 #: game.cpp:113
 #, kde-format
@@ -94,10 +93,9 @@ msgid "Show next step"
 msgstr "显示下一步"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "完成移动..."
+msgstr ""
 
 #: game.cpp:506
 #, kde-format
