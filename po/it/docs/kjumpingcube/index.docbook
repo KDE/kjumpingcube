@@ -416,7 +416,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Carica...</guiicon
+>Carica…</guiicon
 ></term>
 	<listitem
 ><para
@@ -525,7 +525,7 @@
 > <guimenu
 >Partita</guimenu
 ><guimenuitem
->Carica...</guimenuitem
+>Carica…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -563,7 +563,7 @@
 ><guimenu
 >Partita</guimenu
 ><guimenuitem
->Salva come...</guimenuitem
+>Salva come…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -793,7 +793,7 @@
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura &kjumpingcube;...</guimenuitem
+>Configura &kjumpingcube;…</guimenuitem
 ></menuchoice
 >, in Apple Mac OS X usa l'elemento del menu <menuchoice
 ><guimenu
