@@ -39,7 +39,7 @@ msgstr ""
 #: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move..."
-msgstr "Ho sentim, s'està fent un moviment..."
+msgstr "Ho sentim, s'està fent un moviment…"
 
 #: game.cpp:113
 #, kde-format
@@ -104,7 +104,7 @@ msgstr "Mostra el pas següent"
 #: game.cpp:467
 #, kde-format
 msgid "Finishing move..."
-msgstr "S'està finalitzant el moviment..."
+msgstr "S'està finalitzant el moviment…"
 
 #: game.cpp:506
 #, kde-format
