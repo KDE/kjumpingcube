@@ -7,7 +7,7 @@
 # Cedric Pasteur <cedric.pasteur@free.fr>, 2003.
 # Matthieu Robin <matthieu@macolu.org>, 2005.
 # Angot Julien <angot.julien@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2012, 2013, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2012, 2013, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2021.
 # First-Translator : 2000-02-06
 # Update : 2000-02-06
@@ -19,13 +19,13 @@ msgstr ""
 "POT-Creation-Date: 2023-10-11 02:06+0000\n"
 "PO-Revision-Date: 2023-12-20 09:52+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
