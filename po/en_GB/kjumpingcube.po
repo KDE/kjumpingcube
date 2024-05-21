@@ -3,21 +3,21 @@
 #
 # Malcolm Hunter <malcolm.hunter@gmx.co.uk>, 2003, 2005, 2009.
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2004, 2005.
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2021.
+# SPDX-FileCopyrightText: 2014, 2021, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2021-07-11 11:17+0100\n"
+"PO-Revision-Date: 2024-05-20 19:20+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: British English\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,10 +30,9 @@ msgid "Your emails"
 msgstr "malcolm.hunter@gmx.co.uk, steve.allewell@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Sorry, doing a move..."
+msgstr "Sorry, doing a move…"
 
 #: game.cpp:113
 #, kde-format
@@ -96,10 +95,9 @@ msgid "Show next step"
 msgstr "Show next step"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Finishing move..."
+msgstr "Finishing move…"
 
 #: game.cpp:506
 #, kde-format
