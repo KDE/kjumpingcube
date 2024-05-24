@@ -120,6 +120,20 @@
 > <contrib
 >Traductor</contrib
 > </othercredit
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
 > 
 </authorgroup>
 
@@ -172,7 +186,7 @@
 	<keyword
 >estrategia</keyword>
 	<keyword
->dado</keyword>
+>dados</keyword>
 	<keyword
 >juego de dados</keyword>
 	<keyword
@@ -182,7 +196,7 @@
 >dos jugadores</keyword>
 <!--All other relevant keywords-->
 	<keyword
->cuadrado</keyword>
+>cubo</keyword>
 	<keyword
 >saltar</keyword>
 	<keyword
@@ -198,7 +212,7 @@
 ><title
 >Tipo de juego:</title
 ><para
->Estrategia, Dado</para
+>Estrategia, Dados</para
 ></note
 ><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note
@@ -211,23 +225,23 @@
 
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 <para
->&kjumpingcube; es un juego de estrategia sencillo. Puede jugar contra la máquina o contra un amigo; o puede configurar una partida en la que la máquina juegue contra sí misma y simplemente observar.</para>
+>&kjumpingcube; es un juego de estrategia sencillo. Puedes jugar contra la máquina o contra un amigo; o puedes configurar una partida en la que la máquina juegue contra sí misma y simplemente observar.</para>
 
 <para
->Puede ser buena idea si nunca ha jugado a &kjumpingcube;. Consulte <quote
+>Puede ser una buena idea si nunca has jugado a &kjumpingcube;. Consulta <quote
 >¿Cómo aprendo a jugar a este juego?</quote
-> en <link linkend="faq"
+> en las <link linkend="faq"
 >Preguntas frecuentes</link
 >.</para>
 
 <para
->El área de juego es una caja de cuadrados que contienen puntos. Cuando comienza la partida, cada cuadrados tiene un punto, ningún propietario y un color neutro. Si se pulsa en un cuadrado neutral, se toma posesión de él, cambia al color del propietario y se incrementa en un punto. El objetivo es capturar todos los cuadrados, pero ahora es el turno del oponente.</para>
+>El área de juego es una caja de cubos que contienen puntos. Cuando comienza la partida, cada cubo tiene un punto, ningún propietario y un color neutro. Si se pulsa en un cubo neutral, se toma posesión de él, cambia al color del propietario y se aumenta en un punto. El objetivo es capturar todos los cuadrados, pero ahora es el turno del oponente.</para>
 
 <para
 >Los jugadores mueven y suman puntos haciendo clic en cubos neutrales o en sus propios cubos.</para>
 
 <para
->La única forma de capturar los cubos de su oponente es aumentar el valor de un cubo hasta que alcance un máximo y se expanda a los cubos adyacentes. Entonces, dichos cubos pasan a ser suyos, incluso si antes pertenecían a su oponente.</para>
+>La única forma de capturar los cubos de tu oponente es aumentar el valor de un cubo hasta que alcance un máximo y se expanda a los cubos adyacentes. Entonces, dichos cubos pasan a ser tuyos, incluso si antes pertenecían a tu oponente.</para>
 
 <para
 >A veces, un cubo adyacente también alcanza un valor máximo y se expande, con lo que se produce un movimiento en cascada a través del tablero. En un instante, un gran número de cubos puede cambiar de propietario y entonces es cuando &kjumpingcube; se vuelve interesante y difícil.</para>
@@ -242,42 +256,42 @@
 ><title
 >Objetivo:</title
 ><para
->Hacerse con todos los cuadrados del tablero de juego.</para
+>Hacerse con todos los cubos del tablero de juego.</para
 ></note
 ><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
 
 <para
->&kjumpingcube; se carga directamente en modo de juego, de forma que puede empezar a jugar inmediatamente. Si el jugador 1 es un oponente máquina, deberá hacer clic para empezar.</para>
+>&kjumpingcube; arranca directamente en el modo de juego, de forma que puedes empezar a jugar inmediatamente. Si el jugador 1 es una máquina, tendrás que hacer clic para empezar.</para>
 
 <para
->Si nunca ha jugado a &kjumpingcube;, pruebe a ver una o dos partidas en las que la máquina juega contra sí misma. Consulte <quote
+>Si nunca has jugado a &kjumpingcube;, prueba a ver una o dos partidas en las que la máquina juega contra sí misma. Consulta <quote
 >¿Cómo aprendo a jugar a este juego?</quote
-> en <link linkend="faq"
+> en las <link linkend="faq"
 >Preguntas frecuentes</link
 >.</para>
 
 <para
->Debe mover pulsando en los cuadrados neutrales o en uno de los propios. Si pulsa sobre un cuadrado vacío, pasará a ser suyo y cambiará a su color de juego. Cada vez que pulse sobre un cuadrado, el valor del cuadrado se incrementará en uno. Si el valor del cuadrado alcanza un máximo, algunos de sus puntos se distribuirán entre los cuadrados adyacentes (los puntos «saltan» alrededor). Si un cuadrado adyacente pertenece a otro jugador, se captura junto con todos sus puntos y cambiará a su color de juego.</para>
+>Debes mover pulsando en los cubos neutrales o en uno de los propios. Si pulsas sobre un cubo vacío, pasará a ser tuyo y cambiará a tu color de juego. Cada vez que pulses sobre un cubo, su valor se incrementará en uno. Si el valor del cubo alcanza un máximo, algunos de sus puntos se distribuirán entre los cubos adyacentes (los puntos «saltan» alrededor). Si un cubo adyacente pertenece a otro jugador, se captura junto con todos sus puntos y cambiará a tu color de juego.</para>
 
 <note
 ><title
 >Ejemplo:</title
 ><para
->Si un cuadrado en el centro alcanza cinco puntos, cuatro de sus puntos irán a parar a los cuatro vecinos dejando el cuadrado original con un punto. Es posible que se produzca una cascada de movimientos automáticos si alguno de los vecinos también ha alcanzado un máximo.</para
+>Si un cubo del centro alcanza cinco puntos, cuatro de sus puntos irán a parar a los cuatro vecinos, dejando el cubo original con un punto. Es posible que se produzca una cascada de movimientos automáticos si alguno de los vecinos también alcanza un máximo.</para
 ></note>
 
 <note
 ><title
 >Nota:</title
 ><para
->Rápidamente, un gran número de cuadrados puede cambiar de manos. Puede utilizarlas preferencias de animación para ayudarle a seguir lo que pasa en esos casos. Consulte la sección <link linkend="configuration"
+>Un gran número de cubos puede cambiar rápidamente de manos. Puedes usar los ajustes de animación para que sea más fácil seguir lo que pasa en esos casos. Consulta la sección <link linkend="configuration"
 > Configuración del juego</link
 > para obtener más información.</para
 ></note>
 
 <para
->El ganador es el jugador que acaba teniendo todos los cuadrados del tablero.</para>
+>El ganador es el jugador que acaba teniendo todos los cubos del tablero.</para>
 </chapter>
 
 <chapter id="rules_and_tips"
@@ -291,47 +305,47 @@
 	<orderedlist>
 	<listitem
 ><para
->Un movimiento consiste en una pulsación sobre un cuadrado que no pertenezca a su oponente.</para
+>Un movimiento consiste en un clic sobre un cubo que no pertenezca a tu oponente.</para
 ></listitem>
 	<listitem
 ><para
->El movimiento incrementa en uno los puntos en el cuadrado.</para
+>El movimiento aumenta en uno los puntos del cubo.</para
 ></listitem>
 	<listitem
 ><para
->Al inicio del juego, cada cuadrado tiene un punto, está pintado con un color neutral y no tiene propietario.</para
+>Al inicio del juego, cada cubo tiene un punto, está pintado con un color neutral y no tiene propietario.</para
 ></listitem>
 	<listitem
 ><para
->Cada jugador tiene un color para identificar el propietario de los cuadrados.</para
+>Cada jugador tiene un color para identificar al propietario de los cubos.</para
 ></listitem>
 	<listitem
 ><para
->Al pulsar un cuadrado que no tenga propietario, el jugador se convierte en propietario del mismo y hace que cambie el color por el suyo propio. Simultáneamente el valor del cuadrado se incrementará en uno.</para
+>Al pulsar en un cubo que no tenga propietario, el jugador se convierte en propietario del mismo y hace que cambie el color por el suyo. Al mismo tiempo, el valor del cubo aumentará en uno.</para
 ></listitem>
 	<listitem
 ><para
->Si un cuadrado tiene más puntos de los que puede y tiene vecinos, saltará un punto a cada uno de los vecinos, dejando solo un punto en el cuadrado original.</para
+>Si un cubo tiene más puntos de los que puede y tiene vecinos, saltará un punto a cada uno de los vecinos, dejando solo un punto en el cubo original.</para
 ></listitem>
 	<listitem
 ><para
->Durante cada movimiento, todos los cuadrados vecinos serán propiedad del jugador que ha movido y por tanto obtendrá todos sus puntos, independientemente de si los vecinos eran neutrales o propiedad de otro jugador.</para
+>Durante este movimiento, todos los cubos vecinos serán propiedad del jugador que ha movido y por tanto obtendrá todos sus puntos, independientemente de si los vecinos eran neutrales o propiedad de otro jugador.</para
 ></listitem>
 	<listitem
 ><para
->Los vecinos son los cuadrados superior, inferior, izquierdo y derecho, pero no los cuadrados en diagonal. Los cuadrados de las esquinas tienen dos vecinos, los cuadrados de los bordes tres y los del centro tienen cuatro.</para
+>Los vecinos son los cubos superior, inferior, izquierdo y derecho, pero no los cuadrados en diagonal. Los cuadrados de las esquinas tienen dos vecinos, los cuadrados de los bordes tres y los del centro tienen cuatro.</para
 ></listitem>
 	<listitem
 ><para
->Si un movimiento deja a un vecino con un número máximo de puntos, el movimiento continúa automáticamente hacia los vecinos de los vecinos y así sucesivamente, en una cascada. Durante cada movimiento, es posible que cambien de propietario gran número de cuadrados.</para
+>Si un movimiento deja a un vecino con un número máximo de puntos, el movimiento continúa automáticamente hacia los vecinos de los vecinos, y así sucesivamente, en cascada. Durante cada movimiento, es posible que cambien de propietario gran número de cubos.</para
 ></listitem>
 	<listitem
 ><para
->El ganador es el jugador que acaba siendo propietario de todos los cuadrados.</para
+>El ganador es el jugador que acaba siendo propietario de todos los cubos.</para
 ></listitem>
 	<listitem
 ><para
->Puede usar las opciones para seleccionar los colores, los oponentes máquina, animaciones de movimiento y el tamaño del tablero. Cada uno de los oponentes máquina puede tener su propio estilo y nivel de habilidad. Si no está jugando, puede dar consejos al correspondiente jugador humano. También puede enfrentar un oponente máquina contra otro y observar el resultado. Consulte la sección <link linkend="configuration"
+>Puedes usar los ajustes para seleccionar los colores, los oponentes máquina, las animaciones de movimiento y el tamaño del tablero. Cada uno de los oponentes máquina puede tener su propio estilo y nivel de habilidad. Si no está jugando, puede dar consejos al correspondiente jugador humano. También puedes enfrentar un oponente máquina contra otro y observar el resultado. Consulta la sección <link linkend="configuration"
 >Configuración del juego</link
 > para obtener más información.</para
 ></listitem>
@@ -344,37 +358,37 @@
 	<itemizedlist>
 	    <listitem
 ><para
->Puede ayudar iniciar una partida máquina contra máquina y activar las opciones que le permitan ver los movimientos y animaciones a su ritmo. Vea <quote
+>Puede ser de ayuda empezar una partida de máquina contra máquina y activar las opciones que te permitan ver los movimientos y las animaciones a tu ritmo. Consulta <quote
 >¿Cómo puedo jugar a este juego?</quote
 > y <quote
->Eso ocurrió muy rápido, ¿cómo puedo ralentizarlo?</quote
-> en <link linkend="faq"
+>Eso ha sido muy rápido, ¿cómo puedo ralentizarlo?</quote
+> en las <link linkend="faq"
 >Preguntas frecuentes</link
 >.</para
 ></listitem>
 	<listitem
 ><para
->Si tiene un cuadrado justo al lado de uno de los de su oponente, intente adelantarse incrementando su valor antes de que lo haga su oponente.</para
+>Si tienes un cubo justo al lado de uno de tu oponente, intenta adelantarte incrementando su valor antes de que lo haga tu oponente.</para
 ></listitem>
 	<listitem
 ><para
->Si dicho cubo tiene menos o los mismos puntos que los del oponente, intente evitar incrementar su valor: no puede ganar esa carrera armamentística.</para
+>Si dicho cubo tiene menos o los mismos puntos que los del oponente, intenta evitar que aumente su valor: no puedes ganar esa carrera armamentística.</para
 ></listitem>
 	<listitem
 ><para
->Busque oportunidades de incrementar y capturar, pero tenga en cuenta que su oponente puede responder iniciando una cascada.</para
+>Busca oportunidades de aumentar y capturar, pero ten en cuenta que tu oponente puede responder iniciando una cascada.</para
 ></listitem>
 	<listitem
 ><para
->Intente obtener primero el control de los cuadrados de las esquinas, y a continuación los de los bordes. Necesitará menos movimientos para alcanzar un máximo y que se propaguen.</para
+>Intenta obtener primero el control de los cubos de las esquinas y, a continuación, los de los bordes. Necesitarás menos movimientos para alcanzar un máximo y que se propaguen.</para
 ></listitem>
 	<listitem
 ><para
->Intente no jugar demasiado cerca de su oponente, especialmente durante los movimientos de apertura. Retroceda uno o dos cuadrados o elija uno situado en diagonal con su oponente.</para
+>Intenta no jugar demasiado cerca de tu oponente, especialmente durante los movimientos de apertura. Retrocede uno o dos cubos o elige uno situado en diagonal a tu oponente.</para
 ></listitem>
 	<listitem
 ><para
->Tenga cuidado con las cadenas largas de cuadrados que estén cerca del máximo. Si son suyos, debe protegerlos contra los movimientos en cascada. Si son de su oponente, pueden intentar capturarse con un movimiento en cascada, tan pronto como estén lo suficientemente cerca de su territorio.</para
+>Ten cuidado con las cadenas largas de cubos que estén cerca del máximo. Si son tuyos, debes protegerlos contra los movimientos en cascada. Si son de tu oponente, puedes intentar capturarlos con un movimiento en cascada en cuanto estén lo suficientemente cerca de tu territorio.</para
 ></listitem>
 	</itemizedlist>
 	</sect1>
@@ -382,17 +396,17 @@
 
 <chapter id="interface"
 ><title
->Visión general de la interfaz</title
+>Vista general de la interfaz</title
 > <!-- do not change this! -->
 <sect1 id="toolbars">
 <title
 >Barra de herramientas</title>
 <sect2 id="stop_start_button">
 <title
->Botón Iniciar/Detener</title>
+>Botón Detener/iniciar</title>
 
 <para
->Este gran botón aparece en la parte superior izquierda de la barra de herramientas y sirve para otorgar control sobre las animaciones y movimientos de la máquina, especialmente si la máquina juega en primer lugar, está jugando contra otra máquina o tarda mucho en mover. El botón también puede servir para moverse entre las jugadas, viéndolas a su propio ritmo. Marque las opciones en el diálogo de opciones para activar o desactivar el avance entre jugadas (vea la sección <link linkend="configuration"
+>Este gran botón aparece en la parte superior izquierda de la barra de herramientas y sirve para tener control sobre las animaciones y los movimientos de la máquina, especialmente si la máquina juega en primer lugar, está jugando contra otra máquina o tarda mucho en mover. El botón también puede servir para desplazarse por la partida, permitiendo a los principiantes ver cada paso a su propio ritmo. Las casillas del diálogo de preferencias activan o desactivan el modo paso a paso (consulta la sección <link linkend="configuration"
 >Configuración del juego</link
 > para más información). </para>
 
@@ -405,7 +419,7 @@
 >Rojo</term>
 	<listitem
 ><para
->El posible interrumpir o parar el turno de la máquina, una animación o una partida máquina contra máquina.</para>
+>Se puede detener o interrumpir el cálculo de la máquina, una animación o una partida de máquina contra máquina.</para>
 	</listitem
 ></varlistentry>
 	<varlistentry
@@ -413,7 +427,7 @@
 >Verde</term>
 	<listitem
 ><para
->Es posible iniciar o continuar un turno de la máquina, una animación o una partida máquina contra máquina.</para
+>Se puede iniciar o continuar un movimiento de la máquina, una animación o una partida de máquina contra máquina.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -427,19 +441,19 @@
 	</variablelist>
 
 <para
->En cada caso, el botón contiene un texto indicando la acción que se debe realizarse a continuación, como &nbsp;<guibutton
->Parar animación</guibutton
+>En cada caso, el botón contiene un texto que indica la acción que se debe realizar a continuación o que se espera, como &nbsp;<guibutton
+>Detener animación</guibutton
 > o <guibutton
->Su turno</guibutton
+>Tu turno</guibutton
 >.</para>
 
 <para
->Si interrumpe el turno de la máquina, realizará el mejor movimiento que haya calculado. Si interrumpe una animación (&eg; una cascada que tarda demasiado en terminar), obtendrá el estado final directamente. </para>
+>Si detienes el cálculo de un movimiento de la máquina, se escogerá el mejor movimiento que haya calculado hasta ese momento. Si interrumpes una animación (por ejemplo, una cascada que tarda demasiado en terminar), el movimiento continuará hasta su conclusión de forma inmediata. </para>
 </sect2>
 
 <sect2 id="toolbar_buttons">
 <title
->Botones estándar de la barra de herramientas</title>
+>Botones de la barra de herramientas estándar</title>
 	<variablelist>
 	<varlistentry
 ><term
@@ -449,9 +463,9 @@
 	<listitem
 ><para
 ><action
->Atajo de teclado para abrir el diálogo de configuración del juego y modificar las condiciones del juego. Consulte la sección <link linkend="configuration"
+>Atajo de teclado para abrir el diálogo de configuración y modificar las condiciones juego. Consulta la sección <link linkend="configuration"
 >Configuración del juego</link
-> para obtener más información.</action
+> para más detalles.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -463,7 +477,7 @@
 	<listitem
 ><para
 ><action
->Inicia un nuevo juego.</action
+>Empezar una partida nueva.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -475,7 +489,7 @@
 	<listitem
 ><para
 ><action
->Varga una partida guardada previamente.</action
+>Cargar una partida guardada previamente.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -487,7 +501,7 @@
 	<listitem
 ><para
 ><action
->Guarda la partida actual.</action
+>Guardar la partida actual.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -499,9 +513,9 @@
 	<listitem
 ><para
 ><action
->Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o el 2. Consulte la sección <link linkend="configuration"
+>Obtener una pista sobre cuál es el próximo mejor movimiento. La pista la calcula el jugador de la máquina 1 o 2, dependiendo de si eres el jugador humano 1 o 2. Consulta la sección <link linkend="configuration"
 >Configuración del juego</link
-> para obtener más información.</action
+> para más detalles.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -513,8 +527,8 @@
 	<listitem
 ><para
 ><action
->Deshace el movimiento anterior, de forma repetida si así se requiere. </action
-> Nota: es posible deshacer movimientos en una partida finalizada para averiguar finales alternativos.</para
+>Deshace el movimiento anterior, de forma repetida si es necesario.</action
+> Nota: es posible deshacer movimientos de una partida finalizada para investigar finales alternativos.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -525,7 +539,7 @@
 	<listitem
 ><para
 ><action
->Volver a realizar un movimiento que se deshizo; se puede repetir si es necesario.</action
+>Volver a realizar un movimiento que se había deshecho; se puede repetir, si es necesario.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -540,10 +554,10 @@
 > for better viewing.-->
 <sect1 id="menu">
 <title
->Opciones de menú</title>
+>Opciones del menú</title>
 <sect2 id="game_menu">
 <title
->Menú «Partida»</title>
+>El menú Juego</title>
 <variablelist>
 	<varlistentry
 ><term
@@ -563,7 +577,7 @@
 	<listitem
 ><para
 ><action
->Inicia un nuevo juego.</action
+>Empezar una partida nueva.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -585,7 +599,7 @@
 		<listitem
 ><para
 ><action
->Varga una partida guardada previamente.</action
+>Cargar una partida guardada previamente.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -607,7 +621,7 @@
 		<listitem
 ><para
 ><action
->Guarda la partida actual.</action
+>Guardar la partida actual.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -623,7 +637,7 @@
 		<listitem
 ><para
 ><action
->Guarda la partida actual con un nombre diferente.</action
+>Guardar la partida actual con un nombre diferente.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -654,7 +668,7 @@
 
 <sect2 id="move_menu">
 <title
->Menú «Mover»</title>
+>El menú Mover</title>
 <variablelist>
 	<varlistentry id="move-menu-undo"
 ><term
@@ -674,8 +688,8 @@
 	<listitem
 ><para
 ><action
->Deshace el movimiento anterior, de forma repetida si así se requiere. </action
-> Nota: es posible deshacer movimientos en una partida finalizada para averiguar finales alternativos.</para
+>Deshace el movimiento anterior, de forma repetida si es necesario.</action
+> Nota: es posible deshacer movimientos de una partida finalizada para investigar finales alternativos.</para
 ></listitem>
 	</varlistentry>
 
@@ -697,7 +711,7 @@
 	<listitem
 ><para
 ><action
->Volver a realizar un movimiento que se deshizo; se puede repetir si es necesario.</action
+>Volver a realizar un movimiento que se había deshecho; se puede repetir, si es necesario.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -718,9 +732,9 @@
 	<listitem
 ><para
 ><action
->Obtenga un consejo sobre cuál es el mejor movimiento a continuación. El consejo lo calcula el oponente máquina, jugador 1 o 2, dependiendo de si usted es el jugador 1 o el 2. Consulte la sección <link linkend="configuration"
+>Obtener una pista sobre cuál es el próximo mejor movimiento. La pista la calcula el jugador de la máquina 1 o 2, dependiendo de si eres el jugador humano 1 o 2. Consulta la sección <link linkend="configuration"
 >Configuración del juego</link
-> para obtener más información.</action
+> para más detalles.</action
 ></para
 ></listitem>
 	</varlistentry>
@@ -731,15 +745,15 @@
 <title
 >Otros menús</title>
 <para
->Además &kjumpingcube; tiene las opciones de menú <guimenu
+>Además, &kjumpingcube; tiene las opciones de los menús <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
-> y <ulink url="help:/fundamentals/menus.html#menus-help"
+> y el <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
-> de «Aspectos básicos de &kde;». </para>
+> de los «Aspectos básicos de &kde;». </para>
 </sect2>
 
 </sect1>
@@ -758,11 +772,11 @@
 <qandaentry>
  <question
 ><para
->Quiero cambiar el aspecto del juego ¿puedo? </para
+>Quiero cambiar el aspecto del juego. ¿Puedo? </para
 ></question>
  <answer
 ><para
->En estos momentos solo puede cambiar los colores de los jugadores, pero no el tema del juego. Para cambiar los colores de los jugadores utilice el diálogo de <link linkend="configuration"
+>En estos momentos solo puedes cambiar los colores de los jugadores, pero no el tema del juego. Para cambiar los colores de los jugadores, usa el diálogo de <link linkend="configuration"
 >Configuración del juego</link
 >.</para
 ></answer>
@@ -774,29 +788,29 @@
 ></question>
  <answer
 ><para
->Los movimientos de &kjumpingcube; pueden ser difíciles de seguir al principio. Una manera de aprender es mirar partidas en las que la máquina juegue contra sí misma. Use el diálogo <link linkend="configuration"
+>Los movimientos de &kjumpingcube; pueden ser difíciles de seguir al principio. Una manera de aprender es observar partidas en las que la máquina juegue contra sí misma. Usa el diálogo <link linkend="configuration"
 >Configurar</link
-> para activarlo. Active las casillas <guilabel
+> para activarlo. Activa las casillas <guilabel
 >Jugar ahora</guilabel
->, escoja un tamaño de tablero entre 3x3 y 5x5, establezca la animación en  <guilabel
+>, escoge un tamaño de tablero entre 3x3 y 5x5, define la animación para <guilabel
 >Propagar puntos</guilabel
 > y el tiempo de movimiento en<guilabel
 >Grande</guilabel
->, entonces pulse en <guibutton
+>. A continuación, pulsa <guibutton
 >Aceptar</guibutton
->.Ahora pulse sobre el botón verde en la barra de herramientas para iniciar el juego. </para
+> y después el botón verde de la barra de herramientas para empezar a jugar. </para
 ></answer>
 </qandaentry>
 <qandaentry>
  <question
 ><para
->Ha sido muy rápido para mí. ¿Cómo puedo hacer que vaya más lento? </para
+>Eso ha sido demasiado rápido para mí. ¿Cómo puedo hacer que vaya más lento? </para
 ></question>
  <answer
 ><para
->Use el diálogo <link linkend="configuration"
+>Usa el diálogo <link linkend="configuration"
 >Configuración</link
-> de nuevo. En la parte inferior hay dos casillas. Marque una para pausar el juego entre movimientos. Marque la otra para pausar el juego entre dos movimientos de la animación de la cascada, especialmente si está cerca del final de la partida. De vuelta en el juego, puede usar el gran botón de la barra de herramientas para avanzar al siguiente movimiento cuando haga una pausa.</para
+> de nuevo. En la parte inferior hay dos casillas. Marque una para pausar el juego entre movimientos. Marque la otra para pausar el juego entre dos movimientos de la animación en cascada, especialmente si estás cerca del final de la partida. De vuelta al juego, puedes usar el gran botón de la barra de herramientas (cuando esté verde) para activar cada movimiento o proceder paso a paso dentro de un movimiento, al ritmo que elijas.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -806,19 +820,19 @@
 ></question>
  <answer
 ><para
->Este botón puede ser usado para parar lo que la máquina esté haciendo (color rojo), empezar o continuar la acción de la máquina cuando esté listo (color verde) o indicarle algo, como que debe hacer un movimiento (color azul, botón desactivado). Para una descripción completa diríjase a <link linkend="stop_start_button"
->El botón de Inicio/Parada.</link
+>Puedes usar este botón para detener lo que esté haciendo la máquina (color rojo), empezar o continuar la acción de la máquina cuando estés preparado (color verde) o para que te indique algo, como que debes hacer un movimiento (color azul, botón desactivado). Para una descripción completa, consulta <link linkend="stop_start_button"
+>El botón de Parada/inicio.</link
 >. </para
 ></answer>
 </qandaentry>
 <qandaentry>
  <question
 ><para
->¿Puedo utilizar el teclado para jugar? </para
+>¿Puedo usar el teclado para jugar? </para
 ></question>
  <answer
 ><para
->No. &kjumpingcube; no puede jugarse con el teclado. </para
+>No. No se puede usar el teclado para jugar a &kjumpingcube;. </para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -873,12 +887,12 @@
 </screenshot>
 
 <para
->Las opciones Tiempo del movimiento en cascada y Apariencia del movimiento en cascada  controlan la animación opcional que se visualiza cuando un cuadrado alcanza su máximo y se propaga a los cuadrados adyacentes, lo cual puede desencadenar un movimiento en cascada. Al principio, es más fácil utilizar la animación <quote
+>Los paneles «Apariencia del movimiento en cascada» y «Tiempo del movimiento en cascada» controlan la animación opcional que se muestra cuando un cubo alcanza su máximo y se propaga a los cubos adyacentes, posiblemente desencadenando una cascada extendida de movimientos. Al principio, lo más fácil es usar la animación <quote
 >Propagar puntos</quote
-> y usar un tiempo de juegada grande. Es la mejor forma se seguir el movimiento de as cascadas. Las dos casillas de pausa le permiten saltar entre los movimientos y animaciones de la máquina a su ritmo.</para>
+> y un tiempo de movimiento grande. Esta es la mejor forma se seguir los movimientos en cascada. Las dos casillas de pausa te permiten saltar entre las animaciones y los movimientos de la máquina a tu ritmo.</para>
 
 <para
->Los panales La máquina juega (Jugador 1) y La máquina juega (Jugador2) controlan el tamaño y el nivel de juego de cada oponente máquina y si ese jugador debería jugar o solo dar pistas al jugador humano 1 o 2.</para>
+>Los paneles «Jugador de la máquina» 1 y 2 controlan el estilo y el nivel de juego de cada jugador de la máquina y si ese jugador realmente debe jugar o simplemente ofrecer pistas al jugador humano 1 o 2.</para>
 
 <sect1 id="setting_details">
 <title
@@ -891,7 +905,7 @@
 ></term>
 		<listitem
 ><para
->Establece si el oponente máquina 1 o 2 jugará de manera activa o solo ayudando al jugador humano con consejos. Normalmente la máquina será un jugador y usted el otro, pero puede hacer que la máquina juegue contra sí misma y solo observar. Siempre comienza el jugador 1.</para
+>Configura al jugador de la máquina 1 o 2 para que juegue activamente o solo ayude a un jugador humano con pistas. Normalmente configurarías a la máquina para que juegue con un jugador y tú jugarías con el otro, aunque puedes tener dos jugadores humanos o dos jugadores de la máquina y simplemente mirar. El jugador 1 siempre empieza primero.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -901,7 +915,7 @@
 ></term>
 		<listitem
 ><para
->Establece que el jugador 1 o 2 juegue como Kepler o Newton. Kepler elige movimientos por el mismo método que las versiones anteriores de &kjumpingcube;. Newton utiliza un método diferente.</para
+>Define que el jugador 1 o 2 juegue como Kepler o Newton. Kepler elige movimientos por el mismo método que las versiones anteriores de &kjumpingcube;. Newton usa un método diferente.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -912,13 +926,13 @@
 		<listitem
 ><para
 ><action
->Le permite elegir la habilidad de juego de un oponente máquina mediante un deslizador.</action
-> Esto decide lo inteligente que será su oponente máquina.</para>
+>Permite elegir la habilidad de juego de un oponente máquina mediante un deslizador.</action
+> Esto decide la inteligencia que tendrá el oponente de la máquina.</para>
 		<para
->Puede elegir entre cinco niveles, desde <guilabel
+>Puedes elegir entre cinco niveles, desde <guilabel
 >Principiante</guilabel
 >, pasando por <guilabel
->Iniciado </guilabel
+>Iniciado</guilabel
 > hasta <guilabel
 >Experto</guilabel
 >.</para
@@ -932,14 +946,14 @@
 		<listitem
 ><para
 ><action
->Le permite elegir el tamaño del área de juego.</action
+>Permite elegir el tamaño del área de juego.</action
 ></para>
 		<para
->Utilice el deslizador para seleccionar un valor entre <guilabel
+>Usa el deslizador para seleccionar un valor entre <guilabel
 >3x3 </guilabel
->cuadrados y <guilabel
+> y <guilabel
 >15x15</guilabel
-> cuadrados. El intervalo entre 5x5 y 9x9 es el más recomendado. Por debajo de 5x5 es muy difícil vencer a la máquina, y por envima de 9x9 las partidas son muy largas.</para
+> cubos. El intervalo entre 5x5 y 9x9 es el más recomendado. Por debajo de 5x5 es muy difícil vencer a la máquina, y por encima de 9x9 las partidas son muy largas.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -949,7 +963,7 @@
 ></term>
 		<listitem
 ><para
->Elija un color para cada jugador y para los cuadrados neutrales.</para
+>Elige un color para cada jugador y para los cubos neutrales.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -959,27 +973,27 @@
 ></term>
 		<listitem
 ><para
->Elija una animación para cuando un cuadrado alcance su máximo y se propague a los cuadrado	s adyacentes, provocando posiblemente una cascada de movimientos y cubriendo una extensa zona del tablero.</para>
+>Elige una animación para cuando un cubo alcance su máximo y se propague a los cubos adyacentes, provocando posiblemente una cascada de movimientos y cubriendo una extensa zona del tablero.</para>
 		    <para
->Utilice los  botones de opción <guilabel
+>Usa las casillas <guilabel
 >Ninguno (sin pausas)</guilabel
 >, donde todo el movimiento se muestra instantáneamente; <guilabel
 >Oscurecer y pausar </guilabel
->, donde cada cuadrado sobrecargado se oscurece hasta que le llega el momento de propagarse; <guilabel
+>, donde cada cubo sobrecargado se oscurece hasta que le llega el momento de propagarse; <guilabel
 >Parpadear rápidamente</guilabel
->, donde cada cuadrado sobrecargado al principio se oscurece y después parpadea rápidamente cuando llega el momento de propagarse y <guilabel
+>, donde cada cubo sobrecargado se oscurece al principio y después parpadea rápidamente cuando llega el momento de propagarse; y <guilabel
 >Propagar puntos</guilabel
->, donde cada cuadrado sobrecargado al principio se oscurece y después dispara puntos a los cuadrados adyacentes cuando llega el momento de propagarse.</para
+>, donde cada cubo sobrecargado se oscurece al principio y después dispara puntos a los cuadrados adyacentes cuando llega el momento de propagarse.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
 ><term
 ><guilabel
->Tiempo de movimiento en cascada</guilabel
+>Duración del movimiento en cascada</guilabel
 ></term>
 		<listitem
 ><para
->Use el deslizador para seleccionar de entre un intervalo de tiempos (que varía desde <guilabel
+>Usa el deslizador para seleccionar de entre un intervalo de tiempos (que varía desde <guilabel
 >Corto</guilabel
 > hasta <guilabel
 >Largo</guilabel
@@ -989,11 +1003,11 @@
 	<varlistentry
 ><term
 ><guilabel
->Pausa antes de cada movimiento del computador</guilabel
+>Pausa antes de cada movimiento de la máquina</guilabel
 ></term>
 	    <listitem
 ><para
->Si la casilla está marcada, la máquina hará una pausa antes de iniciar un movimiento, hasta que pulse en continuar. Esto ayuda a seguir el movimiento, especialmente si es un nuevo jugador o está estudiando una partida máquina contra máquina.</para
+>Si esta casilla está marcada, la máquina hará una pausa antes de iniciar un movimiento, hasta que pulses para continuar. Esto ayuda a seguir el movimiento, especialmente si eres un jugador principiante o si estás estudiando una partida de máquina contra máquina.</para
 ></listitem>
 	</varlistentry>
 	<varlistentry
@@ -1003,7 +1017,7 @@
 ></term>
 		<listitem
 ><para
->Si la casilla está seleccionada, la animación en cascada hará una pausa entre movimientos, hasta que pulse sobre continuar. Esto ayuda a observar como un movimiento se propaga por el tablero.</para
+>Si esta casilla está seleccionada, la animación en cascada hará una pausa entre movimientos, hasta que pulses para continuar. Esto ayuda a observar cómo se propaga un movimiento por el tablero.</para
 ></listitem>
 	</varlistentry>
 	</variablelist>
@@ -1036,7 +1050,7 @@
 >Documentación actualizada para &kde; 2 and 3 by &Lauri.Watts; &Lauri.Watts.mail;</para>
 
 <para
->Traducido por Rocío Gallego <email
+>Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Santiago Fernández Sancho<email
 >santi@kde-es.org</email
@@ -1045,6 +1059,10 @@
 > y David Paul Peña<email
 >eodos0@gmail.com</email
 ></para
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
+>.</para
 > &underFDL; &underGPL; </chapter>
 
 &documentation.index;
