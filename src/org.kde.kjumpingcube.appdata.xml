@@ -23,6 +23,7 @@
   <name xml:lang="fr">KJumpingCube</name>
   <name xml:lang="gl">KJumpingCube</name>
   <name xml:lang="he">KJumpingCube</name>
+  <name xml:lang="hu">KJumpingCube</name>
   <name xml:lang="ia">KJumpingCube</name>
   <name xml:lang="id">KJumpingCube</name>
   <name xml:lang="it">KJumpingCube</name>
@@ -61,6 +62,7 @@
   <summary xml:lang="fr">Jeu de capture de territoires</summary>
   <summary xml:lang="gl">Xogo de captura de territorios</summary>
   <summary xml:lang="he">משחק לכידת טריטוריה</summary>
+  <summary xml:lang="hu">Területfoglaló</summary>
   <summary xml:lang="id">Permainan Menguasai Wilayah</summary>
   <summary xml:lang="it">Gioco di conquista del territorio</summary>
   <summary xml:lang="ka">ტერიტორიების დაპყრობის თამაში</summary>
@@ -103,6 +105,7 @@
     <p xml:lang="fr">KJumpingCube est un jeu de tactique simple utilisant des lancers de dés. Le plateau de jeu est constitué de carrés contenant des points. Les joueurs se déplacent en cliquant soit sur un carré vacant, soit sur leur propre carré.</p>
     <p xml:lang="gl">KJumpingCube é un xogo de estratexia sinxelo baseado en dados. A zona de xogo consiste en cadrados que conteñen puntos. Os xogadores premen un cadrado baleiro ou o seu propio cadrado para moverse.</p>
     <p xml:lang="he">KJumpingCube הוא משחק טקטי מונחה קוביות. אזור המשחק מורכב מריבועים שמכילים נקודות. השחקנים זזים בלחיצה או על ריבוע ריק או על הריבוע של עצמם.</p>
+    <p xml:lang="hu">A KJumpingCube egy egyszerű, kockával irányított taktikai játék. A játéktér pontokat tartalmazó négyzetekből áll. A játékosok vagy egy üres mezőre, vagy saját mezőre kattintva lépnek.</p>
     <p xml:lang="id">KJumpingCube adalah permainan taktik dadu yang sederhana. Area bermain terdiri dari kotak berisi titik-titik. Pemain bergerak dengan mengeklik salahsatu persegi yang kosong, atau di persegi sendiri.</p>
     <p xml:lang="it">KJumpingCube è un semplice gioco di mosse tattiche di cubi. L'area di gioco consiste di quadrati che contengono punti. I giocatori si spostano o su un quadrato libero o sul proprio quadrato.</p>
     <p xml:lang="ka">KJumpingCube კამათლით სათამაშო ტაქტიკური თამაშია. სათამაშო მოედანი შედგება კვადრატებისგან, რომლებიც წერტილების შეიცავენ. მოთამაშე მათ თავისუფალ ან საკუთარ კვადრატზე დაწკაპუნებით ამოძრავებენ.</p>
@@ -144,6 +147,7 @@
       <caption xml:lang="fr">Partie de KJumpingCube en cours</caption>
       <caption xml:lang="gl">Xogando a KJumpingCube</caption>
       <caption xml:lang="he">איך משחקים ב־KJumpingCube</caption>
+      <caption xml:lang="hu">Játék a KJumpingCuba-bal</caption>
       <caption xml:lang="id">Memainkan KJumpingCube</caption>
       <caption xml:lang="it">Giocare con KJumpingCube</caption>
       <caption xml:lang="ka">KJumpingCube-ის თამაში</caption>
