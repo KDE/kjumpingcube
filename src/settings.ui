@@ -429,7 +429,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="kcfg_AnimationType">
+         <widget class="QGroupBox">
           <property name="title">
            <string>Cascade Move Display</string>
           </property>
