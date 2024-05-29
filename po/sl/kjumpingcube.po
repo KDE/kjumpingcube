@@ -2,7 +2,7 @@
 # Translation of kjumpingcube.po to Slovenian
 # SLOVENIAN TRANSLATION OF KDEGAMES.
 # Copyright © 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kjumpingcube.po 1662170 2023-10-12 02:05:01Z scripty $
+# $Id: kjumpingcube.po 1681092 2024-05-29 03:34:01Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-29 03:08+0000\n"
 "PO-Revision-Date: 2023-10-11 09:51+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -533,7 +533,7 @@ msgstr "Igralec 2:"
 msgid "Neutral:"
 msgstr "Nevtralni:"
 
-#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#. i18n: ectx: property (title), widget (QGroupBox)
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:06+0000\n"
+"POT-Creation-Date: 2024-05-29 03:08+0000\n"
 "PO-Revision-Date: 2021-07-11 11:17+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -523,7 +523,7 @@ msgstr "Player 2:"
 msgid "Neutral:"
 msgstr "Neutral:"
 
-#. i18n: ectx: property (title), widget (QGroupBox, kcfg_AnimationType)
+#. i18n: ectx: property (title), widget (QGroupBox)
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
