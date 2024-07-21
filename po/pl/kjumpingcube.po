@@ -1,21 +1,21 @@
-# Version: $Revision: 1681083 $
+# Version: $Revision: 1685165 $
 # translation of kjumpingcube.po to Polish
 # translation of kjumpingcube.po to
 # translation of kjumpingcube.po to
 # This File is part of 'KJumpingCube'
 #
+# SPDX-FileCopyrightText: 2012, 2021, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Matthias Kiefer <Matthias.Kiefer@stud.uni-karlsruhe.de>, 1998.
 # Krzysztof P. Jasiutowicz <kpjas@priv.onet.pl>, 1998.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004, 2005, 2007, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2021.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-29 00:37+0000\n"
-"PO-Revision-Date: 2021-07-11 08:32+0200\n"
+"PO-Revision-Date: 2024-07-20 10:37+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,10 +37,9 @@ msgid "Your emails"
 msgstr "mrudolf@kdewebdev.org, lukasz.wojnilowicz@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Przepraszam, robię ruch..."
+msgstr "Przepraszam, robię ruch…"
 
 #: game.cpp:113
 #, kde-format
@@ -102,10 +102,9 @@ msgid "Show next step"
 msgstr "Pokaż następny ruch"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Ruch kończący..."
+msgstr "Ruch kończący…"
 
 #: game.cpp:506
 #, kde-format
