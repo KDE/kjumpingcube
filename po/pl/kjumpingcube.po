@@ -1,14 +1,14 @@
-# Version: $Revision: 1681092 $
+# Version: $Revision: 1685165 $
 # translation of kjumpingcube.po to Polish
 # translation of kjumpingcube.po to
 # translation of kjumpingcube.po to
 # This File is part of 'KJumpingCube'
 #
+# SPDX-FileCopyrightText: 2012, 2021, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Matthias Kiefer <Matthias.Kiefer@stud.uni-karlsruhe.de>, 1998.
 # Krzysztof P. Jasiutowicz <kpjas@priv.onet.pl>, 1998.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004, 2005, 2007, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2021.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 msgid ""
 msgstr ""
@@ -24,6 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
