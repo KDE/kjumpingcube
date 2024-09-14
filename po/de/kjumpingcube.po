@@ -1,8 +1,8 @@
+# SPDX-FileCopyrightText: 2009, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Matthias Kiefer <matthias.kiefer@gmx.de>, 1998,1999.
 # Stefan Winter <swinter@kde.org>, 2003, 2004, 2005, 2007.
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2007.
 # Stefan Winter <Stefan Winter <swinter@kde.org>>, 2007.
-# Johannes Obermayr <johannesobermayr@gmx.de>, 2009.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2009.
 # Burkhard Lück <lueck@hube-lueck.de>, 2012, 2013, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2013.
@@ -11,14 +11,15 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-29 00:37+0000\n"
-"PO-Revision-Date: 2021-07-14 10:22+0200\n"
-"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"PO-Revision-Date: 2024-09-13 12:44+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,10 +32,9 @@ msgid "Your emails"
 msgstr "kiefer@kde.org"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Es wird leider gerade ein Zug durchgeführt..."
+msgstr "Leider wird gerade ein Zug durchgeführt …"
 
 #: game.cpp:113
 #, kde-format
@@ -97,10 +97,9 @@ msgid "Show next step"
 msgstr "Nächsten Schritt anzeigen"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Zug wird abgeschlossen ..."
+msgstr "Zug wird abgeschlossen …"
 
 #: game.cpp:506
 #, kde-format
