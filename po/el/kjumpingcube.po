@@ -6,20 +6,21 @@
 # Spiros Georgaras <sng@hellug.gr>, 2005, 2006, 2007.
 # Toussis Manolis <manolis@koppermind.homelinux.org>, 2007, 2009.
 # Stelios <sstavra@gmail.com>, 2016, 2021.
+# SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-29 00:37+0000\n"
-"PO-Revision-Date: 2021-07-09 09:59+0300\n"
-"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"PO-Revision-Date: 2024-09-20 09:18+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -558,7 +559,7 @@ msgstr "Σκόρπιες τελείες"
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr "Χρόνος επικαλυπτόμεων κινήσεων"
+msgstr "Χρόνος επικαλυπτόμενων κινήσεων"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
