@@ -35,7 +35,6 @@ msgstr "number1@realityx.net,slx@nilsk.net"
 
 #: game.cpp:76
 #, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
 msgid "Sorry, doing a move…"
 msgstr "Beklager, jeg gjør et trekk …"
 
@@ -101,7 +100,6 @@ msgstr "Vis neste steg"
 
 #: game.cpp:467
 #, fuzzy, kde-format
-#| msgid "Finishing move..."
 msgid "Finishing move…"
 msgstr "Fullfører trekket …"
 
