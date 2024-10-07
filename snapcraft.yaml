@@ -56,7 +56,7 @@ parts:
       - -DCMAKE_LIBRARY_PATH=lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
     override-pull: |
       craftctl default
-      patch -p1 < "$CRAFT_PROJECT_DIR/snap/patches/appdate_license.patch"
+      patch -p1 < "$CRAFT_PROJECT_DIR/snap/patches/appdata_license.patch"
     prime:
       - -usr/lib/*/cmake/*
       - -usr/include/*
