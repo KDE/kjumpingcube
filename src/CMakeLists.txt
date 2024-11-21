@@ -54,6 +54,7 @@ target_link_libraries(kjumpingcube
     KF6::I18n
     KF6::KIOWidgets
     KF6::XmlGui
+    KF6::IconThemes
     Qt6::Svg
 )
 
