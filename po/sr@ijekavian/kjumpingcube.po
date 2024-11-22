@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-29 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2013-06-03 18:02+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -384,52 +384,52 @@ msgstr "Паузирај пре надовезаног потеза"
 msgid "Main Toolbar"
 msgstr "Главна трака"
 
-#: main.cpp:27
+#: main.cpp:44
 #, kde-format
 msgid "KJumpingCube"
 msgstr "К‑скочикоцка"
 
-#: main.cpp:29
+#: main.cpp:46
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "Тактичка игра за једног или два играча"
 
-#: main.cpp:31
+#: main.cpp:48
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "© 1998–2000, Матијас Кифер"
 
-#: main.cpp:35
+#: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Матијас Кифер"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Бенџамин К. Мејер"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Various improvements"
 msgstr "разна побољшања"
 
-#: main.cpp:37
+#: main.cpp:54
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ијан Вадам"
 
-#: main.cpp:38
+#: main.cpp:55
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "надградња за КДЕ‑4 и подршка за СВГ графику"
 
-#: main.cpp:40
+#: main.cpp:57
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Јевгениј Труњов"
 
-#: main.cpp:41
+#: main.cpp:58
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "графика за КДЕ‑4 верзију"

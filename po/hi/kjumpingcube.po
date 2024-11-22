@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-29 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2007-12-24 11:58+0530\n"
 "Last-Translator: Ravishankar Shrivastava <aviratlami@aol.in>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -368,52 +368,52 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr "मुख्य औज़ार पट्टी"
 
-#: main.cpp:27
+#: main.cpp:44
 #, kde-format
 msgid "KJumpingCube"
 msgstr "के-जम्पिंगक्यूब"
 
-#: main.cpp:29
+#: main.cpp:46
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "एक या दो खिलाड़ी का रणनीतिक खेल"
 
-#: main.cpp:31
+#: main.cpp:48
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "(c) 1998-2000, मैथियास केइफर"
 
-#: main.cpp:35
+#: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "मैथियास केइफर"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "बेंजामिन मेयर"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Various improvements"
 msgstr "अनेकानेक सुधार"
 
-#: main.cpp:37
+#: main.cpp:54
 #, kde-format
 msgid "Ian Wadham"
 msgstr "इयान वाढम"
 
-#: main.cpp:38
+#: main.cpp:55
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "केडीई४ तथा एसवीजी कलाकृति समर्थन में अद्यतन करें."
 
-#: main.cpp:40
+#: main.cpp:57
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "यूजीन ट्रोव्नेव"
 
-#: main.cpp:41
+#: main.cpp:58
 #, fuzzy, kde-format
 #| msgid "Graphics for KDE4.0 version."
 msgid "Graphics for KDE 4.0 version."

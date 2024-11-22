@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-29 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-04 10:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -372,52 +372,52 @@ msgstr "Fa una pausa abans de cada pas en cascada."
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
-#: main.cpp:27
+#: main.cpp:44
 #, kde-format
 msgid "KJumpingCube"
 msgstr "KJumpingCube"
 
-#: main.cpp:29
+#: main.cpp:46
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "Joc tàctic d'un o dos jugadors"
 
-#: main.cpp:31
+#: main.cpp:48
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "(c) 1998-2000, Matthias Kiefer"
 
-#: main.cpp:35
+#: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Various improvements"
 msgstr "Diverses millores"
 
-#: main.cpp:37
+#: main.cpp:54
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: main.cpp:38
+#: main.cpp:55
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "Adaptació al KDE 4 i implementació de grafismes en SVG."
 
-#: main.cpp:40
+#: main.cpp:57
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:41
+#: main.cpp:58
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "Gràfics per a la versió KDE 4.0."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-29 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -359,52 +359,52 @@ msgstr "在每个级联步骤之前暂停。"
 msgid "Main Toolbar"
 msgstr "主工具栏"
 
-#: main.cpp:27
+#: main.cpp:44
 #, kde-format
 msgid "KJumpingCube"
 msgstr "KJumpingCube"
 
-#: main.cpp:29
+#: main.cpp:46
 #, kde-format
 msgid "Tactical one or two player game"
 msgstr "单人或双人智力游戏"
 
-#: main.cpp:31
+#: main.cpp:48
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
 msgstr "(c) 1998-2000, Matthias Kiefer"
 
-#: main.cpp:35
+#: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:36
+#: main.cpp:53
 #, kde-format
 msgid "Various improvements"
 msgstr "各种改进"
 
-#: main.cpp:37
+#: main.cpp:54
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: main.cpp:38
+#: main.cpp:55
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
 msgstr "升级到 KDE4 和 SVG 美工支持。"
 
-#: main.cpp:40
+#: main.cpp:57
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:41
+#: main.cpp:58
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
 msgstr "KDE4.0 版本的图像。"
