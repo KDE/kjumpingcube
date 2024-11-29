@@ -46,6 +46,18 @@ kconfig_add_kcfg_files(kjumpingcube prefs.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-kjumpingcube.png")
 ecm_add_app_icon(kjumpingcube ICONS ${ICONS_SRCS})
 
+if(APPLE)
+    set_target_properties(kjumpingcube PROPERTIES
+           MACOSX_BUNDLE_DISPLAY_NAME "Kjumpingcube"
+        MACOSX_BUNDLE_BUNDLE_NAME "Kjumpingcube"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "Kjumpingcube ${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.kjumpingcube"
+        MACOSX_BUNDLE_COPYRIGHT "2024 The Kjumpingcube Developers")
+endif()
+
+
 target_link_libraries(kjumpingcube
     KDEGames6
     KF6::CoreAddons
