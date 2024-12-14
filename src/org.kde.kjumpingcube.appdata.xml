@@ -35,6 +35,7 @@
   <name xml:lang="pt">KJumpingCube</name>
   <name xml:lang="pt-BR">KJumpingCube</name>
   <name xml:lang="ru">KJumpingCube</name>
+  <name xml:lang="sa">जम्पिंगक्यूब इत्यत्र</name>
   <name xml:lang="sk">KJumpingCube</name>
   <name xml:lang="sl">KJumpingCube</name>
   <name xml:lang="sr">К‑скочикоцка</name>
@@ -73,6 +74,7 @@
   <summary xml:lang="pt">Jogo de Captura de Territórios</summary>
   <summary xml:lang="pt-BR">Jogo de captura de território</summary>
   <summary xml:lang="ru">Захват территорий</summary>
+  <summary xml:lang="sa">क्षेत्र कैप्चर गेम</summary>
   <summary xml:lang="sk">Hra na obsadzovanie území</summary>
   <summary xml:lang="sl">Igra osvajanja ozemlja</summary>
   <summary xml:lang="sr">Игра заузимања територије</summary>
@@ -116,6 +118,7 @@
     <p xml:lang="pt">O KJumpingCube é um jogo táctico simples com dados. A área de jogo consiste em quadrados que contêm pontos. Os jogadores movem-se ao carregar num quadrado vazio ou num quadrado seu.</p>
     <p xml:lang="pt-BR">O KJumpingCube é um jogo de tática simples com dados. A área do jogo consiste em quadrados contendo pontos. Os jogadores se movem clicando ou num quadrado vazio ou no próprio quadrado.</p>
     <p xml:lang="ru">KJumpingCube — простая тактическая игра. Игровая область состоит из квадратов, содержащих точки. Игроки перемещаются, нажимая либо на свободный квадрат, либо на свой квадрат.</p>
+    <p xml:lang="sa">KJumpingCube एकः सरलः पासा चालितः सामरिकः क्रीडा अस्ति । क्रीडाक्षेत्रे बिन्दुयुक्ताः वर्गाः भवन्ति । क्रीडकाः रिक्तचतुष्कोणे वा, स्वस्य वर्गे वा क्लिक् कृत्वा गच्छन्ति ।</p>
     <p xml:lang="sk">KJumpingCube je jednoduchá kockami riadená taktická hra. Hracia plochasa skladá zo štvorcov, ktoré obsahujú body. Hráči sa pohybujú po kliknutí na buďprázdny štvorec, alebo na vlastný štvorec.</p>
     <p xml:lang="sl">KJumpingCube je preprosta taktična igra s kockami. Igralna površina sestoji iz kvadratkov, ki vsebujejo točke. Igralci napredujejo tako, da kliknejo bodisi prazni bodisi lastni kvadratek.</p>
     <p xml:lang="sr">К‑скочикоцка је једноставна тактичка игра са коцкицама. Игра се на квадратима који садрже поене. Потези се повлаче тако што се или кликне на празан квадрат или на свој квадрат.</p>
@@ -158,6 +161,7 @@
       <caption xml:lang="pt">A jogar ao KJumpingCube</caption>
       <caption xml:lang="pt-BR">Jogando KJumpingCube</caption>
       <caption xml:lang="ru">Игра в KJumpingCube</caption>
+      <caption xml:lang="sa">KJumpingCube क्रीडन्</caption>
       <caption xml:lang="sk">Hranie KJumpingCube</caption>
       <caption xml:lang="sl">Igra KJumpingCube</caption>
       <caption xml:lang="sv">Spela Hoppande kuben</caption>
