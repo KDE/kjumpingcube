@@ -3,33 +3,36 @@
 # This file is distributed under the same license as the kjumpingcube package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-12-13 19:09+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move…"
-msgstr "क्षम्यतां, एकं चालनं कुर्वन्..."
+msgstr "क्षम्यतां, एकं चालनं कुर्वन्…"
 
 #: game.cpp:113
 #, kde-format
@@ -94,7 +97,7 @@ msgstr "अग्रिमपदं दर्शयतु"
 #: game.cpp:467
 #, kde-format
 msgid "Finishing move…"
-msgstr "समाप्ति चाल..."
+msgstr "समाप्ति चाल…"
 
 #: game.cpp:506
 #, kde-format
