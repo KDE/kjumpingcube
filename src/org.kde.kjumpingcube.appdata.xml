@@ -7,6 +7,7 @@
     <name translate="no">KDE</name>
   </developer>
   <name>KJumpingCube</name>
+  <name xml:lang="ar">مكعبك القافز</name>
   <name xml:lang="ast">KJumpingCube</name>
   <name xml:lang="ca">KJumpingCube</name>
   <name xml:lang="ca-valencia">KJumpingCube</name>
@@ -48,6 +49,7 @@
   <name xml:lang="zh-CN">KJumpingCube</name>
   <name xml:lang="zh-TW">KJumpingCube 跳躍立方體</name>
   <summary>Territory Capture Game</summary>
+  <summary xml:lang="ar">لعبة الاستيلاء على الأراضي</summary>
   <summary xml:lang="ca">Joc de conquesta del territori</summary>
   <summary xml:lang="ca-valencia">Joc de conquesta del territori</summary>
   <summary xml:lang="da">Spil om erobring af territorier</summary>
@@ -91,6 +93,7 @@
    The playing area consists of squares containing points.
    Players move by clicking on either a vacant square, or on own square.
   </p>
+    <p xml:lang="ar">مكعبك القافز هي لعبة تكتيكية بسيطة تعتمد على النرد. تتكون منطقة اللعب من مربعات تحتوي على نقاط. يتحرك اللاعبون بالنقر على مربع فارغ أو على مربعهم الخاص.</p>
     <p xml:lang="ca">El KJumpingCube és un joc senzill de tàctica amb daus. L'àrea de joc consisteix en quadrats que contenen punts. Els jugadors mouen clicant en els quadrats vacants o en els quadrats propis.</p>
     <p xml:lang="ca-valencia">KJumpingCube és un joc senzill de tàctica amb daus. L'àrea de joc consistix en quadrats que contenen punts. Els jugadors mouen clicant en els quadrats vacants o en els quadrats propis.</p>
     <p xml:lang="da">KJumpingCube er et simpelt terningedrevet taktikspil. Spilområdet består af firkanter med punkter. Spillerne rykker ved at klikke på enten et ledigt felt eller et af sine egne felter.</p>
@@ -132,6 +135,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KJumpingCube</caption>
+      <caption xml:lang="ar">يلعب المكعب مكعبك القافز</caption>
       <caption xml:lang="ca">Jugant al KJumpingCube</caption>
       <caption xml:lang="ca-valencia">Jugant a KJumpingCube</caption>
       <caption xml:lang="cs">Hraní KJumpingCube</caption>
