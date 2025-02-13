@@ -30,7 +30,7 @@ msgstr "kde-china@kde.org"
 #: game.cpp:76
 #, kde-format
 msgid "Sorry, doing a move…"
-msgstr ""
+msgstr "对不起，正在移动..."
 
 #: game.cpp:113
 #, kde-format
@@ -95,7 +95,7 @@ msgstr "显示下一步"
 #: game.cpp:467
 #, kde-format
 msgid "Finishing move…"
-msgstr ""
+msgstr "正在完成移动..."
 
 #: game.cpp:506
 #, kde-format
