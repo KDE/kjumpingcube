@@ -3,53 +3,52 @@
 #
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
 # Maris Nartiss <maris.kde@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2025 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2009-07-19 10:53+0300\n"
-"Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2025-04-07 17:10+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Viesturs Zariņš"
+msgstr "Viesturs Zariņš, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "viesturs.zarins@mii.lu.lv"
+msgstr "viesturs.zarins@mii.lu.lv, toms.trasuns@posteo.net"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Performing move."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Veic gājienu."
+msgstr "Veic gājienu…"
 
 #: game.cpp:113
 #, kde-format
 msgid "Game over"
-msgstr ""
+msgstr "Spēles beigas"
 
 #: game.cpp:114
-#, fuzzy, kde-format
-#| msgid "Winner is Player %1!"
+#, kde-format
 msgid "The winner is Player %1!"
-msgstr "Uzvarēja spēlētājs %1!"
+msgstr "Uzvarēja spēlētājs — %1!"
 
 #: game.cpp:115
 #, kde-format
 msgid "Winner"
-msgstr "Winner"
+msgstr "Uzvarētājs"
 
 #: game.cpp:126
 #, kde-format
@@ -59,71 +58,67 @@ msgstr "Pamata"
 #: game.cpp:239
 #, kde-format
 msgid "Start game"
-msgstr ""
+msgstr "Sākt spēli"
 
 #: game.cpp:242
 #, kde-format
 msgid "Continue game"
-msgstr ""
+msgstr "Turpināt spēli"
 
 #: game.cpp:246
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "Sākt datora gājienu"
 
 #: game.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your turn"
-msgstr "Viesturs Zariņš"
+msgstr "Tavs gājiens"
 
 #: game.cpp:270
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player %1"
-msgstr "Pirmais spēlētājs"
+msgstr "%1. spēlētājs"
 
 #: game.cpp:286
-#, fuzzy, kde-format
-#| msgid "Computer Plays"
+#, kde-format
 msgid "Computer player %1 is moving"
-msgstr "Dators spēlē kā"
+msgstr "Gājiens datora vadītajam %1. spēlētājam"
 
 #: game.cpp:306
 #, kde-format
 msgid "The computer could not find a valid move."
-msgstr ""
+msgstr "Dators neatrada derīgu gājienu."
 
 #: game.cpp:409
 #, kde-format
 msgid "Show next step"
-msgstr ""
+msgstr "Rādīt nākamo soli"
 
 #: game.cpp:467
 #, kde-format
 msgid "Finishing move…"
-msgstr ""
+msgstr "Pabeidz gājienu…"
 
 #: game.cpp:506
 #, kde-format
 msgid "Interrupt game"
-msgstr ""
+msgstr "Pārtraukt spēli"
 
 #: game.cpp:512
 #, kde-format
 msgid "Stop computing"
-msgstr ""
+msgstr "Beigt rēķināt"
 
 #: game.cpp:515
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "Apturēt gājiena rādīšanu"
 
 #: game.cpp:518
 #, kde-format
 msgid "Stop animation"
-msgstr ""
+msgstr "Apturēt animāciju"
 
 #: game.cpp:547
 #, kde-format
@@ -131,22 +126,18 @@ msgid "New Game"
 msgstr "Jauna spēle"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"Fails %1 pastāv.\n"
-"Vai vēlaties to pārrakstīt?"
+"Datne „%1“ jau pastāv.\n"
+"Vai to pārrakstīt?"
 
 #: game.cpp:600
-#, fuzzy, kde-format
-#| msgid "game saved as %1"
+#, kde-format
 msgid "Game saved as %1"
-msgstr "spēle saglabātā kā %1"
+msgstr "Spēle ir saglabāta ar nosaukumu „%1“"
 
 #: game.cpp:603
 #, kde-format
@@ -154,18 +145,18 @@ msgid ""
 "There was an error in saving file\n"
 "%1"
 msgstr ""
-"Gadījās kļūda saglabājot failu\n"
+"Kļūda, saglabājot datni\n"
 "%1"
 
 #: game.cpp:621
 #, kde-format
 msgid "The file %1 does not exist!"
-msgstr "Fails %1 nepastāv!"
+msgstr "Datne ar nosaukumu „%1“ nepastāv!"
 
 #: game.cpp:636
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
-msgstr "Fails %1 nav KJumpingCube spēles fails!"
+msgstr "Datne „%1“ nav „KJumpingCube“ spēles datne!"
 
 #: game.cpp:649
 #, kde-format
@@ -173,7 +164,7 @@ msgid ""
 "There was an error loading file\n"
 "%1"
 msgstr ""
-"Gadījās kļūda faila ielādē\n"
+"Neizdevās ielādēt datni\n"
 "%1"
 
 #: game.cpp:677
@@ -185,6 +176,10 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
+"Jūs mainījāt spēles iestatījumu, tāpēc spēle ir jāsāk no sākuma.\n"
+"\n"
+"Vai vēlaties pārtraukt pašreizējo spēli, vai arī atjaunot iepriekšējo izmēru "
+"un turpināt spēlēt?"
 
 #: game.cpp:683
 #, kde-format
@@ -193,88 +188,92 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
+"Jūs pieprasījāt jaunu spēli, bet jau ir ieslēgta cita spēle.\n"
+"\n"
+"Vai vēlaties pārtraukt pašreizējo spēli?"
 
 #: game.cpp:689
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgid "New Game?"
-msgstr "Jauna spēle"
+msgstr "Jauna spēle?"
 
 #: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
-msgstr ""
+msgstr "Pārtraukt spēli"
 
 #: game.cpp:691
 #, kde-format
 msgid "Continue Game"
-msgstr ""
+msgstr "Turpināt spēli"
 
 #: game.cpp:833
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
+"Datnes kuba izmērs pārsniedz diapazonu no %1 līdz %2. Programma to iestatīs "
+"uz %1."
 
 #: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr ""
+msgstr "Trūkst  kuba %1 ievades rindas."
 
 #: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr ""
+msgstr "Kuba %1 īpašnieks ir ārpus 0—2 diapazona."
 
 #: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr ""
+msgstr "Kuba %1 vērtība ir ārpus 1—%2 diapazona."
 
 #: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr ""
+msgstr "Pašreizējais spēlētājs nav nedz 1, nedz arī 2."
 
 #: kjumpingcube.cpp:45
 #, kde-format
 msgid "Current player:"
-msgstr "Aktīvais spēlētājs:"
+msgstr "Šobrīd gājiens ir:"
 
 #: kjumpingcube.cpp:137
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Iestatījumi"
 
 #. i18n: ectx: label, entry (AnimationSpeed), group (Game)
 #: kjumpingcube.kcfg:11
 #, kde-format
 msgid "Animation speed of overflowing dice"
-msgstr ""
+msgstr "Punktu pārplūšanas animācijas ātrums"
 
 #. i18n: ectx: label, entry (AnimationNone), group (Game)
 #: kjumpingcube.kcfg:15
 #, kde-format
 msgid "Animation type None (no pauses)."
-msgstr ""
+msgstr "Animācijas tips: nekāds (bez pauzēm)."
 
 #. i18n: ectx: label, entry (AnimationDelay), group (Game)
 #: kjumpingcube.kcfg:19
 #, kde-format
 msgid "Animation type Darken and pause."
-msgstr ""
+msgstr "Animācijas tips: aptumšot un pauzēt."
 
 #. i18n: ectx: label, entry (AnimationBlink), group (Game)
 #: kjumpingcube.kcfg:23
 #, kde-format
 msgid "Animation type Blink rapidly."
-msgstr ""
+msgstr "Animācijas tips: ātra mirgošana."
 
 #. i18n: ectx: label, entry (AnimationSpread), group (Game)
 #: kjumpingcube.kcfg:27
 #, kde-format
 msgid "Animation type Scatter dots."
-msgstr ""
+msgstr "Animācijas tips: izkaisīti punkti."
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
@@ -304,69 +303,67 @@ msgstr "Spēles laukuma izmērs."
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "Vai pirmais spēlētājs ir dators."
+msgstr "Vai pirmais spēlētājs ir dators?"
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr ""
+msgstr "Vai datora vadīts pirmais spēlētājs izmanto „Kepler AI“?"
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr ""
+msgstr "Vai datora vadīts pirmais spēlētājs izmanto „Newton AI“?"
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
-#, fuzzy, kde-format
-#| msgid "Skill of the computer player."
+#, kde-format
 msgid "Skill of computer player 1."
-msgstr "Datora spēlētāja prasme."
+msgstr "Datora vadīta pirmā spēlētāja prasmju līmenis."
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kjumpingcube.kcfg:72
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr "Vai otrais spēlētājs ir dators."
+msgstr "Vai otrais spēlētājs ir dators?"
 
 #. i18n: ectx: label, entry (Kepler2), group (Game)
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr ""
+msgstr "Vai datora vadīts otrais spēlētājs izmanto „Kepler AI“?"
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr ""
+msgstr "Vai datora vadīts otrais spēlētājs izmanto „Newton AI“?"
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
-#, fuzzy, kde-format
-#| msgid "Skill of the computer player."
+#, kde-format
 msgid "Skill of computer player 2."
-msgstr "Datora spēlētāja prasme."
+msgstr "Datora vadīta otrā spēlētāja prasmju līmenis."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "Pauzēt pirms katra datora gājiena."
 
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr ""
+msgstr "Pauzēt pirms katra kaskādes gājiena soļa."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Galvenā rīkjosla "
+msgstr "Galvenā rīkjosla"
 
 #: main.cpp:44
 #, kde-format
@@ -376,12 +373,12 @@ msgstr "KJumpingCube"
 #: main.cpp:46
 #, kde-format
 msgid "Tactical one or two player game"
-msgstr "Taktiska viena vai divu spēlētāju spēle."
+msgstr "Taktiska viena vai divu spēlētāju spēle"
 
 #: main.cpp:48
 #, kde-format
 msgid "(c) 1998-2000, Matthias Kiefer"
-msgstr "(c) 1998-2000, Matthias Kiefer"
+msgstr "(c) 1998—2000, Matthias Kiefer"
 
 #: main.cpp:52
 #, kde-format
@@ -406,7 +403,7 @@ msgstr "Ian Wadham"
 #: main.cpp:55
 #, kde-format
 msgid "Upgrade to KDE4 and SVG artwork support."
-msgstr "Pielāgošana KDE4 un SVG grafikas atbasts."
+msgstr "Atjaunināšana uz KDE4 un SVG grafikas atbalsts."
 
 #: main.cpp:57
 #, kde-format
@@ -416,42 +413,41 @@ msgstr "Eugene Trounev"
 #: main.cpp:58
 #, kde-format
 msgid "Graphics for KDE 4.0 version."
-msgstr "Grafika KDE4.0 versijai."
+msgstr "Grafika KDE 4.0 versijai."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, fuzzy, kde-format
-#| msgid "Computer Plays"
+#, kde-format
 msgid "Computer Player 1"
-msgstr "Dators spēlē kā"
+msgstr "Pirmais datora spēlētājs"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:181
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "Šobrīd spēlē"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:59 settings.ui:194
 #, kde-format
 msgid "Style of Play"
-msgstr ""
+msgstr "Spēles stils"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
 #: settings.ui:65 settings.ui:203
 #, kde-format
 msgid "Kepler"
-msgstr ""
+msgstr "Kepler"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Newton2)
 #: settings.ui:75 settings.ui:213
 #, kde-format
 msgid "Newton"
-msgstr ""
+msgstr "Newton"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -476,16 +472,15 @@ msgstr "Eksperts"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:163
-#, fuzzy, kde-format
-#| msgid "Computer Plays"
+#, kde-format
 msgid "Computer Player 2"
-msgstr "Dators spēlē kā"
+msgstr "Otrais datora spēlētājs"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:298
 #, kde-format
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "Pauzēt pirms katra datora gājiena"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: settings.ui:309
@@ -497,13 +492,13 @@ msgstr "Laukuma izmērs"
 #: settings.ui:345
 #, kde-format
 msgid "3x3"
-msgstr ""
+msgstr "3✕3"
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr ""
+msgstr "15✕15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
@@ -521,67 +516,67 @@ msgstr "Pirmais spēlētājs:"
 #: settings.ui:405
 #, kde-format
 msgid "Player 2:"
-msgstr "Otrais spēletājs:"
+msgstr "Otrais spēlētājs:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:419
 #, kde-format
 msgid "Neutral:"
-msgstr "Neitrāls:"
+msgstr "Neitrālā:"
 
 #. i18n: ectx: property (title), widget (QGroupBox)
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
-msgstr ""
+msgstr "Kaskādes gājiena parādīšana"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
 #: settings.ui:446
 #, kde-format
 msgid "None (no pauses)"
-msgstr ""
+msgstr "Nekāda (bez pauzēm)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
 #: settings.ui:459
 #, kde-format
 msgid "Darken and pause"
-msgstr ""
+msgstr "Aptumšot un pauzēt"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
 #: settings.ui:472
 #, kde-format
 msgid "Blink rapidly"
-msgstr ""
+msgstr "Ātra mirgošana"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
 #: settings.ui:485
 #, kde-format
 msgid "Scatter dots"
-msgstr ""
+msgstr "Izkaisīti punkti"
 
 #. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr ""
+msgstr "Kaskādes gājiena laiks"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
 #, kde-format
 msgid "Short"
-msgstr ""
+msgstr "Īss"
 
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 #: settings.ui:566
 #, kde-format
 msgid "Long"
-msgstr ""
+msgstr "Garš"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForStep)
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr ""
+msgstr "Pauzēt pirms katra kaskādes gājiena soļa"
 
 #~ msgid "PushButton"
 #~ msgstr "Poga"
