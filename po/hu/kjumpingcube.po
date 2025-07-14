@@ -1,13 +1,13 @@
 #
 # Tamas Szanto <taszanto@gmail.com>, 1999.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013.
-# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-02-13 11:32+0100\n"
+"PO-Revision-Date: 2025-07-13 20:55+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -28,10 +28,9 @@ msgid "Your emails"
 msgstr "ulysses@fsf.hu"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Performing move."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Lépés végrehajtása."
+msgstr "Lépés folyamatban…"
 
 #: game.cpp:113
 #, kde-format
@@ -66,7 +65,7 @@ msgstr "Játék folytatása"
 #: game.cpp:246
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "Számítógép lépésének megkezdése"
 
 #: game.cpp:267
 #, kde-format
@@ -94,8 +93,7 @@ msgid "Show next step"
 msgstr "Következő lépés megjelenítése"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
 msgstr "Lépés befejezése…"
 
@@ -175,6 +173,11 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
+"Megváltoztatta a játék méretbeállítását, és ehhez új játék indítására van "
+"szükség.\n"
+"\n"
+"Szeretné feladni a jelenlegi játékot, vagy folytatni a játékot, és "
+"visszaállítani a korábbi méretbeállítást?"
 
 #: game.cpp:683
 #, kde-format
@@ -183,6 +186,9 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
+"Ön új játékot kért, de már folyamatban van egy játék.\n"
+"\n"
+"Szeretné feladni a jelenlegi játékot?"
 
 #: game.cpp:689
 #, kde-format
@@ -204,26 +210,28 @@ msgstr "Játék folytatása"
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr ""
+"A fájl kockadobozának mérete kívül esik a %1-%2  tartományon. A(z) %1 "
+"értékre lesz beállítva."
 
 #: game.cpp:849
 #, kde-format
 msgid "Missing input line for cube %1."
-msgstr ""
+msgstr "Hiányzik a(z) %1. kocka bemeneti sora."
 
 #: game.cpp:858
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
-msgstr ""
+msgstr "A(z) %1. kocka tulajdonosa nem esik a 0-2 tartományba."
 
 #: game.cpp:865
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr ""
+msgstr "A(z) %1. kocka értéke nem esik az 1-%2 tartományba."
 
 #: game.cpp:880
 #, kde-format
 msgid "Current player is neither 1 nor 2."
-msgstr ""
+msgstr "A jelenlegi játékos sem az 1-es, sem a 2-es."
 
 #: kjumpingcube.cpp:45
 #, kde-format
@@ -233,37 +241,37 @@ msgstr "Az aktuális játékos:"
 #: kjumpingcube.cpp:137
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 #. i18n: ectx: label, entry (AnimationSpeed), group (Game)
 #: kjumpingcube.kcfg:11
 #, kde-format
 msgid "Animation speed of overflowing dice"
-msgstr ""
+msgstr "Túlcsorduló kockák animációs sebessége"
 
 #. i18n: ectx: label, entry (AnimationNone), group (Game)
 #: kjumpingcube.kcfg:15
 #, kde-format
 msgid "Animation type None (no pauses)."
-msgstr ""
+msgstr "Animációtípus: Nincs (nincsenek szünetek)."
 
 #. i18n: ectx: label, entry (AnimationDelay), group (Game)
 #: kjumpingcube.kcfg:19
 #, kde-format
 msgid "Animation type Darken and pause."
-msgstr ""
+msgstr "Animációtípus: Sötétítés és szünet."
 
 #. i18n: ectx: label, entry (AnimationBlink), group (Game)
 #: kjumpingcube.kcfg:23
 #, kde-format
 msgid "Animation type Blink rapidly."
-msgstr ""
+msgstr "Animációtípus: Gyors villogás."
 
 #. i18n: ectx: label, entry (AnimationSpread), group (Game)
 #: kjumpingcube.kcfg:27
 #, kde-format
 msgid "Animation type Scatter dots."
-msgstr ""
+msgstr "Animációtípus: Pontok szétszórása."
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kjumpingcube.kcfg:31
@@ -299,13 +307,13 @@ msgstr "Itt lehet megadni, hogy az 1. játékost a számítógép irányítsa-e.
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr ""
+msgstr "Az 1-es számítógépes játékos a Kepler AI-t használja-e."
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr ""
+msgstr "Az 1-es számítógépes játékos a Newton AI-t használja-e."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
@@ -323,13 +331,13 @@ msgstr "Itt lehet megadni, hogy a 2. játékost a számítógép irányítsa-e."
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr ""
+msgstr "A 2-es számítógépes játékos a Kepler AI-t használja-e."
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr ""
+msgstr "A 2-es számítógépes játékos a Newton AI-t használja-e."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
@@ -341,13 +349,13 @@ msgstr "A 2. gépi játékos ügyességi szintje."
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "Szünet a számítógép minden lépése előtt."
 
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr ""
+msgstr "Szünet minden kaszkádlépés előtt."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
@@ -416,14 +424,14 @@ msgstr "1. gépi játékos"
 #: settings.ui:46 settings.ui:181
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "Most játszott"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:59 settings.ui:194
 #, kde-format
 msgid "Style of Play"
-msgstr ""
+msgstr "Játékstílus"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler1)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_Kepler2)
@@ -470,7 +478,7 @@ msgstr "2. gépi játékos"
 #: settings.ui:298
 #, kde-format
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "Szünet a számítógép minden lépése előtt"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: settings.ui:309
@@ -488,7 +496,7 @@ msgstr "3x3"
 #: settings.ui:368
 #, kde-format
 msgid "15x15"
-msgstr ""
+msgstr "15x15"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:383
@@ -518,37 +526,37 @@ msgstr "Semleges:"
 #: settings.ui:434
 #, kde-format
 msgid "Cascade Move Display"
-msgstr ""
+msgstr "Kaszkádlépés megjelenítése"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationNone)
 #: settings.ui:446
 #, kde-format
 msgid "None (no pauses)"
-msgstr ""
+msgstr "Nincs (nincsenek szünetek)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationDelay)
 #: settings.ui:459
 #, kde-format
 msgid "Darken and pause"
-msgstr ""
+msgstr "Sötétítés és szünet"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationBlink)
 #: settings.ui:472
 #, kde-format
 msgid "Blink rapidly"
-msgstr ""
+msgstr "Gyors villogás"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_AnimationSpread)
 #: settings.ui:485
 #, kde-format
 msgid "Scatter dots"
-msgstr ""
+msgstr "Pontok szétszórása"
 
 #. i18n: ectx: property (title), widget (QGroupBox, SpeedSlider)
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr ""
+msgstr "Kaszkádlépés ideje"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
@@ -566,7 +574,7 @@ msgstr "Hosszú"
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr ""
+msgstr "Szünet minden kaszkádlépés előtt"
 
 #~ msgid "PushButton"
 #~ msgstr "Nyomógomb"
