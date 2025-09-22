@@ -484,7 +484,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Cargar...</guiicon
+>Cargar…</guiicon
 ></term>
 	<listitem
 ><para
@@ -593,7 +593,7 @@
 > <guimenu
 >Juego</guimenu
 ><guimenuitem
->Cargar...</guimenuitem
+>Cargar…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -631,7 +631,7 @@
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Guardar como...</guimenuitem
+>Guardar como…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -861,7 +861,7 @@
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar &kjumpingcube;...</guimenuitem
+>Configurar &kjumpingcube;…</guimenuitem
 ></menuchoice
 >. En Apple Mac OS X, usa la opción del menú <menuchoice
 ><guimenu
@@ -1052,13 +1052,15 @@
 <para
 >Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
->, Santiago Fernández Sancho<email
+>, Rafael Osuna <email
+>rosuna@wol.es</email
+>, Santiago Fernández Sancho <email
 >santi@kde-es.org</email
 >, Kira J. Fernández <email
 >kirajfdez@gmail.com</email
-> y David Paul Peña<email
+> y David Paul Peña <email
 >eodos0@gmail.com</email
-></para
+>.</para
 ><para
 >Corregida por Eloy Cuadra <email
 >ecuadra@eloihr.net</email
