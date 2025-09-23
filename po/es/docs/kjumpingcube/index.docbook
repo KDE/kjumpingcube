@@ -66,27 +66,13 @@
 > </othercredit
 ><othercredit role="translator"
 > <firstname
->Rafael</firstname
+>Santiago</firstname
 > <surname
->Osuna</surname
+>Fernández Sancho</surname
 > <affiliation
 ><address
 ><email
->rosuna@wol.es</email
-></address
-></affiliation
-> <contrib
->Traductor</contrib
-> </othercredit
-> <othercredit role="translator"
-> <firstname
->Miguel</firstname
-> <surname
->Revilla Rodríguez</surname
-> <affiliation
-><address
-><email
->yo@miguelrevilla.com</email
+>santi@kde-es.org</email
 ></address
 ></affiliation
 > <contrib
@@ -484,7 +470,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Cargar...</guiicon
+>Cargar…</guiicon
 ></term>
 	<listitem
 ><para
@@ -593,7 +579,7 @@
 > <guimenu
 >Juego</guimenu
 ><guimenuitem
->Cargar...</guimenuitem
+>Cargar…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -631,7 +617,7 @@
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Guardar como...</guimenuitem
+>Guardar como…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -861,7 +847,7 @@
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar &kjumpingcube;...</guimenuitem
+>Configurar &kjumpingcube;…</guimenuitem
 ></menuchoice
 >. En Apple Mac OS X, usa la opción del menú <menuchoice
 ><guimenu
