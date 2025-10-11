@@ -1,11 +1,11 @@
 # SPDX-FileCopyrightText: 2009, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Matthias Kiefer <matthias.kiefer@gmx.de>, 1998,1999.
-# Stefan Winter <swinter@kde.org>, 2003, 2004, 2005, 2007.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2007.
+# SPDX-FileCopyrightText: 2003, 2004, 2005, 2007 Stefan Winter <swinter@kde.org>
+# SPDX-FileCopyrightText: 2005, 2007 Thomas Reitelbach <tr@erdfunkstelle.de>
 # Stefan Winter <Stefan Winter <swinter@kde.org>>, 2007.
-# Panagiotis Papadopoulos <pano_90@gmx.net>, 2009.
-# Burkhard Lück <lueck@hube-lueck.de>, 2012, 2013, 2021.
-# Frederik Schwarzer <schwarzer@kde.org>, 2013.
+# SPDX-FileCopyrightText: 2009 Panagiotis Papadopoulos <pano_90@gmx.net>
+# SPDX-FileCopyrightText: 2012, 2013, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2013 Frederik Schwarzer <schwarzer@kde.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
