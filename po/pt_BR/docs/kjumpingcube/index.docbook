@@ -430,7 +430,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Carregar...</guiicon
+>Carregar…</guiicon
 ></term>
 	<listitem
 ><para
@@ -539,7 +539,7 @@
 > <guimenu
 >Jogo</guimenu
 ><guimenuitem
->Carregar...</guimenuitem
+>Carregar…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -577,7 +577,7 @@
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
->Salvar como...</guimenuitem
+>Salvar como…</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -807,7 +807,7 @@
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
->Configurar o &kjumpingcube;...</guimenuitem
+>Configurar o &kjumpingcube;…</guimenuitem
 ></menuchoice
 >, no Apple Mac OS X use o item do menu <menuchoice
 ><guimenu
