@@ -151,7 +151,7 @@ msgid ""
 "There was an error in saving file\n"
 "%1"
 msgstr ""
-"S'ha produït un error en guardar el fitxer\n"
+"S'ha produït un error mentre es guardava el fitxer\n"
 "%1"
 
 #: game.cpp:621
@@ -170,7 +170,7 @@ msgid ""
 "There was an error loading file\n"
 "%1"
 msgstr ""
-"S'ha produït un error en carregar el fitxer\n"
+"S'ha produït un error mentre es carregava el fitxer\n"
 "%1"
 
 #: game.cpp:677
