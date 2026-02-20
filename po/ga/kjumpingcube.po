@@ -28,10 +28,9 @@ msgid "Your emails"
 msgstr "seoc@iolfree.ie,kscanne@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Performing move."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Beart á dhéanamh."
+msgstr ""
 
 #: game.cpp:113
 #, kde-format
@@ -39,10 +38,9 @@ msgid "Game over"
 msgstr ""
 
 #: game.cpp:114
-#, fuzzy, kde-format
-#| msgid "Winner is Player %1!"
+#, kde-format
 msgid "The winner is Player %1!"
-msgstr "Ba é Imreoir %1 an Buaiteoir!"
+msgstr ""
 
 #: game.cpp:115
 #, kde-format
@@ -70,23 +68,19 @@ msgid "Start computer move"
 msgstr ""
 
 #: game.cpp:267
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Your turn"
-msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
+msgstr ""
 
 #: game.cpp:270
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player %1"
-msgstr "Imreoir 1"
+msgstr ""
 
 #: game.cpp:286
-#, fuzzy, kde-format
-#| msgid "Computer Player 1"
+#, kde-format
 msgid "Computer player %1 is moving"
-msgstr "Imreoir Ríomhaire 1"
+msgstr ""
 
 #: game.cpp:306
 #, kde-format
@@ -129,22 +123,16 @@ msgid "New Game"
 msgstr "Cluiche Nua"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"Tá comhad %1 ann cheana.\n"
-"An bhfuil fonn ort scríobh air?"
 
 #: game.cpp:600
-#, fuzzy, kde-format
-#| msgid "game saved as %1"
+#, kde-format
 msgid "Game saved as %1"
-msgstr "sábháladh an cluiche mar %1"
+msgstr ""
 
 #: game.cpp:603
 #, kde-format
@@ -193,10 +181,9 @@ msgid ""
 msgstr ""
 
 #: game.cpp:689
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgid "New Game?"
-msgstr "Cluiche Nua"
+msgstr ""
 
 #: game.cpp:690
 #, kde-format
@@ -576,51 +563,3 @@ msgstr "Fada"
 #, kde-format
 msgid "Pause before each cascade step"
 msgstr ""
-
-#~ msgid "PushButton"
-#~ msgstr "Brúchnaipe"
-
-#~ msgid "Overwrite"
-#~ msgstr "Forscríobh"
-
-#, fuzzy
-#~| msgid "Computing next move."
-#~ msgid "Computing a move"
-#~ msgstr "An chéad bheart eile á áireamh."
-
-#~ msgid "Stop"
-#~ msgstr "Stad"
-
-#~ msgid "Force the computer to move immediately"
-#~ msgstr "Éiligh beart ón ríomhaire láithreach"
-
-#~ msgid ""
-#~ "Stop the computer's calculation of its current move and force it to move "
-#~ "immediately"
-#~ msgstr ""
-#~ "Stad an ríomhaire agus a bheart á áireamh; éiligh an beart láithreach"
-
-#~ msgid "stopped activity"
-#~ msgstr "gníomhaíocht stadta"
-
-#~ msgid "&Game"
-#~ msgstr "&Cluiche"
-
-#~ msgid "10x10"
-#~ msgstr "10×10"
-
-#~ msgid "Computer Skill"
-#~ msgstr "Leibhéal an Ríomhaire"
-
-#~ msgid "Player 2"
-#~ msgstr "Imreoir 2"
-
-#~ msgid "5x5"
-#~ msgstr "5×5"
-
-#~ msgctxt "Menu title"
-#~ msgid "&Move"
-#~ msgstr "&Bog"
-
-#~ msgid "Form"
-#~ msgstr "Foirm"
