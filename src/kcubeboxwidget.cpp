@@ -239,9 +239,22 @@ void KCubeBoxWidget::makeStatusPixmaps (const int width)
 void KCubeBoxWidget::makeSVGBackground (const int w, const int h)
 {
    QImage img (w, h, QImage::Format_ARGB32_Premultiplied);
-   QPainter p (&img);
    img.fill (0);
-   svg.render (&p, QStringLiteral("background"));
+   QPainter p (&img);
+
+   // Render SVG preserving aspect ratio (fill + center-crop)
+   QRectF bounds = svg.boundsOnElement(QStringLiteral("background"));
+   if (bounds.isEmpty()) bounds = QRectF(0, 0, w, h);
+
+   qreal scaleX = w / bounds.width();
+   qreal scaleY = h / bounds.height();
+   qreal scale  = qMax(scaleX, scaleY);
+
+   qreal rw = bounds.width()  * scale;
+   qreal rh = bounds.height() * scale;
+   QRectF target((w - rw) / 2.0, (h - rh) / 2.0, rw, rh);
+
+   svg.render (&p, QStringLiteral("background"), target);
    p.end();
    background = QPixmap::fromImage (img);
 }
