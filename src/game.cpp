@@ -585,7 +585,11 @@ void Game::saveGame (bool saveAs)
    }
 
    QTemporaryFile tempFile;
-   tempFile.open();
+   if (!tempFile.open()) {
+       KMessageBox::error (m_view, i18n("There was an error creating a temporary file for saving\n%1",
+                                       tempFile.fileName()));
+       return;
+   }
    KConfig config (tempFile.fileName(), KConfig::SimpleConfig);
    KConfigGroup main (&config, QStringLiteral("KJumpingCube"));
    main.writeEntry ("Version", KJUMPINGCUBE_VERSION_STRING);
@@ -625,7 +629,12 @@ void Game::loadGame()
    } while (! fileOk);
 
    QTemporaryFile tempFile;
-   tempFile.open();
+   if (!tempFile.open()) {
+       KMessageBox::error (m_view, i18n("There was an error creating a temporary file for loading\n%1",
+                                       tempFile.fileName()));
+       return;
+   }
+
    KIO::FileCopyJob *job = KIO::file_copy(url, QUrl::fromLocalFile(tempFile.fileName()), -1, KIO::Overwrite);
    KJobWidgets::setWindow(job, m_view);
    job->exec();
