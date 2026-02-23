@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2026-02-23 00:41+0000\n"
 "PO-Revision-Date: 2013-07-11 03:38+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -136,12 +136,24 @@ msgstr ""
 "%1 деген файл бар екен.\n"
 "Үстінен жаза берейік пе?"
 
-#: game.cpp:600
+#: game.cpp:589
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for saving\n"
+"%1"
+msgstr ""
+"Файлды жүктегенде қате пайда болды\n"
+"%1"
+
+#: game.cpp:604
 #, kde-format
 msgid "Game saved as %1"
 msgstr "Ойын %1 деп сақталған"
 
-#: game.cpp:603
+#: game.cpp:607
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -150,17 +162,29 @@ msgstr ""
 "Файлды сақтағанда қате пайда болды\n"
 "%1"
 
-#: game.cpp:621
+#: game.cpp:625
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "%1 деген файл жоқ!"
 
-#: game.cpp:636
+#: game.cpp:633
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for loading\n"
+"%1"
+msgstr ""
+"Файлды жүктегенде қате пайда болды\n"
+"%1"
+
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "%1 дегені KJumpingCube ойын файлы емес!"
 
-#: game.cpp:649
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -169,7 +193,7 @@ msgstr ""
 "Файлды жүктегенде қате пайда болды\n"
 "%1"
 
-#: game.cpp:677
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -183,7 +207,7 @@ msgstr ""
 "Бар ойынды тастамақсыз ба, әлде бұрынғы өлшемге қайтып, оны жалғастырмақсыз "
 "ба?"
 
-#: game.cpp:683
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -194,43 +218,43 @@ msgstr ""
 "\n"
 "Бар ойынды тастамақсыз ба?"
 
-#: game.cpp:689
+#: game.cpp:698
 #, kde-format
 msgid "New Game?"
 msgstr "Жаңа ойын?"
 
-#: game.cpp:690
+#: game.cpp:699
 #, kde-format
 msgid "Abandon Game"
 msgstr "Ойынды тастау"
 
-#: game.cpp:691
+#: game.cpp:700
 #, kde-format
 msgid "Continue Game"
 msgstr "Ойынды жалғастыру"
 
-#: game.cpp:833
+#: game.cpp:842
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
 msgstr "Файлдағы текшесінің өлшемі %1 - %2 арасынан тыс. Ол %1 болады."
 
-#: game.cpp:849
+#: game.cpp:858
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "%1 текшенің кіріс жол жазуы жоқ."
 
-#: game.cpp:858
+#: game.cpp:867
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "%1 деген шаршы иесі 0 - 2 аумағынан тыс ."
 
-#: game.cpp:865
+#: game.cpp:874
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "%1 деген шаршы мәні 1 - %2 аумағынан тыс."
 
-#: game.cpp:880
+#: game.cpp:889
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "Ойнап жатқаны не 1 не 2 емес."

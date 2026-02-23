@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2026-02-23 00:41+0000\n"
 "PO-Revision-Date: 2025-07-13 20:55+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -131,12 +131,24 @@ msgstr ""
 "A(z) %1 fájl már létezik.\n"
 "Felül szeretné írni?"
 
-#: game.cpp:600
+#: game.cpp:589
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for saving\n"
+"%1"
+msgstr ""
+"Hiba történt az alábbi fájl betöltése közben:\n"
+"%1"
+
+#: game.cpp:604
 #, kde-format
 msgid "Game saved as %1"
 msgstr "A játék %1 néven elmentve"
 
-#: game.cpp:603
+#: game.cpp:607
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -145,17 +157,29 @@ msgstr ""
 "Hiba történt az alábbi fájl mentése közben:\n"
 "%1"
 
-#: game.cpp:621
+#: game.cpp:625
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "%1 nevű fájl nem létezik."
 
-#: game.cpp:636
+#: game.cpp:633
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for loading\n"
+"%1"
+msgstr ""
+"Hiba történt az alábbi fájl betöltése közben:\n"
+"%1"
+
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "A(z) %1 nevű fájlt nem ez a program készítette!"
 
-#: game.cpp:649
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -164,7 +188,7 @@ msgstr ""
 "Hiba történt az alábbi fájl betöltése közben:\n"
 "%1"
 
-#: game.cpp:677
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -179,7 +203,7 @@ msgstr ""
 "Szeretné feladni a jelenlegi játékot, vagy folytatni a játékot, és "
 "visszaállítani a korábbi méretbeállítást?"
 
-#: game.cpp:683
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -190,22 +214,22 @@ msgstr ""
 "\n"
 "Szeretné feladni a jelenlegi játékot?"
 
-#: game.cpp:689
+#: game.cpp:698
 #, kde-format
 msgid "New Game?"
 msgstr "Új játék?"
 
-#: game.cpp:690
+#: game.cpp:699
 #, kde-format
 msgid "Abandon Game"
 msgstr "Játék feladása"
 
-#: game.cpp:691
+#: game.cpp:700
 #, kde-format
 msgid "Continue Game"
 msgstr "Játék folytatása"
 
-#: game.cpp:833
+#: game.cpp:842
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -213,22 +237,22 @@ msgstr ""
 "A fájl kockadobozának mérete kívül esik a %1-%2  tartományon. A(z) %1 "
 "értékre lesz beállítva."
 
-#: game.cpp:849
+#: game.cpp:858
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "Hiányzik a(z) %1. kocka bemeneti sora."
 
-#: game.cpp:858
+#: game.cpp:867
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "A(z) %1. kocka tulajdonosa nem esik a 0-2 tartományba."
 
-#: game.cpp:865
+#: game.cpp:874
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "A(z) %1. kocka értéke nem esik az 1-%2 tartományba."
 
-#: game.cpp:880
+#: game.cpp:889
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "A jelenlegi játékos sem az 1-es, sem a 2-es."

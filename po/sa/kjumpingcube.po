@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2026-02-23 00:41+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -133,12 +133,24 @@ msgstr ""
 "%1 इति सञ्चिका पूर्वमेव अस्ति ।\n"
 "किं भवन्तः तस्य अधिलेखनं कर्तुम् इच्छन्ति ?"
 
-#: game.cpp:600
+#: game.cpp:589
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for saving\n"
+"%1"
+msgstr ""
+"सञ्चिकां लोड् करणं त्रुटिः आसीत्\n"
+"%1"
+
+#: game.cpp:604
 #, kde-format
 msgid "Game saved as %1"
 msgstr "क्रीडा %1 इति रक्षिता"
 
-#: game.cpp:603
+#: game.cpp:607
 #, kde-format
 msgid ""
 "There was an error in saving file\n"
@@ -147,17 +159,29 @@ msgstr ""
 "सञ्चिकायाः रक्षणे दोषः आसीत्\n"
 "%1"
 
-#: game.cpp:621
+#: game.cpp:625
 #, kde-format
 msgid "The file %1 does not exist!"
 msgstr "%1 इति सञ्चिका नास्ति!"
 
-#: game.cpp:636
+#: game.cpp:633
+#, fuzzy, kde-format
+#| msgid ""
+#| "There was an error loading file\n"
+#| "%1"
+msgid ""
+"There was an error creating a temporary file for loading\n"
+"%1"
+msgstr ""
+"सञ्चिकां लोड् करणं त्रुटिः आसीत्\n"
+"%1"
+
+#: game.cpp:645
 #, kde-format
 msgid "The file %1 is not a KJumpingCube gamefile!"
 msgstr "%1 इति सञ्चिका KJumpingCube गेमसञ्चिका नास्ति!"
 
-#: game.cpp:649
+#: game.cpp:658
 #, kde-format
 msgid ""
 "There was an error loading file\n"
@@ -166,7 +190,7 @@ msgstr ""
 "सञ्चिकां लोड् करणं त्रुटिः आसीत्\n"
 "%1"
 
-#: game.cpp:677
+#: game.cpp:686
 #, kde-format
 msgid ""
 "You have changed the size setting of the game and that requires a new game "
@@ -180,7 +204,7 @@ msgstr ""
 "किं भवान् वर्तमानक्रीडां त्यक्तुम् इच्छति अथवा क्रीडनं निरन्तरं कर्तुम् इच्छति तथा पूर्वाकारसेटिंग् "
 "पुनः स्थापयितुम् इच्छति?"
 
-#: game.cpp:683
+#: game.cpp:692
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -191,22 +215,22 @@ msgstr ""
 "\n"
 "किं भवन्तः वर्तमानक्रीडां त्यक्तुम् इच्छन्ति ?"
 
-#: game.cpp:689
+#: game.cpp:698
 #, kde-format
 msgid "New Game?"
 msgstr "नवीनः क्रीडा?"
 
-#: game.cpp:690
+#: game.cpp:699
 #, kde-format
 msgid "Abandon Game"
 msgstr "परित्याग खेल"
 
-#: game.cpp:691
+#: game.cpp:700
 #, kde-format
 msgid "Continue Game"
 msgstr "क्रीडां निरन्तरं कुर्वन्तु"
 
-#: game.cpp:833
+#: game.cpp:842
 #, kde-format
 msgid ""
 "The file's cube box size is outside the range %1 to %2. It will be set to %1."
@@ -214,22 +238,22 @@ msgstr ""
 "सञ्चिकायाः घनपेटिकायाः आकारः %1 तः %2 पर्यन्तं परिधितः बहिः अस्ति । %1 इति सेट् "
 "भविष्यति ।"
 
-#: game.cpp:849
+#: game.cpp:858
 #, kde-format
 msgid "Missing input line for cube %1."
 msgstr "घन %1 कृते निवेशरेखा अनुपलब्धा ।"
 
-#: game.cpp:858
+#: game.cpp:867
 #, kde-format
 msgid "Owner of cube %1 is outside the range 0 to 2."
 msgstr "%1 घनस्य स्वामी 0 तः 2 पर्यन्तं परिधितः बहिः अस्ति ।"
 
-#: game.cpp:865
+#: game.cpp:874
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
 msgstr "%1 घनस्य मूल्यं 1 तः %2 पर्यन्तं परिधितः बहिः अस्ति ।"
 
-#: game.cpp:880
+#: game.cpp:889
 #, kde-format
 msgid "Current player is neither 1 nor 2."
 msgstr "वर्तमानः खिलाडी न १ न २ अस्ति ।"
