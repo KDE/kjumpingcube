@@ -8,7 +8,7 @@
 # Mauricio Piacentini <piacentini@kde.org>, 2007, 2009.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2009.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2009, 2010, 2011, 2012, 2013.
-# Marcus Gama <marcus.gama@gmail.com>, 2012.
+# SPDX-FileCopyrightText: 2012, 2026 Marcus Gama <marcus.gama@gmail.com>
 # Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2021.
 # SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2025-02-05 23:50-0300\n"
-"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
+"PO-Revision-Date: 2026-02-23 09:04-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #, kde-format
@@ -145,15 +145,12 @@ msgstr ""
 "Deseja sobrescrevê-lo?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Ocorreu um erro ao carregar o arquivo\n"
+"Ocorreu um erro ao ao criar um arquivo temporário para gravação\n"
 "%1"
 
 #: game.cpp:604
@@ -176,15 +173,12 @@ msgid "The file %1 does not exist!"
 msgstr "O arquivo %1 não existe!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Ocorreu um erro ao carregar o arquivo\n"
+"Ocorreu um erro ao ao criar um arquivo temporário para carregamento\n"
 "%1"
 
 #: game.cpp:645

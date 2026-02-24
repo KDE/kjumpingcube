@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjumpingcube package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2024-07-12 16:03+0200\n"
+"PO-Revision-Date: 2026-02-23 15:30+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -132,15 +132,12 @@ msgstr ""
 "Tu vole super scriber lo?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Il ha un error cargante file\n"
+"Il habeva un error creante un file temporanee per salveguardar\n"
 "%1"
 
 #: game.cpp:604
@@ -161,15 +158,12 @@ msgid "The file %1 does not exist!"
 msgstr "Le file %1 non existe!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Il ha un error cargante file\n"
+"Il habeva un error creante un file temporanee per cargar\n"
 "%1"
 
 #: game.cpp:645

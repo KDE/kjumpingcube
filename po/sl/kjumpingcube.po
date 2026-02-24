@@ -2,7 +2,7 @@
 # Translation of kjumpingcube.po to Slovenian
 # SLOVENIAN TRANSLATION OF KDEGAMES.
 # Copyright © 2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kjumpingcube.po 1730553 2026-02-23 01:28:39Z scripty $
+# $Id: kjumpingcube.po 1730608 2026-02-24 01:30:50Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2024-05-04 06:25+0200\n"
+"PO-Revision-Date: 2026-02-23 07:25+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -145,15 +145,12 @@ msgstr ""
 "Ali jo želite prepisati?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Prišlo je do napake med nalaganjem datoteke\n"
+"Prišlo je do napake pri ustvarjanju začasne datoteke za shranjevanje\n"
 "%1"
 
 #: game.cpp:604
@@ -176,15 +173,12 @@ msgid "The file %1 does not exist!"
 msgstr "Datoteka %1 ne obstaja!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Prišlo je do napake med nalaganjem datoteke\n"
+"Prišlo je do napake pri kreiranju začasne datoteke za nalaganje\n"
 "%1"
 
 #: game.cpp:645

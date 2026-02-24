@@ -14,20 +14,20 @@
 # Diego Iastrubni <elcuco@kde.org>, 2005, 2012.
 # Israel Berger <Israelb@gmail.com>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2026-01-03 16:15+0200\n"
+"PO-Revision-Date: 2026-02-23 21:33+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -146,15 +146,12 @@ msgstr ""
 "לכתוב עליו?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"אירעה שגיאה בפתיחת הקובץ\n"
+"אירעה שגיאה ביצירת קובץ זמני לשמירת\n"
 "%1"
 
 #: game.cpp:604
@@ -177,15 +174,12 @@ msgid "The file %1 does not exist!"
 msgstr "הקובץ %1 לא קיים!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"אירעה שגיאה בפתיחת הקובץ\n"
+"אירעה שגיאה ביצירת קובץ זמני לטעינת\n"
 "%1"
 
 #: game.cpp:645
