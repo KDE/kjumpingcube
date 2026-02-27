@@ -132,16 +132,11 @@ msgstr ""
 "您想要覆盖它吗？"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"加载文件时出错\n"
-"%1"
 
 #: game.cpp:604
 #, kde-format
@@ -163,16 +158,11 @@ msgid "The file %1 does not exist!"
 msgstr "文件 %1 不存在！"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"加载文件时出错\n"
-"%1"
 
 #: game.cpp:645
 #, kde-format
