@@ -1,5 +1,5 @@
 # Translation for kjumpingcube.po to Euskara/Basque (eu).
-# Copyright (C) 2003-2024 This file is copyright:
+# Copyright (C) 2003-2026 This file is copyright:
 # This file is distributed under the same license as the kjumpingcube package.
 # SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
@@ -7,7 +7,7 @@
 # Marcos  <marcos@euskalgnu.org>, 2003.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005, 2006.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
