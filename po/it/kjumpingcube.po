@@ -1,6 +1,6 @@
 # translation of kjumpingcube.po to Italian
 #
-# SPDX-FileCopyrightText: 2021, 2024 Valter Mura <valtermura@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2024, 2026 Valter Mura <valtermura@gmail.com>
 # Andrea Celli <a.celli@tiscali.it>, 2003, 2004, 2005, 2007, 2009, 2013.
 # Andrea Celli <a.celli.casa@gmail.com>, 2013.
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:39+0000\n"
-"PO-Revision-Date: 2024-05-04 20:50+0200\n"
+"PO-Revision-Date: 2026-02-28 19:31+0100\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrea Celli,Andrea Rizzi"
+msgstr "Valter Mura,Andrea Celli"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "a.celli@tiscali.it,"
+msgstr "valtermura@gmail.com,"
 
 #: game.cpp:76
 #, kde-format
@@ -135,7 +135,7 @@ msgstr ""
 #: game.cpp:600
 #, kde-format
 msgid "Game saved as %1"
-msgstr "Gioco salvato come %1"
+msgstr "Partita salvata come %1"
 
 #: game.cpp:603
 #, kde-format
@@ -143,7 +143,7 @@ msgid ""
 "There was an error in saving file\n"
 "%1"
 msgstr ""
-"C'è stato un errore nel salvare il file\n"
+"Si è verificato un errore nel salvare il file\n"
 "%1"
 
 #: game.cpp:621
@@ -162,7 +162,7 @@ msgid ""
 "There was an error loading file\n"
 "%1"
 msgstr ""
-"C'è stato un errore nel caricamento del file\n"
+"Si è verificato un errore nel caricamento del file\n"
 "%1"
 
 #: game.cpp:677
@@ -199,7 +199,7 @@ msgstr "Nuova partita?"
 #: game.cpp:690
 #, kde-format
 msgid "Abandon Game"
-msgstr "Chiudere la partita"
+msgstr "Chiudi la partita"
 
 #: game.cpp:691
 #, kde-format
