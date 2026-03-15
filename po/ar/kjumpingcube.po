@@ -318,7 +318,7 @@ msgstr "حجم حقل اللعب."
 #: kjumpingcube.kcfg:49
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr "اذا كان اللاعب1 يلعب بواسطة الجهاز."
+msgstr "إذا كان اللاعب1 يلعب بواسطة الجهاز."
 
 #. i18n: ectx: label, entry (Kepler1), group (Game)
 #: kjumpingcube.kcfg:53
