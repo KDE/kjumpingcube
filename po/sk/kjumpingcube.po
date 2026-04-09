@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,8 +31,7 @@ msgid "Your emails"
 msgstr "uzak@ba.telecom.sk,visnovsky@kde.org,misurel@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
 msgstr "Prepáčte, vykonávam ťah..."
 
@@ -97,8 +96,7 @@ msgid "Show next step"
 msgstr "Zobraziť ďalší ťah"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
 msgstr "Ukončujem ťah..."
 
@@ -137,10 +135,7 @@ msgstr ""
 "Chcete ho prepísať?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
@@ -168,10 +163,7 @@ msgid "The file %1 does not exist!"
 msgstr "Súbor %1 neexistuje!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
