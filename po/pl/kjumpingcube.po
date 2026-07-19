@@ -1,10 +1,10 @@
-# Version: $Revision: 1730553 $
+# Version: $Revision: 1741674 $
 # translation of kjumpingcube.po to Polish
 # translation of kjumpingcube.po to
 # translation of kjumpingcube.po to
 # This File is part of 'KJumpingCube'
 #
-# SPDX-FileCopyrightText: 2012, 2021, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2021, 2024, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Matthias Kiefer <Matthias.Kiefer@stud.uni-karlsruhe.de>, 1998.
 # Krzysztof P. Jasiutowicz <kpjas@priv.onet.pl>, 1998.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
@@ -15,15 +15,16 @@ msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2024-07-20 10:37+0200\n"
+"PO-Revision-Date: 2026-07-18 17:02+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -140,15 +141,12 @@ msgstr ""
 "Czy chcesz go zastąpić?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Błąd przy odczycie pliku\n"
+"Napotkano błąd przy tworzeniu pliku tymczasowego do zapisania\n"
 "%1"
 
 #: game.cpp:604
@@ -171,15 +169,12 @@ msgid "The file %1 does not exist!"
 msgstr "Plik %1 nie istnieje!"
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Błąd przy odczycie pliku\n"
+"Napotkano błąd przy tworzeniu pliku tymczasowego do wczytania\n"
 "%1"
 
 #: game.cpp:645
