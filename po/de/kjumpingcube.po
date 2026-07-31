@@ -335,13 +335,13 @@ msgstr "Ist diese Einstellung aktiviert, ist Spieler 1 ein Computerspieler. "
 #: kjumpingcube.kcfg:53
 #, kde-format
 msgid "Whether computer player 1 uses Kepler AI."
-msgstr "Ob der Computerspieler 1 die Kepler AI benutzt."
+msgstr "Ob der Computerspieler 1 die Kepler AI verwendet."
 
 #. i18n: ectx: label, entry (Newton1), group (Game)
 #: kjumpingcube.kcfg:57
 #, kde-format
 msgid "Whether computer player 1 uses Newton AI."
-msgstr "Ob der Computerspieler 1 die Newton AI benutzt."
+msgstr "Ob der Computerspieler 1 die Newton AI verwendet."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kjumpingcube.kcfg:68
@@ -359,13 +359,13 @@ msgstr "Ist diese Einstellung aktiviert, ist Spieler 2 ein Computerspieler. "
 #: kjumpingcube.kcfg:76
 #, kde-format
 msgid "Whether computer player 2 uses Kepler AI."
-msgstr "Ob der Computerspieler 2 die Kepler AI benutzt."
+msgstr "Ob der Computerspieler 2 die Kepler AI verwendet."
 
 #. i18n: ectx: label, entry (Newton2), group (Game)
 #: kjumpingcube.kcfg:80
 #, kde-format
 msgid "Whether computer player 2 uses Newton AI."
-msgstr "Ob der Computerspieler 2 die Newton AI benutzt."
+msgstr "Ob der Computerspieler 2 die Newton AI verwendet."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kjumpingcube.kcfg:91
