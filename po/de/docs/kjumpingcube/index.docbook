@@ -312,7 +312,7 @@
 ></listitem>
 	<listitem
 ><para
->Besetzen Sie zuerst die Eckfelder, dann die Randfelder. Für diese Felder brauchen Sie weniger Züge, um die maximale Punktzahl zu erreichen und um Punkte auf benachbarte Würfel zu verteilen.</para
+>Besetzen Sie zuerst die Eckfelder, dann die Randfelder. Für diese Felder benötigen Sie weniger Züge, um die maximale Punktzahl zu erreichen und um Punkte auf benachbarte Würfel zu verteilen.</para
 ></listitem>
 	<listitem
 ><para
@@ -416,7 +416,7 @@
 	<varlistentry
 ><term
 ><guiicon
->Laden ...</guiicon
+>Laden …</guiicon
 ></term>
 	<listitem
 ><para
@@ -521,11 +521,11 @@
 >&Ctrl;<keycap
 >O</keycap
 ></keycombo
-> </shortcut
+></shortcut
 > <guimenu
 >Spiel</guimenu
-> <guimenuitem
->Laden ...</guimenuitem
+><guimenuitem
+>Laden …</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -563,7 +563,7 @@
 ><guimenu
 >Spiel</guimenu
 ><guimenuitem
->Speichern unter ...</guimenuitem
+>Speichern unter …</guimenuitem
 ></menuchoice
 ></term>
 		<listitem
@@ -720,7 +720,7 @@
 ></question>
  <answer
 ><para
->Es ist anfangs schwierig, die Spielzüge in &kjumpingcube; zu verfolgen. Eine Möglichkeit zum Kennenlernen von &kjumpingcube; besteht darin, den Computer gegen sich selbst spielen zu lassen. Benutzen Sie dazu die Optionen im Dialog <link linkend="configuration"
+>Es ist anfangs schwierig, die Spielzüge in &kjumpingcube; zu verfolgen. Eine Möglichkeit zum Kennenlernen von &kjumpingcube; besteht darin, den Computer gegen sich selbst spielen zu lassen. Verwenden Sie dazu die Optionen im Dialog <link linkend="configuration"
 >Spieleinstellungen</link
 >. Kreuzen Sie die Felder <guilabel
 >Spielt jetzt</guilabel
@@ -742,7 +742,7 @@
 ><para
 >Öffnen Sie wieder den <link linkend="configuration"
 >Einrichtungsdialog</link
->. Darin finden Sie unten zwei Ankreuzfelder. Kreuzen Sie links unten an, dass vor jedem Zug des Computers eine Pause eingelegt wird. Aktivieren Sie dann rechts unten die Einstellung, dass bei Kaskadenzügen, die sich besonders gegen Ende eines Spiels über das ganze Feld ausbreiten, nach jedem Schritt ebenfalls angehalten wird. Zurück im Spiel können Sie jetzt den großen Knopf in der Werkzeugleiste immer dann benutzen, wenn er grüne wird, um jeden Zug schrittweise ausführen zu lassen.</para
+>. Darin finden Sie unten zwei Ankreuzfelder. Kreuzen Sie links unten an, dass vor jedem Zug des Computers eine Pause eingelegt wird. Aktivieren Sie dann rechts unten die Einstellung, dass bei Kaskadenzügen, die sich besonders gegen Ende eines Spiels über das ganze Feld ausbreiten, nach jedem Schritt ebenfalls angehalten wird. Zurück im Spiel können Sie jetzt den großen Knopf in der Werkzeugleiste immer dann verwenden, wenn er grüne wird, um jeden Zug schrittweise ausführen zu lassen.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -752,7 +752,7 @@
 ></question>
  <answer
 ><para
->Dieser Knopf wird benutzt, um den Computerspieler anzuhalten (rote Farbe), eine Aktion des Computers zu starten oder fortzusetzen, wenn Sie bereits sind (grüne Farbe) oder es wird eine Aufforderung wie zum Beispiel zur Ausführung des nächsten Zugs (blaue Farbe, der Knopf ist deaktiviert) angezeigt. Eine vollständige Beschreibung finden Sie im Abschnitt <link linkend="stop_start_button"
+>Dieser Knopf wird verwendet, um den Computerspieler anzuhalten (rote Farbe), eine Aktion des Computers zu starten oder fortzusetzen, wenn Sie bereits sind (grüne Farbe) oder es wird eine Aufforderung wie zum Beispiel zur Ausführung des nächsten Zugs (blaue Farbe, der Knopf ist deaktiviert) angezeigt. Eine vollständige Beschreibung finden Sie im Abschnitt <link linkend="stop_start_button"
 >Der Knopf zum Anhalten/Fortsetzen</link
 >. </para
 ></answer>
@@ -793,15 +793,15 @@
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->&kjumpingcube; einrichten ...</guimenuitem
+>&kjumpingcube; einrichten …</guimenuitem
 ></menuchoice
-> in der Menüleiste. Auf Apple Mac OS X benutzen Sie die Option: <menuchoice
+> in der Menüleiste. Auf Apple Mac OS X verwenden Sie die Option <menuchoice
 ><guimenu
 >&kjumpingcube;</guimenu
 ><guimenuitem
 >Einstellungen</guimenuitem
 ></menuchoice
->. Oder Sie benutzen den Knopf <guibutton
+>, oder den Knopf <guibutton
 >Einstellungen</guibutton
 > in der Werkzeugleiste.</para>
 
@@ -925,7 +925,7 @@
 ></term>
 		<listitem
 ><para
->Benutzen Sie den Schieberegler, um aus einem Bereich für die Zeit von <guilabel
+>Verwenden Sie den Schieberegler, um aus einem Bereich für die Zeit von <guilabel
 >Kurz</guilabel
 > bis <guilabel
 >Lang</guilabel
@@ -964,7 +964,7 @@
 <!--This chapter is for credits and licenses.-->
 
 <para
->&kjumpingcube; Copyright 2012, 2013 Ian Wadham und Copyright 2012, 2013 Ian Wadham and Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+>&kjumpingcube;-Copyright 2012, 2013 Ian Wadham und Copyright 1998, 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
 
 <para
 >&kjumpingcube; wurde von einem Spiel angeregt, das es vor längerer Zeit für den Commodore 64 und wohl auch für andere Heimcomputer gab. Leider ist der Name des damaligen Autors nicht bekannt.</para>
