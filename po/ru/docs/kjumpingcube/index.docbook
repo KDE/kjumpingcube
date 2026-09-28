@@ -1,41 +1,55 @@
 <?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kjumpingcube;">
-  <!ENTITY package "kdegames">
-  <!ENTITY % addindex "IGNORE">
   <!ENTITY % Russian "INCLUDE"
 > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
 ]>
-<book lang="&language;">
 
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
 <bookinfo>
-<title
->Справочное руководство по &kjumpingcube;</title>
-
+	<title
+>Руководство пользователя &kjumpingcube;</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
 <author
 ><firstname
->Matthias</firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Евгений</firstname
 > <surname
+>Трунев</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
 >Kiefer</surname
 > <affiliation
-> <address
-><email
->matthias.kiefer@gmx.de</email
-></address>
-</affiliation>
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
 </author>
-</authorgroup>
-
-<copyright>
-<year
->1999</year>
-<year
->2000</year>
-<holder
->Матиас Кифер (Matthias Kiefer)</holder>
-</copyright>
-
 <othercredit role="translator"
 ><firstname
 >Валя</firstname
@@ -51,119 +65,456 @@
 >Перевод на русский язык</contrib
 ></othercredit
 > 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
 
 <legalnotice
 >&FDLNotice;</legalnotice>
 
 <date
->2003-11-06</date>
+>7 июля 2021 г.</date>
 <releaseinfo
->1.1</releaseinfo>
+>2.1 (KDE Gear 21.04)</releaseinfo>
 
-<abstract
-><para
->&kjumpingcube; &mdash; простая тактическая игра, в которую вы можете играть против друга или компьютера.</para>
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>В этом руководстве описывается игра &kjumpingcube; версии 2.1</para>
 </abstract>
 
+<!--List of relevant keywords-->
 <keywordset>
-<keyword
->KDE</keyword>
-<keyword
->KJumpingCube</keyword>
-<keyword
->kdegames</keyword>
-<keyword
->игра</keyword>
-<keyword
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>игра</keyword
+> <!-- do not change this! -->
+	<keyword
+>Kjumpingcube</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
 >стратегия</keyword>
+	<keyword
+>кости</keyword>
+	<keyword
+>игра в кости</keyword>
+	<keyword
+>игра в кости</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>два игрока</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>куб</keyword>
+	<keyword
+>прыжок</keyword>
+	<keyword
+>прыгающий кубик</keyword>
 </keywordset>
-
 </bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Введение</title
+> <!-- do not change this! -->
+	<note
+><title
+>Тип игры:</title
+><para
+>Стратегия, кости</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Количество игроков:</title
+><para
+>Два</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 
-
-<chapter id="introduction">
-<title
->Введение</title>
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>&kjumpingcube; — простая тактическая игра. Играть можно против компьютера или друга, а можно устроить партию между двумя компьютерными игроками и просто наблюдать.</para>
 
 <para
->&kjumpingcube; &mdash; простая тактическая игра. Вы можете играть в неё против другого человека или против компьютера. Игровое поле состоит из квадратов с точками. Щёлкнув по квадрату, вы можете увеличить количество точек, а если количество точек достигло наибольшего, они <quote
->перепрыгивают</quote
-> на соседние квадраты и захватывают их. Победителем считается тот, у кого больше квадратов.</para>
+>Это хорошая мысль, если вы ещё не играли в &kjumpingcube;. См. раздел <link linkend="faq"
+>Вопросы и ответы</link
+>, вопрос <quote
+>Как начать играть?</quote
+>.</para>
+
+<para
+>Игровое поле — это набор кубиков с очками. В начале игры на каждом кубике одно очко, у кубиков нет владельца, и они нейтрального цвета. Если щёлкнуть по нейтральному кубику, он становится вашим, окрашивается в ваш цвет и получает ещё одно очко. Ваша цель — захватить все кубики, но теперь ходит соперник.</para>
+
+<para
+>Игроки делают ход и добавляют очки, щёлкая по нейтральным кубикам или по своим.</para>
+
+<para
+>Захватить кубики соперника можно только одним способом: увеличивать значение своего кубика, пока оно не достигнет максимума и кубик не «взорвётся», передав очки соседям. Тогда соседние кубики становятся вашими, даже если раньше принадлежали сопернику.</para>
+
+<para
+>Иногда и соседний кубик достигает максимума и тоже «взрывается», и по полю прокатывается каскад ходов. Множество кубиков может внезапно сменить владельца — в этом и заключается интерес и сложность &kjumpingcube;.</para>
 
 </chapter>
+<chapter id="howto"
+><title
+>Как играть</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Цель:</title
+><para
+>Захватить все кубики на игровом поле.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
 
+<para
+>&kjumpingcube; сразу открывается в режиме игры, так что можно начинать без промедления. Если игрок 1 — компьютер, для начала нужно щёлкнуть мышью.</para>
 
-<chapter id="playing-kjumpingcube">
-<title
->Игра в &kjumpingcube;</title>
+<para
+>Если вы раньше не играли в &kjumpingcube;, посмотрите одну-две партии компьютера против самого себя. См. раздел <link linkend="faq"
+>Вопросы и ответы</link
+>, вопрос <quote
+>Как начать играть?</quote
+>.</para>
 
-<sect1 id="rules">
-<title
+<para
+>Ход делается щелчком по нейтральному кубику или по своему. Щёлкнув по нейтральному кубику, вы становитесь его владельцем, и он окрашивается в ваш цвет. Каждый щелчок по кубику увеличивает его значение на единицу. Когда значение достигает максимума, часть очков переходит к ближайшим соседям кубика (очки <quote
+>перепрыгивают</quote
+>). Если соседний кубик принадлежит другому игроку, он захватывается вместе со всеми очками и окрашивается в ваш цвет.</para>
+
+<note
+><title
+>Пример:</title
+><para
+>Если кубик в центре набирает пять очков, четыре из них переходят к четырём соседям, а на исходном кубике остаётся одно. Если кто-то из соседей тоже достигает максимума, может начаться каскад автоматических ходов.</para
+></note>
+
+<note
+><title
+>Примечание:</title
+><para
+>Большие участки поля могут очень быстро менять владельца. Чтобы уследить за происходящим, настройте анимацию. Подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>.</para
+></note>
+
+<para
+>Побеждает тот, кому в итоге достанутся все кубики на поле.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Правила игры, стратегии и советы</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
 >Правила</title>
+	<orderedlist>
+	<listitem
+><para
+>Ход — это щелчок по кубику, который не принадлежит сопернику.</para
+></listitem>
+	<listitem
+><para
+>Ход увеличивает число очков на кубике на одно.</para
+></listitem>
+	<listitem
+><para
+>В начале игры на каждом кубике одно очко, кубик нейтрального цвета и без владельца.</para
+></listitem>
+	<listitem
+><para
+>У каждого игрока есть свой цвет, которым отмечается принадлежность кубиков.</para
+></listitem>
+	<listitem
+><para
+>Щёлкнув по ничейному кубику, игрок становится его владельцем, и кубик окрашивается в цвет игрока. Одновременно значение кубика увеличивается на единицу.</para
+></listitem>
+	<listitem
+><para
+>Если очков на кубике больше, чем у него соседей, к каждому соседу переходит по одному очку.</para
+></listitem>
+	<listitem
+><para
+>При таком ходе все соседние кубики переходят к игроку, сделавшему ход, вместе со всеми своими очками, даже если они были нейтральными или принадлежали другому игроку.</para
+></listitem>
+	<listitem
+><para
+>Соседние кубики — это кубики, расположенные сверху, снизу, слева или справа, но не по диагонали. У угловых кубиков два соседа, у краевых — три, а у центральных — четыре.</para
+></listitem>
+	<listitem
+><para
+>Если в результате хода соседний кубик получает максимальное количество очков, ход автоматически продолжается на соседей этого кубика и так далее, каскадом. Во время такого хода владельца может сменить множество кубиков.</para
+></listitem>
+	<listitem
+><para
+>Побеждает тот, кому в итоге достанутся все кубики.</para
+></listitem>
+	<listitem
+><para
+>В параметрах можно выбрать размер поля, компьютерных игроков, анимацию ходов и цвета игроков. У каждого компьютерного игрока может быть свой стиль и уровень мастерства; если он не играет, то может давать подсказки соответствующему игроку-человеку. Можно также стравить двух компьютерных игроков и посмотреть, чем кончится. Подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>.</para
+></listitem>
+	</orderedlist>
+	</sect1>
 
-<orderedlist>
-<listitem
+	<sect1 id="strattips"
+><title
+>Стратегия и советы</title>
+	<itemizedlist>
+	    <listitem
 ><para
->Ход состоит из увеличения точек в квадрате по щелчку. Вы можете увеличивать количество точек только на тех квадратах, которые не принадлежат вашему противнику. Если вы щёлкнете по нейтральному квадрату, он станет вашим. </para
+>Может помочь партия «компьютер против компьютера», если установить в диалоге настройки флажки, позволяющие проходить ходы и анимацию в своём темпе. См. раздел <link linkend="faq"
+>Вопросы и ответы</link
+>, вопросы <quote
+>Как начать играть?</quote
+> и <quote
+>Слишком быстро! Как замедлить игру?</quote
+>.</para
 ></listitem>
-<listitem
+	<listitem
 ><para
->Если у квадрата больше точек, чем соседей, точки будут перенесены на эти соседние квадраты. Квадраты будут захвачены. </para
+>Если ваш кубик стоит рядом с кубиком соперника, старайтесь опережать его, увеличивая свой кубик раньше.</para
 ></listitem>
-<listitem
+	<listitem
 ><para
->Соседними считаются только квадраты по вертикали и горизонтали, но не по диагонали.</para
+>Если очков в таком кубике не больше, чем у противника, старайтесь его не увеличивать: в этой гонке вооружений победить нельзя.</para
 ></listitem>
-<listitem
+	<listitem
 ><para
->Победителем считается тот, кто звахватит все квадраты.</para
+>Ищите возможности увеличить кубик и захватить соседей, но берегитесь ответного каскада соперника.</para
 ></listitem>
-</orderedlist>
+	<listitem
+><para
+>Сначала старайтесь занять угловые кубики, потом краевые: им нужно меньше ходов, чтобы достичь максимума и «взорваться».</para
+></listitem>
+	<listitem
+><para
+>Не играйте слишком близко к сопернику, особенно в начале партии. Отступите на кубик-другой или выберите кубик по диагонали от соперника.</para
+></listitem>
+	<listitem
+><para
+>Следите за длинными цепочками кубиков, почти достигших максимума. Если они ваши, их нужно беречь от каскадов. Если они соперника, их можно будет захватить каскадом, как только они окажутся достаточно близко к вашей территории.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Обзор интерфейса</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>Панель инструментов</title>
+<sect2 id="stop_start_button">
+<title
+>Кнопка «Стоп/Пуск»</title>
+
+<para
+>Эта большая кнопка в левой части панели инструментов позволяет управлять анимацией и ходами компьютера — особенно если компьютер ходит первым, играет сам с собой или слишком долго думает. Кнопкой можно также проходить партию или отдельный ход по шагам, чтобы новичок мог рассмотреть каждый шаг в своём темпе. Пошаговый режим включается флажками в диалоге настройки (подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>). </para>
+
+<para
+>У кнопки три состояния:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>Красная</term>
+	<listitem
+><para
+>Можно остановить или прервать расчёт хода компьютера, анимацию или партию «компьютер против компьютера».</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>Зелёная</term>
+	<listitem
+><para
+>Можно начать или продолжить ход компьютера, анимацию или партию «компьютер против компьютера».</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>Синяя</term>
+	<listitem
+><para
+>Кнопка недоступна: ожидается действие человека, например очередной ход.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>Надпись на кнопке подсказывает, что можно или нужно сделать, например &nbsp;<guibutton
+>Остановить анимацию</guibutton
+> или <guibutton
+>Ваш ход</guibutton
+>.</para>
+
+<para
+>Если остановить расчёт хода, компьютер сделает лучший ход из найденных к этому моменту. Если прервать анимацию (например, слишком долгий каскад), ход сразу будет доведён до конца. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>Стандартные кнопки панели инструментов</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>Параметры</guiicon
+></term>
+	<listitem
+><para
+><action
+>Быстрый доступ к диалогу настройки, где меняются условия игры. Подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Новая игра</guiicon
+></term>
+	<listitem
+><para
+><action
+>Начать новую игру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Загрузить…</guiicon
+></term>
+	<listitem
+><para
+><action
+>Загрузить сохранённую игру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Сохранить</guiicon
+></term>
+	<listitem
+><para
+><action
+>Сохранить текущую игру.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Подсказка</guiicon
+></term>
+	<listitem
+><para
+><action
+>Получить подсказку о лучшем следующем ходе. Подсказку рассчитывает компьютерный игрок 1 или 2 — в зависимости от того, за какого игрока играете вы. Подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Отменить действие</guiicon
+></term>
+	<listitem
+><para
+><action
+>Отменить предыдущий ход (можно несколько раз подряд). </action
+> Примечание: в законченной партии можно отменить последние ходы и попробовать другие варианты окончания.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>Вернуть</guiicon
+></term>
+	<listitem
+><para
+><action
+>Вернуть отменённый ход (можно несколько раз подряд).</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
 
 </sect1>
 
-</chapter>
-
-<chapter id="menu-reference">
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
 <title
->Управление</title>
-
-<sect1 id="menus">
+>Пункты меню</title>
+<sect2 id="game_menu">
 <title
->Меню</title>
-
-<sect2 id="game-menu">
-<title
->Меню <guimenu
->Игра</guimenu
-></title>
-
+>Меню «Игра»</title>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice
+	<varlistentry
+><term
+><menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl;<keycap
+> &Ctrl;<keycap
 >N</keycap
 ></keycombo
 ></shortcut
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Новая игра</guimenuitem
-></menuchoice>
-</term>
-<listitem
+>Начать игру</guimenuitem
+></menuchoice
+></term>
+	<listitem
 ><para
 ><action
 >Начать новую игру.</action
 ></para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
@@ -174,19 +525,18 @@
 > <guimenu
 >Игра</guimenu
 ><guimenuitem
->Загрузить</guimenuitem
-></menuchoice>
-</term>
-<listitem
+>Загрузить…</guimenuitem
+></menuchoice
+></term>
+		<listitem
 ><para
 ><action
->Загрузить сохраненную игру.</action
+>Загрузить сохранённую игру.</action
 ></para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
@@ -198,58 +548,37 @@
 >Игра</guimenu
 ><guimenuitem
 >Сохранить</guimenuitem
-></menuchoice>
-</term>
-<listitem
+></menuchoice
+></term>
+		<listitem
 ><para
 ><action
 >Сохранить текущую игру.</action
 ></para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry
+><term
 ><menuchoice
 ><guimenu
 >Игра</guimenu
 ><guimenuitem
->Сохранить как...</guimenuitem
-> </menuchoice>
-</term>
-<listitem
+>Сохранить как…</guimenuitem
+></menuchoice
+></term>
+		<listitem
 ><para
 ><action
 >Сохранить текущую игру под другим именем.</action
 ></para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><shortcut
->&Esc;</shortcut
-> <guimenu
->Игра</guimenu
-><guimenuitem
->Хватит думать</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
-><action
->Остановить размышления компьютера о своем следующем ходе</action
->. Компьютер сделает лучший ход, который он нашел на момент нажатия клавиши.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry
+><term
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
-> &Ctrl;<keycap
+>&Ctrl;<keycap
 >Q</keycap
 ></keycombo
 ></shortcut
@@ -259,409 +588,421 @@
 >Выход</guimenuitem
 ></menuchoice
 ></term>
-<listitem
+		<listitem
 ><para
 ><action
->Закрыть</action
-> &kjumpingcube;.</para
+>Выйти</action
+> из &kjumpingcube;.</para
 ></listitem>
-</varlistentry>
-</variablelist>
-
+	</varlistentry>
+	</variablelist>
 </sect2>
 
-<sect2 id="move-menu">
+<sect2 id="move_menu">
 <title
->Меню <guimenu
->Перемещение</guimenu
-></title>
+>Меню «Ход»</title>
 <variablelist>
-<varlistentry>
-<term
+	<varlistentry id="move-menu-undo"
+><term
 ><menuchoice
 ><shortcut
-><keycombo action="simul"
+> <keycombo action="simul"
 >&Ctrl;<keycap
 >Z</keycap
-> </keycombo
+></keycombo
 ></shortcut
 > <guimenu
->Перемещение</guimenu
+>Ход</guimenu
 ><guimenuitem
 >Отменить</guimenuitem
 ></menuchoice
 ></term>
-<listitem
+	<listitem
 ><para
 ><action
->Отменить последний сделанный ход.</action
-></para
+>Отменить предыдущий ход (можно несколько раз подряд). </action
+> Примечание: в законченной партии можно отменить последние ходы и попробовать другие варианты окончания.</para
 ></listitem>
-</varlistentry>
+	</varlistentry>
 
-<varlistentry>
-<term
+	<varlistentry id="move-menu-redo"
+><term
 ><menuchoice
 ><shortcut
 ><keycombo action="simul"
-> <keycap
->H</keycap
+>&Ctrl;&Shift;<keycap
+>Z</keycap
 ></keycombo
 ></shortcut
 > <guimenu
->Перемещение</guimenu
+>Ход</guimenu
 ><guimenuitem
->Получить подсказку</guimenuitem
+>Вернуть</guimenuitem
 ></menuchoice
 ></term>
-<listitem
+	<listitem
 ><para
 ><action
->Получить подсказку о том, куда делать следующий ход.</action
+>Вернуть отменённый ход (можно несколько раз подряд).</action
 ></para
 ></listitem>
-</varlistentry>
+	</varlistentry>
 
-</variablelist>
-
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Ход</guimenu
+><guimenuitem
+>Подсказка</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>Получить подсказку о лучшем следующем ходе. Подсказку рассчитывает компьютерный игрок 1 или 2 — в зависимости от того, за какого игрока играете вы. Подробнее — в разделе <link linkend="configuration"
+>Параметры игры</link
+>.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
 </sect2>
 
-<sect2 id="settings-menu">
+<sect2 id="other_menus">
 <title
->Меню <guimenu
->Настройка</guimenu
-></title>
-
-<variablelist>
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Показать панель инструментов</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
-><action
->Показать или скрыть панель инструментов.</action
-></para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Показать строку состояния</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
-><action
->Показать или скрыть строку состояния.</action
-></para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Настроить комбинации клавиш...</guimenuitem
-></menuchoice
-></term>
-<listitem
-><para
-><action
->Открыть окно редактирования привязок клавиш</action
-> для &kjumpingcube;.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><menuchoice
-><guimenu
->Настройка</guimenu
-><guimenuitem
->Настроить KJumpingCube</guimenuitem
-></menuchoice>
-</term>
-<listitem>
+>Другие меню</title>
 <para
->Открыть диалог настроек, где вы можете изменить:</para>
+>Кроме того, в &kjumpingcube; есть стандартные для &kde; меню <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>, описанные в разделах <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+> руководства «Основы &kde;». </para>
+</sect2>
 
-<variablelist>
-<varlistentry>
-<term
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>Вопросы и ответы</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Можно ли изменить внешний вид игры? </para
+></question>
+ <answer
+><para
+>Пока можно менять только цвета игроков, но не тему оформления. Цвета игроков меняются в диалоге <link linkend="configuration"
+>Параметры игры</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Как начать играть? </para
+></question>
+ <answer
+><para
+>Поначалу за ходами &kjumpingcube; бывает трудно уследить. Один из способов научиться — смотреть партии компьютера против самого себя. Настройте их в диалоге <link linkend="configuration"
+>Параметры игры</link
+>: установите оба флажка <guilabel
+>Участвует в игре</guilabel
+>, выберите размер поля от 3x3 до 5x5, анимацию <guilabel
+>Распространение точек</guilabel
+> и время хода <guilabel
+>Больше</guilabel
+>, затем нажмите <guibutton
+>ОК</guibutton
+>. Теперь нажмите большую зелёную кнопку на панели инструментов, чтобы начать партию. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Слишком быстро! Как замедлить игру? </para
+></question>
+ <answer
+><para
+>Снова откройте диалог <link linkend="configuration"
+>Параметры игры</link
+>. Внизу есть два флажка: один приостанавливает игру между ходами, другой — между шагами каскадных ходов, которые растекаются по полю, особенно ближе к концу партии. Вернувшись в игру, нажимайте большую кнопку на панели инструментов (когда она становится зелёной), чтобы запускать каждый ход или проходить его по шагам в удобном темпе.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Для чего большая кнопка на панели инструментов? </para
+></question>
+ <answer
+><para
+>Кнопка останавливает то, что делает компьютер (красная), запускает или продолжает действие компьютера, когда вы готовы (зелёная), или подсказывает, что нужно сделать вам, например сходить (синяя, кнопка недоступна). Подробно — в разделе <link linkend="stop_start_button"
+>Кнопка «Стоп/Пуск»</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Можно ли играть с помощью клавиатуры? </para
+></question>
+ <answer
+><para
+>Нет. В &kjumpingcube; нельзя играть с клавиатуры. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Где таблица лучших результатов?</para
+></question>
+ <answer
+><para
+>В &kjumpingcube; её нет.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Параметры игры</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>Диалог настройки открывается пунктом меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &kjumpingcube;…</guimenuitem
+></menuchoice
+> (в Apple Mac OS X — <menuchoice
+><guimenu
+>&kjumpingcube;</guimenu
+> <guimenuitem
+>Preferences</guimenuitem
+></menuchoice
+>) или кнопкой <guibutton
+>Параметры</guibutton
+> на панели инструментов.</para>
+
+<screenshot>
+    <screeninfo
+>Параметры &kjumpingcube;</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>Параметры &kjumpingcube;</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Панели «Показ каскадного хода» и «Время каскадного хода» управляют анимацией, которая показывается, когда кубик достигает максимума и «переливается» в соседние кубики, возможно, запуская длинный каскад ходов. Поначалу удобнее всего анимация <quote
+>Распространение точек</quote
+> с большим временем хода: так легче всего следить за каскадами. Два флажка «Пауза» позволяют проходить анимацию и ходы компьютера в своём темпе.</para>
+
+<para
+>Панели «Компьютерный игрок 1» и «Компьютерный игрок 2» задают стиль и уровень игры каждого компьютерного игрока, а также то, играет ли он сам или только подсказывает игроку-человеку 1 или 2.</para>
+
+<sect1 id="setting_details">
+<title
+>Подробно о параметрах</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>Участвует в игре</guilabel
+></term>
+		<listitem
+><para
+>Задаёт, играет ли компьютерный игрок 1 или 2 сам или только помогает человеку подсказками. Обычно компьютер играет за одного игрока, а вы — за другого, но можно устроить партию двух людей или двух компьютеров и просто наблюдать. Игрок 1 всегда ходит первым.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Стиль игры</guilabel
+></term>
+		<listitem
+><para
+>Задаёт для компьютерного игрока 1 или 2 стиль «Кеплер» или «Ньютон». «Кеплер» выбирает ходы так же, как прежние версии &kjumpingcube;, а «Ньютон» — по-другому.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
 ><guilabel
 >Уровень сложности</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
 ><action
->Выбор уровня сложности игры</action
->. Он определяет, насколько <quote
->умным</quote
-> будет игрок-компьютер.</para>
-<para
->Доступные уровни:</para>
-<simplelist>
-<member
-><guimenuitem
->Начинающий</guimenuitem
-></member>
-<member
-><guimenuitem
->Продвинутый</guimenuitem
-></member>
-<member
-><guimenuitem
->Эксперт</guimenuitem
-></member>
-</simplelist
+>Выбор мастерства компьютерного игрока ползунком.</action
+> От него зависит, насколько сильным будет компьютерный соперник.</para>
+		<para
+>Уровней пять: от <guilabel
+>Начинающий</guilabel
+> через <guilabel
+>Средний</guilabel
+> до <guilabel
+>Эксперт</guilabel
+>.</para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry
+><term
 ><guilabel
 >Размер доски</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
 ><action
->Выбор размера поля.</action
+>Выбор размера игрового поля.</action
 ></para>
-<para
->Используйте ползунок чтобы выбрать значение между <guilabel
->5x5</guilabel
-> и<guilabel
->10x10</guilabel
->.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+		<para
+>Ползунком выбирается размер от <guilabel
+>3x3</guilabel
+> до <guilabel
+>15x15</guilabel
+> кубиков. Удобнее всего от 5x5 до 9x9: меньше 5x5 обыграть компьютер очень трудно, а больше 9x9 партии становятся довольно долгими.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
 ><guilabel
->Игрок компьютера</guilabel
+>Цвета игроков</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
->Устанавливает компьютерного игрока <guilabel
->игроком 1</guilabel
-> и/или<guilabel
->игроком 2</guilabel
->.</para
+>Выберите цвет для каждого игрока и для нейтральных кубиков.</para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
+	</varlistentry>
+	<varlistentry
+><term
 ><guilabel
->Цвет поля</guilabel
+>Показ каскадного хода</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
->Выберите цвет для каждого игрока</para
+>Выбор анимации для случая, когда кубик достигает максимума и «переливается» в соседние кубики, возможно, запуская каскад таких ходов по большой части поля.</para>
+		    <para
+>Переключатели позволяют выбрать: <guilabel
+>Нет (без паузы)</guilabel
+> — весь ход показывается мгновенно; <guilabel
+>Затемнение с паузой</guilabel
+> — каждый переполненный кубик темнеет, пока не придёт его очередь «взорваться»; <guilabel
+>Быстрый проблеск</guilabel
+> — переполненный кубик сначала темнеет, а в момент «взрыва» быстро мигает; <guilabel
+>Распространение точек</guilabel
+> — переполненный кубик сначала темнеет, а в момент «взрыва» выстреливает точки в соседние кубики.</para
 ></listitem>
-</varlistentry>
-</variablelist>
-</listitem>
-</varlistentry>
-
-</variablelist>
-</sect2>
-
-<sect2 id="help-menu">
-<title
->Меню <guimenu
->Справка</guimenu
-></title>
-&help.menu.documentation; </sect2>
-</sect1>
-
-<sect1 id="toolbars">
-<title
->Панель инструментов</title>
-
-<variablelist>
-<varlistentry>
-<term
-><guiicon
->Новая игра</guiicon
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Время каскадного хода</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
-><action
->Начать новую игру.</action
-></para
+>Ползунком выбирается время анимации (от <guilabel
+>Меньше</guilabel
+> до <guilabel
+>Больше</guilabel
+>). Оно немного зависит от вида анимации и составляет от 0,15 до 1,5 секунды на каждый шаг каскадного хода.</para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guiicon
->Загрузить</guiicon
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Пауза перед каждым ходом компьютера</guilabel
 ></term>
-<listitem
+	    <listitem
 ><para
-><action
->Загрузить сохраненную игру.</action
-></para
+>Если флажок установлен, компьютерные игроки перед каждым ходом делают паузу, пока вы не щёлкнете для продолжения. Это помогает следить за игрой, особенно новичку или при разборе партии «компьютер против компьютера».</para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guiicon
->Сохранить</guiicon
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>Пауза перед каждым шагом каскада</guilabel
 ></term>
-<listitem
+		<listitem
 ><para
-><action
->Сохранить текущую игру.</action
-></para
+>Если флажок установлен, анимация каскадного хода останавливается между шагами, пока вы не щёлкнете для продолжения. Так удобнее наблюдать, как ход растекается по полю.</para
 ></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guiicon
->Хватит думать</guiicon
-></term>
-<listitem
-><para
-><action
->Остановить размышления компьютера о своем следующем ходе</action
->. Компьютер сделает лучший ход, который он нашёл на момент нажатия клавиши.</para
-></listitem>
-</varlistentry>
-
-
-<varlistentry>
-<term
-><guiicon
->Отменить действие</guiicon
-></term>
-<listitem
-><para
-><action
->Отменить последний сделанный ход.</action
-></para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guiicon
->Справка</guiicon
-></term>
-<listitem
-><para
-><action
->Открыть руководство</action
-> по &kjumpingcube; (этот документ).</para
-></listitem>
-</varlistentry>
-</variablelist>
-
+	</varlistentry>
+	</variablelist>
 </sect1>
 
 </chapter>
 
-<chapter id="questions-answers-tips">
-<title
->Вопросы, ответы и советы</title>
-
-<sect1 id="strategy-tips">
-<title
->Советы по игре</title>
-
-<itemizedlist>
-<listitem
-><para
->Пытайтесь избежать увеличения точек на квадрате, владелец которого &mdash; ваш противник. Всё равно он быстрее наберёт максимум точек, чем вы.</para
-></listitem>
-</itemizedlist>
-
-</sect1>
-
-</chapter>
-
-<chapter id="credits">
-<title
->Авторские права и лицензирование</title>
+<chapter id="credits"
+><title
+>Авторские права и лицензия</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
 
 <para
->Авторские права на &kjumpingcube; принадлежат Матиасу Киферу (Matthias Kiefer) <email
->matthias.kiefer@gmx.de</email
->, 1998, 1999.</para>
+>© Ian Wadham, 2012, 2013; © &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1998, 1999 (программа)</para>
 
 <para
->Игра &kjumpingcube; была создана под вдохновением от игры для Commodore64 и других домашних компьютеров. К сожалению, я не помню имени ее автора.</para>
+>&kjumpingcube; создан по мотивам игры, выходившей для Commodore 64 и других ранних домашних компьютеров. К сожалению, имя её автора неизвестно.</para>
 
 <para
->Авторские права на документацию принадлежат Матиасу Киферу (Matthias Kiefer) <email
->matthias.kiefer@gmx.de</email
->, 1999.</para>
+>В 2007 году Ian Wadham взял на себя сопровождение &kjumpingcube; для &kde; 4, а Евгений Трунев нарисовал первую тему в формате &SVG;.</para>
 
 <para
->Документация обновлена для &kde; 2 и 3 Лори Уоттсом (Lauri Watts) <email
->lauri@kde.org</email
->.</para>
+>В 2012 и 2013 годах Ian разработал версии 2.0 и 2.1 &kjumpingcube;: добавил виды анимации, размеры поля от 3x3 до 15x15 и написал полностью новые модули искусственного интеллекта, с которыми человеку играть интереснее. Эти версии быстрее рассчитывают ходы, умеют отменять и возвращать много ходов (раньше — только один), предлагают на выбор двух компьютерных соперников и позволяют новичкам проходить анимацию и ходы компьютера по шагам.</para>
+
+<para
+>© Ian Wadham, 2012, 2013; © &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1999 (документация)</para>
+
+<para
+>Документация обновлена для &kde; 2 и 3: &Lauri.Watts; &Lauri.Watts.mail;</para>
 
 <para
 >Перевод на русский - Валя Ванеева <email
 >fattie@altlinux.ru</email
 ></para
-> 
-&underFDL; &underGPL; </chapter>
+> &underFDL; &underGPL; </chapter>
 
-<appendix id="installation">
-<title
->Установка</title>
-
-<sect1 id="getting-kjumpingcube">
-<title
->Как получить &kjumpingcube;</title>
-&install.intro.documentation; </sect1>
-
-<sect1 id="requirements">
-<title
->Системные требования</title>
-
-<para
->Чтобы скомпилировать &kjumpingcube;, вам необходимо установить &kde; 2.0. Все библиотеки, необходимые для &kjumpingcube; и саму программу можно скачать с сайта <ulink url="ftp://ftp.kde.org/pub/kde/"
->ftp://ftp.kde.org/pub/kde/</ulink
->. </para>
-
-</sect1>
-
-<sect1 id="compilation">
-<title
->Компиляция и установка</title>
-&install.compile.documentation; <para
->Вот и всё! Если у вас возникли какие-то проблемы, обратитесь к автору программы: <email
->matthias.kiefer@gmx.de</email
->.</para>
-
-</sect1>
-</appendix>
-
+&documentation.index;
 </book>
 <!--
 Local Variables:
 mode: sgml
-sgml-omittag: nil
-sgml-shorttag: t
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
 End:
 -->
-
