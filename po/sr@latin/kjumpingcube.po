@@ -4,13 +4,14 @@
 # Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2009, 2010, 2012, 2013.
 # Slobodan Simic <slsimic@gmail.com>, 2005, 2009.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2013-06-03 18:02+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
@@ -25,18 +26,19 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić"
+msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić,Nemanja Hiršl"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
+msgstr ""
+"m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com,"
+"nemhirsl@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Izvinite, povlačim potez..."
+msgstr "Izvinite, povlačim potez…"
 
 #: game.cpp:113
 #, kde-format
@@ -105,10 +107,9 @@ msgid "Show next step"
 msgstr "Pokaži sledeći potez"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Dovršavam potez..."
+msgstr "Dovršavam potez…"
 
 # >> @action:button
 #: game.cpp:506
@@ -140,10 +141,7 @@ msgid "New Game"
 msgstr "Nova partija"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
@@ -152,15 +150,12 @@ msgstr ""
 "Želite li da ga prebrišete?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Greška pri učitavanju fajla\n"
+"Greška pri stvaranju privremenog fajla za upisivanje\n"
 "%1"
 
 #: game.cpp:604
@@ -183,15 +178,12 @@ msgid "The file %1 does not exist!"
 msgstr "Fajl %1 ne postoji."
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Greška pri učitavanju fajla\n"
+"Greška pri stvaranju privremenog fajla za učitavanje\n"
 "%1"
 
 #: game.cpp:645
