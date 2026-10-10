@@ -4,13 +4,14 @@
 # Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2009, 2010, 2012, 2013.
 # Slobodan Simic <slsimic@gmail.com>, 2005, 2009.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjumpingcube\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-23 00:41+0000\n"
-"PO-Revision-Date: 2013-06-03 18:02+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavianlatin\n"
 "MIME-Version: 1.0\n"
@@ -25,18 +26,19 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić"
+msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić,Nemanja Hiršl"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
+msgstr ""
+"m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com,"
+"nemhirsl@gmail.com"
 
 #: game.cpp:76
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Izvinite, povlačim potez..."
+msgstr "Izvinite, povlačim potez…"
 
 #: game.cpp:113
 #, kde-format
@@ -102,13 +104,12 @@ msgstr "Računar ne može da nađe pravilan potez."
 #: game.cpp:409
 #, kde-format
 msgid "Show next step"
-msgstr "Pokaži sledeći potez"
+msgstr "Pokaži sljedeći potez"
 
 #: game.cpp:467
-#, fuzzy, kde-format
-#| msgid "Finishing move..."
+#, kde-format
 msgid "Finishing move…"
-msgstr "Dovršavam potez..."
+msgstr "Dovršavam potez…"
 
 # >> @action:button
 #: game.cpp:506
@@ -140,10 +141,7 @@ msgid "New Game"
 msgstr "Nova partija"
 
 #: game.cpp:575
-#, fuzzy, kde-format
-#| msgid ""
-#| "The file %1 exists.\n"
-#| "Do you want to overwrite it?"
+#, kde-format
 msgid ""
 "The file %1 already exists.\n"
 "Do you want to overwrite it?"
@@ -152,15 +150,12 @@ msgstr ""
 "Želite li da ga prebrišete?"
 
 #: game.cpp:589
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for saving\n"
 "%1"
 msgstr ""
-"Greška pri učitavanju fajla\n"
+"Greška pri stvaranju privremenog fajla za upisivanje\n"
 "%1"
 
 #: game.cpp:604
@@ -183,15 +178,12 @@ msgid "The file %1 does not exist!"
 msgstr "Fajl %1 ne postoji."
 
 #: game.cpp:633
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an error loading file\n"
-#| "%1"
+#, kde-format
 msgid ""
 "There was an error creating a temporary file for loading\n"
 "%1"
 msgstr ""
-"Greška pri učitavanju fajla\n"
+"Greška pri stvaranju privremenog fajla za učitavanje\n"
 "%1"
 
 #: game.cpp:645
@@ -217,7 +209,7 @@ msgid ""
 "Do you wish to abandon the current game or continue playing and restore the "
 "previous size setting?"
 msgstr ""
-"Promenili ste postavku veličine partije, što zahteva pokretanje nove "
+"Promijenili ste postavku veličine partije, što zahtijeva pokretanje nove "
 "partije.\n"
 "\n"
 "Želite li da obustavite trenutnu partiju, ili da nastavite sa igranjem "
@@ -270,7 +262,7 @@ msgstr "Vlasnik kockice %1 leži izvan opsega 0 do 2."
 #: game.cpp:874
 #, kde-format
 msgid "Value of cube %1 is outside the range 1 to %2."
-msgstr "Vrednost kockice %1 leži izvan opsega 1 do %2."
+msgstr "Vrijednost kockice %1 leži izvan opsega 1 do %2."
 
 #: game.cpp:889
 #, kde-format
@@ -393,14 +385,14 @@ msgstr "Vještina računarskog igrača 2."
 #: kjumpingcube.kcfg:95
 #, kde-format
 msgid "Pause before each computer move."
-msgstr "Pauziraj pre računarevog poteza"
+msgstr "Pauziraj prije računarevog poteza"
 
 # rewrite-msgid: /step/move/
 #. i18n: ectx: label, entry (PauseForStep), group (Game)
 #: kjumpingcube.kcfg:99
 #, kde-format
 msgid "Pause before each cascade step."
-msgstr "Pauziraj pre nadovezanog poteza"
+msgstr "Pauziraj prije nadovezanog poteza"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kjumpingcubeui.rc:9
@@ -526,7 +518,7 @@ msgstr "Računarski igrač 2"
 #: settings.ui:298
 #, kde-format
 msgid "Pause before each computer move"
-msgstr "Pauziraj pre računarevog poteza"
+msgstr "Pauziraj prije računarevog poteza"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: settings.ui:309
@@ -604,7 +596,7 @@ msgstr "Rasute tačke"
 #: settings.ui:498
 #, kde-format
 msgid "Cascade Move Time"
-msgstr "Vreme nadovezanog poteza"
+msgstr "Vrijeme nadovezanog poteza"
 
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 #: settings.ui:543
@@ -622,4 +614,4 @@ msgstr "dugačko"
 #: settings.ui:581
 #, kde-format
 msgid "Pause before each cascade step"
-msgstr "Pauziraj pre nadovezanog poteza"
+msgstr "Pauziraj prije nadovezanog poteza"
