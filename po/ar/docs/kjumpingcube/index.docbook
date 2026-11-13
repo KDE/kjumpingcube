@@ -1,0 +1,1008 @@
+<?xml version="1.0" ?>
+<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="kjumpingcube" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>دليل مكعبك القافز</title
+> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+<author
+><firstname
+>Ian</firstname
+><surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matthias</firstname
+><surname
+>Kiefer</surname
+> <affiliation
+><address
+>&Matthias.Kiefer.mail;</address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2012</year>
+<year
+>2013</year>
+<holder
+>Ian Wadham</holder>
+</copyright>
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-07-07</date>
+<releaseinfo
+>2.1 (ترس كيدي 21.04)</releaseinfo>
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>يصف هذا الدليل لعبة مكعبك القافز الإصدارة 2.1</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>ألعاب كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>لعبة</keyword
+> <!-- do not change this! -->
+	<keyword
+>مكعبك القافز</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>استراتيجية</keyword>
+	<keyword
+>نرد</keyword>
+	<keyword
+>لعبة نرد</keyword>
+	<keyword
+>لعب النرد</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>لاعبان</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>مكعب</keyword>
+	<keyword
+>قفزة</keyword>
+	<keyword
+>المكعب القافز</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>مقدمة</title
+> <!-- do not change this! -->
+	<note
+><title
+>نوع اللعبة:</title
+><para
+>استراتيجية، نرد</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>اثنان</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+<para
+>مكعبك القافز هي لعبة تكتيكية بسيطة. يمكنك لعبها ضد الحاسوب أو ضد صديق - أو يمكنك إعداد لعبة بين لاعبين حاسوبيين والمشاهدة فقط.</para>
+
+<para
+>قد تكون هذه فكرة جيدة إذا لم تلعب مكعبك القافز من قبل. انظر <link linkend="faq"
+>الأسئلة الشائعة</link
+>، <quote
+>كيف أبدأ في هذه اللعبة؟</quote
+>.</para>
+
+<para
+>منطقة اللعب هي صندوق من المكعبات التي تحتوي على نقاط. عند بدء اللعبة، يكون لكل مكعب نقطة واحدة، ولا يوجد له مالك، ولونه محايد. إذا نقرت على مكعب محايد، يصبح ملكك، ويتغير إلى لونك، ويزداد بنقطة واحدة. هدفك هو الاستيلاء على جميع المكعبات، ولكن الآن دور خصمك.</para>
+
+<para
+>يتحرك اللاعبون ويضيفون النقاط بالنقر على المكعبات المحايدة أو مكعباتهم الخاصة.</para>
+
+<para
+>الطريقة الوحيدة للاستيلاء على مكعبات خصمك هي زيادة قيمة المكعب حتى تصل إلى الحد الأقصى وتتوسع إلى المكعبات المجاورة. عندها تصبح تلك المكعبات ملكك، حتى لو كانت مملوكة لخصمك سابقًا.</para>
+
+<para
+>أحيانًا يصل الجار أيضًا إلى القيمة القصوى ويتوسع، وينتشر تسلسل من الحركات عبر اللوحة. يمكن لأعداد كبيرة من المكعبات أن تغير مالكها فجأة، وهنا تصبح مكعبك القافز ممتعة وتحديًا.</para>
+
+</chapter>
+<chapter id="howto"
+><title
+>كيف تلعب</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>الهدف:</title
+><para
+>الاستيلاء على جميع المكعبات الموجودة على لوحة اللعبة.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+
+<para
+>يُحمّل مكعبك القافز مباشرة في وضع اللعبة، لذا يمكنك البدء في اللعب على الفور. إذا كان اللاعب 1 لاعبًا حاسوبيًا، فيجب عليك النقر للبدء.</para>
+
+<para
+>إذا لم تلعب مكعبك القافز من قبل، فحاول مشاهدة لعبة أو لعبتين حيث يلعب الحاسوب ضد نفسه. انظر <link linkend="faq"
+>الأسئلة الشائعة</link
+>، <quote
+>كيف أبدأ في هذه اللعبة؟</quote
+>.</para>
+
+<para
+>تتحرك بالنقر على مكعب محايد أو مكعب تمتلكه بالفعل. إذا نقرت على مكعب محايد، فستحصل على ملكيته ويتغير لون المكعب إلى لون لعبك. في كل مرة تنقر فيها على مكعب، تزداد قيمة المكعب بمقدار واحد. إذا وصلت قيمة المكعب إلى الحد الأقصى، تنتقل بعض نقاطه إلى جيران المكعب المباشرين (النقاط <quote
+>تقفز</quote
+> حوله). إذا صدف وكان المكعب المجاور مملوكًا للاعب الآخر، فسيُستولى عليه مع جميع نقاطه، ويتغير إلى لون لعبك.</para>
+
+<note
+><title
+>مثال:</title
+><para
+>إذا وصل مكعب في المركز إلى خمس نقاط، تذهب أربع من نقاطه إلى جيرانه الأربعة تاركة المكعب الأصلي بنقطة واحدة. من الممكن بدء تسلسل من الحركات الآلية إذا وصل أي من مكعبات الجيران أيضًا إلى الحد الأقصى.</para
+></note>
+
+<note
+><title
+>الملاحظة:</title
+><para
+>يمكن لأجزاء كبيرة من منطقة اللعب أن تغير مالكها بسرعة كبيرة. يمكنك استخدام إعدادات التحريك لمساعدتك في متابعة ما يحدث حينها. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</para
+></note>
+
+<para
+>الفائز هو اللاعب الذي ينتهي به الأمر بامتلاك جميع المكعبات على اللوحة.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules"
+><title
+>القواعد</title>
+	<orderedlist>
+	<listitem
+><para
+>تتكون الحركة من النقر على مكعب لا ينتمي لخصمك.</para
+></listitem>
+	<listitem
+><para
+>تزيد الحركة النقاط في المكعب بمقدار واحد.</para
+></listitem>
+	<listitem
+><para
+>في بداية اللعبة، يكون لكل مكعب نقطة واحدة، ويكون ملونًا بلون محايد ولا يملكه أحد.</para
+></listitem>
+	<listitem
+><para
+>لكل لاعب لون لتمييز ملكية المكعبات.</para
+></listitem>
+	<listitem
+><para
+>بالنقر على مكعب ليس له صاحب، يصبح اللاعب صاحب ذلك المكعب ويتغير لونه إلى لون اللاعب. وفي الوقت نفسه تزداد قيمة المكعب بمقدار واحد.</para
+></listitem>
+	<listitem
+><para
+>إذا كان للمكعب نقاط أكثر من عدد جيرانه، تقفز نقطة واحدة إلى كل من الجيران.</para
+></listitem>
+	<listitem
+><para
+>خلال هذه الحركة، تصبح جميع المكعبات المجاورة مملوكة للاعب الذي تحرك وكذلك جميع نقاطها، حتى لو كان الجيران محايدين أو مملوكين للاعب الآخر.</para
+></listitem>
+	<listitem
+><para
+>الجيران هم المكعبات الموجودة في الأعلى أو الأسفل أو اليسار أو اليمين، ولكن ليس قطريًا. مكعبات الزاوية لها جاران، ومكعبات الحافة لها ثلاثة، ومكعبات المركز لها أربعة.</para
+></listitem>
+	<listitem
+><para
+>إذا تركت حركة ما جارًا بالحد الأقصى من النقاط، تستمر الحركة آليًا إلى جيران الجار وهكذا، في تسلسل. يمكن لعدد كبير من المكعبات تغيير ملكيتها خلال مثل هذه الحركة.</para
+></listitem>
+	<listitem
+><para
+>الفائز هو اللاعب الذي ينتهي به الأمر بامتلاك جميع المكعبات.</para
+></listitem>
+	<listitem
+><para
+>يمكنك استخدام الإعدادات لتحديد حجم اللوحة، ولاعبي الحاسوب، وتحريكات الحركة، وألوان اللاعبين. يمكن لكل لاعب حاسوب أن يكون له أسلوبه الخاص ومستوى مهارته. إذا لم يكن يلعب، فيمكنه تقديم تلميحات للاعب البشري المقابل. يمكنك أيضًا وضع لاعب حاسوبي ضد آخر ومشاهدة النتيجة. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</para
+></listitem>
+	</orderedlist>
+	</sect1>
+
+	<sect1 id="strattips"
+><title
+>الاستراتيجيات والتلميحات</title>
+	<itemizedlist>
+	    <listitem
+><para
+>قد يساعدك إعداد لعبة حاسوب ضد حاسوب وتحديد مربعات الاختيار في حوار الإعدادات التي تتيح لك التنقل عبر الحركات والتحريكات بالسرعة التي تناسبك. انظر <link linkend="faq"
+>الأسئلة الشائعة</link
+>، <quote
+>كيف أبدأ في هذه اللعبة؟</quote
+> و <quote
+>كان ذلك سريعًا جدًا بالنسبة لي، كيف يمكنني إبطاؤه؟</quote
+>.</para
+></listitem>
+	<listitem
+><para
+>إذا كان لديك مكعب بجوار مكعب الخصم مباشرةً، فحاول البقاء في المقدمة بالزيادة قبل أن يفعل خصمك.</para
+></listitem>
+	<listitem
+><para
+>إذا كانت نقاط هذا المكعب أقل من أو تساوي نقاط الخصم، فحاول تجنب الزيادة: لا يمكنك الفوز في سباق التسلح هذا.</para
+></listitem>
+	<listitem
+><para
+>ابحث عن فرص للزيادة والاستيلاء، ولكن احذر من قدرة خصمك على الرد ببدء تسلسل.</para
+></listitem>
+	<listitem
+><para
+>حاول السيطرة على مكعبات الزاوية أولًا، ثم مكعبات الحافة. ستحتاج إلى حركات أقل لجعلها تصل إلى الحد الأقصى وتتوسع.</para
+></listitem>
+	<listitem
+><para
+>حاول ألا تلعب قريبًا جدًا من خصمك، خاصة خلال الحركات الافتتاحية. تراجع مكعبًا أو مكعبين أو اختر مكعبًا قطريًا من خصمك.</para
+></listitem>
+	<listitem
+><para
+>راقب السلاسل الطويلة من المكعبات التي تقترب من حدها الأقصى. إذا كانت ملكك، فيجب عليك حمايتها من الحركات المتسلسلة. إذا كانت لخصمك، فيمكن أن تصبح جاهزة للاستيلاء عليها بحركة متسلسلة، بمجرد أن تصبح قريبة بما يكفي من منطقتك.</para
+></listitem>
+	</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>نظرة عامة على الواجهة</title
+> <!-- do not change this! -->
+<sect1 id="toolbars">
+<title
+>شريط الأدوات</title>
+<sect2 id="stop_start_button">
+<title
+>زر التوقف/البدء</title>
+
+<para
+>يظهر هذا الزر الكبير في الجزء العلوي الأيسر من شريط الأدوات ويُستخدم لتوفير التحكم في التحريكات وحركات الحاسوب، خاصة إذا كان الحاسوب هو صاحب الحركة الأولى، أو كان يلعب ضد نفسه، أو كان يستغرق وقتًا طويلًا في الحركة. يمكن أيضًا استخدام الزر للتنقل عبر اللعبة أو الحركة، للسماح للاعبين المبتدئين بمشاهدة كل خطوة بالسرعة التي تناسبهم. تعمل مربعات الاختيار في حوار الإعدادات على تشغيل وضع الخطوات أو إيقاف تشغيله (انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل). </para>
+
+<para
+>للزور ثلاث حالات:</para>
+
+	<variablelist>
+	<varlistentry
+><term
+>أحمر</term>
+	<listitem
+><para
+>من الممكن إيقاف أو مقاطعة حساب الحاسوب أو التحريك أو لعبة حاسوب ضد حاسوب.</para>
+	</listitem
+></varlistentry>
+	<varlistentry
+><term
+>أخضر</term>
+	<listitem
+><para
+>من الممكن بدء أو مواصلة حركة الحاسوب أو التحريك أو لعبة حاسوب ضد حاسوب.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+>أزرق</term>
+	<listitem
+><para
+>الزر معطل ويُتوقع اتخاذ إجراء بشري، مثل القيام بالحركة التالية.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+
+<para
+>في كل حالة، يحتوي الزر على بعض النص للإشارة إلى الإجراء الذي يمكن القيام به أو المتوقع، مثل &nbsp;<guibutton
+>أوقف التحريك</guibutton
+> أو <guibutton
+>دورك</guibutton
+>.</para>
+
+<para
+>إذا أوقفت حساب حركة الحاسوب، فسيختار الحاسوب أفضل حركة لديه حتى الآن. إذا قاطعت تحريكًا (على سبيل المثال: تسلسل يستغرق وقتًا طويلًا)، فستستمر الحركة إلى نهايتها على الفور. </para>
+</sect2>
+
+<sect2 id="toolbar_buttons">
+<title
+>أزرار شريط الأدوات القياسية</title>
+	<variablelist>
+	<varlistentry
+><term
+><guiicon
+>إعدادات</guiicon
+></term>
+	<listitem
+><para
+><action
+>اختصار للدخول إلى حوار الإعدادات وتغيير ظروف اللعب. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>جديد</guiicon
+></term>
+	<listitem
+><para
+><action
+>ابدأ لعبة جديدة.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>حمّل...</guiicon
+></term>
+	<listitem
+><para
+><action
+>تحميل لعبة حُفظت مسبقًا.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>احفظ</guiicon
+></term>
+	<listitem
+><para
+><action
+>احفظ اللعبة الحالية.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>تلميح</guiicon
+></term>
+	<listitem
+><para
+><action
+>الحصول على تلميحة حول أفضل حركة يمكن القيام بها تاليًا. يُحسب التلميح بواسطة لاعب الحاسوب 1 أو 2، اعتمادًا على ما إذا كنت اللاعب البشري 1 أو 2. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>تراجع</guiicon
+></term>
+	<listitem
+><para
+><action
+>التراجع عن حركة سابقة، بشكل متكرر إذا لزم الأمر.</action
+> ملاحظة: من الممكن التراجع عن الحركات الختامية للعبة مكتملة واستكشاف نهايات بديلة.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guiicon
+>كرّر</guiicon
+></term>
+	<listitem
+><para
+><action
+>إعادة القيام بحركة تُرُوجع عنها، بشكل متكرر إذا لزم الأمر.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="menu">
+<title
+>عناصر القائمة</title>
+<sect2 id="game_menu">
+<title
+>قائمة اللعبة</title>
+<variablelist>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>ابدأ لعبة جديدة.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-load"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>حمّل…</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>تحميل لعبة حُفظت مسبقًا.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry id="menu-game-save"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>احفظ اللعبة الحالية.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><guimenu
+>اللعبة</guimenu
+><guimenuitem
+>حفظ باسم…</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>حفظ اللعبة الحالية باسم مختلف.</action
+></para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+></menuchoice
+></term>
+		<listitem
+><para
+><action
+>إنهاء</action
+> مكعبك القافز.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="move_menu">
+<title
+>قائمة تحرك</title>
+<variablelist>
+	<varlistentry id="move-menu-undo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>التراجع عن حركة سابقة، بشكل متكرر إذا لزم الأمر.</action
+> ملاحظة: من الممكن التراجع عن الحركات الختامية للعبة مكتملة واستكشاف نهايات بديلة.</para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-redo"
+><term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+><guimenuitem
+>كرر</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>إعادة القيام بحركة تُرُوجع عنها، بشكل متكرر إذا لزم الأمر.</action
+></para
+></listitem>
+	</varlistentry>
+
+	<varlistentry id="move-menu-hint"
+><term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>حركة</guimenu
+><guimenuitem
+>تلميحة</guimenuitem
+></menuchoice
+></term>
+	<listitem
+><para
+><action
+>الحصول على تلميحة حول أفضل حركة يمكن القيام بها تاليًا. يُحسب التلميح بواسطة لاعب الحاسوب 1 أو 2، اعتمادًا على ما إذا كنت اللاعب البشري 1 أو 2. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</action
+></para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect2>
+
+<sect2 id="other_menus">
+<title
+>قوائم أخرى</title>
+<para
+>بالإضافة إلى ذلك، تتوفر في مكعبك القافز عناصر قائمة &kde; الشائعة <guimenu
+>الإعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+>، لمزيد من المعلومات اقرأ الأقسام المتعلقة بـ <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات &kde;. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq"
+><title
+>الأسئلة الشائعة</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>أريد تغيير مظهر هذه اللعبة. هل يمكنني ذلك؟ </para
+></question>
+ <answer
+><para
+>حاليًا يمكنك فقط تغيير ألوان اللاعبين، ولكن ليس سمة اللعبة. لتغيير ألوان اللاعبين استخدم حوار <link linkend="configuration"
+>ضبط اللعبة</link
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>كيف أبدأ في هذه اللعبة؟ </para
+></question>
+ <answer
+><para
+>قد يكون من الصعب متابعة حركات مكعبك القافز في البداية. إحدى طرق التعلم هي مشاهدة الألعاب حيث يلعب الحاسوب ضد نفسه. استخدم حوار <link linkend="configuration"
+>ضبط اللعبة</link
+> لإعداد ذلك. حدد كلًا من مربعي <guilabel
+>يلعب الآن</guilabel
+>، واختر حجم لوحة في النطاق من 3x3 إلى 5x5، واضبط التحريك على <guilabel
+>نقاط مبعثرة</guilabel
+> ووقت الحركة على <guilabel
+>طويل</guilabel
+>، ثم انقر على <guibutton
+>موافق</guibutton
+>. الآن انقر على الزر الأخضر الكبير في شريط الأدوات لبدء اللعبة. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>كان ذلك سريعًا جدًا بالنسبة لي، كيف يمكنني إبطاؤه؟ </para
+></question>
+ <answer
+><para
+>استخدم حوار <link linkend="configuration"
+>ضبط اللعبة</link
+> مرة أخرى. في الأسفل يوجد مربعا اختيار. حدد أحدهما لإيقاف اللعبة مؤقتًا بين الحركات. حدد الآخر للتوقف مؤقتًا بين خطوات الحركات المتسلسلة التي تنتشر عبر اللوحة، خاصة قرب نهاية اللعبة. بالعودة إلى اللعبة، يمكنك الآن استخدام زر شريط الأدوات الكبير (كلما أصبح أخضر)، لتنفيذ كل حركة أو المضي قدمًا خطوة بخطوة داخل الحركة، وبالسرعة التي تختارها.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>ماذا يفعل الزر الكبير في شريط الأدوات؟ </para
+></question>
+ <answer
+><para
+>يُستخدم هذا الزر لإيقاف شيء يقوم به الحاسوب (لون أحمر)، أو بدء أو مواصلة إجراء حاسوبي عندما تكون جاهزًا (لون أخضر) أو مطالبتك بالقيام بشيء ما، مثل القيام بحركة (لون أزرق، الزر معطل). للحصول على وصف كامل انظر <link linkend="stop_start_button"
+>زر التوقف/البدء</link
+>. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>هل يمكنني استخدام لوحة المفاتيح للعب اللعبة؟ </para
+></question>
+ <answer
+><para
+>لا. لا يمكن لعب مكعبك القافز باستخدام لوحة المفاتيح. </para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>أين هي أعلى النتائج؟</para
+></question>
+ <answer
+><para
+>لا تتوفر في مكعبك القافز مثل هذه الميزة.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>ضبط اللعبة</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<para
+>لفتح حوار الضبط استخدم عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط مكعبك القافز…</guimenuitem
+></menuchoice
+>، وفي نظام Apple Mac OS X استخدم عنصر القائمة <menuchoice
+><guimenu
+>مكعبك القافز</guimenu
+> <guimenuitem
+>التفضيلات</guimenuitem
+></menuchoice
+>، أو يمكنك استخدام زر <guibutton
+>إعدادات</guibutton
+> في شريط الأدوات.</para>
+
+<screenshot>
+    <screeninfo
+>إعدادات مكعبك القافز</screeninfo>
+    <mediaobject>
+	<imageobject
+><imagedata fileref="settings.png" format="PNG"/></imageobject>
+	<textobject
+><phrase
+>إعدادات مكعبك القافز</phrase
+></textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>تتحكم لوحات عرض الحركة المتسلسلة ووقت الحركة المتسلسلة في عرض التحريك الاختياري عندما يصل المكعب إلى حده الأقصى وينتقل إلى المكعبات المجاورة، مما قد يؤدي إلى بدء تسلسل ممتد من الحركات. من الأسهل في البداية استخدام تحريك <quote
+>نقاط مبعثرة</quote
+> ووقت حركة طويل. هذه هي أفضل طريقة لمتابعة تقدم الحركات المتسلسلة. يتيح لك مربعا اختيار التوقف المؤقت التنقل عبر التحريكات وحركات الحاسوب بالسرعة التي تناسبك.</para>
+
+<para
+>تتحكم لوحات لاعب الحاسوب 1 و 2 في أسلوب ومستوى لعب كل لاعب حاسوبي وما إذا كان ينبغي لهذا اللاعب أن يلعب فعليًا أو يقدم تلميحات فقط للاعب البشري 1 أو 2.</para>
+
+<sect1 id="setting_details">
+<title
+>تفاصيل الإعدادات</title>
+	<variablelist>
+	<varlistentry
+><term
+><guilabel
+>يلعب الآن</guilabel
+></term>
+		<listitem
+><para
+>يضبط لاعب الحاسوب 1 أو 2 ليكون لاعبًا نشطًا أو مجرد مساعد للاعب بشري بالتلميحات. عادةً ما تضبط الحاسوب ليلعب كلاعب واحد وتلعب أنت الآخر، ولكن يمكنك الحصول على لاعبين بشريين أو لاعبين حاسوبيين والمشاهدة فقط. يبدأ اللاعب 1 دائمًا أولًا.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>أسلوب اللعب</guilabel
+></term>
+		<listitem
+><para
+>يضبط لاعب الحاسوب 1 أو 2 ليلعب بشخصية كبلر أو نيوتن. يختار كبلر الحركات بنفس الطريقة المستخدمة في الإصدارات السابقة من مكعبك القافز. بينما يستخدم نيوتن طريقة مختلفة.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>مهارة الحاسوب</guilabel
+></term>
+		<listitem
+><para
+><action
+>يتيح لك اختيار مهارة لعب لاعب الحاسوب من شريط تمرير.</action
+> هذا يحدد مدى ذكاء الخصم الحاسوبي.</para>
+		<para
+>يمكنك اختيار أي من المستويات الخمسة، بدءًا من <guilabel
+>مبتدئ</guilabel
+>، مرورًا بـ <guilabel
+>متوسط</guilabel
+> وصولًا إلى <guilabel
+>خبير</guilabel
+>.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>حجم اللوحة</guilabel
+></term>
+		<listitem
+><para
+><action
+>يتيح لك اختيار حجم منطقة اللعب.</action
+></para>
+		<para
+>استخدم شريط التمرير لاختيار قيمة بين <guilabel
+>3x3</guilabel
+> مكعبات و <guilabel
+>15x15</guilabel
+> مكعبًا. النطاق من 5x5 إلى 9x9 هو الأكثر ملاءمة. أقل من 5x5 يكون من الصعب جدًا التغلب على الحاسوب. فوق 9x9 يمكن أن تصبح الألعاب طويلة نوعًا ما.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>ألوان اللاعبين</guilabel
+></term>
+		<listitem
+><para
+>اختر لونًا لكل لاعب وللمكعبات المحايدة.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>عرض الحركة المتسلسلة</guilabel
+></term>
+		<listitem
+><para
+>اختر أسلوب تحريك عندما يصل المكعب إلى حده الأقصى ويتوسع في المكعبات المجاورة، مما قد يؤدي إلى بدء تسلسل من هذه الحركات وتغطية مساحة كبيرة من اللوحة.</para>
+		    <para
+>استخدم أزرار الاختيار للاختيار من بين <guilabel
+>لا شيء (بدون توقف)</guilabel
+>، حيث تُعرض الحركة بالكامل بشكل فوري؛ <guilabel
+>تعتيم وتوقف</guilabel
+>، حيث يغمق لون كل مكعب زائد حتى يحين وقت توسعه؛ <guilabel
+>وميض سريع</guilabel
+>، حيث يغمق لون كل مكعب زائد في البداية ثم يومض بسرعة عندما يحين وقت توسعه و <guilabel
+>نقاط مبعثرة</guilabel
+>، حيث يغمق لون كل مكعب زائد في البداية ثم يطلق نقاطًا في المكعبات المجاورة عندما يحين وقت توسعه.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>وقت الحركة المتسلسلة</guilabel
+></term>
+		<listitem
+><para
+>استخدم شريط التمرير للاختيار من بين نطاق من الأوقات (<guilabel
+>قصير</guilabel
+> إلى <guilabel
+>طويل</guilabel
+>) لتُقضى في التحريكات. تعتمد الأوقات قليلًا على نوع التحريك، ولكن يمكن أن تتراوح من 0.15 ثانية إلى 1.5 ثانية لكل مرحلة من مراحل الحركة المتسلسلة.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>توقف مؤقتًا قبل كل حركة للحاسوب</guilabel
+></term>
+	    <listitem
+><para
+>إذا حُدد مربع الاختيار هذا، فستتوقف مشغلات الحاسوب مؤقتًا قبل أن تبدأ حركة ما، حتى تنقر للاستئناف. هذا لمساعدتك في متابعة الإجراء، خاصة إذا كنت لاعبًا جديدًا أو تدرس لعبة حاسوب ضد حاسوب.</para
+></listitem>
+	</varlistentry>
+	<varlistentry
+><term
+><guilabel
+>توقف مؤقتًا قبل كل خطوة متسلسلة</guilabel
+></term>
+		<listitem
+><para
+>إذا حُدد مربع الاختيار هذا، فسيُتوقف تحريك الحركات المتسلسلة مؤقتًا بين الخطوات، حتى تنقر للاستئناف. هذا لمساعدتك في مراقبة مثل هذه الحركة أثناء انتشارها عبر اللوحة.</para
+></listitem>
+	</varlistentry>
+	</variablelist>
+</sect1>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>الحقوق والترخيص</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>مكعبك القافز حقوق الطبع والنشر 2012، 2013 لـ Ian Wadham وحقوق الطبع والنشر 1998، 1999 لـ &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>استُلهمت مكعبك القافز من لعبة صدرت لجهاز Commodore 64 وغيره من الحواسيب المنزلية المبكرة. لسوء الحظ، اسم المؤلف الأصلي غير معروف.</para>
+
+<para
+>في عام 2007، تولى Ian Wadham صيانة مكعبك القافز لـ &kde; 4 ورسم Eugene Trounev أول سمة &SVG;.</para>
+
+<para
+>في عامي 2012 و 2013، طور Ian الإصدارين 2.0 و 2.1 من مكعبك القافز، وأضاف أساليب التحريك، وسمح بأحجام لوحة تبدأ من 3x3 وتصل إلى 15x15 وكتب وحدات ذكاء اصطناعي جديدة تمامًا توفر المزيد من التحدي للاعب البشري. تحسب هذه الإصدارات الحركات بشكل أسرع، وتضيف تراجعًا/إعادة متعدد المستويات (سابقًا كانت حركة واحدة فقط)، وتضيف اختيارًا لخصمين من الذكاء الاصطناعي وتوفر خيارات للاعبين المبتدئين للتنقل عبر التحريكات وحركات الحاسوب.</para>
+
+<para
+>حقوق طبع ونشر التوثيق 2012، 2013 لـ Ian Wadham وحقوق الطبع والنشر 1999 لـ &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+
+<para
+>حُدّث التوثيق لـ &kde; 2 و 3 بواسطة &Lauri.Watts; &Lauri.Watts.mail;</para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
