@@ -1,4 +1,4 @@
-# Version: $Revision: 1741674 $
+# Version: $Revision$
 # translation of kjumpingcube.po to Polish
 # translation of kjumpingcube.po to
 # translation of kjumpingcube.po to
